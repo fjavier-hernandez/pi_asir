@@ -1,0 +1,16 @@
+<svg id="faviconSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64">
+                    <!-- Fondo circular azul -->
+                    <circle cx="16" cy="16" r="15" fill="#2E86C1" stroke="#1F5F99" stroke-width="1"/>
+                    
+                    <!-- Flecha superior derecha -->
+                    <path d="M20 8 L26 8 L26 14 L24 12 L18 18 L16 16 L22 10 Z" fill="white"/>
+                    
+                    <!-- Flecha inferior izquierda -->
+                    <path d="M12 24 L6 24 L6 18 L8 20 L14 14 L16 16 L10 22 Z" fill="white"/>
+                    
+                    <!-- Flecha superior izquierda -->
+                    <path d="M12 8 L6 8 L6 14 L8 12 L14 18 L16 16 L10 10 Z" fill="white"/>
+                    
+                    <!-- Flecha inferior derecha -->
+                    <path d="M20 24 L26 24 L26 18 L24 20 L18 14 L16 16 L22 22 Z" fill="white"/>
+                </svg>
