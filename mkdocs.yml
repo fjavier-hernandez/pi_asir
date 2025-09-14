@@ -1,0 +1,132 @@
+site_name: Proyecto Intermodular ASIR
+site_url: https://fjavier-hernandez.github.io/pi_asir/
+use_directory_urls: false
+
+nav:
+  - "Inicio": "index.md"
+  - "1.- Introducción a las Redes": "01ir.md"
+  # - "2.- UD2: PowerShell":
+  # - "3.- UD3: Administración de procesos del sistema":
+  # - "4.- Servicios de Directorio Libres: LDAP":
+  # - "5.- Servicios de Directorio Propietarios: Active Directory":
+  # - "6.- Integración de sistemas operativos en red libres y propietarios":
+  # - "7.- Información del sistema":
+  # - "8.- Servicios de acceso y administración remota":
+  # - "9.- Administración de Servidores de Impresión":
+  # - Tags: "tags.md"
+
+theme:
+  language: es
+  name: "material"
+  favicon: "imagenes/ral.svg"
+  palette:
+    - scheme: javi
+      #primary: light blue
+      #accent: "Teal"
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Cambiar a modo noche
+    - scheme: slate 
+      #primary: light blue
+      #accent: "Teal"
+      toggle:
+        icon: material/toggle-switch
+        name: Cambiar a modo día
+  font:
+    text: Roboto
+    code: Roboto Mono
+  logo: "./imagenes/ral.svg"
+  features:
+    - header.autohide
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - navigation.indexes
+    - content.code.annotate
+    - announce.dismiss
+    - toc.follow
+    - content.code.copy
+    # - header.autohide
+    # - toc.integrate
+    # - navigation.indexes
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  status:
+      deprecated: Pronto será historia
+      new: Recién añadido
+      updated: Modificado
+  search:
+    language: "es"
+  social:
+    - icon: fontawesome/solid/envelope
+      link: mailto:<fj.hernandez@edu.gva.es>
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/fjavier-hernandez-illan
+
+  analytics:
+    provider: google
+    property: G-0CPJP88MBF
+
+  consent:
+    title: Consentimiento de cookie
+    description: >-
+      Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación
+      y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes.
+      Con tu consentimiento, me ayudas a mejorar estos materiales.
+
+plugins:
+  - search
+  - tags
+  - social:
+      cards: true
+  - print-site:
+      enumerate_headings: false
+      toc_title: Tabla de contenidos
+      include_css: false
+      exclude:
+        - "tags.md"
+        - "relacion.md"
+        - "satisfaccion.md"
+        - "vocabulari.md"
+        - "validacion.md"
+        - "anexos/*"
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - meta
+  - pymdownx.details  
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      linenums: true
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.snippets:
+      auto_append:
+        - includes/ra.md
+  - sane_lists
+  - toc:
+      permalink: true
+      toc_depth: 4
+
+copyright: 2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
