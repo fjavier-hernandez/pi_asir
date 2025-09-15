@@ -6,9 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Práctica guiada de instalación de NextCloud mediante Docker Docker por Francisco Javier Hernández Illán. Gestión de recursos compartidos en NextCloud utilizando Volúmenes persistentes.">
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/tags.html">
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/01NextCloudDocker.html">
       
       
       
@@ -18,7 +20,7 @@
     
     
       
-        <title>Tags - Proyecto Intermodular ASIR</title>
+        <title>Guía Instalación NextCloud con Docker - Proyecto Intermodular ASIR</title>
       
     
     
@@ -65,11 +67,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Tags - Proyecto Intermodular ASIR" >
+        <meta  property="og:title"  content="Guía Instalación NextCloud con Docker - Proyecto Intermodular ASIR" >
       
-        <meta  property="og:description"  content="None" >
+        <meta  property="og:description"  content="Práctica guiada de instalación de NextCloud mediante Docker Docker por Francisco Javier Hernández Illán. Gestión de recursos compartidos en NextCloud utilizando Volúmenes persistentes." >
       
-        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/tags.png" >
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/01NextCloudDocker.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -77,15 +79,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/tags.html" >
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/01NextCloudDocker.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Tags - Proyecto Intermodular ASIR" >
+        <meta  name="twitter:title"  content="Guía Instalación NextCloud con Docker - Proyecto Intermodular ASIR" >
       
-        <meta  name="twitter:description"  content="None" >
+        <meta  name="twitter:description"  content="Práctica guiada de instalación de NextCloud mediante Docker Docker por Francisco Javier Hernández Illán. Gestión de recursos compartidos en NextCloud utilizando Volúmenes persistentes." >
       
-        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/tags.png" >
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/01NextCloudDocker.png" >
       
     
     
@@ -108,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tags" class="md-skip">
+        <a href="#nextcloud-con-docker" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -143,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tags
+              Guía Instalación NextCloud con Docker
             
           </span>
         </div>
@@ -314,6 +316,71 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-contenedor-nextcloud-sin-volumen-persistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación contenedor NextCloud sin volumen persistente.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-contenedor-nextcloud-con-volumen-persistente-y-red-interna" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación contenedor NextCloud con volumen persistente y red interna
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación contenedor NextCloud con volumen persistente y red interna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobacion-nextcloud-con-volumen-persistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobación NextCloud con volumen persistente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobacion-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobación IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -327,9 +394,204 @@
                   
 
 
-<h1 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h1>
-<p>Los tags más empleados en los apuntes son:</p>
-<p>[TAGS]</p>
+<figure style="float: right;">
+    <img src="imagenes/NextCloudLogo.png" width="280"/>
+</figure>
+
+<h1 id="nextcloud-con-docker">NEXTCLOUD con DOCKER<a class="headerlink" href="#nextcloud-con-docker" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>NextCloud</strong> Hace referencia al conjunto de herramientas software de <strong>código abierto</strong> con arquitectura <strong>cliente-servidor</strong>, que permiten la creación de <strong>servicios de alojamiento de archivos</strong> en servidores privados.</li>
+<li>Puede desempeñar un papel significativo en la <strong>integración de sistemas operativos</strong> al actuar como una plataforma de colaboración y gestión de archivos que opera de manera uniforme en entornos mixtos. Aquí tienes su relevancia en este contexto:</li>
+</ul>
+<hr />
+<p><strong>1. Plataforma Multiplataforma</strong></p>
+<ul>
+<li>Nextcloud funciona en <strong>Linux</strong>, <strong>Windows</strong> y <strong>macOS</strong>, además de tener clientes para dispositivos móviles como Android e iOS.</li>
+<li>Facilita el acceso centralizado a archivos y servicios desde cualquier sistema operativo, eliminando barreras de compatibilidad.</li>
+</ul>
+<hr />
+<p><strong>2. Interoperabilidad de Archivos</strong></p>
+<ul>
+<li>Proporciona acceso a sistemas de archivos compartidos a través de protocolos como <strong>WebDAV</strong>, compatible con la mayoría de los sistemas operativos.</li>
+<li>Se integra con servicios como <strong>Samba</strong> o <strong>NFS</strong>, permitiendo que los recursos compartidos en redes Windows o Linux se gestionen directamente desde Nextcloud.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>WebDAV</strong> es un grupo de trabajo del <strong>Internet Engineering Task Force (IETF)</strong>. El término significa <strong>"Autoría y versionado distribuidos por Web" (Web Distributed Authoring and Versioning)</strong>, y <strong>se refiere al protocolo</strong> (más precisamente, a la extensión del protocolo) que el grupo definió. Este protocolo proporciona funcionalidades para <strong>crear, cambiar y mover documentos en un servidor remoto</strong> (típicamente un servidor web).</p>
+</div>
+<hr />
+<p><strong>3. Extensibilidad mediante Aplicaciones</strong></p>
+<ul>
+<li>Las aplicaciones de Nextcloud permiten integrar otros servicios, como editores de documentos (OnlyOffice o Collabora), que operan de manera nativa en cualquier SO con un navegador.</li>
+<li>A través de complementos, puede interactuar con herramientas como LDAP o Active Directory, facilitando la autenticación unificada entre distintos sistemas.</li>
+</ul>
+<hr />
+<p><strong>4. Sincronización Multidispositivo</strong></p>
+<ul>
+<li>Permite la sincronización bidireccional de archivos entre sistemas operativos distintos, ya sean servidores, escritorios o móviles, manteniendo todo actualizado.</li>
+<li>Ideal para entornos donde los usuarios trabajan con diferentes SOs, como Windows en oficinas y Linux en servidores.</li>
+</ul>
+<!-- ### Características
+
+- Los archivos Nextcloud **son almacenados en estructuras de directorio convencionales** y se pueden acceder a través del protocolo **WebDAV** si es necesario.
+- Los archivos son **encriptados** en la transmisión y opcionalmente durante el almacenamiento.
+- Los usuarios pueden manejar **calendarios** (CalDAV), **contactos** (CardDAV), **tareas programadas** y reproducir **contenido multimedia** (Ampache).
+- Permite la administración de usuarios y grupos de usuarios (vía OpenID o LDAP) y definir permisos de acceso.
+- Posibilidad de añadir aplicaciones (de un solo clic) y conexiones con **Dropbox**, **Google Drive** y **Amazon S3**.
+- Disponibilidad de acceso a diferentes **bases de datos** mediante SQLite, MariaDB, MySQL, Oracle Database, y PostgreSQL. -->
+
+<h2 id="instalacion-contenedor-nextcloud-sin-volumen-persistente">Instalación contenedor NextCloud sin volumen persistente.<a class="headerlink" href="#instalacion-contenedor-nextcloud-sin-volumen-persistente" title="Permanent link">&para;</a></h2>
+<p>La instalación del contenedor se puede consultar en <a href="https://hub.docker.com/_/nextcloud">Imagen oficial NextCloud Docker Hub</a></p>
+<ol>
+<li>Se instala y ejecuta el contenedor:</li>
+</ol>
+<ul>
+<li>Código para la instalación NextCloud:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>nextcloud
+</code></pre></div>
+<ul>
+<li>Resultado:</li>
+</ul>
+<figure>
+  <img src="./imagenes/107.png"/>
+  <figcaption>Instalación y ejecución del contenedor de NextCloud</figcaption>
+</figure>
+
+<div style="page-break-before:always;"></div>
+
+<ol start="2">
+<li>Comprobación de instalación correcta del contenedor NextCloud:</li>
+</ol>
+<ul>
+<li>Se introduce en un navegador <strong>http://"IPmáquinaVirtual":8080</strong> debe aparecer el inicio de NextCloud para crear una cuenta de administrador, como se muestra en la siguiente figura:</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>La guía está realizada en el supuesto que la MV de Ubuntu server estuviera configurada en Adaptador puente, como en nuestro caso va estar configurada en Red NAT, tendremos que configurar el reenvió de puertos necesario para poder acceder a la aplicación.</p>
+</div>
+<figure>
+  <img src="./imagenes/108.png"/>
+  <figcaption>Instalación de NextCloud</figcaption>
+</figure>
+
+<ul>
+<li>Probamos a subir un archivo para ver donde se guardan:</li>
+</ul>
+<figure>
+  <img src="./imagenes/109.png"/>
+  <figcaption>Subir archivo NextCloud</figcaption>
+</figure>
+
+<div style="page-break-before:always;"></div>
+
+<ul>
+<li>Se comprueba en el GUI de NextCloud que esta subido:</li>
+</ul>
+<figure>
+  <img src="./imagenes/110.png"/>
+  <figcaption>Comprobación subido el archivo en el GUI de NextCloud</figcaption>
+</figure>
+
+<ul>
+<li>Se comprueba en el bash del contenedor de NextCloud que esta subido:</li>
+</ul>
+<figure>
+  <img src="./imagenes/111.png"/>
+  <figcaption>Comprobación subido el archivo en el contenedor de NextCloud</figcaption>
+</figure>
+
+<div style="page-break-before:always;"></div>
+
+<ul>
+<li>Si borramos el contenedor y lo volvemos a crear se comprueba que se ha perdido el fichero:</li>
+</ul>
+<figure>
+  <img src="./imagenes/112.png"/>
+  <figcaption>Borrado del contenedor</figcaption>
+</figure>
+
+<figure>
+  <img src="./imagenes/113.png"/>
+  <figcaption>Comprobación del fichero borrado</figcaption>
+</figure>
+
+<div style="page-break-before:always;"></div>
+
+<h2 id="instalacion-contenedor-nextcloud-con-volumen-persistente-y-red-interna">Instalación contenedor NextCloud con volumen persistente y red interna<a class="headerlink" href="#instalacion-contenedor-nextcloud-con-volumen-persistente-y-red-interna" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Siguiendo los apuntes en el punto 3 se describen los volúmenes y la importancia de los mismos para salvaguardar los datos si el contenedor se corrompe, o incluso utilizarlo para un segundo contenedor de docker. El ejemplo 3.3 es una buena guía para realizar este punto.</p>
+</li>
+<li>
+<p>Por lo tanto el código a ejecutar para que el volumen se llame <strong>"volNextCloud"</strong> podría ser:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>nextcloud<span class="w"> </span>--ip<span class="w"> </span><span class="m">192</span>.168.20.2<span class="w"> </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>volNextCloud,target<span class="o">=</span>/var/www/html/data<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span>nextcloud
+</code></pre></div>
+<figure>
+  <img src="./imagenes/114.png"/>
+  <figcaption>Creación NextCloud con Persistent Data y red interna</figcaption>
+</figure>
+
+<div style="page-break-before:always;"></div>
+
+<h3 id="comprobacion-nextcloud-con-volumen-persistente">Comprobación NextCloud con volumen persistente<a class="headerlink" href="#comprobacion-nextcloud-con-volumen-persistente" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Se sube un fichero como el caso anterior.</li>
+</ol>
+<figure>
+  <img src="./imagenes/115.png"/>
+  <figcaption>Subimos fichero</figcaption>
+</figure>
+
+<ol start="2">
+<li>Se comprueba que esta en el contenedor.</li>
+</ol>
+<figure>
+  <img src="./imagenes/116.png"/>
+  <figcaption>El archivo existe en el path del volumen</figcaption>
+</figure>
+
+<div style="page-break-before:always;"></div>
+
+<ol start="3">
+<li>Se borra el contenedor, se crea uno nuevo apuntando al volumen y se comprueba que el fichero perdura.</li>
+</ol>
+<figure>
+  <img src="./imagenes/117.png"/>
+  <figcaption>Comprobación fichero existe, después de borrar contenedor y volver a crear uno nuevo</figcaption>
+</figure>
+
+<h2 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Se observa en el código del apartado anterior en el mismo comando se ha estado introduciendo la IP del enunciado. Para que dicha IP se refleje en el contenedor además debe existir una red creada previamente y apuntar a ella. en los siguientes pasos se muestra.</li>
+</ul>
+<ol>
+<li>Crear red:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>--driver<span class="o">=</span>bridge<span class="w"> </span>--subnet<span class="o">=</span><span class="m">192</span>.168.20.0/24<span class="w"> </span>nextCloudNet
+</code></pre></div>
+<ol start="2">
+<li>Referenciamos contenedor a la red creada.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>nextcloud<span class="w"> </span>--network<span class="w"> </span>nextCloudNet<span class="w"> </span>--ip<span class="w"> </span><span class="m">192</span>.168.20.2<span class="w"> </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>volNextCloud,target<span class="o">=</span>/var/www/html/data<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span>nextcloud
+</code></pre></div>
+<div style="page-break-before:always;"></div>
+
+<ol start="3">
+<li>Confirmamos la IP.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>inspect<span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;{{range.NetworkSettings.Networks}} {{.IPAddress}}{{end}}&#39;</span><span class="w"> </span>CONTAINER_ID
+</code></pre></div>
+<h3 id="comprobacion-ip">Comprobación IP<a class="headerlink" href="#comprobacion-ip" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En la siguiente figura se muestra la comprobación de la red y la IP del contenedor:</li>
+</ul>
+<figure>
+  <img src="./imagenes/119.png"/>
+  <figcaption>Contenedor en la IP del enunciado</figcaption>
+</figure>
 
 
 
