@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Introducción a Docker por Francisco Javier Hernández Illán. Explicación de las principales características de Docker, su instalación y principales comandos de uso.">
+        <meta name="description" content="Apuntes de Herramientas del Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Explicación de las principales Herramientas del PI de ASIR, Docker, AWS, github, trello, mkdocs, mkdocs material.">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Introducción Docker - Proyecto Intermodular ASIR</title>
+        <title>Herramientas del PI de ASIR - Proyecto Intermodular ASIR</title>
       
     
     
@@ -69,9 +69,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Introducción Docker - Proyecto Intermodular ASIR" >
+        <meta  property="og:title"  content="Herramientas del PI de ASIR - Proyecto Intermodular ASIR" >
       
-        <meta  property="og:description"  content="Introducción a Docker por Francisco Javier Hernández Illán. Explicación de las principales características de Docker, su instalación y principales comandos de uso." >
+        <meta  property="og:description"  content="Apuntes de Herramientas del Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Explicación de las principales Herramientas del PI de ASIR, Docker, AWS, github, trello, mkdocs, mkdocs material." >
       
         <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/00herramientas.png" >
       
@@ -85,9 +85,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Introducción Docker - Proyecto Intermodular ASIR" >
+        <meta  name="twitter:title"  content="Herramientas del PI de ASIR - Proyecto Intermodular ASIR" >
       
-        <meta  name="twitter:description"  content="Introducción a Docker por Francisco Javier Hernández Illán. Explicación de las principales características de Docker, su instalación y principales comandos de uso." >
+        <meta  name="twitter:description"  content="Apuntes de Herramientas del Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Explicación de las principales Herramientas del PI de ASIR, Docker, AWS, github, trello, mkdocs, mkdocs material." >
       
         <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/00herramientas.png" >
       
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker" class="md-skip">
+        <a href="#herramientas-del-proyecto-intermodular-de-asir" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -147,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introducción Docker
+              Herramientas del PI de ASIR
             
           </span>
         </div>
@@ -331,14 +331,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#contenedores" class="md-nav__link">
     <span class="md-ellipsis">
       Contenedores
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Contenedores">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#maquinas-virtuales-vs-contenedores" class="md-nav__link">
@@ -349,20 +358,14 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#microservicios" class="md-nav__link">
     <span class="md-ellipsis">
       Microservicios
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Microservicios">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#caracteristicas-principales-contenedores" class="md-nav__link">
@@ -373,12 +376,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#caracteristicas-y-definicion-de-docker" class="md-nav__link">
     <span class="md-ellipsis">
       Características y definición de Docker
@@ -386,8 +384,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#arquitectura-docker" class="md-nav__link">
     <span class="md-ellipsis">
       Arquitectura Docker
@@ -395,16 +393,15 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#instalacion" class="md-nav__link">
     <span class="md-ellipsis">
       Instalación
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Instalación">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#ejemplo-instalacion-en-ubuntu-server" class="md-nav__link">
@@ -424,12 +421,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#principales-comandos" class="md-nav__link">
     <span class="md-ellipsis">
       Principales Comandos
@@ -437,8 +429,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#primer-contenedor" class="md-nav__link">
     <span class="md-ellipsis">
       Primer Contenedor
@@ -446,8 +438,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#volumenes" class="md-nav__link">
     <span class="md-ellipsis">
       Volúmenes
@@ -481,6 +473,11 @@
       Ejemplo
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -524,14 +521,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#contenedores" class="md-nav__link">
     <span class="md-ellipsis">
       Contenedores
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Contenedores">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#maquinas-virtuales-vs-contenedores" class="md-nav__link">
@@ -542,20 +548,14 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#microservicios" class="md-nav__link">
     <span class="md-ellipsis">
       Microservicios
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Microservicios">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#caracteristicas-principales-contenedores" class="md-nav__link">
@@ -566,12 +566,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#caracteristicas-y-definicion-de-docker" class="md-nav__link">
     <span class="md-ellipsis">
       Características y definición de Docker
@@ -579,8 +574,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#arquitectura-docker" class="md-nav__link">
     <span class="md-ellipsis">
       Arquitectura Docker
@@ -588,16 +583,15 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#instalacion" class="md-nav__link">
     <span class="md-ellipsis">
       Instalación
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Instalación">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#ejemplo-instalacion-en-ubuntu-server" class="md-nav__link">
@@ -617,12 +611,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#principales-comandos" class="md-nav__link">
     <span class="md-ellipsis">
       Principales Comandos
@@ -630,8 +619,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#primer-contenedor" class="md-nav__link">
     <span class="md-ellipsis">
       Primer Contenedor
@@ -639,8 +628,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#volumenes" class="md-nav__link">
     <span class="md-ellipsis">
       Volúmenes
@@ -681,6 +670,11 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
@@ -697,20 +691,23 @@
                   
 
 
-<h1 id="docker">DOCKER<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
+<h1 id="herramientas-del-proyecto-intermodular-de-asir">Herramientas del Proyecto Intermodular de ASIR<a class="headerlink" href="#herramientas-del-proyecto-intermodular-de-asir" title="Permanent link">&para;</a></h1>
 <figure style="float: right;">
     <img src="imagenes/DockerImage.png" width="350"/>
     <figcaption><b>Figura 1:</b> Logo Docker.</figcaption>
 </figure>
 
+<h2 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h2>
+<blockquote>
 <p><strong>Docker</strong> (estibador en inglés) es un <strong>Sistema de Virtualización de Aplicaciones mediante contenedores</strong>, creado por <em>Solomon Hykes</em> y su equipo de ingenieros.</p>
+</blockquote>
 <ul>
 <li>En <strong>2013</strong> se convirtió en un proyecto de <strong>software libre (licencia Apache)</strong> en el que participan cada vez más empresas. </li>
 <li>La <strong>versión 1.0</strong> se publicó en <strong>junio de 2014</strong> y ha tenido un desarrollo muy rápido.</li>
 <li>En marzo de <strong>2017</strong>, Docker anunció un desarrollo todavía más rápido, <strong>pasando a publicar una nueva versión cada mes</strong>. La numeración de las versiones adoptó al formato AA.MM (la primera fue <strong>Docker 17.03</strong>).</li>
 <li>En <strong>julio de 2018</strong>, Docker anunció que volvían a un desarrollo más pausado. A partir de <strong>Docker 18.09</strong> habría una versión "estable" cada seis meses.</li>
 </ul>
-<h2 id="contenedores">Contenedores<a class="headerlink" href="#contenedores" title="Permanent link">&para;</a></h2>
+<h3 id="contenedores">Contenedores<a class="headerlink" href="#contenedores" title="Permanent link">&para;</a></h3>
 <p>En virtualización, el principal problema de los hipervisores y las máquinas virtuales es que cada máquina virtual es independiente de las demás. Al no reutilizarse ningún componente, se ocupa <strong>mucho espacio tanto en disco como en memoria</strong> y el <strong>tiempo de ejecución siempre será mayor</strong> que si sólo hubiera un sistema operativo (sobre todo en el caso de <strong>hipervisores de tipo 2</strong>).</p>
 <p>Para resolver este problema se crearon los <strong>contenedores</strong> en los que se <strong>utilizan mecanismos existentes en el sistema operativo para aislar las aplicaciones</strong>, pero compartiendo el mayor número posible de componentes del sistema operativo o incluso de las aplicaciones.</p>
 <ul>
@@ -730,7 +727,7 @@
   <figcaption>Contenedores Vs Máquinas Virtuales.</figcaption>
 </figure>
 
-<h2 id="microservicios">Microservicios<a class="headerlink" href="#microservicios" title="Permanent link">&para;</a></h2>
+<h3 id="microservicios">Microservicios<a class="headerlink" href="#microservicios" title="Permanent link">&para;</a></h3>
 <p>Uno de los objetivos principales de la configuración e implantación de contenedores es solucionar los problemas de:</p>
 <ul>
 <li><strong>Errores de dependencias</strong> entre diferentes Sistemas Operativos de los trabajadores y máquinas de puesta en marcha.</li>
@@ -761,7 +758,7 @@
 <li>Soluciona problemas de <strong>espacio y compatibilidades a la hora de puesta en marcha</strong> en servidores de producción.</li>
 <li>Los contenedores suelen ser elementos <strong>efímeros</strong>.</li>
 </ul>
-<h2 id="caracteristicas-y-definicion-de-docker">Características y definición de Docker<a class="headerlink" href="#caracteristicas-y-definicion-de-docker" title="Permanent link">&para;</a></h2>
+<h3 id="caracteristicas-y-definicion-de-docker">Características y definición de Docker<a class="headerlink" href="#caracteristicas-y-definicion-de-docker" title="Permanent link">&para;</a></h3>
 <p><strong>Docker</strong> se puede definir como un proyecto de <strong>código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software</strong>, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.</p>
 <p>Sus principales características son:</p>
 <ul>
@@ -780,7 +777,7 @@
 <p class="admonition-title">Nota</p>
 <p>Aunque un contenedor puede incluir cualquier número de aplicaciones, lo habitual es que un contenedor <strong>contenga una sola aplicación</strong> (y los programas necesarios para ponerse en marcha). </p>
 </div>
-<h2 id="arquitectura-docker">Arquitectura Docker<a class="headerlink" href="#arquitectura-docker" title="Permanent link">&para;</a></h2>
+<h3 id="arquitectura-docker">Arquitectura Docker<a class="headerlink" href="#arquitectura-docker" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Docker Engine ("Motor" del Gestor Docker)</strong>: el cual basado en la arquitectura de <strong>Cliente-Servidor</strong> (que pueden estar en la misma máquina, o en distintas), y realizada por mediante una <strong>API de REST</strong> que utiliza <strong>HTTP</strong>.<ul>
 <li><strong>API REST</strong>: interfaz de programación con un estilo de arquitectura software para sistemas hipermedia distribuidos como la <em>World Wide Web</em>.</li>
@@ -809,7 +806,7 @@
 <li>Las <strong>imágenes</strong> se pueden crear a partir de otras imágenes más básicas incluyendo software adicional en forma de capas. Todos los contenedores creados a partir de una imagen contienen el mismo software, aunque en el momento de su creación se pueden personalizar algunos detalles</li>
 </ul>
 </div>
-<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
+<h3 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h3>
 <p>Para la Instalación de <strong>Docker</strong> es recomendable seguir la documentación oficial. Además se recomienda Instalar máquina Ubuntu Server última versión e instalar Docker en ella.</p>
 <ul>
 <li>Docker for Mac:<ul>
@@ -970,7 +967,7 @@
 
 <div style="page-break-before:always;"></div>
 
-<h2 id="principales-comandos">Principales Comandos<a class="headerlink" href="#principales-comandos" title="Permanent link">&para;</a></h2>
+<h3 id="principales-comandos">Principales Comandos<a class="headerlink" href="#principales-comandos" title="Permanent link">&para;</a></h3>
 <p>A continuación se muestran los comandos más utilizados:</p>
 <table>
 <thead>
@@ -1028,7 +1025,7 @@
     <figcaption>Chuleta Docker.</figcaption>
 </figure>
 
-<h2 id="primer-contenedor">Primer Contenedor<a class="headerlink" href="#primer-contenedor" title="Permanent link">&para;</a></h2>
+<h3 id="primer-contenedor">Primer Contenedor<a class="headerlink" href="#primer-contenedor" title="Permanent link">&para;</a></h3>
 <p>A continuación se muestra un ejemplo guiado de la creación del contenedor <strong>"Hello World"</strong></p>
 <ol>
 <li>Comprobación que inicialmente no hay ningún contenedor creado (la opción <code>-a</code> hace que se muestren también los contenedores detenidos, sin ella se muestran sólo los contenedor que estén en marcha):</li>
@@ -1083,7 +1080,7 @@ o también</p>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>hola-1<span class="w"> </span>hello-world
 </code></pre></div>
-<h2 id="volumenes">Volúmenes<a class="headerlink" href="#volumenes" title="Permanent link">&para;</a></h2>
+<h3 id="volumenes">Volúmenes<a class="headerlink" href="#volumenes" title="Permanent link">&para;</a></h3>
 <p>Docker simplifica enormemente la creación de contenedores, y eso lleva a tratar los contenedores como un <strong>elemento efímero</strong>, que se crea cuando se necesita y que no importa que se destruya puesto que puede ser reconstruido una y otra vez a partir de su imagen.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -1110,7 +1107,7 @@ o también</p>
 <p class="admonition-title">Tip</p>
 <p>Aconsejable utilizar la técnica de <strong><em>volumenes</em></strong>, ya que, La ventaja frente a los directorios enlazados es que pueden ser gestionados por Docker. Otro detalle importante es que el acceso al contenido de los volúmenes sólo se puede hacer a través de algún contenedor que utilice el volumen.</p>
 </div>
-<h3 id="ventajas-volumenes">Ventajas Volúmenes<a class="headerlink" href="#ventajas-volumenes" title="Permanent link">&para;</a></h3>
+<h4 id="ventajas-volumenes">Ventajas Volúmenes<a class="headerlink" href="#ventajas-volumenes" title="Permanent link">&para;</a></h4>
 <p>Los volúmenes tienen varias ventajas sobre los directorios enlazados:</p>
 <ul>
 <li>Los volúmenes son más fáciles de respaldar o migrar que enlazar montajes.</li>
@@ -1134,7 +1131,7 @@ o también</p>
 <p class="admonition-title">Nota</p>
 <p>Los volúmenes son independientes de los contenedores, por lo que también podemos conservar los datos aunque se destruya el contenedor, reutilizarlos con otro contenedor, etc.</p>
 </div>
-<h3 id="opciones">Opciones<a class="headerlink" href="#opciones" title="Permanent link">&para;</a></h3>
+<h4 id="opciones">Opciones<a class="headerlink" href="#opciones" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Opciones:</li>
 </ul>
@@ -1169,7 +1166,7 @@ o también</p>
 <p class="admonition-title">Nota</p>
 <p>Todas las opciones de volúmenes están disponibles para los indicadores <code>--mount</code> y <code>-v</code>, por que a la hora de elegir uno u otro depende del técnico para su facilidad de configuración donde por su sintaxis a priori sería mejor <code>--mount</code>.</p>
 </div>
-<h3 id="ejemplo">Ejemplo<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h3>
+<h4 id="ejemplo">Ejemplo<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h4>
 <p>A continuación se muestra un ejemplo de creación del servidor web NGINX.</p>
 <div class="admonition example">
 <p class="admonition-title">Ejemplo</p>
