@@ -6,10 +6,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Introducción a Docker por Francisco Javier Hernández Illán. Explicación de las principales características de Docker, su instalación y principales comandos de uso.">
       
       
-        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/print_page.html">
       
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/00herramientas.html">
+      
+      
+        <link rel="prev" href="index.html">
       
       
       
@@ -18,7 +22,7 @@
     
     
       
-        <title>Print Site - Proyecto Intermodular ASIR</title>
+        <title>Introducción Docker - Proyecto Intermodular ASIR</title>
       
     
     
@@ -46,7 +50,7 @@
     
       <link rel="stylesheet" href="stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/pi_asir/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -62,14 +66,34 @@
 
     
     
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Introducción Docker - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Introducción a Docker por Francisco Javier Hernández Illán. Explicación de las principales características de Docker, su instalación y principales comandos de uso." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/00herramientas.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/00herramientas.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Introducción Docker - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Introducción a Docker por Francisco Javier Hernández Illán. Explicación de las principales características de Docker, su instalación y principales comandos de uso." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/00herramientas.png" >
+      
     
-  
-        <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
-        })
-        </script>
-        </head>
+    
+  </head>
   
   
     
@@ -88,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#index" class="md-skip">
+        <a href="#docker" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -123,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Print Site
+              Introducción Docker
             
           </span>
         </div>
@@ -258,10 +282,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="00herramientas.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="00herramientas.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -270,6 +314,185 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenedores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenedores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maquinas-virtuales-vs-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Máquinas Virtuales VS Contenedores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Microservicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales Contenedores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-y-definicion-de-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características y definición de Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-instalacion-en-ubuntu-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo Instalación en Ubuntu server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guia-de-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía de instalación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principales-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales Comandos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primer Contenedor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volúmenes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Volúmenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-volumenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas Volúmenes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -291,6 +514,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -299,20 +524,161 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#index" class="md-nav__link">
+  <a href="#contenedores" class="md-nav__link">
     <span class="md-ellipsis">
-      Inicio
+      Contenedores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contenedores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maquinas-virtuales-vs-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Máquinas Virtuales VS Contenedores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microservicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Microservicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales Contenedores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas-y-definicion-de-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características y definición de Docker
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#00herramientas" class="md-nav__link">
+  <a href="#arquitectura-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Herramientas del proyecto
+      Arquitectura Docker
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-instalacion-en-ubuntu-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo Instalación en Ubuntu server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guia-de-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía de instalación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principales-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales Comandos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primer-contenedor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primer Contenedor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volúmenes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Volúmenes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-volumenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas Volúmenes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -331,252 +697,7 @@
                   
 
 
-<div id="print-site-page" class="print-site-enumerate-figures">
-        <section class="print-page">
-            <div id="print-page-toc" data-toc-depth="3">
-                <nav role='navigation' class='print-page-toc-nav'>
-                <h1 class='print-page-toc-title'>Tabla de contenidos</h1>
-                </nav>
-            </div>
-        </section>
-        <section class="print-page" id="index" heading-number="1"><h1 id="index-proyecto-intermodular">Proyecto intermodular<a class="headerlink" href="#index-proyecto-intermodular" title="Permanent link">&para;</a></h1>
-<p>En esta página encontrarás la organización docente del <strong>módulo de <em>Proyecto intermodular</em></strong> del <abbr title="Ciclo Formativo de Grado Superior">CFGS</abbr> de <em>Administración de Sistemas Informáticos en Red</em> (<strong><abbr title="Administración de Sistemas Informáticos en Red">ASIR</abbr></strong>), conforme al marco normativo vigente: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-5139">Ley Orgánica 3/2022</a>, <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2023-16889">Real Decreto 659/2023</a>, modificaciones de títulos por <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-10685">RD 500/2024</a> y normativa autonómica (<a href="https://dogv.gva.es/es/resultat-dogv?signatura=2025/13083">Orden 8/2025</a>, <a href="https://dogv.gva.es/datos/2025/07/21/pdf/2025_28562_es.pdf">Resolución de 17/07/2025</a>).<br />
-Se imparte en el <a href="https://portal.edu.gva.es/iesmaciaabela/">IES Macià Abela</a> de Crevillent.</p>
-<blockquote>
-<p>El <em>Proyecto intermodular</em> se concibe como una experiencia colaborativa entre los distintos módulos del ciclo, orientada a la resolución de proyectos reales, teniendo un <strong>Carácter integrador y por retos.</strong> .</p>
-</blockquote>
-<h2 id="index-competencias-profesionales">Competencias profesionales<a class="headerlink" href="#index-competencias-profesionales" title="Permanent link">&para;</a></h2>
-<p>Las <ins>competencias</ins> que se trabajan en este módulo son:</p>
-<ul>
-<li>Integrar aprendizajes y evidencias de varios <strong>módulos profesionales</strong> del ciclo mediante retos significativos y reales.</li>
-<li><strong>Planificar, ejecutar, verificar y documentar</strong> proyectos TIC, aplicando criterios de calidad, seguridad y sostenibilidad (ODS).</li>
-<li>Trabajar de <strong>forma colaborativa</strong>, con reparto de roles, gestión de tareas y resolución de conflictos.</li>
-<li><strong>Comunicarse con claridad</strong> (oral, escrita y técnica), empleando recursos visuales y soportes digitales.</li>
-<li><strong>Investigar e innovar</strong>: búsqueda y análisis crítico de información, prototipado y mejora iterativa.</li>
-<li><strong>Emprendimiento y orientación laboral</strong>: viabilidad, presupuesto y gestión básica del proyecto.</li>
-</ul>
-<h2 id="index-objetivos-generales">Objetivos Generales<a class="headerlink" href="#index-objetivos-generales" title="Permanent link">&para;</a></h2>
-<p>Los <ins>objetivos generales</ins> del Proyecto intermodular son:</p>
-<ul>
-<li>Diseñar retos contextualizados en el sector TIC, <strong>cercanos y relevantes</strong> para el alumnado.</li>
-<li><strong>Seleccionar y aplicar</strong> estrategias, herramientas y tecnologías adecuadas a cada fase del proyecto.</li>
-<li><strong>Temporalizar</strong> actividades, recursos y entregables, previendo riesgos e imprevistos.</li>
-<li><strong>Generar evidencias</strong> válidas para evaluar <abbr title="Resultado de aprendizaje">RA</abbr> y <abbr title="Criterio de evaluación">CE</abbr> de los módulos implicados.</li>
-<li><strong>Presentar y defender</strong> el proyecto ante audiencia técnica y no técnica, con soporte escrito y visual.</li>
-</ul>
-<h2 id="index-resultados-de-aprendizaje">Resultados de aprendizaje<a class="headerlink" href="#index-resultados-de-aprendizaje" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Código</th>
-<th style="text-align: left;">Descripción</th>
-<th style="text-align: center;">Peso (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">PI1</td>
-<td style="text-align: left;"><strong>Caracteriza el reto</strong> y el contexto del sector, definiendo alcance y requisitos.</td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr>
-<td style="text-align: center;">PI2</td>
-<td style="text-align: left;"><strong>Planifica</strong> actividades, recursos, riesgos y cronograma del proyecto.</td>
-<td style="text-align: center;">25</td>
-</tr>
-<tr>
-<td style="text-align: center;">PI3</td>
-<td style="text-align: left;"><strong>Desarrolla y valida</strong> la solución (iteraciones, pruebas y criterios de aceptación).</td>
-<td style="text-align: center;">25</td>
-</tr>
-<tr>
-<td style="text-align: center;">PI4</td>
-<td style="text-align: left;"><strong>Documenta, versiona y despliega</strong> la solución y sus evidencias.</td>
-<td style="text-align: center;">20</td>
-</tr>
-<tr>
-<td style="text-align: center;">PI5</td>
-<td style="text-align: left;"><strong>Comunica y colabora</strong> eficazmente (reuniones, pitch, defensa y retroalimentación).</td>
-<td style="text-align: center;">15</td>
-</tr>
-</tbody>
-</table>
-<h2 id="index-unidades-de-trabajo">Unidades de Trabajo<a class="headerlink" href="#index-unidades-de-trabajo" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Unidades de Trabajo (<abbr title="Unidad de trabajo">UT</abbr>)</th>
-<th style="text-align: center;">PI1</th>
-<th style="text-align: center;">PI2</th>
-<th style="text-align: center;">PI3</th>
-<th style="text-align: center;">PI4</th>
-<th style="text-align: center;">PI5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>1. Herramientas del proyecto</strong></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;">X</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>2. Planteamiento del reto y análisis del contexto</strong></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>3. Diseño de la solución y planificación</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>4. Desarrollo iterativo y pruebas</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>5. Integración, seguridad y validación</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>6. Despliegue y operación</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>7. Documentación técnica y memoria</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;">X</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>8. Presentación, defensa y cierre</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-</tr>
-</tbody>
-</table>
-<pre class="mermaid"><code>timeline
-  title Planificación temporal (Proyecto intermodular ASIR)
-  section 1.º Evaluación
-    Herramientas : UT1
-    Planteamiento del reto    : UT2
-    Diseño y planificación     : UT3
-    Desarrollo iterativo       : UT4
-  section 2.º Evaluación
-    Integración y validación   : UT5
-    Despliegue/Operación       : UT6
-    Documentación y Memoria    : UT7
-    Presentación y Cierre      : UT8</code></pre>
-<h2 id="index-evaluacion">Evaluación<a class="headerlink" href="#index-evaluacion" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Instrumentos de Evaluación (<abbr title="Instrumento de evaluación">IE</abbr>):</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Instrumento</th>
-<th>Icono</th>
-<th>Descripción</th>
-<th>Puntuación</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Actividades de clase</td>
-<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> AC</td>
-<td>Micro-evidencias, checklists y pequeñas prácticas</td>
-<td>3 puntos</td>
-</tr>
-<tr>
-<td>Actividades de refuerzo</td>
-<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> AR</td>
-<td>Consolidación de <abbr title="Criterio de evaluación">CE</abbr> no alcanzados</td>
-<td>3 puntos</td>
-</tr>
-<tr>
-<td>Actividades de profundización</td>
-<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> AP</td>
-<td>Extensión/innovación</td>
-<td>Puntos extra</td>
-</tr>
-<tr>
-<td>Prácticas / Trabajo de investigación</td>
-<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.563 1.396a.95.95 0 0 0-.534.184c-.404.307-.501.9-.425 1.654.075.755.335 1.704.751 2.8.357.937.835 1.984 1.407 3.095-1.17.146-2.24.338-3.158.57-1.08.274-1.958.6-2.583.973C.397 11.045 0 11.484 0 12s.397.955 1.021 1.328c.55.33 1.308.618 2.217.87a1 1 0 0 0-.006.097c0 .485.365.887.82.887.368 0 .678-.26.784-.616q.89.171 1.898.297a31 31 0 0 0-1.408 3.067c-.421 1.093-.686 2.04-.765 2.795-.08.754.016 1.347.42 1.656.201.154.46.208.734.181s.572-.125.896-.287c.649-.323 1.407-.894 2.244-1.67.962-.89 2.026-2.058 3.118-3.421 1.086 1.37 2.146 2.543 3.103 3.439.834.78 1.588 1.355 2.235 1.682.323.163.62.265.894.293s.534-.025.736-.178c.405-.307.502-.9.426-1.654-.054-.54-.206-1.18-.437-1.9a.91.91 0 0 0 .343-.72.92.92 0 0 0-.238-.625.8.8 0 0 0-.701-.251c-.312-.75-.69-1.557-1.125-2.4a27 27 0 0 0 3.187-.575c1.08-.273 1.958-.597 2.583-.97.624-.374 1.021-.813 1.021-1.329s-.397-.957-1.021-1.33c-.625-.373-1.503-.696-2.583-.969a27 27 0 0 0-3.156-.568 31 31 0 0 0 1.406-3.063c.422-1.093.687-2.04.766-2.795.08-.754-.017-1.347-.42-1.656a.95.95 0 0 0-.531-.185 1.3 1.3 0 0 0-.203.004c-.274.026-.57.127-.895.289-.51.254-1.092.665-1.722 1.205a.8.8 0 0 0-.418-.123c-.456 0-.82.4-.82.886q0 .178.06.334a35 35 0 0 0-2.465 2.791c-1.086-1.37-2.146-2.543-3.103-3.439-.834-.78-1.588-1.355-2.235-1.682-.323-.163-.62-.265-.894-.293a1.3 1.3 0 0 0-.204-.006zm.021.385a1 1 0 0 1 .143.004c.205.02.462.105.757.254.592.298 1.33.855 2.147 1.62.955.893 2.022 2.077 3.119 3.466-.428.544-.859 1.12-1.29 1.72a42 42 0 0 0-3.29.235 31 31 0 0 1-1.453-3.184c-.409-1.075-.658-2.002-.729-2.7-.07-.7.05-1.136.276-1.307a.55.55 0 0 1 .32-.108m12.854.033a.55.55 0 0 1 .32.108c.225.172.343.61.27 1.308s-.33 1.624-.743 2.698a31 31 0 0 1-1.455 3.15 42 42 0 0 0-3.312-.234 49 49 0 0 0-1.274-1.717 35 35 0 0 1 2.436-2.772.78.78 0 0 0 .543.223c.456 0 .82-.401.82-.887a.94.94 0 0 0-.133-.484c.61-.519 1.163-.909 1.625-1.139.297-.147.555-.23.76-.25a1 1 0 0 1 .142-.004zm-6.442 5.622c.344.443.69.913 1.035 1.394q-.51-.012-1.031-.014-.532.001-1.05.014c.35-.481.699-.95 1.046-1.394M12 9.203q.668.001 1.314.02.398.563.793 1.154c.366.55.71 1.093 1.041 1.633a54 54 0 0 1-1.046 1.623q-.395.584-.791 1.138-.646.02-1.311.022-.684-.001-1.348-.022a53 53 0 0 1-.789-1.148 52 52 0 0 1-1.04-1.633 53 53 0 0 1 1.84-2.765q.658-.02 1.337-.022m-1.824.04q-.315.444-.625.905c-.334.496-.647.988-.953 1.477a47 47 0 0 1-1.239-2.178 41 41 0 0 1 2.817-.205zm3.625 0a41 41 0 0 1 2.838.202 47 47 0 0 1-1.264 2.198 53 53 0 0 0-1.574-2.4m3.248.251c1.213.146 2.317.34 3.252.576 1.057.268 1.907.587 2.478.928s.834.689.834.998-.263.655-.834.996c-.57.342-1.421.662-2.478.93-.943.239-2.056.433-3.281.58a47 47 0 0 0-1.416-2.492 47 47 0 0 0 1.445-2.516M6.95 9.496c.424.805.899 1.64 1.418 2.494a47 47 0 0 0-1.443 2.508 30 30 0 0 1-2.059-.318.9.9 0 0 0-.23-.508.8.8 0 0 0-.584-.262.8.8 0 0 0-.696.418c-.894-.247-1.63-.53-2.136-.832C.65 12.655.387 12.31.387 12s.263-.654.834-.996c.57-.342 1.421-.662 2.478-.93.935-.237 2.039-.431 3.252-.578zm4.34.8c-.576 0-1.041.5-1.041 1.112 0 .484.29.897.695 1.049v.063c0 .612.466 1.109 1.041 1.109.576 0 1.041-.497 1.041-1.11q0-.025-.002-.05c.424-.141.73-.565.73-1.063 0-.294-.107-.575-.302-.783a1.01 1.01 0 0 0-.738-.326 1 1 0 0 0-.711.3 1 1 0 0 0-.713-.3zm-2.695 2.061a51 51 0 0 0 1.572 2.397c-.99-.04-1.941-.108-2.832-.205q.573-1.067 1.26-2.192m6.779.02c.448.743.862 1.472 1.236 2.176a42 42 0 0 1-2.814.199q.313-.443.625-.902c.333-.495.647-.986.953-1.473m-8.23 2.537c1.033.117 2.141.198 3.304.236.427.6.854 1.179 1.278 1.723-1.103 1.382-2.176 2.561-3.135 3.45-.821.76-1.562 1.31-2.155 1.605-.296.147-.554.23-.76.25s-.35-.018-.462-.104c-.225-.172-.343-.61-.27-1.308s.329-1.624.742-2.698c.366-.948.861-2.018 1.458-3.154m9.656.004c.459.884.854 1.727 1.178 2.504a.91.91 0 0 0-.348.724c0 .486.364.887.82.887a1 1 0 0 0 .123-.01c.218.686.36 1.293.408 1.782.07.698-.05 1.135-.275 1.306-.113.086-.258.124-.463.104s-.462-.105-.758-.254c-.59-.298-1.329-.855-2.146-1.62-.955-.893-2.023-2.077-3.12-3.466.43-.545.862-1.123 1.294-1.725a42 42 0 0 0 3.287-.232m-3.776.246a49 49 0 0 1-1.05 1.4 49 49 0 0 1-1.04-1.398 47 47 0 0 0 2.09-.002"/></svg></span> PR / <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2v2h1v14a4 4 0 0 0 4 4 4 4 0 0 0 4-4V4h1V2zm4 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m2-4c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m1-5h-4V4h4z"/></svg></span> TI</td>
-<td>Sprint reviews, prototipos, pruebas</td>
-<td>Sobre 10</td>
-</tr>
-<tr>
-<td>Proyectos/Entregables parciales</td>
-<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> PY</td>
-<td>Hitos con rúbrica</td>
-<td>Sobre 30</td>
-</tr>
-<tr>
-<td>Defensa/presentación final</td>
-<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3h8a2 2 0 0 1 2-2 2 2 0 0 1 2 2h8v2h-1v11h-5.75L17 22h-2l-1.75-6h-2.5L9 22H7l1.75-6H3V5H2zm3 2v9h14V5z"/></svg></span> DF</td>
-<td>Pitch, demo y Q&amp;A (rúbrica específica)</td>
-<td>sobre 30</td>
-</tr>
-<tr>
-<td>Memoria técnica y portfolio</td>
-<td><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg></span> MT</td>
-<td>Documentación, repositorio y issues</td>
-<td>sobre 60</td>
-</tr>
-</tbody>
-</table>
-<!-- | Pruebas objetivas                            | :material-pen: PO                         | Cuando proceda                                                              | Sobre 30        | -->
-
-<p><strong>Cálculo de calificaciones:</strong><br />
-Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asignados a cada <abbr title="Resultado de aprendizaje">RA</abbr>-<abbr title="Proyecto intermodular">PI</abbr>, comprobando que se cubren todos los <abbr title="Criterio de evaluación">CE</abbr> declarados por los módulos participantes. Todas las calificaciones estarán disponibles en <strong>Aules</strong>.</p>
-<blockquote>
-<p><strong>Otros criterios:</strong></p>
-</blockquote>
-<ul>
-<li>Seguimiento y tutorización individual y colectiva (actas de reunión, diarios de aprendizaje).</li>
-<li>Originalidad y uso responsable de IA (declaración de uso, fuentes y licencias).</li>
-<li>No dualizable (articulación autonómica del Proyecto intermodular).</li>
-</ul>
-<h2 id="index-materiales">Materiales<a class="headerlink" href="#index-materiales" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Gestión del proyecto: Planner/Trello, cronograma</li>
-<li>Repositorio: GitHub, GitHub Pages</li>
-<li>Documentación: Markdown, MkDocs</li>
-<li>Infraestructura: LliureX/Ubuntu, Docker, AWS</li>
-</ul>
-<!-- - Comunicación: presentaciones, oratoria -->
-<!-- - Recursos oficiales:
-  - [Innovatec – FP (GVA)](https://ceice.gva.es/es/web/formacion-profesional/innovatec)
-  - [LO 3/2022](https://www.boe.es/buscar/act.php?id=BOE-A-2022-5139)
-  - [RD 659/2023](https://www.boe.es/buscar/doc.php?id=BOE-A-2023-16889)
-  - [RD 500/2024](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-10685)
-  - [Orden 8/2025 (DOGV)](https://dogv.gva.es/es/resultat-dogv?signatura=2025/13083)
-  - [Resolución 17/07/2025 (DOGV)](https://dogv.gva.es/datos/2025/07/21/pdf/2025_28562_es.pdf) --></section><section class="print-page" id="00herramientas" heading-number="2"><h1 id="00herramientas-docker">DOCKER<a class="headerlink" href="#00herramientas-docker" title="Permanent link">&para;</a></h1>
+<h1 id="docker">DOCKER<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
 <figure style="float: right;">
     <img src="imagenes/DockerImage.png" width="350"/>
     <figcaption><b>Figura 1:</b> Logo Docker.</figcaption>
@@ -589,7 +710,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>En marzo de <strong>2017</strong>, Docker anunció un desarrollo todavía más rápido, <strong>pasando a publicar una nueva versión cada mes</strong>. La numeración de las versiones adoptó al formato AA.MM (la primera fue <strong>Docker 17.03</strong>).</li>
 <li>En <strong>julio de 2018</strong>, Docker anunció que volvían a un desarrollo más pausado. A partir de <strong>Docker 18.09</strong> habría una versión "estable" cada seis meses.</li>
 </ul>
-<h2 id="00herramientas-contenedores">Contenedores<a class="headerlink" href="#00herramientas-contenedores" title="Permanent link">&para;</a></h2>
+<h2 id="contenedores">Contenedores<a class="headerlink" href="#contenedores" title="Permanent link">&para;</a></h2>
 <p>En virtualización, el principal problema de los hipervisores y las máquinas virtuales es que cada máquina virtual es independiente de las demás. Al no reutilizarse ningún componente, se ocupa <strong>mucho espacio tanto en disco como en memoria</strong> y el <strong>tiempo de ejecución siempre será mayor</strong> que si sólo hubiera un sistema operativo (sobre todo en el caso de <strong>hipervisores de tipo 2</strong>).</p>
 <p>Para resolver este problema se crearon los <strong>contenedores</strong> en los que se <strong>utilizan mecanismos existentes en el sistema operativo para aislar las aplicaciones</strong>, pero compartiendo el mayor número posible de componentes del sistema operativo o incluso de las aplicaciones.</p>
 <ul>
@@ -603,13 +724,13 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>Su ligereza hace más fácil tener varios contenedores con una aplicación en cada uno de ellos que tener un único contenedor con varias aplicaciones en él. Por ello, un <strong>aspecto importante de los contenedores es su orquestación</strong>, es decir, la administración simultánea de muchos contenedores, una de las herramientas más utilizadas es <strong><a href="https://kubernetes.io/es/">Kubernetes</a></strong>.</li>
 </ul>
 </div>
-<h3 id="00herramientas-maquinas-virtuales-vs-contenedores">Máquinas Virtuales VS Contenedores<a class="headerlink" href="#00herramientas-maquinas-virtuales-vs-contenedores" title="Permanent link">&para;</a></h3>
+<h3 id="maquinas-virtuales-vs-contenedores">Máquinas Virtuales VS Contenedores<a class="headerlink" href="#maquinas-virtuales-vs-contenedores" title="Permanent link">&para;</a></h3>
 <figure>
   <img src="imagenes/01/ContenedoresVsMaquinaV.png"/>
   <figcaption>Contenedores Vs Máquinas Virtuales.</figcaption>
 </figure>
 
-<h2 id="00herramientas-microservicios">Microservicios<a class="headerlink" href="#00herramientas-microservicios" title="Permanent link">&para;</a></h2>
+<h2 id="microservicios">Microservicios<a class="headerlink" href="#microservicios" title="Permanent link">&para;</a></h2>
 <p>Uno de los objetivos principales de la configuración e implantación de contenedores es solucionar los problemas de:</p>
 <ul>
 <li><strong>Errores de dependencias</strong> entre diferentes Sistemas Operativos de los trabajadores y máquinas de puesta en marcha.</li>
@@ -631,7 +752,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
     <figcaption>Monolítico Vs Microservicios.</figcaption>
 </figure>
 
-<h3 id="00herramientas-caracteristicas-principales-contenedores">Características principales Contenedores<a class="headerlink" href="#00herramientas-caracteristicas-principales-contenedores" title="Permanent link">&para;</a></h3>
+<h3 id="caracteristicas-principales-contenedores">Características principales Contenedores<a class="headerlink" href="#caracteristicas-principales-contenedores" title="Permanent link">&para;</a></h3>
 <p>En resumen los contenedores:</p>
 <ul>
 <li>Consisten en <strong>Agrupar y Aislar Aplicaciones o grupos de aplicaciones que se ejecutan sobre un mismo núcleo de sistema operativo</strong>.</li>
@@ -640,7 +761,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>Soluciona problemas de <strong>espacio y compatibilidades a la hora de puesta en marcha</strong> en servidores de producción.</li>
 <li>Los contenedores suelen ser elementos <strong>efímeros</strong>.</li>
 </ul>
-<h2 id="00herramientas-caracteristicas-y-definicion-de-docker">Características y definición de Docker<a class="headerlink" href="#00herramientas-caracteristicas-y-definicion-de-docker" title="Permanent link">&para;</a></h2>
+<h2 id="caracteristicas-y-definicion-de-docker">Características y definición de Docker<a class="headerlink" href="#caracteristicas-y-definicion-de-docker" title="Permanent link">&para;</a></h2>
 <p><strong>Docker</strong> se puede definir como un proyecto de <strong>código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software</strong>, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.</p>
 <p>Sus principales características son:</p>
 <ul>
@@ -659,7 +780,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <p class="admonition-title">Nota</p>
 <p>Aunque un contenedor puede incluir cualquier número de aplicaciones, lo habitual es que un contenedor <strong>contenga una sola aplicación</strong> (y los programas necesarios para ponerse en marcha). </p>
 </div>
-<h2 id="00herramientas-arquitectura-docker">Arquitectura Docker<a class="headerlink" href="#00herramientas-arquitectura-docker" title="Permanent link">&para;</a></h2>
+<h2 id="arquitectura-docker">Arquitectura Docker<a class="headerlink" href="#arquitectura-docker" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Docker Engine ("Motor" del Gestor Docker)</strong>: el cual basado en la arquitectura de <strong>Cliente-Servidor</strong> (que pueden estar en la misma máquina, o en distintas), y realizada por mediante una <strong>API de REST</strong> que utiliza <strong>HTTP</strong>.<ul>
 <li><strong>API REST</strong>: interfaz de programación con un estilo de arquitectura software para sistemas hipermedia distribuidos como la <em>World Wide Web</em>.</li>
@@ -688,7 +809,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>Las <strong>imágenes</strong> se pueden crear a partir de otras imágenes más básicas incluyendo software adicional en forma de capas. Todos los contenedores creados a partir de una imagen contienen el mismo software, aunque en el momento de su creación se pueden personalizar algunos detalles</li>
 </ul>
 </div>
-<h2 id="00herramientas-instalacion">Instalación<a class="headerlink" href="#00herramientas-instalacion" title="Permanent link">&para;</a></h2>
+<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
 <p>Para la Instalación de <strong>Docker</strong> es recomendable seguir la documentación oficial. Además se recomienda Instalar máquina Ubuntu Server última versión e instalar Docker en ella.</p>
 <ul>
 <li>Docker for Mac:<ul>
@@ -712,7 +833,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>Otra opción sería utilizar <a href="https://podman.io">Podman</a></li>
 </ul>
 </div>
-<h3 id="00herramientas-ejemplo-instalacion-en-ubuntu-server">Ejemplo Instalación en Ubuntu server<a class="headerlink" href="#00herramientas-ejemplo-instalacion-en-ubuntu-server" title="Permanent link">&para;</a></h3>
+<h3 id="ejemplo-instalacion-en-ubuntu-server">Ejemplo Instalación en Ubuntu server<a class="headerlink" href="#ejemplo-instalacion-en-ubuntu-server" title="Permanent link">&para;</a></h3>
 <ul>
 <li>A continuación se muestra la instalación aconsejada para Ubuntu Server utilizando el método de repositorios:</li>
 </ul>
@@ -748,7 +869,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 </ol>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </code></pre></div>
-<h3 id="00herramientas-guia-de-instalacion">Guía de instalación<a class="headerlink" href="#00herramientas-guia-de-instalacion" title="Permanent link">&para;</a></h3>
+<h3 id="guia-de-instalacion">Guía de instalación<a class="headerlink" href="#guia-de-instalacion" title="Permanent link">&para;</a></h3>
 <p>La siguiente guía se basa en el ejemplo de instalación anterior realizandose la instalación de Docker en una máquina virtual de Ubuntu 22.04 siguiendo el método <a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">Install using the repository</a></p>
 <ol>
 <li>Se realiza un actualización y se instalan los paquetes necesarios para usar el repositorio sobre HTTPS:</li>
@@ -760,7 +881,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 </code></pre></div>
 - Resultado:</p>
 <figure>
-  <img src="imagenes/101.png"/>
+  <img src="./imagenes/101.png"/>
   <figcaption>Actualización repositorios</figcaption>
 </figure>
 
@@ -773,7 +894,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 </code></pre></div>
 - Resultado:</p>
 <figure>
-  <img src="imagenes/102.png"/>
+  <img src="./imagenes/102.png"/>
   <figcaption>Instalación repositorios necesarios</figcaption>
 </figure>
 
@@ -791,7 +912,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 </code></pre></div>
 - Resultado:</p>
 <figure>
-  <img src="imagenes/103.png"/>
+  <img src="./imagenes/103.png"/>
   <figcaption>Clave GPG y configuración repositorio</figcaption>
 </figure>
 
@@ -809,7 +930,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>Resultado:</li>
 </ul>
 <figure>
-  <img src="imagenes/104.png"/>
+  <img src="./imagenes/104.png"/>
   <figcaption>Nueva actualización</figcaption>
 </figure>
 
@@ -827,7 +948,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>Resultado:</li>
 </ul>
 <figure>
-  <img src="imagenes/105.png"/>
+  <img src="./imagenes/105.png"/>
   <figcaption>Instalación Docker</figcaption>
 </figure>
 
@@ -843,13 +964,13 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 </code></pre></div>
 - Resultado:</p>
 <figure>
-  <img src="imagenes/106.png"/>
+  <img src="./imagenes/106.png"/>
   <figcaption>Comprobación</figcaption>
 </figure>
 
 <div style="page-break-before:always;"></div>
 
-<h2 id="00herramientas-principales-comandos">Principales Comandos<a class="headerlink" href="#00herramientas-principales-comandos" title="Permanent link">&para;</a></h2>
+<h2 id="principales-comandos">Principales Comandos<a class="headerlink" href="#principales-comandos" title="Permanent link">&para;</a></h2>
 <p>A continuación se muestran los comandos más utilizados:</p>
 <table>
 <thead>
@@ -907,7 +1028,7 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
     <figcaption>Chuleta Docker.</figcaption>
 </figure>
 
-<h2 id="00herramientas-primer-contenedor">Primer Contenedor<a class="headerlink" href="#00herramientas-primer-contenedor" title="Permanent link">&para;</a></h2>
+<h2 id="primer-contenedor">Primer Contenedor<a class="headerlink" href="#primer-contenedor" title="Permanent link">&para;</a></h2>
 <p>A continuación se muestra un ejemplo guiado de la creación del contenedor <strong>"Hello World"</strong></p>
 <ol>
 <li>Comprobación que inicialmente no hay ningún contenedor creado (la opción <code>-a</code> hace que se muestren también los contenedores detenidos, sin ella se muestran sólo los contenedor que estén en marcha):</li>
@@ -962,7 +1083,7 @@ o también</p>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="o">=</span>hola-1<span class="w"> </span>hello-world
 </code></pre></div>
-<h2 id="00herramientas-volumenes">Volúmenes<a class="headerlink" href="#00herramientas-volumenes" title="Permanent link">&para;</a></h2>
+<h2 id="volumenes">Volúmenes<a class="headerlink" href="#volumenes" title="Permanent link">&para;</a></h2>
 <p>Docker simplifica enormemente la creación de contenedores, y eso lleva a tratar los contenedores como un <strong>elemento efímero</strong>, que se crea cuando se necesita y que no importa que se destruya puesto que puede ser reconstruido una y otra vez a partir de su imagen.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -989,7 +1110,7 @@ o también</p>
 <p class="admonition-title">Tip</p>
 <p>Aconsejable utilizar la técnica de <strong><em>volumenes</em></strong>, ya que, La ventaja frente a los directorios enlazados es que pueden ser gestionados por Docker. Otro detalle importante es que el acceso al contenido de los volúmenes sólo se puede hacer a través de algún contenedor que utilice el volumen.</p>
 </div>
-<h3 id="00herramientas-ventajas-volumenes">Ventajas Volúmenes<a class="headerlink" href="#00herramientas-ventajas-volumenes" title="Permanent link">&para;</a></h3>
+<h3 id="ventajas-volumenes">Ventajas Volúmenes<a class="headerlink" href="#ventajas-volumenes" title="Permanent link">&para;</a></h3>
 <p>Los volúmenes tienen varias ventajas sobre los directorios enlazados:</p>
 <ul>
 <li>Los volúmenes son más fáciles de respaldar o migrar que enlazar montajes.</li>
@@ -1013,7 +1134,7 @@ o también</p>
 <p class="admonition-title">Nota</p>
 <p>Los volúmenes son independientes de los contenedores, por lo que también podemos conservar los datos aunque se destruya el contenedor, reutilizarlos con otro contenedor, etc.</p>
 </div>
-<h3 id="00herramientas-opciones">Opciones<a class="headerlink" href="#00herramientas-opciones" title="Permanent link">&para;</a></h3>
+<h3 id="opciones">Opciones<a class="headerlink" href="#opciones" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Opciones:</li>
 </ul>
@@ -1048,7 +1169,7 @@ o también</p>
 <p class="admonition-title">Nota</p>
 <p>Todas las opciones de volúmenes están disponibles para los indicadores <code>--mount</code> y <code>-v</code>, por que a la hora de elegir uno u otro depende del técnico para su facilidad de configuración donde por su sintaxis a priori sería mejor <code>--mount</code>.</p>
 </div>
-<h3 id="00herramientas-ejemplo">Ejemplo<a class="headerlink" href="#00herramientas-ejemplo" title="Permanent link">&para;</a></h3>
+<h3 id="ejemplo">Ejemplo<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h3>
 <p>A continuación se muestra un ejemplo de creación del servidor web NGINX.</p>
 <div class="admonition example">
 <p class="admonition-title">Ejemplo</p>
@@ -1120,28 +1241,16 @@ o también</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Si se intenta borrar el volumen del ejemplo anterior mientras los contenedores están en marcha, Docker muestra un <strong>mensaje de error que indica los contenedores afectados</strong>.</p>
-</div></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
-
-                .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
-                .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
-            
-                .print-site-enumerate-headings #index h3:before { content: '1.' counter(counter-index-2) '.' counter(counter-index-3) ' ' }
-                .print-site-enumerate-headings #index h3 {  counter-increment: counter-index-3 }
-            
-.print-site-enumerate-headings #00herramientas > h1:before { content: '2 ' }
-
-                .print-site-enumerate-headings #00herramientas h2:before { content: '2.' counter(counter-00herramientas-2) ' ' }
-                .print-site-enumerate-headings #00herramientas h2 {  counter-reset: counter-00herramientas-3 ;  counter-increment: counter-00herramientas-2 }
-            
-                .print-site-enumerate-headings #00herramientas h3:before { content: '2.' counter(counter-00herramientas-2) '.' counter(counter-00herramientas-3) ' ' }
-                .print-site-enumerate-headings #00herramientas h3 {  counter-increment: counter-00herramientas-3 }
-            </style>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1168,6 +1277,28 @@ o también</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Inicio">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Inicio
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1276,7 +1407,7 @@ o también</p>
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "/pi_asir/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
       <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
