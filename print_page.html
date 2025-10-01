@@ -611,7 +611,11 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 - Personalización de contenido con volúmenes.</p>
 <p><strong>Bloque 4 — Nextcloud con docker</strong>
 - Práctica con volúmenes persistentes.</p>
-<p><strong>Bloque 5 — Docker compose con Samba</strong>
+<p><strong>Bloque 5 — Dockerfile y Docker-compose</strong>
+- Creación de imágenes personalizadas con Dockerfile.
+- Despliegue de aplicaciones multi-contenedor con Docker-compose.
+- Publicación de imágenes en Docker Hub.</p>
+<p><strong>Bloque 6 — Docker compose con Samba</strong>
 - Despliegue de Samba con docker compose</p>
 <div class="admonition question">
 <p class="admonition-title">Actividades iniciales</p>
@@ -644,6 +648,12 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <td>2</td>
 <td><strong>Despliegue de NextCloud con Docker</strong></td>
 <td>PR101. NextCloud con Docker</td>
+<td>CE-PI3b, CE-PI4c</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Dockerfile y Docker-compose</strong></td>
+<td>PR102. Dockerfile y Docker-compose</td>
 <td>CE-PI3b, CE-PI4c</td>
 </tr>
 </tbody>
@@ -1194,6 +1204,171 @@ o también</p>
 <p class="admonition-title">Advertencia</p>
 <p>Si se intenta borrar el volumen del ejemplo anterior mientras los contenedores están en marcha, Docker muestra un <strong>mensaje de error que indica los contenedores afectados</strong>.</p>
 </div>
+<h3 id="01herramientas-herramientas-docker">Herramientas Docker<a class="headerlink" href="#01herramientas-herramientas-docker" title="Permanent link">&para;</a></h3>
+<p>Existen dos opciones destacables en Docker para agilizar el despliegue de imágenes y contenedores: Dockerfile y Docker Compose</p>
+<ul>
+<li><strong>Dockerfile</strong>: es un archivo de texto plano que contiene una serie de instrucciones necesarias para crear una imagen que, posteriormente, se convertirá en una sola aplicación utilizada para un determinado propósito.</li>
+</ul>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<p>Imágenes → docker build → Dockerfile</p>
+</div>
+<ul>
+<li><strong>Docker Compose</strong>: es una herramienta que permite simplificar el uso de Docker. A partir de archivos <code>yaml</code> es más sencillo crear contenedores, conectarlos, habilitar puertos, volúmenes, etc.</li>
+</ul>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
+<p>Contenedores → docker compose up → docker-compose.yml</p>
+</div>
+<h4 id="01herramientas-dockerfile">Dockerfile<a class="headerlink" href="#01herramientas-dockerfile" title="Permanent link">&para;</a></h4>
+<p>Las instrucciones principales que pueden utilizarse en un Dockerfile son:</p>
+<figure>
+    <img src="imagenes/01/InstruccionesDockefile.png" width="850"/>
+</figure>
+
+<ul>
+<li>Ver también: <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación extraído de <a href="https://hub.docker.com/_/httpd">Apache oficial de Docker</a>.</p>
+</div>
+<ol>
+<li><strong>Primer paso</strong>: generar imagen con un <strong>Dockerfile</strong>.</li>
+</ol>
+<ul>
+<li>
+<p>Se crea el archivo de texto Dockerfile.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>touch<span class="w"> </span>Dockerfile
+<span class="linenos" data-linenos="2 "></span>nano<span class="w"> </span>Dockerfile
+</code></pre></div></p>
+</li>
+<li>
+<p>Ejemplo de edición del Dockerfile.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># syntax=docker/dockerfile:1</span>
+<span class="linenos" data-linenos="2 "></span>FROM<span class="w"> </span>nginx:alpine
+<span class="linenos" data-linenos="3 "></span>RUN<span class="w"> </span>apk<span class="w"> </span>update
+<span class="linenos" data-linenos="4 "></span>COPY<span class="w"> </span>index.html/<span class="w"> </span>/usr/share/nginx/html/
+</code></pre></div>
+<div class="admonition nota">
+<p class="admonition-title">Nota</p>
+<p>Se puede probar a introducir el volumen en el Dockerfile: <code>VOLUME /myvol1</code></p>
+</div>
+<ul>
+<li>Se crea la imagen y el contenedor.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>fcojavierhernandez/my-nginx-alpine<span class="w"> </span>.
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>run<span class="w"> </span>-dit<span class="w"> </span>--name<span class="w"> </span>my-nginx-alpine<span class="w"> </span>-p<span class="w"> </span><span class="m">8081</span>:80<span class="w"> </span>fcojavierhernandez/my-nginx-alpine
+</code></pre></div></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><strong>Mucho cuidado</strong> con el último punto de la instrucción de build, tiene un espacio antes. El último argumento (y el único imprescindible) es el nombre del archivo Dockerfile que tiene que utilizar para generar la imagen. Como en este caso se encuentra en el mismo directorio y tiene el nombre predeterminado Dockerfile, se puede escribir simplemente punto (<code>.</code>).</li>
+<li>Para indicar el nombre de la imagen se debe añadir la opción <code>-t</code>. El nombre de la imagen debe seguir el patrón <code>nombre-de-usuario/nombre-de-imagen</code>. Si la imagen sólo se va a utilizar localmente, el nombre de usuario y de la imagen pueden ser cualquier palabra.</li>
+</ul>
+</div>
+<ol start="2">
+<li><strong>Segundo paso</strong>: subir imagen al Docker Hub.</li>
+</ol>
+<ul>
+<li>Se debe generar una cuenta de Docker Hub con la cuenta corporativa de Office 365: <a href="https://hub.docker.com/signup">Sign Up</a></li>
+<li>Con el comando <code>docker login</code>, se realiza el acceso a la plataforma desde el terminal, introduciendo usuario y contraseña.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>login
+</code></pre></div></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Se debe acceder con el nic no con la cuenta de correo.</p>
+</div>
+<ul>
+<li>Con el comando <code>docker push</code>, se realiza el "Upload" de la imagen.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>push<span class="w"> </span>fcojavierhernandez/my-nginx-alpine
+</code></pre></div>
+<ul>
+<li>Por último, se debe comprobar accediendo a la plataforma de Docker Hub.</li>
+</ul>
+<figure>
+    <img src="imagenes/01/DockerHub.png"/>
+</figure>
+
+<h4 id="01herramientas-docker-compose">Docker Compose<a class="headerlink" href="#01herramientas-docker-compose" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Docker Compose</strong> es otro proyecto open source que permite definir aplicaciones multi-contenedor de una manera sencilla y declarativa.</p>
+</li>
+<li>
+<p>Es una alternativa más cómoda al uso de los comandos docker run y docker build, que resultan un tanto tediosos cuando trabajamos con aplicaciones de varios componentes.</p>
+</li>
+<li>
+<p>Se define un fichero <code>docker-compose.yml</code> que se puede observar en el ejemplo realizado en la práctica en el último apartado.</p>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>A continuación se muestra un ejemplo para la realización de la práctica de ampliación: <a href="https://docs.docker.com/samples/wordpress/">Instalación Wordpress</a></p>
+</div>
+<ol>
+<li><strong>Primer paso</strong>: instalación de Docker Compose.</li>
+</ol>
+<ul>
+<li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-compose-plugin
+</code></pre></div>
+<ol start="2">
+<li><strong>Segundo paso</strong>: crear directorio del proyecto y dentro el archivo <code>yaml</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>my_wordpress
+<span class="linenos" data-linenos="2 "></span>touch<span class="w"> </span>docker-compose.yml
+<span class="linenos" data-linenos="3 "></span>nano<span class="w"> </span>docker-compose.yml
+</code></pre></div>
+<ol start="3">
+<li><strong>Tercer paso</strong>: se edita el archivo <code>yaml</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">somewordpress</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="nt">wordpress</span><span class="p">:</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:latest</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress_data:/var/www/html</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:80&quot;</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db:3306</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="29 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">  </span><span class="nt">db_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">  </span><span class="nt">wordpress_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<ol start="4">
+<li><strong>Cuarto paso</strong>: en la carpeta creada del proyecto se ejecuta el comando <code>docker compose up -d</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Comprobación</p>
+<p>Se comprueba que se han creado los contenedores y se abre el navegador para comprobar que está disponible la instalación de WordPress.</p>
+</div>
 <hr />
 <h2 id="01herramientas-actividades">Actividades<a class="headerlink" href="#01herramientas-actividades" title="Permanent link">&para;</a></h2>
 <p><a name="PR101"></a></p>
@@ -1226,6 +1401,76 @@ o también</p>
 <div class="admonition note">
 <p class="admonition-title"><strong>NOTA</strong></p>
 <p>No se trata de documentar el proceso tal cual como la guía, hay que documentar los resultados, los problemas encontrados y su solución.</p>
+</div>
+<hr />
+<p><a name="PR102"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.563 1.396a.95.95 0 0 0-.534.184c-.404.307-.501.9-.425 1.654.075.755.335 1.704.751 2.8.357.937.835 1.984 1.407 3.095-1.17.146-2.24.338-3.158.57-1.08.274-1.958.6-2.583.973C.397 11.045 0 11.484 0 12s.397.955 1.021 1.328c.55.33 1.308.618 2.217.87a1 1 0 0 0-.006.097c0 .485.365.887.82.887.368 0 .678-.26.784-.616q.89.171 1.898.297a31 31 0 0 0-1.408 3.067c-.421 1.093-.686 2.04-.765 2.795-.08.754.016 1.347.42 1.656.201.154.46.208.734.181s.572-.125.896-.287c.649-.323 1.407-.894 2.244-1.67.962-.89 2.026-2.058 3.118-3.421 1.086 1.37 2.146 2.543 3.103 3.439.834.78 1.588 1.355 2.235 1.682.323.163.62.265.894.293s.534-.025.736-.178c.405-.307.502-.9.426-1.654-.054-.54-.206-1.18-.437-1.9a.91.91 0 0 0 .343-.72.92.92 0 0 0-.238-.625.8.8 0 0 0-.701-.251c-.312-.75-.69-1.557-1.125-2.4a27 27 0 0 0 3.187-.575c1.08-.273 1.958-.597 2.583-.97.624-.374 1.021-.813 1.021-1.329s-.397-.957-1.021-1.33c-.625-.373-1.503-.696-2.583-.969a27 27 0 0 0-3.156-.568 31 31 0 0 0 1.406-3.063c.422-1.093.687-2.04.766-2.795.08-.754-.017-1.347-.42-1.656a.95.95 0 0 0-.531-.185 1.3 1.3 0 0 0-.203.004c-.274.026-.57.127-.895.289-.51.254-1.092.665-1.722 1.205a.8.8 0 0 0-.418-.123c-.456 0-.82.4-.82.886q0 .178.06.334a35 35 0 0 0-2.465 2.791c-1.086-1.37-2.146-2.543-3.103-3.439-.834-.78-1.588-1.355-2.235-1.682-.323-.163-.62-.265-.894-.293a1.3 1.3 0 0 0-.204-.006zm.021.385a1 1 0 0 1 .143.004c.205.02.462.105.757.254.592.298 1.33.855 2.147 1.62.955.893 2.022 2.077 3.119 3.466-.428.544-.859 1.12-1.29 1.72a42 42 0 0 0-3.29.235 31 31 0 0 1-1.453-3.184c-.409-1.075-.658-2.002-.729-2.7-.07-.7.05-1.136.276-1.307a.55.55 0 0 1 .32-.108m12.854.033a.55.55 0 0 1 .32.108c.225.172.343.61.27 1.308s-.33 1.624-.743 2.698a31 31 0 0 1-1.455 3.15 42 42 0 0 0-3.312-.234 49 49 0 0 0-1.274-1.717 35 35 0 0 1 2.436-2.772.78.78 0 0 0 .543.223c.456 0 .82-.401.82-.887a.94.94 0 0 0-.133-.484c.61-.519 1.163-.909 1.625-1.139.297-.147.555-.23.76-.25a1 1 0 0 1 .142-.004zm-6.442 5.622c.344.443.69.913 1.035 1.394q-.51-.012-1.031-.014-.532.001-1.05.014c.35-.481.699-.95 1.046-1.394M12 9.203q.668.001 1.314.02.398.563.793 1.154c.366.55.71 1.093 1.041 1.633a54 54 0 0 1-1.046 1.623q-.395.584-.791 1.138-.646.02-1.311.022-.684-.001-1.348-.022a53 53 0 0 1-.789-1.148 52 52 0 0 1-1.04-1.633 53 53 0 0 1 1.84-2.765q.658-.02 1.337-.022m-1.824.04q-.315.444-.625.905c-.334.496-.647.988-.953 1.477a47 47 0 0 1-1.239-2.178 41 41 0 0 1 2.817-.205zm3.625 0a41 41 0 0 1 2.838.202 47 47 0 0 1-1.264 2.198 53 53 0 0 0-1.574-2.4m3.248.251c1.213.146 2.317.34 3.252.576 1.057.268 1.907.587 2.478.928s.834.689.834.998-.263.655-.834.996c-.57.342-1.421.662-2.478.93-.943.239-2.056.433-3.281.58a47 47 0 0 0-1.416-2.492 47 47 0 0 0 1.445-2.516M6.95 9.496c.424.805.899 1.64 1.418 2.494a47 47 0 0 0-1.443 2.508 30 30 0 0 1-2.059-.318.9.9 0 0 0-.23-.508.8.8 0 0 0-.584-.262.8.8 0 0 0-.696.418c-.894-.247-1.63-.53-2.136-.832C.65 12.655.387 12.31.387 12s.263-.654.834-.996c.57-.342 1.421-.662 2.478-.93.935-.237 2.039-.431 3.252-.578zm4.34.8c-.576 0-1.041.5-1.041 1.112 0 .484.29.897.695 1.049v.063c0 .612.466 1.109 1.041 1.109.576 0 1.041-.497 1.041-1.11q0-.025-.002-.05c.424-.141.73-.565.73-1.063 0-.294-.107-.575-.302-.783a1.01 1.01 0 0 0-.738-.326 1 1 0 0 0-.711.3 1 1 0 0 0-.713-.3zm-2.695 2.061a51 51 0 0 0 1.572 2.397c-.99-.04-1.941-.108-2.832-.205q.573-1.067 1.26-2.192m6.779.02c.448.743.862 1.472 1.236 2.176a42 42 0 0 1-2.814.199q.313-.443.625-.902c.333-.495.647-.986.953-1.473m-8.23 2.537c1.033.117 2.141.198 3.304.236.427.6.854 1.179 1.278 1.723-1.103 1.382-2.176 2.561-3.135 3.45-.821.76-1.562 1.31-2.155 1.605-.296.147-.554.23-.76.25s-.35-.018-.462-.104c-.225-.172-.343-.61-.27-1.308s.329-1.624.742-2.698c.366-.948.861-2.018 1.458-3.154m9.656.004c.459.884.854 1.727 1.178 2.504a.91.91 0 0 0-.348.724c0 .486.364.887.82.887a1 1 0 0 0 .123-.01c.218.686.36 1.293.408 1.782.07.698-.05 1.135-.275 1.306-.113.086-.258.124-.463.104s-.462-.105-.758-.254c-.59-.298-1.329-.855-2.146-1.62-.955-.893-2.023-2.077-3.12-3.466.43-.545.862-1.123 1.294-1.725a42 42 0 0 0 3.287-.232m-3.776.246a49 49 0 0 1-1.05 1.4 49 49 0 0 1-1.04-1.398 47 47 0 0 0 2.09-.002"/></svg></span> <strong>PR102</strong> (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-10p). <strong>Dockerfile y Docker Compose: Aplicación web personalizada</strong></li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación asociados:</strong></p>
+</blockquote>
+<ul>
+<li><strong>CE-PI2a</strong>: Identificación y justificación de las herramientas Dockerfile y Docker Compose.</li>
+<li><strong>CE-PI3b</strong>: Configuración correcta de imagen personalizada y aplicación multi-contenedor.</li>
+<li><strong>CE-PI4c</strong>: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).</li>
+</ul>
+<blockquote>
+<p><strong>Tareas:</strong></p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Crear un Dockerfile personalizado</strong> para una aplicación web:
+   - Usar imagen base <code>nginx:alpine</code>.
+   - Copiar una página HTML personalizada.
+   - Exponer el puerto 80.
+   - Construir la imagen con nombre <code>mi-aplicacion-web</code>.</p>
+</li>
+<li>
+<p><strong>Crear un docker-compose.yml</strong> para una aplicación LAMP:
+   - Servicio web: usar la imagen personalizada creada.
+   - Servicio base de datos: MySQL 8.0.
+   - Configurar volúmenes persistentes para ambos servicios.
+   - Configurar variables de entorno para la base de datos.
+   - Exponer puertos apropiados.</p>
+</li>
+<li>
+<p><strong>Desplegar la aplicación</strong>:
+   - Ejecutar <code>docker compose up -d</code>.
+   - Verificar que ambos contenedores estén funcionando.
+   - Acceder a la aplicación web desde el navegador.</p>
+</li>
+<li>
+<p><strong>Publicar en Docker Hub</strong>:
+   - Crear cuenta en Docker Hub.
+   - Hacer login desde terminal.
+   - Subir la imagen personalizada.
+   - Verificar la publicación.</p>
+</li>
+<li>
+<p><strong>Documentar el proceso</strong>:
+   - Capturas de pantalla de cada paso.
+   - Comandos utilizados.
+   - Problemas encontrados y soluciones aplicadas.
+   - URL de la imagen en Docker Hub.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Archivos a entregar:</strong>
+- Dockerfile
+- docker-compose.yml
+- index.html (página personalizada)
+- Documentación con capturas y explicaciones
+- URL de la imagen en Docker Hub</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title"><strong>Consejos</strong></p>
+<ul>
+<li>Revisa la documentación oficial de Docker para Dockerfile y Docker Compose.</li>
+<li>Prueba cada paso antes de continuar con el siguiente.</li>
+<li>Asegúrate de que los nombres de imagen sigan el formato <code>usuario/nombre-imagen</code>.</li>
+<li>Verifica que los puertos no estén en conflicto con otros servicios.</li>
+</ul>
 </div></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
