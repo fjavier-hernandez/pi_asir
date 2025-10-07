@@ -1690,15 +1690,21 @@ o también</p>
 <ol>
 <li>Crear una red interna en Docker con un rango de IP definido.</li>
 <li>Crear un volumen llamado <code>volNextCloud</code> para almacenar datos persistentes.</li>
-<li>Desplegar un contenedor NextCloud con: <br />
-- IP fija en la red creada. <br />
-- Montaje del volumen en <code>/var/www/html/data</code>. <br />
-- Exposición del servicio en el puerto 80.</li>
-<li>Comprobar: <br />
-- Acceso a la interfaz web de NextCloud. <br />
-- Subida de un archivo y su persistencia tras eliminar y recrear el contenedor.</li>
-<li>Documentar todo el proceso con capturas y comandos utilizados, y sobre todo el resultado, los problemas encontrados durante la práctica y como se han solucionado.</li>
+<li>Desplegar un contenedor NextCloud con:</li>
 </ol>
+<ul>
+<li>IP fija en la red creada.   </li>
+<li>Montaje del volumen en <code>/var/www/html/data</code>.   </li>
+<li>
+<p>Exposición del servicio en el puerto 80.
+4. Comprobar:</p>
+</li>
+<li>
+<p>Acceso a la interfaz web de NextCloud.   </p>
+</li>
+<li>Subida de un archivo y su persistencia tras eliminar y recrear el contenedor.
+5. Documentar todo el proceso con capturas y comandos utilizados, y sobre todo el resultado, los problemas encontrados durante la práctica y como se han solucionado.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title"><strong>NOTA</strong></p>
 <p>No se trata de documentar el proceso tal cual como la guía, hay que documentar los resultados, los problemas encontrados y su solución.</p>
@@ -1720,50 +1726,60 @@ o también</p>
 <p><strong>Tareas:</strong></p>
 </blockquote>
 <ol>
-<li>
-<p><strong>Crear un Dockerfile personalizado</strong> para una aplicación web:
-   - Usar imagen base <code>nginx:alpine</code>.
-   - Copiar una página HTML personalizada.
-   - Exponer el puerto 80.
-   - Construir la imagen con nombre <code>mi-aplicacion-web</code>.</p>
-</li>
-<li>
-<p><strong>Crear un docker-compose.yml</strong> para una aplicación LAMP:
-   - Servicio web: usar la imagen personalizada creada.
-   - Servicio base de datos: MySQL 8.0.
-   - Configurar volúmenes persistentes para ambos servicios.
-   - Configurar variables de entorno para la base de datos.
-   - Exponer puertos apropiados.</p>
-</li>
-<li>
-<p><strong>Desplegar la aplicación</strong>:
-   - Ejecutar <code>docker compose up -d</code>.
-   - Verificar que ambos contenedores estén funcionando.
-   - Acceder a la aplicación web desde el navegador.</p>
-</li>
-<li>
-<p><strong>Publicar en Docker Hub</strong>:
-   - Crear cuenta en Docker Hub.
-   - Hacer login desde terminal.
-   - Subir la imagen personalizada.
-   - Verificar la publicación.</p>
-</li>
-<li>
-<p><strong>Documentar el proceso</strong>:
-   - Capturas de pantalla de cada paso.
-   - Comandos utilizados.
-   - Problemas encontrados y soluciones aplicadas.
-   - URL de la imagen en Docker Hub.</p>
-</li>
+<li><strong>Crear un Dockerfile personalizado</strong> para una aplicación web:</li>
 </ol>
+<ul>
+<li>Usar imagen base <code>nginx:alpine</code>.</li>
+<li>Copiar una página HTML personalizada.</li>
+<li>Exponer el puerto 80.</li>
+<li>Construir la imagen con nombre <code>mi-aplicacion-web</code>.</li>
+</ul>
+<ol start="2">
+<li><strong>Crear un docker-compose.yml</strong> para una aplicación LAMP:</li>
+</ol>
+<ul>
+<li>Servicio web: usar la imagen personalizada creada.</li>
+<li>Servicio base de datos: MySQL 8.0.</li>
+<li>Configurar volúmenes persistentes para ambos servicios.</li>
+<li>Configurar variables de entorno para la base de datos.</li>
+<li>Exponer puertos apropiados.</li>
+</ul>
+<ol start="3">
+<li><strong>Desplegar la aplicación</strong>:</li>
+</ol>
+<ul>
+<li>Ejecutar <code>docker compose up -d</code>.</li>
+<li>Verificar que ambos contenedores estén funcionando.</li>
+<li>Acceder a la aplicación web desde el navegador.</li>
+</ul>
+<ol start="4">
+<li><strong>Publicar en Docker Hub</strong>:</li>
+</ol>
+<ul>
+<li>Crear cuenta en Docker Hub.</li>
+<li>Hacer login desde terminal.</li>
+<li>Subir la imagen personalizada.</li>
+<li>Verificar la publicación.</li>
+</ul>
+<ol start="5">
+<li><strong>Documentar el proceso</strong>:</li>
+</ol>
+<ul>
+<li>Capturas de pantalla de cada paso.</li>
+<li>Comandos utilizados.</li>
+<li>Problemas encontrados y soluciones aplicadas.</li>
+<li>URL de la imagen en Docker Hub.</li>
+</ul>
 <blockquote>
-<p><strong>Archivos a entregar:</strong>
-- Dockerfile
-- docker-compose.yml
-- index.html (página personalizada)
-- Documentación con capturas y explicaciones
-- URL de la imagen en Docker Hub</p>
+<p><strong>Archivos a entregar:</strong></p>
 </blockquote>
+<ul>
+<li>Dockerfile</li>
+<li>docker-compose.yml</li>
+<li>index.html (página personalizada)</li>
+<li>Documentación con capturas y explicaciones</li>
+<li>URL de la imagen en Docker Hub</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title"><strong>Consejos</strong></p>
 <ul>
