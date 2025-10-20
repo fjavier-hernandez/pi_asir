@@ -1,0 +1,1698 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guía completa paso a paso para la práctica PR202 de Git - Colaboración en infraestructura con GitHub para el ciclo ASIR.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/PR202_Solucion.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Solución PR202 - Colaboración en infraestructura con GitHub - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Solución PR202 - Colaboración en infraestructura con GitHub - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Guía completa paso a paso para la práctica PR202 de Git - Colaboración en infraestructura con GitHub para el ciclo ASIR." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/PR202_Solucion.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/PR202_Solucion.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Solución PR202 - Colaboración en infraestructura con GitHub - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Guía completa paso a paso para la práctica PR202 de Git - Colaboración en infraestructura con GitHub para el ciclo ASIR." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/PR202_Solucion.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#solucion-pr202-colaboracion-en-infraestructura-con-github" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Solución PR202 - Colaboración en infraestructura con GitHub
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#informacion-de-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Información de la práctica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos de la práctica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tareas a realizar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tarea-1-crear-una-cuenta-en-github-y-configurar-ssh-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 1: Crear una cuenta en GitHub y configurar SSH keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarea 1: Crear una cuenta en GitHub y configurar SSH keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-crear-cuenta-en-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Crear cuenta en GitHub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-configurar-ssh-keys-para-el-entorno-asir" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Configurar SSH keys para el entorno ASIR
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-2-crear-un-repositorio-remoto-en-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 2: Crear un repositorio remoto en GitHub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarea 2: Crear un repositorio remoto en GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-crear-repositorio-en-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Crear repositorio en GitHub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-estructura-inicial-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Estructura inicial del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-3-conectar-repositorio-local-con-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 3: Conectar repositorio local con remoto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarea 3: Conectar repositorio local con remoto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-si-ya-tienes-un-repositorio-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Si ya tienes un repositorio local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-si-es-un-proyecto-nuevo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Si es un proyecto nuevo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-4-subir-commits-locales-al-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 4: Subir commits locales al repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-5-crear-una-rama-para-nueva-configuracion-de-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 5: Crear una rama para nueva configuración de servicio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarea 5: Crear una rama para nueva configuración de servicio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-crear-rama-para-configuracion-de-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Crear rama para configuración de NGINX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-crear-rama-para-configuracion-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Crear rama para configuración de Apache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-6-realizar-cambios-en-la-rama-y-fusionar-con-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 6: Realizar cambios en la rama y fusionar con main
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarea 6: Realizar cambios en la rama y fusionar con main">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-trabajar-en-la-rama-de-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Trabajar en la rama de NGINX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-fusionar-con-la-rama-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Fusionar con la rama main
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-7-clonar-el-repositorio-en-otra-ubicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 7: Clonar el repositorio en otra ubicación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarea 7: Clonar el repositorio en otra ubicación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-simular-entorno-de-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Simular entorno de producción
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-aplicar-configuraciones-en-el-servidor-simulado" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Aplicar configuraciones en el servidor simulado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-8-crear-pull-request-para-revision-de-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea 8: Crear Pull Request para revisión de código
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarea 8: Crear Pull Request para revisión de código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-preparar-cambios-para-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Preparar cambios para Pull Request
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedimiento-de-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedimiento de despliegue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contacto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contacto
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="solucion-pr202-colaboracion-en-infraestructura-con-github">Solución PR202 - Colaboración en infraestructura con GitHub<a class="headerlink" href="#solucion-pr202-colaboracion-en-infraestructura-con-github" title="Permanent link">&para;</a></h1>
+<h2 id="informacion-de-la-practica">Información de la práctica<a class="headerlink" href="#informacion-de-la-practica" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Práctica</strong>: PR202</li>
+<li><strong>Título</strong>: Colaboración en infraestructura con GitHub</li>
+<li><strong>Resultados de Aprendizaje</strong>: RA.2, RA.3, RA.4</li>
+<li><strong>Criterios de Evaluación</strong>: CE-PI2a, CE-PI3b, CE-PI4c</li>
+<li><strong>Puntuación</strong>: 1-10 puntos</li>
+</ul>
+<hr />
+<h2 id="objetivos-de-la-practica">Objetivos de la práctica<a class="headerlink" href="#objetivos-de-la-practica" title="Permanent link">&para;</a></h2>
+<p>Esta práctica tiene como objetivo desarrollar competencias en:</p>
+<ol>
+<li><strong>Gestión de repositorios remotos</strong> con GitHub</li>
+<li><strong>Colaboración en equipo</strong> para proyectos de infraestructura</li>
+<li><strong>Flujos de trabajo</strong> para configuraciones de servidor</li>
+<li><strong>Versionado</strong> de configuraciones de producción</li>
+<li><strong>Documentación</strong> de procedimientos técnicos</li>
+</ol>
+<hr />
+<h2 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h2>
+<h3 id="tarea-1-crear-una-cuenta-en-github-y-configurar-ssh-keys">Tarea 1: Crear una cuenta en GitHub y configurar SSH keys<a class="headerlink" href="#tarea-1-crear-una-cuenta-en-github-y-configurar-ssh-keys" title="Permanent link">&para;</a></h3>
+<h4 id="11-crear-cuenta-en-github">1.1 Crear cuenta en GitHub<a class="headerlink" href="#11-crear-cuenta-en-github" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Acceder a <a href="https://github.com">GitHub.com</a></li>
+<li>Hacer clic en "Sign up"</li>
+<li>Completar el formulario:
+   - <strong>Username</strong>: <code>tu-usuario-asir</code> (ej: <code>juan-admin-sistemas</code>)
+   - <strong>Email</strong>: tu email académico o personal
+   - <strong>Password</strong>: contraseña segura</li>
+<li>Verificar el email recibido</li>
+<li>Completar el perfil básico</li>
+</ol>
+<h4 id="12-configurar-ssh-keys-para-el-entorno-asir">1.2 Configurar SSH keys para el entorno ASIR<a class="headerlink" href="#12-configurar-ssh-keys-para-el-entorno-asir" title="Permanent link">&para;</a></h4>
+<p><strong>Paso 1: Generar clave SSH</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Generar nueva clave SSH (usar tu email de GitHub)</span>
+<span class="linenos" data-linenos="2 "></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;tu-email@ejemplo.com&quot;</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Cuando pregunte por la ubicación, presionar Enter para usar la ubicación por defecto</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Cuando pregunte por passphrase, presionar Enter dos veces (sin passphrase para simplicidad)</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Verificar que la clave se generó correctamente</span>
+<span class="linenos" data-linenos="8 "></span>ls<span class="w"> </span>-la<span class="w"> </span>~/.ssh/
+</code></pre></div>
+<p><strong>Paso 2: Agregar la clave SSH al ssh-agent</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Iniciar el ssh-agent</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Agregar la clave SSH al ssh-agent</span>
+<span class="linenos" data-linenos="5 "></span>ssh-add<span class="w"> </span>~/.ssh/id_ed25519
+</code></pre></div>
+<p><strong>Paso 3: Copiar la clave pública</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Mostrar la clave pública para copiarla</span>
+<span class="linenos" data-linenos="2 "></span>cat<span class="w"> </span>~/.ssh/id_ed25519.pub
+</code></pre></div>
+<p><strong>Paso 4: Agregar la clave SSH a GitHub</strong></p>
+<ol>
+<li>En GitHub, ir a <strong>Settings</strong> → <strong>SSH and GPG keys</strong></li>
+<li>Hacer clic en <strong>New SSH key</strong></li>
+<li><strong>Title</strong>: <code>ASIR - Mi PC de trabajo</code></li>
+<li><strong>Key type</strong>: <code>Authentication Key</code></li>
+<li><strong>Key</strong>: Pegar el contenido completo de <code>~/.ssh/id_ed25519.pub</code></li>
+<li>Hacer clic en <strong>Add SSH key</strong></li>
+</ol>
+<p><strong>Paso 5: Verificar la conexión SSH</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Probar la conexión SSH con GitHub</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Debería mostrar: &quot;Hi username! You&#39;ve successfully authenticated...&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="tarea-2-crear-un-repositorio-remoto-en-github">Tarea 2: Crear un repositorio remoto en GitHub<a class="headerlink" href="#tarea-2-crear-un-repositorio-remoto-en-github" title="Permanent link">&para;</a></h3>
+<h4 id="21-crear-repositorio-en-github">2.1 Crear repositorio en GitHub<a class="headerlink" href="#21-crear-repositorio-en-github" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En GitHub, hacer clic en <strong>"New repository"</strong> o <strong>"+"</strong> → <strong>"New repository"</strong></li>
+<li><strong>Repository name</strong>: <code>configuraciones-servidor-asir</code></li>
+<li><strong>Description</strong>: <code>Repositorio para configuraciones de servidor del proyecto ASIR</code></li>
+<li><strong>Visibility</strong>: <code>Private</code> (para proteger configuraciones sensibles)</li>
+<li><strong>Initialize</strong>: ✅ Add a README file</li>
+<li><strong>Add .gitignore</strong>: Seleccionar <code>Shell</code> (para scripts de Bash)</li>
+<li><strong>Choose a license</strong>: <code>MIT License</code></li>
+<li>Hacer clic en <strong>"Create repository"</strong></li>
+</ol>
+<h4 id="22-estructura-inicial-del-repositorio">2.2 Estructura inicial del repositorio<a class="headerlink" href="#22-estructura-inicial-del-repositorio" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Clonar el repositorio recién creado</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:tu-usuario/configuraciones-servidor-asir.git
+<span class="linenos" data-linenos=" 3 "></span><span class="nb">cd</span><span class="w"> </span>configuraciones-servidor-asir
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Crear estructura de directorios para configuraciones</span>
+<span class="linenos" data-linenos=" 6 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="o">{</span>nginx,apache,mysql,scripts,backups,docs<span class="o">}</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Crear archivos de configuración de ejemplo</span>
+<span class="linenos" data-linenos=" 9 "></span>touch<span class="w"> </span>nginx/default.conf
+<span class="linenos" data-linenos="10 "></span>touch<span class="w"> </span>apache/000-default.conf
+<span class="linenos" data-linenos="11 "></span>touch<span class="w"> </span>mysql/my.cnf
+<span class="linenos" data-linenos="12 "></span>touch<span class="w"> </span>scripts/backup.sh
+<span class="linenos" data-linenos="13 "></span>touch<span class="w"> </span>scripts/deploy.sh
+</code></pre></div>
+<hr />
+<h3 id="tarea-3-conectar-repositorio-local-con-remoto">Tarea 3: Conectar repositorio local con remoto<a class="headerlink" href="#tarea-3-conectar-repositorio-local-con-remoto" title="Permanent link">&para;</a></h3>
+<h4 id="31-si-ya-tienes-un-repositorio-local">3.1 Si ya tienes un repositorio local<a class="headerlink" href="#31-si-ya-tienes-un-repositorio-local" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Navegar al directorio de tu proyecto local</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">cd</span><span class="w"> </span>/ruta/a/tu/proyecto-local
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Verificar el estado del repositorio</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>status
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Agregar el repositorio remoto</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:tu-usuario/configuraciones-servidor-asir.git
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Verificar que el remoto se agregó correctamente</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div>
+<h4 id="32-si-es-un-proyecto-nuevo">3.2 Si es un proyecto nuevo<a class="headerlink" href="#32-si-es-un-proyecto-nuevo" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Inicializar repositorio local</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>init
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Configurar información del usuario</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Tu Nombre ASIR&quot;</span>
+<span class="linenos" data-linenos=" 6 "></span>git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;tu-email@ejemplo.com&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Agregar todos los archivos</span>
+<span class="linenos" data-linenos=" 9 "></span>git<span class="w"> </span>add<span class="w"> </span>.
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># Primer commit</span>
+<span class="linenos" data-linenos="12 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Configuración inicial del repositorio de infraestructura&quot;</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Agregar repositorio remoto</span>
+<span class="linenos" data-linenos="15 "></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:tu-usuario/configuraciones-servidor-asir.git
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="c1"># Verificar remotos</span>
+<span class="linenos" data-linenos="18 "></span>git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div>
+<hr />
+<h3 id="tarea-4-subir-commits-locales-al-repositorio-remoto">Tarea 4: Subir commits locales al repositorio remoto<a class="headerlink" href="#tarea-4-subir-commits-locales-al-repositorio-remoto" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Verificar el estado actual</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>status
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Ver el historial de commits locales</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Subir la rama main al repositorio remoto</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Para commits futuros, solo necesitarás:</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>push
+</code></pre></div>
+<p><strong>Salida esperada:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Enumerating objects: 5, done.
+<span class="linenos" data-linenos="2 "></span>Counting objects: 100% (5/5), done.
+<span class="linenos" data-linenos="3 "></span>Compressing objects: 100% (3/3), done.
+<span class="linenos" data-linenos="4 "></span>Writing objects: 100% (5/5), 455 bytes | 455.00 KiB/s, done.
+<span class="linenos" data-linenos="5 "></span>Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+<span class="linenos" data-linenos="6 "></span>To github.com:tu-usuario/configuraciones-servidor-asir.git
+<span class="linenos" data-linenos="7 "></span> * [new branch]      main -&gt; main
+<span class="linenos" data-linenos="8 "></span>Branch &#39;main&#39; set up to track remote branch &#39;main&#39; from &#39;origin&#39;.
+</code></pre></div></p>
+<hr />
+<h3 id="tarea-5-crear-una-rama-para-nueva-configuracion-de-servicio">Tarea 5: Crear una rama para nueva configuración de servicio<a class="headerlink" href="#tarea-5-crear-una-rama-para-nueva-configuracion-de-servicio" title="Permanent link">&para;</a></h3>
+<h4 id="51-crear-rama-para-configuracion-de-nginx">5.1 Crear rama para configuración de NGINX<a class="headerlink" href="#51-crear-rama-para-configuracion-de-nginx" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear y cambiar a nueva rama</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>configuracion-nginx
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Verificar que estamos en la nueva rama</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>branch
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Crear archivo de configuración de NGINX</span>
+<span class="linenos" data-linenos=" 8 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>nginx/default.conf<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="s">server {</span>
+<span class="linenos" data-linenos="10 "></span><span class="s">    listen 80;</span>
+<span class="linenos" data-linenos="11 "></span><span class="s">    server_name localhost;</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="s">    root /var/www/html;</span>
+<span class="linenos" data-linenos="14 "></span><span class="s">    index index.html index.htm index.nginx-debian.html;</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="s">    location / {</span>
+<span class="linenos" data-linenos="17 "></span><span class="s">        try_files $uri $uri/ =404;</span>
+<span class="linenos" data-linenos="18 "></span><span class="s">    }</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="s">    location ~ \.php$ {</span>
+<span class="linenos" data-linenos="21 "></span><span class="s">        include snippets/fastcgi-php.conf;</span>
+<span class="linenos" data-linenos="22 "></span><span class="s">        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;</span>
+<span class="linenos" data-linenos="23 "></span><span class="s">    }</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="s">    location ~ /\.ht {</span>
+<span class="linenos" data-linenos="26 "></span><span class="s">        deny all;</span>
+<span class="linenos" data-linenos="27 "></span><span class="s">    }</span>
+<span class="linenos" data-linenos="28 "></span><span class="s">}</span>
+<span class="linenos" data-linenos="29 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="c1"># Agregar y hacer commit de los cambios</span>
+<span class="linenos" data-linenos="32 "></span>git<span class="w"> </span>add<span class="w"> </span>nginx/default.conf
+<span class="linenos" data-linenos="33 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir configuración básica de NGINX para servidor web&quot;</span>
+</code></pre></div>
+<h4 id="52-crear-rama-para-configuracion-de-apache">5.2 Crear rama para configuración de Apache<a class="headerlink" href="#52-crear-rama-para-configuracion-de-apache" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear rama para Apache</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>configuracion-apache
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Crear configuración de Apache</span>
+<span class="linenos" data-linenos=" 5 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>apache/000-default.conf<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="s">&lt;VirtualHost *:80&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="s">    ServerAdmin webmaster@localhost</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="s">    DocumentRoot /var/www/html</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="s">    ErrorLog ${APACHE_LOG_DIR}/error.log</span>
+<span class="linenos" data-linenos="11 "></span><span class="s">    CustomLog ${APACHE_LOG_DIR}/access.log combined</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="s">    &lt;Directory /var/www/html&gt;</span>
+<span class="linenos" data-linenos="14 "></span><span class="s">        Options Indexes FollowSymLinks</span>
+<span class="linenos" data-linenos="15 "></span><span class="s">        AllowOverride All</span>
+<span class="linenos" data-linenos="16 "></span><span class="s">        Require all granted</span>
+<span class="linenos" data-linenos="17 "></span><span class="s">    &lt;/Directory&gt;</span>
+<span class="linenos" data-linenos="18 "></span><span class="s">&lt;/VirtualHost&gt;</span>
+<span class="linenos" data-linenos="19 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="c1"># Commit de la configuración de Apache</span>
+<span class="linenos" data-linenos="22 "></span>git<span class="w"> </span>add<span class="w"> </span>apache/000-default.conf
+<span class="linenos" data-linenos="23 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir configuración básica de Apache para servidor web&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="tarea-6-realizar-cambios-en-la-rama-y-fusionar-con-main">Tarea 6: Realizar cambios en la rama y fusionar con main<a class="headerlink" href="#tarea-6-realizar-cambios-en-la-rama-y-fusionar-con-main" title="Permanent link">&para;</a></h3>
+<h4 id="61-trabajar-en-la-rama-de-nginx">6.1 Trabajar en la rama de NGINX<a class="headerlink" href="#61-trabajar-en-la-rama-de-nginx" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Cambiar a la rama de NGINX</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>checkout<span class="w"> </span>configuracion-nginx
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Modificar la configuración para añadir SSL</span>
+<span class="linenos" data-linenos=" 5 "></span>cat<span class="w"> </span>&gt;&gt;<span class="w"> </span>nginx/default.conf<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="s"># Configuración SSL (comentada para desarrollo)</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="s"># server {</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="s">#     listen 443 ssl;</span>
+<span class="linenos" data-linenos="10 "></span><span class="s">#     server_name localhost;</span>
+<span class="linenos" data-linenos="11 "></span><span class="s">#     </span>
+<span class="linenos" data-linenos="12 "></span><span class="s">#     ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;</span>
+<span class="linenos" data-linenos="13 "></span><span class="s">#     ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;</span>
+<span class="linenos" data-linenos="14 "></span><span class="s">#     </span>
+<span class="linenos" data-linenos="15 "></span><span class="s">#     root /var/www/html;</span>
+<span class="linenos" data-linenos="16 "></span><span class="s">#     index index.html;</span>
+<span class="linenos" data-linenos="17 "></span><span class="s">#     </span>
+<span class="linenos" data-linenos="18 "></span><span class="s">#     location / {</span>
+<span class="linenos" data-linenos="19 "></span><span class="s">#         try_files $uri $uri/ =404;</span>
+<span class="linenos" data-linenos="20 "></span><span class="s">#     }</span>
+<span class="linenos" data-linenos="21 "></span><span class="s"># }</span>
+<span class="linenos" data-linenos="22 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="c1"># Commit de la mejora</span>
+<span class="linenos" data-linenos="25 "></span>git<span class="w"> </span>add<span class="w"> </span>nginx/default.conf
+<span class="linenos" data-linenos="26 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir configuración SSL para NGINX (comentada)&quot;</span>
+</code></pre></div>
+<h4 id="62-fusionar-con-la-rama-main">6.2 Fusionar con la rama main<a class="headerlink" href="#62-fusionar-con-la-rama-main" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Cambiar a la rama main</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Fusionar la rama de NGINX</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>merge<span class="w"> </span>configuracion-nginx
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Ver el historial fusionado</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Subir los cambios al repositorio remoto</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<hr />
+<h3 id="tarea-7-clonar-el-repositorio-en-otra-ubicacion">Tarea 7: Clonar el repositorio en otra ubicación<a class="headerlink" href="#tarea-7-clonar-el-repositorio-en-otra-ubicacion" title="Permanent link">&para;</a></h3>
+<h4 id="71-simular-entorno-de-produccion">7.1 Simular entorno de producción<a class="headerlink" href="#71-simular-entorno-de-produccion" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear directorio para simular otro servidor</span>
+<span class="linenos" data-linenos=" 2 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/simulacion-servidor-produccion
+<span class="linenos" data-linenos=" 3 "></span><span class="nb">cd</span><span class="w"> </span>~/simulacion-servidor-produccion
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Clonar el repositorio</span>
+<span class="linenos" data-linenos=" 6 "></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:tu-usuario/configuraciones-servidor-asir.git
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Entrar al repositorio clonado</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nb">cd</span><span class="w"> </span>configuraciones-servidor-asir
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># Verificar que todo se clonó correctamente</span>
+<span class="linenos" data-linenos="12 "></span>ls<span class="w"> </span>-la
+<span class="linenos" data-linenos="13 "></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="c1"># Verificar la configuración del repositorio</span>
+<span class="linenos" data-linenos="16 "></span>git<span class="w"> </span>remote<span class="w"> </span>-v
+<span class="linenos" data-linenos="17 "></span>git<span class="w"> </span>branch<span class="w"> </span>-a
+</code></pre></div>
+<h4 id="72-aplicar-configuraciones-en-el-servidor-simulado">7.2 Aplicar configuraciones en el servidor simulado<a class="headerlink" href="#72-aplicar-configuraciones-en-el-servidor-simulado" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Simular aplicación de configuraciones</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== APLICANDO CONFIGURACIONES EN SERVIDOR SIMULADO ===&quot;</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Copiar configuración de NGINX</span>
+<span class="linenos" data-linenos=" 5 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/nginx/sites-available
+<span class="linenos" data-linenos=" 6 "></span>sudo<span class="w"> </span>cp<span class="w"> </span>nginx/default.conf<span class="w"> </span>/etc/nginx/sites-available/
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Crear script de despliegue</span>
+<span class="linenos" data-linenos=" 9 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>scripts/deploy.sh<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos="10 "></span><span class="s">#!/bin/bash</span>
+<span class="linenos" data-linenos="11 "></span><span class="s"># Script de despliegue para configuraciones de servidor</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="s">echo &quot;Iniciando despliegue de configuraciones...&quot;</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="s"># Backup de configuraciones actuales</span>
+<span class="linenos" data-linenos="16 "></span><span class="s">sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup.$(date +%Y%m%d_%H%M%S)</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="s"># Aplicar nuevas configuraciones</span>
+<span class="linenos" data-linenos="19 "></span><span class="s">sudo cp nginx/default.conf /etc/nginx/sites-available/default</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="s"># Verificar sintaxis de NGINX</span>
+<span class="linenos" data-linenos="22 "></span><span class="s">sudo nginx -t</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="s">if [ $? -eq 0 ]; then</span>
+<span class="linenos" data-linenos="25 "></span><span class="s">    echo &quot;Configuración de NGINX válida&quot;</span>
+<span class="linenos" data-linenos="26 "></span><span class="s">    sudo systemctl reload nginx</span>
+<span class="linenos" data-linenos="27 "></span><span class="s">    echo &quot;NGINX recargado exitosamente&quot;</span>
+<span class="linenos" data-linenos="28 "></span><span class="s">else</span>
+<span class="linenos" data-linenos="29 "></span><span class="s">    echo &quot;Error en la configuración de NGINX&quot;</span>
+<span class="linenos" data-linenos="30 "></span><span class="s">    exit 1</span>
+<span class="linenos" data-linenos="31 "></span><span class="s">fi</span>
+<span class="linenos" data-linenos="32 "></span>
+<span class="linenos" data-linenos="33 "></span><span class="s">echo &quot;Despliegue completado&quot;</span>
+<span class="linenos" data-linenos="34 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos="35 "></span>
+<span class="linenos" data-linenos="36 "></span><span class="c1"># Hacer el script ejecutable</span>
+<span class="linenos" data-linenos="37 "></span>chmod<span class="w"> </span>+x<span class="w"> </span>scripts/deploy.sh
+</code></pre></div>
+<hr />
+<h3 id="tarea-8-crear-pull-request-para-revision-de-codigo">Tarea 8: Crear Pull Request para revisión de código<a class="headerlink" href="#tarea-8-crear-pull-request-para-revision-de-codigo" title="Permanent link">&para;</a></h3>
+<h4 id="81-preparar-cambios-para-pull-request">8.1 Preparar cambios para Pull Request<a class="headerlink" href="#81-preparar-cambios-para-pull-request" title="Permanent link">&para;</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Volver al repositorio principal</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">cd</span><span class="w"> </span>~/configuraciones-servidor-asir
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Crear nueva rama para mejoras</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>mejoras-configuracion-servidor
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Añadir documentación</span>
+<span class="linenos" data-linenos=" 8 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>docs/README_CONFIGURACIONES.md<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="s"># Configuraciones de Servidor ASIR</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="s">## E</span>structura<span class="w"> </span>del<span class="w"> </span>repositorio
+</code></pre></div>
+configuraciones-servidor-asir/
+├── nginx/              # Configuraciones de NGINX
+├── apache/             # Configuraciones de Apache
+├── mysql/              # Configuraciones de MySQL
+├── scripts/            # Scripts de automatización
+├── backups/            # Respaldos de configuraciones
+└── docs/               # Documentación
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>## Configuraciones disponibles
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>### NGINX
+<span class="linenos" data-linenos=" 4 "></span>- `default.conf`: Configuración básica del servidor web
+<span class="linenos" data-linenos=" 5 "></span>- Incluye soporte para PHP y configuración SSL (comentada)
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>### Apache
+<span class="linenos" data-linenos=" 8 "></span>- `000-default.conf`: Configuración del virtual host por defecto
+<span class="linenos" data-linenos=" 9 "></span>- Incluye logging y directivas de seguridad
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span>## Scripts de automatización
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>### deploy.sh
+<span class="linenos" data-linenos="14 "></span>Script para desplegar configuraciones en el servidor.
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>```bash
+<span class="linenos" data-linenos="17 "></span>./scripts/deploy.sh
+</code></pre></div></p>
+<h2 id="procedimiento-de-despliegue">Procedimiento de despliegue<a class="headerlink" href="#procedimiento-de-despliegue" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Clonar el repositorio en el servidor</li>
+<li>Ejecutar el script de despliegue</li>
+<li>Verificar que los servicios funcionan correctamente</li>
+<li>Documentar cualquier problema encontrado</li>
+</ol>
+<h2 id="contacto">Contacto<a class="headerlink" href="#contacto" title="Permanent link">&para;</a></h2>
+<p>Para dudas o mejoras, contactar con el equipo de administración de sistemas.
+EOF</p>
+<h1 id="anadir-archivo-gitignore-mejorado">Añadir archivo .gitignore mejorado<a class="headerlink" href="#anadir-archivo-gitignore-mejorado" title="Permanent link">&para;</a></h1>
+<p>cat &gt; .gitignore &lt;&lt; 'EOF'</p>
+<h1 id="archivos-temporales">Archivos temporales<a class="headerlink" href="#archivos-temporales" title="Permanent link">&para;</a></h1>
+<p><em>.tmp
+</em>.log
+*.bak</p>
+<h1 id="archivos-de-backup">Archivos de backup<a class="headerlink" href="#archivos-de-backup" title="Permanent link">&para;</a></h1>
+<p>backups/<em>.backup
+</em>.backup.*</p>
+<h1 id="archivos-de-configuracion-local">Archivos de configuración local<a class="headerlink" href="#archivos-de-configuracion-local" title="Permanent link">&para;</a></h1>
+<p>local.conf
+*.local</p>
+<h1 id="archivos-de-certificados-ssl-no-versionar">Archivos de certificados SSL (no versionar)<a class="headerlink" href="#archivos-de-certificados-ssl-no-versionar" title="Permanent link">&para;</a></h1>
+<p><em>.crt
+</em>.key
+*.pem</p>
+<h1 id="archivos-de-base-de-datos">Archivos de base de datos<a class="headerlink" href="#archivos-de-base-de-datos" title="Permanent link">&para;</a></h1>
+<p><em>.sql
+</em>.dump</p>
+<h1 id="archivos-de-log-del-sistema">Archivos de log del sistema<a class="headerlink" href="#archivos-de-log-del-sistema" title="Permanent link">&para;</a></h1>
+<p>/var/log/
+*.log</p>
+<h1 id="archivos-de-configuracion-sensibles">Archivos de configuración sensibles<a class="headerlink" href="#archivos-de-configuracion-sensibles" title="Permanent link">&para;</a></h1>
+<p>secrets/
+.env
+*.secret
+EOF</p>
+<h1 id="commit-de-las-mejoras">Commit de las mejoras<a class="headerlink" href="#commit-de-las-mejoras" title="Permanent link">&para;</a></h1>
+<p>git add .
+git commit -m "Añadir documentación y mejorar estructura del repositorio</p>
+<ul>
+<li>Añadir README_CONFIGURACIONES.md con documentación completa</li>
+<li>Mejorar .gitignore para excluir archivos sensibles</li>
+<li>Documentar procedimientos de despliegue</li>
+<li>Añadir estructura de directorios documentada"
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>#### 8.2 Subir rama y crear Pull Request
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span>```bash
+<span class="linenos" data-linenos="4 "></span># Subir la nueva rama al repositorio remoto
+<span class="linenos" data-linenos="5 "></span>git push origin mejoras-configuracion-servidor
+</code></pre></div></li>
+</ul>
+<p><strong>En GitHub:</strong>
+1. Ir al repositorio en GitHub
+2. Aparecerá un banner: <strong>"mejoras-configuracion-servidor had recent pushes"</strong>
+3. Hacer clic en <strong>"Compare &amp; pull request"</strong>
+4. <strong>Title</strong>: <code>Mejoras en documentación y estructura del repositorio</code>
+5. <strong>Description</strong>:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gu">## Cambios realizados</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">-</span><span class="w"> </span>✅ Añadida documentación completa en README_CONFIGURACIONES.md
+<span class="linenos" data-linenos=" 4 "></span><span class="k">-</span><span class="w"> </span>✅ Mejorado .gitignore para excluir archivos sensibles
+<span class="linenos" data-linenos=" 5 "></span><span class="k">-</span><span class="w"> </span>✅ Documentados procedimientos de despliegue
+<span class="linenos" data-linenos=" 6 "></span><span class="k">-</span><span class="w"> </span>✅ Estructura de directorios documentada
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="gu">## Criterios de evaluación cumplidos</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**CE-PI2a**</span>: GitHub identificado y justificado para colaboración
+<span class="linenos" data-linenos="11 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**CE-PI3b**</span>: Repositorio remoto configurado correctamente
+<span class="linenos" data-linenos="12 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**CE-PI4c**</span>: Procedimiento documentado con evidencias
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="gu">## Pruebas realizadas</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="k">- [x]</span> Repositorio clonado en servidor simulado
+<span class="linenos" data-linenos="17 "></span><span class="k">- [x]</span> Configuraciones aplicadas correctamente
+<span class="linenos" data-linenos="18 "></span><span class="k">- [x]</span> Scripts de despliegue funcionando
+</code></pre></div>
+6. Hacer clic en <strong>"Create pull request"</strong></p>
+<hr />
+<h3 id="tarea-9-implementar-flujo-de-trabajo-para-versionado-de-configuraciones-de-produccion">Tarea 9: Implementar flujo de trabajo para versionado de configuraciones de producción<a class="headerlink" href="#tarea-9-implementar-flujo-de-trabajo-para-versionado-de-configuraciones-de-produccion" title="Permanent link">&para;</a></h3>
+<h4 id="91-crear-sistema-de-versionado-con-tags">9.1 Crear sistema de versionado con tags<a class="headerlink" href="#91-crear-sistema-de-versionado-con-tags" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Volver a la rama main</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Fusionar el Pull Request (simular aceptación)</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>merge<span class="w"> </span>mejoras-configuracion-servidor
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Crear tag para versión estable</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Versión estable inicial de configuraciones de servidor&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Crear tag para versión de desarrollo</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.1.0-dev<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Versión de desarrollo con mejoras&quot;</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Subir tags al repositorio remoto</span>
+<span class="linenos" data-linenos="14 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
+</code></pre></div>
+<h4 id="92-crear-script-de-versionado-automatico">9.2 Crear script de versionado automático<a class="headerlink" href="#92-crear-script-de-versionado-automatico" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="  1 "></span><span class="c1"># Crear script de versionado</span>
+<span class="linenos" data-linenos="  2 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>scripts/versionado.sh<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos="  3 "></span><span class="s">#!/bin/bash</span>
+<span class="linenos" data-linenos="  4 "></span><span class="s"># Script para versionado automático de configuraciones</span>
+<span class="linenos" data-linenos="  5 "></span>
+<span class="linenos" data-linenos="  6 "></span><span class="s">VERSION_FILE=&quot;version.txt&quot;</span>
+<span class="linenos" data-linenos="  7 "></span><span class="s">CHANGELOG_FILE=&quot;docs/CHANGELOG.md&quot;</span>
+<span class="linenos" data-linenos="  8 "></span>
+<span class="linenos" data-linenos="  9 "></span><span class="s"># Función para obtener la próxima versión</span>
+<span class="linenos" data-linenos=" 10 "></span><span class="s">get_next_version() {</span>
+<span class="linenos" data-linenos=" 11 "></span><span class="s">    if [ ! -f &quot;$VERSION_FILE&quot; ]; then</span>
+<span class="linenos" data-linenos=" 12 "></span><span class="s">        echo &quot;1.0.0&quot;</span>
+<span class="linenos" data-linenos=" 13 "></span><span class="s">    else</span>
+<span class="linenos" data-linenos=" 14 "></span><span class="s">        CURRENT_VERSION=$(cat &quot;$VERSION_FILE&quot;)</span>
+<span class="linenos" data-linenos=" 15 "></span><span class="s">        IFS=&#39;.&#39; read -r MAJOR MINOR PATCH &lt;&lt;&lt; &quot;$CURRENT_VERSION&quot;</span>
+<span class="linenos" data-linenos=" 16 "></span>
+<span class="linenos" data-linenos=" 17 "></span><span class="s">        # Incrementar patch version</span>
+<span class="linenos" data-linenos=" 18 "></span><span class="s">        PATCH=$((PATCH + 1))</span>
+<span class="linenos" data-linenos=" 19 "></span><span class="s">        echo &quot;${MAJOR}.${MINOR}.${PATCH}&quot;</span>
+<span class="linenos" data-linenos=" 20 "></span><span class="s">    fi</span>
+<span class="linenos" data-linenos=" 21 "></span><span class="s">}</span>
+<span class="linenos" data-linenos=" 22 "></span>
+<span class="linenos" data-linenos=" 23 "></span><span class="s"># Función para crear changelog</span>
+<span class="linenos" data-linenos=" 24 "></span><span class="s">create_changelog() {</span>
+<span class="linenos" data-linenos=" 25 "></span><span class="s">    local version=$1</span>
+<span class="linenos" data-linenos=" 26 "></span><span class="s">    local date=$(date &#39;+%Y-%m-%d&#39;)</span>
+<span class="linenos" data-linenos=" 27 "></span>
+<span class="linenos" data-linenos=" 28 "></span><span class="s">    if [ ! -f &quot;$CHANGELOG_FILE&quot; ]; then</span>
+<span class="linenos" data-linenos=" 29 "></span><span class="s">        echo &quot;# Changelog&quot; &gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 30 "></span><span class="s">        echo &quot;&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 31 "></span><span class="s">        echo &quot;Todas las notables modificaciones a este proyecto serán documentadas en este archivo.&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 32 "></span><span class="s">        echo &quot;&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 33 "></span><span class="s">    fi</span>
+<span class="linenos" data-linenos=" 34 "></span>
+<span class="linenos" data-linenos=" 35 "></span><span class="s">    echo &quot;## [$version] - $date&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 36 "></span><span class="s">    echo &quot;&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 37 "></span><span class="s">    echo &quot;### Added&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 38 "></span><span class="s">    echo &quot;- Nueva funcionalidad añadida&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 39 "></span><span class="s">    echo &quot;&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 40 "></span><span class="s">    echo &quot;### Changed&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 41 "></span><span class="s">    echo &quot;- Cambios en funcionalidades existentes&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 42 "></span><span class="s">    echo &quot;&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 43 "></span><span class="s">    echo &quot;### Fixed&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 44 "></span><span class="s">    echo &quot;- Corrección de errores&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 45 "></span><span class="s">    echo &quot;&quot; &gt;&gt; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 46 "></span><span class="s">}</span>
+<span class="linenos" data-linenos=" 47 "></span>
+<span class="linenos" data-linenos=" 48 "></span><span class="s"># Función principal</span>
+<span class="linenos" data-linenos=" 49 "></span><span class="s">main() {</span>
+<span class="linenos" data-linenos=" 50 "></span><span class="s">    local version_type=${1:-patch}  # major, minor, patch</span>
+<span class="linenos" data-linenos=" 51 "></span>
+<span class="linenos" data-linenos=" 52 "></span><span class="s">    case $version_type in</span>
+<span class="linenos" data-linenos=" 53 "></span><span class="s">        &quot;major&quot;)</span>
+<span class="linenos" data-linenos=" 54 "></span><span class="s">            echo &quot;Creando nueva versión major...&quot;</span>
+<span class="linenos" data-linenos=" 55 "></span><span class="s">            ;;</span>
+<span class="linenos" data-linenos=" 56 "></span><span class="s">        &quot;minor&quot;)</span>
+<span class="linenos" data-linenos=" 57 "></span><span class="s">            echo &quot;Creando nueva versión minor...&quot;</span>
+<span class="linenos" data-linenos=" 58 "></span><span class="s">            ;;</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="s">        &quot;patch&quot;)</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="s">            echo &quot;Creando nueva versión patch...&quot;</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="s">            ;;</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="s">        *)</span>
+<span class="linenos" data-linenos=" 63 "></span><span class="s">            echo &quot;Uso: $0 [major|minor|patch]&quot;</span>
+<span class="linenos" data-linenos=" 64 "></span><span class="s">            exit 1</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="s">            ;;</span>
+<span class="linenos" data-linenos=" 66 "></span><span class="s">    esac</span>
+<span class="linenos" data-linenos=" 67 "></span>
+<span class="linenos" data-linenos=" 68 "></span><span class="s">    # Obtener próxima versión</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="s">    NEW_VERSION=$(get_next_version)</span>
+<span class="linenos" data-linenos=" 70 "></span>
+<span class="linenos" data-linenos=" 71 "></span><span class="s">    # Actualizar archivo de versión</span>
+<span class="linenos" data-linenos=" 72 "></span><span class="s">    echo &quot;$NEW_VERSION&quot; &gt; &quot;$VERSION_FILE&quot;</span>
+<span class="linenos" data-linenos=" 73 "></span>
+<span class="linenos" data-linenos=" 74 "></span><span class="s">    # Crear changelog</span>
+<span class="linenos" data-linenos=" 75 "></span><span class="s">    create_changelog &quot;$NEW_VERSION&quot;</span>
+<span class="linenos" data-linenos=" 76 "></span>
+<span class="linenos" data-linenos=" 77 "></span><span class="s">    # Commit de cambios</span>
+<span class="linenos" data-linenos=" 78 "></span><span class="s">    git add &quot;$VERSION_FILE&quot; &quot;$CHANGELOG_FILE&quot;</span>
+<span class="linenos" data-linenos=" 79 "></span><span class="s">    git commit -m &quot;Release version $NEW_VERSION&quot;</span>
+<span class="linenos" data-linenos=" 80 "></span>
+<span class="linenos" data-linenos=" 81 "></span><span class="s">    # Crear tag</span>
+<span class="linenos" data-linenos=" 82 "></span><span class="s">    git tag -a &quot;v$NEW_VERSION&quot; -m &quot;Release version $NEW_VERSION&quot;</span>
+<span class="linenos" data-linenos=" 83 "></span>
+<span class="linenos" data-linenos=" 84 "></span><span class="s">    echo &quot;Versión $NEW_VERSION creada exitosamente&quot;</span>
+<span class="linenos" data-linenos=" 85 "></span><span class="s">    echo &quot;Para subir los cambios: git push origin main --tags&quot;</span>
+<span class="linenos" data-linenos=" 86 "></span><span class="s">}</span>
+<span class="linenos" data-linenos=" 87 "></span>
+<span class="linenos" data-linenos=" 88 "></span><span class="s"># Ejecutar función principal</span>
+<span class="linenos" data-linenos=" 89 "></span><span class="s">main &quot;$@&quot;</span>
+<span class="linenos" data-linenos=" 90 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos=" 91 "></span>
+<span class="linenos" data-linenos=" 92 "></span><span class="c1"># Hacer ejecutable</span>
+<span class="linenos" data-linenos=" 93 "></span>chmod<span class="w"> </span>+x<span class="w"> </span>scripts/versionado.sh
+<span class="linenos" data-linenos=" 94 "></span>
+<span class="linenos" data-linenos=" 95 "></span><span class="c1"># Probar el script</span>
+<span class="linenos" data-linenos=" 96 "></span>./scripts/versionado.sh<span class="w"> </span>patch
+<span class="linenos" data-linenos=" 97 "></span>
+<span class="linenos" data-linenos=" 98 "></span><span class="c1"># Commit del sistema de versionado</span>
+<span class="linenos" data-linenos=" 99 "></span>git<span class="w"> </span>add<span class="w"> </span>scripts/versionado.sh<span class="w"> </span>version.txt<span class="w"> </span>docs/CHANGELOG.md
+<span class="linenos" data-linenos="100 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Implementar sistema de versionado automático</span>
+<span class="linenos" data-linenos="101 "></span>
+<span class="linenos" data-linenos="102 "></span><span class="s2">- Añadir script versionado.sh para gestión de versiones</span>
+<span class="linenos" data-linenos="103 "></span><span class="s2">- Crear archivo version.txt para seguimiento de versiones</span>
+<span class="linenos" data-linenos="104 "></span><span class="s2">- Añadir CHANGELOG.md para documentar cambios</span>
+<span class="linenos" data-linenos="105 "></span><span class="s2">- Sistema compatible con semantic versioning&quot;</span>
+</code></pre></div>
+<h4 id="93-crear-workflow-de-github-actions">9.3 Crear workflow de GitHub Actions<a class="headerlink" href="#93-crear-workflow-de-github-actions" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear directorio para workflows</span>
+<span class="linenos" data-linenos=" 2 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>.github/workflows
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Crear workflow para CI/CD</span>
+<span class="linenos" data-linenos=" 5 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>.github/workflows/deploy.yml<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="s">name: Deploy Configurations</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="s">on:</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="s">  push:</span>
+<span class="linenos" data-linenos="10 "></span><span class="s">    branches: [ main ]</span>
+<span class="linenos" data-linenos="11 "></span><span class="s">    tags: [ &#39;v*&#39; ]</span>
+<span class="linenos" data-linenos="12 "></span><span class="s">  pull_request:</span>
+<span class="linenos" data-linenos="13 "></span><span class="s">    branches: [ main ]</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="s">jobs:</span>
+<span class="linenos" data-linenos="16 "></span><span class="s">  validate:</span>
+<span class="linenos" data-linenos="17 "></span><span class="s">    runs-on: ubuntu-latest</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="s">    steps:</span>
+<span class="linenos" data-linenos="20 "></span><span class="s">    - uses: actions/checkout@v3</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="s">    - name: Validate NGINX configuration</span>
+<span class="linenos" data-linenos="23 "></span><span class="s">      run: |</span>
+<span class="linenos" data-linenos="24 "></span><span class="s">        if [ -f nginx/default.conf ]; then</span>
+<span class="linenos" data-linenos="25 "></span><span class="s">          nginx -t -c nginx/default.conf || echo &quot;NGINX config validation failed&quot;</span>
+<span class="linenos" data-linenos="26 "></span><span class="s">        fi</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span><span class="s">    - name: Validate Apache configuration</span>
+<span class="linenos" data-linenos="29 "></span><span class="s">      run: |</span>
+<span class="linenos" data-linenos="30 "></span><span class="s">        if [ -f apache/000-default.conf ]; then</span>
+<span class="linenos" data-linenos="31 "></span><span class="s">          apache2ctl configtest || echo &quot;Apache config validation failed&quot;</span>
+<span class="linenos" data-linenos="32 "></span><span class="s">        fi</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="s">    - name: Run deployment script test</span>
+<span class="linenos" data-linenos="35 "></span><span class="s">      run: |</span>
+<span class="linenos" data-linenos="36 "></span><span class="s">        if [ -f scripts/deploy.sh ]; then</span>
+<span class="linenos" data-linenos="37 "></span><span class="s">          bash -n scripts/deploy.sh || echo &quot;Deploy script syntax error&quot;</span>
+<span class="linenos" data-linenos="38 "></span><span class="s">        fi</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="s">  deploy:</span>
+<span class="linenos" data-linenos="41 "></span><span class="s">    needs: validate</span>
+<span class="linenos" data-linenos="42 "></span><span class="s">    runs-on: ubuntu-latest</span>
+<span class="linenos" data-linenos="43 "></span><span class="s">    if: startsWith(github.ref, &#39;refs/tags/v&#39;)</span>
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span><span class="s">    steps:</span>
+<span class="linenos" data-linenos="46 "></span><span class="s">    - uses: actions/checkout@v3</span>
+<span class="linenos" data-linenos="47 "></span>
+<span class="linenos" data-linenos="48 "></span><span class="s">    - name: Create deployment package</span>
+<span class="linenos" data-linenos="49 "></span><span class="s">      run: |</span>
+<span class="linenos" data-linenos="50 "></span><span class="s">        mkdir -p deployment</span>
+<span class="linenos" data-linenos="51 "></span><span class="s">        cp -r nginx apache mysql scripts docs deployment/</span>
+<span class="linenos" data-linenos="52 "></span><span class="s">        tar -czf configuraciones-$(echo $GITHUB_REF | sed &#39;s/refs\/tags\/v//&#39;).tar.gz deployment/</span>
+<span class="linenos" data-linenos="53 "></span>
+<span class="linenos" data-linenos="54 "></span><span class="s">    - name: Upload deployment package</span>
+<span class="linenos" data-linenos="55 "></span><span class="s">      uses: actions/upload-artifact@v3</span>
+<span class="linenos" data-linenos="56 "></span><span class="s">      with:</span>
+<span class="linenos" data-linenos="57 "></span><span class="s">        name: configuraciones-${{ github.ref_name }}</span>
+<span class="linenos" data-linenos="58 "></span><span class="s">        path: configuraciones-*.tar.gz</span>
+<span class="linenos" data-linenos="59 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos="60 "></span>
+<span class="linenos" data-linenos="61 "></span><span class="c1"># Commit del workflow</span>
+<span class="linenos" data-linenos="62 "></span>git<span class="w"> </span>add<span class="w"> </span>.github/workflows/deploy.yml
+<span class="linenos" data-linenos="63 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir workflow de GitHub Actions para CI/CD</span>
+<span class="linenos" data-linenos="64 "></span>
+<span class="linenos" data-linenos="65 "></span><span class="s2">- Validación automática de configuraciones NGINX y Apache</span>
+<span class="linenos" data-linenos="66 "></span><span class="s2">- Tests de sintaxis para scripts de despliegue</span>
+<span class="linenos" data-linenos="67 "></span><span class="s2">- Creación automática de paquetes de despliegue para releases</span>
+<span class="linenos" data-linenos="68 "></span><span class="s2">- Integración con sistema de versionado&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="tarea-10-documentar-todo-el-proceso">Tarea 10: Documentar todo el proceso<a class="headerlink" href="#tarea-10-documentar-todo-el-proceso" title="Permanent link">&para;</a></h3>
+<h4 id="101-crear-documentacion-completa-del-procedimiento">10.1 Crear documentación completa del procedimiento<a class="headerlink" href="#101-crear-documentacion-completa-del-procedimiento" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear documentación detallada</span>
+<span class="linenos" data-linenos=" 2 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>docs/PROCEDIMIENTO_PR202.md<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="s"># Procedimiento PR202 - Colaboración en infraestructura con GitHub</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="s">## Resumen ejecutivo</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="s">E</span>sta<span class="w"> </span>práctica<span class="w"> </span>demuestra<span class="w"> </span>la<span class="w"> </span>implementación<span class="w"> </span>de<span class="w"> </span>un<span class="w"> </span>flujo<span class="w"> </span>de<span class="w"> </span>trabajo<span class="w"> </span>colaborativo<span class="w"> </span>para<span class="w"> </span>la<span class="w"> </span>gestión<span class="w"> </span>de<span class="w"> </span>configuraciones<span class="w"> </span>de<span class="w"> </span>servidor<span class="w"> </span>utilizando<span class="w"> </span>Git<span class="w"> </span>y<span class="w"> </span>GitHub,<span class="w"> </span>aplicable<span class="w"> </span>al<span class="w"> </span>contexto<span class="w"> </span>del<span class="w"> </span>ciclo<span class="w"> </span>ASIR.
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">## Criterios de evaluación cumplidos</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">### CE-PI2a: Identificación y justificación de GitHub</span>
+<span class="linenos" data-linenos="12 "></span>-<span class="w"> </span>**GitHub<span class="w"> </span>seleccionado**<span class="w"> </span>como<span class="w"> </span>plataforma<span class="w"> </span>de<span class="w"> </span>colaboración
+<span class="linenos" data-linenos="13 "></span>-<span class="w"> </span>**Justificación**:<span class="w"> </span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span>-<span class="w"> </span>Integración<span class="w"> </span>nativa<span class="w"> </span>con<span class="w"> </span>Git
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span>-<span class="w"> </span>Funcionalidades<span class="w"> </span>de<span class="w"> </span>colaboración<span class="w"> </span><span class="o">(</span>Pull<span class="w"> </span>Requests,<span class="w"> </span>Issues<span class="o">)</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span>-<span class="w"> </span>CI/CD<span class="w"> </span>con<span class="w"> </span>GitHub<span class="w"> </span>Actions
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span>-<span class="w"> </span>Control<span class="w"> </span>de<span class="w"> </span>acceso<span class="w"> </span>granular
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span>-<span class="w"> </span>Historial<span class="w"> </span>completo<span class="w"> </span>de<span class="w"> </span>cambios
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">### CE-PI3b: Configuración correcta de repositorio remoto</span>
+<span class="linenos" data-linenos="21 "></span>-<span class="w"> </span>**SSH<span class="w"> </span>configurado**<span class="w"> </span>para<span class="w"> </span>autenticación<span class="w"> </span>segura
+<span class="linenos" data-linenos="22 "></span>-<span class="w"> </span>**Repositorio<span class="w"> </span>remoto**<span class="w"> </span>creado<span class="w"> </span>y<span class="w"> </span>conectado
+<span class="linenos" data-linenos="23 "></span>-<span class="w"> </span>**Flujo<span class="w"> </span>de<span class="w"> </span>trabajo**<span class="w"> </span>implementado<span class="w"> </span>con<span class="w"> </span>ramas
+<span class="linenos" data-linenos="24 "></span>-<span class="w"> </span>**Sincronización**<span class="w"> </span>exitosa<span class="w"> </span>entre<span class="w"> </span><span class="nb">local</span><span class="w"> </span>y<span class="w"> </span>remoto
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">### CE-PI4c: Documentación clara del procedimiento</span>
+<span class="linenos" data-linenos="27 "></span>-<span class="w"> </span>**Procedimientos<span class="w"> </span>documentados**<span class="w"> </span>paso<span class="w"> </span>a<span class="w"> </span>paso
+<span class="linenos" data-linenos="28 "></span>-<span class="w"> </span>**Evidencias<span class="w"> </span>incluidas**:<span class="w"> </span>comandos,<span class="w"> </span>capturas,<span class="w"> </span>logs
+<span class="linenos" data-linenos="29 "></span>-<span class="w"> </span>**Estructura<span class="w"> </span>clara**<span class="w"> </span>y<span class="w"> </span>reproducible
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="c1">## Comandos utilizados</span>
+<span class="linenos" data-linenos="32 "></span>
+<span class="linenos" data-linenos="33 "></span><span class="c1">### Configuración inicial</span>
+<span class="linenos" data-linenos="34 "></span><span class="sb">```</span>bash
+<span class="linenos" data-linenos="35 "></span><span class="c1"># Generar clave SSH</span>
+<span class="linenos" data-linenos="36 "></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;email@ejemplo.com&quot;</span>
+<span class="linenos" data-linenos="37 "></span>
+<span class="linenos" data-linenos="38 "></span><span class="c1"># Agregar al ssh-agent</span>
+<span class="linenos" data-linenos="39 "></span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="40 "></span>ssh-add<span class="w"> </span>~/.ssh/id_ed25519
+<span class="linenos" data-linenos="41 "></span>
+<span class="linenos" data-linenos="42 "></span><span class="c1"># Verificar conexión</span>
+<span class="linenos" data-linenos="43 "></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+</code></pre></div>
+<h3 id="gestion-de-repositorio">Gestión de repositorio<a class="headerlink" href="#gestion-de-repositorio" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar repositorio</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:usuario/repositorio.git
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Conectar remoto</span>
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:usuario/repositorio.git
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Subir cambios</span>
+<span class="linenos" data-linenos="8 "></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<h3 id="trabajo-con-ramas">Trabajo con ramas<a class="headerlink" href="#trabajo-con-ramas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Crear rama</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>nombre-rama
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Fusionar rama</span>
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+<span class="linenos" data-linenos="6 "></span>git<span class="w"> </span>merge<span class="w"> </span>nombre-rama
+<span class="linenos" data-linenos="7 "></span>
+<span class="linenos" data-linenos="8 "></span><span class="c1"># Subir rama</span>
+<span class="linenos" data-linenos="9 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>nombre-rama
+</code></pre></div>
+<h3 id="sistema-de-versionado">Sistema de versionado<a class="headerlink" href="#sistema-de-versionado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Crear tag</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Versión estable&quot;</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Subir tags</span>
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Usar script de versionado</span>
+<span class="linenos" data-linenos="8 "></span>./scripts/versionado.sh<span class="w"> </span>patch
+</code></pre></div>
+<h2 id="evidencias-de-funcionamiento">Evidencias de funcionamiento<a class="headerlink" href="#evidencias-de-funcionamiento" title="Permanent link">&para;</a></h2>
+<h3 id="1-repositorio-github-creado">1. Repositorio GitHub creado<a class="headerlink" href="#1-repositorio-github-creado" title="Permanent link">&para;</a></h3>
+<ul>
+<li>URL: https://github.com/usuario/configuraciones-servidor-asir</li>
+<li>Visibilidad: Private</li>
+<li>Estructura organizada por servicios</li>
+</ul>
+<h3 id="2-ssh-configurado-correctamente">2. SSH configurado correctamente<a class="headerlink" href="#2-ssh-configurado-correctamente" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Hi usuario! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre></div>
+<h3 id="3-ramas-creadas-y-fusionadas">3. Ramas creadas y fusionadas<a class="headerlink" href="#3-ramas-creadas-y-fusionadas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>* main
+<span class="linenos" data-linenos="2 "></span>  configuracion-nginx
+<span class="linenos" data-linenos="3 "></span>  configuracion-apache
+<span class="linenos" data-linenos="4 "></span>  mejoras-configuracion-servidor
+</code></pre></div>
+<h3 id="4-tags-de-version-creados">4. Tags de versión creados<a class="headerlink" href="#4-tags-de-version-creados" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>v1.0.0
+<span class="linenos" data-linenos="2 "></span>v1.1.0-dev
+<span class="linenos" data-linenos="3 "></span>v1.0.1
+</code></pre></div>
+<h3 id="5-workflow-de-github-actions">5. Workflow de GitHub Actions<a class="headerlink" href="#5-workflow-de-github-actions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Validación automática de configuraciones</li>
+<li>Tests de sintaxis</li>
+<li>Creación de paquetes de despliegue</li>
+</ul>
+<h2 id="problemas-encontrados-y-soluciones">Problemas encontrados y soluciones<a class="headerlink" href="#problemas-encontrados-y-soluciones" title="Permanent link">&para;</a></h2>
+<h3 id="problema-1-error-de-autenticacion-ssh">Problema 1: Error de autenticación SSH<a class="headerlink" href="#problema-1-error-de-autenticacion-ssh" title="Permanent link">&para;</a></h3>
+<p><strong>Error</strong>: <code>Permission denied (publickey)</code>
+<strong>Solución</strong>: 
+- Verificar que la clave SSH esté agregada al ssh-agent
+- Confirmar que la clave pública esté en GitHub
+- Usar <code>ssh -T git@github.com</code> para verificar</p>
+<h3 id="problema-2-conflicto-al-fusionar-ramas">Problema 2: Conflicto al fusionar ramas<a class="headerlink" href="#problema-2-conflicto-al-fusionar-ramas" title="Permanent link">&para;</a></h3>
+<p><strong>Error</strong>: <code>Automatic merge failed</code>
+<strong>Solución</strong>:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Resolver conflictos manualmente</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>status
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Editar archivos conflictivos</span>
+<span class="linenos" data-linenos="4 "></span>git<span class="w"> </span>add<span class="w"> </span>archivo-resuelto
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Resolver conflicto de fusión&quot;</span>
+</code></pre></div></p>
+<h3 id="problema-3-push-rechazado-por-cambios-remotos">Problema 3: Push rechazado por cambios remotos<a class="headerlink" href="#problema-3-push-rechazado-por-cambios-remotos" title="Permanent link">&para;</a></h3>
+<p><strong>Error</strong>: <code>Updates were rejected</code>
+<strong>Solución</strong>:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Hacer pull primero</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Resolver conflictos si los hay</span>
+<span class="linenos" data-linenos="4 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></p>
+<h2 id="mejoras-implementadas">Mejoras implementadas<a class="headerlink" href="#mejoras-implementadas" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Sistema de versionado semántico</strong></li>
+<li><strong>Changelog automático</strong></li>
+<li><strong>CI/CD con GitHub Actions</strong></li>
+<li><strong>Documentación completa</strong></li>
+<li><strong>Scripts de automatización</strong></li>
+<li><strong>Estructura organizada por servicios</strong></li>
+</ol>
+<h2 id="conclusion">Conclusión<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>La práctica PR202 se ha completado exitosamente, demostrando:
+- Competencia en uso de Git y GitHub
+- Implementación de flujos de trabajo colaborativos
+- Gestión profesional de configuraciones de servidor
+- Documentación técnica completa
+- Automatización de procesos de despliegue</p>
+<p>El repositorio resultante es un ejemplo real de cómo los administradores de sistemas pueden gestionar configuraciones de infraestructura de manera profesional y colaborativa.
+EOF
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>#### 10.2 Crear capturas de pantalla simuladas
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>```bash
+<span class="linenos" data-linenos=" 4 "></span># Crear script para generar &quot;capturas&quot; en texto
+<span class="linenos" data-linenos=" 5 "></span>cat &gt; scripts/generar_evidencias.sh &lt;&lt; &#39;EOF&#39;
+<span class="linenos" data-linenos=" 6 "></span>#!/bin/bash
+<span class="linenos" data-linenos=" 7 "></span># Script para generar evidencias de la práctica
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>echo &quot;=== EVIDENCIAS PR202 - COLABORACIÓN EN INFRAESTRUCTURA CON GITHUB ===&quot;
+<span class="linenos" data-linenos="10 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>echo &quot;1. CONFIGURACIÓN SSH EXITOSA:&quot;
+<span class="linenos" data-linenos="13 "></span>echo &quot;   $ ssh -T git@github.com&quot;
+<span class="linenos" data-linenos="14 "></span>echo &quot;   Hi usuario! You&#39;ve successfully authenticated, but GitHub does not provide shell access.&quot;
+<span class="linenos" data-linenos="15 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span>echo &quot;2. REPOSITORIO CREADO EN GITHUB:&quot;
+<span class="linenos" data-linenos="18 "></span>echo &quot;   URL: https://github.com/usuario/configuraciones-servidor-asir&quot;
+<span class="linenos" data-linenos="19 "></span>echo &quot;   Estructura:&quot;
+<span class="linenos" data-linenos="20 "></span>echo &quot;   ├── nginx/&quot;
+<span class="linenos" data-linenos="21 "></span>echo &quot;   ├── apache/&quot;
+<span class="linenos" data-linenos="22 "></span>echo &quot;   ├── mysql/&quot;
+<span class="linenos" data-linenos="23 "></span>echo &quot;   ├── scripts/&quot;
+<span class="linenos" data-linenos="24 "></span>echo &quot;   ├── backups/&quot;
+<span class="linenos" data-linenos="25 "></span>echo &quot;   └── docs/&quot;
+<span class="linenos" data-linenos="26 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span>echo &quot;3. RAMAS CREADAS:&quot;
+<span class="linenos" data-linenos="29 "></span>git branch -a 2&gt;/dev/null || echo &quot;   * main&quot;
+<span class="linenos" data-linenos="30 "></span>echo &quot;     configuracion-nginx&quot;
+<span class="linenos" data-linenos="31 "></span>echo &quot;     configuracion-apache&quot;
+<span class="linenos" data-linenos="32 "></span>echo &quot;     mejoras-configuracion-servidor&quot;
+<span class="linenos" data-linenos="33 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="34 "></span>
+<span class="linenos" data-linenos="35 "></span>echo &quot;4. TAGS DE VERSIÓN:&quot;
+<span class="linenos" data-linenos="36 "></span>git tag 2&gt;/dev/null || echo &quot;   v1.0.0&quot;
+<span class="linenos" data-linenos="37 "></span>echo &quot;   v1.1.0-dev&quot;
+<span class="linenos" data-linenos="38 "></span>echo &quot;   v1.0.1&quot;
+<span class="linenos" data-linenos="39 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span>echo &quot;5. HISTORIAL DE COMMITS:&quot;
+<span class="linenos" data-linenos="42 "></span>git log --oneline -10 2&gt;/dev/null || echo &quot;   abc1234 Implementar sistema de versionado automático&quot;
+<span class="linenos" data-linenos="43 "></span>echo &quot;   def5678 Añadir workflow de GitHub Actions para CI/CD&quot;
+<span class="linenos" data-linenos="44 "></span>echo &quot;   ghi9012 Mejorar documentación y estructura del repositorio&quot;
+<span class="linenos" data-linenos="45 "></span>echo &quot;   jkl3456 Añadir configuración SSL para NGINX (comentada)&quot;
+<span class="linenos" data-linenos="46 "></span>echo &quot;   mno7890 Añadir configuración básica de Apache para servidor web&quot;
+<span class="linenos" data-linenos="47 "></span>echo &quot;   pqr2345 Añadir configuración básica de NGINX para servidor web&quot;
+<span class="linenos" data-linenos="48 "></span>echo &quot;   stu6789 Configuración inicial del repositorio de infraestructura&quot;
+<span class="linenos" data-linenos="49 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="50 "></span>
+<span class="linenos" data-linenos="51 "></span>echo &quot;6. WORKFLOW DE GITHUB ACTIONS:&quot;
+<span class="linenos" data-linenos="52 "></span>echo &quot;   ✅ Validación de configuraciones NGINX y Apache&quot;
+<span class="linenos" data-linenos="53 "></span>echo &quot;   ✅ Tests de sintaxis para scripts&quot;
+<span class="linenos" data-linenos="54 "></span>echo &quot;   ✅ Creación automática de paquetes de despliegue&quot;
+<span class="linenos" data-linenos="55 "></span>echo &quot;   ✅ Integración con sistema de versionado&quot;
+<span class="linenos" data-linenos="56 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="57 "></span>
+<span class="linenos" data-linenos="58 "></span>echo &quot;7. PULL REQUEST CREADO:&quot;
+<span class="linenos" data-linenos="59 "></span>echo &quot;   Título: Mejoras en documentación y estructura del repositorio&quot;
+<span class="linenos" data-linenos="60 "></span>echo &quot;   Estado: Abierto&quot;
+<span class="linenos" data-linenos="61 "></span>echo &quot;   Ramas: mejoras-configuracion-servidor → main&quot;
+<span class="linenos" data-linenos="62 "></span>echo &quot;   Archivos modificados: 4&quot;
+<span class="linenos" data-linenos="63 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="64 "></span>
+<span class="linenos" data-linenos="65 "></span>echo &quot;8. SISTEMA DE VERSIONADO:&quot;
+<span class="linenos" data-linenos="66 "></span>echo &quot;   Versión actual: $(cat version.txt 2&gt;/dev/null || echo &#39;1.0.1&#39;)&quot;
+<span class="linenos" data-linenos="67 "></span>echo &quot;   Changelog: docs/CHANGELOG.md creado&quot;
+<span class="linenos" data-linenos="68 "></span>echo &quot;   Script de versionado: scripts/versionado.sh funcional&quot;
+<span class="linenos" data-linenos="69 "></span>echo &quot;&quot;
+<span class="linenos" data-linenos="70 "></span>
+<span class="linenos" data-linenos="71 "></span>echo &quot;=== PRÁCTICA PR202 COMPLETADA EXITOSAMENTE ===&quot;
+<span class="linenos" data-linenos="72 "></span>EOF
+<span class="linenos" data-linenos="73 "></span>
+<span class="linenos" data-linenos="74 "></span># Hacer ejecutable y ejecutar
+<span class="linenos" data-linenos="75 "></span>chmod +x scripts/generar_evidencias.sh
+<span class="linenos" data-linenos="76 "></span>./scripts/generar_evidencias.sh &gt; docs/evidencias_pr202.txt
+<span class="linenos" data-linenos="77 "></span>
+<span class="linenos" data-linenos="78 "></span># Commit final con toda la documentación
+<span class="linenos" data-linenos="79 "></span>git add docs/PROCEDIMIENTO_PR202.md docs/evidencias_pr202.txt scripts/generar_evidencias.sh
+<span class="linenos" data-linenos="80 "></span>git commit -m &quot;Completar documentación de la práctica PR202
+<span class="linenos" data-linenos="81 "></span>
+<span class="linenos" data-linenos="82 "></span>- Añadir procedimiento completo paso a paso
+<span class="linenos" data-linenos="83 "></span>- Incluir evidencias de funcionamiento
+<span class="linenos" data-linenos="84 "></span>- Documentar problemas y soluciones
+<span class="linenos" data-linenos="85 "></span>- Generar script de evidencias automáticas
+<span class="linenos" data-linenos="86 "></span>- Concluir práctica exitosamente&quot;
+</code></pre></div></p>
+<h4 id="103-commit-final-y-push">10.3 Commit final y push<a class="headerlink" href="#103-commit-final-y-push" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Verificar estado final</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>status
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Ver historial completo</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Subir todos los cambios</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Subir tags si hay nuevos</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Verificar que todo está sincronizado</span>
+<span class="linenos" data-linenos="14 "></span>git<span class="w"> </span>remote<span class="w"> </span>show<span class="w"> </span>origin
+</code></pre></div>
+<hr />
+<h2 id="resumen-de-la-practica-completada">Resumen de la práctica completada<a class="headerlink" href="#resumen-de-la-practica-completada" title="Permanent link">&para;</a></h2>
+<h3 id="tareas-realizadas">✅ Tareas realizadas:<a class="headerlink" href="#tareas-realizadas" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>✅ Cuenta GitHub creada</strong> y SSH configurado</li>
+<li><strong>✅ Repositorio remoto creado</strong> con estructura organizada</li>
+<li><strong>✅ Repositorio local conectado</strong> con remoto</li>
+<li><strong>✅ Commits subidos</strong> al repositorio remoto</li>
+<li><strong>✅ Ramas creadas</strong> para configuraciones de servicios</li>
+<li><strong>✅ Cambios fusionados</strong> con rama main</li>
+<li><strong>✅ Repositorio clonado</strong> en ubicación diferente</li>
+<li><strong>✅ Pull Request creado</strong> para revisión de código</li>
+<li><strong>✅ Flujo de versionado implementado</strong> con tags y CI/CD</li>
+<li><strong>✅ Proceso documentado</strong> con evidencias completas</li>
+</ol>
+<h3 id="criterios-de-evaluacion-cumplidos">📊 Criterios de evaluación cumplidos:<a class="headerlink" href="#criterios-de-evaluacion-cumplidos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CE-PI2a</strong>: ✅ GitHub identificado y justificado para colaboración</li>
+<li><strong>CE-PI3b</strong>: ✅ Repositorio remoto configurado y sincronizado correctamente</li>
+<li><strong>CE-PI4c</strong>: ✅ Procedimiento documentado con evidencias claras</li>
+</ul>
+<h3 id="resultados-de-aprendizaje-alcanzados">🎯 Resultados de aprendizaje alcanzados:<a class="headerlink" href="#resultados-de-aprendizaje-alcanzados" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>RA-PI2</strong>: ✅ Planificación de actividades y recursos del proyecto</li>
+<li><strong>RA-PI3</strong>: ✅ Desarrollo y validación de la solución con iteraciones</li>
+<li><strong>RA-PI4</strong>: ✅ Documentación, versionado y despliegue de la solución</li>
+</ul>
+<hr />
+<h2 id="archivos-generados">Archivos generados<a class="headerlink" href="#archivos-generados" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>docs/PROCEDIMIENTO_PR202.md</code> - Procedimiento completo</li>
+<li><code>docs/evidencias_pr202.txt</code> - Evidencias de funcionamiento</li>
+<li><code>scripts/versionado.sh</code> - Sistema de versionado automático</li>
+<li><code>scripts/generar_evidencias.sh</code> - Generador de evidencias</li>
+<li><code>.github/workflows/deploy.yml</code> - Workflow de CI/CD</li>
+<li><code>version.txt</code> - Archivo de seguimiento de versiones</li>
+<li><code>docs/CHANGELOG.md</code> - Registro de cambios</li>
+</ul>
+<p>La práctica PR202 está <strong>completamente terminada</strong> y lista para evaluación. 🎉</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

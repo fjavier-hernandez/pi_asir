@@ -1,0 +1,1970 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes de Git para el Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Explicación de sistemas de control de versiones, Git, repositorios, comandos básicos y avanzados.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/git.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Git - Sistemas de control de versiones - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Git - Sistemas de control de versiones - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Apuntes de Git para el Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Explicación de sistemas de control de versiones, Git, repositorios, comandos básicos y avanzados." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/git.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/git.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Git - Sistemas de control de versiones - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Apuntes de Git para el Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Explicación de sistemas de control de versiones, Git, repositorios, comandos básicos y avanzados." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/git.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-sistemas-de-control-de-versiones" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git - Sistemas de control de versiones
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-relacionados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (relacionados)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacion-con-otros-modulos-del-ciclo-asir" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relación con otros módulos del ciclo ASIR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sistemas-de-control-de-versiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistemas de control de versiones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sistemas de control de versiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definicion-clasificacion-y-funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición, clasificación y funcionamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-usar-herramientas-de-control-de-versiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Por qué usar herramientas de control de versiones?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-populares" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas populares
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminología
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clasificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clasificación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clasificación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centralizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Centralizados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribuidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribuidos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distribuidos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-de-sistemas-distribuidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas de sistemas distribuidos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción a Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción a Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#los-tres-estados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Los tres estados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujos-de-trabajo-distribuidos-con-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujos de trabajo distribuidos con Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flujos de trabajo distribuidos con Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-centralizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo centralizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-del-gestor-de-integraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo del Gestor-de-Integraciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-con-dictador-y-tenientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo con Dictador y Tenientes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales de Git
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aspectos-basicos-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aspectos básicos de Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aspectos básicos de Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalando-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalando en Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalando-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalando en Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalando-en-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalando en MacOS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tu-identidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tu identidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bash-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bash Completion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="git-sistemas-de-control-de-versiones">Git - Sistemas de control de versiones<a class="headerlink" href="#git-sistemas-de-control-de-versiones" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><a href="https://git-scm.com/">Git</a> es un <strong>sistema de control de versiones distribuido</strong> desarrollado por Linus Torvalds para el kernel de Linux.</p>
+<ul>
+<li>
+<p>Breve historia: en <strong>2005</strong>, tras un cambio en las herramientas usadas para gestionar el código del kernel, Linus Torvalds creó Git con objetivos claros de <strong>rapidez</strong>, <strong>integridad</strong> y <strong>trabajo distribuido</strong>. Poco después, la comunidad lo adoptó ampliamente y hoy es el estándar de facto del desarrollo de software y la infraestructura.</p>
+</li>
+<li>
+<p>A diferencia de otros sistemas de control de versiones, Git modela los datos como un conjunto de instantáneas de un mini sistema de archivos, proporcionando <strong>velocidad, integridad y flexibilidad</strong> para proyectos de cualquier tamaño. </p>
+</li>
+<li>
+<p>En el contexto del <strong>ciclo ASIR</strong>, Git es esencial para la gestión de configuraciones de servidores, scripts de automatización, documentación técnica y colaboración en proyectos de infraestructura.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>Esta herramienta se enmarca dentro del <strong>módulo de Proyecto Intermodular</strong> del CFGS ASIR, y contribuye a los siguientes <strong>Resultados de Aprendizaje (RA-PI)</strong> definidos en la programación:</p>
+<blockquote>
+<p><strong>PI2.</strong> <em>Planifica actividades, recursos, riesgos y cronograma del proyecto.</em><br />
+<strong>PI3.</strong> <em>Desarrolla y valida la solución (iteraciones, pruebas y criterios de aceptación).</em><br />
+<strong>PI4.</strong> <em>Documenta, versiona y despliega la solución y sus evidencias.</em></p>
+</blockquote>
+<h3 id="criterios-de-evaluacion-relacionados">Criterios de evaluación (relacionados)<a class="headerlink" href="#criterios-de-evaluacion-relacionados" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>CE-PI2a.</strong> <em>Se han identificado las herramientas necesarias para el control de versiones del proyecto.</em><br />
+<strong>CE-PI3b.</strong> <em>Se han configurado repositorios y flujos de trabajo colaborativo.</em><br />
+<strong>CE-PI4c.</strong> <em>Se ha documentado el procedimiento de versionado y colaboración.</em></p>
+</blockquote>
+<h3 id="relacion-con-otros-modulos-del-ciclo-asir">Relación con otros módulos del ciclo ASIR<a class="headerlink" href="#relacion-con-otros-modulos-del-ciclo-asir" title="Permanent link">&para;</a></h3>
+<p>Git como herramienta de control de versiones es fundamental en el desarrollo profesional de administradores de sistemas, siendo especialmente relevante para:</p>
+<ul>
+<li><strong>ASO (Administración de Sistemas Operativos)</strong>: Automatización de tareas administrativas, scripts de configuración y gestión de infraestructura.</li>
+<li><strong>SAD (Seguridad y Alta Disponibilidad)</strong>: Control de versiones de configuraciones de seguridad y respaldos de políticas.</li>
+<li><strong>SGBD (Sistemas de Gestión de Bases de Datos)</strong>: Versionado de esquemas de base de datos y scripts de migración.</li>
+<li><strong>IAW (Implantación de Aplicaciones Web)</strong>: Gestión de código fuente de aplicaciones web y despliegue continuo.</li>
+</ul>
+<h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
+<p><strong>Bloque 1 — Sistemas de control de versiones (Sesión 1)</strong></p>
+<ul>
+<li>Definición y clasificación de sistemas de control de versiones</li>
+<li>Terminología fundamental (repositorio, revisión, rama, commit, merge, etc.)</li>
+<li>Arquitecturas: locales, centralizados y distribuidos</li>
+<li>Ventajas de los sistemas distribuidos</li>
+</ul>
+<p><strong>Bloque 2 — Introducción a Git (Sesión 2)</strong></p>
+<ul>
+<li>Historia y características de Git</li>
+<li>Instalación y configuración inicial</li>
+<li>Configuración de identidad y entorno</li>
+<li>Primer repositorio: <code>git init</code></li>
+</ul>
+<p><strong>Bloque 3 — Uso básico de Git (Sesión 3)</strong></p>
+<ul>
+<li>Comandos fundamentales: <code>git add</code>, <code>git commit</code>, <code>git status</code></li>
+<li>Trabajando con el historial: <code>git log</code>, <code>git diff</code></li>
+<li>Archivos <code>.gitignore</code> y gestión de archivos temporales</li>
+<li>Etiquetado de versiones</li>
+</ul>
+<p><strong>Bloque 4 — Repositorios remotos y Git Clone (Sesión 4)</strong></p>
+<ul>
+<li>Introducción a repositorios remotos</li>
+<li>Comando <code>git clone</code> y sus opciones</li>
+<li>Configuración de remotos: <code>git remote</code></li>
+<li>URLs y protocolos de acceso</li>
+<li>Casos de uso en administración de sistemas</li>
+</ul>
+<p><strong>Bloque 5 — Uso avanzado y ramas (Sesión 5)</strong></p>
+<ul>
+<li>Concepto de ramas y su utilidad</li>
+<li>Creación, cambio y fusión de ramas</li>
+<li>Resolución de conflictos</li>
+<li>Flujos de trabajo colaborativo</li>
+</ul>
+<p><strong>Bloque 6 — GitHub y colaboración (Sesión 6)</strong></p>
+<ul>
+<li>Configuración de GitHub</li>
+<li>Comandos remotos: <code>git push</code>, <code>git pull</code></li>
+<li>Pull requests y revisión de código</li>
+<li>Colaboración en equipos de infraestructura</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Actividades iniciales</p>
+<ol>
+<li>Configura tu identidad en Git (nombre y email) para el entorno ASIR.</li>
+<li>Crea tu primer repositorio local con <code>git init</code> para gestionar scripts de administración.</li>
+<li>Realiza tu primer commit con un archivo README.md que documente tu proyecto.</li>
+<li>Explora el historial con <code>git log</code> y crea etiquetas para versiones estables.</li>
+<li>Crea una cuenta en GitHub y conecta tu repositorio local.</li>
+<li>Clona un repositorio de scripts de administración usando <code>git clone</code>.</li>
+</ol>
+</div>
+<h3 id="programacion-de-aula">Programación de Aula<a class="headerlink" href="#programacion-de-aula" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sistemas de control de versiones, Introducción a Git</td>
+<td>AC201. Configurar la identidad de Git (ASIR)</td>
+<td>CE-PI2a, CE-PI3b, CE-PI4c</td>
+</tr>
+</tbody>
+</table>
+<!-- | 2 | **Uso básico de Git** | PR201. Primer repositorio Git | CE-PI3b, CE-PI4c |
+| 3 | **Ramas y colaboración** | PR202. Trabajo colaborativo con GitHub | CE-PI3b, CE-PI4c | -->
+
+<hr />
+<h2 id="sistemas-de-control-de-versiones">Sistemas de control de versiones<a class="headerlink" href="#sistemas-de-control-de-versiones" title="Permanent link">&para;</a></h2>
+<h3 id="definicion-clasificacion-y-funcionamiento">Definición, clasificación y funcionamiento<a class="headerlink" href="#definicion-clasificacion-y-funcionamiento" title="Permanent link">&para;</a></h3>
+<p><strong>Control de versiones</strong> es la gestión de los diversos cambios que se realizan sobre los elementos de algún producto o configuración. Una <strong>versión, revisión o edición</strong> es el estado en el que se encuentra dicho producto en un momento dado de su desarrollo o modificación.</p>
+<h3 id="por-que-usar-herramientas-de-control-de-versiones">¿Por qué usar herramientas de control de versiones?<a class="headerlink" href="#por-que-usar-herramientas-de-control-de-versiones" title="Permanent link">&para;</a></h3>
+<p>Aunque puede realizarse de forma manual, <strong>es muy aconsejable disponer de herramientas especializadas</strong> que faciliten esta gestión, dando lugar a los llamados <strong>Sistemas de Control de Versiones (SCV)</strong>.</p>
+<p><strong>Ventajas de los SCV:</strong></p>
+<ul>
+<li><strong>Trazabilidad</strong>: seguimiento completo del historial de cambios</li>
+<li><strong>Colaboración</strong>: múltiples desarrolladores trabajando simultáneamente</li>
+<li><strong>Recuperación</strong>: posibilidad de volver a versiones anteriores</li>
+<li><strong>Especialización</strong>: gestión de variantes para diferentes clientes o entornos</li>
+<li><strong>Automatización</strong>: integración con herramientas de despliegue y CI/CD</li>
+</ul>
+<h3 id="herramientas-populares">Herramientas populares<a class="headerlink" href="#herramientas-populares" title="Permanent link">&para;</a></h3>
+<p>Ejemplos de sistemas de control de versiones incluyen:</p>
+<ul>
+<li><strong>Centralizados</strong>: CVS, Subversion, SourceSafe, ClearCase, Perforce</li>
+<li><strong>Distribuidos</strong>: Git, Mercurial, Darcs, Bazaar, Plastic SCM</li>
+</ul>
+<h3 id="terminologia">Terminología<a class="headerlink" href="#terminologia" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Repositorio ("repository")</strong></td>
+<td>Almacén de todo el historial y metadatos del proyecto (carpeta <code>.git</code>). Puede estar local o en un remoto (GitHub, GitLab).</td>
+</tr>
+<tr>
+<td><strong>Revisión ("revision")</strong></td>
+<td>Estado concreto del proyecto identificado por un hash único. Cada commit crea una revisión, que permite comparar cambios y volver a ese punto cuando sea necesario.</td>
+</tr>
+<tr>
+<td><strong>Etiqueta ("tag")</strong></td>
+<td>Marcador inmutable que apunta a una revisión importante (por ejemplo <code>v1.0.0</code>). Útil para versiones y despliegues.</td>
+</tr>
+<tr>
+<td><strong>Rama ("branch")</strong></td>
+<td>Línea de trabajo con su propio puntero a commits. Permite desarrollar en paralelo sin afectar a la rama principal. Ej.: <code>feature/api</code>.</td>
+</tr>
+<tr>
+<td><strong>Cambio ("change")</strong></td>
+<td>Modificación de uno o varios archivos respecto a una revisión previa; se ve como un diff (líneas añadidas/eliminadas).</td>
+</tr>
+<tr>
+<td><strong>Desplegar ("checkout")</strong></td>
+<td>Acción de cambiar tu directorio de trabajo a una rama o revisión (<code>git checkout main</code> o un commit/tag).</td>
+</tr>
+<tr>
+<td><strong>Confirmar ("commit")</strong></td>
+<td>Crear una nueva revisión con los cambios preparados (staged), incluyendo autor, fecha y mensaje descriptivo.</td>
+</tr>
+<tr>
+<td><strong>Conflicto ("conflict")</strong></td>
+<td>Ocurre cuando dos cambios afectan a la misma zona de un archivo y Git no puede elegir. Requiere resolución manual y nuevo commit.</td>
+</tr>
+<tr>
+<td><strong>Cabeza ("head")</strong></td>
+<td>Último commit de una rama (punta). <code>HEAD</code> suele apuntar al commit actual sobre el que estás trabajando.</td>
+</tr>
+<tr>
+<td><strong>Tronco ("trunk")</strong></td>
+<td>Rama principal del proyecto (también llamada <code>main</code> o <code>master</code>) desde la que se versiona y se liberan versiones estables.</td>
+</tr>
+<tr>
+<td><strong>Fusionar, integrar, mezclar ("merge")</strong></td>
+<td>Una fusión o integración es una operación en la que se aplican dos tipos de cambios en un archivo o conjunto de archivos.</td>
+</tr>
+</tbody>
+</table>
+<!-- #### Ejemplos de "merge" -->
+
+<!-- Algunos escenarios de ejemplo son los siguientes:
+
+- Un usuario, trabajando en un conjunto de archivos, actualiza o sincroniza su copia de trabajo con los cambios realizados y confirmados por otros usuarios en el repositorio.
+- Un usuario intenta confirmar archivos que han sido actualizados por otros usuarios desde el último despliegue (`checkout`), y el software de control de versiones integra automáticamente los archivos (por lo general, después de preguntar si se debe proceder con la integración automática, y en algunos casos solo si la fusión puede ser clara y razonablemente resuelta).
+- Un conjunto de archivos se bifurca, un problema que existía antes de la ramificación se trabaja en una nueva rama, y la solución se combina luego en la otra rama.
+- Se crea una rama, el código de los archivos es editado de forma independiente, y la rama actualizada se incorpora más tarde en un único tronco unificado. -->
+
+<h2 id="clasificacion">Clasificación<a class="headerlink" href="#clasificacion" title="Permanent link">&para;</a></h2>
+<p>Podemos clasificar los sistemas de control de versiones atendiendo a la arquitectura utilizada para el almacenamiento del código: <strong>locales, centralizados y distribuidos</strong>.</p>
+<h3 id="locales">Locales<a class="headerlink" href="#locales" title="Permanent link">&para;</a></h3>
+<p>Los cambios son guardados localmente y no se comparten con nadie. Esta arquitectura es la antecesora de las dos siguientes.</p>
+<figure>
+  <img src="imagenes/git-local.png"/>
+  <figcaption>Sistema de control de versiones local.</figcaption>
+</figure>
+
+<h3 id="centralizados">Centralizados<a class="headerlink" href="#centralizados" title="Permanent link">&para;</a></h3>
+<p>Existe un repositorio centralizado de todo el código, del cual es responsable un único usuario (o conjunto de ellos). Se facilitan las tareas administrativas a cambio de reducir flexibilidad, pues todas las decisiones fuertes (como crear una nueva rama) necesitan la aprobación del responsable. Algunos ejemplos son CVS y Subversion.</p>
+<figure>
+  <img src="imagenes/git-central.png"/>
+  <figcaption>Sistema de control de versiones centralizado.</figcaption>
+</figure>
+
+<h3 id="distribuidos">Distribuidos<a class="headerlink" href="#distribuidos" title="Permanent link">&para;</a></h3>
+<p>Cada usuario tiene su propio repositorio. Los distintos repositorios pueden intercambiar y mezclar revisiones entre ellos. Es frecuente el uso de un repositorio, que está normalmente disponible, que sirve de punto de sincronización de los distintos repositorios locales. Ejemplos: Git y Mercurial.</p>
+<figure>
+  <img src="imagenes/git-distrib.png"/>
+  <figcaption>Sistema de control de versiones distribuido.</figcaption>
+</figure>
+
+<h4 id="ventajas-de-sistemas-distribuidos">Ventajas de sistemas distribuidos<a class="headerlink" href="#ventajas-de-sistemas-distribuidos" title="Permanent link">&para;</a></h4>
+<ul>
+<li>No es necesario estar conectado para guardar cambios.</li>
+<li>Posibilidad de continuar trabajando si el repositorio remoto no está accesible.</li>
+<li>Se necesitan menos recursos para el repositorio remoto.</li>
+<li>Más flexibles al permitir gestionar cada repositorio personal como se quiera.</li>
+<li>El repositorio central está más libre de ramas de pruebas.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<p>Esta última ventaja permite que las ramas experimentales y pruebas personales no saturen el repositorio principal, facilitando una gestión más limpia y ordenada del proyecto.</p>
+</div>
+<hr />
+<h2 id="introduccion-a-git">Introducción a Git<a class="headerlink" href="#introduccion-a-git" title="Permanent link">&para;</a></h2>
+<p>Git es un sistema de control de versiones distribuido que se diferencia del resto en el modo en que modela sus datos. La mayoría de los demás sistemas almacenan la información como una lista de cambios en los archivos, mientras que Git modela sus datos más como un conjunto de instantáneas de un mini sistema de archivos.</p>
+<figure>
+  <img src="imagenes/git-modelo-datos-tradicional.png"/>
+  <figcaption>Modelo de datos de los sistemas distribuidos tradicionales.</figcaption>
+</figure>
+
+<figure>
+  <img src="imagenes/git-modelo-datos.png"/>
+  <figcaption>Modelo de datos de Git.</figcaption>
+</figure>
+
+<blockquote>
+<p><strong>¿Qué significa que Git modela sus datos como instantáneas?</strong></p>
+</blockquote>
+<p>Cuando decimos que <strong>"Git modela sus datos como un conjunto de instantáneas de un mini sistema de archivos"</strong>, nos referimos a que <strong>cada vez que confirmas cambios con un commit, Git guarda una fotografía completa del estado de todos los archivos del proyecto en ese momento</strong>.  </p>
+<blockquote>
+<p>Es decir, aunque generalmente almacena sólo los archivos que han cambiado, Git puede <strong>reconstruir el proyecto entero en cualquier commit</strong>.</p>
+</blockquote>
+<p>Esto <strong>contrasta con otros sistemas</strong> de control de versiones, que normalmente almacenan únicamente las diferencias (deltas) o cambios línea a línea respecto a versiones anteriores.</p>
+<div class="admonition tip">
+<p class="admonition-title">Modelo de instantáneas en Git</p>
+<ul>
+<li>En Git, <strong>cada commit representa un estado completo y consistente del conjunto de archivos del proyecto</strong>.</li>
+<li>Si un archivo <strong>no ha sido modificado</strong> en un commit, Git simplemente <strong>apunta a la versión anterior</strong> de ese archivo, lo que evita duplicados y hace el almacenamiento muy eficiente.</li>
+<li>En resumen, <strong>puedes imaginar Git como una colección de fotografías del proyecto a lo largo del tiempo</strong>, en lugar de una simple lista de instrucciones para rehacer los pasos desde el principio.</li>
+<li>De este modo, <strong>volver a cualquier estado anterior es muy sencillo y rápido</strong>, ya que cada snapshot (instantánea) mantiene toda la información necesaria.</li>
+</ul>
+</div>
+<!-- ### Resumen de conceptos clave
+
+- **Repositorios centralizados:** Un único repositorio principal gestionado por uno o varios responsables. Ejemplos: CVS, Subversion.
+- **Repositorios distribuidos:** Cada usuario tiene copia completa del repositorio y puede intercambiar cambios con otros. Ejemplos: Git, Mercurial.
+- **Ventajas de sistemas distribuidos:** No requiere conexión constante, mayor flexibilidad y eficiencia de almacenamiento, separación clara de ramas experimentales.
+- **Modelo de datos de Git:** Git guarda instantáneas completas del proyecto en cada commit, no sólo diferencias línea a línea.
+- **Eficiencia de almacenamiento:** Los archivos no cambiados en un commit apuntan a la versión anterior, evitando duplicación.
+- **Recuperación de estados:** Git facilita volver a cualquier estado anterior rápidamente gracias a su modelo de instantáneas. -->
+
+<h3 id="los-tres-estados">Los tres estados<a class="headerlink" href="#los-tres-estados" title="Permanent link">&para;</a></h3>
+<p>Git tiene tres estados principales en los que se pueden encontrar tus archivos:</p>
+<ul>
+<li><strong>Modificado (modified)</strong>: has cambiado el archivo en tu directorio de trabajo, pero Git aún no lo rastrea para el próximo commit. Puedes descartarlo con <code>git restore &lt;archivo&gt;</code> o prepararlo con <code>git add</code>.</li>
+<li><strong>Preparado (staged)</strong>: el cambio está en el área de preparación (index) y se incluirá en el próximo commit. Puedes des-prepararlo con <code>git restore --staged &lt;archivo&gt;</code> o confirmarlo con <code>git commit</code>.</li>
+<li><strong>Confirmado (committed)</strong>: los datos están almacenados de manera segura en tu base de datos local (dentro de <code>.git</code>). Forma parte del historial y puedes recuperar ese estado cuando quieras. Normalmente llegas aquí con <code>git commit</code>.</li>
+</ul>
+<p>Esto nos lleva a las tres secciones principales de un proyecto de Git: el directorio de Git (Git directory), el directorio de trabajo (working directory), y el área de preparación (staging area).</p>
+<figure>
+  <img src="imagenes/git-tres-estados.png"/>
+  <figcaption>Directorio de trabajo, área de preparación, y directorio de Git.</figcaption>
+</figure>
+
+<p>Cada área de Git está asociada a uno de los tres estados principales, y entender esta relación ayuda a mejorar tu flujo de trabajo y control sobre el proyecto:</p>
+<ul>
+<li>
+<p><strong>Directorio de trabajo (Working directory)</strong> → <strong>Modificado (modified):</strong><br />
+  Aquí es donde desarrollas y editas archivos. Cada cambio que hagas pasa primero por el directorio de trabajo. Mejorar el uso de esta área significa mantener solo los archivos realmente en desarrollo y evitar mezclar cambios no relacionados, lo que facilita identificar y organizar tus modificaciones.</p>
+</li>
+<li>
+<p><strong>Área de preparación (Staging area)</strong> → <strong>Preparado (staged):</strong><br />
+  Cuando añades archivos a la <em>staging area</em> (<code>git add</code>), seleccionas exactamente qué cambios formarán parte del siguiente commit. Aprovechar este estado te permite preparar commits más limpios, revisar exactamente qué será incluido y dividir el trabajo en etapas lógicas y documentadas. Así, tus confirmaciones serán más comprensibles y útiles para todo el equipo.</p>
+</li>
+<li>
+<p><strong>Directorio de Git (.git directory)</strong> → <strong>Confirmado (committed):</strong><br />
+  Una vez confirmados los cambios (<code>git commit</code>), estos se almacenan de forma segura en el historial del repositorio. Mejorar el uso de esta área implica hacer commits frecuentes y descriptivos, permitiendo regresar fácilmente a cualquier punto seguro del proyecto, identificar errores rápidamente y facilitar la colaboración.</p>
+</li>
+</ul>
+<p>En resumen, al comprender y aprovechar cada área y su estado asociado, mejorarás tanto la organización interna de tu trabajo como la colaboración y trazabilidad en el proyecto.</p>
+<h3 id="flujos-de-trabajo-distribuidos-con-git">Flujos de trabajo distribuidos con Git<a class="headerlink" href="#flujos-de-trabajo-distribuidos-con-git" title="Permanent link">&para;</a></h3>
+<p>Hemos visto en qué consiste un entorno de control de versiones distribuido, pero más allá de la simple definición, existe más de una manera de gestionar los repositorios. Estos son los flujos de trabajo más comunes en Git.</p>
+<h4 id="flujo-de-trabajo-centralizado">Flujo de trabajo centralizado<a class="headerlink" href="#flujo-de-trabajo-centralizado" title="Permanent link">&para;</a></h4>
+<p>Existe un único repositorio o punto central que guarda el código y todo el mundo sincroniza su trabajo con él. Si dos desarrolladores clonan desde el punto central, y ambos hacen cambios; tan solo el primero de ellos en enviar sus cambios de vuelta lo podrá hacer limpiamente. El segundo desarrollador deberá fusionar previamente su trabajo con el del primero, antes de enviarlo, para evitar el sobreescribir los cambios del primero.</p>
+<figure>
+  <img src="imagenes/git-flujo-centralizado.png"/>
+  <figcaption>Flujo de trabajo centralizado.</figcaption>
+</figure>
+
+<h4 id="flujo-de-trabajo-del-gestor-de-integraciones">Flujo de trabajo del Gestor-de-Integraciones<a class="headerlink" href="#flujo-de-trabajo-del-gestor-de-integraciones" title="Permanent link">&para;</a></h4>
+<p>Al permitir múltiples repositorios remotos, en Git es posible tener un flujo de trabajo donde cada desarrollador tenga acceso de escritura a su propio repositorio público y acceso de lectura a los repositorios de todos los demás. Habitualmente, este escenario suele incluir un repositorio canónico, representante "oficial" del proyecto.</p>
+<figure>
+  <img src="imagenes/git-flujo-integracion.png"/>
+  <figcaption>Flujo de trabajo del Gestor-de-Integraciones.</figcaption>
+</figure>
+
+<div class="admonition info">
+<p class="admonition-title">Información</p>
+<p>Este modelo ganó popularidad especialmente con la llegada de plataformas como GitHub, que se explicará más adelante.</p>
+</div>
+<h4 id="flujo-de-trabajo-con-dictador-y-tenientes">Flujo de trabajo con Dictador y Tenientes<a class="headerlink" href="#flujo-de-trabajo-con-dictador-y-tenientes" title="Permanent link">&para;</a></h4>
+<p>Es una variante del flujo de trabajo con múltiples repositorios. Se utiliza generalmente en proyectos muy grandes, con cientos de colaboradores. Un ejemplo muy conocido es el del kernel de Linux. Unos gestores de integración se encargan de partes concretas del repositorio; y se denominan tenientes. Todos los tenientes rinden cuentas a un gestor de integración; conocido como el dictador benevolente. El repositorio del dictador benevolente es el repositorio de referencia, del que recuperan (pull) todos los colaboradores.</p>
+<figure>
+  <img src="imagenes/git-flujo-dictador.png"/>
+  <figcaption>Flujo de trabajo con Dictador y Tenientes.</figcaption>
+</figure>
+
+<h3 id="caracteristicas-principales-de-git">Características principales de Git<a class="headerlink" href="#caracteristicas-principales-de-git" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Distribuido</strong>: Cada desarrollador tiene una copia completa del historial del proyecto.</li>
+<li><strong>Velocidad</strong>: Optimizado para proyectos grandes como el kernel de Linux.</li>
+<li><strong>Integridad</strong>: Usa checksums SHA-1 para verificar la integridad de los datos.</li>
+<li><strong>Flexibilidad</strong>: Soporta múltiples flujos de trabajo y estrategias de branching.</li>
+</ul>
+<hr />
+<h2 id="aspectos-basicos-de-git">Aspectos básicos de Git<a class="headerlink" href="#aspectos-basicos-de-git" title="Permanent link">&para;</a></h2>
+<h3 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h3>
+<h4 id="instalando-en-linux">Instalando en Linux<a class="headerlink" href="#instalando-en-linux" title="Permanent link">&para;</a></h4>
+<p>Si quieres instalar Git en Linux a través de un instalador binario, en general puedes hacerlo a través de la herramienta básica de gestión de paquetes que trae tu distribución. Si estás en Fedora, puedes usar yum:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>git-core
+</code></pre></div>
+<p>O si estás en una distribución basada en Debian como Ubuntu, prueba con apt-get:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+</code></pre></div>
+<h4 id="instalando-en-windows">Instalando en Windows<a class="headerlink" href="#instalando-en-windows" title="Permanent link">&para;</a></h4>
+<p>Instalar Git en Windows es muy fácil. El proyecto msysGit tiene uno de los procesos de instalación más sencillos. Simplemente descarga el archivo exe del instalador desde la página de GitHub, y ejecútalo:</p>
+<p><strong>Enlace</strong>: http://msysgit.github.com/</p>
+<p>Una vez instalado, tendrás tanto la versión de línea de comandos (incluido un cliente SSH que nos será útil más adelante) como la interfaz gráfica de usuario estándar. Se recomienda no modificar las opciones que trae por defecto el instalador.</p>
+<h4 id="instalando-en-macos">Instalando en MacOS<a class="headerlink" href="#instalando-en-macos" title="Permanent link">&para;</a></h4>
+<p>En MacOS se recomienda tener instalada la herramienta <a href="https://brew.sh/">homebrew</a>. Después, es tan fácil como ejecutar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>git
+</code></pre></div>
+<h3 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">&para;</a></h3>
+<h4 id="tu-identidad">Tu identidad<a class="headerlink" href="#tu-identidad" title="Permanent link">&para;</a></h4>
+<p>Lo primero que deberías hacer cuando instalas Git es establecer tu nombre de usuario y dirección de correo electrónico. Esto es importante porque las confirmaciones de cambios (commits) en Git usan esta información, y es introducida de manera inmutable en los commits que envías:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># --global: aplica para el usuario actual (se guarda en ~/.gitconfig)</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Nombre que aparecerá como autor en tus commits</span>
+<span class="linenos" data-linenos="4 "></span>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;John Doe&quot;</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># Correo asociado a tus commits (usado por plataformas como GitHub)</span>
+<span class="linenos" data-linenos="7 "></span>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span>johndoe@example.com
+</code></pre></div>
+<p>También se recomienda configurar el siguiente parámetro:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Hace que &#39;git push&#39; envíe solo la rama actual a su rama remota homónima</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># y falle si la rama no tiene upstream configurado (comportamiento seguro)</span>
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>push.default<span class="w"> </span>simple
+</code></pre></div>
+<h4 id="bash-completion">Bash Completion<a class="headerlink" href="#bash-completion" title="Permanent link">&para;</a></h4>
+<p><em>Bash completion</em> permite el autocompletado inteligente de comandos, opciones y nombres de archivo al pulsar <code>Tab</code>. Para Git, sugiere subcomandos (<code>commit</code>, <code>checkout</code>, <code>cherry-pick</code>…), ramas, etiquetas y archivos rastreados, reduciendo errores de tecleo y acelerando el flujo.</p>
+<p>¿Por qué usarlo?</p>
+<ul>
+<li><strong>Velocidad</strong>: menos tecleo en comandos largos u opciones complejas.</li>
+<li><strong>Exactitud</strong>: evita fallos por nombres de rama/archivo mal escritos.</li>
+<li><strong>Descubrimiento</strong>: sugiere opciones disponibles al escribir <code>--</code> y tabular.</li>
+</ul>
+<p>Cómo habilitarlo en Ubuntu/Debian:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Instala los scripts de completion</span>
+<span class="linenos" data-linenos=" 2 "></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>bash-completion
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Activa bash-completion en tu sesión (normalmente basta con este include)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;[[ $PS1 &amp;&amp; -f /usr/share/bash-completion/bash_completion ]] &amp;&amp; \</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="s1">    . /usr/share/bash-completion/bash_completion&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Habilita auto-completado específico de Git (si no se carga automáticamente)</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/usr/share/bash-completion/completions/git<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source /usr/share/bash-completion/completions/git&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="linenos" data-linenos="11 "></span><span class="k">fi</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Recarga la configuración</span>
+<span class="linenos" data-linenos="14 "></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<p>En muchas distribuciones modernas, basta con instalar <code>bash-completion</code>: el resto de la configuración se carga automáticamente en shells interactivos.</p>
+</div>
+<p>macOS (Homebrew):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Instala bash-completion v2 (para Bash 4+)</span>
+<span class="linenos" data-linenos=" 2 "></span>brew<span class="w"> </span>install<span class="w"> </span>bash-completion@2
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Añade la carga automática a tu shell (ARM/Apple Silicon)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;if [ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]; then\n  . /opt/homebrew/etc/profile.d/bash_completion.sh\nfi&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Para Intel Macs, usa /usr/local en lugar de /opt/homebrew</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then\n  . /usr/local/etc/profile.d/bash_completion.sh\nfi&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Recarga</span>
+<span class="linenos" data-linenos="11 "></span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
+</code></pre></div>
+<p>Windows (Git Bash):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Git for Windows ya incluye scripts de completion y prompt.</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Actívalos añadiendo estas líneas a ~/.bashrc</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/mingw64/share/git/completion/git-completion.bash<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span>.<span class="w"> </span>/mingw64/share/git/completion/git-completion.bash
+<span class="linenos" data-linenos=" 6 "></span><span class="k">fi</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># (Opcional) Prompt enriquecido con estado de Git</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/mingw64/share/git/completion/git-prompt.sh<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span>.<span class="w"> </span>/mingw64/share/git/completion/git-prompt.sh
+<span class="linenos" data-linenos="11 "></span><span class="k">fi</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Recarga la configuración</span>
+<span class="linenos" data-linenos="14 "></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<!-- ---
+
+## Uso básico de Git
+
+### Crear un proyecto
+
+#### Crear un programa "Hola Mundo"
+
+Creamos un directorio donde colocar el código:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>mkdir<span class="w"> </span>curso-de-git
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>curso-de-git
+</code></pre></div>
+
+**Para IAW (Implantación de Aplicaciones Web):** Creamos un fichero `index.html` básico:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="11 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+**Para ASO (Administración de Sistemas Operativos):** Creamos un script `hola.sh`:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola Mundo - Script de administración de sistemas&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+#### Crear el repositorio
+
+Para crear un nuevo repositorio se usa la orden `git init`:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>init
+<span class="linenos" data-linenos="2 "></span>Initialized<span class="w"> </span>empty<span class="w"> </span>Git<span class="w"> </span>repository<span class="w"> </span><span class="k">in</span><span class="w"> </span>/home/usuario/curso-de-git/.git/
+</code></pre></div>
+
+#### Añadir la aplicación
+
+Vamos a almacenar el archivo que hemos creado en el repositorio para poder trabajar:
+
+**Para IAW:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>index.html
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Creación del proyecto web&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">[</span>master<span class="w"> </span><span class="o">(</span>root-commit<span class="o">)</span><span class="w"> </span>e19f2c1<span class="o">]</span><span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto<span class="w"> </span>web
+<span class="linenos" data-linenos="4 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">10</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>
+<span class="linenos" data-linenos="5 "></span><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>index.html
+</code></pre></div>
+
+**Para ASO:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>hola.sh
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Creación del script de administración&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">[</span>master<span class="w"> </span><span class="o">(</span>root-commit<span class="o">)</span><span class="w"> </span>e19f2c1<span class="o">]</span><span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>script<span class="w"> </span>de<span class="w"> </span>administración
+<span class="linenos" data-linenos="4 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">4</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>
+<span class="linenos" data-linenos="5 "></span><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>hola.sh
+</code></pre></div>
+
+#### Comprobar el estado del repositorio
+
+Con la orden `git status` podemos ver en qué estado se encuentran los archivos de nuestro repositorio:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
+<span class="linenos" data-linenos="2 "></span><span class="c1"># On branch master</span>
+<span class="linenos" data-linenos="3 "></span>nothing<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>working<span class="w"> </span>directory<span class="w"> </span>clean<span class="o">)</span>
+</code></pre></div>
+
+Si modificamos el archivo:
+
+**Para IAW - modificamos `index.html`:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 9 "></span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="11 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Fecha actual: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="12 "></span>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleDateString</span><span class="p">();</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="15 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="16 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+**Para ASO - modificamos `hola.sh`:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sistema: </span><span class="k">$(</span>uname<span class="w"> </span>-a<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+Y volvemos a comprobar el estado del repositorio:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># On branch master</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Changes not staged for commit:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">#</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">#   modified:   index.html    # Para IAW</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">#   modified:   hola.sh       # Para ASO</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">#</span>
+<span class="linenos" data-linenos="10 "></span>no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+</code></pre></div>
+
+#### Añadir cambios
+
+Con la orden `git add` indicamos a git que prepare los cambios para que sean almacenados:
+
+**Para IAW:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>index.html
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>status
+<span class="linenos" data-linenos="3 "></span><span class="c1"># On branch master</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Changes to be committed:</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">#</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">#   modified:   index.html</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">#</span>
+</code></pre></div>
+
+**Para ASO:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>hola.sh
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>status
+<span class="linenos" data-linenos="3 "></span><span class="c1"># On branch master</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Changes to be committed:</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">#</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">#   modified:   hola.sh</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">#</span>
+</code></pre></div>
+
+#### Confirmar los cambios
+
+Con la orden `git commit` confirmamos los cambios definitivamente, lo que hace que se guarden permanentemente en nuestro repositorio:
+
+**Para IAW:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir JavaScript para mostrar fecha dinámicamente&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">[</span>master<span class="w"> </span>efc252e<span class="o">]</span><span class="w"> </span>Añadir<span class="w"> </span>JavaScript<span class="w"> </span>para<span class="w"> </span>mostrar<span class="w"> </span>fecha<span class="w"> </span>dinámicamente
+<span class="linenos" data-linenos="3 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">4</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>
+</code></pre></div>
+
+**Para ASO:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Mejorar script con parámetros y información del sistema&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">[</span>master<span class="w"> </span>efc252e<span class="o">]</span><span class="w"> </span>Mejorar<span class="w"> </span>script<span class="w"> </span>con<span class="w"> </span>parámetros<span class="w"> </span>y<span class="w"> </span>información<span class="w"> </span>del<span class="w"> </span>sistema
+<span class="linenos" data-linenos="3 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">3</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">1</span><span class="w"> </span>deletion<span class="o">(</span>-<span class="o">)</span>
+</code></pre></div>
+
+Volvemos a comprobar el estado del repositorio:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
+<span class="linenos" data-linenos="2 "></span><span class="c1"># On branch master</span>
+<span class="linenos" data-linenos="3 "></span>nothing<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>working<span class="w"> </span>directory<span class="w"> </span>clean<span class="o">)</span>
+</code></pre></div>
+
+#### Diferencias entre *workdir* y *staging*
+
+Modificamos nuestra aplicación para que soporte un parámetro por defecto y añadimos los cambios:
+
+**Para IAW - modificamos `index.html`:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="p">.</span><span class="nc">fecha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#666</span><span class="p">;</span><span class="w"> </span><span class="k">font-style</span><span class="p">:</span><span class="w"> </span><span class="kc">italic</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="13 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="14 "></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="15 "></span>        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="16 "></span>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="17 "></span>        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;</span>Fecha actual: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="18 "></span>        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;es-ES&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="21 "></span>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="22 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="23 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+**Para ASO - modificamos `hola.sh`:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR</span>
+<span class="linenos" data-linenos="3 "></span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d/%m/%Y %H:%M:%S&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sistema: </span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>uname<span class="w"> </span>-r<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Directorio actual: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+Este vez añadimos los cambios a la fase de *staging* pero sin confirmarlos (*commit*):
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Para IAW</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>add<span class="w"> </span>index.html
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Para ASO  </span>
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>add<span class="w"> </span>hola.sh
+</code></pre></div>
+
+Volvemos a modificar el programa para indicar con un comentario lo que hemos hecho:
+
+**Para IAW - modificamos `index.html`:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 7 "></span>    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="c">/* Estilos CSS para mejorar la presentación */</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="p">.</span><span class="nc">fecha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#666</span><span class="p">;</span><span class="w"> </span><span class="k">font-style</span><span class="p">:</span><span class="w"> </span><span class="kc">italic</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="13 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="14 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="15 "></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="16 "></span>        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="17 "></span>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="18 "></span>        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;</span>Fecha actual: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="19 "></span>        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="c1">// JavaScript para mostrar la fecha actual</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;es-ES&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="23 "></span>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="24 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="linenos" data-linenos="25 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+**Para ASO - modificamos `hola.sh`:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR - Versión mejorada</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># El nombre por defecto es Mundo</span>
+<span class="linenos" data-linenos="4 "></span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
+<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d/%m/%Y %H:%M:%S&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sistema: </span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>uname<span class="w"> </span>-r<span class="k">)</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Directorio actual: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+Y vemos el estado en el que está el repositorio:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># On branch master</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Changes to be committed:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">#</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">#   modified:   index.html    # Para IAW</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">#   modified:   hola.sh       # Para ASO</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">#</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># Changes not staged for commit:</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">#</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">#   modified:   index.html    # Para IAW</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">#   modified:   hola.sh       # Para ASO</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">#</span>
+</code></pre></div>
+
+Podemos ver como aparecen el archivo dos veces. El primero está preparado para ser confirmado y está almacenado en la zona de *staging*. El segundo indica que el archivo está modificado otra vez en la zona de trabajo (*workdir*).
+
+!!! warning "Advertencia"
+    Si volvieramos a hacer un `git add index.html` o `git add hola.sh` sobreescribiríamos los cambios previos que había en la zona de *staging*.
+
+#### Ignorando archivos
+
+La orden `git add .` o `git add nombre_directorio` es muy cómoda, ya que nos permite añadir todos los archivos del proyecto o todos los contenidos en un directorio y sus subdirectorios. Es mucho más rápido que tener que ir añadiéndolos uno por uno. El problema es que, si no se tiene cuidado, se puede terminar por añadir archivos innecesarios o con información sensible.
+
+Para indicarle a *git* que debe ignorar un archivo, se puede crear un fichero llamado *.gitignore*, bien en la raíz del proyecto o en los subdirectorios que queramos. Dicho fichero puede contener patrones, uno en cada línea, que especifiquen qué archivos deben ignorarse. El formato es el siguiente:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># .gitignore</span>
+<span class="linenos" data-linenos="2 "></span>dir1/<span class="w">           </span><span class="c1"># ignora todo lo que contenga el directorio dir1</span>
+<span class="linenos" data-linenos="3 "></span>!dir1/info.txt<span class="w">  </span><span class="c1"># El operador ! excluye del ignore a dir1/info.txt (sí se guardaría)</span>
+<span class="linenos" data-linenos="4 "></span>dir2/*.txt<span class="w">      </span><span class="c1"># ignora todos los archivos txt que hay en el directorio dir2</span>
+<span class="linenos" data-linenos="5 "></span>dir3/**/*.txt<span class="w">   </span><span class="c1"># ignora todos los archivos txt que hay en el dir3 y sus subdirectorios</span>
+<span class="linenos" data-linenos="6 "></span>*.o<span class="w">             </span><span class="c1"># ignora todos los archivos con extensión .o en todos los directorios</span>
+</code></pre></div>
+
+Cada tipo de proyecto genera sus ficheros temporales, así que para cada proyecto hay un `.gitignore` apropiado. Existen repositorios que ya tienen creadas plantillas. Podéis encontrar uno en https://github.com/github/gitignore
+
+#### Ignorando archivos globalmente
+
+Si bien, los archivos que hemos metido en `.gitignore`, deben ser aquellos ficheros temporales o de configuración que se pueden crear durante las fases de compilación o ejecución del programa, en ocasiones habrá otros ficheros que tampoco debemos introducir en el repositorio y que son recurrentes en todos los proyectos. En dicho caso, es más útil tener un *gitignore* que sea global a todos nuestros proyectos.
+
+Para indicar a *git* que queremos tener un fichero de *gitignore* global, tenemos que configurarlo con la siguiente orden:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.excludesfile<span class="w"> </span><span class="nv">$HOME</span>/.gitignore_global
+</code></pre></div>
+
+### Trabajando con el historial
+
+#### Observando los cambios
+
+Con la orden `git log` podemos ver todos los cambios que hemos hecho:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>log
+<span class="linenos" data-linenos=" 2 "></span>commit<span class="w"> </span>fd4da946326fbe8b24e89282ad25a71721bf40f6
+<span class="linenos" data-linenos=" 3 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
+<span class="linenos" data-linenos=" 4 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">12</span>:51:01<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>comentario<span class="w"> </span>al<span class="w"> </span>cambio<span class="w"> </span>del<span class="w"> </span>valor<span class="w"> </span>por<span class="w"> </span>defecto
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span>commit<span class="w"> </span>3283e0d306c8d42d55ffcb64e456f10510df8177
+<span class="linenos" data-linenos=" 9 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
+<span class="linenos" data-linenos="10 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">12</span>:50:00<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>parámetro<span class="w"> </span>por<span class="w"> </span>defecto
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span>commit<span class="w"> </span>efc252e11939351505a426a6e1aa5bb7dc1dd7c0
+<span class="linenos" data-linenos="15 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
+<span class="linenos" data-linenos="16 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">12</span>:13:26<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span>Parametrización<span class="w"> </span>del<span class="w"> </span>programa
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span>commit<span class="w"> </span>e19f2c1701069d9d1159e9ee21acaa1bbc47d264
+<span class="linenos" data-linenos="21 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
+<span class="linenos" data-linenos="22 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:55:23<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="w">    </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
+</code></pre></div>
+
+También es posible ver versiones abreviadas o limitadas, dependiendo de los parámetros:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+<span class="linenos" data-linenos="2 "></span>fd4da94<span class="w"> </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>comentario<span class="w"> </span>al<span class="w"> </span>cambio<span class="w"> </span>del<span class="w"> </span>valor<span class="w"> </span>por<span class="w"> </span>defecto
+<span class="linenos" data-linenos="3 "></span>3283e0d<span class="w"> </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>parámetro<span class="w"> </span>por<span class="w"> </span>defecto
+<span class="linenos" data-linenos="4 "></span>efc252e<span class="w"> </span>Parametrización<span class="w"> </span>del<span class="w"> </span>programa
+<span class="linenos" data-linenos="5 "></span>e19f2c1<span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
+</code></pre></div>
+
+#### Creando alias
+
+Como estas órdenes son demasiado largas, Git nos permite crear alias para crear nuevas órdenes parametrizadas. Para ello podemos configurar nuestro entorno con la orden `git config` de la siguiente manera:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.hist<span class="w"> </span><span class="s2">&quot;log --pretty=format:&#39;%h %ad | %s%d [%an]&#39; --graph --date=short&quot;</span>
+</code></pre></div>
+
+!!! example "Ejemplo"
+    Puedes configurar incluso alias para abreviar comandos. Algunos ejemplos de alias útiles:
+
+    <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.br<span class="w"> </span>branch
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.co<span class="w"> </span>checkout
+<span class="linenos" data-linenos="3 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.ci<span class="w"> </span>commit
+<span class="linenos" data-linenos="4 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.st<span class="w"> </span><span class="s2">&quot;status -u&quot;</span>
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.cane<span class="w"> </span><span class="s2">&quot;commit --amend --no-edit&quot;</span>
+</code></pre></div>
+
+#### Recuperando versiones anteriores
+
+Cada cambio es etiquetado por un hash, para poder regresar a ese momento del estado del proyecto se usa la orden `git checkout`:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>e19f2c1
+<span class="linenos" data-linenos=" 2 "></span>Note:<span class="w"> </span>checking<span class="w"> </span>out<span class="w"> </span><span class="s1">&#39;e19f2c1&#39;</span>.
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>You<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">&#39;detached HEAD&#39;</span><span class="w"> </span>state.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>look<span class="w"> </span>around,<span class="w"> </span>make<span class="w"> </span>experimental
+<span class="linenos" data-linenos=" 5 "></span>changes<span class="w"> </span>and<span class="w"> </span>commit<span class="w"> </span>them,<span class="w"> </span>and<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>discard<span class="w"> </span>any<span class="w"> </span>commits<span class="w"> </span>you<span class="w"> </span>make<span class="w"> </span><span class="k">in</span><span class="w"> </span>this
+<span class="linenos" data-linenos=" 6 "></span>state<span class="w"> </span>without<span class="w"> </span>impacting<span class="w"> </span>any<span class="w"> </span>branches<span class="w"> </span>by<span class="w"> </span>performing<span class="w"> </span>another<span class="w"> </span>checkout.
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span>If<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>branch<span class="w"> </span>to<span class="w"> </span>retain<span class="w"> </span>commits<span class="w"> </span>you<span class="w"> </span>create,<span class="w"> </span>you<span class="w"> </span>may
+<span class="linenos" data-linenos=" 9 "></span><span class="k">do</span><span class="w"> </span>so<span class="w"> </span><span class="o">(</span>now<span class="w"> </span>or<span class="w"> </span>later<span class="o">)</span><span class="w"> </span>by<span class="w"> </span>using<span class="w"> </span>-b<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>checkout<span class="w"> </span><span class="nb">command</span><span class="w"> </span>again.<span class="w"> </span>Example:
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>new_branch_name
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>HEAD<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>at<span class="w"> </span>e19f2c1...<span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Para IAW</span>
+<span class="linenos" data-linenos="15 "></span>$<span class="w"> </span>cat<span class="w"> </span>index.html
+<span class="linenos" data-linenos="16 "></span>&lt;!DOCTYPE<span class="w"> </span>html&gt;
+<span class="linenos" data-linenos="17 "></span>&lt;html<span class="w"> </span><span class="nv">lang</span><span class="o">=</span><span class="s2">&quot;es&quot;</span>&gt;
+<span class="linenos" data-linenos="18 "></span>&lt;head&gt;
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span>&lt;meta<span class="w"> </span><span class="nv">charset</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span>&gt;
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span>&lt;title&gt;Mi<span class="w"> </span>Primera<span class="w"> </span>Página<span class="w"> </span>Web&lt;/title&gt;
+<span class="linenos" data-linenos="21 "></span>&lt;/head&gt;
+<span class="linenos" data-linenos="22 "></span>&lt;body&gt;
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span>&lt;h1&gt;Hello,<span class="w"> </span>World&lt;/h1&gt;
+<span class="linenos" data-linenos="24 "></span><span class="w">    </span>&lt;p&gt;Esta<span class="w"> </span>es<span class="w"> </span>mi<span class="w"> </span>primera<span class="w"> </span>página<span class="w"> </span>web<span class="w"> </span>para<span class="w"> </span>el<span class="w"> </span>proyecto<span class="w"> </span>ASIR.&lt;/p&gt;
+<span class="linenos" data-linenos="25 "></span>&lt;/body&gt;
+<span class="linenos" data-linenos="26 "></span>&lt;/html&gt;
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span><span class="c1"># Para ASO</span>
+<span class="linenos" data-linenos="29 "></span>$<span class="w"> </span>cat<span class="w"> </span>hola.sh
+<span class="linenos" data-linenos="30 "></span><span class="c1">#!/bin/bash</span>
+<span class="linenos" data-linenos="31 "></span><span class="c1"># Script de ejemplo para ASIR</span>
+<span class="linenos" data-linenos="32 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, World - Script de administración de sistemas&quot;</span>
+<span class="linenos" data-linenos="33 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+#### Volver a la última versión de la rama master
+
+Usamos `git checkout` indicando el nombre de la rama:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>master
+<span class="linenos" data-linenos="2 "></span>Previous<span class="w"> </span>HEAD<span class="w"> </span>position<span class="w"> </span>was<span class="w"> </span>e19f2c1...<span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
+</code></pre></div>
+
+#### Etiquetando versiones
+
+Para poder recuperar versiones concretas en la historia del repositorio, podemos etiquetarlas, lo cual es más fácil que usar un hash. Para eso usaremos la orden `git tag`:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>v1
+</code></pre></div>
+
+Ahora vamos a etiquetar la versión inmediatamente anterior como v1-beta. Para ello podemos usar los modificadores `^` o `~` que nos llevarán a un ancestro determinado. Las siguientes dos órdenes son equivalentes:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>v1^
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>v1~1
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>v1-beta
+</code></pre></div>
+
+Si ejecutamos la orden sin parámetros nos mostrará todas las etiquetas existentes:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>tag
+<span class="linenos" data-linenos="2 "></span>v1
+<span class="linenos" data-linenos="3 "></span>v1-beta
+</code></pre></div>
+
+#### Visualizar cambios
+
+Para ver los cambios que se han realizado en el código usamos la orden `git diff`. La orden sin especificar nada más, mostrará los cambios que no han sido añadidos aún, es decir, todos los cambios que se han hecho antes de usar la orden `git add`. Después se puede indicar un parámetro y dará los cambios entre la versión indicada y el estado actual. O para comparar dos versiones entre sí, se indica la más antigua y la más nueva. Ejemplo:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>v1-beta<span class="w"> </span>v1
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Para IAW - diff de index.html</span>
+<span class="linenos" data-linenos=" 3 "></span>diff<span class="w"> </span>--git<span class="w"> </span>a/index.html<span class="w"> </span>b/index.html
+<span class="linenos" data-linenos=" 4 "></span>index<span class="w"> </span>a31e01f..25a35c0<span class="w"> </span><span class="m">100644</span>
+<span class="linenos" data-linenos=" 5 "></span>---<span class="w"> </span>a/index.html
+<span class="linenos" data-linenos=" 6 "></span>+++<span class="w"> </span>b/index.html
+<span class="linenos" data-linenos=" 7 "></span>@@<span class="w"> </span>-1,3<span class="w"> </span>+1,4<span class="w"> </span>@@
+<span class="linenos" data-linenos=" 8 "></span><span class="w"> </span>&lt;!DOCTYPE<span class="w"> </span>html&gt;
+<span class="linenos" data-linenos=" 9 "></span>+&lt;!--<span class="w"> </span>Comentario<span class="w"> </span>añadido<span class="w"> </span>para<span class="w"> </span>mejorar<span class="w"> </span>la<span class="w"> </span>documentación<span class="w"> </span>--&gt;
+<span class="linenos" data-linenos="10 "></span>&lt;!--<span class="w"> </span>&lt;html<span class="w"> </span><span class="nv">lang</span><span class="o">=</span><span class="s2">&quot;es&quot;</span>&gt;
+<span class="linenos" data-linenos="11 "></span><span class="w"> </span>&lt;head&gt;
+<span class="linenos" data-linenos="12 "></span><span class="w">     </span>&lt;meta<span class="w"> </span><span class="nv">charset</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span>&gt;
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Para ASO - diff de hola.sh  </span>
+<span class="linenos" data-linenos="15 "></span>diff<span class="w"> </span>--git<span class="w"> </span>a/hola.sh<span class="w"> </span>b/hola.sh
+<span class="linenos" data-linenos="16 "></span>index<span class="w"> </span>a31e01f..25a35c0<span class="w"> </span><span class="m">100644</span>
+<span class="linenos" data-linenos="17 "></span>---<span class="w"> </span>a/hola.sh
+<span class="linenos" data-linenos="18 "></span>+++<span class="w"> </span>b/hola.sh
+<span class="linenos" data-linenos="19 "></span>@@<span class="w"> </span>-1,3<span class="w"> </span>+1,4<span class="w"> </span>@@
+<span class="linenos" data-linenos="20 "></span><span class="w"> </span><span class="c1">#!/bin/bash</span>
+<span class="linenos" data-linenos="21 "></span>+#<span class="w"> </span>El<span class="w"> </span>nombre<span class="w"> </span>por<span class="w"> </span>defecto<span class="w"> </span>es<span class="w"> </span>Mundo
+<span class="linenos" data-linenos="22 "></span><span class="w"> </span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
+<span class="linenos" data-linenos="23 "></span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
+</code></pre></div>
+
+---
+
+## Repositorios remotos y Git Clone
+
+### Introducción a los repositorios remotos
+
+Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en algún lugar de la red. Puedes tener varios de ellos, cada uno de los cuales generalmente es de solo lectura o de lectura/escritura para ti. Colaborar con otros implica gestionar estos repositorios remotos y enviar (push) y recibir (pull) datos de ellos cuando necesites compartir trabajo.
+
+### Git Clone: Clonando un repositorio
+
+El comando `git clone` se utiliza para crear una copia de un repositorio existente en tu máquina local. Este comando descarga todo el historial del repositorio, incluyendo todas las ramas, commits y archivos.
+
+#### Sintaxis básica
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;url_del_repositorio&gt;<span class="w"> </span><span class="o">[</span>nombre_directorio<span class="o">]</span>
+</code></pre></div>
+
+#### Ejemplos de uso
+
+**1. Clonar un repositorio básico:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/usuario/proyecto.git
+</code></pre></div>
+
+**2. Clonar en un directorio específico:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/usuario/proyecto.git<span class="w"> </span>mi-proyecto
+</code></pre></div>
+
+**3. Clonar solo la rama principal (shallow clone):**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/usuario/proyecto.git
+</code></pre></div>
+
+**4. Clonar una rama específica:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>desarrollo<span class="w"> </span>https://github.com/usuario/proyecto.git
+</code></pre></div>
+
+#### URLs de repositorios
+
+Git soporta varios protocolos para acceder a repositorios remotos:
+
+- **HTTPS**: `https://github.com/usuario/proyecto.git`
+- **SSH**: `git@github.com:usuario/proyecto.git`
+- **Git**: `git://github.com/usuario/proyecto.git`
+- **Local**: `/path/to/repositorio` o `file:///path/to/repositorio`
+
+#### Configuración de repositorios remotos
+
+Después de clonar un repositorio, Git automáticamente configura un remoto llamado `origin` que apunta al repositorio del cual clonaste.
+
+**Verificar remotos configurados:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>-v
+<span class="linenos" data-linenos="2 "></span>origin<span class="w">  </span>https://github.com/usuario/proyecto.git<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+<span class="linenos" data-linenos="3 "></span>origin<span class="w">  </span>https://github.com/usuario/proyecto.git<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+</code></pre></div>
+
+**Añadir un remoto adicional:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/original/proyecto.git
+</code></pre></div>
+
+**Cambiar la URL de un remoto:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://github.com/usuario/nuevo-proyecto.git
+</code></pre></div>
+
+#### Flujo de trabajo típico con repositorios remotos
+
+1. **Clonar el repositorio:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/usuario/proyecto.git
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>proyecto
+</code></pre></div>
+
+2. **Crear una rama para tu trabajo:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>nueva-funcionalidad
+</code></pre></div>
+
+3. **Hacer cambios y commits:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir nueva funcionalidad&quot;</span>
+</code></pre></div>
+
+4. **Enviar cambios al repositorio remoto:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>nueva-funcionalidad
+</code></pre></div>
+
+5. **Sincronizar con cambios remotos:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+#### Comandos relacionados con repositorios remotos
+
+| Comando | Descripción |
+|---------|-------------|
+| `git remote` | Lista los remotos configurados |
+| `git remote -v` | Lista remotos con URLs |
+| `git remote add <nombre> <url>` | Añade un nuevo remoto |
+| `git remote remove <nombre>` | Elimina un remoto |
+| `git remote rename <viejo> <nuevo>` | Renombra un remoto |
+| `git fetch <remoto>` | Descarga cambios sin fusionarlos |
+| `git pull <remoto> <rama>` | Descarga y fusiona cambios |
+| `git push <remoto> <rama>` | Envía cambios al remoto |
+
+#### Casos de uso en el contexto ASIR
+
+**1. Configuración de infraestructura:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar scripts de configuración de servidores</span>
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/empresa/scripts-configuracion.git
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>scripts-configuracion
+<span class="linenos" data-linenos="4 "></span>$<span class="w"> </span>./configurar-servidor.sh
+</code></pre></div>
+
+**2. Gestión de configuraciones:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar repositorio de configuraciones</span>
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/empresa/configs-servidor.git
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>configs-servidor
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Modificar configuraciones</span>
+<span class="linenos" data-linenos="5 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
+<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Actualizar configuración de nginx&quot;</span>
+<span class="linenos" data-linenos="7 "></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+**3. Colaboración en proyectos:**
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar proyecto compartido</span>
+<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/equipo/proyecto-infraestructura.git
+<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>proyecto-infraestructura
+<span class="linenos" data-linenos="4 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>configuracion-red
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Trabajar en la nueva funcionalidad</span>
+<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>configuracion-red
+</code></pre></div>
+
+!!! tip "Consejos para administradores de sistemas"
+    - Utiliza `git clone` para mantener sincronizadas las configuraciones entre múltiples servidores.
+    - Crea repositorios privados para configuraciones sensibles de seguridad.
+    - Usa tags para marcar versiones estables de configuraciones de producción.
+    - Implementa hooks de Git para automatizar tareas de despliegue. -->
+
+<hr />
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<p><a name="AC201"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC201</strong> (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-5p). <strong>Configurar la identidad de Git (ASIR)</strong></li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación asociados:</strong></p>
+</blockquote>
+<ul>
+<li><strong>CE-PI2a</strong>: Identificación de Git como herramienta de versionado en el entorno ASIR.</li>
+<li><strong>CE-PI3b</strong>: Configuración correcta de la identidad de usuario en Git.</li>
+<li><strong>CE-PI4c</strong>: Documentación del procedimiento con evidencias (comandos y capturas).</li>
+</ul>
+<blockquote>
+<p><strong>Tareas:</strong></p>
+</blockquote>
+<ol>
+<li>Instalar Git en el sistema (usa el gestor de paquetes de tu OS y verifica con <code>git --version</code>).</li>
+<li>Configurar la identidad de Git (nombre y email) para el entorno ASIR.</li>
+</ol>
+<blockquote>
+<p><strong>NOTA:</strong> Puedes configurar la identidad a nivel global o por repositorio:</p>
+</blockquote>
+<ul>
+<li>Global (para todo el usuario): <code>git config --global user.name "Tu Nombre"</code> y <code>git config --global user.email "tu@correo"</code></li>
+<li>Local (solo para el repo actual): <code>git config user.name "Tu Nombre"</code> y <code>git config user.email "tu@correo"</code></li>
+<li>Verifica con: <code>git config --list --show-origin | grep user\.</code></li>
+</ul>
+<hr />
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://git-scm.com/doc">Git - Documentación oficial</a></li>
+<li><a href="https://github.com">GitHub - Plataforma de colaboración</a></li>
+<li><a href="https://github.com/github/gitignore">GitHub Gitignore templates</a></li>
+<li><a href="https://git-scm.com/book/es/v2">Pro Git Book - Scott Chacon</a></li>
+</ul>
+<div class="center-block">
+<p><a href="https://git-scm.com/book/es/v2"><img alt="Pro Git Book" src="https://git-scm.com/images/progit2.png" /></a></p>
+<p><em>Consulta el <a href="https://git-scm.com/book/es/v2">libro oficial de Git <em>Pro Git</em> (2ª edición, español)</a> para una guía completa y actualizada sobre Git.</em></p>
+</div>
+<!-- 
+<a name="PR201"></a>
+
+* **PR201** (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-10p). **Gestión de configuraciones de servidor con Git**
+
+> **Criterios de evaluación asociados:**
+
+- **CE-PI2a**: Identificación y justificación de la herramienta Git para gestión de configuraciones.
+- **CE-PI3b**: Configuración correcta del repositorio local y primeros commits de configuraciones.
+- **CE-PI4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).
+
+> **Tareas:**
+
+1. Configurar la identidad de Git (nombre y email) para el entorno ASIR.
+2. Crear un directorio para el proyecto de configuraciones de servidor e inicializar un repositorio Git.
+3. Crear un archivo README.md con información del proyecto de infraestructura.
+4. Crear archivos de configuración de ejemplo (nginx.conf, apache2.conf, etc.).
+5. Realizar el primer commit con mensaje descriptivo de las configuraciones iniciales.
+6. Crear un archivo `.gitignore` apropiado para configuraciones de servidor.
+7. Modificar las configuraciones y realizar commits descriptivos para cada cambio.
+8. Explorar el historial con `git log` y crear etiquetas para versiones estables.
+9. Documentar todo el proceso con capturas y comandos utilizados.
+
+---
+
+<a name="PR202"></a>
+
+* **PR202** (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-10p). **Colaboración en infraestructura con GitHub**
+
+> **Criterios de evaluación asociados:**
+
+- **CE-PI2a**: Identificación y justificación de GitHub para colaboración en proyectos de infraestructura.
+- **CE-PI3b**: Configuración correcta de repositorio remoto y sincronización de configuraciones.
+- **CE-PI4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).
+
+> **Tareas:**
+
+1. Crear una cuenta en GitHub y configurar SSH keys para el entorno ASIR.
+2. Crear un repositorio remoto en GitHub para configuraciones de servidor.
+3. Conectar el repositorio local con el remoto usando `git remote add`.
+4. Subir los commits locales al repositorio remoto usando `git push`.
+5. Crear una rama para una nueva configuración de servicio (nginx, apache, etc.).
+6. Realizar cambios en la rama y fusionar con main usando `git merge`.
+7. Clonar el repositorio en otra ubicación usando `git clone`.
+8. Crear un Pull Request para revisar cambios de configuración (si trabajando en equipo).
+9. Implementar un flujo de trabajo para versionado de configuraciones de producción.
+10. Documentar todo el proceso con capturas y comandos utilizados.
+
+!!! note "**NOTA**"
+    No se trata de documentar el proceso tal cual como la guía, hay que documentar los resultados, los problemas encontrados y su solución.
+
+---
+
+
+
+---
+
+## Licencia
+
+El material está publicado con licencia [Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.es)
+
+### Agradecimientos
+
+Este curso ha sido elaborado basándose en el material del Aula de Software Libre de la Universidad de Córdoba, impartido por:
+
+- [Adrián López](https://github.com/AdrianLopezGue)
+- [Héctor Romero](https://github.com/cyberh99)
+- [Javier de Santiago](https://github.com/jdes01)
+- [José Márquez](https://github.com/IronSenior)
+- [Sergio Gómez](https://github.com/sgomez) -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

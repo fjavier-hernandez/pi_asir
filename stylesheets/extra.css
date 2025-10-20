@@ -7,7 +7,7 @@
 [data-md-color-scheme="slate"] {
     --md-primary-fg-color:        #0077b6;
 
-    // Default color shades 
+    /* Default color shades */
    --md-default-fg-color:               hsla(0, 0%, 100%, 1); 
    --md-default-fg-color--light:        hsla(0, 0%, 100%, 0.87); 
    --md-default-fg-color--lighter:      hsla(0, 0%, 100%, 0.32); 
@@ -17,19 +17,19 @@
    --md-default-bg-color--lighter:      hsla(232, 15%, 21%, 0.26); 
    --md-default-bg-color--lightest:     hsla(232, 15%, 21%, 0.07); 
   
-   // Code color shades 
+   /* Code color shades */
    --md-code-bg-color:                  hsla(232, 15%, 18%, 1); 
    --md-code-fg-color:                  hsla(60, 30%, 96%, 1); 
   
-   // Text color shades 
+   /* Text color shades */
    --md-text-color:                     var(--md-default-fg-color--light); 
    --md-text-link-color:                var(--md-primary-fg-color); 
   
-   // Admonition color shades 
+   /* Admonition color shades */
    --md-admonition-bg-color:            hsla(0, 0%, 100%, 0.025); 
    --md-admonition-fg-color:            var(--md-default-fg-color); 
   
-   // Footer color shades 
+   /* Footer color shades */
    --md-footer-bg-color:                hsla(232, 15%, 12%, 0.87); 
    --md-footer-bg-color--dark:          hsla(232, 15%, 10%, 1); 
   }
@@ -59,3 +59,35 @@
 
 
   
+/* Larger intro paragraph block for Git page */
+.md-typeset .intro-block {
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+/* Center utility for blocks (image + caption) */
+.md-typeset .center-block {
+  text-align: center;
+}
+.md-typeset .center-block img {
+  display: inline-block;
+}
+
+/* Admonitions: increase font sizes globally */
+.md-typeset .admonition,
+.md-typeset details.admonition {
+  font-size: 0.92rem !important;
+  line-height: 1.45;
+}
+
+.md-typeset .admonition .admonition-title,
+.md-typeset details.admonition .admonition-title {
+  font-size: 0.98rem !important;
+  font-weight: 600;
+}
+
+/* Optional: add a tiny spacing tweak so bigger titles breathe */
+.md-typeset .admonition .admonition-title,
+.md-typeset details.admonition .admonition-title {
+  margin-bottom: 0.2rem;
+}
