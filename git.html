@@ -647,6 +647,147 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uso-basico-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso básico de git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uso básico de git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-repositorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación de repositorios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciclo-de-vida" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ciclo de vida
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revisando-el-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Revisando el estado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizar-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualizar cambios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadir-archivos-al-area-de-preparacion-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Añadir archivos al área de preparación (stage)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizar-cambios-de-los-archivos-en-el-area-de-preparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualizar cambios de los archivos en el área de preparación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirmar-cambios-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confirmar cambios (commit)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignorar-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ignorar archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#historial-de-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Historial de cambios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-cambios-realizados-en-anteriores-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver cambios realizados en anteriores commits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quitar-archivo-del-area-de-preparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quitar archivo del área de preparación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminar-las-modificaciones-con-respecto-al-ultimo-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliminar las modificaciones con respecto al último commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etiquetado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Etiquetado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardado-temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardado temporal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     <span class="md-ellipsis">
       Actividades
@@ -1105,605 +1246,105 @@
 <span class="linenos" data-linenos="13 "></span><span class="c1"># Recarga la configuración</span>
 <span class="linenos" data-linenos="14 "></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
-<!-- ---
+<hr />
+<hr />
+<h2 id="uso-basico-de-git">Uso básico de git<a class="headerlink" href="#uso-basico-de-git" title="Permanent link">&para;</a></h2>
+<p>Antes de empezar, te recomendamos ver el siguiente video introductorio sobre el uso básico de Git:</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+    src="https://www.youtube.com/embed/uwqvuJ5lrIs?list=PLQg_Bl-6Gfo9k0KQg5vaaV9r6Hg--nMA7" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
 
-## Uso básico de Git
-
-### Crear un proyecto
-
-#### Crear un programa "Hola Mundo"
-
-Creamos un directorio donde colocar el código:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>mkdir<span class="w"> </span>curso-de-git
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>curso-de-git
+<h3 id="creacion-de-repositorios">Creación de repositorios<a class="headerlink" href="#creacion-de-repositorios" title="Permanent link">&para;</a></h3>
+<p>Para crear un repositorio hay que situarse en la carpeta deseada y ejecutar:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>init
+</code></pre></div></p>
+<h3 id="ciclo-de-vida">Ciclo de vida<a class="headerlink" href="#ciclo-de-vida" title="Permanent link">&para;</a></h3>
+<p><img alt="Ciclo de vida" src="https://git-scm.com/book/en/v2/images/lifecycle.png" /></p>
+<h3 id="revisando-el-estado">Revisando el estado<a class="headerlink" href="#revisando-el-estado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>status
 </code></pre></div>
-
-**Para IAW (Implantación de Aplicaciones Web):** Creamos un fichero `index.html` básico:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 9 "></span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="10 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="11 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<p>Esquema de colores:</p>
+<ul>
+<li><strong>Rojo</strong>: Identifica los archivos <strong>modificados o nuevos</strong>. Si se crean archivos dentro de carpetas nuevas, <code>git status</code> solo mostrará el nombre de la carpeta, no su contenido. Si se desea ver el contenido de las carpetas nuevas se deberá ejecutar <code>git status -u</code>.</li>
+<li><strong>Verde</strong>: Identifica los archivos en el <strong>área de preparación</strong>.</li>
+</ul>
+<h3 id="visualizar-cambios">Visualizar cambios<a class="headerlink" href="#visualizar-cambios" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>diff
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>diff<span class="w"> </span>&lt;archivo_o_ruta&gt;
 </code></pre></div>
-
-**Para ASO (Administración de Sistemas Operativos):** Creamos un script `hola.sh`:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR</span>
-<span class="linenos" data-linenos="3 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola Mundo - Script de administración de sistemas&quot;</span>
-<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
+<p>Este es uno de los comandos más utilizados en <code>git</code>. Nos permite ver los cambios en los archivos del repositorio o en una ruta específica.</p>
+<h3 id="anadir-archivos-al-area-de-preparacion-stage">Añadir archivos al área de preparación (stage)<a class="headerlink" href="#anadir-archivos-al-area-de-preparacion-stage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>add<span class="w"> </span>&lt;archivo&gt;<span class="w"> </span><span class="c1"># Añadir archivos individuales</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w">         </span><span class="c1"># Añadir todos los archivos nuevos o modificados</span>
 </code></pre></div>
-
-#### Crear el repositorio
-
-Para crear un nuevo repositorio se usa la orden `git init`:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>init
-<span class="linenos" data-linenos="2 "></span>Initialized<span class="w"> </span>empty<span class="w"> </span>Git<span class="w"> </span>repository<span class="w"> </span><span class="k">in</span><span class="w"> </span>/home/usuario/curso-de-git/.git/
+<p>El <strong>área de preparación</strong> contiene los <strong>cambios que se añadirán a la nueva versión</strong> cuando ejecutemos un <code>commit</code>. Es posible la siguiente situación:</p>
+<ul>
+<li>Modificar un fichero (aparecerá en color rojo al hacer un <code>git status</code>)</li>
+<li>Añadir el fichero al área de preparación mediante <code>git add FICHERO</code></li>
+<li>El fichero aparecerá en color <strong>verde</strong> al hacer un <code>git status</code></li>
+<li>Volver a modificar el fichero</li>
+<li>El fichero aparecerá <strong>dos veces</strong> al hacer un <code>git status</code>:</li>
+<li>En color <strong>verde</strong>, indicando que se ha añadido el <strong>primer cambio</strong> al área de preparación</li>
+<li>En color <strong>rojo</strong>, indicando que hay un <strong>segundo cambio</strong> posterior que <strong>no se ha incluido</strong> en el área de preparación</li>
+<li>Si se ejecuta un <code>git commit</code> en este momento <strong>solamente se incorporará el primer cambio</strong> al repositorio como nueva versión. El segundo cambio seguirá existiendo (el archivo no habrá cambiado), pero no estará guardado en el commit</li>
+<li>Si se desea agregar el segundo cambio se deberá ejecutar nuevamente <code>git add</code> para añadirlo al área de preparación</li>
+</ul>
+<h3 id="visualizar-cambios-de-los-archivos-en-el-area-de-preparacion">Visualizar cambios de los archivos en el área de preparación<a class="headerlink" href="#visualizar-cambios-de-los-archivos-en-el-area-de-preparacion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>diff<span class="w"> </span>--staged
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>diff<span class="w"> </span>--staged<span class="w"> </span>&lt;archivo&gt;
 </code></pre></div>
-
-#### Añadir la aplicación
-
-Vamos a almacenar el archivo que hemos creado en el repositorio para poder trabajar:
-
-**Para IAW:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>index.html
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Creación del proyecto web&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="o">[</span>master<span class="w"> </span><span class="o">(</span>root-commit<span class="o">)</span><span class="w"> </span>e19f2c1<span class="o">]</span><span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto<span class="w"> </span>web
-<span class="linenos" data-linenos="4 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">10</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>
-<span class="linenos" data-linenos="5 "></span><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>index.html
+<p>Este comando muestra los cambios que se han agregado al área de preparación (diferencia entre la última versión guardada en el repositorio y el área de preparación).</p>
+<h3 id="confirmar-cambios-commit">Confirmar cambios (commit)<a class="headerlink" href="#confirmar-cambios-commit" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;MENSAJE&quot;</span>
 </code></pre></div>
-
-**Para ASO:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>hola.sh
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Creación del script de administración&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="o">[</span>master<span class="w"> </span><span class="o">(</span>root-commit<span class="o">)</span><span class="w"> </span>e19f2c1<span class="o">]</span><span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>script<span class="w"> </span>de<span class="w"> </span>administración
-<span class="linenos" data-linenos="4 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">4</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>
-<span class="linenos" data-linenos="5 "></span><span class="w"> </span>create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>hola.sh
+<p>Un commit equivale a una nueva <strong>versión</strong> en el repositorio. Cada commit tiene un <strong>identificador único</strong>, denominado <code>hash</code>. Los commits están relacionados entre sí mediante una <strong>red de tipo grafo</strong>.</p>
+<p>En la siguiente sesión estudiaremos como volver atrás en la historia para acceder a una versión anterior del repositorio si se desea.</p>
+<h3 id="ignorar-archivos">Ignorar archivos<a class="headerlink" href="#ignorar-archivos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Archivo <code>.gitignore</code></li>
+<li>Plantillas de archivos <a href="https://github.com/github/gitignore">.gitignore</a>.</li>
+</ul>
+<p>Las rutas y nombres de archivo que aparezcan en el fichero <code>.gitignore</code> serán ignoradas por <code>git</code> <strong>siempre que no hayan sido añadidas previamente al área de preparación o al repositorio</strong>. Por ejemplo, si añadimos un archivo al área de preparación mediante <code>git add</code> y a continuación lo añadimos al fichero <code>.gitignore</code>, <code>git</code> lo seguirá manteniendo en el área de preparación, por lo que será incluido en el repositorio si ejecutamos un <code>git commit</code>.</p>
+<p>De igual manera, si previamente hemos guardado un archivo en el repositorio mediante <code>git commit</code> y a continuación lo incluimos en el fichero <code>.gitignore</code>, git no lo borrará: será necesario borrarlo del sistema de ficheros (a través de la consola o el navegador de archivos) y añadir los cambios (<code>git add</code> y <code>git commit</code>) para que se borre del repositorio. Una vez borrado, si lo volvemos a crear veremos que <code>git</code> sí que lo ignora si está incluido en el fichero <code>.gitignore</code>.</p>
+<h3 id="historial-de-cambios">Historial de cambios<a class="headerlink" href="#historial-de-cambios" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>log
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>log<span class="w"> </span>--graph
 </code></pre></div>
-
-#### Comprobar el estado del repositorio
-
-Con la orden `git status` podemos ver en qué estado se encuentran los archivos de nuestro repositorio:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
-<span class="linenos" data-linenos="2 "></span><span class="c1"># On branch master</span>
-<span class="linenos" data-linenos="3 "></span>nothing<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>working<span class="w"> </span>directory<span class="w"> </span>clean<span class="o">)</span>
+<p>Este comando muestra el histórico de los commits del repositorio. Se puede navegar en el listado mediante los cursores y la barra espaciadora. Para salir hay que pulsar la tecla <code>q</code>.</p>
+<h3 id="ver-cambios-realizados-en-anteriores-commits">Ver cambios realizados en anteriores commits<a class="headerlink" href="#ver-cambios-realizados-en-anteriores-commits" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>show<span class="w"> </span>&lt;commit&gt;
 </code></pre></div>
-
-Si modificamos el archivo:
-
-**Para IAW - modificamos `index.html`:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 9 "></span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="10 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="11 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Fecha actual: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="12 "></span>    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleDateString</span><span class="p">();</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="15 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="16 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<p>Este comando nos permite mostrar los cambios que se introdujeron en un determinado commit. En primer lugar se puede ejecutar <code>git log</code> para buscar el hash del commit que nos interese y a continuación ejecutar <code>git show</code> indicando después el hash del commit correspondiente.</p>
+<p>Los hash de los commits tienen 40 caracteres, pero no es necesario copiarlos enteros: basta con indicar entre los <a href="http://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Short-SHA-1">8 y 10 primeros caracteres</a> para identificar un commit correctamente.</p>
+<h3 id="quitar-archivo-del-area-de-preparacion">Quitar archivo del área de preparación<a class="headerlink" href="#quitar-archivo-del-area-de-preparacion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>reset<span class="w"> </span>&lt;archivo&gt;
 </code></pre></div>
-
-**Para ASO - modificamos `hola.sh`:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR</span>
-<span class="linenos" data-linenos="3 "></span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
-<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
-<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sistema: </span><span class="k">$(</span>uname<span class="w"> </span>-a<span class="k">)</span><span class="s2">&quot;</span>
+<p>En ocasiones nos encontramos con que hemos añadido cambios al área de preparación que no queremos incorporar al commit. Para ello podemos utilizar este comando, que elimina los cambios del fichero correspondiente del área de preparación. <strong>Los cambios no se pierden</strong> en ningún caso.</p>
+<h3 id="eliminar-las-modificaciones-con-respecto-al-ultimo-commit">Eliminar las modificaciones con respecto al último commit<a class="headerlink" href="#eliminar-las-modificaciones-con-respecto-al-ultimo-commit" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># ¡PELIGRO! Todos los cambios que se hayan hecho al archivo desde el último commit se eliminarán</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>checkout<span class="w"> </span>--<span class="w"> </span>&lt;archivo&gt;
 </code></pre></div>
-
-Y volvemos a comprobar el estado del repositorio:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
-<span class="linenos" data-linenos=" 2 "></span><span class="c1"># On branch master</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Changes not staged for commit:</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">#</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">#   modified:   index.html    # Para IAW</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">#   modified:   hola.sh       # Para ASO</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">#</span>
-<span class="linenos" data-linenos="10 "></span>no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+<p>Este comando es peligroso, ya que <strong>elimina todos los cambios del archivo</strong> que no hayan sido guardados en el repositorio. Es decir, si el archivo tiene cambios y está en color <strong>rojo</strong>, se perderán dichos cambios. Este comando puede ser útil para dejar un archivo tal como estaba en la última versión guardada del repositorio.</p>
+<h3 id="etiquetado">Etiquetado<a class="headerlink" href="#etiquetado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>tag<span class="w"> </span>NOMBRE_TAG
 </code></pre></div>
-
-#### Añadir cambios
-
-Con la orden `git add` indicamos a git que prepare los cambios para que sean almacenados:
-
-**Para IAW:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>index.html
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>status
-<span class="linenos" data-linenos="3 "></span><span class="c1"># On branch master</span>
-<span class="linenos" data-linenos="4 "></span><span class="c1"># Changes to be committed:</span>
-<span class="linenos" data-linenos="5 "></span><span class="c1">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1">#</span>
-<span class="linenos" data-linenos="7 "></span><span class="c1">#   modified:   index.html</span>
-<span class="linenos" data-linenos="8 "></span><span class="c1">#</span>
-</code></pre></div>
-
-**Para ASO:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>hola.sh
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>status
-<span class="linenos" data-linenos="3 "></span><span class="c1"># On branch master</span>
-<span class="linenos" data-linenos="4 "></span><span class="c1"># Changes to be committed:</span>
-<span class="linenos" data-linenos="5 "></span><span class="c1">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1">#</span>
-<span class="linenos" data-linenos="7 "></span><span class="c1">#   modified:   hola.sh</span>
-<span class="linenos" data-linenos="8 "></span><span class="c1">#</span>
-</code></pre></div>
-
-#### Confirmar los cambios
-
-Con la orden `git commit` confirmamos los cambios definitivamente, lo que hace que se guarden permanentemente en nuestro repositorio:
-
-**Para IAW:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir JavaScript para mostrar fecha dinámicamente&quot;</span>
-<span class="linenos" data-linenos="2 "></span><span class="o">[</span>master<span class="w"> </span>efc252e<span class="o">]</span><span class="w"> </span>Añadir<span class="w"> </span>JavaScript<span class="w"> </span>para<span class="w"> </span>mostrar<span class="w"> </span>fecha<span class="w"> </span>dinámicamente
-<span class="linenos" data-linenos="3 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">4</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>
-</code></pre></div>
-
-**Para ASO:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Mejorar script con parámetros y información del sistema&quot;</span>
-<span class="linenos" data-linenos="2 "></span><span class="o">[</span>master<span class="w"> </span>efc252e<span class="o">]</span><span class="w"> </span>Mejorar<span class="w"> </span>script<span class="w"> </span>con<span class="w"> </span>parámetros<span class="w"> </span>y<span class="w"> </span>información<span class="w"> </span>del<span class="w"> </span>sistema
-<span class="linenos" data-linenos="3 "></span><span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">3</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>,<span class="w"> </span><span class="m">1</span><span class="w"> </span>deletion<span class="o">(</span>-<span class="o">)</span>
-</code></pre></div>
-
-Volvemos a comprobar el estado del repositorio:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
-<span class="linenos" data-linenos="2 "></span><span class="c1"># On branch master</span>
-<span class="linenos" data-linenos="3 "></span>nothing<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>working<span class="w"> </span>directory<span class="w"> </span>clean<span class="o">)</span>
-</code></pre></div>
-
-#### Diferencias entre *workdir* y *staging*
-
-Modificamos nuestra aplicación para que soporte un parámetro por defecto y añadimos los cambios:
-
-**Para IAW - modificamos `index.html`:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 7 "></span>    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="p">.</span><span class="nc">fecha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#666</span><span class="p">;</span><span class="w"> </span><span class="k">font-style</span><span class="p">:</span><span class="w"> </span><span class="kc">italic</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="13 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="14 "></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="15 "></span>        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="16 "></span>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="17 "></span>        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;</span>Fecha actual: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="18 "></span>        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;es-ES&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="21 "></span>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="22 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="23 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-
-**Para ASO - modificamos `hola.sh`:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR</span>
-<span class="linenos" data-linenos="3 "></span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
-<span class="linenos" data-linenos="4 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
-<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d/%m/%Y %H:%M:%S&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sistema: </span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>uname<span class="w"> </span>-r<span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Directorio actual: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div>
-
-Este vez añadimos los cambios a la fase de *staging* pero sin confirmarlos (*commit*):
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Para IAW</span>
-<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>add<span class="w"> </span>index.html
+<p>Este comando crea un <code>tag</code> en el commit en que nos encontremos en este momento. Un <code>tag</code> es un <strong>alias</strong> que se utiliza para <strong>hacer referencia a un commit</strong> sin necesidad de saber su hash. Normalmente se utiliza para <strong>indicar números o nombres de versiones</strong> asociadas a un determinado commit. De esta manera podemos <strong>identificar una versión de una manera más amable</strong>.</p>
+<p>El nombre de los <code>tag</code> se puede utilizar con los comandos de git: por ejemplo, <code>git show</code>.</p>
+<h3 id="guardado-temporal">Guardado temporal<a class="headerlink" href="#guardado-temporal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Guardado temporal de cambios no añadidos al área de preparación</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>stash
 <span class="linenos" data-linenos="3 "></span>
-<span class="linenos" data-linenos="4 "></span><span class="c1"># Para ASO  </span>
-<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>add<span class="w"> </span>hola.sh
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Restaurar cambios guardados mediante git stash</span>
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>stash<span class="w"> </span>pop
 </code></pre></div>
-
-Volvemos a modificar el programa para indicar con un comentario lo que hemos hecho:
-
-**Para IAW - modificamos `index.html`:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 5 "></span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 6 "></span>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Primera Página Web<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 7 "></span>    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="c">/* Estilos CSS para mejorar la presentación */</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="p">.</span><span class="nc">fecha</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#666</span><span class="p">;</span><span class="w"> </span><span class="k">font-style</span><span class="p">:</span><span class="w"> </span><span class="kc">italic</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="13 "></span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="14 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="15 "></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="16 "></span>        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola Mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="17 "></span>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esta es mi primera página web para el proyecto ASIR.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="18 "></span>        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;</span>Fecha actual: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fecha&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="19 "></span>        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="c1">// JavaScript para mostrar la fecha actual</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fecha&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;es-ES&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="23 "></span>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="24 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="linenos" data-linenos="25 "></span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-
-**Para ASO - modificamos `hola.sh`:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># Script de ejemplo para ASIR - Versión mejorada</span>
-<span class="linenos" data-linenos="3 "></span><span class="c1"># El nombre por defecto es Mundo</span>
-<span class="linenos" data-linenos="4 "></span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
-<span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d/%m/%Y %H:%M:%S&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="7 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario: </span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="8 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sistema: </span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>uname<span class="w"> </span>-r<span class="k">)</span><span class="s2">&quot;</span>
-<span class="linenos" data-linenos="9 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Directorio actual: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div>
-
-Y vemos el estado en el que está el repositorio:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>status
-<span class="linenos" data-linenos=" 2 "></span><span class="c1"># On branch master</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1"># Changes to be committed:</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">#</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">#   modified:   index.html    # Para IAW</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">#   modified:   hola.sh       # Para ASO</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">#</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1"># Changes not staged for commit:</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">#</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">#   modified:   index.html    # Para IAW</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">#   modified:   hola.sh       # Para ASO</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">#</span>
-</code></pre></div>
-
-Podemos ver como aparecen el archivo dos veces. El primero está preparado para ser confirmado y está almacenado en la zona de *staging*. El segundo indica que el archivo está modificado otra vez en la zona de trabajo (*workdir*).
-
-!!! warning "Advertencia"
-    Si volvieramos a hacer un `git add index.html` o `git add hola.sh` sobreescribiríamos los cambios previos que había en la zona de *staging*.
-
-#### Ignorando archivos
-
-La orden `git add .` o `git add nombre_directorio` es muy cómoda, ya que nos permite añadir todos los archivos del proyecto o todos los contenidos en un directorio y sus subdirectorios. Es mucho más rápido que tener que ir añadiéndolos uno por uno. El problema es que, si no se tiene cuidado, se puede terminar por añadir archivos innecesarios o con información sensible.
-
-Para indicarle a *git* que debe ignorar un archivo, se puede crear un fichero llamado *.gitignore*, bien en la raíz del proyecto o en los subdirectorios que queramos. Dicho fichero puede contener patrones, uno en cada línea, que especifiquen qué archivos deben ignorarse. El formato es el siguiente:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># .gitignore</span>
-<span class="linenos" data-linenos="2 "></span>dir1/<span class="w">           </span><span class="c1"># ignora todo lo que contenga el directorio dir1</span>
-<span class="linenos" data-linenos="3 "></span>!dir1/info.txt<span class="w">  </span><span class="c1"># El operador ! excluye del ignore a dir1/info.txt (sí se guardaría)</span>
-<span class="linenos" data-linenos="4 "></span>dir2/*.txt<span class="w">      </span><span class="c1"># ignora todos los archivos txt que hay en el directorio dir2</span>
-<span class="linenos" data-linenos="5 "></span>dir3/**/*.txt<span class="w">   </span><span class="c1"># ignora todos los archivos txt que hay en el dir3 y sus subdirectorios</span>
-<span class="linenos" data-linenos="6 "></span>*.o<span class="w">             </span><span class="c1"># ignora todos los archivos con extensión .o en todos los directorios</span>
-</code></pre></div>
-
-Cada tipo de proyecto genera sus ficheros temporales, así que para cada proyecto hay un `.gitignore` apropiado. Existen repositorios que ya tienen creadas plantillas. Podéis encontrar uno en https://github.com/github/gitignore
-
-#### Ignorando archivos globalmente
-
-Si bien, los archivos que hemos metido en `.gitignore`, deben ser aquellos ficheros temporales o de configuración que se pueden crear durante las fases de compilación o ejecución del programa, en ocasiones habrá otros ficheros que tampoco debemos introducir en el repositorio y que son recurrentes en todos los proyectos. En dicho caso, es más útil tener un *gitignore* que sea global a todos nuestros proyectos.
-
-Para indicar a *git* que queremos tener un fichero de *gitignore* global, tenemos que configurarlo con la siguiente orden:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.excludesfile<span class="w"> </span><span class="nv">$HOME</span>/.gitignore_global
-</code></pre></div>
-
-### Trabajando con el historial
-
-#### Observando los cambios
-
-Con la orden `git log` podemos ver todos los cambios que hemos hecho:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>log
-<span class="linenos" data-linenos=" 2 "></span>commit<span class="w"> </span>fd4da946326fbe8b24e89282ad25a71721bf40f6
-<span class="linenos" data-linenos=" 3 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
-<span class="linenos" data-linenos=" 4 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">12</span>:51:01<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
-<span class="linenos" data-linenos=" 5 "></span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>comentario<span class="w"> </span>al<span class="w"> </span>cambio<span class="w"> </span>del<span class="w"> </span>valor<span class="w"> </span>por<span class="w"> </span>defecto
-<span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span>commit<span class="w"> </span>3283e0d306c8d42d55ffcb64e456f10510df8177
-<span class="linenos" data-linenos=" 9 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
-<span class="linenos" data-linenos="10 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">12</span>:50:00<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
-<span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>parámetro<span class="w"> </span>por<span class="w"> </span>defecto
-<span class="linenos" data-linenos="13 "></span>
-<span class="linenos" data-linenos="14 "></span>commit<span class="w"> </span>efc252e11939351505a426a6e1aa5bb7dc1dd7c0
-<span class="linenos" data-linenos="15 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
-<span class="linenos" data-linenos="16 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">12</span>:13:26<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
-<span class="linenos" data-linenos="17 "></span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span>Parametrización<span class="w"> </span>del<span class="w"> </span>programa
-<span class="linenos" data-linenos="19 "></span>
-<span class="linenos" data-linenos="20 "></span>commit<span class="w"> </span>e19f2c1701069d9d1159e9ee21acaa1bbc47d264
-<span class="linenos" data-linenos="21 "></span>Author:<span class="w"> </span>Sergio<span class="w"> </span>Gómez<span class="w"> </span>&lt;sergio@uco.es&gt;
-<span class="linenos" data-linenos="22 "></span>Date:<span class="w">   </span>Sun<span class="w"> </span>Jun<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">11</span>:55:23<span class="w"> </span><span class="m">2013</span><span class="w"> </span>+0200
-<span class="linenos" data-linenos="23 "></span>
-<span class="linenos" data-linenos="24 "></span><span class="w">    </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
-</code></pre></div>
-
-También es posible ver versiones abreviadas o limitadas, dependiendo de los parámetros:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
-<span class="linenos" data-linenos="2 "></span>fd4da94<span class="w"> </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>comentario<span class="w"> </span>al<span class="w"> </span>cambio<span class="w"> </span>del<span class="w"> </span>valor<span class="w"> </span>por<span class="w"> </span>defecto
-<span class="linenos" data-linenos="3 "></span>3283e0d<span class="w"> </span>Se<span class="w"> </span>añade<span class="w"> </span>un<span class="w"> </span>parámetro<span class="w"> </span>por<span class="w"> </span>defecto
-<span class="linenos" data-linenos="4 "></span>efc252e<span class="w"> </span>Parametrización<span class="w"> </span>del<span class="w"> </span>programa
-<span class="linenos" data-linenos="5 "></span>e19f2c1<span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
-</code></pre></div>
-
-#### Creando alias
-
-Como estas órdenes son demasiado largas, Git nos permite crear alias para crear nuevas órdenes parametrizadas. Para ello podemos configurar nuestro entorno con la orden `git config` de la siguiente manera:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.hist<span class="w"> </span><span class="s2">&quot;log --pretty=format:&#39;%h %ad | %s%d [%an]&#39; --graph --date=short&quot;</span>
-</code></pre></div>
-
-!!! example "Ejemplo"
-    Puedes configurar incluso alias para abreviar comandos. Algunos ejemplos de alias útiles:
-
-    <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.br<span class="w"> </span>branch
-<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.co<span class="w"> </span>checkout
-<span class="linenos" data-linenos="3 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.ci<span class="w"> </span>commit
-<span class="linenos" data-linenos="4 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.st<span class="w"> </span><span class="s2">&quot;status -u&quot;</span>
-<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.cane<span class="w"> </span><span class="s2">&quot;commit --amend --no-edit&quot;</span>
-</code></pre></div>
-
-#### Recuperando versiones anteriores
-
-Cada cambio es etiquetado por un hash, para poder regresar a ese momento del estado del proyecto se usa la orden `git checkout`:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>e19f2c1
-<span class="linenos" data-linenos=" 2 "></span>Note:<span class="w"> </span>checking<span class="w"> </span>out<span class="w"> </span><span class="s1">&#39;e19f2c1&#39;</span>.
-<span class="linenos" data-linenos=" 3 "></span>
-<span class="linenos" data-linenos=" 4 "></span>You<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">&#39;detached HEAD&#39;</span><span class="w"> </span>state.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>look<span class="w"> </span>around,<span class="w"> </span>make<span class="w"> </span>experimental
-<span class="linenos" data-linenos=" 5 "></span>changes<span class="w"> </span>and<span class="w"> </span>commit<span class="w"> </span>them,<span class="w"> </span>and<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>discard<span class="w"> </span>any<span class="w"> </span>commits<span class="w"> </span>you<span class="w"> </span>make<span class="w"> </span><span class="k">in</span><span class="w"> </span>this
-<span class="linenos" data-linenos=" 6 "></span>state<span class="w"> </span>without<span class="w"> </span>impacting<span class="w"> </span>any<span class="w"> </span>branches<span class="w"> </span>by<span class="w"> </span>performing<span class="w"> </span>another<span class="w"> </span>checkout.
-<span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span>If<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>create<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>branch<span class="w"> </span>to<span class="w"> </span>retain<span class="w"> </span>commits<span class="w"> </span>you<span class="w"> </span>create,<span class="w"> </span>you<span class="w"> </span>may
-<span class="linenos" data-linenos=" 9 "></span><span class="k">do</span><span class="w"> </span>so<span class="w"> </span><span class="o">(</span>now<span class="w"> </span>or<span class="w"> </span>later<span class="o">)</span><span class="w"> </span>by<span class="w"> </span>using<span class="w"> </span>-b<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>checkout<span class="w"> </span><span class="nb">command</span><span class="w"> </span>again.<span class="w"> </span>Example:
-<span class="linenos" data-linenos="10 "></span>
-<span class="linenos" data-linenos="11 "></span><span class="w">  </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>new_branch_name
-<span class="linenos" data-linenos="12 "></span>
-<span class="linenos" data-linenos="13 "></span>HEAD<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>at<span class="w"> </span>e19f2c1...<span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
-<span class="linenos" data-linenos="14 "></span><span class="c1"># Para IAW</span>
-<span class="linenos" data-linenos="15 "></span>$<span class="w"> </span>cat<span class="w"> </span>index.html
-<span class="linenos" data-linenos="16 "></span>&lt;!DOCTYPE<span class="w"> </span>html&gt;
-<span class="linenos" data-linenos="17 "></span>&lt;html<span class="w"> </span><span class="nv">lang</span><span class="o">=</span><span class="s2">&quot;es&quot;</span>&gt;
-<span class="linenos" data-linenos="18 "></span>&lt;head&gt;
-<span class="linenos" data-linenos="19 "></span><span class="w">    </span>&lt;meta<span class="w"> </span><span class="nv">charset</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span>&gt;
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span>&lt;title&gt;Mi<span class="w"> </span>Primera<span class="w"> </span>Página<span class="w"> </span>Web&lt;/title&gt;
-<span class="linenos" data-linenos="21 "></span>&lt;/head&gt;
-<span class="linenos" data-linenos="22 "></span>&lt;body&gt;
-<span class="linenos" data-linenos="23 "></span><span class="w">    </span>&lt;h1&gt;Hello,<span class="w"> </span>World&lt;/h1&gt;
-<span class="linenos" data-linenos="24 "></span><span class="w">    </span>&lt;p&gt;Esta<span class="w"> </span>es<span class="w"> </span>mi<span class="w"> </span>primera<span class="w"> </span>página<span class="w"> </span>web<span class="w"> </span>para<span class="w"> </span>el<span class="w"> </span>proyecto<span class="w"> </span>ASIR.&lt;/p&gt;
-<span class="linenos" data-linenos="25 "></span>&lt;/body&gt;
-<span class="linenos" data-linenos="26 "></span>&lt;/html&gt;
-<span class="linenos" data-linenos="27 "></span>
-<span class="linenos" data-linenos="28 "></span><span class="c1"># Para ASO</span>
-<span class="linenos" data-linenos="29 "></span>$<span class="w"> </span>cat<span class="w"> </span>hola.sh
-<span class="linenos" data-linenos="30 "></span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="31 "></span><span class="c1"># Script de ejemplo para ASIR</span>
-<span class="linenos" data-linenos="32 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, World - Script de administración de sistemas&quot;</span>
-<span class="linenos" data-linenos="33 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fecha: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div>
-
-#### Volver a la última versión de la rama master
-
-Usamos `git checkout` indicando el nombre de la rama:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>master
-<span class="linenos" data-linenos="2 "></span>Previous<span class="w"> </span>HEAD<span class="w"> </span>position<span class="w"> </span>was<span class="w"> </span>e19f2c1...<span class="w"> </span>Creación<span class="w"> </span>del<span class="w"> </span>proyecto
-</code></pre></div>
-
-#### Etiquetando versiones
-
-Para poder recuperar versiones concretas en la historia del repositorio, podemos etiquetarlas, lo cual es más fácil que usar un hash. Para eso usaremos la orden `git tag`:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>v1
-</code></pre></div>
-
-Ahora vamos a etiquetar la versión inmediatamente anterior como v1-beta. Para ello podemos usar los modificadores `^` o `~` que nos llevarán a un ancestro determinado. Las siguientes dos órdenes son equivalentes:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>v1^
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>v1~1
-<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>v1-beta
-</code></pre></div>
-
-Si ejecutamos la orden sin parámetros nos mostrará todas las etiquetas existentes:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>tag
-<span class="linenos" data-linenos="2 "></span>v1
-<span class="linenos" data-linenos="3 "></span>v1-beta
-</code></pre></div>
-
-#### Visualizar cambios
-
-Para ver los cambios que se han realizado en el código usamos la orden `git diff`. La orden sin especificar nada más, mostrará los cambios que no han sido añadidos aún, es decir, todos los cambios que se han hecho antes de usar la orden `git add`. Después se puede indicar un parámetro y dará los cambios entre la versión indicada y el estado actual. O para comparar dos versiones entre sí, se indica la más antigua y la más nueva. Ejemplo:
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>v1-beta<span class="w"> </span>v1
-<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Para IAW - diff de index.html</span>
-<span class="linenos" data-linenos=" 3 "></span>diff<span class="w"> </span>--git<span class="w"> </span>a/index.html<span class="w"> </span>b/index.html
-<span class="linenos" data-linenos=" 4 "></span>index<span class="w"> </span>a31e01f..25a35c0<span class="w"> </span><span class="m">100644</span>
-<span class="linenos" data-linenos=" 5 "></span>---<span class="w"> </span>a/index.html
-<span class="linenos" data-linenos=" 6 "></span>+++<span class="w"> </span>b/index.html
-<span class="linenos" data-linenos=" 7 "></span>@@<span class="w"> </span>-1,3<span class="w"> </span>+1,4<span class="w"> </span>@@
-<span class="linenos" data-linenos=" 8 "></span><span class="w"> </span>&lt;!DOCTYPE<span class="w"> </span>html&gt;
-<span class="linenos" data-linenos=" 9 "></span>+&lt;!--<span class="w"> </span>Comentario<span class="w"> </span>añadido<span class="w"> </span>para<span class="w"> </span>mejorar<span class="w"> </span>la<span class="w"> </span>documentación<span class="w"> </span>--&gt;
-<span class="linenos" data-linenos="10 "></span>&lt;!--<span class="w"> </span>&lt;html<span class="w"> </span><span class="nv">lang</span><span class="o">=</span><span class="s2">&quot;es&quot;</span>&gt;
-<span class="linenos" data-linenos="11 "></span><span class="w"> </span>&lt;head&gt;
-<span class="linenos" data-linenos="12 "></span><span class="w">     </span>&lt;meta<span class="w"> </span><span class="nv">charset</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span>&gt;
-<span class="linenos" data-linenos="13 "></span>
-<span class="linenos" data-linenos="14 "></span><span class="c1"># Para ASO - diff de hola.sh  </span>
-<span class="linenos" data-linenos="15 "></span>diff<span class="w"> </span>--git<span class="w"> </span>a/hola.sh<span class="w"> </span>b/hola.sh
-<span class="linenos" data-linenos="16 "></span>index<span class="w"> </span>a31e01f..25a35c0<span class="w"> </span><span class="m">100644</span>
-<span class="linenos" data-linenos="17 "></span>---<span class="w"> </span>a/hola.sh
-<span class="linenos" data-linenos="18 "></span>+++<span class="w"> </span>b/hola.sh
-<span class="linenos" data-linenos="19 "></span>@@<span class="w"> </span>-1,3<span class="w"> </span>+1,4<span class="w"> </span>@@
-<span class="linenos" data-linenos="20 "></span><span class="w"> </span><span class="c1">#!/bin/bash</span>
-<span class="linenos" data-linenos="21 "></span>+#<span class="w"> </span>El<span class="w"> </span>nombre<span class="w"> </span>por<span class="w"> </span>defecto<span class="w"> </span>es<span class="w"> </span>Mundo
-<span class="linenos" data-linenos="22 "></span><span class="w"> </span><span class="nv">NOMBRE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">&quot;Mundo&quot;</span><span class="si">}</span>
-<span class="linenos" data-linenos="23 "></span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hola </span><span class="nv">$NOMBRE</span><span class="s2"> - Script de administración de sistemas&quot;</span>
-</code></pre></div>
-
----
-
-## Repositorios remotos y Git Clone
-
-### Introducción a los repositorios remotos
-
-Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en algún lugar de la red. Puedes tener varios de ellos, cada uno de los cuales generalmente es de solo lectura o de lectura/escritura para ti. Colaborar con otros implica gestionar estos repositorios remotos y enviar (push) y recibir (pull) datos de ellos cuando necesites compartir trabajo.
-
-### Git Clone: Clonando un repositorio
-
-El comando `git clone` se utiliza para crear una copia de un repositorio existente en tu máquina local. Este comando descarga todo el historial del repositorio, incluyendo todas las ramas, commits y archivos.
-
-#### Sintaxis básica
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;url_del_repositorio&gt;<span class="w"> </span><span class="o">[</span>nombre_directorio<span class="o">]</span>
-</code></pre></div>
-
-#### Ejemplos de uso
-
-**1. Clonar un repositorio básico:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/usuario/proyecto.git
-</code></pre></div>
-
-**2. Clonar en un directorio específico:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/usuario/proyecto.git<span class="w"> </span>mi-proyecto
-</code></pre></div>
-
-**3. Clonar solo la rama principal (shallow clone):**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/usuario/proyecto.git
-</code></pre></div>
-
-**4. Clonar una rama específica:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>desarrollo<span class="w"> </span>https://github.com/usuario/proyecto.git
-</code></pre></div>
-
-#### URLs de repositorios
-
-Git soporta varios protocolos para acceder a repositorios remotos:
-
-- **HTTPS**: `https://github.com/usuario/proyecto.git`
-- **SSH**: `git@github.com:usuario/proyecto.git`
-- **Git**: `git://github.com/usuario/proyecto.git`
-- **Local**: `/path/to/repositorio` o `file:///path/to/repositorio`
-
-#### Configuración de repositorios remotos
-
-Después de clonar un repositorio, Git automáticamente configura un remoto llamado `origin` que apunta al repositorio del cual clonaste.
-
-**Verificar remotos configurados:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>-v
-<span class="linenos" data-linenos="2 "></span>origin<span class="w">  </span>https://github.com/usuario/proyecto.git<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
-<span class="linenos" data-linenos="3 "></span>origin<span class="w">  </span>https://github.com/usuario/proyecto.git<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
-</code></pre></div>
-
-**Añadir un remoto adicional:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/original/proyecto.git
-</code></pre></div>
-
-**Cambiar la URL de un remoto:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://github.com/usuario/nuevo-proyecto.git
-</code></pre></div>
-
-#### Flujo de trabajo típico con repositorios remotos
-
-1. **Clonar el repositorio:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/usuario/proyecto.git
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>proyecto
-</code></pre></div>
-
-2. **Crear una rama para tu trabajo:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>nueva-funcionalidad
-</code></pre></div>
-
-3. **Hacer cambios y commits:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadir nueva funcionalidad&quot;</span>
-</code></pre></div>
-
-4. **Enviar cambios al repositorio remoto:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>nueva-funcionalidad
-</code></pre></div>
-
-5. **Sincronizar con cambios remotos:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-
-#### Comandos relacionados con repositorios remotos
-
-| Comando | Descripción |
-|---------|-------------|
-| `git remote` | Lista los remotos configurados |
-| `git remote -v` | Lista remotos con URLs |
-| `git remote add <nombre> <url>` | Añade un nuevo remoto |
-| `git remote remove <nombre>` | Elimina un remoto |
-| `git remote rename <viejo> <nuevo>` | Renombra un remoto |
-| `git fetch <remoto>` | Descarga cambios sin fusionarlos |
-| `git pull <remoto> <rama>` | Descarga y fusiona cambios |
-| `git push <remoto> <rama>` | Envía cambios al remoto |
-
-#### Casos de uso en el contexto ASIR
-
-**1. Configuración de infraestructura:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar scripts de configuración de servidores</span>
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/empresa/scripts-configuracion.git
-<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>scripts-configuracion
-<span class="linenos" data-linenos="4 "></span>$<span class="w"> </span>./configurar-servidor.sh
-</code></pre></div>
-
-**2. Gestión de configuraciones:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar repositorio de configuraciones</span>
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/empresa/configs-servidor.git
-<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>configs-servidor
-<span class="linenos" data-linenos="4 "></span><span class="c1"># Modificar configuraciones</span>
-<span class="linenos" data-linenos="5 "></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
-<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Actualizar configuración de nginx&quot;</span>
-<span class="linenos" data-linenos="7 "></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-
-**3. Colaboración en proyectos:**
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar proyecto compartido</span>
-<span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/equipo/proyecto-infraestructura.git
-<span class="linenos" data-linenos="3 "></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>proyecto-infraestructura
-<span class="linenos" data-linenos="4 "></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>configuracion-red
-<span class="linenos" data-linenos="5 "></span><span class="c1"># Trabajar en la nueva funcionalidad</span>
-<span class="linenos" data-linenos="6 "></span>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>configuracion-red
-</code></pre></div>
-
-!!! tip "Consejos para administradores de sistemas"
-    - Utiliza `git clone` para mantener sincronizadas las configuraciones entre múltiples servidores.
-    - Crea repositorios privados para configuraciones sensibles de seguridad.
-    - Usa tags para marcar versiones estables de configuraciones de producción.
-    - Implementa hooks de Git para automatizar tareas de despliegue. -->
-
+<p>En ocasiones se hacen cambios que se desea preservar para más adelante: por ejemplo, trabajamos en una modificación de un fichero y de repente nos avisan de que hay un bug en otro fichero que tiene que ser resuelto inmediatamente. Para no trabajar en ambas tareas a la vez podemos ejecutar <code>git stash</code>: los cambios que tenemos en ese momento y que no están en el área de preparación (es decir, los cambios que están en color rojo) se guardan en un área temporal; al ejecutar <code>git status</code> veremos que no hay ninguna modificación, el directorio de trabajo está limpio.</p>
+<p>A continuación trabajamos en el bug, hacemos cambios y al terminar ejecutamos <code>git add</code> y <code>git commit</code> para resolverlo. Una vez resuelto, ejecutamos <code>git stash pop</code> y recuperamos los cambios que estábamos realizando antes de ser interrumpidos: veremos que <code>git status</code> nos muestra en color rojo los archivos que habíamos modificado al principio.</p>
 <hr />
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC201"></a></p>
@@ -1745,30 +1386,57 @@ Después de clonar un repositorio, Git automáticamente configura un remoto llam
 <p><a href="https://git-scm.com/book/es/v2"><img alt="Pro Git Book" src="https://git-scm.com/images/progit2.png" /></a></p>
 <p><em>Consulta el <a href="https://git-scm.com/book/es/v2">libro oficial de Git <em>Pro Git</em> (2ª edición, español)</a> para una guía completa y actualizada sobre Git.</em></p>
 </div>
-<!-- 
-<a name="PR201"></a>
-
-* **PR201** (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-10p). **Gestión de configuraciones de servidor con Git**
-
-> **Criterios de evaluación asociados:**
-
-- **CE-PI2a**: Identificación y justificación de la herramienta Git para gestión de configuraciones.
-- **CE-PI3b**: Configuración correcta del repositorio local y primeros commits de configuraciones.
-- **CE-PI4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).
-
-> **Tareas:**
-
-1. Configurar la identidad de Git (nombre y email) para el entorno ASIR.
-2. Crear un directorio para el proyecto de configuraciones de servidor e inicializar un repositorio Git.
-3. Crear un archivo README.md con información del proyecto de infraestructura.
-4. Crear archivos de configuración de ejemplo (nginx.conf, apache2.conf, etc.).
-5. Realizar el primer commit con mensaje descriptivo de las configuraciones iniciales.
-6. Crear un archivo `.gitignore` apropiado para configuraciones de servidor.
-7. Modificar las configuraciones y realizar commits descriptivos para cada cambio.
-8. Explorar el historial con `git log` y crear etiquetas para versiones estables.
-9. Documentar todo el proceso con capturas y comandos utilizados.
-
----
+<p><a name="PR201"></a></p>
+<ul>
+<li><strong>PR201</strong> (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-10p). <strong>Gestión de configuraciones de servidor con Git</strong></li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación asociados:</strong></p>
+</blockquote>
+<ul>
+<li><strong>CE-PI2a</strong>: Identificación y justificación de Git como herramienta de control de versiones para gestión de configuraciones de servidor.</li>
+<li><strong>CE-PI3b</strong>: Configuración correcta del repositorio local y primeros commits de configuraciones.</li>
+<li><strong>CE-PI4c</strong>: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).</li>
+</ul>
+<blockquote>
+<p><strong>Tareas:</strong></p>
+</blockquote>
+<ol>
+<li>Configurar la identidad de Git (nombre y email) para el entorno ASIR usando <code>git config --global</code>.</li>
+<li>Crear un directorio para el proyecto de configuraciones de servidor e inicializar un repositorio Git con <code>git init</code>.</li>
+<li>Crear un archivo <code>README.md</code> con información del proyecto de infraestructura (estructura del repositorio, descripción de servicios).</li>
+<li>Crear la estructura de directorios para configuraciones: <code>nginx/</code>, <code>apache/</code>, <code>mysql/</code>, <code>scripts/</code>, <code>backups/</code>, <code>docs/</code>.</li>
+<li>Crear archivos de configuración de ejemplo apropiados para ASIR:
+   - <code>nginx/default.conf</code>: Configuración básica de NGINX con virtual host
+   - <code>apache/000-default.conf</code>: Configuración de Apache para virtual host
+   - <code>mysql/my.cnf</code>: Configuración básica de MySQL
+   - <code>scripts/backup.sh</code>: Script de respaldo de configuraciones
+   - <code>scripts/deploy.sh</code>: Script de despliegue automatizado</li>
+<li>Utilizar <code>git status</code> para verificar el estado de los archivos antes y después de añadirlos al área de preparación.</li>
+<li>Añadir los archivos al área de preparación usando <code>git add</code> (individualmente y con <code>git add .</code>).</li>
+<li>Visualizar los cambios con <code>git diff</code> y <code>git diff --staged</code> antes de confirmar.</li>
+<li>Realizar el primer commit con mensaje descriptivo usando <code>git commit -m</code>.</li>
+<li>Crear un archivo <code>.gitignore</code> apropiado para configuraciones de servidor (excluir archivos temporales, logs, backups, certificados SSL, archivos sensibles).</li>
+<li>Modificar algunas configuraciones y realizar commits descriptivos para cada cambio (por ejemplo: ajustar configuración de NGINX, añadir directiva de seguridad en Apache, modificar parámetros de MySQL).</li>
+<li>Explorar el historial con <code>git log</code> y <code>git log --graph --oneline</code> para visualizar la estructura de commits.</li>
+<li>Utilizar <code>git show &lt;commit&gt;</code> para ver los detalles de cambios en commits específicos.</li>
+<li>Crear etiquetas (<code>git tag</code>) para versiones estables (ej: <code>v1.0.0</code>, <code>v1.1.0</code>) y visualizarlas con <code>git show</code>.</li>
+<li>Practicar con <code>git stash</code> para guardar temporalmente cambios sin confirmar y restaurarlos con <code>git stash pop</code>.</li>
+<li>Utilizar <code>git reset</code> para quitar archivos del área de preparación cuando sea necesario.</li>
+<li>Documentar todo el proceso con capturas y comandos utilizados, incluyendo:<ul>
+<li>Estructura final del repositorio (árbol de directorios)</li>
+<li>Historial de commits completo (<code>git log --oneline --graph</code>)</li>
+<li>Estados de archivos en diferentes momentos (<code>git status</code>)</li>
+<li>Resolución de problemas encontrados durante la práctica</li>
+<li>Diferencias entre commits (<code>git diff</code> y <code>git show</code>)</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<p>No se trata de documentar el proceso tal cual como la guía, hay que documentar los resultados, los problemas encontrados y su solución. Los archivos de configuración deben ser funcionales y apropiados para un entorno ASIR real. Esta práctica se enfoca en el uso básico local de Git, sin repositorios remotos.</p>
+</div>
+<!-- ---
 
 <a name="PR202"></a>
 
