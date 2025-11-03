@@ -788,6 +788,81 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uso-basico-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso básico 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uso básico 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-para-trabajar-con-repositorios-remotos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos para trabajar con repositorios remotos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos para trabajar con repositorios remotos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ver-y-gestionar-remotos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver y gestionar remotos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clonar-un-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clonar un repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtener-cambios-del-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtener cambios del remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enviar-cambios-al-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enviar cambios al remoto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-basico-con-remotos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo básico con remotos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     <span class="md-ellipsis">
       Actividades
@@ -1345,6 +1420,125 @@
 </code></pre></div>
 <p>En ocasiones se hacen cambios que se desea preservar para más adelante: por ejemplo, trabajamos en una modificación de un fichero y de repente nos avisan de que hay un bug en otro fichero que tiene que ser resuelto inmediatamente. Para no trabajar en ambas tareas a la vez podemos ejecutar <code>git stash</code>: los cambios que tenemos en ese momento y que no están en el área de preparación (es decir, los cambios que están en color rojo) se guardan en un área temporal; al ejecutar <code>git status</code> veremos que no hay ninguna modificación, el directorio de trabajo está limpio.</p>
 <p>A continuación trabajamos en el bug, hacemos cambios y al terminar ejecutamos <code>git add</code> y <code>git commit</code> para resolverlo. Una vez resuelto, ejecutamos <code>git stash pop</code> y recuperamos los cambios que estábamos realizando antes de ser interrumpidos: veremos que <code>git status</code> nos muestra en color rojo los archivos que habíamos modificado al principio.</p>
+<hr />
+<h2 id="uso-basico-2">Uso básico 2<a class="headerlink" href="#uso-basico-2" title="Permanent link">&para;</a></h2>
+<p>Para profundizar en los conceptos fundamentales de Git, recomendamos consultar los apuntes de la <a href="https://github.com/pedroprieto/curso-github/blob/gh-pages/sesion-2.org">sesión 2 del curso de GitHub</a>, donde se trabajan aspectos como ramas, fusiones de ramas, conflictos, <strong>repositorios remotos</strong> (aspecto en el que especialmente queremos incidir) y flujos de trabajo con ramas (contenido más avanzado). Este material se distribuye bajo la licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</a>.</p>
+<p>Para complementar la teoría, te recomendamos ver el siguiente vídeo de la sesión 3 sobre trabajo con repositorios remotos:</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+    src="https://www.youtube.com/embed/aYDyT85NOLg" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+<h3 id="comandos-para-trabajar-con-repositorios-remotos">Comandos para trabajar con repositorios remotos<a class="headerlink" href="#comandos-para-trabajar-con-repositorios-remotos" title="Permanent link">&para;</a></h3>
+<p>Aquí tienes los comandos más importantes que necesitas conocer para trabajar con repositorios remotos. Te resultarán imprescindibles cuando trabajes con proyectos en equipo o necesites sincronizar tu código local con servidores como GitHub o GitLab.</p>
+<h4 id="ver-y-gestionar-remotos">Ver y gestionar remotos<a class="headerlink" href="#ver-y-gestionar-remotos" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Ver los remotos configurados (versión corta)</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>remote
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Ver los remotos con sus URLs (fetch y push)</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>remote<span class="w"> </span>-v
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Añadir un nuevo remoto (por defecto se suele llamar &quot;origin&quot;)</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>&lt;URL_del_repositorio&gt;
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Ver información detallada de un remoto (ramas, configuración, etc.)</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>remote<span class="w"> </span>show<span class="w"> </span>origin
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Renombrar un remoto</span>
+<span class="linenos" data-linenos="14 "></span>git<span class="w"> </span>remote<span class="w"> </span>rename<span class="w"> </span>origin<span class="w"> </span>nuevo_nombre
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="c1"># Eliminar un remoto</span>
+<span class="linenos" data-linenos="17 "></span>git<span class="w"> </span>remote<span class="w"> </span>rm<span class="w"> </span>nombre_remoto
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota importante</p>
+<p>Cuando clonas un repositorio con <code>git clone</code>, Git añade automáticamente ese repositorio remoto con el nombre <code>origin</code>. Esto significa que no necesitas añadirlo manualmente si trabajas desde un clon.</p>
+</div>
+<h4 id="clonar-un-repositorio-remoto">Clonar un repositorio remoto<a class="headerlink" href="#clonar-un-repositorio-remoto" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Clonar un repositorio remoto completo</span>
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL_del_repositorio&gt;
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Clonar en un directorio con nombre específico</span>
+<span class="linenos" data-linenos="5 "></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL_del_repositorio&gt;<span class="w"> </span>&lt;nombre_directorio&gt;
+</code></pre></div>
+<h4 id="obtener-cambios-del-remoto">Obtener cambios del remoto<a class="headerlink" href="#obtener-cambios-del-remoto" title="Permanent link">&para;</a></h4>
+<p>Aquí hay dos comandos diferentes que debes conocer bien porque funcionan de forma distinta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Obtener cambios del remoto SIN fusionarlos automáticamente</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>fetch<span class="w"> </span>origin
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Obtener y fusionar cambios del remoto en la rama actual (en un solo paso)</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>&lt;nombre_de_la_rama&gt;
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Si tu rama local ya rastrea una rama remota (upstream), simplemente:</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>pull
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Fusionar manualmente los cambios obtenidos con fetch</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>merge<span class="w"> </span>origin/&lt;nombre_de_la_rama&gt;
+</code></pre></div>
+<p><strong>Diferencia importante entre <code>fetch</code> y <code>pull</code></strong>: <code>git fetch</code> solo descarga los cambios del remoto y actualiza las referencias remotas (como <code>origin/master</code>), pero no modifica tu código ni fusiona nada automáticamente. Por el contrario, <code>git pull</code> hace dos cosas: primero ejecuta <code>git fetch</code> y luego automáticamente fusiona los cambios con tu rama actual. </p>
+<p>Esto significa que <code>git pull</code> puede modificar tu código directamente, así que úsalo cuando estés seguro de que quieres fusionar los cambios. Si prefieres revisar primero qué cambios hay en el remoto antes de fusionarlos, usa <code>git fetch</code> seguido de <code>git merge</code> cuando estés listo.</p>
+<h4 id="enviar-cambios-al-remoto">Enviar cambios al remoto<a class="headerlink" href="#enviar-cambios-al-remoto" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Enviar tus commits locales al remoto</span>
+<span class="linenos" data-linenos=" 2 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;nombre_de_la_rama&gt;
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Enviar y configurar el upstream (hace falta la primera vez)</span>
+<span class="linenos" data-linenos=" 5 "></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>&lt;nombre_de_la_rama&gt;
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Una vez configurado el upstream, puedes hacer simplemente:</span>
+<span class="linenos" data-linenos=" 8 "></span>git<span class="w"> </span>push
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Enviar todas las ramas locales al remoto</span>
+<span class="linenos" data-linenos="11 "></span>git<span class="w"> </span>push<span class="w"> </span>--all<span class="w"> </span>origin
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Enviar etiquetas (tags) al remoto</span>
+<span class="linenos" data-linenos="14 "></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
+</code></pre></div>
+<p><strong>Atención</strong>: <code>git push</code> solo funciona si tienes permisos de escritura en el repositorio remoto y si nadie más ha enviado cambios en el mismo tiempo. Si alguien ha enviado cambios antes que tú, tu push será rechazado y tendrás que traerte primero sus cambios con <code>git pull</code> o <code>git fetch</code>, resolver posibles conflictos, y luego volver a intentar.</p>
+<h3 id="flujo-de-trabajo-basico-con-remotos">Flujo de trabajo básico con remotos<a class="headerlink" href="#flujo-de-trabajo-basico-con-remotos" title="Permanent link">&para;</a></h3>
+<p>Para trabajar cómodamente con repositorios remotos, sigue estos pasos:</p>
+<ol>
+<li><strong>Inicializar la conexión con el remoto:</strong></li>
+</ol>
+<ul>
+<li>Si vas a trabajar con un proyecto existente, clona el repositorio con <code>git clone &lt;URL&gt;</code>. Esto configura automáticamente "origin" como remoto.</li>
+<li>Si ya tienes un repositorio local y quieres conectarlo a uno remoto (por ejemplo, en GitHub), añádelo con <code>git remote add origin &lt;URL&gt;</code>.</li>
+<li>Verifica que todo esté bien con <code>git remote -v</code>.</li>
+</ul>
+<ol start="2">
+<li><strong>Trabajar localmente:</strong></li>
+</ol>
+<ul>
+<li>Haz tus modificaciones normalmente.</li>
+<li>Añade los cambios al área de preparación: <code>git add &lt;archivo&gt;</code> o <code>git add .</code>.</li>
+<li>Confirma con <code>git commit -m "Mensaje descriptivo"</code>.</li>
+</ul>
+<ol start="3">
+<li><strong>Sincronizar antes de enviar:</strong></li>
+</ol>
+<ul>
+<li>Antes de enviar tus cambios, es buena práctica obtener primero los cambios del remoto con <code>git pull</code> para asegurarte de estar al día.</li>
+<li>Si hay conflictos, resuélvelos antes de continuar.</li>
+</ul>
+<ol start="4">
+<li><strong>Enviar tus cambios:</strong></li>
+</ol>
+<ul>
+<li>Envía tus commits al remoto con <code>git push origin &lt;rama&gt;</code>.</li>
+<li>La primera vez que envías una rama, usa <code>git push -u origin &lt;rama&gt;</code> para configurar el upstream (esto enlaza tu rama local con la rama remota y permite que después puedas hacer simplemente realizar <code>git push</code> sin argumentos).</li>
+</ul>
+<ol start="5">
+<li><strong>Mantener el repositorio actualizado:</strong></li>
+</ol>
+<ul>
+<li>Siempre que empieces a trabajar, haz un <code>git pull</code> para tener la última versión.</li>
+<li>Haz commits frecuentes y con mensajes claros.</li>
+<li>Envía tus cambios regularmente con <code>git push</code> para no quedarte demasiado desincronizado.</li>
+</ul>
 <hr />
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC201"></a></p>

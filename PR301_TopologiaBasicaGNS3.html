@@ -1,0 +1,1645 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Práctica para crear una topología básica en GNS3 con Cloud, NAT, switches y VPCs, incluyendo pruebas de conectividad.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/PR301_TopologiaBasicaGNS3.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>PR301 - Primera topología básica en GNS3 - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="PR301 - Primera topología básica en GNS3 - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Práctica para crear una topología básica en GNS3 con Cloud, NAT, switches y VPCs, incluyendo pruebas de conectividad." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/PR301_TopologiaBasicaGNS3.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/PR301_TopologiaBasicaGNS3.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="PR301 - Primera topología básica en GNS3 - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Práctica para crear una topología básica en GNS3 con Cloud, NAT, switches y VPCs, incluyendo pruebas de conectividad." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/PR301_TopologiaBasicaGNS3.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pr301-primera-topologia-basica-en-gns3" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PR301 - Primera topología básica en GNS3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos de la Práctica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#materiales-necesarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materiales Necesarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Materiales Necesarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispositivos-a-utilizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dispositivos a utilizar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requisitos-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requisitos del sistema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura del Proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura del Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conexiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conexiones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía Paso a Paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guía Paso a Paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-iniciar-gns3-y-crear-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Iniciar GNS3 y Crear el Proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Iniciar GNS3 y Crear el Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-abrir-gns3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Abrir GNS3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-configurar-el-setup-wizard" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Configurar el Setup Wizard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-crear-nuevo-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Crear Nuevo Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-anadir-dispositivos-al-lienzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Añadir Dispositivos al Lienzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Añadir Dispositivos al Lienzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-localizar-la-barra-de-dispositivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Localizar la Barra de Dispositivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-anadir-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Añadir Cloud
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-anadir-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Añadir NAT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-anadir-switches" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Añadir Switches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-anadir-vpcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Añadir VPCs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-realizar-las-conexiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Realizar las Conexiones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Realizar las Conexiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-activar-el-modo-de-conexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Activar el Modo de Conexión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-conexion-switch1-cloud-vpc1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Conexión Switch1 (Cloud + VPC1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-conexion-switch2-nat-vpc2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Conexión Switch2 (NAT + VPC2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-verificacion-de-conexiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Verificación de Conexiones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-iniciar-los-dispositivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Iniciar los Dispositivos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Iniciar los Dispositivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-metodo-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Método Individual
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-metodo-masivo-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Método Masivo (Recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-abrir-consolas-de-los-vpcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Abrir Consolas de los VPCs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Abrir Consolas de los VPCs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-abrir-consola-de-vpc1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Abrir Consola de VPC1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-abrir-consola-de-vpc2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Abrir Consola de VPC2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-de-conectividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pruebas de Conectividad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruebas de Conectividad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-6-verificar-ips-asignadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Verificar IPs Asignadas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 6: Verificar IPs Asignadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-verificar-ip-del-pc-real-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Verificar IP del PC Real (Host)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-obtener-ip-en-vpc1-conectado-a-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Obtener IP en VPC1 (Conectado a Cloud)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-obtener-ip-en-vpc2-conectado-a-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Obtener IP en VPC2 (Conectado a NAT)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-7-pruebas-de-ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 7: Pruebas de Ping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 7: Pruebas de Ping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-ping-desde-vpc1-al-gateway-pc-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Ping desde VPC1 al Gateway (PC Real)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-ping-entre-vpcs-vpc1-vpc2" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Ping entre VPCs (VPC1 ↔ VPC2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-ping-desde-el-pc-real-a-los-vpcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Ping desde el PC Real a los VPCs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-opcional-ping-desde-vpc2-a-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 (Opcional) Ping desde VPC2 a Internet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles-para-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos Útiles para VPC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos Útiles para VPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos de Red
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-8-exportar-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 8: Exportar el Proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 8: Exportar el Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-verificacion-previa" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Verificación Previa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-guardar-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Guardar el Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-exportar-proyecto-portable" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3 Exportar Proyecto Portable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-verificar-el-archivo-exportado" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4 Verificar el Archivo Exportado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diferencias-entre-cloud-y-nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diferencias entre Cloud y NAT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diferencias entre Cloud y NAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      NAT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solucion-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución de Problemas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solución de Problemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-vpc-no-obtiene-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: VPC no obtiene IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-ping-no-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Ping no funciona
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-cloud-no-se-configura" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Cloud no se configura
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-nat-no-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: NAT no funciona
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentacion-requerida" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación Requerida
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pr301-primera-topologia-basica-en-gns3">PR301 - Primera topología básica en GNS3<a class="headerlink" href="#pr301-primera-topologia-basica-en-gns3" title="Permanent link">&para;</a></h1>
+<h2 id="objetivos-de-la-practica">Objetivos de la Práctica<a class="headerlink" href="#objetivos-de-la-practica" title="Permanent link">&para;</a></h2>
+<p>Al finalizar esta práctica se será capaz de:</p>
+<ol>
+<li>Crear un proyecto básico de red en GNS3</li>
+<li>Configurar Cloud y NAT para conectividad</li>
+<li>Añadir y conectar dispositivos básicos (switches y VPCs)</li>
+<li>Configurar direcciones IP en VPCs mediante DHCP</li>
+<li>Probar conectividad entre dispositivos virtuales y con el PC real</li>
+<li>Exportar el proyecto de forma portable para entrega</li>
+</ol>
+<hr />
+<h2 id="materiales-necesarios">Materiales Necesarios<a class="headerlink" href="#materiales-necesarios" title="Permanent link">&para;</a></h2>
+<h3 id="dispositivos-a-utilizar">Dispositivos a utilizar<a class="headerlink" href="#dispositivos-a-utilizar" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>1 Cloud</strong> - Para conectar con la red física del host</li>
+<li><strong>1 NAT</strong> - Para conexión automática a Internet y red virtual</li>
+<li><strong>2 Switches genéricos</strong> - Para interconectar dispositivos</li>
+<li><strong>2 VPC (Virtual PC)</strong> - Para probar conectividad</li>
+</ul>
+<h3 id="requisitos-del-sistema">Requisitos del sistema<a class="headerlink" href="#requisitos-del-sistema" title="Permanent link">&para;</a></h3>
+<ul>
+<li>GNS3 instalado y configurado</li>
+<li>Ubuntu Server o Linux con libvirt activo (para virbr0)</li>
+<li>Al menos 4GB de RAM disponible</li>
+</ul>
+<hr />
+<h2 id="estructura-del-proyecto">Estructura del Proyecto<a class="headerlink" href="#estructura-del-proyecto" title="Permanent link">&para;</a></h2>
+<p>La topología que se va a crear es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>┌─────────┐         ┌─────────┐
+<span class="linenos" data-linenos=" 2 "></span>│  Cloud  │         │   NAT   │
+<span class="linenos" data-linenos=" 3 "></span>│(virbr0) │         │         │
+<span class="linenos" data-linenos=" 4 "></span>└────┬────┘         └────┬────┘
+<span class="linenos" data-linenos=" 5 "></span>     │                   │
+<span class="linenos" data-linenos=" 6 "></span>┌────▼────┐          ┌───▼────┐
+<span class="linenos" data-linenos=" 7 "></span>│ Switch1 │          │Switch2 │
+<span class="linenos" data-linenos=" 8 "></span>└────┬────┘          └───┬────┘
+<span class="linenos" data-linenos=" 9 "></span>     │                   │
+<span class="linenos" data-linenos="10 "></span>┌────▼────┐          ┌───▼────┐
+<span class="linenos" data-linenos="11 "></span>│  VPC1  │          │  VPC2  │
+<span class="linenos" data-linenos="12 "></span>└────────┘          └────────┘
+</code></pre></div>
+<!-- <figure>
+  <img src="./imagenes/gns3_pr301_topologia_completa.png" alt="Topología completa del proyecto"/>
+  <figcaption><b>Figura 1:</b> Topología completa del proyecto PR301 mostrando Cloud, NAT, switches y VPCs conectados.</figcaption>
+</figure> -->
+
+<h3 id="conexiones">Conexiones<a class="headerlink" href="#conexiones" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Switch1</strong>: Conecta <strong>Cloud</strong> y <strong>VPC1</strong></li>
+<li><strong>Switch2</strong>: Conecta <strong>NAT</strong> y <strong>VPC2</strong></li>
+</ul>
+<hr />
+<h2 id="guia-paso-a-paso">Guía Paso a Paso<a class="headerlink" href="#guia-paso-a-paso" title="Permanent link">&para;</a></h2>
+<h3 id="paso-1-iniciar-gns3-y-crear-el-proyecto">Paso 1: Iniciar GNS3 y Crear el Proyecto<a class="headerlink" href="#paso-1-iniciar-gns3-y-crear-el-proyecto" title="Permanent link">&para;</a></h3>
+<h4 id="11-abrir-gns3">1.1 Abrir GNS3<a class="headerlink" href="#11-abrir-gns3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Abrir GNS3 desde el menú de aplicaciones o desde terminal: <code>gns3</code></li>
+<li>Si es la primera vez, aparecerá el <strong>Setup Wizard</strong></li>
+</ul>
+<!-- <figure>
+  <img src="./imagenes/gns3_pr301_gns3_wizard.png" alt="Setup Wizard de GNS3"/>
+  <figcaption><b>Figura 1b:</b> Pantalla inicial del Setup Wizard de GNS3.</figcaption>
+</figure> -->
+
+<h4 id="12-configurar-el-setup-wizard">1.2 Configurar el Setup Wizard<a class="headerlink" href="#12-configurar-el-setup-wizard" title="Permanent link">&para;</a></h4>
+<p><strong>Primera pantalla - Tipo de servidor:</strong></p>
+<ul>
+<li>Seleccionar <strong>"Run appliances on my local computer"</strong> (ejecutar aplicaciones en el ordenador local)</li>
+<li>Hacer clic en "Next"</li>
+</ul>
+<p><strong>Segunda pantalla - Configuración local:</strong></p>
+<ul>
+<li>Verificar que el servidor esté configurado correctamente (normalmente <code>localhost</code> en el puerto 3080)</li>
+<li>Hacer clic en "Next" para continuar</li>
+</ul>
+<p><strong>Tercera pantalla - Verificación:</strong></p>
+<ul>
+<li>GNS3 verificará que se tienen los emuladores necesarios instalados</li>
+<li>Si falta algo, se indicará qué se necesita instalar</li>
+</ul>
+<h4 id="13-crear-nuevo-proyecto">1.3 Crear Nuevo Proyecto<a class="headerlink" href="#13-crear-nuevo-proyecto" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ir a <strong>File → New Blank Project</strong> (o presionar <code>Ctrl+N</code>)</li>
+<li>Dar un nombre descriptivo al proyecto: <code>PR301_TopologiaBasica</code> o <code>Practica01_Basica</code></li>
+<li>Seleccionar la ubicación donde guardarlo</li>
+<li>Hacer clic en "OK"</li>
+</ol>
+<hr />
+<h3 id="paso-2-anadir-dispositivos-al-lienzo">Paso 2: Añadir Dispositivos al Lienzo<a class="headerlink" href="#paso-2-anadir-dispositivos-al-lienzo" title="Permanent link">&para;</a></h3>
+<h4 id="21-localizar-la-barra-de-dispositivos">2.1 Localizar la Barra de Dispositivos<a class="headerlink" href="#21-localizar-la-barra-de-dispositivos" title="Permanent link">&para;</a></h4>
+<p>En el panel izquierdo de GNS3 se encuentran los dispositivos organizados por categorías:</p>
+<ul>
+<li><strong>Routers</strong></li>
+<li><strong>Switches</strong></li>
+<li><strong>End devices</strong> - Aquí se encuentran Cloud, NAT, VPC</li>
+<li><strong>Security</strong></li>
+<li><strong>All devices</strong></li>
+</ul>
+<h4 id="22-anadir-cloud">2.2 Añadir Cloud<a class="headerlink" href="#22-anadir-cloud" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Buscar en <strong>"End devices"</strong> → <strong>Cloud</strong></li>
+<li><strong>Arrastrar</strong> el Cloud al lienzo (área de trabajo central)</li>
+<li><strong>Configurar Cloud</strong>: Hacer clic derecho en el Cloud → <strong>"Configure"</strong></li>
+<li>En la ventana de configuración:</li>
+</ol>
+<ul>
+<li><strong>En Linux</strong>: Seleccionar la interfaz <strong><code>virbr0</code></strong> (recomendado para prácticas)</li>
+<li><strong>Nota</strong>: <code>virbr0</code> es una interfaz virtual creada por libvirt que funciona siempre, incluso con Wi-Fi</li>
+<li>Hacer clic en "OK"</li>
+</ul>
+<!-- <figure>
+  <img src="./imagenes/gns3_pr301_configuracion_cloud.png" alt="Configuración de Cloud"/>
+  <figcaption><b>Figura 2:</b> Ventana de configuración de Cloud mostrando la selección de virbr0.</figcaption>
+</figure> -->
+
+<div class="admonition note">
+<p class="admonition-title">¿Por qué virbr0?</p>
+<p><code>virbr0</code> es adecuado para prácticas porque:
+- Funciona siempre (no depende de tener conexión Ethernet física)
+- Funciona con Wi-Fi
+- Crea una red predecible: 192.168.122.0/24
+- Permite comunicación bidireccional entre dispositivos virtuales y el PC real
+- Es seguro y no interfiere con la red física</p>
+</div>
+<h4 id="23-anadir-nat">2.3 Añadir NAT<a class="headerlink" href="#23-anadir-nat" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Buscar en <strong>"End devices"</strong> → <strong>NAT</strong></li>
+<li><strong>Arrastrar</strong> el NAT al lienzo</li>
+<li><strong>No requiere configuración manual</strong> - NAT se configura automáticamente</li>
+</ol>
+<h4 id="24-anadir-switches">2.4 Añadir Switches<a class="headerlink" href="#24-anadir-switches" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Buscar en <strong>"Switches"</strong> → <strong>Ethernet switch</strong> (switch genérico)</li>
+<li><strong>Arrastrar 2 switches</strong> al lienzo</li>
+<li>Renombrarlos si se desea para mayor claridad:
+   - Clic derecho en el primer switch → <strong>"Configure"</strong> → Cambiar el nombre a "Switch1"
+   - Repetir para el segundo switch → "Switch2"</li>
+</ol>
+<h4 id="25-anadir-vpcs">2.5 Añadir VPCs<a class="headerlink" href="#25-anadir-vpcs" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Buscar en <strong>"End devices"</strong> → <strong>VPC</strong> (Virtual PC)</li>
+<li><strong>Arrastrar 2 VPCs</strong> al lienzo</li>
+<li>Renombrarlos si se desea: "VPC1" y "VPC2"</li>
+</ol>
+<p><strong>Estado final del lienzo:</strong></p>
+<!-- <figure>
+  <img src="./imagenes/gns3_pr301_topologia_completa.png" alt="Lienzo de GNS3 con todos los dispositivos"/>
+  <figcaption><b>Figura 3:</b> Lienzo de GNS3 mostrando todos los dispositivos añadidos: Cloud, NAT, switches y VPCs.</figcaption>
+</figure> -->
+
+<hr />
+<h3 id="paso-3-realizar-las-conexiones">Paso 3: Realizar las Conexiones<a class="headerlink" href="#paso-3-realizar-las-conexiones" title="Permanent link">&para;</a></h3>
+<h4 id="31-activar-el-modo-de-conexion">3.1 Activar el Modo de Conexión<a class="headerlink" href="#31-activar-el-modo-de-conexion" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Localizar el <strong>botón de conectar</strong> en la barra de herramientas (icono de cable/plugs)</li>
+<li>Hacer <strong>clic en el botón de conectar</strong> o presionar <strong>Shift + clic</strong> para modo conexión rápida</li>
+</ol>
+<h4 id="32-conexion-switch1-cloud-vpc1">3.2 Conexión Switch1 (Cloud + VPC1)<a class="headerlink" href="#32-conexion-switch1-cloud-vpc1" title="Permanent link">&para;</a></h4>
+<p><strong>Conexión Cloud → Switch1:</strong></p>
+<ol>
+<li>Con el modo conexión activo, hacer clic en <strong>Cloud</strong></li>
+<li>Luego hacer clic en <strong>Switch1</strong></li>
+<li>Se verá aparecer un cable conectando ambos dispositivos</li>
+</ol>
+<p><strong>Conexión VPC1 → Switch1:</strong></p>
+<ol>
+<li>Hacer clic en <strong>Switch1</strong></li>
+<li>Luego hacer clic en <strong>VPC1</strong></li>
+<li>Se debería ver otro cable conectando VPC1 a Switch1</li>
+</ol>
+<p><strong>Resultado:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>┌──────────┐
+<span class="linenos" data-linenos=" 2 "></span>│  Cloud   │
+<span class="linenos" data-linenos=" 3 "></span>└────┬─────┘
+<span class="linenos" data-linenos=" 4 "></span>     │
+<span class="linenos" data-linenos=" 5 "></span>┌────▼───┐
+<span class="linenos" data-linenos=" 6 "></span>│ Switch1│
+<span class="linenos" data-linenos=" 7 "></span>└────┬───┘
+<span class="linenos" data-linenos=" 8 "></span>     │
+<span class="linenos" data-linenos=" 9 "></span>┌────▼────┐
+<span class="linenos" data-linenos="10 "></span>│  VPC1   │
+<span class="linenos" data-linenos="11 "></span>└─────────┘
+</code></pre></div></p>
+<h4 id="33-conexion-switch2-nat-vpc2">3.3 Conexión Switch2 (NAT + VPC2)<a class="headerlink" href="#33-conexion-switch2-nat-vpc2" title="Permanent link">&para;</a></h4>
+<p><strong>Conexión NAT → Switch2:</strong></p>
+<ol>
+<li>Hacer clic en <strong>NAT</strong></li>
+<li>Luego hacer clic en <strong>Switch2</strong></li>
+<li>Se verá aparecer un cable</li>
+</ol>
+<p><strong>Conexión VPC2 → Switch2:</strong></p>
+<ol>
+<li>Hacer clic en <strong>Switch2</strong></li>
+<li>Luego hacer clic en <strong>VPC2</strong></li>
+<li>Se debería ver otro cable</li>
+</ol>
+<p><strong>Resultado:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>┌──────────┐
+<span class="linenos" data-linenos=" 2 "></span>│   NAT    │
+<span class="linenos" data-linenos=" 3 "></span>└────┬─────┘
+<span class="linenos" data-linenos=" 4 "></span>     │
+<span class="linenos" data-linenos=" 5 "></span>┌────▼───┐
+<span class="linenos" data-linenos=" 6 "></span>│ Switch2│
+<span class="linenos" data-linenos=" 7 "></span>└────┬───┘
+<span class="linenos" data-linenos=" 8 "></span>     │
+<span class="linenos" data-linenos=" 9 "></span>┌────▼────┐
+<span class="linenos" data-linenos="10 "></span>│  VPC2   │
+<span class="linenos" data-linenos="11 "></span>└─────────┘
+</code></pre></div></p>
+<h4 id="34-verificacion-de-conexiones">3.4 Verificación de Conexiones<a class="headerlink" href="#34-verificacion-de-conexiones" title="Permanent link">&para;</a></h4>
+<p>Verificar que se tengan exactamente <strong>4 conexiones</strong>:</p>
+<ul>
+<li>Cloud → Switch1</li>
+<li>VPC1 → Switch1</li>
+<li>NAT → Switch2</li>
+<li>VPC2 → Switch2</li>
+</ul>
+<hr />
+<h3 id="paso-4-iniciar-los-dispositivos">Paso 4: Iniciar los Dispositivos<a class="headerlink" href="#paso-4-iniciar-los-dispositivos" title="Permanent link">&para;</a></h3>
+<h4 id="41-metodo-individual">4.1 Método Individual<a class="headerlink" href="#41-metodo-individual" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Clic derecho</strong> en cada dispositivo</li>
+<li>Seleccionar <strong>"Start"</strong></li>
+<li>Esperar a que el círculo del dispositivo se vuelva <strong>verde</strong> (indica que está activo)</li>
+</ol>
+<h4 id="42-metodo-masivo-recomendado">4.2 Método Masivo (Recomendado)<a class="headerlink" href="#42-metodo-masivo-recomendado" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Presionar <strong>Ctrl+A</strong> (seleccionar todos los dispositivos)</li>
+<li><strong>Clic derecho</strong> → <strong>"Start"</strong></li>
+<li>Esperar a que <strong>todos</strong> los dispositivos tengan el círculo verde</li>
+</ol>
+<p><strong>Estado esperado:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Cloud   🟢
+<span class="linenos" data-linenos="2 "></span>NAT     🟢
+<span class="linenos" data-linenos="3 "></span>Switch1 🟢
+<span class="linenos" data-linenos="4 "></span>Switch2 🟢
+<span class="linenos" data-linenos="5 "></span>VPC1    🟢
+<span class="linenos" data-linenos="6 "></span>VPC2    🟢
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Esperar hasta que TODOS los dispositivos estén activos (círculo verde) antes de continuar.</p>
+</div>
+<hr />
+<h3 id="paso-5-abrir-consolas-de-los-vpcs">Paso 5: Abrir Consolas de los VPCs<a class="headerlink" href="#paso-5-abrir-consolas-de-los-vpcs" title="Permanent link">&para;</a></h3>
+<h4 id="51-abrir-consola-de-vpc1">5.1 Abrir Consola de VPC1<a class="headerlink" href="#51-abrir-consola-de-vpc1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Clic derecho</strong> en VPC1 → <strong>"Console"</strong></li>
+<li>Se abrirá una ventana de terminal con el prompt del VPC:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[1]&gt; _
+</code></pre></div></li>
+</ol>
+<h4 id="52-abrir-consola-de-vpc2">5.2 Abrir Consola de VPC2<a class="headerlink" href="#52-abrir-consola-de-vpc2" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Clic derecho</strong> en VPC2 → <strong>"Console"</strong></li>
+<li>Se abrirá otra ventana de terminal:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[2]&gt; _
+</code></pre></div></li>
+</ol>
+<hr />
+<h2 id="pruebas-de-conectividad">Pruebas de Conectividad<a class="headerlink" href="#pruebas-de-conectividad" title="Permanent link">&para;</a></h2>
+<h3 id="paso-6-verificar-ips-asignadas">Paso 6: Verificar IPs Asignadas<a class="headerlink" href="#paso-6-verificar-ips-asignadas" title="Permanent link">&para;</a></h3>
+<h4 id="61-verificar-ip-del-pc-real-host">6.1 Verificar IP del PC Real (Host)<a class="headerlink" href="#61-verificar-ip-del-pc-real-host" title="Permanent link">&para;</a></h4>
+<p>Desde la terminal en Ubuntu (fuera de GNS3):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w"> </span>virbr0<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>inet
+</code></pre></div>
+<p>Debería verse algo como:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0
+</code></pre></div></p>
+<p><strong>Anotar esta IP</strong>: <code>192.168.122.1</code> (este es el gateway)</p>
+<h4 id="62-obtener-ip-en-vpc1-conectado-a-cloud">6.2 Obtener IP en VPC1 (Conectado a Cloud)<a class="headerlink" href="#62-obtener-ip-en-vpc1-conectado-a-cloud" title="Permanent link">&para;</a></h4>
+<p><strong>En la consola de VPC1:</strong></p>
+<ol>
+<li>
+<p>Ejecutar el comando para obtener IP por DHCP:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[1]&gt; ip dhcp
+</code></pre></div></p>
+</li>
+<li>
+<p>Debería verse algo como:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>DDORA IP 192.168.122.206/24 GW 192.168.122.1
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>Anotar la IP asignada a VPC1</strong> (ejemplo: 192.168.122.206)</p>
+<p><strong>Qué significa:</strong></p>
+<ul>
+<li><strong>DDORA</strong>: Proceso DHCP (Discover, Offer, Request, Acknowledge)</li>
+<li><strong>IP</strong>: Dirección IP asignada</li>
+<li><strong>GW</strong>: Gateway (puerta de enlace)</li>
+</ul>
+<!-- <figure>
+  <img src="./imagenes/gns3_pr301_consola_vpc1.png" alt="Consola VPC1 con IP obtenida"/>
+  <figcaption><b>Figura 4:</b> Consola de VPC1 mostrando la IP obtenida mediante DHCP.</figcaption>
+</figure> -->
+
+<h4 id="63-obtener-ip-en-vpc2-conectado-a-nat">6.3 Obtener IP en VPC2 (Conectado a NAT)<a class="headerlink" href="#63-obtener-ip-en-vpc2-conectado-a-nat" title="Permanent link">&para;</a></h4>
+<p><strong>En la consola de VPC2:</strong></p>
+<ol>
+<li>
+<p>Ejecutar el comando:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[2]&gt; ip dhcp
+</code></pre></div></p>
+</li>
+<li>
+<p>Debería verse algo como:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>DDORA IP 192.168.122.207/24 GW 192.168.122.1
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>Anotar la IP asignada a VPC2</strong> (ejemplo: 192.168.122.207)</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Ambos VPCs deberían estar en la red 192.168.122.0/24</p>
+</div>
+<hr />
+<h3 id="paso-7-pruebas-de-ping">Paso 7: Pruebas de Ping<a class="headerlink" href="#paso-7-pruebas-de-ping" title="Permanent link">&para;</a></h3>
+<h4 id="71-ping-desde-vpc1-al-gateway-pc-real">7.1 Ping desde VPC1 al Gateway (PC Real)<a class="headerlink" href="#71-ping-desde-vpc1-al-gateway-pc-real" title="Permanent link">&para;</a></h4>
+<p><strong>En la consola de VPC1:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[1]&gt; ping 192.168.122.1
+</code></pre></div>
+<p><strong>Salida esperada:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>84 bytes from 192.168.122.1 icmp_seq=1
+<span class="linenos" data-linenos="2 "></span>84 bytes from 192.168.122.1 icmp_seq=2
+<span class="linenos" data-linenos="3 "></span>84 bytes from 192.168.122.1 icmp_seq=3
+<span class="linenos" data-linenos="4 "></span>^C
+</code></pre></div></p>
+<p><strong>Debería responder correctamente</strong> (el gateway de virbr0)</p>
+<h4 id="72-ping-entre-vpcs-vpc1-vpc2">7.2 Ping entre VPCs (VPC1 ↔ VPC2)<a class="headerlink" href="#72-ping-entre-vpcs-vpc1-vpc2" title="Permanent link">&para;</a></h4>
+<p><strong>Desde VPC1 a VPC2:</strong></p>
+<p>En la consola de VPC1, usar la IP de VPC2 (ejemplo: 192.168.122.207):
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[1]&gt; ping 192.168.122.207
+</code></pre></div></p>
+<p><strong>Salida esperada:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>84 bytes from 192.168.122.207 icmp_seq=1
+<span class="linenos" data-linenos="2 "></span>84 bytes from 192.168.122.207 icmp_seq=2
+<span class="linenos" data-linenos="3 "></span>^C
+</code></pre></div></p>
+<p><strong>Debería funcionar</strong> ya que ambos están en la misma red</p>
+<p><strong>Desde VPC2 a VPC1:</strong></p>
+<p>En la consola de VPC2, usar la IP de VPC1 (ejemplo: 192.168.122.206):
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[2]&gt; ping 192.168.122.206
+</code></pre></div></p>
+<p><strong>También debería funcionar</strong></p>
+<!-- <figure>
+  <img src="./imagenes/gns3_pr301_ping_vpcs.png" alt="Pruebas de ping entre VPCs"/>
+  <figcaption><b>Figura 5:</b> Pruebas de ping entre VPC1 y VPC2 mostrando conectividad exitosa.</figcaption>
+</figure> -->
+
+<h4 id="73-ping-desde-el-pc-real-a-los-vpcs">7.3 Ping desde el PC Real a los VPCs<a class="headerlink" href="#73-ping-desde-el-pc-real-a-los-vpcs" title="Permanent link">&para;</a></h4>
+<p><strong>Desde la terminal de Ubuntu (fuera de GNS3):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Ping a VPC1 (usar la IP que se le asignó, ejemplo: 192.168.122.206)</span>
+<span class="linenos" data-linenos="2 "></span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">192</span>.168.122.206
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Ping a VPC2 (usar la IP que se le asignó, ejemplo: 192.168.122.207)</span>
+<span class="linenos" data-linenos="5 "></span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">192</span>.168.122.207
+</code></pre></div>
+<p><strong>Salida esperada:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>PING 192.168.122.206 (192.168.122.206) 56(84) bytes of data.
+<span class="linenos" data-linenos="2 "></span>64 bytes from 192.168.122.206: icmp_seq=1 ttl=64 time=0.348 ms
+<span class="linenos" data-linenos="3 "></span>64 bytes from 192.168.122.206: icmp_seq=2 ttl=64 time=0.778 ms
+<span class="linenos" data-linenos="4 "></span>^C
+<span class="linenos" data-linenos="5 "></span>--- 192.168.122.206 ping statistics ---
+<span class="linenos" data-linenos="6 "></span>2 packets transmitted, 2 received, 0% packet loss
+</code></pre></div></p>
+<p><strong>Debería responder correctamente</strong></p>
+<h4 id="74-opcional-ping-desde-vpc2-a-internet">7.4 (Opcional) Ping desde VPC2 a Internet<a class="headerlink" href="#74-opcional-ping-desde-vpc2-a-internet" title="Permanent link">&para;</a></h4>
+<p>Si el PC tiene acceso a Internet, se puede probar:</p>
+<p><strong>En la consola de VPC2:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>VPCS[2]&gt; ping 8.8.8.8
+</code></pre></div></p>
+<p><strong>Debería funcionar si NAT tiene acceso a Internet</strong> (a través del PC)</p>
+<hr />
+<h2 id="comandos-utiles-para-vpc">Comandos Útiles para VPC<a class="headerlink" href="#comandos-utiles-para-vpc" title="Permanent link">&para;</a></h2>
+<h3 id="configuracion-ip">Configuración IP<a class="headerlink" href="#configuracion-ip" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Obtener IP por DHCP</span>
+<span class="linenos" data-linenos="2 "></span>ip<span class="w"> </span>dhcp
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Configurar IP manualmente</span>
+<span class="linenos" data-linenos="5 "></span>ip<span class="w"> </span><span class="m">192</span>.168.122.10/24<span class="w"> </span><span class="m">192</span>.168.122.1
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Ver configuración IP actual</span>
+<span class="linenos" data-linenos="8 "></span>show<span class="w"> </span>ip
+</code></pre></div>
+<h3 id="comandos-de-red">Comandos de Red<a class="headerlink" href="#comandos-de-red" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Ping</span>
+<span class="linenos" data-linenos="2 "></span>ping<span class="w"> </span><span class="o">[</span>IP_DESTINO<span class="o">]</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Ver tabla de rutas</span>
+<span class="linenos" data-linenos="5 "></span>ip<span class="w"> </span>route
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Guardar configuración (para que persista)</span>
+<span class="linenos" data-linenos="8 "></span>save
+</code></pre></div>
+<hr />
+<h2 id="paso-8-exportar-el-proyecto">Paso 8: Exportar el Proyecto<a class="headerlink" href="#paso-8-exportar-el-proyecto" title="Permanent link">&para;</a></h2>
+<h3 id="81-verificacion-previa">8.1 Verificación Previa<a class="headerlink" href="#81-verificacion-previa" title="Permanent link">&para;</a></h3>
+<p>Antes de exportar, asegurarse de que:</p>
+<ul>
+<li>Todos los dispositivos están correctamente conectados</li>
+<li>Cloud configurado con virbr0 (o interfaz apropiada)</li>
+<li>NAT añadido</li>
+<li>Todos los dispositivos pueden iniciarse sin errores</li>
+<li>Las pruebas de ping funcionan correctamente</li>
+</ul>
+<h3 id="82-guardar-el-proyecto">8.2 Guardar el Proyecto<a class="headerlink" href="#82-guardar-el-proyecto" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>File → Save</strong> (o <code>Ctrl+S</code>)</li>
+<li>Asegurarse de que el proyecto esté guardado correctamente</li>
+</ol>
+<h3 id="83-exportar-proyecto-portable">8.3 Exportar Proyecto Portable<a class="headerlink" href="#83-exportar-proyecto-portable" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>File → Export portable project</strong></li>
+<li>En la ventana de exportación:</li>
+</ol>
+<ul>
+<li><strong>Marcar "Include images"</strong> - OBLIGATORIO</li>
+<li>Seleccionar la ubicación donde guardarlo</li>
+<li>Dar un nombre descriptivo: <code>PR301_TopologiaBasica.gns3project</code></li>
+<li>Hacer clic en <strong>"Export"</strong></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<ul>
+<li>El proceso puede tardar varios minutos si incluye imágenes</li>
+<li>El archivo puede ocupar varios GB dependiendo de las imágenes</li>
+<li>No cerrar GNS3 durante la exportación</li>
+<li>Se puede verificar el progreso observando el tamaño del archivo en el explorador</li>
+</ul>
+</div>
+<h3 id="84-verificar-el-archivo-exportado">8.4 Verificar el Archivo Exportado<a class="headerlink" href="#84-verificar-el-archivo-exportado" title="Permanent link">&para;</a></h3>
+<p>Verificar que:</p>
+<ul>
+<li>El archivo existe en la ubicación seleccionada</li>
+<li>Tiene extensión <code>.gns3project</code></li>
+<li>Tiene un tamaño razonable (no está vacío)</li>
+<li>Incluye imágenes (tamaño considerable si se incluyeron)</li>
+</ul>
+<hr />
+<h2 id="diferencias-entre-cloud-y-nat">Diferencias entre Cloud y NAT<a class="headerlink" href="#diferencias-entre-cloud-y-nat" title="Permanent link">&para;</a></h2>
+<h3 id="cloud">Cloud<a class="headerlink" href="#cloud" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Conexión directa</strong> con la red física del host (mediante virbr0 u otra interfaz)</li>
+<li><strong>IP asignada</strong> por el DHCP de la red seleccionada (virbr0 = 192.168.122.x)</li>
+<li><strong>Bidireccional</strong>: permite tráfico entrante y saliente</li>
+<li><strong>Requiere configuración manual</strong> de interfaz (virbr0 recomendado)</li>
+<li><strong>Acceso a Internet</strong>: Sí, si la interfaz tiene acceso</li>
+</ul>
+<h3 id="nat">NAT<a class="headerlink" href="#nat" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Configuración automática</strong> (no requiere configuración manual)</li>
+<li><strong>IP privada</strong> en la red 192.168.122.0/24</li>
+<li><strong>Solo tráfico saliente</strong> (NAT unidireccional)</li>
+<li><strong>Acceso a Internet</strong>: Sí, automáticamente</li>
+<li><strong>No permite</strong> que dispositivos externos inicien conexiones</li>
+</ul>
+<hr />
+<h2 id="solucion-de-problemas">Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Permanent link">&para;</a></h2>
+<h3 id="problema-vpc-no-obtiene-ip">Problema: VPC no obtiene IP<a class="headerlink" href="#problema-vpc-no-obtiene-ip" title="Permanent link">&para;</a></h3>
+<p><strong>Soluciones:</strong></p>
+<ol>
+<li>Verificar que el dispositivo esté iniciado (círculo verde)</li>
+<li>Verificar que el cable esté conectado correctamente</li>
+<li>Intentar <code>ip dhcp</code> varias veces</li>
+<li>Verificar que NAT/Cloud estén iniciados</li>
+<li>Verificar que virbr0 esté activo: <code>ip addr show virbr0</code></li>
+</ol>
+<h3 id="problema-ping-no-funciona">Problema: Ping no funciona<a class="headerlink" href="#problema-ping-no-funciona" title="Permanent link">&para;</a></h3>
+<p><strong>Soluciones:</strong></p>
+<ol>
+<li>Verificar que ambos dispositivos tengan IP asignada (<code>show ip</code> en VPC)</li>
+<li>Verificar que estén en la misma red (192.168.122.0/24)</li>
+<li>Verificar el firewall: <code>sudo ufw status</code></li>
+<li>Probar primero ping al gateway (192.168.122.1)</li>
+</ol>
+<h3 id="problema-cloud-no-se-configura">Problema: Cloud no se configura<a class="headerlink" href="#problema-cloud-no-se-configura" title="Permanent link">&para;</a></h3>
+<p><strong>Soluciones:</strong></p>
+<ol>
+<li>En Linux, asegurarse de usar <strong>virbr0</strong> para Cloud</li>
+<li>Verificar que libvirtd esté activo: <code>sudo systemctl status libvirtd</code></li>
+<li>Si se necesita iniciarlo: <code>sudo systemctl start libvirtd</code></li>
+<li>Si no existe virbr0, puede que se necesite iniciar una VM con VirtualBox o instalar libvirt</li>
+</ol>
+<h3 id="problema-nat-no-funciona">Problema: NAT no funciona<a class="headerlink" href="#problema-nat-no-funciona" title="Permanent link">&para;</a></h3>
+<p><strong>Soluciones:</strong></p>
+<ol>
+<li>NAT se configura automáticamente, no requiere configuración manual</li>
+<li>Verificar que el dispositivo esté iniciado (círculo verde)</li>
+<li>Verificar conectividad de Internet en el host</li>
+<li>Verificar que no haya conflictos de red</li>
+</ol>
+<hr />
+<!-- 
+## Checklist de Verificación
+
+### Antes de Entregar - Verificar que se Tiene:
+
+**Dispositivos:**
+
+- [ ] 1 Cloud añadido y configurado (virbr0 para Linux)
+- [ ] 1 NAT añadido
+- [ ] 2 Switches genéricos añadidos
+- [ ] 2 VPCs añadidos
+
+**Conexiones:**
+
+- [ ] Switch1 conecta **Cloud** y **VPC1**
+- [ ] Switch2 conecta **NAT** y **VPC2**
+
+**Funcionamiento:**
+
+- [ ] Todos los dispositivos iniciados (círculos verdes)
+- [ ] VPC1 obtiene IP (mediante `ip dhcp`)
+- [ ] VPC2 obtiene IP de NAT (192.168.122.x)
+
+**Pruebas de Conectividad:**
+
+- [ ] Ping entre VPCs funciona (VPC1 ↔ VPC2)
+- [ ] Ping desde VPCs al PC real funciona
+- [ ] Ping desde PC real a VPCs funciona
+
+**Preparación para Entrega:**
+
+- [ ] Proyecto guardado (Ctrl+S o File → Save)
+- [ ] Proyecto exportado en formato portable
+- [ ] **"Include images" marcado** en la exportación (OBLIGATORIO)
+- [ ] Archivo `.gns3project` creado correctamente -->
+
+<!-- --- -->
+
+<h2 id="documentacion-requerida">Documentación Requerida<a class="headerlink" href="#documentacion-requerida" title="Permanent link">&para;</a></h2>
+<p>Para la entrega, documentar con capturas de pantalla:</p>
+<ol>
+<li><strong>Topología completa</strong> en GNS3 mostrando todos los dispositivos conectados</li>
+<li><strong>Configuración de Cloud</strong> (mostrando que está configurado con virbr0)</li>
+<li><strong>Consola de VPC1</strong> mostrando la IP obtenida (<code>show ip</code>)</li>
+<li><strong>Consola de VPC2</strong> mostrando la IP obtenida (<code>show ip</code>)</li>
+<li><strong>Prueba de ping entre VPCs</strong> (captura de ambas consolas)</li>
+<li><strong>Prueba de ping desde VPCs al PC real</strong> (192.168.122.1)</li>
+<li><strong>Prueba de ping desde PC real a VPCs</strong> (desde terminal de Ubuntu)</li>
+<li><strong>Proceso de exportación</strong> del proyecto</li>
+</ol>
+<hr />
+<!-- 
+## Objetivos de Aprendizaje
+
+Al finalizar esta práctica se habrá aprendido:
+
+1. Crear proyectos básicos en GNS3
+2. Diferencias entre Cloud y NAT
+3. Configurar dispositivos de red virtuales
+4. Conectar dispositivos mediante switches
+5. Configurar direcciones IP mediante DHCP
+6. Probar conectividad básica (ping)
+7. Exportar proyectos portables
+8. Configurar Cloud en entornos Linux (virbr0)
+
+---
+
+## Notas Finales
+
+- En **Linux**, Cloud funciona mejor con **virbr0** o interfaz Ethernet cableada
+- NAT es más sencillo de usar para accesos a Internet básicos
+- La red NAT por defecto es **192.168.122.0/24** en Ubuntu
+- Los VPC son útiles para pruebas rápidas sin necesidad de SO completo
+- **Siempre exportar el proyecto con imágenes** para compartirlo correctamente
+- Documentar los problemas que se encuentren y cómo se solucionaron -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
