@@ -863,6 +863,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     <span class="md-ellipsis">
       Actividades
@@ -1540,6 +1549,28 @@
 <li>Envía tus cambios regularmente con <code>git push</code> para no quedarte demasiado desincronizado.</li>
 </ul>
 <hr />
+<h2 id="github">GitHub<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
+<p>GitHub es una plataforma de alojamiento de repositorios Git que combina control de versiones con herramientas colaborativas para gestionar proyectos de software y documentación. Según el material de la sesión 3 del curso de GitHub, su uso en el aula permite centralizar tareas, dar visibilidad al trabajo del alumnado y facilitar la retroalimentación continua gracias a funciones como Issues, Pull Requests y Proyectos Kanban.</p>
+<ul>
+<li><strong>Gestión académica</strong>: Issues y Milestones convierten actividades en tareas rastreables, asignables y cerrables automáticamente desde los mensajes de commit (<code>Fixes #id</code>).  </li>
+<li><strong>Colaboración</strong>: Forks, Pull Requests y permisos de colaboradores permiten revisar aportaciones, mantener el control sobre la rama principal y fomentar la participación del alumnado.  </li>
+<li><strong>Automatización y seguimiento</strong>: Tableros de proyecto, comentarios en línea y flujos de pruebas automáticas ayudan a documentar evidencias, coordinar equipos y validar cambios antes de integrarlos.  </li>
+<li><strong>Administración de cuentas</strong>: GitHub ofrece descuentos educativos, configuración granular de tokens personales y opciones de seguridad para proteger accesos institucionales.</li>
+</ul>
+<p>Para profundizar en el trabajo con repositorios desde GitHub, revisa el siguiente vídeo complementario de la sesión 3:</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+    src="https://www.youtube.com/embed/GMH6hN8FKSU" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+<!-- [^github-sesion3]: [Sesión 3 del curso de GitHub – Pedro Prieto](https://raw.githubusercontent.com/pedroprieto/curso-github/gh-pages/sesion-3.org) -->
+
+<hr />
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC201"></a></p>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC201</strong> (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-5p). <strong>Configurar la identidad de Git (ASIR)</strong></p>
@@ -1601,7 +1632,9 @@
 <li>Crear etiquetas (<code>git tag</code>) para versiones estables (ej: <code>v1.0.0</code>, <code>v1.1.0</code>) y visualizarlas con <code>git show</code>.</li>
 <li>Practicar con <code>git stash</code> para guardar temporalmente cambios sin confirmar y restaurarlos con <code>git stash pop</code>.</li>
 <li>Utilizar <code>git reset</code> para quitar archivos del área de preparación cuando sea necesario.</li>
-<li>Documentar todo el proceso con capturas y comandos utilizados, incluyendo:<ul>
+<li>
+<p>Documentar todo el proceso con capturas y comandos utilizados, incluyendo:</p>
+<ul>
 <li>Estructura final del repositorio (árbol de directorios)</li>
 <li>Historial de commits completo (<code>git log --oneline --graph</code>)</li>
 <li>Estados de archivos en diferentes momentos (<code>git status</code>)</li>
@@ -1613,6 +1646,34 @@
 <div class="admonition note">
 <p class="admonition-title"><strong>NOTA</strong></p>
 <p>No se trata de documentar el proceso tal cual como la guía, hay que documentar los resultados, los problemas encontrados y su solución. Los archivos de configuración deben ser funcionales y apropiados para un entorno ASIR real. Esta práctica se enfoca en el uso básico local de Git, sin repositorios remotos.</p>
+</div>
+<p><a name="PR202"></a></p>
+<ul>
+<li><strong>PR202</strong> (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-10p). <strong>Colaboración en infraestructura con GitHub</strong></li>
+</ul>
+<blockquote>
+<p><strong>Criterios de evaluación asociados:</strong></p>
+</blockquote>
+<ul>
+<li><strong>CE-PI2a</strong>: Identificación y justificación de GitHub como plataforma de coordinación del equipo.</li>
+<li><strong>CE-PI3b</strong>: Configuración correcta del repositorio remoto, permisos de colaboración y flujos de trabajo compartidos.</li>
+<li><strong>CE-PI4c</strong>: Documentación clara del procedimiento, incluyendo evidencias (capturas, Pull Requests, comentarios).</li>
+</ul>
+<blockquote>
+<p><strong>Tareas (trabajo en equipo):</strong></p>
+</blockquote>
+<ol>
+<li>Organizaos en grupos de 2-3 personas y cread un repositorio en GitHub (puede ser en una organización o cuenta individual) destinado a gestionar la infraestructura de un servicio del ciclo ASIR (por ejemplo, despliegue de un servidor web con copias de seguridad automatizadas).</li>
+<li>Definid un <code>README.md</code> inicial con la lista de integrantes, el servicio ASIR elegido y el plan de trabajo; diseñad un tablero de <code>Projects</code> o documento compartido para repartir tareas (configuración del servicio, automatización, documentación).</li>
+<li>Configurad los permisos del repositorio para que todo el grupo tenga acceso de escritura, activad la protección de la rama principal (<code>main</code>) y preparad un calendario de entregas parciales.</li>
+<li>Cada integrante debe abrir una rama a partir de <code>main</code>, implementar parte de la configuración (scripts, plantillas, documentación técnica) y abrir un Pull Request donde explique el objetivo del cambio y cómo contribuye al servicio.</li>
+<li>Revisad los Pull Requests en parejas usando comentarios en línea; resolved los cambios solicitados hasta su aprobación y fusión mediante Merge o Squash, asegurándoos de que el servicio ASIR queda funcional y versionado.</li>
+<li>Capturad evidencias del tablero de trabajo, revisiones y merges; añadid las imágenes a la carpeta <code>capturas/</code> del repo y registradlas en el historial con commits descriptivos.</li>
+<li>Elaborad un informe final en formato Markdown (dentro de <code>docs/</code>) que resuma organización del trabajo, incidencias encontradas, métricas obtenidas (Pull Requests revisados, aportaciones por integrante) y aprendizajes de la dinámica colaborativa aplicada al servicio ASIR. Para resolver dudas de formato podéis consultar la guía de <a href="https://www.markdownguide.org">Markdown Guide</a> y su <a href="https://www.markdownguide.org/cheat-sheet/">chuleta rápida</a>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<p>La evaluación valorará especialmente la coordinación interna del equipo: uso coherente del tablero de trabajo, calidad de los Pull Requests y documentación de la retroalimentación entre integrantes, con énfasis en la viabilidad del servicio ASIR configurado.</p>
 </div>
 <hr />
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
@@ -1628,31 +1689,7 @@
 </div>
 <!-- ---
 
-<a name="PR202"></a>
 
-* **PR202** (RA.2,3,4 // CE2a, CE3b, y CE4c // 1-10p). **Colaboración en infraestructura con GitHub**
-
-> **Criterios de evaluación asociados:**
-
-- **CE-PI2a**: Identificación y justificación de GitHub para colaboración en proyectos de infraestructura.
-- **CE-PI3b**: Configuración correcta de repositorio remoto y sincronización de configuraciones.
-- **CE-PI4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).
-
-> **Tareas:**
-
-1. Crear una cuenta en GitHub y configurar SSH keys para el entorno ASIR.
-2. Crear un repositorio remoto en GitHub para configuraciones de servidor.
-3. Conectar el repositorio local con el remoto usando `git remote add`.
-4. Subir los commits locales al repositorio remoto usando `git push`.
-5. Crear una rama para una nueva configuración de servicio (nginx, apache, etc.).
-6. Realizar cambios en la rama y fusionar con main usando `git merge`.
-7. Clonar el repositorio en otra ubicación usando `git clone`.
-8. Crear un Pull Request para revisar cambios de configuración (si trabajando en equipo).
-9. Implementar un flujo de trabajo para versionado de configuraciones de producción.
-10. Documentar todo el proceso con capturas y comandos utilizados.
-
-!!! note "**NOTA**"
-    No se trata de documentar el proceso tal cual como la guía, hay que documentar los resultados, los problemas encontrados y su solución.
 
 ---
 
