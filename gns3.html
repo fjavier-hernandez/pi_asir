@@ -1637,38 +1637,58 @@
 <ol>
 <li>Importar el proyecto portable de base (GNS3) y esperar a que finalice la copia.</li>
 <li>Crear una plantilla (QEMU) a partir de la imagen importada copiando una appliance existente y sustituyendo el disco por el <code>*.vmdk</code> correcto.</li>
-<li>En la plantilla del servidor Ubuntu:
-   - Configurar 2 adaptadores de red.
-   - Renombrar interfaces personalizadas a <code>ens3</code> y <code>ens4</code>.</li>
-<li>Sustituir el Cloud importado por un dispositivo nuevo según el host:
-   - Linux: usar NAT (red 192.168.122.0/24, comunicación bidireccional).
-   - Windows: usar Cloud en modo Bridge (o NAT por defecto si procede).
-   - Conectar Cloud ↔ switch y <code>ens3</code> (server) ↔ switch.</li>
-<li>Mostrar nombres de interfaces en el diseño para evitar errores de cableado.</li>
-<li>Instalar y habilitar SSH en Ubuntu Server (host): <code>openssh-server</code>. Probar acceso SSH desde el anfitrión (Linux/Windows).</li>
-<li>Configurar Netplan en el servidor:
-   - <code>ens3</code> por DHCP (lado Cloud/NAT)
-   - <code>ens4</code> estática (p. ej. <code>10.10.1.1/24</code>) para la red interna
-   - Aplicar (<code>netplan apply</code>) y comprobar IPs y rutas.</li>
-<li>Configurar enrutamiento y NAT con iptables en el servidor:
-   - Limpiar reglas, políticas por defecto, permitir loopback.
-   - Habilitar <code>MASQUERADE</code> en interfaz de salida (<code>ens3</code>).
-   - Activar reenvío IP (<code>net.ipv4.ip_forward=1</code>).
-   - Opcional: crear <code>firewall.sh</code> y ejecutarlo.</li>
-<li>Hacer persistentes las reglas (opcional recomendado):
-   - Instalar <code>iptables-persistent</code> y guardar reglas.
-   - Habilitar <code>netfilter-persistent</code> en cada arranque.
-   - Persistir <code>ip_forward</code> vía <code>sysctl</code>.</li>
-<li>Añadir un cliente Ubuntu Desktop:<ul>
+<li>En la plantilla del servidor Ubuntu:</li>
+</ol>
+<ul>
+<li>Configurar 2 adaptadores de red.</li>
+<li>
+<p>Renombrar interfaces personalizadas a <code>ens3</code> y <code>ens4</code>.
+4. Sustituir el Cloud importado por un dispositivo nuevo según el host:</p>
+</li>
+<li>
+<p>Linux: usar NAT (red 192.168.122.0/24, comunicación bidireccional).</p>
+</li>
+<li>Windows: usar Cloud en modo Bridge (o NAT por defecto si procede).</li>
+<li>
+<p>Conectar Cloud ↔ switch y <code>ens3</code> (server) ↔ switch.
+5. Mostrar nombres de interfaces en el diseño para evitar errores de cableado.
+6. Instalar y habilitar SSH en Ubuntu Server (host): <code>openssh-server</code>. Probar acceso SSH desde el anfitrión (Linux/Windows).
+7. Configurar Netplan en el servidor:</p>
+</li>
+<li>
+<p><code>ens3</code> por DHCP (lado Cloud/NAT)</p>
+</li>
+<li><code>ens4</code> estática (p. ej. <code>10.10.1.1/24</code>) para la red interna</li>
+<li>
+<p>Aplicar (<code>netplan apply</code>) y comprobar IPs y rutas.
+8. Configurar enrutamiento y NAT con iptables en el servidor:</p>
+</li>
+<li>
+<p>Limpiar reglas, políticas por defecto, permitir loopback.</p>
+</li>
+<li>Habilitar <code>MASQUERADE</code> en interfaz de salida (<code>ens3</code>).</li>
+<li>Activar reenvío IP (<code>net.ipv4.ip_forward=1</code>).</li>
+<li>
+<p>Opcional: crear <code>firewall.sh</code> y ejecutarlo.
+9. Hacer persistentes las reglas (opcional recomendado):</p>
+</li>
+<li>
+<p>Instalar <code>iptables-persistent</code> y guardar reglas.</p>
+</li>
+<li>Habilitar <code>netfilter-persistent</code> en cada arranque.</li>
+<li>
+<p>Persistir <code>ip_forward</code> vía <code>sysctl</code>.
+10. Añadir un cliente Ubuntu Desktop:</p>
+<ul>
 <li>Configurar IP estática en la red interna (<code>10.10.1.0/24</code>), puerta de enlace el servidor Ubuntu (<code>10.10.1.1</code>) y DNS externo.</li>
-<li>Verificar conectividad a Internet (p. ej. <code>www.cisco.com</code>).</li>
+<li>Verificar conectividad a Internet (p. ej. <code>www.cisco.com</code>).
+11. Instalar <code>apache2</code> en el servidor y comprobar acceso HTTP desde el cliente.
+12. (Opcional) Añadir appliance WordPress, inicializarla y probar acceso.
+13. Entrega: documento con capturas de escenario, IPs, conectividad externa, acceso a Apache y WordPress (si se añadió).
+</li>
 </ul>
 </li>
-<li>Instalar <code>apache2</code> en el servidor y comprobar acceso HTTP desde el cliente.</li>
-<li>(Opcional) Añadir appliance WordPress, inicializarla y probar acceso.</li>
-<li>Entrega: documento con capturas de escenario, IPs, conectividad externa, acceso a Apache y WordPress (si se añadió).
-</li>
-</ol>
+</ul>
 </blockquote>
 <hr />
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>

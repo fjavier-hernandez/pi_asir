@@ -511,7 +511,7 @@
 <li>Un cliente Ubuntu Desktop en la red interna (<code>10.10.1.0/24</code>).</li>
 </ul>
 <figure>
-  <img src="imagenes/topologiaPR303.png"/>
+  <img src="imagenes/topologiaPR303.png" width="1000"/>
   <figcaption>Topología detallada en GNS3 para PR303.</figcaption>
 </figure>
 
@@ -549,7 +549,7 @@ El diagrama ilustra la arquitectura para PR303, compuesta por:</p>
 <li>Esperar a que finalice la copia (puede tardar varios minutos).</li>
 </ul>
 <figure>
-  <img src="imagenes/ProyectoPR303.png"/>
+  <img src="imagenes/ProyectoPR303.png" width="800"/>
   <figcaption>Topología inical en GNS3 para PR303.</figcaption>
 </figure>
 
@@ -560,14 +560,14 @@ El diagrama ilustra la arquitectura para PR303, compuesta por:</p>
 <li>Ajustar nombre, RAM y consola si procede.</li>
 </ul>
 <figure>
-  <img src="imagenes/ubnt_vmdk.png"/>
+  <img src="imagenes/ubnt_vmdk.png" width="800"/>
   <figcaption>
     Proceso de edición de la plantilla UbuntuServer en GNS3: selecciona la máquina, accede a las propiedades, y adjunta el disco <code>Ubuntu Server-disk01.vmdk</code> en la pestaña correspondiente (<b>HDD Primary Master</b>).
   </figcaption>
 </figure>
 
 <figure>
-  <img src="imagenes/usoUbuntu.png"/>
+  <img src="imagenes/usoUbuntu.png" width="800"/>
   <figcaption>
      Credenciales predeterminadas (usuario: <code>ubuntu</code>, contraseña: <code>ubuntu</code>), necesarias para el acceso inicial al sistema operativo tras el despliegue en la topología virtual.
   </figcaption>
@@ -586,14 +586,14 @@ El diagrama ilustra la arquitectura para PR303, compuesta por:</p>
 <h3 id="4-configurar-el-servidor-ubuntu">4. Configurar el servidor Ubuntu<a class="headerlink" href="#4-configurar-el-servidor-ubuntu" title="Permanent link">&para;</a></h3>
 <p>1) Dos adaptadores en la plantilla VM. Renombrar interfaces personalizadas a <code>ens3</code> y <code>ens4</code>.</p>
 <figure>
-  <img src="imagenes/EdicionredUBNT.png"/>
+  <img src="imagenes/EdicionredUBNT.png" width="600"/>
   <figcaption>
     Configuración de red de la máquina virtual 
   </figcaption>
 </figure>
 
 <figure>
-  <img src="imagenes/adaptadoresUBNT.png"/>
+  <img src="imagenes/adaptadoresUBNT.png" width="600"/>
   <figcaption>
     Configuración personalizada de los adaptadores del servidor Ubuntu en GNS3.
   </figcaption>
@@ -607,7 +607,7 @@ El diagrama ilustra la arquitectura para PR303, compuesta por:</p>
 </blockquote>
 <p>Por ello, es recomendable visualizar los nombres de las interfaces en el diagrama de GNS3 para asegurar un cableado correcto y facilitar la identificación de cada conexión.</p>
 <figure>
-  <img src="imagenes/muestraInterfaces.png"/>
+  <img src="imagenes/muestraInterfaces.png" width="1000"/>
   <figcaption>
     <b>muestraInterfaces.</b> 
   </figcaption>
@@ -683,7 +683,7 @@ Aplicar y verificar:
 <p>Durante la instalación, aparecerá un mensaje preguntando si deseas guardar las reglas actuales. Selecciona <strong>Sí</strong>.</p>
 </div>
 <figure>
-  <img src="imagenes/guardaReglas.png" alt="Pantalla de guardado de reglas iptables" />
+  <img src="imagenes/guardaReglas.png" alt="Pantalla de guardado de reglas iptables" width="1000"/>
   <figcaption>Pantalla de confirmación para guardar las reglas actuales con <code>iptables-persistent</code>.</figcaption>
 </figure>
 
@@ -718,7 +718,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 </ul>
 <p>Además, para unir el servidor y el cliente añadiremos también al diseño otro switch.</p>
 <figure>
-  <img src="imagenes/ubntclient.png" alt="Cliente Ubuntu Desktop conectado al switch interno" />
+  <img src="imagenes/ubntclient.png" alt="Cliente Ubuntu Desktop conectado al switch interno" width="1000"/>
   <figcaption>Cliente Ubuntu Desktop añadido al diseño y conectado al nuevo switch interno.</figcaption>
 </figure>
 
@@ -730,7 +730,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <li>DNS: <code>8.8.8.8</code> u otro servidor de tu elección.</li>
 </ul>
 <figure>
-  <img src="imagenes/redcliente.png" alt="Configuración de red estática en Ubuntu Desktop" />
+  <img src="imagenes/redcliente.png" alt="Configuración de red estática en Ubuntu Desktop" width="1000"/>
   <figcaption>Configuración de red estática en el cliente Ubuntu Desktop (Network Manager) 
  </figcaption>
 </figure>
@@ -747,7 +747,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 </code></pre></div></li>
 </ul>
 <figure>
-  <img src="imagenes/compruebaredcliente.png" alt="Comprobación de red cliente Ubuntu Desktop" />
+  <img src="imagenes/compruebaredcliente.png" alt="Comprobación de red cliente Ubuntu Desktop" width="1000"/>
   <figcaption>Comprobación de conectividad desde el cliente.</figcaption>
 </figure>
 
@@ -771,7 +771,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <li>Comprobar que, tras un reinicio del servidor, las reglas de iptables siguen activas si se ha configurado la persistencia.</li>
 </ol>
 <figure>
-  <img src="imagenes/comprobacionescliente.png" alt="Comprobaciones de conectividad cliente Ubuntu Desktop" />
+  <img src="imagenes/comprobacionescliente.png" alt="Comprobaciones de conectividad cliente Ubuntu Desktop" width="1000"/>
   <figcaption>
     Comprobaciones de conectividad en el cliente Ubuntu Desktop.
   </figcaption>
@@ -783,7 +783,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <li>Conectarla al switch interno para que obtenga IP (ya sea por DHCP o configurando IP estática).</li>
 </ul>
 <figure>
-  <img src="imagenes/redwordpress1.png" alt="WordPress conectado a la red interna" />
+  <img src="imagenes/redwordpress1.png" alt="WordPress conectado a la red interna" width="1000"/>
   <figcaption>
     Topología con la appliance WordPress conectada a la red interna.
   </figcaption>
@@ -794,7 +794,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <p>Podríamos poner una dirección IP manualmente o descomentar la parte de DHCP.</p>
 </div>
 <figure>
-  <img src="imagenes/redwordpress2.png" alt="Acceso cliente a WordPress en la red interna" />
+  <img src="imagenes/redwordpress2.png" alt="Acceso cliente a WordPress en la red interna" width="1000"/>
   <figcaption>
     Acceso del cliente Ubuntu Desktop a WordPress desplegado en la red interna.
   </figcaption>
@@ -812,14 +812,14 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
    - Es importante anotar la nueva contraseña configurada, ya que nos servirá en los siguientes pasos de la instalación.</li>
 </ol>
 <figure>
-  <img src="imagenes/iniciaWP1.png" alt="Inicio del asistente de configuración de WordPress" />
+  <img src="imagenes/iniciaWP1.png" alt="Inicio del asistente de configuración de WordPress" width="1000"/>
   <figcaption>
     Pantalla inicial del asistente de configuración de WordPress tras acceder por primera vez desde el navegador.
   </figcaption>
 </figure>
 
 <figure>
-  <img src="imagenes/iniciaWP2.png" alt="Página de cambio de contraseña root en WordPress" />
+  <img src="imagenes/iniciaWP2.png" alt="Página de cambio de contraseña root en WordPress" width="1000"/>
   <figcaption>
     Página para establecer la nueva contraseña de root al inicializar WordPress.
   </figcaption>
@@ -829,7 +829,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <li>Desde el cliente Ubuntu Desktop, acceder vía navegador a la IP de la máquina WordPress para validar el despliegue.</li>
 </ol>
 <figure>
-  <img src="imagenes/AccesoWP1.png" alt="Acceso al panel de administración de WordPress" />
+  <img src="imagenes/AccesoWP1.png" alt="Acceso al panel de administración de WordPress" width="1000"/>
   <figcaption>
     Acceso al panel de administración de WordPress desde el cliente Ubuntu Desktop.
   </figcaption>
@@ -839,7 +839,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <li>Al acceder, indica que WordPress no está inicializado y que solo se puede completar la configuración a través de SSH. Entonces, abrimos un terminal y nos conectamos con el usuario root y la contraseña que le hemos asignado previamente.</li>
 </ol>
 <figure>
-  <img src="imagenes/PassWP.png" alt="Cambio de contraseña de WordPress" />
+  <img src="imagenes/PassWP.png" alt="Cambio de contraseña de WordPress" width="1000"/>
   <figcaption>
     Cambio de contraseña del usuario root en la máquina WordPress desde la terminal.
   </figcaption>
@@ -849,50 +849,50 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <li>Después, comienza una serie de ventanas de configuración que nos piden la contraseña de root, la de la base de datos, una cuenta de correo… Vamos rellenando los campos y seleccionamos "Saltar" (skip) en las opciones de seguridad, etc., ya que nuestro objetivo es solo tener un WordPress funcionando.</li>
 </ol>
 <figure>
-  <img src="imagenes/IPWP.png" alt="Visualización de la IP de WordPress" />
+  <img src="imagenes/IPWP.png" alt="Visualización de la IP de WordPress" width="1000"/>
   <figcaption>
-    **Figura 34:** Visualización de la IP asignada a la máquina WordPress tras el arranque.
+    Visualización de la IP asignada a la máquina WordPress tras el arranque.
   </figcaption>
 </figure>
 
 <figure>
-  <img src="imagenes/skipWP.png" alt="Pantalla de omisión de opciones de seguridad en WordPress" />
+  <img src="imagenes/skipWP.png" alt="Pantalla de omisión de opciones de seguridad en WordPress" width="1000"/>
   <figcaption>
-    **Figura 35:** Pantalla donde se puede seleccionar "Saltar" (skip) las opciones de seguridad durante la configuración de WordPress.
+    Pantalla donde se puede seleccionar "Saltar" (skip) las opciones de seguridad durante la configuración de WordPress.
   </figcaption>
 </figure>
 
-<ol start="5">
+<ol>
 <li>Al finalizar, salimos de la consola de configuración y, si volvemos a introducir la dirección del equipo en el navegador, ya nos aparece el panel de administración de WordPress.</li>
 </ol>
 <figure>
-  <img src="imagenes/quitWP.png" alt="Salir del asistente de configuración de WordPress" />
+  <img src="imagenes/quitWP.png" alt="Salir del asistente de configuración de WordPress" width="1000"/>
   <figcaption>
-    **Figura 36:** Salida de la consola de configuración de WordPress, dejando la máquina lista para su uso en el navegador.
+    Salida de la consola de configuración de WordPress, dejando la máquina lista para su uso en el navegador.
   </figcaption>
 </figure>
 
-<ol start="6">
+<ol>
 <li>Introducimos el usuario admin y la contraseña que hemos configurado y ya estaremos dentro del panel de administración de WordPress, listo para poder trabajar en él.</li>
 </ol>
 <figure>
-  <img src="imagenes/adminWP.png" alt="Panel de administración de WordPress" />
+  <img src="imagenes/adminWP.png" alt="Panel de administración de WordPress" width="1000"/>
   <figcaption>
-    **Figura 37:** Acceso al panel de administración de WordPress después de iniciar sesión con el usuario configurado.
+    Acceso al panel de administración de WordPress después de iniciar sesión con el usuario configurado.
   </figcaption>
 </figure>
 
 <figure>
-  <img src="imagenes/adminWP2.png" alt="Panel de administración de WordPress tras la configuración final" />
+  <img src="imagenes/adminWP2.png" alt="Panel de administración de WordPress tras la configuración final" width="1000"/>
   <figcaption>
-    **Figura 38:** Panel de administración de WordPress accesible desde el cliente una vez completada toda la configuración.
+    Panel de administración de WordPress accesible desde el cliente una vez completada toda la configuración.
   </figcaption>
 </figure>
 
 <figure>
-  <img src="imagenes/adminWP3.png" alt="Panel de administración de WordPress con configuración completa" />
+  <img src="imagenes/adminWP3.png" alt="Panel de administración de WordPress con configuración completa" width="1000"/>
   <figcaption>
-    **Figura 39:** Vista adicional del panel de administración de WordPress tras completar la configuración y personalizaciones.
+    Vista adicional del panel de administración de WordPress tras completar la configuración y personalizaciones.
   </figcaption>
 </figure>
 
