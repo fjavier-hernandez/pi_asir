@@ -450,13 +450,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#10-wordpress" class="md-nav__link">
+  <a href="#10-wordpress-ocional" class="md-nav__link">
     <span class="md-ellipsis">
-      10. WordPress
+      10. WordPress (Ocional)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. WordPress">
+    <nav class="md-nav" aria-label="10. WordPress (Ocional)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -777,7 +777,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
   </figcaption>
 </figure>
 
-<h3 id="10-wordpress">10. WordPress<a class="headerlink" href="#10-wordpress" title="Permanent link">&para;</a></h3>
+<h3 id="10-wordpress-ocional">10. WordPress (Ocional)<a class="headerlink" href="#10-wordpress-ocional" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Importar la appliance WordPress desde el Marketplace (<code>New Template → Guests → WordPress</code>).</li>
 <li>Conectarla al switch interno para que obtenga IP (ya sea por DHCP o configurando IP estática).</li>
@@ -806,11 +806,13 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
 <h4 id="inicializacion-de-wordpress">Inicialización de WordPress<a class="headerlink" href="#inicializacion-de-wordpress" title="Permanent link">&para;</a></h4>
 <p>El servicio de WordPress está instalado dentro de un contenedor Docker. Al arrancar la máquina, el servicio todavía no está inicializado y obtiene una dirección IP, que suele mostrarse en pantalla. Además, se genera una contraseña aleatoria para el usuario root de la instancia de WordPress.</p>
 <ol>
-<li>Lo primero que debemos hacer es establecer una nueva contraseña de root accediendo al terminal de la máquina WordPress.
-   - Abrimos una consola en la propia máquina WordPress (puede ser mediante consola directa desde GNS3 o por SSH si está disponible).
-   - Usamos el comando adecuado para cambiar el password del usuario root según las instrucciones del sistema o del asistente de WordPress.
-   - Es importante anotar la nueva contraseña configurada, ya que nos servirá en los siguientes pasos de la instalación.</li>
+<li>Lo primero que debemos hacer es establecer una nueva contraseña de root accediendo al terminal de la máquina WordPress.</li>
 </ol>
+<ul>
+<li>Abrimos una consola en la propia máquina WordPress (puede ser mediante consola directa desde GNS3 o por SSH si está disponible).</li>
+<li>Usamos el comando adecuado para cambiar el password del usuario root según las instrucciones del sistema o del asistente de WordPress.</li>
+<li>Es importante anotar la nueva contraseña configurada, ya que nos servirá en los siguientes pasos de la instalación.</li>
+</ul>
 <figure>
   <img src="imagenes/iniciaWP1.png" alt="Inicio del asistente de configuración de WordPress" width="1000"/>
   <figcaption>
@@ -825,7 +827,7 @@ Descomenta o añade esta línea para habilitar el reenvío de IPv4:</p>
   </figcaption>
 </figure>
 
-<ol start="2">
+<ol>
 <li>Desde el cliente Ubuntu Desktop, acceder vía navegador a la IP de la máquina WordPress para validar el despliegue.</li>
 </ol>
 <figure>
