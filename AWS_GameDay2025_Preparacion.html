@@ -1,0 +1,3047 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guía de preparación para el Campeonato Nacional AWS GameDay 2025. Resumen de conceptos clave de AWS Cloud Practitioner y AWS Architecting, junto con prácticas de preparación.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/AWS_GameDay2025_Preparacion.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Preparación AWS GameDay 2025 - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Preparación AWS GameDay 2025 - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Guía de preparación para el Campeonato Nacional AWS GameDay 2025. Resumen de conceptos clave de AWS Cloud Practitioner y AWS Architecting, junto con prácticas de preparación." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/AWS_GameDay2025_Preparacion.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/AWS_GameDay2025_Preparacion.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Preparación AWS GameDay 2025 - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Guía de preparación para el Campeonato Nacional AWS GameDay 2025. Resumen de conceptos clave de AWS Cloud Practitioner y AWS Architecting, junto con prácticas de preparación." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/AWS_GameDay2025_Preparacion.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#preparacion-aws-gameday-2025" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Preparación AWS GameDay 2025
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#informacion-importante" class="md-nav__link">
+    <span class="md-ellipsis">
+      Información importante
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-clave-aws-cloud-practitioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos clave: AWS Cloud Practitioner
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos clave: AWS Cloud Practitioner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicios-fundamentales-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servicios fundamentales de AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servicios fundamentales de AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#computacion-compute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computación (Compute)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#almacenamiento-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Almacenamiento (Storage)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-de-datos-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base de datos (Databases)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redes-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redes (Networking)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-e-identidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad e identidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoreo-y-gestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoreo y gestión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facturacion-y-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Facturación y pricing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-bien-disenada-well-architected-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura bien diseñada (Well-Architected Framework)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principios-de-diseno-en-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principios de diseño en AWS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-clave-aws-architecting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos clave: AWS Architecting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conceptos clave: AWS Architecting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patrones-arquitectonicos-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patrones arquitectónicos comunes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patrones arquitectónicos comunes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-de-3-capas-3-tier-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura de 3 capas (3-Tier Architecture)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-serverless" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura serverless
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alta-disponibilidad-high-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alta disponibilidad (High Availability)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicios-avanzados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servicios avanzados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servicios avanzados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatizacion-e-infraestructura-como-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatización e Infraestructura como Código
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracion-y-mensajeria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integración y mensajería
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migracion-y-transferencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migración y transferencia
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-avanzada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad avanzada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizacion-de-costes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimización de costes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-1-arquitectura-web-basica-en-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica 1: Arquitectura web básica en AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Práctica 1: Arquitectura web básica en AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-clave-antes-de-comenzar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos clave antes de comenzar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tareas-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tareas a realizar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-una-vpc-y-configuracion-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear una VPC y configuración de red
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurar-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configurar Security Groups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-crear-instancias-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Crear instancias EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-crear-application-load-balancer-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Crear Application Load Balancer (ALB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-crear-base-de-datos-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Crear base de datos RDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-verificacion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Verificación final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntas-de-reflexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preguntas de reflexión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos adicionales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-2-arquitectura-serverless-con-lambda-y-dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica 2: Arquitectura serverless con Lambda y DynamoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Práctica 2: Arquitectura serverless con Lambda y DynamoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-clave-antes-de-comenzar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos clave antes de comenzar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escenario_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tareas-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas a realizar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tareas a realizar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-tabla-dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear tabla DynamoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-funcion-lambda-para-crear-tareas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Crear función Lambda para crear tareas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-crear-funcion-lambda-para-listar-tareas" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Crear función Lambda para listar tareas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-crear-api-gateway-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Crear API Gateway REST API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-probar-la-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Probar la API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-opcional-agregar-funciones-para-actualizar-y-eliminar" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. (Opcional) Agregar funciones para actualizar y eliminar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntas-de-reflexion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preguntas de reflexión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-aprendidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos aprendidos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-adicionales_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos adicionales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrategias-para-el-gameday" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estrategias para el GameDay
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estrategias para el GameDay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antes-de-la-competicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Antes de la competición
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#durante-la-competicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Durante la competición
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprobacion-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprobación inicial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-de-estudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos de estudio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos de estudio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación oficial AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositorios-de-estudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repositorios de estudio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laboratorios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laboratorios prácticos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glosario-de-terminos-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glosario de términos importantes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="preparacion-aws-gameday-2025">Preparación AWS GameDay 2025<a class="headerlink" href="#preparacion-aws-gameday-2025" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>El <strong>Campeonato Nacional AWS GameDay 2025</strong> es una competición práctica donde los equipos aplican conocimientos reales en la nube AWS para resolver retos técnicos en un entorno controlado. Este documento te ayudará a prepararte para la competición, cubriendo los conceptos fundamentales de <strong>AWS Cloud Practitioner</strong> y <strong>AWS Architecting</strong>.</p>
+<p><strong>Sitio web oficial:</strong> <a href="https://gameday2025.com">https://gameday2025.com</a></p>
+<h3 id="informacion-importante">Información importante<a class="headerlink" href="#informacion-importante" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Fecha de clasificación virtual:</strong> 26 de noviembre de 2025 (09:30 - 12:30)</li>
+<li><strong>Final presencial:</strong> 18 de diciembre de 2025 (09:00 - 14:30)</li>
+<li><strong>Requisito:</strong> Estar conectado a las 09:30 para las instrucciones de inicio</li>
+<li><strong>Formato:</strong> Se proporcionará un enlace de conexión antes del evento</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Estrategia para el GameDay</p>
+<p>Durante la competición, distribuye las tareas entre los miembros del equipo. Cada acción correcta genera puntos, mientras que los errores pueden restar puntos. El leaderboard se actualiza en tiempo real.</p>
+</div>
+<h2 id="conceptos-clave-aws-cloud-practitioner">Conceptos clave: AWS Cloud Practitioner<a class="headerlink" href="#conceptos-clave-aws-cloud-practitioner" title="Permanent link">&para;</a></h2>
+<h3 id="servicios-fundamentales-de-aws">Servicios fundamentales de AWS<a class="headerlink" href="#servicios-fundamentales-de-aws" title="Permanent link">&para;</a></h3>
+<h4 id="computacion-compute">Computación (Compute)<a class="headerlink" href="#computacion-compute" title="Permanent link">&para;</a></h4>
+<p><strong>EC2 (Elastic Compute Cloud)</strong></p>
+<p>EC2 es el servicio fundamental de computación en la nube de AWS. Proporciona capacidad de cómputo escalable en forma de instancias virtuales (máquinas virtuales). Permite lanzar servidores virtuales con diferentes sistemas operativos y configuraciones según tus necesidades. Es ideal para aplicaciones que requieren control total sobre el sistema operativo y el software instalado.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Máquinas virtuales en la nube con control completo</li>
+<li>Diferentes tipos de instancias según necesidades (uso general, computación optimizada, memoria optimizada, almacenamiento optimizado)</li>
+<li>Facturación flexible: On-Demand (pago por uso), Reserved (descuento por compromiso 1-3 años), Spot (hasta 90% descuento, pero pueden interrumpirse)</li>
+<li>AMI (Amazon Machine Image): plantilla preconfigurada para crear instancias rápidamente</li>
+<li>Escalado vertical (cambiar tamaño) y horizontal (añadir más instancias)</li>
+</ul>
+<p><strong>Lambda</strong></p>
+<p>Lambda es un servicio de computación serverless que permite ejecutar código sin aprovisionar o gestionar servidores. Ejecutas código solo cuando es necesario y pagas únicamente por el tiempo de computación consumido. Es ideal para procesamiento de eventos, creación de APIs, transformación de datos en tiempo real y automatización de tareas.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Servicio serverless: sin gestión de servidores</li>
+<li>Ejecución en respuesta a eventos (HTTP requests, cambios en S3, mensajes en SQS, etc.)</li>
+<li>Ideal para procesamiento de eventos, APIs, transformación de datos, automatización</li>
+<li>Pago solo por el tiempo de ejecución (en milisegundos)</li>
+<li>Escalado automático desde algunas invocaciones hasta miles por segundo</li>
+<li>Soporta múltiples lenguajes: Python, Node.js, Java, Go, Ruby, .NET, etc.</li>
+</ul>
+<p><strong>Elastic Beanstalk</strong></p>
+<p>Elastic Beanstalk es una plataforma como servicio (PaaS) que simplifica el despliegue y gestión de aplicaciones web. Solo subes tu código y Elastic Beanstalk se encarga automáticamente del aprovisionamiento de capacidad, balanceo de carga, escalado automático y monitoreo de la salud de la aplicación. Es perfecto para desarrolladores que quieren desplegar rápidamente sin preocuparse por la infraestructura.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Plataforma para desplegar aplicaciones web fácilmente sin gestionar infraestructura</li>
+<li>Despliegue automático de recursos (EC2, ALB, Auto Scaling, etc.)</li>
+<li>Soporta múltiples lenguajes y frameworks: Java, .NET, PHP, Node.js, Python, Ruby, Go, Docker</li>
+<li>Gestión automática de parches, actualizaciones y escalado</li>
+<li>Ideal para aplicaciones web y APIs tradicionales</li>
+</ul>
+<p><strong>ECS (Elastic Container Service)</strong></p>
+<p>ECS es un servicio de orquestación de contenedores Docker completamente gestionado. Permite ejecutar aplicaciones contenedorizadas sin necesidad de instalar y operar tu propio clúster de orquestación de contenedores. Es ideal para aplicaciones que ya utilizan contenedores Docker y necesitan escalabilidad y alta disponibilidad.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Servicio de orquestación de contenedores Docker gestionado</li>
+<li><strong>Fargate:</strong> ejecuta contenedores sin gestionar servidores (modo serverless)</li>
+<li><strong>EC2 Launch Type:</strong> gestionas tus propias instancias EC2 para los contenedores</li>
+<li>Integración con otros servicios AWS (ALB, ECR, CloudWatch, etc.)</li>
+<li>Ideal para arquitecturas de microservicios y aplicaciones contenedorizadas</li>
+</ul>
+<h4 id="almacenamiento-storage">Almacenamiento (Storage)<a class="headerlink" href="#almacenamiento-storage" title="Permanent link">&para;</a></h4>
+<p><strong>S3 (Simple Storage Service)</strong></p>
+<p>S3 es un servicio de almacenamiento de objetos diseñado para almacenar y recuperar cualquier cantidad de datos desde cualquier lugar. Es altamente escalable, durable y ofrece disponibilidad prácticamente ilimitada. Es ideal para almacenar archivos estáticos, backups, datos de análisis, contenido multimedia y hosting de sitios web estáticos.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Almacenamiento de objetos escalable y duradero (99.999999999% de durabilidad - 11 nueves)</li>
+<li>Clases de almacenamiento optimizadas para diferentes casos de uso:</li>
+<li><strong>Standard:</strong> acceso frecuente</li>
+<li><strong>Intelligent-Tiering:</strong> optimización automática de costes</li>
+<li><strong>Glacier:</strong> archivado a largo plazo (muy económico, recuperación en horas)</li>
+<li>Características avanzadas: versionado, cifrado, lifecycle policies, transferencia acelerada</li>
+<li>Uso común: almacenar archivos estáticos, backups, hosting de sitios web estáticos, data lakes</li>
+<li>Acceso mediante API REST, permite integración con cualquier aplicación</li>
+</ul>
+<p><strong>EBS (Elastic Block Store)</strong></p>
+<p>EBS proporciona volúmenes de almacenamiento en bloque de alto rendimiento y baja latencia para usar con instancias EC2. Estos volúmenes se comportan como discos duros físicos que puedes adjuntar a tus instancias. Son persistentes e independientes del ciclo de vida de la instancia, lo que significa que los datos persisten aunque termines la instancia.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Volúmenes de almacenamiento en bloque persistentes para instancias EC2</li>
+<li>Tipos optimizados para diferentes cargas de trabajo:</li>
+<li><strong>gp3:</strong> uso general, balance entre precio y rendimiento</li>
+<li><strong>io1/io2:</strong> alta IOPS (operaciones de entrada/salida por segundo) para bases de datos</li>
+<li><strong>st1/sc1:</strong> optimizados para throughput, ideal para big data y data warehousing</li>
+<li>Soporte para snapshots (copias de seguridad incrementales)</li>
+<li>Capacidad de redimensionar volúmenes sin tiempo de inactividad</li>
+</ul>
+<p><strong>EFS (Elastic File System)</strong></p>
+<p>EFS proporciona un sistema de archivos elástico, escalable y compartido para instancias EC2 usando el protocolo NFS (Network File System). A diferencia de EBS, múltiples instancias EC2 pueden acceder simultáneamente al mismo sistema de archivos, lo que lo hace ideal para aplicaciones que necesitan compartir archivos entre múltiples servidores.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Sistema de archivos compartido (NFS v4) accesible desde múltiples instancias EC2 simultáneamente</li>
+<li>Escalado automático: crece y se reduce automáticamente según el uso</li>
+<li>Alta disponibilidad y durabilidad integradas</li>
+<li>Ideal para aplicaciones web que comparten contenido, análisis de datos, sistemas de gestión de contenido (CMS)</li>
+<li>Acceso desde múltiples Availability Zones en una región</li>
+</ul>
+<h4 id="base-de-datos-databases">Base de datos (Databases)<a class="headerlink" href="#base-de-datos-databases" title="Permanent link">&para;</a></h4>
+<p><strong>RDS (Relational Database Service)</strong></p>
+<p>RDS es un servicio de base de datos relacional completamente gestionado que facilita la configuración, operación y escalado de bases de datos en la nube. AWS se encarga de tareas administrativas como aprovisionamiento de hardware, configuración de bases de datos, parches, backups y replicación, permitiéndote enfocarte en tu aplicación.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Servicio gestionado para bases de datos relacionales tradicionales</li>
+<li>Motores soportados: MySQL, PostgreSQL, MariaDB, Oracle, SQL Server, Aurora</li>
+<li>Características avanzadas:</li>
+<li>Backups automáticos con punto de recuperación (Point-in-Time Recovery)</li>
+<li>Réplicas de lectura para mejorar el rendimiento de consultas</li>
+<li>Multi-AZ para alta disponibilidad (réplica automática en otra AZ)</li>
+<li>Escalado automático de almacenamiento</li>
+<li>Encryption en tránsito y en reposo</li>
+<li>Ideal para aplicaciones que requieren transacciones ACID y datos estructurados</li>
+</ul>
+<p><strong>DynamoDB</strong></p>
+<p>DynamoDB es una base de datos NoSQL completamente gestionada que proporciona rendimiento de milisegundos a cualquier escala. Es una base de datos clave-valor y de documentos que permite construir aplicaciones modernas sin preocuparse por el aprovisionamiento, configuración o mantenimiento de servidores de base de datos. Perfecta para aplicaciones móviles, web, gaming, IoT y muchas otras.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Base de datos NoSQL gestionada (clave-valor y documentos JSON)</li>
+<li>Rendimiento escalable automáticamente sin aprovisionamiento manual</li>
+<li>Latencia de milisegundos incluso con millones de peticiones por segundo</li>
+<li>Ideal para aplicaciones que requieren baja latencia, escalabilidad masiva y alta disponibilidad</li>
+<li>Modo On-Demand: pago solo por lo que usas, sin planificación de capacidad</li>
+<li>Modo Provisioned: control preciso sobre la capacidad aprovisionada</li>
+<li>Soporte para transacciones ACID para aplicaciones que las necesitan</li>
+</ul>
+<p><strong>Aurora</strong></p>
+<p>Amazon Aurora es un motor de base de datos relacional compatible con MySQL y PostgreSQL, diseñado para la nube. Combina el rendimiento y disponibilidad de bases de datos comerciales de alta gama con la simplicidad y rentabilidad de bases de datos open source. Es hasta 5 veces más rápido que MySQL estándar y 3 veces más rápido que PostgreSQL.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Motor de base de datos relacional compatible con MySQL y PostgreSQL</li>
+<li>Rendimiento superior: hasta 5 veces más rápido que MySQL, 3 veces más rápido que PostgreSQL</li>
+<li>Alta disponibilidad automática con replicación continua en 6 copias de datos en 3 Availability Zones</li>
+<li>Escalabilidad automática hasta 128 TB por instancia de base de datos</li>
+<li>Hasta 15 réplicas de lectura para escalar las consultas</li>
+<li>Backups continuos en S3 sin impacto en el rendimiento</li>
+</ul>
+<h4 id="redes-networking">Redes (Networking)<a class="headerlink" href="#redes-networking" title="Permanent link">&para;</a></h4>
+<p><strong>VPC (Virtual Private Cloud)</strong></p>
+<p>VPC te permite aprovisionar una sección aislada lógicamente de la nube AWS donde puedes lanzar recursos AWS en una red virtual que definas. Tienes control completo sobre tu entorno de red virtual, incluyendo la selección de tu propio rango de direcciones IP, creación de subredes y configuración de tablas de rutas y gateways de red. Es fundamental para crear arquitecturas seguras y aisladas.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Red virtual privada y aislada dentro de AWS donde despliegas tus recursos</li>
+<li>Componentes principales:</li>
+<li><strong>Subnets:</strong> subdivisiones de la VPC en Availability Zones</li>
+<li><strong>Internet Gateway:</strong> conexión bidireccional a Internet para subnets públicas</li>
+<li><strong>NAT Gateway:</strong> permite a recursos en subnets privadas acceder a Internet de forma segura</li>
+<li><strong>Security Groups:</strong> firewall a nivel de instancia</li>
+<li><strong>NACLs:</strong> firewall a nivel de subnet</li>
+<li>Permite control granular sobre la red: rangos IP, tablas de rutas, gateways</li>
+<li>Puedes conectar tu VPC a tu datacenter local mediante VPN o Direct Connect</li>
+</ul>
+<p><strong>Route 53</strong></p>
+<p>Route 53 es un servicio web de DNS (Sistema de Nombres de Dominio) altamente disponible y escalable. Traduce nombres de dominio legibles por humanos (como www.ejemplo.com) a direcciones IP numéricas que los equipos usan para conectarse entre sí. Además, incluye funcionalidades avanzadas de enrutamiento de tráfico y verificación de salud.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Servicio de DNS gestionado y altamente disponible</li>
+<li>Políticas de enrutamiento avanzadas:</li>
+<li><strong>Simple:</strong> enrutamiento estándar a un recurso</li>
+<li><strong>Weighted:</strong> distribuye tráfico según pesos asignados</li>
+<li><strong>Latency-based:</strong> enruta a la región con menor latencia</li>
+<li><strong>Failover:</strong> conmutación automática ante fallos (activo/pasivo)</li>
+<li><strong>Geolocation:</strong> enrutamiento basado en la ubicación del usuario</li>
+<li><strong>Geoproximity:</strong> enrutamiento basado en proximidad geográfica</li>
+<li>Registro de dominios y gestión de DNS en un solo lugar</li>
+<li>Integración con otros servicios AWS para enrutamiento automático</li>
+</ul>
+<p><strong>CloudFront</strong></p>
+<p>CloudFront es un servicio de CDN (Content Delivery Network) global que acelera la entrega de sitios web, APIs, contenido de video y otras aplicaciones web. Distribuye contenido desde ubicaciones cercanas a los usuarios finales, reduciendo la latencia y mejorando la experiencia del usuario. También proporciona protección DDoS integrada y cifrado de extremo a extremo.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>CDN (Content Delivery Network) global con más de 400 puntos de presencia (edge locations) en todo el mundo</li>
+<li>Acelera la entrega de contenido estático (imágenes, CSS, JavaScript) y dinámico (APIs, contenido personalizado)</li>
+<li>Integración nativa con S3, EC2, Elastic Load Balancing y Lambda</li>
+<li>Características de seguridad:</li>
+<li>Protección DDoS integrada (AWS Shield Standard)</li>
+<li>Cifrado en tránsito (HTTPS) y en reposo</li>
+<li>Integración con AWS WAF para protección contra ataques web</li>
+<li>Cache configurable para optimizar rendimiento y reducir costes</li>
+<li>Ideal para sitios web con usuarios globales, streaming de video y aplicaciones móviles</li>
+</ul>
+<p><strong>ELB (Elastic Load Balancer)</strong></p>
+<p>Elastic Load Balancing distribuye automáticamente el tráfico de aplicaciones entrante entre múltiples destinos, como instancias EC2, contenedores, direcciones IP y funciones Lambda, en una o más Availability Zones. Aumenta la disponibilidad y tolerancia a fallos de tus aplicaciones y mejora su capacidad para manejar variaciones en el tráfico.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Distribuye el tráfico entre múltiples instancias o recursos para alta disponibilidad</li>
+<li>Tipos de Load Balancers:</li>
+<li><strong>Application Load Balancer (ALB):</strong> para aplicaciones HTTP/HTTPS, enrutamiento a nivel de aplicación</li>
+<li><strong>Network Load Balancer (NLB):</strong> para cargas de trabajo de ultra baja latencia, enrutamiento a nivel de red (capa 4)</li>
+<li><strong>Classic Load Balancer (CLB):</strong> legado, para aplicaciones básicas</li>
+<li>Health checks automáticos: detecta instancias no saludables y redirige el tráfico</li>
+<li>Escalado automático según la demanda</li>
+<li>Terminación SSL/TLS para simplificar el cifrado</li>
+</ul>
+<h4 id="seguridad-e-identidad">Seguridad e identidad<a class="headerlink" href="#seguridad-e-identidad" title="Permanent link">&para;</a></h4>
+<p><strong>IAM (Identity and Access Management)</strong></p>
+<p>IAM es el servicio de AWS que te ayuda a controlar de forma segura el acceso a los recursos de AWS. Permite gestionar usuarios, grupos de usuarios y usar permisos para permitir o denegar acceso a recursos de AWS. Es fundamental para la seguridad en la nube, siguiendo el principio de menor privilegio (solo los permisos necesarios).</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Gestión centralizada de usuarios, grupos, roles y políticas de permisos</li>
+<li><strong>Usuarios:</strong> identidades que representan personas o aplicaciones</li>
+<li><strong>Grupos:</strong> colección de usuarios que comparten permisos</li>
+<li><strong>Roles:</strong> identidades que pueden asumir servicios AWS o usuarios para permisos temporales</li>
+<li><strong>Políticas:</strong> documentos JSON que definen permisos (qué acciones están permitidas/denegadas sobre qué recursos)</li>
+<li>Principio de menor privilegio: conceder solo los permisos mínimos necesarios</li>
+<li>MFA (Multi-Factor Authentication): autenticación de dos factores para mayor seguridad</li>
+<li>Integración con servicios corporativos mediante federación de identidades</li>
+</ul>
+<p><strong>Security Groups</strong></p>
+<p>Los Security Groups actúan como un firewall virtual que controla el tráfico entrante y saliente para instancias EC2, bases de datos RDS y otros recursos. Son fundamentales para proteger tus recursos de acceso no autorizado. A diferencia de un firewall tradicional, son stateful (con estado), lo que simplifica significativamente su configuración.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Firewall virtual a nivel de instancia o recurso (EC2, RDS, Lambda, etc.)</li>
+<li><strong>Stateful (con estado):</strong> si permites tráfico entrante, automáticamente permite la respuesta saliente (no necesitas regla explícita)</li>
+<li>Por defecto: todo el tráfico saliente permitido, todo el tráfico entrante denegado</li>
+<li>Reglas basadas en protocolo (TCP, UDP, ICMP), puerto y origen/destino (IP o Security Group)</li>
+<li>Puedes asociar múltiples Security Groups a un recurso</li>
+<li>Las reglas solo pueden ser permisivas (allow), no hay reglas de denegación explícitas</li>
+</ul>
+<p><strong>NACLs (Network Access Control Lists)</strong></p>
+<p>Las NACLs son una capa adicional de seguridad opcional que actúa como firewall para las subredes de tu VPC. A diferencia de los Security Groups, las NACLs son stateless (sin estado) y funcionan a nivel de subnet, no de instancia. Son útiles para añadir una capa adicional de seguridad o para cumplir con requisitos de compliance.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Firewall a nivel de subnet (no de instancia)</li>
+<li><strong>Stateless (sin estado):</strong> debes definir reglas explícitas tanto para tráfico entrante como saliente</li>
+<li>Procesan reglas en orden numérico (número de regla más bajo primero)</li>
+<li>Pueden tener reglas de denegación explícitas (a diferencia de Security Groups)</li>
+<li>Útiles para añadir una capa adicional de seguridad y para cumplimiento normativo</li>
+<li>Por defecto, permiten todo el tráfico (aunque luego puedes restringirlo)</li>
+</ul>
+<p><strong>AWS Shield</strong></p>
+<p>AWS Shield es un servicio de protección DDoS (Distributed Denial of Service) gestionado que protege las aplicaciones que se ejecutan en AWS. Proporciona protección continua y automática contra ataques DDoS sin necesidad de intervención manual. Está integrado con otros servicios de AWS como CloudFront, Route 53 y Elastic Load Balancing.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Protección DDoS (Denial of Service) automática y continua</li>
+<li><strong>Shield Standard:</strong> incluido sin coste adicional, protección básica contra ataques comunes</li>
+<li><strong>Shield Advanced:</strong> servicio de pago con protección adicional:</li>
+<li>Protección contra ataques DDoS más sofisticados</li>
+<li>Detección y mitigación en tiempo real</li>
+<li>Protección de costes (reembolso por uso de escala durante ataques)</li>
+<li>Dashboard de visibilidad y notificaciones</li>
+<li>Acceso a un equipo de respuesta DDoS 24/7</li>
+</ul>
+<p><strong>WAF (Web Application Firewall)</strong></p>
+<p>AWS WAF es un firewall de aplicaciones web que te ayuda a proteger tus aplicaciones web contra vulnerabilidades web comunes que podrían afectar la disponibilidad, comprometer la seguridad o consumir recursos en exceso. Te permite controlar cómo el tráfico llega a tus aplicaciones creando reglas de seguridad que bloquean patrones de ataque comunes.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Protección para aplicaciones web contra vulnerabilidades comunes (OWASP Top 10)</li>
+<li>Puede asociarse a CloudFront, Application Load Balancer (ALB) o API Gateway</li>
+<li>Reglas personalizables basadas en:</li>
+<li>Direcciones IP, países/regiones</li>
+<li>Headers HTTP, cuerpos de solicitud, cadenas de consulta</li>
+<li>Patrones SQL injection, Cross-Site Scripting (XSS)</li>
+<li>Reglas predefinidas de AWS Managed Rules</li>
+<li>Reglas de rate limiting (limitación de velocidad) para prevenir abuso</li>
+<li>Dashboard y logs detallados para análisis y depuración</li>
+</ul>
+<h4 id="monitoreo-y-gestion">Monitoreo y gestión<a class="headerlink" href="#monitoreo-y-gestion" title="Permanent link">&para;</a></h4>
+<p><strong>CloudWatch</strong></p>
+<p>Amazon CloudWatch es un servicio de monitoreo y observabilidad para recursos y aplicaciones que se ejecutan en AWS. Proporciona datos y perspectivas accionables para monitorear tus aplicaciones, responder a cambios en el rendimiento del sistema y optimizar el uso de recursos. Es esencial para mantener la salud y el rendimiento de tus aplicaciones en producción.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Monitoreo y observabilidad en tiempo real de recursos y aplicaciones AWS</li>
+<li><strong>Métricas:</strong> recopila y rastrea métricas de servicios AWS y aplicaciones personalizadas</li>
+<li><strong>Logs:</strong> centraliza logs de aplicaciones y servicios para análisis y búsqueda</li>
+<li><strong>Alarmas:</strong> notificaciones automáticas cuando las métricas superan umbrales definidos</li>
+<li><strong>Dashboards:</strong> visualización personalizada de métricas clave en un solo lugar</li>
+<li><strong>Eventos (EventBridge):</strong> programación y automatización basada en eventos</li>
+<li><strong>Insights:</strong> análisis automático de logs para identificar problemas y patrones</li>
+</ul>
+<p><strong>CloudTrail</strong></p>
+<p>AWS CloudTrail es un servicio que permite la gobernanza, el cumplimiento, la auditoría operativa y la auditoría de riesgo de tu cuenta de AWS. Registra y entrega un historial de eventos de llamadas a la API para tu cuenta, incluyendo llamadas realizadas desde la consola de AWS, SDKs, herramientas de línea de comandos y otros servicios de AWS. Es fundamental para auditoría y seguridad.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Registro de auditoría de llamadas API a servicios AWS</li>
+<li>Rastrea: quién hizo qué acción, cuándo se hizo, desde dónde (IP) y si la llamada fue exitosa</li>
+<li>Historial de cambios en recursos y configuraciones</li>
+<li>Integración con CloudWatch Logs para alertas y análisis</li>
+<li>Capacidad de enviar logs a S3 para almacenamiento a largo plazo</li>
+<li>Habilitado por defecto en todas las cuentas AWS (eventos de gestión)</li>
+<li>Útil para cumplimiento normativo, seguridad, resolución de problemas y análisis de uso</li>
+</ul>
+<p><strong>AWS Config</strong></p>
+<p>AWS Config es un servicio que proporciona un inventario de recursos de AWS, registra cambios de configuración y notifica sobre relaciones no deseadas entre recursos. Te ayuda a evaluar, auditar y evaluar las configuraciones de tus recursos de AWS para facilitar el cumplimiento normativo y la gobernanza. Es esencial para mantener la conformidad y la seguridad de tu infraestructura.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Inventario continuo de recursos AWS y sus configuraciones</li>
+<li>Registro de cambios de configuración a lo largo del tiempo</li>
+<li><strong>Reglas de conformidad:</strong> evaluación automática de si las configuraciones cumplen con políticas definidas</li>
+<li>Notificaciones cuando los recursos no cumplen con las reglas</li>
+<li>Visualización de relaciones entre recursos</li>
+<li>Dashboard de cumplimiento para ver el estado de conformidad de tu cuenta</li>
+<li>Ideal para auditorías, análisis de impacto y cumplimiento normativo (PCI-DSS, HIPAA, etc.)</li>
+</ul>
+<h4 id="facturacion-y-pricing">Facturación y pricing<a class="headerlink" href="#facturacion-y-pricing" title="Permanent link">&para;</a></h4>
+<p><strong>Modelos de facturación:</strong></p>
+<ul>
+<li><strong>On-Demand:</strong> Pago por uso sin compromiso</li>
+<li><strong>Reserved Instances:</strong> Descuento por compromiso (1-3 años)</li>
+<li><strong>Spot Instances:</strong> Instancias no utilizadas a precio reducido (pueden interrumpirse)</li>
+<li><strong>Savings Plans:</strong> Descuento flexible por compromiso de uso</li>
+</ul>
+<p><strong>AWS Free Tier:</strong></p>
+<ul>
+<li>Algunos servicios gratuitos durante 12 meses</li>
+<li>Servicios siempre gratuitos (con límites)</li>
+</ul>
+<h3 id="arquitectura-bien-disenada-well-architected-framework">Arquitectura bien diseñada (Well-Architected Framework)<a class="headerlink" href="#arquitectura-bien-disenada-well-architected-framework" title="Permanent link">&para;</a></h3>
+<p>AWS define 6 pilares para construir arquitecturas robustas:</p>
+<ol>
+<li><strong>Excelencia operativa (Operational Excellence)</strong></li>
+</ol>
+<ul>
+<li>Automatización, documentación, mejora continua</li>
+</ul>
+<ol start="2">
+<li><strong>Seguridad (Security)</strong></li>
+</ol>
+<ul>
+<li>Protección de datos, controles de acceso, detección de amenazas</li>
+</ul>
+<ol start="3">
+<li><strong>Confiabilidad (Reliability)</strong></li>
+</ol>
+<ul>
+<li>Recuperación ante fallos, alta disponibilidad, pruebas de recuperación ante desastres</li>
+</ul>
+<ol start="4">
+<li><strong>Eficiencia de rendimiento (Performance Efficiency)</strong></li>
+</ol>
+<ul>
+<li>Selección adecuada de recursos, monitoreo, revisión y optimización</li>
+</ul>
+<ol start="5">
+<li><strong>Optimización de costes (Cost Optimization)</strong></li>
+</ol>
+<ul>
+<li>Evitar costes innecesarios, optimizar según necesidades</li>
+</ul>
+<ol start="6">
+<li><strong>Sostenibilidad (Sustainability)</strong></li>
+</ol>
+<ul>
+<li>Minimizar impacto ambiental, eficiencia energética</li>
+</ul>
+<h3 id="principios-de-diseno-en-aws">Principios de diseño en AWS<a class="headerlink" href="#principios-de-diseno-en-aws" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Escalar horizontalmente</strong> en lugar de verticalmente</li>
+<li><strong>Diseñar para fallos</strong> (asumir que los componentes fallarán)</li>
+<li><strong>Separación de responsabilidades</strong> (loosely coupled)</li>
+<li><strong>Seguridad en todas las capas</strong> (defense in depth)</li>
+<li><strong>Automatización</strong> cuando sea posible</li>
+<li><strong>Desacoplar los componentes</strong> de la aplicación</li>
+</ol>
+<h2 id="conceptos-clave-aws-architecting">Conceptos clave: AWS Architecting<a class="headerlink" href="#conceptos-clave-aws-architecting" title="Permanent link">&para;</a></h2>
+<h3 id="patrones-arquitectonicos-comunes">Patrones arquitectónicos comunes<a class="headerlink" href="#patrones-arquitectonicos-comunes" title="Permanent link">&para;</a></h3>
+<h4 id="arquitectura-de-3-capas-3-tier-architecture">Arquitectura de 3 capas (3-Tier Architecture)<a class="headerlink" href="#arquitectura-de-3-capas-3-tier-architecture" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>┌─────────────────┐
+<span class="linenos" data-linenos=" 2 "></span>│   Web Tier      │  (ALB + EC2 o S3 + CloudFront)
+<span class="linenos" data-linenos=" 3 "></span>│  (Presentación) │
+<span class="linenos" data-linenos=" 4 "></span>└────────┬────────┘
+<span class="linenos" data-linenos=" 5 "></span>         │
+<span class="linenos" data-linenos=" 6 "></span>┌────────▼────────┐
+<span class="linenos" data-linenos=" 7 "></span>│ Application Tier│  (EC2 Auto Scaling Group)
+<span class="linenos" data-linenos=" 8 "></span>│    (Lógica)     │
+<span class="linenos" data-linenos=" 9 "></span>└────────┬────────┘
+<span class="linenos" data-linenos="10 "></span>         │
+<span class="linenos" data-linenos="11 "></span>┌────────▼────────┐
+<span class="linenos" data-linenos="12 "></span>│   Data Tier     │  (RDS con Multi-AZ)
+<span class="linenos" data-linenos="13 "></span>│   (Base datos)  │
+<span class="linenos" data-linenos="14 "></span>└─────────────────┘
+</code></pre></div>
+<p><strong>Componentes típicos:</strong></p>
+<ul>
+<li>Web Tier: Application Load Balancer + Auto Scaling Group de EC2, o S3 + CloudFront</li>
+<li>Application Tier: EC2 en Auto Scaling Group con Application Load Balancer</li>
+<li>Data Tier: RDS con Multi-AZ para alta disponibilidad</li>
+</ul>
+<h4 id="arquitectura-serverless">Arquitectura serverless<a class="headerlink" href="#arquitectura-serverless" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>API Gateway → Lambda → DynamoDB
+<span class="linenos" data-linenos="2 "></span>     ↓
+<span class="linenos" data-linenos="3 "></span>  CloudFront
+<span class="linenos" data-linenos="4 "></span>     ↓
+<span class="linenos" data-linenos="5 "></span>     S3
+</code></pre></div>
+<p><strong>Ventajas:</strong></p>
+<ul>
+<li>Sin gestión de servidores</li>
+<li>Escalado automático</li>
+<li>Pago solo por uso</li>
+<li>Alta disponibilidad integrada</li>
+</ul>
+<h4 id="alta-disponibilidad-high-availability">Alta disponibilidad (High Availability)<a class="headerlink" href="#alta-disponibilidad-high-availability" title="Permanent link">&para;</a></h4>
+<p><strong>Estrategias:</strong></p>
+<ul>
+<li><strong>Multi-AZ:</strong> Replicación en múltiples zonas de disponibilidad dentro de la misma región</li>
+<li><strong>Multi-Region:</strong> Replicación entre regiones (para disaster recovery)</li>
+<li><strong>Auto Scaling:</strong> Escalar automáticamente según demanda</li>
+<li><strong>Health Checks:</strong> Route 53 y ELB verifican el estado de los recursos</li>
+</ul>
+<h3 id="servicios-avanzados">Servicios avanzados<a class="headerlink" href="#servicios-avanzados" title="Permanent link">&para;</a></h3>
+<h4 id="automatizacion-e-infraestructura-como-codigo">Automatización e Infraestructura como Código<a class="headerlink" href="#automatizacion-e-infraestructura-como-codigo" title="Permanent link">&para;</a></h4>
+<p><strong>CloudFormation</strong></p>
+<p>AWS CloudFormation te permite modelar y aprovisionar recursos de AWS y de terceros de forma declarativa usando templates. Puedes crear, actualizar y eliminar una colección de recursos de forma predecible y repetible, tratando la infraestructura como código. Esto facilita la gestión de versiones, el rollback en caso de problemas y la replicación de infraestructura en múltiples entornos.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Definir infraestructura como código usando templates YAML o JSON</li>
+<li>Gestión de versiones de la infraestructura (control de cambios)</li>
+<li>Rollback automático en caso de error durante la creación o actualización</li>
+<li>Reutilización de templates para crear múltiples entornos (dev, staging, prod)</li>
+<li>Sincronización: CloudFormation mantiene los recursos alineados con el template</li>
+<li>Stack: colección de recursos gestionados como una sola unidad</li>
+<li>Ideal para DevOps, CI/CD y entornos multi-región</li>
+</ul>
+<p><strong>AWS Systems Manager (SSM)</strong></p>
+<p>AWS Systems Manager es un servicio que te ayuda a automatizar tareas operativas en tus recursos AWS. Proporciona una vista unificada de tus recursos y te permite automatizar operaciones como la aplicación de parches, la gestión de configuración, el inventario de recursos y el acceso seguro a instancias sin necesidad de abrir puertos SSH o RDP.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Gestión centralizada de instancias EC2 y recursos on-premises</li>
+<li><strong>Patch Manager:</strong> automatiza la aplicación de parches y actualizaciones de seguridad</li>
+<li><strong>Parameter Store:</strong> almacenamiento seguro y jerárquico de configuración y secretos</li>
+<li><strong>Session Manager:</strong> acceso seguro a instancias sin necesidad de puertos abiertos o bastion hosts</li>
+<li><strong>State Manager:</strong> mantener la configuración deseada de instancias de forma consistente</li>
+<li><strong>Run Command:</strong> ejecutar comandos de forma remota y segura en múltiples instancias</li>
+<li><strong>Inventory:</strong> recopilar metadatos sobre tus recursos (software instalado, configuraciones, etc.)</li>
+</ul>
+<h4 id="integracion-y-mensajeria">Integración y mensajería<a class="headerlink" href="#integracion-y-mensajeria" title="Permanent link">&para;</a></h4>
+<p><strong>SQS (Simple Queue Service)</strong></p>
+<p>Amazon SQS es un servicio de colas de mensajes completamente gestionado que te permite desacoplar y escalar microservicios, sistemas distribuidos y aplicaciones sin servidor. SQS elimina la complejidad y sobrecarga asociadas con la gestión y operación de middleware orientado a mensajes, y no requiere mantenimiento de infraestructura.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Cola de mensajes desacoplada y completamente gestionada</li>
+<li>Patrón de diseño: Productor → Cola → Consumidor (desacoplamiento entre componentes)</li>
+<li><strong>Cola estándar:</strong> throughput ilimitado, ordenación de "mejor esfuerzo"</li>
+<li><strong>Cola FIFO:</strong> ordenamiento garantizado, procesamiento exactamente una vez</li>
+<li>Escalable automáticamente sin necesidad de aprovisionar capacidad</li>
+<li>Mensajes pueden persistir hasta 14 días</li>
+<li>Visibilidad de mensajes configurable para evitar procesamiento duplicado</li>
+<li>Ideal para arquitecturas de microservicios, procesamiento asíncrono y balanceo de carga</li>
+</ul>
+<p><strong>SNS (Simple Notification Service)</strong></p>
+<p>Amazon SNS es un servicio de notificaciones push totalmente gestionado que te permite enviar mensajes individuales o a múltiples destinatarios. Utiliza el modelo de publicación/suscripción (Pub/Sub) donde los publicadores envían mensajes a un "tópico" y los suscriptores reciben notificaciones sobre los temas a los que se han suscrito. Ideal para alertas, notificaciones en tiempo real y mensajería de aplicación.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Notificaciones push bajo el modelo Pub/Sub (Publicación/Suscripción)</li>
+<li>Puede notificar a múltiples endpoints simultáneamente:</li>
+<li>Email, SMS, HTTP/HTTPS endpoints</li>
+<li>Funciones Lambda, colas SQS</li>
+<li>Aplicaciones móviles (push notifications)</li>
+<li>Tópicos: canales de comunicación a los que los suscriptores se suscriben</li>
+<li>Filtrado de mensajes basado en atributos de mensaje</li>
+<li>Fan-out pattern: un mensaje a un tópico puede ser entregado a múltiples suscriptores</li>
+<li>Ideal para alertas de sistemas, notificaciones de aplicaciones y arquitecturas event-driven</li>
+</ul>
+<p><strong>API Gateway</strong></p>
+<p>Amazon API Gateway es un servicio completamente gestionado que facilita a los desarrolladores crear, publicar, mantener, monitorear y asegurar APIs REST y WebSocket a cualquier escala. Actúa como un punto de entrada único para todas las solicitudes de API y maneja tareas como autenticación, throttling, transformación de requests/responses y enrutamiento.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Creación, publicación y gestión de APIs RESTful y WebSocket</li>
+<li>Punto de entrada único para tus APIs backend</li>
+<li><strong>Throttling:</strong> limitación de velocidad para proteger backends contra sobrecarga</li>
+<li><strong>Autenticación:</strong> integración con IAM, Cognito, OAuth, API keys</li>
+<li>Transformación de requests/responses (mapping templates)</li>
+<li>Cache de respuestas para reducir carga en backends</li>
+<li>Integración con Lambda, EC2, otros servicios HTTP y servicios AWS</li>
+<li>Monitoreo y logging integrado con CloudWatch</li>
+<li>Ideal para crear APIs serverless, microservicios y aplicaciones móviles</li>
+</ul>
+<h4 id="migracion-y-transferencia">Migración y transferencia<a class="headerlink" href="#migracion-y-transferencia" title="Permanent link">&para;</a></h4>
+<p><strong>Database Migration Service (DMS)</strong></p>
+<p>AWS Database Migration Service (DMS) ayuda a migrar bases de datos a AWS de forma rápida y segura. La base de datos fuente permanece completamente operativa durante la migración, minimizando el tiempo de inactividad para aplicaciones que dependen de la base de datos. DMS soporta migraciones homogéneas (mismo motor de base de datos) y heterogéneas (diferentes motores).</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Migrar bases de datos a AWS con tiempo de inactividad mínimo</li>
+<li>Soporta migraciones continuas (CDC - Change Data Capture) para mantener sincronización durante la migración</li>
+<li>Migraciones homogéneas: mismo motor (ej: MySQL a MySQL en RDS)</li>
+<li>Migraciones heterogéneas: diferentes motores (ej: Oracle a Aurora PostgreSQL)</li>
+<li>Replicación continua para mantener bases de datos sincronizadas</li>
+<li>Soporta múltiples motores: Oracle, MySQL, PostgreSQL, SQL Server, MongoDB, etc.</li>
+<li>Ideal para migraciones a la nube, consolidación de bases de datos y replicación continua</li>
+</ul>
+<p><strong>DataSync</strong></p>
+<p>AWS DataSync es un servicio que simplifica, automatiza y acelera la copia de datos entre sistemas de almacenamiento locales y AWS Storage Services. Transfiere datos hasta 10 veces más rápido que las herramientas tradicionales mediante el uso de un protocolo optimizado y paralelización. Es ideal para migraciones de datos, transferencias periódicas y sincronización continua.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Transferencia de datos a gran escala entre sistemas de almacenamiento locales y AWS</li>
+<li>Velocidades hasta 10 veces más rápidas que herramientas tradicionales</li>
+<li>Automatización de transferencias programadas o continuas</li>
+<li>Verificación de integridad de datos durante y después de la transferencia</li>
+<li>Soporte para NFS, SMB, S3, EFS, FSx para Windows File Server</li>
+<li>Encriptación en tránsito y en reposo</li>
+<li>Ideal para migraciones de datos, backups, disaster recovery y sincronización de datos</li>
+</ul>
+<h3 id="seguridad-avanzada">Seguridad avanzada<a class="headerlink" href="#seguridad-avanzada" title="Permanent link">&para;</a></h3>
+<p><strong>KMS (Key Management Service)</strong></p>
+<p>AWS Key Management Service (KMS) es un servicio gestionado que facilita la creación y el control de claves de cifrado utilizadas para cifrar tus datos. KMS está integrado con otros servicios de AWS para facilitar el cifrado de datos que almacenas en estos servicios y el control de acceso a las claves que cifran los datos. Las claves están protegidas por módulos de seguridad de hardware validados bajo FIPS 140-2.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Servicio gestionado para crear y controlar claves de cifrado (encriptación)</li>
+<li>Integración nativa con servicios AWS para cifrado transparente (S3, EBS, RDS, etc.)</li>
+<li><strong>CMK (Customer Master Keys):</strong> claves maestras que puedes crear y gestionar</li>
+<li><strong>AWS Managed Keys:</strong> claves gestionadas automáticamente por AWS</li>
+<li>Control granular de acceso mediante políticas IAM</li>
+<li>Auditoría completa del uso de claves mediante CloudTrail</li>
+<li>Soporte para cifrado asimétrico (RSA, ECC) y simétrico (AES-256)</li>
+<li>Cifrado de datos en reposo y en tránsito</li>
+<li>Ideal para cumplimiento normativo, protección de datos sensibles y control de acceso</li>
+</ul>
+<p><strong>Secrets Manager</strong></p>
+<p>AWS Secrets Manager te ayuda a proteger los secretos necesarios para acceder a tus aplicaciones, servicios y recursos de TI. En lugar de hardcodear credenciales en código, puedes almacenarlas de forma segura en Secrets Manager y recuperarlas mediante una llamada a la API. Secrets Manager también puede rotar automáticamente secretos para reducir el riesgo de compromiso.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Almacenar y gestionar secretos de forma segura (contraseñas, claves API, tokens, certificados)</li>
+<li>Rotación automática de secretos según programación (diaria, semanal, mensual)</li>
+<li>Integración con RDS para rotación automática de contraseñas de base de datos</li>
+<li>Control de acceso mediante políticas IAM</li>
+<li>Auditoría de acceso mediante CloudTrail</li>
+<li>Cifrado automático de secretos mediante KMS</li>
+<li>APIs para recuperar secretos programáticamente</li>
+<li>Ideal para eliminar credenciales hardcodeadas, cumplimiento normativo y gestión centralizada de secretos</li>
+</ul>
+<p><strong>GuardDuty</strong></p>
+<p>Amazon GuardDuty es un servicio de detección de amenazas que monitorea continuamente maliciosas o no autorizadas para ayudar a proteger tus cargas de trabajo de AWS. Utiliza inteligencia de amenazas, aprendizaje automático y anomalías de detección para identificar y priorizar amenazas potenciales. GuardDuty analiza eventos y logs de múltiples fuentes de AWS para detectar comportamientos sospechosos.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li>Servicio de detección de amenazas inteligente y continuo</li>
+<li>Analiza múltiples fuentes de datos:</li>
+<li>CloudTrail event logs (llamadas API sospechosas)</li>
+<li>VPC Flow Logs (tráfico de red anómalo)</li>
+<li>DNS logs (consultas DNS maliciosas)</li>
+<li>Detección de comportamientos como:</li>
+<li>Instancias comprometidas, cuentas comprometidas</li>
+<li>Actividad de minería de criptomonedas</li>
+<li>Comunicación con direcciones IP maliciosas</li>
+<li>Alertas y hallazgos (findings) en CloudWatch Events</li>
+<li>Integración con AWS Security Hub para gestión centralizada</li>
+<li>Sin necesidad de instalar o gestionar agentes</li>
+<li>Ideal para seguridad proactiva, detección temprana de amenazas y cumplimiento de seguridad</li>
+</ul>
+<h3 id="optimizacion-de-costes">Optimización de costes<a class="headerlink" href="#optimizacion-de-costes" title="Permanent link">&para;</a></h3>
+<p><strong>Herramientas:</strong></p>
+<ul>
+<li><strong>AWS Cost Explorer:</strong> Visualizar y analizar costes</li>
+<li><strong>AWS Budgets:</strong> Establecer límites de coste</li>
+<li><strong>Trusted Advisor:</strong> Recomendaciones para optimizar costes y seguridad</li>
+<li><strong>Reserved Instances:</strong> Ahorro del 40-70% respecto a On-Demand</li>
+<li><strong>Spot Instances:</strong> Hasta 90% de ahorro (con tolerancia a interrupciones)</li>
+</ul>
+<h2 id="practica-1-arquitectura-web-basica-en-aws">Práctica 1: Arquitectura web básica en AWS<a class="headerlink" href="#practica-1-arquitectura-web-basica-en-aws" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h3>
+<p>Crear una arquitectura web básica de 3 capas utilizando servicios AWS: una aplicación web con balanceador de carga, instancias EC2 y una base de datos RDS.</p>
+<h3 id="conceptos-clave-antes-de-comenzar">Conceptos clave antes de comenzar<a class="headerlink" href="#conceptos-clave-antes-de-comenzar" title="Permanent link">&para;</a></h3>
+<p>Antes de iniciar la práctica, es importante entender brevemente los servicios AWS que vamos a utilizar:</p>
+<p><strong>VPC (Virtual Private Cloud):</strong></p>
+<ul>
+<li>Red virtual privada y aislada dentro de AWS donde desplegarás tus recursos.</li>
+<li>Permite definir tu propio espacio de direcciones IP, subredes, tablas de rutas y gateways.</li>
+<li>Equivale a crear tu propia red privada en la nube.</li>
+</ul>
+<p><strong>Subnets (Subredes):</strong></p>
+<ul>
+<li>Subdivisiones de la VPC que aíslan grupos de recursos.</li>
+<li><strong>Subnets públicas:</strong> Tienen acceso directo a Internet a través de un Internet Gateway.</li>
+<li><strong>Subnets privadas:</strong> No tienen acceso directo a Internet; requieren un NAT Gateway para salida a Internet.</li>
+</ul>
+<p><strong>Internet Gateway:</strong></p>
+<ul>
+<li>Componente de la VPC que permite comunicación bidireccional entre Internet y recursos en subnets públicas.</li>
+<li>Actúa como el punto de entrada y salida a Internet para tu VPC.</li>
+</ul>
+<p><strong>NAT Gateway:</strong></p>
+<ul>
+<li>Permite que recursos en subnets privadas (como bases de datos) accedan a Internet para actualizaciones, mientras permanecen inaccesibles desde Internet.</li>
+<li>Proporciona seguridad adicional aislando recursos sensibles.</li>
+</ul>
+<p><strong>Security Groups:</strong></p>
+<ul>
+<li>Firewall virtual a nivel de instancia que controla tráfico entrante y saliente.</li>
+<li>Son <strong>stateful</strong>: si permites tráfico entrante, automáticamente permite la respuesta saliente.</li>
+<li>Se aplican a recursos individuales (instancias EC2, bases de datos RDS, etc.).</li>
+</ul>
+<p><strong>EC2 (Elastic Compute Cloud):</strong></p>
+<ul>
+<li>Servicio que proporciona capacidad de computación en la nube (máquinas virtuales).</li>
+<li>Puedes lanzar instancias con diferentes sistemas operativos y configuraciones.</li>
+<li>Se factura por el tiempo de uso (por hora o segundo, según el tipo).</li>
+</ul>
+<p><strong>Application Load Balancer (ALB):</strong></p>
+<ul>
+<li>Distribuye el tráfico de aplicaciones entre múltiples instancias EC2.</li>
+<li>Proporciona alta disponibilidad y escalabilidad.</li>
+<li>Detecta automáticamente instancias no saludables y redirige el tráfico solo a instancias saludables.</li>
+</ul>
+<p><strong>Target Group:</strong></p>
+<ul>
+<li>Grupo de recursos (como instancias EC2) al que el ALB enruta el tráfico.</li>
+<li>Define el protocolo, puerto y health checks para los recursos.</li>
+</ul>
+<p><strong>RDS (Relational Database Service):</strong></p>
+<ul>
+<li>Servicio gestionado para bases de datos relacionales (MySQL, PostgreSQL, etc.).</li>
+<li>AWS se encarga de backups, parches, alta disponibilidad y escalado.</li>
+<li>Ideal para datos estructurados que requieren transacciones ACID.</li>
+</ul>
+<p><strong>DB Subnet Group:</strong></p>
+<ul>
+<li>Grupo de subnets donde RDS puede crear instancias de base de datos.</li>
+<li>Normalmente se usa en subnets privadas para mayor seguridad.</li>
+</ul>
+<h3 id="escenario">Escenario<a class="headerlink" href="#escenario" title="Permanent link">&para;</a></h3>
+<p>Una empresa quiere desplegar una aplicación web que debe:</p>
+<ul>
+<li>Ser accesible desde Internet</li>
+<li>Tener alta disponibilidad (al menos 2 instancias EC2)</li>
+<li>Almacenar datos en una base de datos relacional</li>
+<li>Ser escalable automáticamente según la carga</li>
+</ul>
+<h3 id="tareas-a-realizar">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar" title="Permanent link">&para;</a></h3>
+<h4 id="1-crear-una-vpc-y-configuracion-de-red">1. Crear una VPC y configuración de red<a class="headerlink" href="#1-crear-una-vpc-y-configuracion-de-red" title="Permanent link">&para;</a></h4>
+<p><strong>Pasos detallados:</strong></p>
+<p><strong>Paso 1.1: Crear la VPC</strong></p>
+<ol>
+<li>En la consola de AWS, ve a <strong>VPC</strong> → <strong>Your VPCs</strong> → <strong>Create VPC</strong></li>
+<li>Configuración:
+   - <strong>Name tag:</strong> <code>vpc-gameday</code>
+   - <strong>IPv4 CIDR block:</strong> <code>10.0.0.0/16</code>
+   - <strong>Tenancy:</strong> Default (Shared)</li>
+<li>Haz clic en <strong>Create VPC</strong></li>
+<li>Anota el <strong>VPC ID</strong> (ej: <code>vpc-0123456789abcdef0</code>)</li>
+</ol>
+<p><strong>Paso 1.2: Crear subnets públicas</strong></p>
+<ol>
+<li>Ve a <strong>Subnets</strong> → <strong>Create subnet</strong></li>
+<li>Configuración de la primera subnet pública:</li>
+</ol>
+<ul>
+<li><strong>VPC ID:</strong> Selecciona la VPC creada anteriormente</li>
+<li><strong>Subnet name:</strong> <code>public-subnet-1</code></li>
+<li><strong>Availability Zone:</strong> Selecciona la primera AZ (ej: <code>us-east-1a</code>)</li>
+<li>
+<p><strong>IPv4 CIDR block:</strong> <code>10.0.1.0/24</code>
+3. Haz clic en <strong>Create subnet</strong>
+4. Repite para crear la segunda subnet pública:</p>
+</li>
+<li>
+<p><strong>Subnet name:</strong> <code>public-subnet-2</code></p>
+</li>
+<li><strong>Availability Zone:</strong> Selecciona la segunda AZ (ej: <code>us-east-1b</code>)</li>
+<li><strong>IPv4 CIDR block:</strong> <code>10.0.2.0/24</code></li>
+</ul>
+<p><strong>Paso 1.3: Crear subnets privadas</strong></p>
+<ol>
+<li>Crea la primera subnet privada:</li>
+</ol>
+<ul>
+<li><strong>Subnet name:</strong> <code>private-subnet-1</code></li>
+<li><strong>Availability Zone:</strong> <code>us-east-1a</code> (misma que public-subnet-1)</li>
+<li>
+<p><strong>IPv4 CIDR block:</strong> <code>10.0.10.0/24</code>
+2. Crea la segunda subnet privada:</p>
+</li>
+<li>
+<p><strong>Subnet name:</strong> <code>private-subnet-2</code></p>
+</li>
+<li><strong>Availability Zone:</strong> <code>us-east-1b</code> (misma que public-subnet-2)</li>
+<li><strong>IPv4 CIDR block:</strong> <code>10.0.11.0/24</code></li>
+</ul>
+<p><strong>Paso 1.4: Crear Internet Gateway</strong></p>
+<ol>
+<li>Ve a <strong>Internet Gateways</strong> → <strong>Create internet gateway</strong></li>
+<li><strong>Name tag:</strong> <code>igw-gameday</code></li>
+<li>Haz clic en <strong>Create internet gateway</strong></li>
+<li>Selecciona el IGW creado y haz clic en <strong>Actions</strong> → <strong>Attach to VPC</strong></li>
+<li>Selecciona tu VPC (<code>vpc-gameday</code>) y haz clic en <strong>Attach internet gateway</strong></li>
+</ol>
+<p><strong>Paso 1.5: Configurar tabla de rutas para subnets públicas</strong></p>
+<ol>
+<li>Ve a <strong>Route Tables</strong></li>
+<li>Busca la tabla de rutas asociada a tu VPC (debería tener las subnets creadas)</li>
+<li>Selecciona la tabla de rutas y ve a la pestaña <strong>Routes</strong></li>
+<li>Haz clic en <strong>Edit routes</strong> → <strong>Add route</strong></li>
+<li>Configuración:
+   - <strong>Destination:</strong> <code>0.0.0.0/0</code>
+   - <strong>Target:</strong> Selecciona el Internet Gateway creado</li>
+<li>Haz clic en <strong>Save changes</strong></li>
+<li>Ve a la pestaña <strong>Subnet associations</strong> → <strong>Edit subnet associations</strong></li>
+<li>Marca las dos subnets públicas (<code>public-subnet-1</code> y <code>public-subnet-2</code>)</li>
+<li>Haz clic en <strong>Save associations</strong></li>
+</ol>
+<p><strong>Paso 1.6: Crear NAT Gateway</strong></p>
+<ol>
+<li>Primero, necesitas asignar una Elastic IP:
+   - Ve a <strong>Elastic IPs</strong> → <strong>Allocate Elastic IP address</strong>
+   - Haz clic en <strong>Allocate</strong> (deja la configuración por defecto)
+   - Anota la <strong>Elastic IP</strong> asignada</li>
+<li>Ve a <strong>NAT Gateways</strong> → <strong>Create NAT gateway</strong></li>
+<li>Configuración:
+   - <strong>Name:</strong> <code>nat-gateway-1</code>
+   - <strong>Subnet:</strong> Selecciona <code>public-subnet-1</code>
+   - <strong>Elastic IP allocation ID:</strong> Selecciona la Elastic IP creada</li>
+<li>Haz clic en <strong>Create NAT gateway</strong></li>
+<li><strong>IMPORTANTE:</strong> Espera 2-3 minutos hasta que el estado cambie a <strong>Available</strong></li>
+</ol>
+<p><strong>Paso 1.7: Configurar tabla de rutas para subnets privadas</strong></p>
+<ol>
+<li>Crea una nueva tabla de rutas para las subnets privadas:</li>
+</ol>
+<ul>
+<li>Ve a <strong>Route Tables</strong> → <strong>Create route table</strong></li>
+<li><strong>Name:</strong> <code>private-route-table</code></li>
+<li>
+<p><strong>VPC:</strong> Selecciona tu VPC
+2. Configura la ruta por defecto:</p>
+</li>
+<li>
+<p>Selecciona la tabla creada → <strong>Routes</strong> → <strong>Edit routes</strong> → <strong>Add route</strong></p>
+</li>
+<li><strong>Destination:</strong> <code>0.0.0.0/0</code></li>
+<li>
+<p><strong>Target:</strong> Selecciona el NAT Gateway creado
+3. Asocia las subnets privadas:</p>
+</li>
+<li>
+<p><strong>Subnet associations</strong> → <strong>Edit subnet associations</strong></p>
+</li>
+<li>Marca <code>private-subnet-1</code> y <code>private-subnet-2</code></li>
+<li>Haz clic en <strong>Save associations</strong></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Verificación de la configuración de red</p>
+<p>En este punto deberías tener:</p>
+<ul>
+<li>4 subnets (2 públicas, 2 privadas)</li>
+<li>1 Internet Gateway asociado a la VPC</li>
+<li>1 NAT Gateway en una subnet pública</li>
+<li>2 tablas de rutas configuradas (una para subnets públicas, otra para privadas)</li>
+</ul>
+</div>
+<h4 id="2-configurar-security-groups">2. Configurar Security Groups<a class="headerlink" href="#2-configurar-security-groups" title="Permanent link">&para;</a></h4>
+<p>Los Security Groups actúan como un firewall virtual que controla el tráfico entrante y saliente. Vamos a crear tres Security Groups: uno para el ALB, otro para las instancias EC2 y otro para RDS.</p>
+<p><strong>Paso 2.1: Security Group para ALB (Application Load Balancer)</strong></p>
+<ol>
+<li>Ve a <strong>Security Groups</strong> → <strong>Create security group</strong></li>
+<li>Configuración básica:</li>
+</ol>
+<ul>
+<li><strong>Security group name:</strong> <code>sg-alb-gameday</code></li>
+<li><strong>Description:</strong> <code>Security group for Application Load Balancer</code></li>
+<li>
+<p><strong>VPC:</strong> Selecciona <code>vpc-gameday</code>
+3. Configuración de reglas de entrada (Inbound rules):</p>
+</li>
+<li>
+<p>Haz clic en <strong>Add rule</strong></p>
+</li>
+<li><strong>Type:</strong> HTTP</li>
+<li><strong>Source:</strong> <code>0.0.0.0/0</code> (permite tráfico desde cualquier IP)</li>
+<li><strong>Description:</strong> <code>Allow HTTP from Internet</code></li>
+<li>(Opcional) Añade otra regla para HTTPS:<ul>
+<li><strong>Type:</strong> HTTPS</li>
+<li><strong>Source:</strong> <code>0.0.0.0/0</code></li>
+<li><strong>Description:</strong> <code>Allow HTTPS from Internet</code>
+4. Las reglas de salida (Outbound rules) pueden quedarse por defecto (todo el tráfico permitido)
+5. Haz clic en <strong>Create security group</strong>
+6. <strong>Anota el Security Group ID</strong> (ej: <code>sg-0123456789abcdef0</code>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Paso 2.2: Security Group para EC2 (servidores web)</strong></p>
+<ol>
+<li>Ve a <strong>Security Groups</strong> → <strong>Create security group</strong></li>
+<li>Configuración básica:</li>
+</ol>
+<ul>
+<li><strong>Security group name:</strong> <code>sg-ec2-gameday</code></li>
+<li><strong>Description:</strong> <code>Security group for EC2 web servers</code></li>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code>
+3. Configuración de reglas de entrada:</li>
+</ul>
+<p><strong>Regla 1 - HTTP desde el ALB:</strong></p>
+<ul>
+<li><strong>Type:</strong> HTTP</li>
+<li><strong>Source:</strong> Selecciona "Custom" y luego busca el Security Group del ALB (<code>sg-alb-gameday</code>)</li>
+<li><strong>Description:</strong> <code>Allow HTTP from ALB</code></li>
+</ul>
+<p><strong>Regla 2 - SSH para administración:</strong></p>
+<ul>
+<li>Haz clic en <strong>Add rule</strong></li>
+<li><strong>Type:</strong> SSH</li>
+<li><strong>Source:</strong> <code>My IP</code> (o introduce manualmente tu IP pública si no se detecta)</li>
+<li><strong>Description:</strong> <code>Allow SSH from my IP</code>
+4. Haz clic en <strong>Create security group</strong>
+5. <strong>Anota el Security Group ID</strong> del EC2</li>
+</ul>
+<p><strong>Paso 2.3: Security Group para RDS</strong></p>
+<ol>
+<li>Ve a <strong>Security Groups</strong> → <strong>Create security group</strong></li>
+<li>Configuración básica:</li>
+</ol>
+<ul>
+<li><strong>Security group name:</strong> <code>sg-rds-gameday</code></li>
+<li><strong>Description:</strong> <code>Security group for RDS database</code></li>
+<li>
+<p><strong>VPC:</strong> Selecciona <code>vpc-gameday</code>
+3. Configuración de reglas de entrada:</p>
+</li>
+<li>
+<p><strong>Type:</strong> MySQL/Aurora (puerto 3306)</p>
+</li>
+<li><strong>Source:</strong> Selecciona el Security Group de EC2 (<code>sg-ec2-gameday</code>)</li>
+<li><strong>Description:</strong> <code>Allow MySQL from EC2 instances</code>
+4. Haz clic en <strong>Create security group</strong>
+5. <strong>Anota el Security Group ID</strong> de RDS</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Verificación de Security Groups</p>
+<p>Asegúrate de que has creado los 3 Security Groups con sus reglas específicas:</p>
+<ul>
+<li>Security Group para ALB con reglas HTTP/HTTPS entrantes</li>
+<li>Security Group para EC2 con reglas HTTP desde ALB y SSH desde tu IP</li>
+<li>Security Group para RDS con regla MySQL desde el Security Group de EC2</li>
+</ul>
+</div>
+<h4 id="3-crear-instancias-ec2">3. Crear instancias EC2<a class="headerlink" href="#3-crear-instancias-ec2" title="Permanent link">&para;</a></h4>
+<p>Vamos a crear dos instancias EC2 que funcionarán como servidores web. Usaremos Amazon Linux 2023 para simplificar, aunque también puedes usar Ubuntu.</p>
+<p><strong>Paso 3.1: Crear la primera instancia EC2</strong></p>
+<ol>
+<li>
+<p>Ve a <strong>EC2</strong> → <strong>Instances</strong> → <strong>Launch instances</strong></p>
+</li>
+<li>
+<p><strong>Paso 1 - Name and tags:</strong>
+   - <strong>Name:</strong> <code>web-server-1</code></p>
+</li>
+<li>
+<p><strong>Paso 2 - Application and OS Images (Amazon Machine Image):</strong></p>
+</li>
+</ol>
+<ul>
+<li>Selecciona <strong>Amazon Linux 2023 AMI</strong> (gratuita, Free Tier eligible)</li>
+<li>Arquitectura: x86_64</li>
+</ul>
+<ol start="4">
+<li><strong>Paso 3 - Instance type:</strong></li>
+</ol>
+<ul>
+<li>Selecciona <strong>t3.micro</strong> (gratuita en Free Tier)</li>
+<li>Tiene 2 vCPU y 1 GB de RAM (suficiente para esta práctica)</li>
+</ul>
+<ol start="5">
+<li><strong>Paso 4 - Key pair (login):</strong></li>
+</ol>
+<ul>
+<li>Si no tienes una key pair, crea una nueva:<ul>
+<li>Haz clic en <strong>Create new key pair</strong></li>
+<li><strong>Name:</strong> <code>gameday-keypair</code></li>
+<li><strong>Key pair type:</strong> RSA</li>
+<li><strong>Private key file format:</strong> <code>.pem</code> (para Linux/Mac) o <code>.ppk</code> (para Windows con PuTTY)</li>
+<li>Haz clic en <strong>Create key pair</strong></li>
+<li><strong>IMPORTANTE:</strong> Descarga y guarda el archivo <code>.pem</code> en un lugar seguro (lo necesitarás para conectarte por SSH)</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><strong>Paso 5 - Network settings:</strong></li>
+</ol>
+<ul>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
+<li><strong>Subnet:</strong> Selecciona <code>public-subnet-1</code></li>
+<li><strong>Auto-assign Public IP:</strong> Enable (para que tenga IP pública)</li>
+<li><strong>Firewall (security groups):</strong> Selecciona "Select existing security group"</li>
+<li><strong>Common security groups:</strong> Selecciona <code>sg-ec2-gameday</code></li>
+<li>Haz clic en <strong>Edit</strong> en la sección de Security Groups para asegurarte de que solo está seleccionado <code>sg-ec2-gameday</code></li>
+</ul>
+<ol start="7">
+<li><strong>Paso 6 - Configure storage:</strong></li>
+<li>
+<ul>
+<li>Deja los valores por defecto (8 GB gp3) - está dentro del Free Tier</li>
+</ul>
+</li>
+<li>
+<p><strong>Paso 7 - Advanced details:</strong></p>
+</li>
+</ol>
+<ul>
+<li>Desplázate hasta <strong>User data</strong> (al final)</li>
+<li>Pega el siguiente script:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos="2 "></span>yum<span class="w"> </span>update<span class="w"> </span>-y
+<span class="linenos" data-linenos="3 "></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>httpd
+<span class="linenos" data-linenos="4 "></span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
+<span class="linenos" data-linenos="5 "></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+<span class="linenos" data-linenos="6 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Servidor Web AWS GameDay 2025&lt;/h1&gt;&lt;p&gt;Instancia: </span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&lt;/p&gt;&lt;p&gt;IP Privada: </span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>http://169.254.169.254/latest/meta-data/local-ipv4<span class="k">)</span><span class="s2">&lt;/p&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/var/www/html/index.html
+</code></pre></div>
+   Este script instala Apache, lo inicia y crea una página HTML simple.</li>
+</ul>
+<ol start="10">
+<li>Haz clic en <strong>Launch instance</strong></li>
+<li>Espera hasta que el estado sea <strong>Running</strong> (puede tardar 1-2 minutos)</li>
+<li>Anota la <strong>IP Pública</strong> de la instancia</li>
+</ol>
+<p><strong>Paso 3.2: Crear la segunda instancia EC2</strong></p>
+<ol>
+<li>Repite el proceso anterior pero con estos cambios:</li>
+</ol>
+<ul>
+<li><strong>Name:</strong> <code>web-server-2</code></li>
+<li><strong>Subnet:</strong> Selecciona <code>public-subnet-2</code> (la otra subnet pública, en diferente AZ)</li>
+<li><strong>Key pair:</strong> Usa la misma <code>gameday-keypair</code></li>
+<li><strong>Security Group:</strong> Mismo <code>sg-ec2-gameday</code></li>
+<li><strong>User data:</strong> Mismo script</li>
+</ul>
+<ol start="2">
+<li>Espera hasta que ambas instancias estén en estado <strong>Running</strong></li>
+</ol>
+<p><strong>Paso 3.3: Verificar que los servidores web funcionan</strong></p>
+<ol>
+<li>Selecciona la primera instancia (<code>web-server-1</code>)</li>
+<li>Copia la <strong>IPv4 Public IP</strong></li>
+<li>Abre un navegador y accede a <code>http://IP_PUBLICA</code> (ej: <code>http://54.123.45.67</code>)</li>
+<li>Deberías ver la página HTML con el nombre de la instancia</li>
+<li>Repite con la segunda instancia</li>
+<li>Verifica que ambas muestran contenido diferente (diferentes nombres de host)</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Verificación de servidores web</p>
+<p>Verifica que ambas instancias EC2 responden correctamente:</p>
+<ul>
+<li>Accede a la IP pública de cada instancia desde un navegador</li>
+<li>Deberías ver la página HTML con el nombre de la instancia</li>
+<li>Cada instancia debe mostrar un hostname diferente</li>
+<li>Si no cargan, verifica que el Security Group permite tráfico HTTP desde Internet</li>
+</ul>
+</div>
+<h4 id="4-crear-application-load-balancer-alb">4. Crear Application Load Balancer (ALB)<a class="headerlink" href="#4-crear-application-load-balancer-alb" title="Permanent link">&para;</a></h4>
+<p>El ALB distribuirá el tráfico HTTP entre nuestras dos instancias EC2, proporcionando alta disponibilidad.</p>
+<p><strong>Paso 4.1: Crear el Target Group</strong></p>
+<p>Primero creamos el Target Group, que define a dónde enviará el tráfico el ALB.</p>
+<ol>
+<li>
+<p>Ve a <strong>EC2</strong> → <strong>Target Groups</strong> → <strong>Create target group</strong></p>
+</li>
+<li>
+<p><strong>Paso 1 - Choose a target type:</strong>
+   - Selecciona <strong>Instances</strong></p>
+</li>
+<li>
+<p><strong>Paso 2 - Basic configuration:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Target group name:</strong> <code>tg-web-servers</code></li>
+<li><strong>Protocol:</strong> HTTP</li>
+<li><strong>Port:</strong> 80</li>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
+</ul>
+<ol start="4">
+<li><strong>Paso 3 - Health checks:</strong></li>
+</ol>
+<ul>
+<li><strong>Health check protocol:</strong> HTTP</li>
+<li><strong>Health check path:</strong> <code>/</code> (la página principal)</li>
+<li><strong>Advanced health check settings</strong> (opcional):<ul>
+<li><strong>Healthy threshold:</strong> 2</li>
+<li><strong>Unhealthy threshold:</strong> 2</li>
+<li><strong>Timeout:</strong> 5 seconds</li>
+<li><strong>Interval:</strong> 30 seconds</li>
+<li><strong>Success codes:</strong> 200</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>Haz clic en <strong>Next</strong></li>
+<li><strong>Paso 4 - Register targets:</strong></li>
+</ol>
+<ul>
+<li>En la sección de instancias, marca <code>web-server-1</code> y <code>web-server-2</code></li>
+<li>Haz clic en <strong>Include as pending below</strong></li>
+<li>Verifica que ambas instancias aparecen en la sección "Review targets"</li>
+<li>Haz clic en <strong>Create target group</strong></li>
+</ul>
+<ol start="7">
+<li>Espera unos segundos y verifica que el estado de salud (Health status) de ambas instancias sea <strong>healthy</strong> (puede tardar 1-2 minutos)</li>
+</ol>
+<p><strong>Paso 4.2: Crear el Application Load Balancer</strong></p>
+<ol>
+<li>
+<p>Ve a <strong>EC2</strong> → <strong>Load Balancers</strong> → <strong>Create Load Balancer</strong></p>
+</li>
+<li>
+<p>Selecciona <strong>Application Load Balancer</strong> → <strong>Create</strong></p>
+</li>
+<li>
+<p><strong>Paso 1 - Basic configuration:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Load balancer name:</strong> <code>alb-gameday</code></li>
+<li><strong>Scheme:</strong> Internet-facing (accesible desde Internet)</li>
+<li><strong>IP address type:</strong> IPv4</li>
+</ul>
+<ol start="4">
+<li><strong>Paso 2 - Network mapping:</strong></li>
+</ol>
+<ul>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
+<li><strong>Mappings:</strong> Marca ambas Availability Zones y sus respectivas subnets públicas:<ul>
+<li><code>us-east-1a</code> → <code>public-subnet-1</code></li>
+<li><code>us-east-1b</code> → <code>public-subnet-2</code></li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li><strong>Paso 3 - Security groups:</strong></li>
+</ol>
+<ul>
+<li>Desmarca el grupo por defecto</li>
+<li>Selecciona <code>sg-alb-gameday</code> (el que creamos anteriormente)</li>
+</ul>
+<ol start="6">
+<li><strong>Paso 4 - Listeners and routing:</strong></li>
+</ol>
+<ul>
+<li><strong>Protocol:</strong> HTTP</li>
+<li><strong>Port:</strong> 80</li>
+<li><strong>Default action:</strong> Forward to → Selecciona <code>tg-web-servers</code> (el Target Group creado)</li>
+</ul>
+<ol start="7">
+<li>Haz clic en <strong>Create load balancer</strong></li>
+<li>Espera 2-3 minutos hasta que el estado cambie a <strong>Active</strong></li>
+</ol>
+<p><strong>Paso 4.3: Obtener el DNS del Load Balancer</strong></p>
+<ol>
+<li>Selecciona el ALB creado (<code>alb-gameday</code>)</li>
+<li>En la pestaña <strong>Details</strong>, busca <strong>DNS name</strong></li>
+<li>Copia el DNS name (ej: <code>alb-gameday-1234567890.us-east-1.elb.amazonaws.com</code>)</li>
+</ol>
+<p><strong>Paso 4.4: Verificar que el ALB distribuye el tráfico</strong></p>
+<ol>
+<li>Abre un navegador y accede a la URL del ALB (el DNS name)</li>
+<li>Deberías ver la página web de uno de los servidores</li>
+<li>Recarga la página varias veces (F5 o Ctrl+R)</li>
+<li>Observa que a veces muestra <code>web-server-1</code> y otras veces <code>web-server-2</code></li>
+<li>Esto demuestra que el ALB está distribuyendo el tráfico entre ambas instancias (load balancing)</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Verificación del Load Balancer</p>
+<p>Para verificar que el ALB funciona correctamente:</p>
+<ul>
+<li>El estado del ALB debe ser <strong>Active</strong> (no "Provisioning")</li>
+<li>El Target Group debe mostrar ambas instancias como <strong>healthy</strong></li>
+<li>Al acceder al DNS del ALB, deberías ver las páginas web alternando entre las dos instancias</li>
+<li>Si una instancia no está healthy, revisa los health checks y las reglas del Security Group</li>
+</ul>
+</div>
+<h4 id="5-crear-base-de-datos-rds">5. Crear base de datos RDS<a class="headerlink" href="#5-crear-base-de-datos-rds" title="Permanent link">&para;</a></h4>
+<p>Vamos a crear una base de datos MySQL en las subnets privadas para que solo sea accesible desde las instancias EC2.</p>
+<p><strong>Paso 5.1: Crear DB Subnet Group</strong></p>
+<p>Primero necesitamos crear un DB Subnet Group que agrupe las subnets privadas.</p>
+<ol>
+<li>
+<p>Ve a <strong>RDS</strong> → <strong>Subnet groups</strong> → <strong>Create DB subnet group</strong></p>
+</li>
+<li>
+<p>Configuración:</p>
+</li>
+</ol>
+<ul>
+<li><strong>Name:</strong> <code>db-subnet-group-gameday</code></li>
+<li><strong>Description:</strong> <code>Subnet group for RDS in private subnets</code></li>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
+<li><strong>Availability Zones:</strong> Selecciona ambas AZs (<code>us-east-1a</code> y <code>us-east-1b</code>)</li>
+<li><strong>Subnets:</strong> Selecciona las dos subnets privadas:<ul>
+<li><code>private-subnet-1</code> (10.0.10.0/24)</li>
+<li><code>private-subnet-2</code> (10.0.11.0/24)</li>
+</ul>
+</li>
+<li>Haz clic en <strong>Create</strong></li>
+</ul>
+<p><strong>Paso 5.2: Crear la instancia RDS</strong></p>
+<ol>
+<li>
+<p>Ve a <strong>RDS</strong> → <strong>Databases</strong> → <strong>Create database</strong></p>
+</li>
+<li>
+<p><strong>Paso 1 - Engine options:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Engine type:</strong> MySQL</li>
+<li><strong>Engine version:</strong> Selecciona la más reciente (ej: MySQL 8.0.35)</li>
+<li><strong>Templates:</strong> Free tier (para no incurrir en costes)</li>
+</ul>
+<ol start="3">
+<li><strong>Paso 2 - Settings:</strong></li>
+</ol>
+<ul>
+<li><strong>DB instance identifier:</strong> <code>gameday-db</code></li>
+<li><strong>Master username:</strong> <code>admin</code> (o el que prefieras)</li>
+<li><strong>Master password:</strong> Crea una contraseña segura y <strong>anótala</strong> (la necesitarás después)</li>
+<li><strong>Confirm password:</strong> Repite la contraseña</li>
+</ul>
+<ol start="4">
+<li><strong>Paso 3 - Instance configuration:</strong></li>
+</ol>
+<ul>
+<li><strong>DB instance class:</strong> db.t3.micro (Free tier eligible)</li>
+<li><strong>Storage:</strong> Deja los valores por defecto (20 GB, General Purpose SSD)</li>
+</ul>
+<ol start="5">
+<li><strong>Paso 4 - Connectivity:</strong></li>
+</ol>
+<ul>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
+<li><strong>Subnet group:</strong> Selecciona <code>db-subnet-group-gameday</code> (el creado anteriormente)</li>
+<li><strong>Public access:</strong> <strong>No</strong> (la base de datos estará en subnets privadas, solo accesible desde EC2)</li>
+<li><strong>VPC security group:</strong> Selecciona "Choose existing"</li>
+<li><strong>Existing VPC security groups:</strong> Selecciona <code>sg-rds-gameday</code> (el creado anteriormente)</li>
+<li><strong>Availability Zone:</strong> Deja "No preference" o selecciona una AZ específica</li>
+<li><strong>Database port:</strong> 3306 (puerto por defecto de MySQL)</li>
+</ul>
+<ol start="6">
+<li><strong>Paso 5 - Database authentication:</strong></li>
+</ol>
+<ul>
+<li>Selecciona <strong>Password authentication</strong></li>
+</ul>
+<ol start="7">
+<li><strong>Paso 6 - Additional configuration:</strong></li>
+</ol>
+<ul>
+<li><strong>Initial database name:</strong> <code>gameday_db</code> (opcional, creará una base de datos inicial)</li>
+<li><strong>Backup retention period:</strong> 7 days (gratis en Free Tier)</li>
+<li><strong>Enable encryption:</strong> Puedes dejarlo deshabilitado para Free Tier</li>
+<li><strong>Enable Enhanced monitoring:</strong> Deshabilitado (para Free Tier)</li>
+<li><strong>Auto minor version upgrade:</strong> Habilitado (recomendado)</li>
+</ul>
+<ol start="8">
+<li>
+<p>Haz clic en <strong>Create database</strong></p>
+</li>
+<li>
+<p>Espera 5-10 minutos hasta que el estado sea <strong>Available</strong></p>
+</li>
+</ol>
+<p><strong>Paso 5.3: Obtener el endpoint de la base de datos</strong></p>
+<ol>
+<li>Una vez que el estado sea <strong>Available</strong>, selecciona la instancia de base de datos</li>
+<li>En la pestaña <strong>Connectivity &amp; security</strong>, busca <strong>Endpoint &amp; port</strong></li>
+<li>Anota el <strong>Endpoint</strong> (ej: <code>gameday-db.xxxxxxxxxxxx.us-east-1.rds.amazonaws.com</code>) y el <strong>Port</strong> (3306)</li>
+</ol>
+<p><strong>IMPORTANTE:</strong> </p>
+<ul>
+<li>El endpoint solo es accesible desde las instancias EC2 que están en la misma VPC</li>
+<li>No podrás conectarte desde tu máquina local porque la base de datos está en subnets privadas</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Verificación de la base de datos RDS</p>
+<p>Verifica que la instancia RDS está correctamente configurada:</p>
+<ul>
+<li>El estado debe ser <strong>Available</strong> (puede tardar varios minutos en alcanzar este estado)</li>
+<li>Debe tener un endpoint asignado (ej: <code>gameday-db.xxxxx.rds.amazonaws.com</code>)</li>
+<li>Debe estar en las subnets privadas del DB Subnet Group</li>
+<li>El Security Group debe permitir conexiones desde las instancias EC2</li>
+</ul>
+</div>
+<h4 id="6-verificacion-final">6. Verificación final<a class="headerlink" href="#6-verificacion-final" title="Permanent link">&para;</a></h4>
+<p><strong>Paso 6.1: Verificar el ALB y distribución de carga</strong></p>
+<ol>
+<li>Abre un navegador y accede al DNS del ALB (ej: <code>http://alb-gameday-1234567890.us-east-1.elb.amazonaws.com</code>)</li>
+<li>Verifica que la página web se carga correctamente</li>
+<li>Recarga la página 10-15 veces y observa cómo cambia entre <code>web-server-1</code> y <code>web-server-2</code></li>
+<li>Esto confirma que el load balancing funciona correctamente</li>
+</ol>
+<p><strong>Paso 6.2: Verificar conectividad a la base de datos desde EC2</strong></p>
+<p>Para verificar que las instancias EC2 pueden conectarse a RDS, vamos a conectarnos por SSH a una instancia y probar la conexión.</p>
+<ol>
+<li><strong>Conectarse por SSH a una instancia EC2:</strong></li>
+</ol>
+<p>En Linux/Mac:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>gameday-keypair.pem
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_INSTANCIA
+</code></pre></div></p>
+<p>En Windows (usando PuTTY):
+   - Convierte el <code>.pem</code> a <code>.ppk</code> usando PuTTYgen
+   - Conéctate usando PuTTY con la clave <code>.ppk</code></p>
+<ol start="2">
+<li><strong>Instalar cliente MySQL en la instancia EC2:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql
+</code></pre></div>
+<ol start="3">
+<li><strong>Probar conexión a la base de datos:</strong></li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>gameday-db.xxxxxxxxxxxx.us-east-1.rds.amazonaws.com<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p
+</code></pre></div>
+   - Introduce la contraseña que configuraste al crear la base de datos
+   - Si la conexión es exitosa, verás el prompt de MySQL: <code>mysql&gt;</code>
+   - Escribe <code>SHOW DATABASES;</code> para ver las bases de datos disponibles
+   - Escribe <code>exit;</code> para salir</p>
+<ol start="4">
+<li><strong>Verificar que la conexión funciona:</strong></li>
+</ol>
+<ul>
+<li>Si puedes conectarte, significa que:<ul>
+<li>El Security Group de RDS permite conexiones desde EC2</li>
+<li>Las subnets están correctamente configuradas</li>
+<li>El routing funciona correctamente</li>
+</ul>
+</li>
+</ul>
+<p><strong>Paso 6.3: Verificar arquitectura completa</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Checklist de verificación de arquitectura</p>
+<p>Revisa en la consola de AWS que todos los componentes están correctamente configurados:</p>
+<ul>
+<li>VPC con 4 subnets (2 públicas, 2 privadas) en diferentes Availability Zones</li>
+<li>Internet Gateway asociado a la VPC</li>
+<li>NAT Gateway en subnet pública con Elastic IP asignada</li>
+<li>3 Security Groups creados y configurados (ALB, EC2, RDS)</li>
+<li>2 instancias EC2 en estado <strong>Running</strong> en subnets públicas diferentes</li>
+<li>Application Load Balancer en estado <strong>Active</strong></li>
+<li>Target Group con 2 instancias en estado <strong>healthy</strong></li>
+<li>Instancia RDS en estado <strong>Available</strong> en subnets privadas</li>
+</ul>
+<p>Si todos los componentes están correctamente configurados, toda la arquitectura debe estar funcionando y comunicándose correctamente.</p>
+</div>
+<h3 id="preguntas-de-reflexion">Preguntas de reflexión<a class="headerlink" href="#preguntas-de-reflexion" title="Permanent link">&para;</a></h3>
+<ol>
+<li>¿Qué pasaría si una de las instancias EC2 falla? ¿Cómo se comporta el ALB?</li>
+<li>¿Por qué la base de datos está en subnets privadas?</li>
+<li>¿Cómo podrías hacer esta arquitectura más robusta?</li>
+</ol>
+<h3 id="recursos-adicionales">Recursos adicionales<a class="headerlink" href="#recursos-adicionales" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/vpc/">Documentación de VPC</a></li>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/">Documentación de ALB</a></li>
+<li><a href="https://docs.aws.amazon.com/rds/">Documentación de RDS</a></li>
+</ul>
+<h2 id="practica-2-arquitectura-serverless-con-lambda-y-dynamodb">Práctica 2: Arquitectura serverless con Lambda y DynamoDB<a class="headerlink" href="#practica-2-arquitectura-serverless-con-lambda-y-dynamodb" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo_1">Objetivo<a class="headerlink" href="#objetivo_1" title="Permanent link">&para;</a></h3>
+<p>Crear una aplicación serverless que procese eventos mediante AWS Lambda y almacene datos en DynamoDB, utilizando API Gateway como punto de entrada.</p>
+<h3 id="conceptos-clave-antes-de-comenzar_1">Conceptos clave antes de comenzar<a class="headerlink" href="#conceptos-clave-antes-de-comenzar_1" title="Permanent link">&para;</a></h3>
+<p>Antes de iniciar la práctica, es importante entender brevemente los servicios AWS serverless que vamos a utilizar:</p>
+<p><strong>Serverless:</strong></p>
+<ul>
+<li>Arquitectura de computación en la nube donde no gestionas servidores.</li>
+<li>El proveedor (AWS) se encarga automáticamente del aprovisionamiento, escalado y mantenimiento de la infraestructura.</li>
+<li>Pagas solo por el tiempo de ejecución real (no por servidores inactivos).</li>
+</ul>
+<p><strong>DynamoDB:</strong></p>
+<ul>
+<li>Base de datos NoSQL (no relacional) totalmente gestionada por AWS.</li>
+<li>Almacena datos en formato clave-valor y documentos JSON.</li>
+<li>Escala automáticamente según la demanda sin necesidad de aprovisionar capacidad.</li>
+<li>Proporciona latencia de milisegundos incluso con millones de peticiones.</li>
+<li>Ideal para aplicaciones que requieren alta disponibilidad y escalabilidad masiva.</li>
+</ul>
+<p><strong>Lambda:</strong></p>
+<ul>
+<li>Servicio de computación serverless que ejecuta código en respuesta a eventos.</li>
+<li>Solo pagas por las invocaciones y el tiempo de computación consumido (en milisegundos).</li>
+<li>Soporta múltiples lenguajes: Python, Node.js, Java, Go, Ruby, .NET, etc.</li>
+<li>Escala automáticamente desde algunas invocaciones hasta miles por segundo.</li>
+<li>Ideal para procesamiento de eventos, APIs, transformación de datos y automatización.</li>
+</ul>
+<p><strong>IAM (Identity and Access Management):</strong></p>
+<ul>
+<li>Servicio de gestión de acceso y permisos en AWS.</li>
+<li><strong>Roles IAM:</strong> Identidades que pueden asumir servicios AWS (como Lambda) para obtener permisos temporales.</li>
+<li>Los roles permiten a Lambda acceder a otros servicios (como DynamoDB) sin necesidad de almacenar credenciales.</li>
+</ul>
+<p><strong>API Gateway:</strong></p>
+<ul>
+<li>Servicio completamente gestionado para crear, publicar, mantener, monitorear y asegurar APIs REST y WebSocket.</li>
+<li>Actúa como punto de entrada único para aplicaciones que consumen tus APIs.</li>
+<li>Maneja tareas como throttling (limitación de velocidad), autenticación, transformación de requests/responses y monitoreo.</li>
+<li>Se integra con Lambda para crear APIs serverless completas.</li>
+</ul>
+<p><strong>CORS (Cross-Origin Resource Sharing):</strong></p>
+<ul>
+<li>Mecanismo de seguridad del navegador que permite que páginas web accedan a recursos de un dominio diferente.</li>
+<li>Cuando creas una API accesible desde navegadores web, debes configurar CORS para permitir solicitudes desde otros orígenes.</li>
+</ul>
+<h3 id="escenario_1">Escenario<a class="headerlink" href="#escenario_1" title="Permanent link">&para;</a></h3>
+<p>Crear una API RESTful simple para gestionar una lista de tareas (To-Do list) que:</p>
+<ul>
+<li>Permita crear, leer, actualizar y eliminar tareas</li>
+<li>Almacene los datos en DynamoDB</li>
+<li>Sea completamente serverless (sin servidores que gestionar)</li>
+<li>Escale automáticamente</li>
+</ul>
+<h3 id="tareas-a-realizar_1">Tareas a realizar<a class="headerlink" href="#tareas-a-realizar_1" title="Permanent link">&para;</a></h3>
+<h4 id="1-crear-tabla-dynamodb">1. Crear tabla DynamoDB<a class="headerlink" href="#1-crear-tabla-dynamodb" title="Permanent link">&para;</a></h4>
+<p>DynamoDB es una base de datos NoSQL que almacenará nuestras tareas. Es totalmente gestionada y escalable automáticamente.</p>
+<p><strong>Paso 1.1: Crear la tabla</strong></p>
+<ol>
+<li>
+<p>Ve a <strong>DynamoDB</strong> → <strong>Tables</strong> → <strong>Create table</strong></p>
+</li>
+<li>
+<p><strong>Paso 1 - Specify table details:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Table name:</strong> <code>tareas-gameday</code></li>
+<li><strong>Partition key (Primary key):</strong><ul>
+<li><strong>Partition key:</strong> <code>id</code></li>
+<li><strong>Type:</strong> String</li>
+</ul>
+</li>
+<li><strong>Table settings:</strong> Deja las opciones por defecto</li>
+</ul>
+<ol start="3">
+<li><strong>Paso 2 - Configure settings:</strong></li>
+</ol>
+<ul>
+<li><strong>Read/Write capacity settings:</strong><ul>
+<li>Selecciona <strong>On-demand</strong> (pago por uso, sin necesidad de provisionar capacidad)</li>
+</ul>
+</li>
+<li><strong>Encryption:</strong><ul>
+<li><strong>Encryption type:</strong> AWS owned keys (gratis) o AWS managed keys (recomendado para producción)</li>
+</ul>
+</li>
+<li><strong>Tags:</strong> Opcional, puedes añadir tags para organizar recursos</li>
+</ul>
+<ol start="4">
+<li>Haz clic en <strong>Create table</strong></li>
+<li>Espera 30-60 segundos hasta que el estado sea <strong>Active</strong></li>
+</ol>
+<p><strong>Paso 1.2: Verificar la tabla</strong></p>
+<ol>
+<li>Selecciona la tabla <code>tareas-gameday</code></li>
+<li>Anota la <strong>ARN</strong> de la tabla (la necesitarás para los permisos de Lambda)</li>
+<li>Verifica que el estado es <strong>Active</strong></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Verificación de la tabla DynamoDB</p>
+<p>Confirma que la tabla está lista para usar:</p>
+<ul>
+<li>El estado debe ser <strong>Active</strong> (no "Creating")</li>
+<li>Debe tener la partition key <code>id</code> configurada como String</li>
+<li>La capacidad debe estar configurada como <strong>On-demand</strong></li>
+<li>Anota el nombre de la tabla y la región para usarlo en las funciones Lambda</li>
+</ul>
+</div>
+<h4 id="2-crear-funcion-lambda-para-crear-tareas">2. Crear función Lambda para crear tareas<a class="headerlink" href="#2-crear-funcion-lambda-para-crear-tareas" title="Permanent link">&para;</a></h4>
+<p>Lambda ejecutará código sin necesidad de gestionar servidores. Crearemos funciones que interactúen con DynamoDB.</p>
+<p><strong>Paso 2.1: Crear el rol IAM para Lambda</strong></p>
+<p>Primero necesitamos crear un rol IAM que permita a Lambda escribir en DynamoDB.</p>
+<ol>
+<li>
+<p>Ve a <strong>IAM</strong> → <strong>Roles</strong> → <strong>Create role</strong></p>
+</li>
+<li>
+<p><strong>Paso 1 - Select trusted entity:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Trusted entity type:</strong> AWS service</li>
+<li><strong>Use case:</strong> Lambda</li>
+<li>Haz clic en <strong>Next</strong></li>
+</ul>
+<ol start="3">
+<li><strong>Paso 2 - Add permissions:</strong></li>
+</ol>
+<ul>
+<li>En el buscador, escribe "DynamoDB"</li>
+<li>Marca <strong>AmazonDynamoDBFullAccess</strong> (o para mayor seguridad, crea una política personalizada con solo permisos de escritura en la tabla específica)</li>
+<li>Haz clic en <strong>Next</strong></li>
+</ul>
+<ol start="4">
+<li><strong>Paso 3 - Name, review, and create:</strong></li>
+</ol>
+<ul>
+<li><strong>Role name:</strong> <code>lambda-dynamodb-role</code></li>
+<li><strong>Description:</strong> <code>Role for Lambda functions to access DynamoDB</code></li>
+<li>Haz clic en <strong>Create role</strong></li>
+</ul>
+<p><strong>Paso 2.2: Crear la función Lambda para crear tareas</strong></p>
+<ol>
+<li>
+<p>Ve a <strong>Lambda</strong> → <strong>Functions</strong> → <strong>Create function</strong></p>
+</li>
+<li>
+<p><strong>Basic information:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Function name:</strong> <code>crear-tarea</code></li>
+<li><strong>Runtime:</strong> Python 3.11 (o la versión más reciente disponible)</li>
+<li><strong>Architecture:</strong> x86_64</li>
+</ul>
+<ol start="3">
+<li><strong>Change default execution role:</strong></li>
+</ol>
+<ul>
+<li><strong>Execution role:</strong> Selecciona "Use an existing role"</li>
+<li><strong>Existing role:</strong> Selecciona <code>lambda-dynamodb-role</code> (el creado anteriormente)</li>
+</ul>
+<ol start="4">
+<li>Haz clic en <strong>Create function</strong></li>
+</ol>
+<p><strong>Paso 2.3: Configurar el código de la función</strong></p>
+<ol>
+<li>
+<p>En la función creada, desplázate hasta la sección <strong>Code source</strong></p>
+</li>
+<li>
+<p>Borra el código por defecto y pega el siguiente código (Python):</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="kn">import</span> <span class="nn">uuid</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="n">dynamodb</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="n">table</span> <span class="o">=</span> <span class="n">dynamodb</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;tareas-gameday&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="linenos" data-linenos="10 "></span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="c1"># Obtener datos del body</span>
+<span class="linenos" data-linenos="12 "></span>        <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">])</span>
+<span class="linenos" data-linenos="13 "></span>        <span class="n">tarea</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos" data-linenos="14 "></span>            <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
+<span class="linenos" data-linenos="15 "></span>            <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="n">body</span><span class="p">[</span><span class="s1">&#39;titulo&#39;</span><span class="p">],</span>
+<span class="linenos" data-linenos="16 "></span>            <span class="s1">&#39;descripcion&#39;</span><span class="p">:</span> <span class="n">body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;descripcion&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="17 "></span>            <span class="s1">&#39;completada&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<span class="linenos" data-linenos="18 "></span>            <span class="s1">&#39;fecha_creacion&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="linenos" data-linenos="19 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span>        <span class="c1"># Guardar en DynamoDB</span>
+<span class="linenos" data-linenos="22 "></span>        <span class="n">table</span><span class="o">.</span><span class="n">put_item</span><span class="p">(</span><span class="n">Item</span><span class="o">=</span><span class="n">tarea</span><span class="p">)</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span>        <span class="k">return</span> <span class="p">{</span>
+<span class="linenos" data-linenos="25 "></span>            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span>
+<span class="linenos" data-linenos="26 "></span>            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+<span class="linenos" data-linenos="27 "></span>                <span class="s1">&#39;mensaje&#39;</span><span class="p">:</span> <span class="s1">&#39;Tarea creada exitosamente&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="28 "></span>                <span class="s1">&#39;tarea&#39;</span><span class="p">:</span> <span class="n">tarea</span>
+<span class="linenos" data-linenos="29 "></span>            <span class="p">})</span>
+<span class="linenos" data-linenos="30 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="31 "></span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos" data-linenos="32 "></span>        <span class="k">return</span> <span class="p">{</span>
+<span class="linenos" data-linenos="33 "></span>            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+<span class="linenos" data-linenos="34 "></span>            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)})</span>
+<span class="linenos" data-linenos="35 "></span>        <span class="p">}</span>
+</code></pre></div>
+<ol start="3">
+<li>Haz clic en <strong>Deploy</strong> para guardar el código</li>
+</ol>
+<p><strong>Paso 2.4: Configurar parámetros básicos de Lambda</strong></p>
+<ol>
+<li>
+<p>Ve a la pestaña <strong>Configuration</strong> → <strong>General configuration</strong> → <strong>Edit</strong></p>
+</li>
+<li>
+<p>Configuración:</p>
+</li>
+</ol>
+<ul>
+<li><strong>Timeout:</strong> 30 seconds (suficiente para operaciones simples de DynamoDB)</li>
+<li><strong>Memory:</strong> 256 MB (suficiente para este caso de uso)</li>
+<li><strong>Ephemeral storage:</strong> 512 MB (por defecto)</li>
+</ul>
+<ol start="3">
+<li>Haz clic en <strong>Save</strong></li>
+</ol>
+<p><strong>Paso 2.5: Verificar la función Lambda</strong></p>
+<ol>
+<li>Ve a la pestaña <strong>Test</strong></li>
+<li>Crea un nuevo evento de prueba:</li>
+</ol>
+<ul>
+<li><strong>Event name:</strong> <code>test-crear-tarea</code></li>
+<li><strong>Event JSON:</strong>
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;titulo\&quot;: \&quot;Tarea de prueba\&quot;, \&quot;descripcion\&quot;: \&quot;Esta es una tarea de prueba\&quot;}&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">}</span>
+</code></pre></div>
+3. Haz clic en <strong>Test</strong>
+4. Revisa la respuesta en la consola
+5. Ve a DynamoDB → <code>tareas-gameday</code> → <strong>Explore table items</strong> y verifica que se creó la tarea</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Verificación de la función Lambda</p>
+<p>Para verificar que la función Lambda funciona:</p>
+<ul>
+<li>La función debe ejecutarse sin errores en la prueba</li>
+<li>Revisa los logs en CloudWatch si hay algún error</li>
+<li>Verifica en DynamoDB que se creó una nueva tarea con los datos enviados</li>
+<li>Si falla, revisa que el rol IAM tiene permisos para escribir en DynamoDB</li>
+<li>Verifica que el nombre de la tabla en el código coincide con la tabla creada</li>
+</ul>
+</div>
+<h4 id="3-crear-funcion-lambda-para-listar-tareas">3. Crear función Lambda para listar tareas<a class="headerlink" href="#3-crear-funcion-lambda-para-listar-tareas" title="Permanent link">&para;</a></h4>
+<p><strong>Paso 3.1: Crear la función Lambda</strong></p>
+<ol>
+<li>
+<p>Ve a <strong>Lambda</strong> → <strong>Functions</strong> → <strong>Create function</strong></p>
+</li>
+<li>
+<p><strong>Basic information:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Function name:</strong> <code>listar-tareas</code></li>
+<li><strong>Runtime:</strong> Python 3.11</li>
+<li><strong>Architecture:</strong> x86_64</li>
+<li><strong>Execution role:</strong> Use an existing role → <code>lambda-dynamodb-role</code></li>
+</ul>
+<ol start="3">
+<li>Haz clic en <strong>Create function</strong></li>
+</ol>
+<p><strong>Paso 3.2: Configurar el código</strong></p>
+<ol>
+<li>En la sección <strong>Code source</strong>, borra el código por defecto</li>
+<li>
+<p>Pega el siguiente código (Python):
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="n">dynamodb</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="n">table</span> <span class="o">=</span> <span class="n">dynamodb</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;tareas-gameday&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="linenos" data-linenos=" 8 "></span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 9 "></span>        <span class="c1"># Escanear todas las tareas</span>
+<span class="linenos" data-linenos="10 "></span>        <span class="n">response</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+<span class="linenos" data-linenos="11 "></span>        <span class="n">tareas</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">]</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>        <span class="k">return</span> <span class="p">{</span>
+<span class="linenos" data-linenos="14 "></span>            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+<span class="linenos" data-linenos="15 "></span>            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+<span class="linenos" data-linenos="16 "></span>                <span class="s1">&#39;tareas&#39;</span><span class="p">:</span> <span class="n">tareas</span><span class="p">,</span>
+<span class="linenos" data-linenos="17 "></span>                <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tareas</span><span class="p">)</span>
+<span class="linenos" data-linenos="18 "></span>            <span class="p">})</span>
+<span class="linenos" data-linenos="19 "></span>        <span class="p">}</span>
+<span class="linenos" data-linenos="20 "></span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos" data-linenos="21 "></span>        <span class="k">return</span> <span class="p">{</span>
+<span class="linenos" data-linenos="22 "></span>            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+<span class="linenos" data-linenos="23 "></span>            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)})</span>
+<span class="linenos" data-linenos="24 "></span>        <span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Haz clic en <strong>Deploy</strong> para guardar el código</p>
+</li>
+</ol>
+<p><strong>Paso 3.3: Configurar timeout y memoria</strong></p>
+<ol>
+<li>Ve a <strong>Configuration</strong> → <strong>General configuration</strong> → <strong>Edit</strong></li>
+<li><strong>Timeout:</strong> 30 seconds</li>
+<li><strong>Memory:</strong> 256 MB</li>
+<li>Haz clic en <strong>Save</strong></li>
+</ol>
+<p><strong>Paso 3.4: Probar la función</strong></p>
+<ol>
+<li>Ve a la pestaña <strong>Test</strong></li>
+<li>Crea un evento de prueba vacío:</li>
+</ol>
+<ul>
+<li><strong>Event name:</strong> <code>test-listar-tareas</code></li>
+<li><strong>Event JSON:</strong> <code>{}</code>
+3. Haz clic en <strong>Test</strong>
+4. Revisa la respuesta - debería listar todas las tareas existentes en DynamoDB</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Verificación de la función de listado</p>
+<p>Al probar la función <code>listar-tareas</code>:</p>
+<ul>
+<li>Debe devolver un código de estado 200</li>
+<li>El body de la respuesta debe contener un array de tareas</li>
+<li>Si no hay tareas, debe devolver un array vacío</li>
+<li>Si hay errores, revisa los permisos del rol IAM y los logs en CloudWatch</li>
+</ul>
+</div>
+<h4 id="4-crear-api-gateway-rest-api">4. Crear API Gateway REST API<a class="headerlink" href="#4-crear-api-gateway-rest-api" title="Permanent link">&para;</a></h4>
+<p>API Gateway será el punto de entrada público para nuestra API. Recibirá las peticiones HTTP y las dirigirá a las funciones Lambda apropiadas.</p>
+<p><strong>Paso 4.1: Crear la API REST</strong></p>
+<ol>
+<li>
+<p>Ve a <strong>API Gateway</strong> → <strong>APIs</strong> → <strong>Create API</strong></p>
+</li>
+<li>
+<p><strong>Choose an API type:</strong>
+   - Selecciona <strong>REST API</strong> → <strong>Build</strong></p>
+</li>
+<li>
+<p><strong>Create new API:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>API name:</strong> <code>api-tareas-gameday</code></li>
+<li><strong>Description:</strong> <code>API RESTful para gestionar tareas - AWS GameDay 2025</code></li>
+<li><strong>Endpoint Type:</strong> Regional (más económico para este caso)</li>
+</ul>
+<ol start="4">
+<li>Haz clic en <strong>Create API</strong></li>
+</ol>
+<p><strong>Paso 4.2: Crear el recurso <code>/tareas</code></strong></p>
+<ol>
+<li>En el panel izquierdo, verás un árbol de recursos</li>
+<li>Selecciona el recurso raíz <code>/</code> (debería estar por defecto)</li>
+<li>Haz clic en <strong>Actions</strong> → <strong>Create Resource</strong></li>
+<li><strong>New Child Resource:</strong></li>
+</ol>
+<ul>
+<li><strong>Resource Name:</strong> <code>tareas</code></li>
+<li><strong>Resource Path:</strong> <code>/tareas</code> (se genera automáticamente)</li>
+<li><strong>Enable API Gateway CORS:</strong> Marca esta casilla (permite llamadas desde navegadores web)
+5. Haz clic en <strong>Create Resource</strong></li>
+</ul>
+<p><strong>Paso 4.3: Crear el método POST para crear tareas</strong></p>
+<ol>
+<li>Selecciona el recurso <code>/tareas</code> que acabas de crear</li>
+<li>Haz clic en <strong>Actions</strong> → <strong>Create Method</strong></li>
+<li>
+<p>En el menú desplegable, selecciona <strong>POST</strong> → haz clic en la marca de verificación ✓</p>
+</li>
+<li>
+<p><strong>Setup:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Integration type:</strong> Lambda Function</li>
+<li><strong>Use Lambda Proxy integration:</strong> Marca esta casilla (pasa toda la petición a Lambda)</li>
+<li><strong>Lambda Region:</strong> Selecciona tu región (ej: us-east-1)</li>
+<li><strong>Lambda Function:</strong> Escribe <code>crear-tarea</code> y debería aparecer en el autocompletado</li>
+<li>Haz clic en <strong>Save</strong></li>
+<li>Aparecerá un mensaje pidiendo permiso para invocar la función Lambda → Haz clic en <strong>OK</strong></li>
+</ul>
+<p><strong>Paso 4.4: Crear el método GET para listar tareas</strong></p>
+<ol>
+<li>Selecciona el recurso <code>/tareas</code></li>
+<li>Haz clic en <strong>Actions</strong> → <strong>Create Method</strong></li>
+<li>
+<p>Selecciona <strong>GET</strong> → marca la verificación ✓</p>
+</li>
+<li>
+<p><strong>Setup:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Integration type:</strong> Lambda Function</li>
+<li><strong>Use Lambda Proxy integration:</strong> Marca esta casilla</li>
+<li><strong>Lambda Function:</strong> <code>listar-tareas</code></li>
+<li>Haz clic en <strong>Save</strong> → <strong>OK</strong> en el mensaje de permisos</li>
+</ul>
+<p><strong>Paso 4.5: Habilitar CORS para ambos métodos</strong></p>
+<ol>
+<li>Selecciona el recurso <code>/tareas</code></li>
+<li>Haz clic en <strong>Actions</strong> → <strong>Enable CORS</strong></li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Access-Control-Allow-Origin:</strong> <code>*</code> (permite todas las origenes) o una URL específica</li>
+<li>Deja los demás valores por defecto
+4. Haz clic en <strong>Enable CORS and replace existing CORS headers</strong>
+5. Confirma haciendo clic en <strong>Yes, replace existing values</strong></li>
+</ul>
+<p><strong>Paso 4.6: Desplegar la API</strong></p>
+<ol>
+<li>En el panel izquierdo, haz clic en <strong>Actions</strong> → <strong>Deploy API</strong></li>
+<li><strong>Deployment stage:</strong></li>
+</ol>
+<ul>
+<li><strong>Deployment stage:</strong> [New Stage]</li>
+<li><strong>Stage name:</strong> <code>prod</code></li>
+<li><strong>Stage description:</strong> <code>Production stage</code></li>
+<li>
+<p><strong>Deployment description:</strong> <code>Initial deployment</code>
+3. Haz clic en <strong>Deploy</strong>
+4. <strong>IMPORTANTE:</strong> Anota la <strong>Invoke URL</strong> que aparece (ej: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod</code>)
+5. Esta es la URL base de tu API. Los endpoints serán:</p>
+</li>
+<li>
+<p>POST: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/tareas</code></p>
+</li>
+<li>GET: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/tareas</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Verificación del despliegue de la API</p>
+<p>Verifica que la API está correctamente desplegada:</p>
+<ul>
+<li>El stage <code>prod</code> debe estar activo y desplegado</li>
+<li>Debes tener una <strong>Invoke URL</strong> asignada</li>
+<li>Los métodos POST y GET deben estar configurados en el recurso <code>/tareas</code></li>
+<li>CORS debe estar habilitado si planeas acceder desde un navegador</li>
+<li>Si no puedes acceder, verifica que los métodos estén desplegados en el stage correcto</li>
+</ul>
+</div>
+<h4 id="5-probar-la-api">5. Probar la API<a class="headerlink" href="#5-probar-la-api" title="Permanent link">&para;</a></h4>
+<p>Ahora vamos a probar nuestra API desde diferentes formas.</p>
+<p><strong>Paso 5.1: Probar desde la consola de API Gateway (método más rápido)</strong></p>
+<ol>
+<li>Ve a <strong>API Gateway</strong> → Selecciona tu API <code>api-tareas-gameday</code></li>
+<li>Selecciona el método <strong>POST</strong> bajo <code>/tareas</code></li>
+<li>Haz clic en <strong>TEST</strong></li>
+<li><strong>Method:</strong> POST (ya seleccionado)</li>
+<li><strong>Request Body:</strong>
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">&quot;titulo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Preparar para AWS GameDay&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Revisar conceptos de Cloud Practitioner&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="p">}</span>
+</code></pre></div></li>
+<li>Haz clic en <strong>Test</strong></li>
+<li>Revisa la respuesta - debería tener <code>statusCode: 201</code> y un mensaje de éxito</li>
+<li>Repite con el método <strong>GET</strong> para listar las tareas</li>
+</ol>
+<p><strong>Paso 5.2: Probar usando curl (desde terminal)</strong></p>
+<p>Reemplaza <code>TU-API-GATEWAY-URL</code> con tu Invoke URL real:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear una tarea</span>
+<span class="linenos" data-linenos=" 2 "></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://TU-API-GATEWAY-URL/prod/tareas<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="s1">    &quot;titulo&quot;: &quot;Preparar para AWS GameDay&quot;,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="s1">    &quot;descripcion&quot;: &quot;Revisar conceptos de Cloud Practitioner&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="s1">  }&#39;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># Listar todas las tareas</span>
+<span class="linenos" data-linenos="10 "></span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://TU-API-GATEWAY-URL/prod/tareas
+</code></pre></div>
+<p><strong>Paso 5.3: Probar desde un navegador (solo GET)</strong></p>
+<ol>
+<li>Abre un navegador</li>
+<li>Accede a la URL: <code>https://TU-API-GATEWAY-URL/prod/tareas</code></li>
+<li>Deberías ver un JSON con todas las tareas</li>
+</ol>
+<p><strong>Paso 5.4: Verificar en DynamoDB</strong></p>
+<ol>
+<li>Ve a <strong>DynamoDB</strong> → <strong>Tables</strong> → <code>tareas-gameday</code></li>
+<li>Haz clic en <strong>Explore table items</strong></li>
+<li>Verifica que las tareas creadas aparecen en la tabla</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Verificación completa de la API</p>
+<p>Para asegurar que toda la API funciona correctamente:</p>
+<ul>
+<li><strong>POST:</strong> Debe crear tareas en DynamoDB y devolver código 201</li>
+<li><strong>GET:</strong> Debe listar todas las tareas existentes con código 200</li>
+<li>Las tareas creadas vía POST deben aparecer al hacer GET</li>
+<li>Verifica en DynamoDB que los datos se almacenan correctamente</li>
+<li>Si hay errores 500, revisa los logs de CloudWatch de las funciones Lambda</li>
+<li>Si hay errores 403, verifica los permisos IAM y las integraciones de API Gateway</li>
+</ul>
+</div>
+<h4 id="6-opcional-agregar-funciones-para-actualizar-y-eliminar">6. (Opcional) Agregar funciones para actualizar y eliminar<a class="headerlink" href="#6-opcional-agregar-funciones-para-actualizar-y-eliminar" title="Permanent link">&para;</a></h4>
+<p>Si quieres completar la API RESTful, puedes agregar los métodos PUT y DELETE. Estos pasos son similares a los anteriores:</p>
+<p><strong>Funcionalidades adicionales:</strong></p>
+<ul>
+<li><strong>Actualizar tarea:</strong> Método PUT en <code>/tareas/{id}</code> (necesitarás crear un recurso dinámico con parámetro <code>{id}</code>)</li>
+<li><strong>Eliminar tarea:</strong> Método DELETE en <code>/tareas/{id}</code></li>
+<li>Cada una requerirá una función Lambda adicional que actualice o elimine items en DynamoDB</li>
+</ul>
+<p><strong>Desafío:</strong> Intenta implementar estas funcionalidades siguiendo el mismo patrón que usamos para crear y listar tareas.</p>
+<h3 id="preguntas-de-reflexion_1">Preguntas de reflexión<a class="headerlink" href="#preguntas-de-reflexion_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>¿Qué ventajas tiene una arquitectura serverless frente a una tradicional con EC2?</li>
+<li>¿Cómo escalaría esta aplicación si recibe millones de peticiones?</li>
+<li>¿Qué pasos seguirías para agregar autenticación a esta API?</li>
+</ol>
+<h3 id="conceptos-aprendidos">Conceptos aprendidos<a class="headerlink" href="#conceptos-aprendidos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Serverless computing:</strong> Ejecución de código sin gestionar servidores</li>
+<li><strong>Event-driven architecture:</strong> La función Lambda se ejecuta en respuesta a eventos</li>
+<li><strong>NoSQL database:</strong> DynamoDB como base de datos clave-valor</li>
+<li><strong>API Gateway:</strong> Punto de entrada único para APIs REST</li>
+</ul>
+<h3 id="recursos-adicionales_1">Recursos adicionales<a class="headerlink" href="#recursos-adicionales_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/">Documentación de Lambda</a></li>
+<li><a href="https://docs.aws.amazon.com/dynamodb/">Documentación de DynamoDB</a></li>
+<li><a href="https://docs.aws.amazon.com/apigateway/">Documentación de API Gateway</a></li>
+</ul>
+<h2 id="estrategias-para-el-gameday">Estrategias para el GameDay<a class="headerlink" href="#estrategias-para-el-gameday" title="Permanent link">&para;</a></h2>
+<h3 id="antes-de-la-competicion">Antes de la competición<a class="headerlink" href="#antes-de-la-competicion" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Preparación del equipo:</strong></li>
+</ol>
+<ul>
+<li>Divide roles: alguien especializado en redes (VPC), otro en bases de datos, otro en seguridad, etc.</li>
+<li>Familiarízate con la consola de AWS</li>
+<li>Repasa los servicios más comunes: EC2, S3, RDS, Lambda, VPC, IAM</li>
+</ul>
+<ol start="2">
+<li><strong>Conocimiento del entorno:</strong></li>
+</ol>
+<ul>
+<li>Practica navegación en la consola de AWS</li>
+<li>Conoce los shortcuts y atajos de teclado</li>
+<li>Familiarízate con CloudWatch para monitoreo</li>
+</ul>
+<ol start="3">
+<li><strong>Herramientas útiles:</strong></li>
+</ol>
+<ul>
+<li>Calculadora de costes AWS</li>
+<li>AWS Well-Architected Tool</li>
+<li>Documentación de AWS (puede estar limitada durante la competición)</li>
+</ul>
+<h3 id="durante-la-competicion">Durante la competición<a class="headerlink" href="#durante-la-competicion" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Gestión del tiempo:</strong></li>
+</ol>
+<ul>
+<li>Lee cuidadosamente las instrucciones del reto</li>
+<li>Prioriza tareas: primero lo crítico, luego optimizaciones</li>
+<li>Revisa el leaderboard regularmente pero no te distraigas</li>
+</ul>
+<ol start="2">
+<li><strong>Trabajo en equipo:</strong></li>
+</ol>
+<ul>
+<li>Comunícate constantemente</li>
+<li>Divide y conquista: cada miembro trabaja en tareas diferentes</li>
+<li>Valida las soluciones entre miembros antes de implementar</li>
+</ul>
+<ol start="3">
+<li><strong>Resolución de problemas:</strong></li>
+</ol>
+<ul>
+<li>Si algo no funciona, verifica Security Groups, IAM roles, y configuraciones de red</li>
+<li>Revisa CloudWatch Logs para depurar errores</li>
+<li>No elimines recursos sin confirmar primero</li>
+</ul>
+<ol start="4">
+<li><strong>Optimización de puntos:</strong></li>
+</ol>
+<ul>
+<li>Completa las tareas básicas primero (más puntos)</li>
+<li>Lee los "bonus points" o tareas adicionales</li>
+<li>Verifica que las soluciones cumplan todos los requisitos</li>
+</ul>
+<h3 id="comprobacion-inicial">Comprobación inicial<a class="headerlink" href="#comprobacion-inicial" title="Permanent link">&para;</a></h3>
+<p>Antes de completar cada tarea, verifica:</p>
+<ul>
+<li>Security Groups configurados correctamente</li>
+<li>IAM roles y políticas asignadas</li>
+<li>Recursos en las subnets correctas (públicas/privadas)</li>
+<li>Health checks pasando</li>
+<li>Monitoreo activo en CloudWatch</li>
+<li>Backups configurados (si se requiere)</li>
+<li>Costes optimizados (usar tipos de instancia adecuados)</li>
+</ul>
+<h2 id="recursos-de-estudio">Recursos de estudio<a class="headerlink" href="#recursos-de-estudio" title="Permanent link">&para;</a></h2>
+<h3 id="documentacion-oficial-aws">Documentación oficial AWS<a class="headerlink" href="#documentacion-oficial-aws" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://aws.amazon.com/architecture/well-architected/">AWS Well-Architected Framework</a></li>
+<li><a href="https://docs.aws.amazon.com/">Documentación de AWS</a></li>
+<li><a href="https://aws.amazon.com/whitepapers/">AWS Whitepapers</a></li>
+</ul>
+<h3 id="repositorios-de-estudio">Repositorios de estudio<a class="headerlink" href="#repositorios-de-estudio" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes">AWS Certified Cloud Practitioner Notes</a></li>
+<li><a href="https://raw.githubusercontent.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes/master/practice-exam/exams.md">AWS Cloud Practitioner Practice Exams</a></li>
+<li><a href="https://kalonjilabs.github.io/aws-cp-notes/">AWS CP Notes - Kalonji Labs</a></li>
+</ul>
+<h3 id="laboratorios-practicos">Laboratorios prácticos<a class="headerlink" href="#laboratorios-practicos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://aws.amazon.com/free/">AWS Free Tier</a>: Practica con servicios gratuitos</li>
+<li><a href="https://aws.amazon.com/training/learning-paths/aws-cloud-quest/">AWS Cloud Quest</a>: Juego gamificado para aprender AWS</li>
+</ul>
+<h2 id="glosario-de-terminos-importantes">Glosario de términos importantes<a class="headerlink" href="#glosario-de-terminos-importantes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Availability Zone (AZ)</strong></td>
+<td>Centro de datos físicamente separado dentro de una región</td>
+</tr>
+<tr>
+<td><strong>Region</strong></td>
+<td>Ubicación geográfica donde AWS tiene múltiples AZs</td>
+</tr>
+<tr>
+<td><strong>AMI</strong></td>
+<td>Amazon Machine Image - plantilla para crear instancias EC2</td>
+</tr>
+<tr>
+<td><strong>Auto Scaling</strong></td>
+<td>Escalar automáticamente el número de instancias según la demanda</td>
+</tr>
+<tr>
+<td><strong>Elastic IP</strong></td>
+<td>Dirección IP pública estática para instancias EC2</td>
+</tr>
+<tr>
+<td><strong>Elasticity</strong></td>
+<td>Capacidad de escalar recursos hacia arriba o abajo según necesidad</td>
+</tr>
+<tr>
+<td><strong>IAM Policy</strong></td>
+<td>Documento JSON que define permisos</td>
+</tr>
+<tr>
+<td><strong>Multi-AZ</strong></td>
+<td>Replicación automática en múltiples zonas de disponibilidad</td>
+</tr>
+<tr>
+<td><strong>S3 Bucket</strong></td>
+<td>Contenedor para objetos en S3</td>
+</tr>
+<tr>
+<td><strong>Subnet</strong></td>
+<td>Rango de direcciones IP en una VPC</td>
+</tr>
+<tr>
+<td><strong>VPC Endpoint</strong></td>
+<td>Conexión privada entre VPC y servicios AWS sin Internet</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusión<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Esta guía cubre los conceptos fundamentales necesarios para el AWS GameDay 2025.</p>
+<div class="admonition tip">
+<p class="admonition-title">Consejos finales para el GameDay</p>
+<p>Durante la competición, ten en cuenta estos puntos importantes:</p>
+<ul>
+<li><strong>Lee cuidadosamente</strong> las instrucciones de cada reto antes de comenzar</li>
+<li><strong>Trabaja en equipo</strong> y mantén comunicación constante con tus compañeros</li>
+<li><strong>Verifica</strong> tus configuraciones antes de avanzar al siguiente paso</li>
+<li><strong>Mantén la calma</strong> y gestiona bien el tiempo disponible</li>
+<li><strong>Aprende de los errores</strong> - forman parte del proceso de aprendizaje</li>
+</ul>
+</div>
+<p>¡Mucha suerte en el campeonato! 🏆</p>
+<hr />
+<blockquote>
+<p><strong>Nota:</strong> Este documento es una guía de preparación. Durante el GameDay real, sigue las instrucciones específicas proporcionadas por los organizadores y expertos de AWS.</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
