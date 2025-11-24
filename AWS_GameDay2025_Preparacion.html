@@ -1544,7 +1544,7 @@
             end
 
             subgraph Priv1["🔒 Subnet Privada 1&lt;br/&gt;(10.0.10.0/24)"]
-                DB1["🖥️ EC2 Instance&lt;br/&gt;db-server&lt;br/&gt;t3.micro + MySQL"]
+                DB1["🗄️ EC2 Instance&lt;br/&gt;db-server&lt;br/&gt;t3.micro&lt;br/&gt;MariaDB/MySQL&lt;br/&gt;Puerto 3306"]
             end
         end
 
@@ -1557,7 +1557,7 @@
             end
 
             subgraph Priv2["🔒 Subnet Privada 2&lt;br/&gt;(10.0.11.0/24)"]
-                DB2["💭 (Reservado para&lt;br/&gt;escalado futuro)"]
+                DB2["💭 (Reservado para&lt;br/&gt;escalado futuro&lt;br/&gt;o réplica)"]
             end
         end
     end
@@ -1571,8 +1571,8 @@
     ALB --&gt;|"HTTP&lt;br/&gt;(Puerto 80)"| EC2B
 
     %% Flujo desde EC2 a base de datos MySQL
-    EC2A --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| DB1
-    EC2B --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| DB1
+    EC2A --&gt;|"MySQL/MariaDB&lt;br/&gt;(Puerto 3306)&lt;br/&gt;IP Privada"| DB1
+    EC2B --&gt;|"MySQL/MariaDB&lt;br/&gt;(Puerto 3306)&lt;br/&gt;IP Privada"| DB1
 
     %% Flujo desde EC2 a Internet (saliente) vía NAT Gateway
     EC2A -.-&gt;|"Actualizaciones&lt;br/&gt;(Saliente)"| NATGW
@@ -1627,17 +1627,18 @@
 <td style="text-align: left;">Subnet Pública 2 (AZ-b)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>EC2 + MySQL</strong></td>
-<td style="text-align: left;">Instancia EC2 con MySQL instalado para base de datos relacional</td>
+<td style="text-align: left;"><strong>EC2 + MySQL (db-server)</strong></td>
+<td style="text-align: left;">Instancia EC2 con MariaDB/MySQL instalado para base de datos relacional. Accesible solo desde instancias EC2 en la misma VPC mediante IP privada.</td>
 <td style="text-align: left;">Subnet Privada 1 (AZ-a)</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Flujos de tráfico:</strong></p>
 <ol>
-<li><strong>Tráfico entrante (Inbound):</strong> Internet → Internet Gateway → Application Load Balancer → Instancias EC2</li>
-<li><strong>Tráfico a base de datos:</strong> Instancias EC2 → MySQL en EC2 (en subnet privada)</li>
-<li><strong>Tráfico saliente (Outbound):</strong> Instancias EC2 → NAT Gateway → Internet Gateway → Internet</li>
+<li><strong>Tráfico entrante (Inbound):</strong> Internet → Internet Gateway → Application Load Balancer → Instancias EC2 (web-server-1 y web-server-2)</li>
+<li><strong>Tráfico a base de datos:</strong> Instancias EC2 web → MySQL/MariaDB en instancia EC2 <code>db-server</code> (en subnet privada, usando IP privada, puerto 3306)</li>
+<li><strong>Tráfico saliente (Outbound):</strong> Instancias EC2 web → NAT Gateway → Internet Gateway → Internet (para actualizaciones y descargas)</li>
+<li><strong>Nota:</strong> La instancia <code>db-server</code> no tiene acceso directo a Internet (está en subnet privada sin IP pública), pero puede acceder a Internet saliente a través del NAT Gateway si es necesario</li>
 </ol>
 <!-- !!! tip "Visualización del diagrama"
     Este diagrama utiliza Mermaid. Para una mejor visualización:
