@@ -667,9 +667,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-crear-base-de-datos-rds" class="md-nav__link">
+  <a href="#5-crear-base-de-datos-mysql-en-instancia-ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Crear base de datos RDS
+      5. Crear base de datos MySQL en instancia EC2
     </span>
   </a>
   
@@ -1544,7 +1544,7 @@
             end
 
             subgraph Priv1["🔒 Subnet Privada 1&lt;br/&gt;(10.0.10.0/24)"]
-                RDS1[("🗄️ RDS MySQL&lt;br/&gt;gameday-db&lt;br/&gt;Primary")]
+                DB1["🖥️ EC2 Instance&lt;br/&gt;db-server&lt;br/&gt;t3.micro + MySQL"]
             end
         end
 
@@ -1557,7 +1557,7 @@
             end
 
             subgraph Priv2["🔒 Subnet Privada 2&lt;br/&gt;(10.0.11.0/24)"]
-                RDS2[("🗄️ RDS MySQL&lt;br/&gt;Replica/Standby&lt;br/&gt;(Multi-AZ opcional)")]
+                DB2["💭 (Reservado para&lt;br/&gt;escalado futuro)"]
             end
         end
     end
@@ -1570,12 +1570,9 @@
     ALB --&gt;|"HTTP&lt;br/&gt;(Puerto 80)"| EC2A
     ALB --&gt;|"HTTP&lt;br/&gt;(Puerto 80)"| EC2B
 
-    %% Flujo desde EC2 a RDS
-    EC2A --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| RDS1
-    EC2B --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| RDS1
-
-    %% Replicación RDS (Multi-AZ)
-    RDS1 &lt;==&gt;|"Replicación&lt;br/&gt;(Multi-AZ)"| RDS2
+    %% Flujo desde EC2 a base de datos MySQL
+    EC2A --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| DB1
+    EC2B --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| DB1
 
     %% Flujo desde EC2 a Internet (saliente) vía NAT Gateway
     EC2A -.-&gt;|"Actualizaciones&lt;br/&gt;(Saliente)"| NATGW
@@ -1589,7 +1586,7 @@
     classDef public fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
     classDef private fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#000
     classDef ec2 fill:#fff9c4,stroke:#f57f17,stroke-width:2px,color:#000
-    classDef rds fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef db fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px,color:#000
     classDef networking fill:#b2dfdb,stroke:#00796b,stroke-width:2px,color:#000
 
     class Internet internet
@@ -1597,7 +1594,7 @@
     class Pub1,Pub2 public
     class Priv1,Priv2 private
     class EC2A,EC2B ec2
-    class RDS1,RDS2 rds
+    class DB1 db
     class ALB,NATGW,IGW networking</code></pre>
 <p><strong>Descripción de componentes:</strong></p>
 <table>
@@ -1630,18 +1627,17 @@
 <td style="text-align: left;">Subnet Pública 2 (AZ-b)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>RDS MySQL</strong></td>
-<td style="text-align: left;">Base de datos relacional con opción Multi-AZ para alta disponibilidad</td>
-<td style="text-align: left;">Subnets Privadas (AZ-a y AZ-b)</td>
+<td style="text-align: left;"><strong>EC2 + MySQL</strong></td>
+<td style="text-align: left;">Instancia EC2 con MySQL instalado para base de datos relacional</td>
+<td style="text-align: left;">Subnet Privada 1 (AZ-a)</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Flujos de tráfico:</strong></p>
 <ol>
 <li><strong>Tráfico entrante (Inbound):</strong> Internet → Internet Gateway → Application Load Balancer → Instancias EC2</li>
-<li><strong>Tráfico a base de datos:</strong> Instancias EC2 → RDS (en subnets privadas)</li>
+<li><strong>Tráfico a base de datos:</strong> Instancias EC2 → MySQL en EC2 (en subnet privada)</li>
 <li><strong>Tráfico saliente (Outbound):</strong> Instancias EC2 → NAT Gateway → Internet Gateway → Internet</li>
-<li><strong>Replicación de datos:</strong> RDS Primary (AZ-a) ↔ RDS Standby (AZ-b)</li>
 </ol>
 <!-- !!! tip "Visualización del diagrama"
     Este diagrama utiliza Mermaid. Para una mejor visualización:
@@ -2390,115 +2386,126 @@
 <li>Si una instancia no está healthy, revisa los health checks y las reglas del Security Group</li>
 </ul>
 </div>
-<h4 id="5-crear-base-de-datos-rds">5. Crear base de datos RDS<a class="headerlink" href="#5-crear-base-de-datos-rds" title="Permanent link">&para;</a></h4>
-<p>Vamos a crear una base de datos MySQL en las subnets privadas para que solo sea accesible desde las instancias EC2.</p>
-<p><strong>Paso 5.1: Crear DB Subnet Group</strong></p>
-<p>Primero necesitamos crear un DB Subnet Group que agrupe las subnets privadas.</p>
+<h4 id="5-crear-base-de-datos-mysql-en-instancia-ec2">5. Crear base de datos MySQL en instancia EC2<a class="headerlink" href="#5-crear-base-de-datos-mysql-en-instancia-ec2" title="Permanent link">&para;</a></h4>
+<p>Vamos a crear una instancia EC2 con MySQL instalado en las subnets privadas. Esta es una alternativa común cuando RDS no está disponible en Learner Labs. La base de datos solo será accesible desde las instancias EC2.</p>
+<p><strong>Paso 5.1: Crear instancia EC2 para la base de datos</strong></p>
 <ol>
 <li>
-<p>Ve a <strong>RDS</strong> → <strong>Subnet groups</strong> → <strong>Create DB subnet group</strong></p>
+<p>Ve a <strong>EC2</strong> → <strong>Instances</strong> → <strong>Launch instances</strong></p>
 </li>
 <li>
-<p>Configuración:</p>
+<p><strong>Paso 1 - Name and tags:</strong></p>
 </li>
 </ol>
 <ul>
-<li><strong>Name:</strong> <code>db-subnet-group-gameday</code></li>
-<li><strong>Description:</strong> <code>Subnet group for RDS in private subnets</code></li>
-<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
-<li><strong>Availability Zones:</strong> Selecciona ambas AZs (<code>us-east-1a</code> y <code>us-east-1b</code>)</li>
-<li><strong>Subnets:</strong> Selecciona las dos subnets privadas:<ul>
-<li><code>private-subnet-1</code> (10.0.10.0/24)</li>
-<li><code>private-subnet-2</code> (10.0.11.0/24)</li>
-</ul>
-</li>
-<li>Haz clic en <strong>Create</strong></li>
-</ul>
-<p><strong>Paso 5.2: Crear la instancia RDS</strong></p>
-<ol>
-<li>
-<p>Ve a <strong>RDS</strong> → <strong>Databases</strong> → <strong>Create database</strong></p>
-</li>
-<li>
-<p><strong>Paso 1 - Engine options:</strong></p>
-</li>
-</ol>
-<ul>
-<li><strong>Engine type:</strong> MySQL</li>
-<li><strong>Engine version:</strong> Selecciona la más reciente (ej: MySQL 8.0.35)</li>
-<li><strong>Templates:</strong> Free tier (para no incurrir en costes)</li>
+<li><strong>Name:</strong> <code>db-server</code></li>
 </ul>
 <ol start="3">
-<li><strong>Paso 2 - Settings:</strong></li>
+<li><strong>Paso 2 - Application and OS Images (Amazon Machine Image):</strong></li>
 </ol>
 <ul>
-<li><strong>DB instance identifier:</strong> <code>gameday-db</code></li>
-<li><strong>Master username:</strong> <code>admin</code> (o el que prefieras)</li>
-<li><strong>Master password:</strong> Crea una contraseña segura y <strong>anótala</strong> (la necesitarás después)</li>
-<li><strong>Confirm password:</strong> Repite la contraseña</li>
+<li>Selecciona <strong>Amazon Linux 2023 AMI</strong> (gratuita, Free Tier eligible)</li>
+<li>Arquitectura: x86_64</li>
 </ul>
 <ol start="4">
-<li><strong>Paso 3 - Instance configuration:</strong></li>
+<li><strong>Paso 3 - Instance type:</strong></li>
 </ol>
 <ul>
-<li><strong>DB instance class:</strong> db.t3.micro (Free tier eligible)</li>
-<li><strong>Storage:</strong> Deja los valores por defecto (20 GB, General Purpose SSD)</li>
+<li>Selecciona <strong>t3.micro</strong> (gratuita en Free Tier)</li>
+<li>Tiene 2 vCPU y 1 GB de RAM</li>
 </ul>
 <ol start="5">
-<li><strong>Paso 4 - Connectivity:</strong></li>
+<li><strong>Paso 4 - Key pair (login):</strong></li>
+</ol>
+<ul>
+<li>Selecciona la key pair <code>gameday-keypair</code> que creaste anteriormente</li>
+</ul>
+<ol start="6">
+<li><strong>Paso 5 - Network settings:</strong></li>
 </ol>
 <ul>
 <li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
-<li><strong>Subnet group:</strong> Selecciona <code>db-subnet-group-gameday</code> (el creado anteriormente)</li>
-<li><strong>Public access:</strong> <strong>No</strong> (la base de datos estará en subnets privadas, solo accesible desde EC2)</li>
-<li><strong>VPC security group:</strong> Selecciona "Choose existing"</li>
-<li><strong>Existing VPC security groups:</strong> Selecciona <code>rds-gameday-sg</code> (el creado anteriormente)</li>
-<li><strong>Availability Zone:</strong> Deja "No preference" o selecciona una AZ específica</li>
-<li><strong>Database port:</strong> 3306 (puerto por defecto de MySQL)</li>
-</ul>
-<ol start="6">
-<li><strong>Paso 5 - Database authentication:</strong></li>
-</ol>
-<ul>
-<li>Selecciona <strong>Password authentication</strong></li>
+<li><strong>Subnet:</strong> Selecciona <code>private-subnet-1</code> (subnet privada)</li>
+<li><strong>Auto-assign Public IP:</strong> Disable (no necesita IP pública, está en subnet privada)</li>
+<li><strong>Firewall (security groups):</strong> Selecciona "Select existing security group"</li>
+<li><strong>Common security groups:</strong> Selecciona <code>rds-gameday-sg</code> (el que creamos anteriormente)</li>
 </ul>
 <ol start="7">
-<li><strong>Paso 6 - Additional configuration:</strong></li>
+<li><strong>Paso 6 - Configure storage:</strong></li>
 </ol>
 <ul>
-<li><strong>Initial database name:</strong> <code>gameday_db</code> (opcional, creará una base de datos inicial)</li>
-<li><strong>Backup retention period:</strong> 7 days (gratis en Free Tier)</li>
-<li><strong>Enable encryption:</strong> Puedes dejarlo deshabilitado para Free Tier</li>
-<li><strong>Enable Enhanced monitoring:</strong> Deshabilitado (para Free Tier)</li>
-<li><strong>Auto minor version upgrade:</strong> Habilitado (recomendado)</li>
+<li>Deja los valores por defecto (8 GB gp3) - está dentro del Free Tier</li>
 </ul>
 <ol start="8">
+<li><strong>Paso 7 - Advanced details:</strong></li>
+</ol>
+<ul>
+<li>Desplázate hasta <strong>User data</strong> (al final)</li>
+<li>Pega el siguiente script:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/bin/bash</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># Actualizar el sistema</span>
+<span class="linenos" data-linenos=" 3 "></span>yum<span class="w"> </span>update<span class="w"> </span>-y
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Instalar MySQL (MariaDB es compatible con MySQL)</span>
+<span class="linenos" data-linenos=" 6 "></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-server
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Iniciar y habilitar MySQL</span>
+<span class="linenos" data-linenos=" 9 "></span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
+<span class="linenos" data-linenos="10 "></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># Configurar MySQL de forma no interactiva</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Crear base de datos</span>
+<span class="linenos" data-linenos="14 "></span>mysql<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="linenos" data-linenos="15 "></span><span class="s">CREATE DATABASE gameday_db;</span>
+<span class="linenos" data-linenos="16 "></span><span class="s">CREATE USER &#39;admin&#39;@&#39;%&#39; IDENTIFIED BY &#39;GameDay2025!&#39;;</span>
+<span class="linenos" data-linenos="17 "></span><span class="s">GRANT ALL PRIVILEGES ON gameday_db.* TO &#39;admin&#39;@&#39;%&#39;;</span>
+<span class="linenos" data-linenos="18 "></span><span class="s">FLUSH PRIVILEGES;</span>
+<span class="linenos" data-linenos="19 "></span><span class="s">EOF</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="c1"># Configurar MySQL para aceptar conexiones remotas</span>
+<span class="linenos" data-linenos="22 "></span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/bind-address.*/bind-address = 0.0.0.0/&#39;</span><span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
+<span class="linenos" data-linenos="23 "></span>systemctl<span class="w"> </span>restart<span class="w"> </span>mariadb
+</code></pre></div>
+<p>Este script instala MariaDB (compatible con MySQL), crea una base de datos, un usuario y configura MySQL para aceptar conexiones desde otras instancias EC2.</p>
+<ol start="9">
 <li>
-<p>Haz clic en <strong>Create database</strong></p>
+<p>Haz clic en <strong>Launch instance</strong></p>
 </li>
 <li>
-<p>Espera 5-10 minutos hasta que el estado sea <strong>Available</strong></p>
+<p>Espera hasta que el estado sea <strong>Running</strong> (puede tardar 1-2 minutos)</p>
 </li>
 </ol>
-<p><strong>Paso 5.3: Obtener el endpoint de la base de datos</strong></p>
+<p><strong>Paso 5.2: Esperar a que MySQL se instale</strong></p>
+<p>El script de User Data puede tardar 2-3 minutos en ejecutarse completamente. Espera unos minutos antes de verificar la conexión.</p>
+<p><strong>Paso 5.3: Obtener la IP privada de la instancia de base de datos</strong></p>
 <ol>
-<li>Una vez que el estado sea <strong>Available</strong>, selecciona la instancia de base de datos</li>
-<li>En la pestaña <strong>Connectivity &amp; security</strong>, busca <strong>Endpoint &amp; port</strong></li>
-<li>Anota el <strong>Endpoint</strong> (ej: <code>gameday-db.xxxxxxxxxxxx.us-east-1.rds.amazonaws.com</code>) y el <strong>Port</strong> (3306)</li>
+<li>Selecciona la instancia <code>db-server</code></li>
+<li>En la pestaña <strong>Details</strong>, busca <strong>Private IPv4 addresses</strong></li>
+<li>Anota la <strong>IP privada</strong> (ej: <code>10.0.10.25</code>)</li>
 </ol>
 <p><strong>IMPORTANTE:</strong> </p>
 <ul>
-<li>El endpoint solo es accesible desde las instancias EC2 que están en la misma VPC</li>
-<li>No podrás conectarte desde tu máquina local porque la base de datos está en subnets privadas</li>
+<li>La base de datos solo es accesible desde las instancias EC2 que están en la misma VPC</li>
+<li>No podrás conectarte desde tu máquina local porque la instancia está en una subnet privada y no tiene IP pública</li>
+<li>Usa la <strong>IP privada</strong> para conectarte desde las instancias EC2 web (en lugar de un endpoint de RDS)</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Verificación de la base de datos RDS</p>
-<p>Verifica que la instancia RDS está correctamente configurada:</p>
+<p class="admonition-title">Verificación de la base de datos</p>
+<p>Verifica que la instancia de base de datos está funcionando correctamente:</p>
 <ul>
-<li>El estado debe ser <strong>Available</strong> (puede tardar varios minutos en alcanzar este estado)</li>
-<li>Debe tener un endpoint asignado (ej: <code>gameday-db.xxxxx.rds.amazonaws.com</code>)</li>
-<li>Debe estar en las subnets privadas del DB Subnet Group</li>
-<li>El Security Group debe permitir conexiones desde las instancias EC2</li>
+<li>El estado de la instancia debe ser <strong>Running</strong></li>
+<li>Debe tener una IP privada asignada</li>
+<li>Debe estar en la subnet privada <code>private-subnet-1</code></li>
+<li>El Security Group debe permitir conexiones MySQL (puerto 3306) desde las instancias EC2</li>
+</ul>
+<p><strong>Credenciales de la base de datos:</strong></p>
+<ul>
+<li><strong>Usuario:</strong> <code>admin</code></li>
+<li><strong>Contraseña:</strong> <code>GameDay2025!</code></li>
+<li><strong>Base de datos:</strong> <code>gameday_db</code></li>
+<li><strong>Puerto:</strong> <code>3306</code></li>
+<li><strong>Host:</strong> Usa la IP privada de la instancia <code>db-server</code> (ej: <code>10.0.10.25</code>)</li>
 </ul>
 </div>
 <h4 id="6-verificacion-final">6. Verificación final<a class="headerlink" href="#6-verificacion-final" title="Permanent link">&para;</a></h4>
@@ -2510,7 +2517,7 @@
 <li>Esto confirma que el load balancing funciona correctamente</li>
 </ol>
 <p><strong>Paso 6.2: Verificar conectividad a la base de datos desde EC2</strong></p>
-<p>Para verificar que las instancias EC2 pueden conectarse a RDS, vamos a conectarnos por SSH a una instancia y probar la conexión.</p>
+<p>Para verificar que las instancias EC2 pueden conectarse a la base de datos MySQL en EC2, vamos a conectarnos por SSH a una instancia web y probar la conexión.</p>
 <ol>
 <li><strong>Conectarse por SSH a una instancia EC2:</strong></li>
 </ol>
@@ -2529,20 +2536,23 @@
 <ol start="3">
 <li><strong>Probar conexión a la base de datos:</strong></li>
 </ol>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>gameday-db.xxxxxxxxxxxx.us-east-1.rds.amazonaws.com<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p
-</code></pre></div>
-   - Introduce la contraseña que configuraste al crear la base de datos
+<p>Usa la IP privada de la instancia <code>db-server</code> que anotaste anteriormente:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>IP_PRIVADA_DB_SERVER<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p
+</code></pre></div></p>
+<p>Cuando te pida la contraseña, introduce: <code>GameDay2025!</code>
    - Si la conexión es exitosa, verás el prompt de MySQL: <code>mysql&gt;</code>
    - Escribe <code>SHOW DATABASES;</code> para ver las bases de datos disponibles
+   - Deberías ver <code>gameday_db</code> en la lista
    - Escribe <code>exit;</code> para salir</p>
 <ol start="4">
 <li><strong>Verificar que la conexión funciona:</strong></li>
 </ol>
 <ul>
 <li>Si puedes conectarte, significa que:<ul>
-<li>El Security Group de RDS permite conexiones desde EC2</li>
+<li>El Security Group de la base de datos permite conexiones desde EC2</li>
 <li>Las subnets están correctamente configuradas</li>
 <li>El routing funciona correctamente</li>
+<li>MySQL está configurado para aceptar conexiones remotas</li>
 </ul>
 </li>
 </ul>
@@ -2554,11 +2564,11 @@
 <li>VPC con 4 subnets (2 públicas, 2 privadas) en diferentes Availability Zones</li>
 <li>Internet Gateway asociado a la VPC</li>
 <li>NAT Gateway en subnet pública con Elastic IP asignada</li>
-<li>3 Security Groups creados y configurados (ALB, EC2, RDS)</li>
-<li>2 instancias EC2 en estado <strong>Running</strong> en subnets públicas diferentes</li>
+<li>3 Security Groups creados y configurados (ALB, EC2, base de datos)</li>
+<li>3 instancias EC2 en estado <strong>Running</strong> (2 web en subnets públicas, 1 base de datos en subnet privada)</li>
 <li>Application Load Balancer en estado <strong>Active</strong></li>
-<li>Target Group con 2 instancias en estado <strong>healthy</strong></li>
-<li>Instancia RDS en estado <strong>Available</strong> en subnets privadas</li>
+<li>Target Group con 2 instancias web en estado <strong>healthy</strong></li>
+<li>Instancia EC2 con MySQL en estado <strong>Running</strong> en subnet privada</li>
 </ul>
 <p>Si todos los componentes están correctamente configurados, toda la arquitectura debe estar funcionando y comunicándose correctamente.</p>
 </div>
@@ -2572,7 +2582,8 @@
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/">Documentación de VPC</a></li>
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/">Documentación de ALB</a></li>
-<li><a href="https://docs.aws.amazon.com/rds/">Documentación de RDS</a></li>
+<li><a href="https://docs.aws.amazon.com/ec2/">Documentación de EC2</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2023.html">Documentación de MariaDB en Amazon Linux</a></li>
 </ul>
 <h2 id="practica-2-arquitectura-serverless-con-lambda-y-dynamodb">Práctica 2: Arquitectura serverless con Lambda y DynamoDB<a class="headerlink" href="#practica-2-arquitectura-serverless-con-lambda-y-dynamodb" title="Permanent link">&para;</a></h2>
 <h4 id="diagrama-de-arquitectura-serverless-lambda-api-gateway-dynamodb">Diagrama de arquitectura serverless: Lambda + API Gateway + DynamoDB<a class="headerlink" href="#diagrama-de-arquitectura-serverless-lambda-api-gateway-dynamodb" title="Permanent link">&para;</a></h4>
