@@ -2552,19 +2552,44 @@
 <ol>
 <li><strong>Conectarse a la instancia db-server:</strong></li>
 </ol>
-<p>Como la instancia está en una subnet privada, necesitas conectarte desde una instancia web que está en una subnet pública:</p>
-<ul>
-<li>Primero conéctate por SSH a una instancia web (<code>web-server-1</code> o <code>web-server-2</code>)</li>
-<li>Desde esa instancia web, conéctate a la instancia <code>db-server</code> usando su IP privada</li>
-</ul>
-<p>En Linux/Mac (dos pasos):
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Paso 1: Conectar a la instancia web</span>
-<span class="linenos" data-linenos="2 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>gameday-keypair.pem
-<span class="linenos" data-linenos="3 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_WEB_SERVER
-<span class="linenos" data-linenos="4 "></span>
-<span class="linenos" data-linenos="5 "></span><span class="c1"># Paso 2: Desde la instancia web, conectar a db-server</span>
-<span class="linenos" data-linenos="6 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PRIVADA_DB_SERVER
-</code></pre></div></p>
+<p>Como la instancia está en una subnet privada, necesitas conectarte desde una instancia web que está en una subnet pública. Tienes dos opciones:</p>
+<p><strong>Opción A: Usar SSH Agent Forwarding (Recomendado)</strong></p>
+<p>Esta opción permite usar tu clave local desde la instancia web sin copiarla:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Paso 1: Añadir la clave al SSH Agent en tu máquina local</span>
+<span class="linenos" data-linenos="2 "></span>ssh-add<span class="w"> </span>gameday-keypair.pem
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Paso 2: Conectar a la instancia web con Agent Forwarding</span>
+<span class="linenos" data-linenos="5 "></span>ssh<span class="w"> </span>-A<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_WEB_SERVER
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Paso 3: Desde la instancia web, conectar a db-server (la clave se reenvía automáticamente)</span>
+<span class="linenos" data-linenos="8 "></span>ssh<span class="w"> </span>ec2-user@IP_PRIVADA_DB_SERVER
+</code></pre></div>
+<p><strong>Opción B: Copiar la clave a la instancia web</strong></p>
+<p>Si prefieres copiar la clave directamente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Paso 1: Conectar a la instancia web</span>
+<span class="linenos" data-linenos=" 2 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>gameday-keypair.pem
+<span class="linenos" data-linenos=" 3 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_WEB_SERVER
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Paso 2: Desde la instancia web, copiar la clave usando scp (desde otra terminal)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1"># En una nueva terminal de tu máquina local:</span>
+<span class="linenos" data-linenos=" 7 "></span>scp<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_WEB_SERVER:~/.ssh/
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># Paso 3: Volver a la terminal conectada a la instancia web y conectarse a db-server</span>
+<span class="linenos" data-linenos="10 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>~/.ssh/gameday-keypair.pem
+<span class="linenos" data-linenos="11 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PRIVADA_DB_SERVER
+</code></pre></div>
+<p><strong>Opción C: Verificar MySQL sin SSH (Más simple)</strong></p>
+<p>Alternativamente, puedes verificar que MySQL funciona sin conectarte directamente a db-server, simplemente probando la conexión desde la instancia web:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Conectar a una instancia web</span>
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_WEB_SERVER
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Instalar cliente MySQL</span>
+<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Probar conexión directamente (esto verifica que MySQL está funcionando)</span>
+<span class="linenos" data-linenos="8 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>IP_PRIVADA_DB_SERVER<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p
+<span class="linenos" data-linenos="9 "></span><span class="c1"># Contraseña: GameDay2025!</span>
+</code></pre></div>
 <ol start="2">
 <li><strong>Verificar que MySQL está ejecutándose:</strong></li>
 </ol>
