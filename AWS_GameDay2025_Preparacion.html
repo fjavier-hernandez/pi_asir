@@ -2447,25 +2447,36 @@
 <span class="linenos" data-linenos=" 2 "></span><span class="c1"># Actualizar el sistema</span>
 <span class="linenos" data-linenos=" 3 "></span>yum<span class="w"> </span>update<span class="w"> </span>-y
 <span class="linenos" data-linenos=" 4 "></span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Instalar MySQL (MariaDB es compatible con MySQL)</span>
-<span class="linenos" data-linenos=" 6 "></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-server
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># Instalar MariaDB (servidor y cliente, compatible con MySQL)</span>
+<span class="linenos" data-linenos=" 6 "></span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb-server<span class="w"> </span>mariadb
 <span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Iniciar y habilitar MySQL</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># Iniciar MariaDB</span>
 <span class="linenos" data-linenos=" 9 "></span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
 <span class="linenos" data-linenos="10 "></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
 <span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="c1"># Configurar MySQL de forma no interactiva</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1"># Crear base de datos</span>
-<span class="linenos" data-linenos="14 "></span>mysql<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
-<span class="linenos" data-linenos="15 "></span><span class="s">CREATE DATABASE gameday_db;</span>
-<span class="linenos" data-linenos="16 "></span><span class="s">CREATE USER &#39;admin&#39;@&#39;%&#39; IDENTIFIED BY &#39;GameDay2025!&#39;;</span>
-<span class="linenos" data-linenos="17 "></span><span class="s">GRANT ALL PRIVILEGES ON gameday_db.* TO &#39;admin&#39;@&#39;%&#39;;</span>
-<span class="linenos" data-linenos="18 "></span><span class="s">FLUSH PRIVILEGES;</span>
-<span class="linenos" data-linenos="19 "></span><span class="s">EOF</span>
-<span class="linenos" data-linenos="20 "></span>
-<span class="linenos" data-linenos="21 "></span><span class="c1"># Configurar MySQL para aceptar conexiones remotas</span>
-<span class="linenos" data-linenos="22 "></span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/bind-address.*/bind-address = 0.0.0.0/&#39;</span><span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
-<span class="linenos" data-linenos="23 "></span>systemctl<span class="w"> </span>restart<span class="w"> </span>mariadb
+<span class="linenos" data-linenos="12 "></span><span class="c1"># Esperar a que MariaDB esté completamente iniciado</span>
+<span class="linenos" data-linenos="13 "></span>sleep<span class="w"> </span><span class="m">5</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="c1"># Configurar MariaDB para aceptar conexiones remotas</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1"># Verificar si el archivo existe y modificar o crear configuración</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#bind-address/bind-address/&#39;</span><span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^bind-address.*/bind-address = 0.0.0.0/&#39;</span><span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
+<span class="linenos" data-linenos="20 "></span><span class="k">else</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;[mysqld]\nbind-address = 0.0.0.0&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
+<span class="linenos" data-linenos="22 "></span><span class="k">fi</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="c1"># Reiniciar MariaDB para aplicar cambios de configuración</span>
+<span class="linenos" data-linenos="25 "></span>systemctl<span class="w"> </span>restart<span class="w"> </span>mariadb
+<span class="linenos" data-linenos="26 "></span>sleep<span class="w"> </span><span class="m">3</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span><span class="c1"># Crear base de datos y usuario (MariaDB en Amazon Linux permite conexión root sin contraseña inicialmente)</span>
+<span class="linenos" data-linenos="29 "></span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="linenos" data-linenos="30 "></span><span class="s">CREATE DATABASE IF NOT EXISTS gameday_db;</span>
+<span class="linenos" data-linenos="31 "></span><span class="s">CREATE USER IF NOT EXISTS &#39;admin&#39;@&#39;%&#39; IDENTIFIED BY &#39;GameDay2025!&#39;;</span>
+<span class="linenos" data-linenos="32 "></span><span class="s">GRANT ALL PRIVILEGES ON gameday_db.* TO &#39;admin&#39;@&#39;%&#39;;</span>
+<span class="linenos" data-linenos="33 "></span><span class="s">FLUSH PRIVILEGES;</span>
+<span class="linenos" data-linenos="34 "></span><span class="s">EOF</span>
 </code></pre></div>
 <p>Este script instala MariaDB (compatible con MySQL), crea una base de datos, un usuario y configura MySQL para aceptar conexiones desde otras instancias EC2.</p>
 <ol start="9">
@@ -2531,7 +2542,11 @@
 <ol start="2">
 <li><strong>Instalar cliente MySQL en la instancia EC2:</strong></li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql
+<p>En Amazon Linux 2023, el cliente MySQL está incluido en el paquete MariaDB (compatible con MySQL):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb
+</code></pre></div>
+<p>O si prefieres una versión específica:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb105
 </code></pre></div>
 <ol start="3">
 <li><strong>Probar conexión a la base de datos:</strong></li>
@@ -2539,11 +2554,13 @@
 <p>Usa la IP privada de la instancia <code>db-server</code> que anotaste anteriormente:
    <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>IP_PRIVADA_DB_SERVER<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p
 </code></pre></div></p>
-<p>Cuando te pida la contraseña, introduce: <code>GameDay2025!</code>
-   - Si la conexión es exitosa, verás el prompt de MySQL: <code>mysql&gt;</code>
-   - Escribe <code>SHOW DATABASES;</code> para ver las bases de datos disponibles
-   - Deberías ver <code>gameday_db</code> en la lista
-   - Escribe <code>exit;</code> para salir</p>
+<p>Cuando te pida la contraseña, introduce: <code>GameDay2025!</code></p>
+<ul>
+<li>Si la conexión es exitosa, verás el prompt de MySQL: <code>mysql&gt;</code></li>
+<li>Escribe <code>SHOW DATABASES;</code> para ver las bases de datos disponibles</li>
+<li>Deberías ver <code>gameday_db</code> en la lista</li>
+<li>Escribe <code>exit;</code> para salir</li>
+</ul>
 <ol start="4">
 <li><strong>Verificar que la conexión funciona:</strong></li>
 </ol>
