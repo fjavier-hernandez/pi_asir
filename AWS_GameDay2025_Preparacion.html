@@ -585,6 +585,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#diagrama-de-arquitectura-practica-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de arquitectura (Práctica 1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       Objetivo
@@ -712,6 +721,15 @@
   
     <nav class="md-nav" aria-label="Práctica 2: Arquitectura serverless con Lambda y DynamoDB">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-arquitectura-serverless-lambda-api-gateway-dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de arquitectura serverless: Lambda + API Gateway + DynamoDB
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#objetivo_1" class="md-nav__link">
@@ -1507,6 +1525,132 @@
 <li><strong>Spot Instances:</strong> Hasta 90% de ahorro (con tolerancia a interrupciones)</li>
 </ul>
 <h2 id="practica-1-arquitectura-web-basica-en-aws">Práctica 1: Arquitectura web básica en AWS<a class="headerlink" href="#practica-1-arquitectura-web-basica-en-aws" title="Permanent link">&para;</a></h2>
+<h3 id="diagrama-de-arquitectura-practica-1">Diagrama de arquitectura (Práctica 1)<a class="headerlink" href="#diagrama-de-arquitectura-practica-1" title="Permanent link">&para;</a></h3>
+<p>A continuación se presenta un diagrama lógico de alto nivel que representa la arquitectura web básica planteada en la práctica. Este diagrama muestra la distribución de recursos y la comunicación entre ellos en la VPC.</p>
+<pre class="mermaid"><code>flowchart TB
+    Internet[("🌐 Internet")]
+
+    subgraph VPC["🔷 VPC: vpc-gameday (10.0.0.0/16)"]
+        direction TB
+
+        IGW[("🔌 Internet Gateway&lt;br/&gt;igw-gameday")]
+
+        subgraph AZ1["📍 Zona de Disponibilidad: us-east-1a"]
+            direction LR
+
+            subgraph Pub1["🌐 Subnet Pública 1&lt;br/&gt;(10.0.1.0/24)"]
+                ALB["⚖️ Application Load Balancer&lt;br/&gt;alb-gameday"]
+                EC2A["🖥️ EC2 Instance&lt;br/&gt;web-server-1&lt;br/&gt;t3.micro"]
+            end
+
+            subgraph Priv1["🔒 Subnet Privada 1&lt;br/&gt;(10.0.10.0/24)"]
+                RDS1[("🗄️ RDS MySQL&lt;br/&gt;gameday-db&lt;br/&gt;Primary")]
+            end
+        end
+
+        subgraph AZ2["📍 Zona de Disponibilidad: us-east-1b"]
+            direction LR
+
+            subgraph Pub2["🌐 Subnet Pública 2&lt;br/&gt;(10.0.2.0/24)"]
+                EC2B["🖥️ EC2 Instance&lt;br/&gt;web-server-2&lt;br/&gt;t3.micro"]
+                NATGW["🚪 NAT Gateway&lt;br/&gt;nat-gateway-1&lt;br/&gt;+ Elastic IP"]
+            end
+
+            subgraph Priv2["🔒 Subnet Privada 2&lt;br/&gt;(10.0.11.0/24)"]
+                RDS2[("🗄️ RDS MySQL&lt;br/&gt;Replica/Standby&lt;br/&gt;(Multi-AZ opcional)")]
+            end
+        end
+    end
+
+    %% Flujo de tráfico entrante desde Internet
+    Internet --&gt;|"HTTP/HTTPS&lt;br/&gt;(Puerto 80/443)"| IGW
+    IGW --&gt;|"Tráfico entrante"| ALB
+
+    %% Flujo desde ALB a instancias EC2
+    ALB --&gt;|"HTTP&lt;br/&gt;(Puerto 80)"| EC2A
+    ALB --&gt;|"HTTP&lt;br/&gt;(Puerto 80)"| EC2B
+
+    %% Flujo desde EC2 a RDS
+    EC2A --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| RDS1
+    EC2B --&gt;|"MySQL&lt;br/&gt;(Puerto 3306)"| RDS1
+
+    %% Replicación RDS (Multi-AZ)
+    RDS1 &lt;==&gt;|"Replicación&lt;br/&gt;(Multi-AZ)"| RDS2
+
+    %% Flujo desde EC2 a Internet (saliente) vía NAT Gateway
+    EC2A -.-&gt;|"Actualizaciones&lt;br/&gt;(Saliente)"| NATGW
+    EC2B -.-&gt;|"Actualizaciones&lt;br/&gt;(Saliente)"| NATGW
+    NATGW -.-&gt;|"Tráfico saliente"| IGW
+    IGW -.-&gt;|"Internet"| Internet
+
+    %% Estilos
+    classDef internet fill:#fff4e6,stroke:#f57c00,stroke-width:3px,color:#000
+    classDef vpc fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#000
+    classDef public fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    classDef private fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#000
+    classDef ec2 fill:#fff9c4,stroke:#f57f17,stroke-width:2px,color:#000
+    classDef rds fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef networking fill:#b2dfdb,stroke:#00796b,stroke-width:2px,color:#000
+
+    class Internet internet
+    class VPC vpc
+    class Pub1,Pub2 public
+    class Priv1,Priv2 private
+    class EC2A,EC2B ec2
+    class RDS1,RDS2 rds
+    class ALB,NATGW,IGW networking</code></pre>
+<p><strong>Descripción de componentes:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ubicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Internet Gateway</strong></td>
+<td style="text-align: left;">Puerta de enlace que permite comunicación bidireccional entre la VPC e Internet</td>
+<td style="text-align: left;">Nivel VPC</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Application Load Balancer</strong></td>
+<td style="text-align: left;">Distribuye el tráfico HTTP/HTTPS entre las instancias EC2</td>
+<td style="text-align: left;">Subnet Pública 1 (AZ-a)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EC2 Instances</strong></td>
+<td style="text-align: left;">Servidores web que hospedan la aplicación</td>
+<td style="text-align: left;">Subnets Públicas (AZ-a y AZ-b)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NAT Gateway</strong></td>
+<td style="text-align: left;">Permite que recursos en subnets privadas accedan a Internet (solo saliente)</td>
+<td style="text-align: left;">Subnet Pública 2 (AZ-b)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RDS MySQL</strong></td>
+<td style="text-align: left;">Base de datos relacional con opción Multi-AZ para alta disponibilidad</td>
+<td style="text-align: left;">Subnets Privadas (AZ-a y AZ-b)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Flujos de tráfico:</strong></p>
+<ol>
+<li><strong>Tráfico entrante (Inbound):</strong> Internet → Internet Gateway → Application Load Balancer → Instancias EC2</li>
+<li><strong>Tráfico a base de datos:</strong> Instancias EC2 → RDS (en subnets privadas)</li>
+<li><strong>Tráfico saliente (Outbound):</strong> Instancias EC2 → NAT Gateway → Internet Gateway → Internet</li>
+<li><strong>Replicación de datos:</strong> RDS Primary (AZ-a) ↔ RDS Standby (AZ-b)</li>
+</ol>
+<!-- !!! tip "Visualización del diagrama"
+    Este diagrama utiliza Mermaid. Para una mejor visualización:
+
+    - **MkDocs:** Se renderiza automáticamente si tienes la extensión Mermaid configurada
+    - **VS Code:** Instala la extensión "Markdown Preview Mermaid Support"
+    - **Online:** Copia el código en [Mermaid Live Editor](https://mermaid.live/) para verlo interactivamente -->
+
+<hr />
 <h3 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h3>
 <p>Crear una arquitectura web básica de 3 capas utilizando servicios AWS: una aplicación web con balanceador de carga, instancias EC2 y una base de datos RDS.</p>
 <h3 id="conceptos-clave-antes-de-comenzar">Conceptos clave antes de comenzar<a class="headerlink" href="#conceptos-clave-antes-de-comenzar" title="Permanent link">&para;</a></h3>
@@ -1612,6 +1756,15 @@
 <li><strong>Availability Zone:</strong> Selecciona la segunda AZ (ej: <code>us-east-1b</code>)</li>
 <li><strong>IPv4 CIDR block:</strong> <code>10.0.2.0/24</code></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Error: Conflicto de CIDR</p>
+<p>Si recibes el error <strong>"The CIDR conflicts with another subnet"</strong>, significa que ese rango de IPs ya está en uso. Esto puede ocurrir si:</p>
+<ul>
+<li>Ya creaste las subnets previamente en un intento anterior</li>
+<li>Hay recursos de otras prácticas en la misma VPC</li>
+</ul>
+<p><strong>Solución:</strong> Asegúrate de empezar desde cero eliminando la VPC anterior (si existe) y creando una nueva VPC tal como se especifica en el Paso 1.1, o usa CIDRs diferentes que no se solapen (ej: <code>10.0.10.0/24</code>, <code>10.0.20.0/24</code>).</p>
+</div>
 <p><strong>Paso 1.3: Crear subnets privadas</strong></p>
 <ol>
 <li>Crea la primera subnet privada:</li>
@@ -2278,6 +2431,86 @@
 <li><a href="https://docs.aws.amazon.com/rds/">Documentación de RDS</a></li>
 </ul>
 <h2 id="practica-2-arquitectura-serverless-con-lambda-y-dynamodb">Práctica 2: Arquitectura serverless con Lambda y DynamoDB<a class="headerlink" href="#practica-2-arquitectura-serverless-con-lambda-y-dynamodb" title="Permanent link">&para;</a></h2>
+<h4 id="diagrama-de-arquitectura-serverless-lambda-api-gateway-dynamodb">Diagrama de arquitectura serverless: Lambda + API Gateway + DynamoDB<a class="headerlink" href="#diagrama-de-arquitectura-serverless-lambda-api-gateway-dynamodb" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>flowchart TB
+    CLIENTE[["🌐 Cliente&lt;br/&gt;Navegador o App"]]
+
+    subgraph AWS["☁️ AWS Cloud"]
+        subgraph APIGW["🔵 API Gateway"]
+            GW["Endpoint REST&lt;br/&gt;/tareas&lt;br/&gt;&lt;small&gt;HTTPS (443)&lt;/small&gt;"]
+        end
+
+        subgraph LAMBDA_FUNC["🟢 Lambda Function"]
+            LAMBDA["gestion-tareas&lt;br/&gt;&lt;small&gt;Python 3.11&lt;/small&gt;"]
+        end
+
+        subgraph DYNAMO["🟡 DynamoDB"]
+            DDB[("Tabla: tareas-gameday&lt;br/&gt;&lt;small&gt;NoSQL Database&lt;/small&gt;")]
+        end
+    end
+
+    %% Flujo de petición
+    CLIENTE --&gt;|"1. Petición HTTPS&lt;br/&gt;GET /tareas o POST /tareas"| GW
+    GW --&gt;|"2. Invoca función"| LAMBDA
+    LAMBDA --&gt;|"3. Operación&lt;br/&gt;read/write"| DDB
+    DDB -.-&gt;|"4. Datos"| LAMBDA
+    LAMBDA -.-&gt;|"5. Respuesta"| GW
+    GW -.-&gt;|"6. Respuesta HTTP&lt;br/&gt;JSON"| CLIENTE
+
+    %% Estilos
+    classDef client fill:#ede7f6,stroke:#7e57c2,stroke-width:3px,color:#000
+    classDef aws fill:#fff4e6,stroke:#f57c00,stroke-width:2px,color:#000
+    classDef api fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    classDef lambda fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#000
+    classDef db fill:#fff8e1,stroke:#fbc02d,stroke-width:2px,color:#000
+
+    class CLIENTE client
+    class AWS aws
+    class APIGW,GW api
+    class LAMBDA_FUNC,LAMBDA lambda
+    class DYNAMO,DDB db</code></pre>
+<p><strong>Descripción de componentes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Descripción</th>
+<th>Ubicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cliente (navegador/app)</strong></td>
+<td>El usuario envía peticiones HTTP (GET/POST) usando fetch/Axios o Postman</td>
+<td>Local/exterior</td>
+</tr>
+<tr>
+<td><strong>API Gateway</strong></td>
+<td>Expone un endpoint REST (por ejemplo <code>/tareas</code>) y enruta requests a Lambda</td>
+<td>Servicio AWS</td>
+</tr>
+<tr>
+<td><strong>Lambda Function</strong></td>
+<td>Ejecuta el código backend para procesar la petición y acceder a DynamoDB</td>
+<td>Servicio AWS</td>
+</tr>
+<tr>
+<td><strong>DynamoDB</strong></td>
+<td>Base de datos NoSQL para almacenar y consultar las tareas</td>
+<td>Servicio AWS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Flujo de operación típico:</strong></p>
+<ol>
+<li>El cliente envía una petición (GET o POST) al endpoint expuesto por API Gateway.</li>
+<li>API Gateway verifica la ruta y los permisos, e invoca la función Lambda correspondiente.</li>
+<li>Lambda ejecuta el código, lee o escribe datos en la tabla <code>tareas-gameday</code> de DynamoDB según el método HTTP (GET: listar, POST: crear).</li>
+<li>Lambda devuelve la respuesta a API Gateway, que la transforma en formato HTTP y la reenvía al cliente.</li>
+</ol>
+<!-- !!! tip "Visualización del diagrama"
+    Este diagrama usa Mermaid. Puedes verlo mejor en VSCode con la extensión "Markdown Preview Mermaid Support", o copiando el bloque arriba en [Mermaid Live Editor](https://mermaid.live/). -->
+
 <h3 id="objetivo_1">Objetivo<a class="headerlink" href="#objetivo_1" title="Permanent link">&para;</a></h3>
 <p>Crear una aplicación serverless que procese eventos mediante AWS Lambda y almacene datos en DynamoDB, utilizando API Gateway como punto de entrada.</p>
 <h3 id="conceptos-clave-antes-de-comenzar_1">Conceptos clave antes de comenzar<a class="headerlink" href="#conceptos-clave-antes-de-comenzar_1" title="Permanent link">&para;</a></h3>
