@@ -2527,26 +2527,70 @@
 <li>Recarga la página 10-15 veces y observa cómo cambia entre <code>web-server-1</code> y <code>web-server-2</code></li>
 <li>Esto confirma que el load balancing funciona correctamente</li>
 </ol>
-<p><strong>Paso 6.2: Verificar conectividad a la base de datos desde EC2</strong></p>
-<p>Para verificar que las instancias EC2 pueden conectarse a la base de datos MySQL en EC2, vamos a conectarnos por SSH a una instancia web y probar la conexión.</p>
+<p><strong>Paso 6.2: Verificar estado de la instancia de base de datos</strong></p>
+<p>Antes de probar la conexión, verifica que la instancia de base de datos está funcionando correctamente:</p>
 <ol>
-<li><strong>Conectarse por SSH a una instancia EC2:</strong></li>
+<li>
+<p>Ve a <strong>EC2</strong> → <strong>Instances</strong></p>
+</li>
+<li>
+<p>Busca la instancia <code>db-server</code> y verifica:</p>
+</li>
 </ol>
-<p>En Linux/Mac:
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>gameday-keypair.pem
-<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_INSTANCIA
+<ul>
+<li>Estado debe ser <strong>Running</strong></li>
+<li>Status check debe ser <strong>2/2 checks passed</strong></li>
+<li>Debe tener una <strong>Private IPv4 address</strong> asignada (anótala si aún no lo has hecho)</li>
+<li>Debe estar en la subnet <code>private-subnet-1</code></li>
+</ul>
+<ol start="3">
+<li>Si el Status check no está completo, espera unos minutos más para que el script de User Data termine de ejecutarse.</li>
+</ol>
+<p><strong>Paso 6.3: Verificar que MySQL está ejecutándose en db-server</strong></p>
+<p>Para verificar que MySQL se instaló y está funcionando correctamente en la instancia de base de datos:</p>
+<ol>
+<li><strong>Conectarse a la instancia db-server:</strong></li>
+</ol>
+<p>Como la instancia está en una subnet privada, necesitas conectarte desde una instancia web que está en una subnet pública:</p>
+<ul>
+<li>Primero conéctate por SSH a una instancia web (<code>web-server-1</code> o <code>web-server-2</code>)</li>
+<li>Desde esa instancia web, conéctate a la instancia <code>db-server</code> usando su IP privada</li>
+</ul>
+<p>En Linux/Mac (dos pasos):
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Paso 1: Conectar a la instancia web</span>
+<span class="linenos" data-linenos="2 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>gameday-keypair.pem
+<span class="linenos" data-linenos="3 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_WEB_SERVER
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Paso 2: Desde la instancia web, conectar a db-server</span>
+<span class="linenos" data-linenos="6 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PRIVADA_DB_SERVER
 </code></pre></div></p>
-<p>En Windows (usando PuTTY):
-   - Convierte el <code>.pem</code> a <code>.ppk</code> usando PuTTYgen
-   - Conéctate usando PuTTY con la clave <code>.ppk</code></p>
+<ol start="2">
+<li><strong>Verificar que MySQL está ejecutándose:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mariadb
+</code></pre></div>
+<p>Deberías ver que el estado es <strong>active (running)</strong></p>
+<ol start="3">
+<li><strong>Verificar conectividad del puerto MySQL:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>ss<span class="w"> </span>-tlnp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">3306</span>
+</code></pre></div>
+<p>Deberías ver que el puerto 3306 está escuchando en <code>0.0.0.0:3306</code> (acepta conexiones de cualquier IP)</p>
+<ol start="4">
+<li>Sal de la instancia db-server: <code>exit</code></li>
+</ol>
+<p><strong>Paso 6.4: Verificar conectividad a la base de datos desde las instancias web</strong></p>
+<p>Ahora verifica que las instancias web pueden conectarse a la base de datos:</p>
+<ol>
+<li><strong>Desde la instancia web donde estás conectado (o conéctate a una si no lo estás):</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA_WEB_SERVER
+</code></pre></div>
 <ol start="2">
 <li><strong>Instalar cliente MySQL en la instancia EC2:</strong></li>
 </ol>
 <p>En Amazon Linux 2023, el cliente MySQL está incluido en el paquete MariaDB (compatible con MySQL):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb
-</code></pre></div>
-<p>O si prefieres una versión específica:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mariadb105
 </code></pre></div>
 <ol start="3">
 <li><strong>Probar conexión a la base de datos:</strong></li>
@@ -2559,33 +2603,69 @@
 <li>Si la conexión es exitosa, verás el prompt de MySQL: <code>mysql&gt;</code></li>
 <li>Escribe <code>SHOW DATABASES;</code> para ver las bases de datos disponibles</li>
 <li>Deberías ver <code>gameday_db</code> en la lista</li>
+<li>Escribe <code>USE gameday_db;</code> para usar la base de datos</li>
+<li>Escribe <code>SHOW TABLES;</code> para ver las tablas (debería estar vacío por ahora)</li>
 <li>Escribe <code>exit;</code> para salir</li>
 </ul>
 <ol start="4">
-<li><strong>Verificar que la conexión funciona:</strong></li>
+<li><strong>Repetir la verificación desde la otra instancia web:</strong></li>
 </ol>
-<ul>
-<li>Si puedes conectarte, significa que:<ul>
-<li>El Security Group de la base de datos permite conexiones desde EC2</li>
-<li>Las subnets están correctamente configuradas</li>
-<li>El routing funciona correctamente</li>
-<li>MySQL está configurado para aceptar conexiones remotas</li>
-</ul>
-</li>
-</ul>
-<p><strong>Paso 6.3: Verificar arquitectura completa</strong></p>
+<p>Para asegurarte de que ambas instancias web pueden conectarse:
+   - Conéctate a <code>web-server-2</code> (la otra instancia)
+   - Repite los pasos 2 y 3</p>
+<ol start="5">
+<li><strong>Verificar que la conexión funciona correctamente:</strong></li>
+</ol>
+<p>Si puedes conectarte desde ambas instancias web, significa que:
+   - El Security Group <code>rds-gameday-sg</code> permite conexiones MySQL (puerto 3306) desde las instancias EC2
+   - Las subnets están correctamente configuradas
+   - El routing funciona correctamente entre las subnets públicas y privadas
+   - MySQL está configurado para aceptar conexiones remotas desde cualquier IP (<code>bind-address = 0.0.0.0</code>)</p>
+<p><strong>Paso 6.5: Verificar arquitectura completa</strong></p>
 <div class="admonition tip">
 <p class="admonition-title">Checklist de verificación de arquitectura</p>
 <p>Revisa en la consola de AWS que todos los componentes están correctamente configurados:</p>
+<p><strong>Red y conectividad:</strong></p>
 <ul>
-<li>VPC con 4 subnets (2 públicas, 2 privadas) en diferentes Availability Zones</li>
+<li>VPC <code>vpc-gameday</code> creada con CIDR <code>10.0.0.0/16</code></li>
+<li>4 subnets creadas (2 públicas, 2 privadas) en diferentes Availability Zones:</li>
+<li><code>public-subnet-1</code> (10.0.1.0/24) en us-east-1a</li>
+<li><code>public-subnet-2</code> (10.0.2.0/24) en us-east-1b</li>
+<li><code>private-subnet-1</code> (10.0.10.0/24) en us-east-1a</li>
+<li><code>private-subnet-2</code> (10.0.11.0/24) en us-east-1b</li>
 <li>Internet Gateway asociado a la VPC</li>
-<li>NAT Gateway en subnet pública con Elastic IP asignada</li>
-<li>3 Security Groups creados y configurados (ALB, EC2, base de datos)</li>
-<li>3 instancias EC2 en estado <strong>Running</strong> (2 web en subnets públicas, 1 base de datos en subnet privada)</li>
-<li>Application Load Balancer en estado <strong>Active</strong></li>
-<li>Target Group con 2 instancias web en estado <strong>healthy</strong></li>
-<li>Instancia EC2 con MySQL en estado <strong>Running</strong> en subnet privada</li>
+<li>NAT Gateway en subnet pública (<code>public-subnet-2</code>) con Elastic IP asignada</li>
+<li>Route Tables configuradas correctamente:</li>
+<li>Tabla pública: ruta <code>0.0.0.0/0</code> → Internet Gateway</li>
+<li>Tabla privada: ruta <code>0.0.0.0/0</code> → NAT Gateway</li>
+</ul>
+<p><strong>Security Groups:</strong></p>
+<ul>
+<li><code>alb-gameday-sg</code>: permite HTTP (puerto 80) desde <code>0.0.0.0/0</code></li>
+<li><code>ec2-gameday-sg</code>: permite HTTP (puerto 80) desde <code>alb-gameday-sg</code> y SSH (puerto 22) desde tu IP</li>
+<li><code>rds-gameday-sg</code>: permite MySQL (puerto 3306) desde <code>ec2-gameday-sg</code></li>
+</ul>
+<p><strong>Instancias EC2:</strong></p>
+<ul>
+<li><code>web-server-1</code>: estado <strong>Running</strong>, en <code>public-subnet-1</code>, Security Group <code>ec2-gameday-sg</code></li>
+<li><code>web-server-2</code>: estado <strong>Running</strong>, en <code>public-subnet-2</code>, Security Group <code>ec2-gameday-sg</code></li>
+<li><code>db-server</code>: estado <strong>Running</strong>, en <code>private-subnet-1</code>, Security Group <code>rds-gameday-sg</code></li>
+<li>Todas las instancias con Status check <strong>2/2 checks passed</strong></li>
+</ul>
+<p><strong>Load Balancer:</strong></p>
+<ul>
+<li>Application Load Balancer <code>alb-gameday</code> en estado <strong>Active</strong></li>
+<li>Listener configurado para HTTP (puerto 80)</li>
+<li>Target Group con 2 instancias web registradas en estado <strong>healthy</strong></li>
+<li>DNS del ALB accesible y distribuyendo tráfico entre las instancias</li>
+</ul>
+<p><strong>Base de datos:</strong></p>
+<ul>
+<li>Instancia <code>db-server</code> con MySQL (MariaDB) ejecutándose</li>
+<li>Puerto 3306 escuchando y aceptando conexiones remotas</li>
+<li>Base de datos <code>gameday_db</code> creada</li>
+<li>Usuario <code>admin</code> creado con permisos</li>
+<li>Conexión desde instancias web funcionando correctamente</li>
 </ul>
 <p>Si todos los componentes están correctamente configurados, toda la arquitectura debe estar funcionando y comunicándose correctamente.</p>
 </div>
