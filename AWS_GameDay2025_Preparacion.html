@@ -2245,17 +2245,64 @@
 <li><strong>Port:</strong> Traffic port</li>
 </ul>
 <p><strong>Solución 4: Si las instancias siguen en "unused" o no cambian de estado</strong></p>
-<ol start="5">
+<ol>
 <li>Elimina las instancias del Target Group:</li>
 </ol>
 <ul>
 <li>Pestaña <strong>Targets</strong> → Selecciona las instancias → <strong>Deregister</strong></li>
 </ul>
-<ol start="6">
+<ol start="2">
 <li>Vuelve a registrarlas siguiendo la Solución 1</li>
 <li>Espera al menos 2-3 minutos para que los health checks se completen</li>
 <li>Si después de 5 minutos siguen sin estado, verifica que Apache esté funcionando en las instancias</li>
 </ol>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error: 'Target group is not configured to receive traffic from the load balancer'</p>
+<p>Si ves este error en las instancias del Target Group, significa que el Target Group <strong>no está correctamente asociado al listener del ALB</strong>. Sigue estos pasos:</p>
+<p><strong>Solución 1: Verificar y corregir la configuración del Listener del ALB</strong></p>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Load Balancers</strong> → Selecciona <code>alb-gameday</code></li>
+<li>Ve a la pestaña <strong>Listeners</strong></li>
+<li>Verifica que existe un listener en el puerto 80 (HTTP)</li>
+<li>
+<p>Si no existe, crea uno:
+   - Haz clic en <strong>Add listener</strong>
+   - <strong>Protocol:</strong> HTTP
+   - <strong>Port:</strong> 80
+   - <strong>Default action:</strong> Forward to → Selecciona <code>tg-web-servers</code>
+   - Haz clic en <strong>Save</strong></p>
+</li>
+<li>
+<p>Si ya existe el listener pero no tiene la acción correcta:
+   - Selecciona el listener (puerto 80)
+   - Haz clic en <strong>Edit</strong> o en el icono de editar
+   - En <strong>Default action</strong>, asegúrate de que esté configurado para <strong>Forward to</strong> → <code>tg-web-servers</code>
+   - Haz clic en <strong>Save</strong></p>
+</li>
+</ol>
+<p><strong>Solución 2: Verificar que el Target Group es el correcto</strong></p>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Load Balancers</strong> → Selecciona <code>alb-gameday</code></li>
+<li>Pestaña <strong>Listeners</strong> → Selecciona el listener HTTP (puerto 80)</li>
+<li>Verifica que el <strong>Target group</strong> mostrado es <code>tg-web-servers</code></li>
+<li>Si no es el correcto, edita el listener y selecciona el Target Group correcto</li>
+</ol>
+<p><strong>Solución 3: Verificar la asociación completa</strong></p>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Target Groups</strong> → Selecciona <code>tg-web-servers</code></li>
+<li>Pestaña <strong>Load balancers</strong></li>
+<li>Verifica que aparece <code>alb-gameday</code> en la lista</li>
+<li>Si no aparece, significa que el Target Group no está asociado al ALB:
+   - Ve al ALB → Listeners → Edita el listener
+   - Asegúrate de seleccionar <code>tg-web-servers</code> como Target Group</li>
+</ol>
+<p><strong>Importante:</strong></p>
+<ul>
+<li>Después de hacer estos cambios, espera 1-2 minutos para que la configuración se propague</li>
+<li>El estado de las instancias debería cambiar de "unused" a "initial" y luego a "healthy"</li>
+<li>Si después de 3-5 minutos siguen mostrando el error, verifica que el ALB esté en estado <strong>Active</strong></li>
+</ul>
 </div>
 <p><strong>Paso 4.2: Crear el Application Load Balancer</strong></p>
 <ol>
@@ -2296,14 +2343,71 @@
 <li><strong>Paso 4 - Listeners and routing:</strong></li>
 </ol>
 <ul>
+<li>Este paso es <strong>MUY IMPORTANTE</strong> - aquí se configura el listener que enruta el tráfico al Target Group</li>
+<li><strong>Listener:</strong> Haz clic en el listener por defecto o en <strong>Add listener</strong></li>
 <li><strong>Protocol:</strong> HTTP</li>
 <li><strong>Port:</strong> 80</li>
-<li><strong>Default action:</strong> Forward to → Selecciona <code>tg-web-servers</code> (el Target Group creado)</li>
+<li><strong>Default action:</strong> <ul>
+<li>Selecciona <strong>Forward to</strong> en el dropdown</li>
+<li>En el siguiente dropdown, selecciona <code>tg-web-servers</code> (el Target Group que creaste en el Paso 4.1)</li>
+<li>Si no ves el Target Group en el dropdown:</li>
+<li>Verifica que lo hayas creado previamente en el Paso 4.1</li>
+<li>Verifica que esté en la misma VPC (<code>vpc-gameday</code>)</li>
+<li>Verifica que esté en la misma región</li>
+</ul>
+</li>
+<li><strong>IMPORTANTE:</strong> Debe aparecer algo como "Forward to tg-web-servers" en la configuración del listener</li>
 </ul>
 <ol start="7">
 <li>Haz clic en <strong>Create load balancer</strong></li>
 <li>Espera 2-3 minutos hasta que el estado cambie a <strong>Active</strong></li>
+<li><strong>Verifica que el listener se creó:</strong>
+   - Ve a <strong>EC2</strong> → <strong>Load Balancers</strong> → Selecciona <code>alb-gameday</code>
+   - Pestaña <strong>Listeners</strong> → Debe aparecer un listener HTTP en el puerto 80
+   - Si no aparece, consulta la nota de solución de problemas más abajo</li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">El listener no se creó o no está configurado correctamente</p>
+<p>Si después de crear el ALB no puedes ver o acceder a las páginas web, es posible que el listener no se haya creado correctamente. Sigue estos pasos para crearlo manualmente:</p>
+<p><strong>Paso 1: Verificar si existe el listener</strong></p>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Load Balancers</strong> → Selecciona <code>alb-gameday</code></li>
+<li>Ve a la pestaña <strong>Listeners</strong></li>
+<li>Verifica si existe un listener en el puerto 80 (HTTP)</li>
+<li>Si <strong>NO existe</strong>, continúa con el siguiente paso para crearlo</li>
+</ol>
+<p><strong>Paso 2: Crear el listener manualmente</strong></p>
+<ol>
+<li>En la misma pestaña <strong>Listeners</strong> del ALB, haz clic en <strong>Add listener</strong> (o <strong>Create listener</strong>)</li>
+<li>Configuración del listener:
+   - <strong>Protocol:</strong> HTTP
+   - <strong>Port:</strong> 80</li>
+<li>En <strong>Default action (actions):</strong>
+   - Selecciona <strong>Forward to</strong> en el dropdown
+   - En <strong>Target group</strong>, selecciona <code>tg-web-servers</code> del dropdown
+   - Si no aparece el Target Group, verifica que:<ul>
+<li>El Target Group existe (<code>tg-web-servers</code>)</li>
+<li>El Target Group está en la misma VPC que el ALB (<code>vpc-gameday</code>)</li>
+<li>El Target Group está en la misma región que el ALB</li>
+</ul>
+</li>
+<li>Haz clic en <strong>Save</strong> (o <strong>Add</strong>)</li>
+<li>Espera 1-2 minutos para que el listener se configure</li>
+</ol>
+<p><strong>Paso 3: Verificar que el listener está activo</strong></p>
+<ol>
+<li>En la pestaña <strong>Listeners</strong>, verifica que aparece el listener HTTP (puerto 80)</li>
+<li>El estado debe mostrar que está activo</li>
+<li>En la columna <strong>Default action</strong>, debe aparecer <code>tg-web-servers</code></li>
+</ol>
+<p><strong>Paso 4: Probar el acceso</strong></p>
+<ol>
+<li>Una vez creado el listener, vuelve a verificar el estado de las instancias en el Target Group</li>
+<li>El error "Target group is not configured to receive traffic from the load balancer" debería desaparecer</li>
+<li>Espera 2-3 minutos para que los health checks se completen</li>
+<li>Intenta acceder al DNS del ALB en tu navegador</li>
+</ol>
+</div>
 <p><strong>Paso 4.3: Obtener el DNS del Load Balancer</strong></p>
 <ol>
 <li>Selecciona el ALB creado (<code>alb-gameday</code>)</li>
