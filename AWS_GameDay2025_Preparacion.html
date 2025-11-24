@@ -2113,14 +2113,42 @@
 <li>Repite con la segunda instancia</li>
 <li>Verifica que ambas muestran contenido diferente (diferentes nombres de host)</li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">No puedo acceder a las páginas web directamente por IP pública</p>
+<p>Si no puedes acceder a las páginas web usando la IP pública de las instancias, pero sí funciona cuando permites todo el tráfico en el Security Group, el problema es que falta una regla específica para HTTP.</p>
+<p><strong>Problema:</strong></p>
+<p>El Security Group <code>ec2-gameday-sg</code> que creamos tiene estas reglas:
+- HTTP desde el Security Group del ALB (para tráfico desde el Load Balancer)
+- SSH desde tu IP (para administración)</p>
+<p>Pero <strong>NO tiene una regla que permita HTTP directamente desde Internet</strong> (0.0.0.0/0), por eso no puedes acceder directamente a la IP pública.</p>
+<p><strong>Solución temporal para pruebas:</strong></p>
+<p>Si quieres acceder directamente a las instancias por su IP pública para verificar que funcionan antes de configurar el ALB, añade esta regla:</p>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Security Groups</strong> → Selecciona <code>ec2-gameday-sg</code></li>
+<li>Pestaña <strong>Inbound rules</strong> → <strong>Edit inbound rules</strong></li>
+<li>Haz clic en <strong>Add rule</strong></li>
+<li>Configuración:
+   - <strong>Type:</strong> HTTP
+   - <strong>Source:</strong> <code>0.0.0.0/0</code> (o <code>::/0</code> para IPv6)
+   - <strong>Description:</strong> <code>Allow HTTP from Internet for testing</code></li>
+<li>Haz clic en <strong>Save rules</strong></li>
+<li>Ahora deberías poder acceder a las IPs públicas directamente</li>
+</ol>
+<p><strong>Nota importante:</strong></p>
+<ul>
+<li>Esta regla permite acceso HTTP desde cualquier lugar de Internet</li>
+<li>Es útil para pruebas, pero en producción el acceso debería ser solo a través del ALB</li>
+<li>Una vez configurado el ALB, puedes eliminar esta regla si quieres más seguridad (el acceso seguirá funcionando a través del ALB que ya tiene la regla correcta)</li>
+</ul>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Verificación de servidores web</p>
 <p>Verifica que ambas instancias EC2 responden correctamente:</p>
 <ul>
-<li>Accede a la IP pública de cada instancia desde un navegador</li>
+<li>Accede a la IP pública de cada instancia desde un navegador (puede requerir añadir regla HTTP desde Internet en el Security Group)</li>
 <li>Deberías ver la página HTML con el nombre de la instancia</li>
 <li>Cada instancia debe mostrar un hostname diferente</li>
-<li>Si no cargan, verifica que el Security Group permite tráfico HTTP desde Internet</li>
+<li>Una vez configurado el ALB, el acceso principal será a través del DNS del Load Balancer</li>
 </ul>
 </div>
 <h4 id="4-crear-application-load-balancer-alb">4. Crear Application Load Balancer (ALB)<a class="headerlink" href="#4-crear-application-load-balancer-alb" title="Permanent link">&para;</a></h4>
