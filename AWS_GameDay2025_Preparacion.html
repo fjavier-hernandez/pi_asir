@@ -2199,21 +2199,31 @@
 <p><strong>Solución 3: Verificar configuración del Target Group</strong></p>
 <ol>
 <li>Selecciona el Target Group → Pestaña <strong>Details</strong></li>
-<li>Verifica que:
-   - <strong>Protocol:</strong> HTTP
-   - <strong>Port:</strong> 80
-   - <strong>VPC:</strong> <code>vpc-gameday</code>
-   - <strong>Target type:</strong> Instances</li>
-<li>Ve a la pestaña <strong>Health checks</strong></li>
-<li>Verifica que:
-   - <strong>Health check protocol:</strong> HTTP
-   - <strong>Health check path:</strong> <code>/</code>
-   - <strong>Port:</strong> Traffic port</li>
+<li>Verifica que:</li>
 </ol>
+<ul>
+<li><strong>Protocol:</strong> HTTP</li>
+<li><strong>Port:</strong> 80</li>
+<li><strong>VPC:</strong> <code>vpc-gameday</code></li>
+<li><strong>Target type:</strong> Instances</li>
+</ul>
+<ol start="3">
+<li>Ve a la pestaña <strong>Health checks</strong></li>
+<li>Verifica que:</li>
+</ol>
+<ul>
+<li><strong>Health check protocol:</strong> HTTP</li>
+<li><strong>Health check path:</strong> <code>/</code></li>
+<li><strong>Port:</strong> Traffic port</li>
+</ul>
 <p><strong>Solución 4: Si las instancias siguen en "unused" o no cambian de estado</strong></p>
-<ol>
-<li>Elimina las instancias del Target Group:
-   - Pestaña <strong>Targets</strong> → Selecciona las instancias → <strong>Deregister</strong></li>
+<ol start="5">
+<li>Elimina las instancias del Target Group:</li>
+</ol>
+<ul>
+<li>Pestaña <strong>Targets</strong> → Selecciona las instancias → <strong>Deregister</strong></li>
+</ul>
+<ol start="6">
 <li>Vuelve a registrarlas siguiendo la Solución 1</li>
 <li>Espera al menos 2-3 minutos para que los health checks se completen</li>
 <li>Si después de 5 minutos siguen sin estado, verifica que Apache esté funcionando en las instancias</li>
