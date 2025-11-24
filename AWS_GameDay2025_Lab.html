@@ -1,0 +1,2976 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guía paso a paso para preparar el Learner Lab y configurar las prácticas de AWS para los alumnos. Preparación completa del entorno antes de la sesión.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/AWS_GameDay2025_Lab.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Guía Preparación - AWS GameDay 2025 (Solo Profesor) - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Guía Preparación - AWS GameDay 2025 (Solo Profesor) - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Guía paso a paso para preparar el Learner Lab y configurar las prácticas de AWS para los alumnos. Preparación completa del entorno antes de la sesión." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/AWS_GameDay2025_Lab.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/AWS_GameDay2025_Lab.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Guía Preparación - AWS GameDay 2025 (Solo Profesor) - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Guía paso a paso para preparar el Learner Lab y configurar las prácticas de AWS para los alumnos. Preparación completa del entorno antes de la sesión." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/AWS_GameDay2025_Lab.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-de-preparacion-aws-gameday-2025-solo-profesor" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guía Preparación - AWS GameDay 2025 (Solo Profesor)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importante-informacion-sobre-el-aprovisionamiento-del-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      IMPORTANTE: Información sobre el aprovisionamiento del Learner Lab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importante-donde-encontrar-el-learner-lab-despues-del-aprovisionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      IMPORTANTE: Dónde encontrar el Learner Lab (después del aprovisionamiento)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostico-donde-esta-mi-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnóstico: ¿Dónde está mi Learner Lab?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diagnóstico: ¿Dónde está mi Learner Lab?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-metodo-usaste" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué método usaste?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostico-1-donde-lo-creaste" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnóstico 1: ¿Dónde lo creaste?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostico-2-verificar-curso-por-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnóstico 2: Verificar curso por curso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostico-3-buscar-en-toda-la-pagina-del-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnóstico 3: Buscar en toda la página del curso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostico-4-verificar-si-realmente-se-creo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnóstico 4: Verificar si realmente se creó
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-acceder-a-aws-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Acceder a AWS Academy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Acceder a AWS Academy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-acceder-a-la-plataforma" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Acceder a la plataforma
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-verificar-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Verificar acceso
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-crear-una-class-con-learner-lab-metodo-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear una Class con Learner Lab (MÉTODO RECOMENDADO)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Crear una Class con Learner Lab (MÉTODO RECOMENDADO)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-acceder-a-la-creacion-de-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Acceder a la creación de Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configurar-la-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Configurar la Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-aceptar-terminos-y-crear" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Aceptar términos y crear
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-verificar-que-la-class-se-creo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Verificar que la Class se creó
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-25-esperar-el-correo-de-aprovisionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2.5: Esperar el correo de aprovisionamiento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2.5: Esperar el correo de aprovisionamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#251-el-correo-de-aprovisionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5.1. El correo de aprovisionamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#252-cuanto-tiempo-puede-tardar" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5.2. ¿Cuánto tiempo puede tardar?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#253-que-hacer-mientras-esperas" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5.3. Qué hacer mientras esperas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#254-cuando-llegue-el-correo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5.4. Cuando llegue el correo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-alternativo-crear-o-seleccionar-un-curso-tradicional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2 (Alternativo): Crear o seleccionar un curso tradicional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2 (Alternativo): Crear o seleccionar un curso tradicional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-si-ya-tienes-un-curso-creado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Si ya tienes un curso creado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-si-necesitas-crear-un-nuevo-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Si necesitas crear un nuevo curso
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-matricular-a-los-alumnos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Matricular a los alumnos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Matricular a los alumnos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-acceder-a-la-gestion-de-personas" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Acceder a la gestión de personas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-anadir-estudiantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Añadir estudiantes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-verificar-matriculacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Verificar matriculación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-acceder-al-learner-lab-si-creaste-una-class-con-academy-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Acceder al Learner Lab (Si creaste una Class con "Academy Learner Lab")
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Acceder al Learner Lab (Si creaste una Class con "Academy Learner Lab")">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-acceder-a-la-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Acceder a la Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-buscar-el-learner-lab-dentro-de-la-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Buscar el Learner Lab dentro de la Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-verificar-que-puedes-acceder-al-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Verificar que puedes acceder al Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-alternativo-crear-el-learner-lab-en-un-curso-tradicional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4 (Alternativo): Crear el Learner Lab en un curso tradicional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4 (Alternativo): Crear el Learner Lab en un curso tradicional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-verificar-que-tienes-un-curso-creado" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Verificar que tienes un curso creado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-entrar-al-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Entrar al curso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-acceder-a-contenidos-del-curso-guia-detallada" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Acceder a Contenidos del curso - GUÍA DETALLADA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-anadir-el-learner-lab-pasos-especificos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Añadir el Learner Lab - PASOS ESPECÍFICOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-configurar-el-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5. Configurar el Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-verificar-que-el-learner-lab-se-creo-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5. Verificar que el Learner Lab se creó correctamente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-donde-encontrar-el-learner-lab-despues-de-crearlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.6. Dónde encontrar el Learner Lab después de crearlo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-probar-el-learner-lab-como-estudiante-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Probar el Learner Lab (Como Estudiante de Prueba)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Probar el Learner Lab (Como Estudiante de Prueba)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-cambiar-a-vista-de-estudiante" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Cambiar a vista de estudiante
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-acceder-al-learner-lab-como-estudiante" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Acceder al Learner Lab como estudiante
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-iniciar-el-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Iniciar el Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-acceder-a-la-consola-de-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Acceder a la consola de AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-verificar-acceso-a-servicios-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5. Verificar acceso a servicios AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-finalizar-el-lab-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6. Finalizar el lab de prueba
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-volver-a-vista-de-instructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7. Volver a vista de instructor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-preparar-material-para-los-alumnos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Preparar material para los alumnos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 6: Preparar material para los alumnos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-documentos-necesarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Documentos necesarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-crear-un-documento-de-configuracion-estandar" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Crear un documento de configuración estándar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-preparar-capturas-de-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Preparar capturas de pantalla
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-7-verificar-configuracion-del-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 7: Verificar configuración del Learner Lab
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 7: Verificar configuración del Learner Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-verificar-permisos-y-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. Verificar permisos y acceso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-verificar-visibilidad-del-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Verificar visibilidad del Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-verificar-creditos-disponibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Verificar créditos disponibles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-8-preparar-la-sesion-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 8: Preparar la sesión práctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 8: Preparar la sesión práctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-planificar-el-tiempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. Planificar el tiempo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-preparar-explicaciones-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. Preparar explicaciones clave
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-preparar-puntos-de-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3. Preparar puntos de verificación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-preparar-solucion-de-problemas-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4. Preparar solución de problemas comunes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-9-realizar-una-prueba-completa-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 9: Realizar una prueba completa (Recomendado)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 9: Realizar una prueba completa (Recomendado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-crear-un-entorno-de-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. Crear un entorno de prueba
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-documentar-problemas-encontrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2. Documentar problemas encontrados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-crear-notas-para-la-explicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3. Crear notas para la explicación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-10-donde-encontrar-el-learner-lab-despues-de-crearlo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 10: Dónde encontrar el Learner Lab después de crearlo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 10: Dónde encontrar el Learner Lab después de crearlo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-el-learner-lab-no-esta-en-el-panel-de-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1. El Learner Lab no está en el Panel de control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-como-acceder-al-learner-lab-que-creaste" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2. Cómo acceder al Learner Lab que creaste
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-verificar-que-el-learner-lab-es-accesible" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.3. Verificar que el Learner Lab es accesible
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-11-configurar-el-dashboard-del-learner-lab-para-seguimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 11: Configurar el Dashboard del Learner Lab para seguimiento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 11: Configurar el Dashboard del Learner Lab para seguimiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-acceder-al-dashboard-del-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1. Acceder al Dashboard del Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-entender-el-dashboard-del-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2. Entender el Dashboard del Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-usar-el-dashboard-durante-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3. Usar el Dashboard durante la práctica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-12-preparar-materiales-de-apoyo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 12: Preparar materiales de apoyo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 12: Preparar materiales de apoyo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-diagrama-de-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1. Diagrama de arquitectura
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-tabla-de-verificacion-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2. Tabla de verificación rápida
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-comandos-utiles-para-copiarpegar" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3. Comandos útiles para copiar/pegar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-13-checklist-final-antes-de-la-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 13: Checklist final antes de la sesión
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 13: Checklist final antes de la sesión">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-de-preparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checklist de preparación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-14-durante-la-sesion-guia-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 14: Durante la sesión - Guía rápida
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 14: Durante la sesión - Guía rápida">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#al-inicio-de-la-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Al inicio de la sesión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#durante-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Durante la práctica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#al-final-de-la-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Al final de la sesión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-15-acceder-al-lab-de-un-estudiante-para-ayudarle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 15: Acceder al lab de un estudiante para ayudarle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 15: Acceder al lab de un estudiante para ayudarle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-acceder-al-dashboard-del-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.1. Acceder al Dashboard del Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-encontrar-un-estudiante-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.2. Encontrar un estudiante específico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-si-el-lab-esta-iniciado" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.3. Si el lab está iniciado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#154-si-el-lab-no-esta-iniciado" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.4. Si el lab no está iniciado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-16-gestion-de-alumnos-y-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 16: Gestión de alumnos y acceso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 16: Gestión de alumnos y acceso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-desactivar-acceso-de-un-alumno" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.1. Desactivar acceso de un alumno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-reactivar-acceso-de-un-alumno" class="md-nav__link">
+    <span class="md-ellipsis">
+      15.2. Reactivar acceso de un alumno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-ver-todos-los-labs-activos" class="md-nav__link">
+    <span class="md-ellipsis">
+      16.3. Ver todos los labs activos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos de referencia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recursos de referencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación oficial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacion-importante-a-recordar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Información importante a recordar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solucion-de-problemas-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución de problemas comunes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solución de problemas comunes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-cree-el-learner-lab-pero-no-lo-veo-en-el-panel-de-control-ni-en-asignaturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Creé el Learner Lab pero no lo veo en el Panel de control ni en Asignaturas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-no-puedo-crear-el-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: No puedo crear el Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-los-alumnos-no-pueden-iniciar-el-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Los alumnos no pueden iniciar el lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-los-alumnos-no-tienen-creditos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Los alumnos no tienen créditos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-no-puedo-acceder-al-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: No puedo acceder al Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-finales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notas finales
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="guia-de-preparacion-aws-gameday-2025-solo-profesor">Guía de Preparación - AWS GameDay 2025 (Solo Profesor)<a class="headerlink" href="#guia-de-preparacion-aws-gameday-2025-solo-profesor" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>GUÍA INTERNA:</strong> Esta guía te ayuda paso a paso a preparar el Learner Lab y configurar todo lo necesario para que tus alumnos puedan realizar las prácticas de AWS GameDay 2025.</p>
+</blockquote>
+<h2 id="importante-informacion-sobre-el-aprovisionamiento-del-learner-lab">IMPORTANTE: Información sobre el aprovisionamiento del Learner Lab<a class="headerlink" href="#importante-informacion-sobre-el-aprovisionamiento-del-learner-lab" title="Permanent link">&para;</a></h2>
+<p><strong>Si creaste una Class con "Academy Learner Lab":</strong></p>
+<p>Después de crear la Class, AWS Academy necesita <strong>aprovisionarla</strong> (prepararla) antes de que puedas acceder al Learner Lab. Este proceso puede tardar desde <strong>30 minutos hasta varias horas</strong>.</p>
+<p><strong>¿Qué debes hacer?</strong></p>
+<ol>
+<li>⏳ <strong>Espera a recibir un correo electrónico</strong> de AWS Academy confirmando que la Class está lista</li>
+<li>📧 El correo llegará a la dirección asociada a tu cuenta de AWS Academy</li>
+<li>✅ Una vez que recibas el correo, podrás acceder al Learner Lab</li>
+</ol>
+<p><strong>Mientras esperas el correo:</strong></p>
+<ul>
+<li>Puedes matricular a los alumnos (Paso 3)</li>
+<li>Puedes preparar otro material de la práctica</li>
+<li>Revisa la sección <strong>Paso 2.5</strong> para más detalles sobre el correo de aprovisionamiento</li>
+</ul>
+<hr />
+<h2 id="importante-donde-encontrar-el-learner-lab-despues-del-aprovisionamiento">IMPORTANTE: Dónde encontrar el Learner Lab (después del aprovisionamiento)<a class="headerlink" href="#importante-donde-encontrar-el-learner-lab-despues-del-aprovisionamiento" title="Permanent link">&para;</a></h2>
+<p><strong>Una vez que hayas recibido el correo de aprovisionamiento:</strong></p>
+<p>El Learner Lab <strong>NO aparece en el "Panel de control"</strong> (Dashboard principal). El Panel de control solo muestra los <strong>cursos/asignaturas</strong>, no el contenido dentro de ellos.</p>
+<p><strong>Para ver el Learner Lab después del aprovisionamiento:</strong></p>
+<ol>
+<li>En el menú lateral izquierdo, haz clic en <strong>"Asignaturas"</strong> o <strong>"Subjects"</strong> (icono de pila de papeles 📚)</li>
+<li>Haz clic en la <strong>Class</strong> que creaste (la que tiene "Academy Learner Lab")</li>
+<li>Una vez dentro de la Class, busca en el menú lateral o en la página principal</li>
+<li><strong>Ahí verás el Learner Lab</strong> disponible para usar</li>
+</ol>
+<p><strong>Resumen:</strong>
+- <strong>Panel de control</strong> = Lista de cursos/asignaturas
+- <strong>Class/Curso</strong> = Contiene el contenido (incluyendo el Learner Lab)
+- <strong>Learner Lab</strong> = Está dentro de la Class, no aparece como curso separado
+- <strong>Para verlo:</strong> Dashboard → [Selecciona Class] → [Busca Learner Lab en la Class]</p>
+<hr />
+<h2 id="diagnostico-donde-esta-mi-learner-lab">Diagnóstico: ¿Dónde está mi Learner Lab?<a class="headerlink" href="#diagnostico-donde-esta-mi-learner-lab" title="Permanent link">&para;</a></h2>
+<p><strong>Primero, verifica qué método usaste para crear el Learner Lab:</strong></p>
+<h3 id="que-metodo-usaste">¿Qué método usaste?<a class="headerlink" href="#que-metodo-usaste" title="Permanent link">&para;</a></h3>
+<p><strong>Opción A: Creaste una Class con "Academy Learner Lab"</strong>
+- ✅ Si seleccionaste "Academy Learner Lab" en el dropdown al crear una Class
+- El Learner Lab está <strong>dentro de esa Class</strong>
+- ⚠️ <strong>IMPORTANTE:</strong> La Class necesita aprovisionarse primero
+- <strong>Debes esperar un correo de AWS Academy</strong> confirmando que la Class está lista
+- Puede tardar desde 30 minutos hasta varias horas
+- Ve al <strong>Paso 2.5</strong> para información sobre el correo de aprovisionamiento
+- Una vez que recibas el correo, ve al <strong>Paso 4</strong> para acceder al Learner Lab</p>
+<p><strong>Opción B: Creaste un curso tradicional y añadiste el Learner Lab</strong>
+- Si creaste un curso normal y luego añadiste el Learner Lab como contenido
+- El Learner Lab está <strong>dentro del contenido del curso</strong>
+- Sigue los pasos de diagnóstico a continuación</p>
+<hr />
+<p><strong>Si no encuentras el Learner Lab (método B o si el método A no funciona), sigue estos pasos de diagnóstico:</strong></p>
+<h3 id="diagnostico-1-donde-lo-creaste">Diagnóstico 1: ¿Dónde lo creaste?<a class="headerlink" href="#diagnostico-1-donde-lo-creaste" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>¿Recuerdas en qué curso lo creaste?</strong>
+   - Anota el nombre del curso
+   - Si no lo recuerdas, revisa todos los cursos</p>
+</li>
+<li>
+<p><strong>¿Viste un mensaje de confirmación cuando lo creaste?</strong>
+   - Si sí: Debería estar en algún lugar del curso
+   - Si no: Puede que no se creó correctamente</p>
+</li>
+</ol>
+<h3 id="diagnostico-2-verificar-curso-por-curso">Diagnóstico 2: Verificar curso por curso<a class="headerlink" href="#diagnostico-2-verificar-curso-por-curso" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Ve a "Asignaturas"</strong> en el menú lateral</li>
+<li><strong>Haz clic en el primer curso</strong> de la lista</li>
+<li><strong>Dentro del curso, busca en:</strong>
+   - Menú lateral: "Módulos", "Contenidos", "Inicio"
+   - Pestañas superiores: "Módulos", "Content"</li>
+<li><strong>Busca cualquier referencia a:</strong>
+   - "Learner Lab"
+   - "Lab"
+   - "AWS"
+   - "Lanzamiento del laboratorio"</li>
+<li><strong>Si no está en este curso, repite con el siguiente curso</strong></li>
+</ol>
+<h3 id="diagnostico-3-buscar-en-toda-la-pagina-del-curso">Diagnóstico 3: Buscar en toda la página del curso<a class="headerlink" href="#diagnostico-3-buscar-en-toda-la-pagina-del-curso" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Dentro de cualquier curso, presiona Ctrl+F</strong> (o Cmd+F en Mac)</li>
+<li><strong>Busca estas palabras:</strong>
+   - "Learner"
+   - "Lab"
+   - "AWS"
+   - "Laboratorio"</li>
+<li>Esto buscará en toda la página del curso</li>
+</ol>
+<h3 id="diagnostico-4-verificar-si-realmente-se-creo">Diagnóstico 4: Verificar si realmente se creó<a class="headerlink" href="#diagnostico-4-verificar-si-realmente-se-creo" title="Permanent link">&para;</a></h3>
+<p><strong>Si después de buscar en todos los cursos no encuentras nada:</strong></p>
+<ol>
+<li>Es posible que <strong>no se creó correctamente</strong></li>
+<li>Ve al <strong>Paso 4</strong> de esta guía y crea el Learner Lab de nuevo</li>
+<li>Esta vez, <strong>anota exactamente:</strong>
+   - En qué curso lo creas
+   - Qué mensaje aparece al crearlo
+   - Dónde aparece después de crearlo</li>
+</ol>
+<hr />
+<h2 id="paso-1-acceder-a-aws-academy">Paso 1: Acceder a AWS Academy<a class="headerlink" href="#paso-1-acceder-a-aws-academy" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Iniciar sesión en AWS Academy como instructor.</p>
+<h3 id="11-acceder-a-la-plataforma">1.1. Acceder a la plataforma<a class="headerlink" href="#11-acceder-a-la-plataforma" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abre un navegador web</li>
+<li>Ve a: <a href="https://awsacademy.instructure.com/login/canvas">https://awsacademy.instructure.com/login/canvas</a></li>
+<li>Inicia sesión con tus credenciales de instructor de AWS Academy
+   - Si no tienes cuenta, contacta con tu coordinador o administrador
+   - Si olvidaste la contraseña, usa la opción "Forgot password"</li>
+</ol>
+<h3 id="12-verificar-acceso">1.2. Verificar acceso<a class="headerlink" href="#12-verificar-acceso" title="Permanent link">&para;</a></h3>
+<p>Una vez dentro de AWS Academy:</p>
+<ol>
+<li>Verifica que puedes ver el <strong>Dashboard</strong> principal</li>
+<li>Verifica que apareces como <strong>Instructor</strong> o <strong>Teacher</strong></li>
+<li>Deberías ver opciones como:
+   - Contenidos / Content
+   - Personas / People
+   - Módulos / Modules</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Primera vez</p>
+<p>Si es tu primera vez accediendo, puede que necesites completar un perfil o configurar algunas preferencias.</p>
+</div>
+<hr />
+<h2 id="paso-2-crear-una-class-con-learner-lab-metodo-recomendado">Paso 2: Crear una Class con Learner Lab (MÉTODO RECOMENDADO)<a class="headerlink" href="#paso-2-crear-una-class-con-learner-lab-metodo-recomendado" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Crear una Class (clase) directamente con el "Academy Learner Lab" para que los alumnos accedan directamente.</p>
+<div class="admonition important">
+<p class="admonition-title">Método más directo</p>
+<p>Este es el método más simple: crear una <strong>Class</strong> directamente con el curso "Academy Learner Lab". La Class ya incluye el Learner Lab automáticamente, no necesitas añadirlo después.</p>
+</div>
+<h3 id="21-acceder-a-la-creacion-de-class">2.1. Acceder a la creación de Class<a class="headerlink" href="#21-acceder-a-la-creacion-de-class" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>En el Dashboard de AWS Academy, busca el botón <strong>"Create a Class"</strong> o <strong>"Crear una clase"</strong>
+   - Puede estar en la parte superior derecha
+   - O en el menú lateral izquierdo
+   - O en una sección destacada del Dashboard</p>
+</li>
+<li>
+<p>Haz clic en <strong>"Create a Class"</strong></p>
+</li>
+</ol>
+<h3 id="22-configurar-la-class">2.2. Configurar la Class<a class="headerlink" href="#22-configurar-la-class" title="Permanent link">&para;</a></h3>
+<p>Se abrirá un formulario con dos columnas. Completa los campos:</p>
+<p><strong>Columna izquierda - Detalles del curso:</strong></p>
+<ol>
+<li>
+<p><strong>Course (Curso):</strong>
+   - Haz clic en el dropdown
+   - Busca y selecciona <strong>"Academy Learner Lab"</strong> (debería estar en la lista)
+   - ✅ Esta es la opción que necesitas para acceder al Learner Lab</p>
+</li>
+<li>
+<p><strong>Start Date (Fecha de inicio):</strong>
+   - Selecciona la fecha de inicio de la clase</p>
+</li>
+<li>
+<p><strong>End Date (Fecha de fin):</strong>
+   - Selecciona la fecha de fin de la clase
+   - <strong>Importante:</strong> La duración debe ser adecuada (normalmente hay un mínimo)</p>
+</li>
+<li>
+<p><strong>Time Zone (Zona horaria):</strong>
+   - Selecciona tu zona horaria</p>
+</li>
+<li>
+<p><strong>Language (Idioma):</strong>
+   - Selecciona el idioma (normalmente "English" o "Español")</p>
+</li>
+<li>
+<p><strong>Delivery Modality (Modalidad de entrega):</strong>
+   - Selecciona la modalidad (Online, Presencial, Híbrido, etc.)
+   - Nota: Esto es solo para reportes, no afecta el funcionamiento</p>
+</li>
+</ol>
+<p><strong>Columna derecha - Configuración de la clase:</strong></p>
+<ol>
+<li>
+<p><strong>Course Nickname (Apodo del curso):</strong> (Opcional)
+   - Puedes poner un nombre como "AWS GameDay 2025 - Preparación"
+   - Este nombre solo lo ves tú, no los alumnos</p>
+</li>
+<li>
+<p><strong>Start Time (Hora de inicio):</strong>
+   - Selecciona la hora de inicio (por defecto puede aparecer "08:00 AM")</p>
+</li>
+<li>
+<p><strong>End Time (Hora de fin):</strong>
+   - Selecciona la hora de fin (por defecto puede aparecer "06:00 PM")</p>
+</li>
+<li>
+<p><strong>Otros campos:</strong> (si aparecen)
+   - Completa según sea necesario</p>
+</li>
+</ol>
+<h3 id="23-aceptar-terminos-y-crear">2.3. Aceptar términos y crear<a class="headerlink" href="#23-aceptar-terminos-y-crear" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Lee el <strong>Acceptable Use Policy</strong> (Política de uso aceptable) en la parte inferior</li>
+<li>Haz clic en el botón <strong>"Submit"</strong> (Enviar) en la parte inferior derecha</li>
+<li>Espera a que se cree la Class (puede tomar unos segundos)</li>
+</ol>
+<h3 id="24-verificar-que-la-class-se-creo">2.4. Verificar que la Class se creó<a class="headerlink" href="#24-verificar-que-la-class-se-creo" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Después de hacer clic en "Submit", deberías ver un mensaje de confirmación</li>
+<li>Puede que te redirijan automáticamente, o puede que vuelvas al Dashboard</li>
+<li><strong>Anota el nombre de la Class</strong> para referencia futura</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">IMPORTANTE: La Class necesita aprovisionarse</p>
+<p>Después de crear la Class, AWS Academy necesita <strong>aprovisionarla</strong> (prepararla) antes de que puedas usarla. Este proceso puede tardar desde <strong>unos minutos hasta varias horas</strong>.</p>
+<p><strong>¿Qué significa esto?</strong>
+- La Class aparece en tu lista, pero el Learner Lab aún no está disponible
+- AWS Academy te enviará un <strong>correo electrónico</strong> cuando la Class esté lista
+- No podrás acceder al Learner Lab hasta que recibas ese correo</p>
+<p><strong>Mientras tanto:</strong>
+- La Class puede aparecer en tu Dashboard, pero puede estar en estado "Pendiente" o "Aprovisionando"
+- Es normal que aún no puedas acceder al Learner Lab
+- Solo necesitas esperar a recibir el correo de confirmación</p>
+</div>
+<hr />
+<h2 id="paso-25-esperar-el-correo-de-aprovisionamiento">Paso 2.5: Esperar el correo de aprovisionamiento<a class="headerlink" href="#paso-25-esperar-el-correo-de-aprovisionamiento" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Entender qué correo debes esperar y qué hacer cuando llegue.</p>
+<h3 id="251-el-correo-de-aprovisionamiento">2.5.1. El correo de aprovisionamiento<a class="headerlink" href="#251-el-correo-de-aprovisionamiento" title="Permanent link">&para;</a></h3>
+<p><strong>¿Qué correo debes esperar?</strong></p>
+<p>AWS Academy te enviará un correo electrónico a la dirección con la que te registraste cuando la Class esté completamente aprovisionada y lista para usar.</p>
+<p><strong>El correo típicamente contiene:</strong></p>
+<ol>
+<li>
+<p><strong>Asunto:</strong> Algo como:
+   - "Your AWS Academy class is ready"
+   - "Class [nombre] is now available"
+   - "AWS Academy Class Provisioning Complete"
+   - O similar en español si está en ese idioma</p>
+</li>
+<li>
+<p><strong>Contenido:</strong> El correo normalmente incluye:
+   - Confirmación de que la Class está lista
+   - Nombre de la Class
+   - Instrucciones para acceder
+   - Enlaces directos a la Class</p>
+</li>
+</ol>
+<h3 id="252-cuanto-tiempo-puede-tardar">2.5.2. ¿Cuánto tiempo puede tardar?<a class="headerlink" href="#252-cuanto-tiempo-puede-tardar" title="Permanent link">&para;</a></h3>
+<p><strong>Tiempo típico de aprovisionamiento:</strong></p>
+<ul>
+<li><strong>Mínimo:</strong> 5-15 minutos (en casos rápidos)</li>
+<li><strong>Típico:</strong> 30 minutos - 2 horas</li>
+<li><strong>Máximo:</strong> Puede tardar hasta 24 horas en casos excepcionales</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Factores que pueden afectar el tiempo</p>
+<p>El tiempo de aprovisionamiento puede variar según:
+- La carga del sistema de AWS Academy en ese momento
+- El tipo de Class (Learner Lab suele ser rápido)
+- Si es la primera Class que creas en tu cuenta
+- Hora del día (puede haber más tráfico en horas punta)</p>
+</div>
+<h3 id="253-que-hacer-mientras-esperas">2.5.3. Qué hacer mientras esperas<a class="headerlink" href="#253-que-hacer-mientras-esperas" title="Permanent link">&para;</a></h3>
+<p><strong>Mientras esperas el correo:</strong></p>
+<ol>
+<li>
+<p><strong>Verifica tu correo regularmente:</strong>
+   - Revisa la bandeja de entrada
+   - Revisa la carpeta de spam/correo no deseado
+   - El correo puede llegar a la dirección asociada a tu cuenta de AWS Academy</p>
+</li>
+<li>
+<p><strong>Puedes verificar el estado en AWS Academy:</strong>
+   - Entra a AWS Academy Dashboard
+   - Busca tu Class en la lista
+   - Puede mostrar estado como "Aprovisionando", "Pendiente", o "Activa"
+   - Si está "Activa", intenta acceder aunque no hayas recibido el correo</p>
+</li>
+<li>
+<p><strong>Prepara otras cosas mientras tanto:</strong>
+   - Puedes matricular a los alumnos (Paso 3)
+   - Puedes revisar el contenido de la guía de prácticas
+   - Puedes preparar material adicional</p>
+</li>
+</ol>
+<h3 id="254-cuando-llegue-el-correo">2.5.4. Cuando llegue el correo<a class="headerlink" href="#254-cuando-llegue-el-correo" title="Permanent link">&para;</a></h3>
+<p><strong>Una vez que recibas el correo:</strong></p>
+<ol>
+<li><strong>Abre el correo</strong> y léelo completamente</li>
+<li><strong>Haz clic en el enlace</strong> que te proporciona (si hay uno) para acceder a la Class</li>
+<li>O simplemente <strong>ve al Dashboard</strong> de AWS Academy y entra a tu Class</li>
+<li><strong>Continúa con el Paso 4</strong> de esta guía para acceder al Learner Lab</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Si no recibes el correo después de 24 horas</p>
+<p>Si después de 24 horas no has recibido el correo:</p>
+<ol>
+<li><strong>Verifica tu carpeta de spam/correo no deseado</strong></li>
+<li><strong>Verifica el correo correcto:</strong> Asegúrate de que estás revisando el correo asociado a tu cuenta de AWS Academy</li>
+<li><strong>Verifica el estado de la Class:</strong> Entra a AWS Academy y comprueba si la Class está "Activa" (puede estar lista aunque no llegue el correo)</li>
+<li><strong>Contacta con soporte:</strong> Si la Class no está activa después de 24 horas, contacta con el administrador de AWS Academy o con soporte técnico</li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">¿Dónde encontrar la Class creada?</p>
+<p>La Class que acabas de crear aparecerá en tu <strong>Dashboard</strong> como una clase/asignatura. Al hacer clic en ella, tendrás acceso directo al Learner Lab.</p>
+</div>
+<hr />
+<h2 id="paso-2-alternativo-crear-o-seleccionar-un-curso-tradicional">Paso 2 (Alternativo): Crear o seleccionar un curso tradicional<a class="headerlink" href="#paso-2-alternativo-crear-o-seleccionar-un-curso-tradicional" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Si prefieres el método tradicional, crear un curso y añadir el Learner Lab después.</p>
+<div class="admonition note">
+<p class="admonition-title">Método alternativo</p>
+<p>Este método es más complejo. Si ya creaste una Class con "Academy Learner Lab" en el Paso 2 anterior, <strong>NO necesitas este paso</strong>. Este método es para si prefieres tener un curso personalizado con más contenido además del Learner Lab.</p>
+</div>
+<h3 id="21-si-ya-tienes-un-curso-creado">2.1. Si ya tienes un curso creado<a class="headerlink" href="#21-si-ya-tienes-un-curso-creado" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el Dashboard, busca el curso donde quieres añadir las prácticas</li>
+<li>Haz clic en el curso para acceder a él</li>
+<li>Continúa con el Paso 4 (añadir Learner Lab al curso)</li>
+</ol>
+<h3 id="22-si-necesitas-crear-un-nuevo-curso">2.2. Si necesitas crear un nuevo curso<a class="headerlink" href="#22-si-necesitas-crear-un-nuevo-curso" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el Dashboard, busca la opción <strong>"Crear curso"</strong> o <strong>"Create Course"</strong></li>
+<li>Completa la información básica:
+   - <strong>Nombre del curso:</strong> Ej: "AWS GameDay 2025 - Preparación"
+   - <strong>Descripción:</strong> Breve explicación de los objetivos, contenidos y resultados de aprendizaje del curso
+   - <strong>Configuración del curso:</strong> Sigue el asistente</li>
+<li>Una vez creado, accede al curso</li>
+<li>Continúa con el Paso 4 para añadir el Learner Lab</li>
+</ol>
+<hr />
+<h2 id="paso-3-matricular-a-los-alumnos">Paso 3: Matricular a los alumnos<a class="headerlink" href="#paso-3-matricular-a-los-alumnos" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Añadir a los alumnos a la Class/curso para que puedan acceder al Learner Lab.</p>
+<div class="admonition note">
+<p class="admonition-title">Importante</p>
+<p>Si creaste una Class con "Academy Learner Lab" (Paso 2), los alumnos se matriculan directamente en esa Class. Si creaste un curso tradicional, los alumnos se matriculan en ese curso.</p>
+</div>
+<h3 id="31-acceder-a-la-gestion-de-personas">3.1. Acceder a la gestión de personas<a class="headerlink" href="#31-acceder-a-la-gestion-de-personas" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Si creaste una Class (método recomendado):</strong>
+   - Accede a la Class desde el Dashboard
+   - Dentro de la Class, busca la opción <strong>"Personas"</strong> o <strong>"People"</strong> en el menú lateral
+   - Haz clic en <strong>"Personas"</strong></p>
+</li>
+<li>
+<p><strong>Si creaste un curso tradicional:</strong>
+   - Accede al curso desde el Dashboard
+   - Dentro del curso, busca la opción <strong>"Personas"</strong> o <strong>"People"</strong> en el menú lateral
+   - Haz clic en <strong>"Personas"</strong></p>
+</li>
+</ol>
+<h3 id="32-anadir-estudiantes">3.2. Añadir estudiantes<a class="headerlink" href="#32-anadir-estudiantes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Haz clic en el botón <strong>"+ Personas"</strong> o <strong>"+ People"</strong></li>
+<li>Selecciona una de estas opciones:</li>
+</ol>
+<p><strong>Opción A - Añadir por email:</strong>
+   - Ingresa los emails de los alumnos (uno por línea o separados por comas)
+   - Selecciona el rol: <strong>"Estudiante"</strong> o <strong>"Student"</strong>
+   - Haz clic en <strong>"Enviar invitaciones"</strong> o <strong>"Send invitations"</strong></p>
+<p><strong>Opción B - Importar desde archivo:</strong>
+   - Si tienes una lista en CSV o Excel, usa la opción de importar
+   - Formato típico: Email, Nombre, Apellido
+   - Selecciona el rol para todos: <strong>"Estudiante"</strong></p>
+<h3 id="33-verificar-matriculacion">3.3. Verificar matriculación<a class="headerlink" href="#33-verificar-matriculacion" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Una vez añadidos, verifica que todos aparecen en la lista de <strong>"Personas"</strong></li>
+<li>Verifica que su estado es <strong>"Activo"</strong> o <strong>"Active"</strong></li>
+<li>Los alumnos recibirán un email de invitación al curso</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Importante</p>
+<p>Los alumnos necesitan aceptar la invitación por email antes de poder acceder al curso.</p>
+</div>
+<hr />
+<h2 id="paso-4-acceder-al-learner-lab-si-creaste-una-class-con-academy-learner-lab">Paso 4: Acceder al Learner Lab (Si creaste una Class con "Academy Learner Lab")<a class="headerlink" href="#paso-4-acceder-al-learner-lab-si-creaste-una-class-con-academy-learner-lab" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Verificar y acceder al Learner Lab que ya está incluido en la Class.</p>
+<div class="admonition important">
+<p class="admonition-title">IMPORTANTE - Lee esto primero</p>
+<p><strong>Antes de intentar acceder al Learner Lab, asegúrate de:</strong></p>
+<ol>
+<li>
+<p>✅ <strong>Has recibido el correo de aprovisionamiento</strong> de AWS Academy confirmando que la Class está lista
+   - Si NO has recibido el correo, vuelve al <strong>Paso 2.5</strong> y espera a recibirlo
+   - La Class necesita estar completamente aprovisionada antes de poder acceder al Learner Lab</p>
+</li>
+<li>
+<p>✅ <strong>La Class está en estado "Activa"</strong> en tu Dashboard</p>
+</li>
+</ol>
+<p>Si creaste una Class con "Academy Learner Lab" en el Paso 2 y ya recibiste el correo de confirmación, el Learner Lab <strong>YA ESTÁ INCLUIDO</strong> automáticamente. No necesitas añadirlo manualmente.</p>
+<p><strong>Si aún NO has recibido el correo:</strong> 
+- Es normal, el aprovisionamiento puede tardar de 30 minutos a varias horas
+- Revisa el Paso 2.5 para más información sobre qué esperar
+- Mientras tanto, puedes matricular a los alumnos (Paso 3)</p>
+</div>
+<h3 id="41-acceder-a-la-class">4.1. Acceder a la Class<a class="headerlink" href="#41-acceder-a-la-class" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>En el <strong>Dashboard</strong> de AWS Academy, busca la Class que creaste
+   - Debería aparecer en la lista de clases/cursos
+   - Puede tener el nombre que le pusiste o el nombre "Academy Learner Lab"
+   - O el "Course Nickname" que configuraste al crearla</p>
+</li>
+<li>
+<p>Haz clic en la Class para entrar</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Cómo identificar tu Class</p>
+<p>Si creaste la Class recientemente, debería aparecer cerca del principio de la lista en el Dashboard. Busca:
+- El nombre/apodo que le pusiste al crearla
+- Una Class con fecha de inicio reciente
+- O simplemente busca cualquier Class nueva que aparezca en tu lista</p>
+</div>
+<h3 id="42-buscar-el-learner-lab-dentro-de-la-class">4.2. Buscar el Learner Lab dentro de la Class<a class="headerlink" href="#42-buscar-el-learner-lab-dentro-de-la-class" title="Permanent link">&para;</a></h3>
+<p>Una vez dentro de la Class, el Learner Lab debería estar disponible directamente. Sigue estos pasos:</p>
+<p><strong>Paso 1: Revisar el menú lateral izquierdo</strong></p>
+<ol>
+<li>
+<p>En el menú lateral izquierdo de la Class, busca opciones como:
+   - <strong>"Learner Lab"</strong> o <strong>"Laboratorio"</strong> ← Busca primero esto
+   - <strong>"AWS"</strong>
+   - <strong>"Dashboard"</strong> o <strong>"Panel"</strong>
+   - <strong>"Lab"</strong> o <strong>"Laboratorio"</strong></p>
+</li>
+<li>
+<p>Si ves alguna de estas opciones, haz clic en ella</p>
+</li>
+</ol>
+<p><strong>Paso 2: Si no está en el menú lateral, revisar la página principal</strong></p>
+<ol>
+<li>Si estás en la página de inicio de la Class, desplázate por la página</li>
+<li>Busca:
+   - <strong>Enlaces o botones</strong> que digan "Learner Lab", "AWS Lab", o "Start Lab"
+   - <strong>Una sección</strong> dedicada al laboratorio (puede tener un icono de AWS)
+   - <strong>Tarjetas o bloques</strong> con información sobre el Learner Lab</li>
+</ol>
+<p><strong>Paso 3: Buscar en Módulos/Contenidos</strong></p>
+<p>Si no lo encuentras en los pasos anteriores:</p>
+<ol>
+<li>
+<p>En el menú lateral izquierdo, busca la opción:
+   - <strong>"Módulos"</strong> o <strong>"Modules"</strong>
+   - <strong>"Contenidos"</strong> o <strong>"Content"</strong>
+   - <strong>"Inicio"</strong> o <strong>"Home"</strong> (y luego buscar contenido)</p>
+</li>
+<li>
+<p>Haz clic en esa opción</p>
+</li>
+<li>Busca en la lista de contenido:
+   - Un elemento que diga "Learner Lab"
+   - Un enlace o botón relacionado con AWS
+   - Un módulo que contenga el laboratorio</li>
+</ol>
+<p><strong>Paso 4: Buscar en toda la Class (método exhaustivo)</strong></p>
+<ol>
+<li><strong>Presiona Ctrl+F</strong> (o Cmd+F en Mac) para buscar en toda la página</li>
+<li><strong>Busca estas palabras:</strong>
+   - "Learner"
+   - "Lab"
+   - "AWS"
+   - "Laboratorio"</li>
+<li>Esto te mostrará todas las referencias al Learner Lab en la página</li>
+</ol>
+<h3 id="43-verificar-que-puedes-acceder-al-learner-lab">4.3. Verificar que puedes acceder al Learner Lab<a class="headerlink" href="#43-verificar-que-puedes-acceder-al-learner-lab" title="Permanent link">&para;</a></h3>
+<p>Una vez que encuentres el Learner Lab:</p>
+<ol>
+<li>
+<p><strong>Haz clic en el Learner Lab</strong> (puede ser un enlace, botón, o elemento en un módulo)</p>
+</li>
+<li>
+<p><strong>Deberías ver una interfaz del Learner Lab</strong> con información como:
+   - <strong>"Start Lab"</strong> (Iniciar laboratorio) o botón similar
+   - Créditos disponibles (ej: "$100 USD")
+   - Información sobre el tiempo disponible del lab
+   - Opción para acceder al <strong>AWS Console</strong> o <strong>Dashboard de AWS</strong>
+   - Información sobre cuándo expira el lab</p>
+</li>
+<li>
+<p><strong>Verifica que todo se ve correcto</strong> antes de iniciar el lab</p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Qué ver cuando accedas al Learner Lab</p>
+<p>La interfaz del Learner Lab típicamente muestra:
+- Un botón grande para <strong>"Start Lab"</strong> o <strong>"Iniciar Laboratorio"</strong>
+- La cantidad de créditos disponibles (normalmente $100 USD)
+- Información sobre el tiempo restante del lab (cuando esté iniciado)
+- Un botón o enlace para acceder a la <strong>AWS Management Console</strong>
+- Instrucciones sobre cómo usar el lab</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Si no encuentras el Learner Lab en la Class</p>
+<p>Si después de buscar en todos los lugares mencionados no encuentras el Learner Lab:</p>
+<ol>
+<li><strong>Espera unos minutos:</strong> A veces el Learner Lab tarda unos minutos en aparecer después de crear la Class</li>
+<li><strong>Refresca la página:</strong> Presiona F5 o Ctrl+R para refrescar</li>
+<li><strong>Verifica que seleccionaste el curso correcto:</strong> Asegúrate de que realmente seleccionaste "Academy Learner Lab" en el dropdown cuando creaste la Class</li>
+<li><strong>Revisa todas las secciones:</strong> Ve a cada opción del menú lateral de la Class (Inicio, Módulos, Asignaciones, etc.)</li>
+<li><strong>Contacta con soporte:</strong> Si después de todo esto no aparece, puede haber un problema con la Class y necesitas contactar con el administrador de AWS Academy</li>
+</ol>
+</div>
+<hr />
+<h2 id="paso-4-alternativo-crear-el-learner-lab-en-un-curso-tradicional">Paso 4 (Alternativo): Crear el Learner Lab en un curso tradicional<a class="headerlink" href="#paso-4-alternativo-crear-el-learner-lab-en-un-curso-tradicional" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Añadir el Learner Lab manualmente a un curso tradicional (si no usaste el método de Class).</p>
+<div class="admonition note">
+<p class="admonition-title">Solo si usaste método alternativo</p>
+<p>Este paso solo es necesario si creaste un curso tradicional en el Paso 2 (alternativo). Si ya creaste una Class con "Academy Learner Lab", el Learner Lab ya está incluido y puedes saltarte este paso.</p>
+</div>
+<h3 id="41-verificar-que-tienes-un-curso-creado">4.1. Verificar que tienes un curso creado<a class="headerlink" href="#41-verificar-que-tienes-un-curso-creado" title="Permanent link">&para;</a></h3>
+<p><strong>Primero verifica que tienes un curso:</strong></p>
+<ol>
+<li>Haz clic en <strong>"Asignaturas"</strong> o <strong>"Subjects"</strong> en el menú lateral izquierdo</li>
+<li>Deberías ver una lista de cursos/asignaturas</li>
+</ol>
+<p><strong>Si NO tienes ningún curso:</strong></p>
+<ol>
+<li>Ve al <strong>Paso 2</strong> de esta guía para crear un curso primero</li>
+<li>O usa un curso existente si ya tienes uno</li>
+</ol>
+<p><strong>Si tienes cursos pero no sabes cuál usar:</strong></p>
+<ol>
+<li>Puedes usar cualquier curso existente</li>
+<li>O crear uno nuevo específico para estas prácticas</li>
+<li><strong>Anota el nombre del curso</strong> que vas a usar</li>
+</ol>
+<h3 id="42-entrar-al-curso">4.2. Entrar al curso<a class="headerlink" href="#42-entrar-al-curso" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En la lista de <strong>"Asignaturas"</strong>, haz clic en el <strong>curso</strong> donde quieres crear el Learner Lab</li>
+<li>Esto te llevará <strong>dentro</strong> del curso (la interfaz cambiará)</li>
+<li>Deberías ver:
+   - Un menú lateral con opciones del curso (Inicio, Módulos, Asignaciones, etc.)
+   - O pestañas en la parte superior
+   - El nombre del curso en algún lugar visible</li>
+</ol>
+<h3 id="43-acceder-a-contenidos-del-curso-guia-detallada">4.3. Acceder a Contenidos del curso - GUÍA DETALLADA<a class="headerlink" href="#43-acceder-a-contenidos-del-curso-guia-detallada" title="Permanent link">&para;</a></h3>
+<p>Una vez dentro del curso, busca dónde está el contenido. Puede estar en diferentes lugares:</p>
+<p><strong>Método 1: Buscar en el menú lateral izquierdo del curso</strong></p>
+<p>Cuando entras a un curso, en el menú lateral izquierdo deberías ver opciones como:
+- <strong>"Inicio"</strong> o <strong>"Home"</strong>
+- <strong>"Anuncios"</strong> o <strong>"Announcements"</strong>
+- <strong>"Asignaciones"</strong> o <strong>"Assignments"</strong>
+- <strong>"Módulos"</strong> o <strong>"Modules"</strong> ← <strong>Empieza aquí</strong>
+- <strong>"Páginas"</strong> o <strong>"Pages"</strong>
+- <strong>"Discusiones"</strong> o <strong>"Discussions"</strong>
+- <strong>"Calificaciones"</strong> o <strong>"Grades"</strong></p>
+<p><strong>Paso a paso:</strong>
+1. Haz clic en <strong>"Módulos"</strong> o <strong>"Modules"</strong> en el menú lateral
+2. Deberías ver una lista de módulos o contenido del curso
+3. Si ya creaste el Learner Lab, debería aparecer ahí</p>
+<p><strong>Método 2: Buscar en pestañas superiores</strong></p>
+<ol>
+<li>Mira en la parte superior de la página del curso</li>
+<li>Busca pestañas como: <strong>"Módulos"</strong>, <strong>"Contenidos"</strong>, <strong>"Modules"</strong>, <strong>"Content"</strong></li>
+<li>Haz clic en la pestaña <strong>"Módulos"</strong></li>
+</ol>
+<p><strong>Método 3: Buscar en la página principal del curso</strong></p>
+<ol>
+<li>Si estás en <strong>"Inicio"</strong> o <strong>"Home"</strong> del curso</li>
+<li>Desplázate por la página principal</li>
+<li>Busca elementos o enlaces que digan "Lab", "AWS" o contenido relacionado</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Qué buscar</p>
+<p>El Learner Lab puede aparecer como:
+- Un enlace/icono que dice "Learner Lab"
+- Un elemento que dice "Lanzamiento del laboratorio para alumnado"
+- Un elemento con icono de AWS o de laboratorio
+- Un elemento en un módulo específico**</p>
+</div>
+<h3 id="44-anadir-el-learner-lab-pasos-especificos">4.4. Añadir el Learner Lab - PASOS ESPECÍFICOS<a class="headerlink" href="#44-anadir-el-learner-lab-pasos-especificos" title="Permanent link">&para;</a></h3>
+<p><strong>IMPORTANTE:</strong> Si no encuentras el Learner Lab que creaste, puedes crearlo de nuevo siguiendo estos pasos.</p>
+<p>Una vez que estés en la sección "Módulos" o "Contenidos" del curso:</p>
+<p><strong>Paso 1: Buscar el botón para añadir contenido</strong></p>
+<p>Busca el botón <strong>"+"</strong> o <strong>"Add"</strong> o <strong>"Agregar"</strong> o <strong>"Añadir"</strong>:
+- Puede estar en la <strong>parte superior derecha</strong> de la página
+- O puede estar <strong>dentro de un módulo</strong> específico (si ya tienes módulos creados)
+- O puede ser un botón que dice <strong>"Añadir elemento"</strong> o <strong>"Add Item"</strong></p>
+<p><strong>Paso 2: Si hay módulos, añadir a un módulo o crear uno nuevo</strong></p>
+<p>Si ya tienes módulos:
+1. Haz clic en un módulo existente para abrirlo
+2. Busca el botón <strong>"+"</strong> dentro del módulo
+3. O crea un nuevo módulo haciendo clic en <strong>"+ Módulo"</strong> o <strong>"+ Module"</strong></p>
+<p>Si no tienes módulos:
+1. Crea un módulo nuevo (por ejemplo, "Prácticas AWS GameDay")
+2. Haz clic en <strong>"+ Módulo"</strong> o <strong>"+ Module"</strong>
+3. Dale un nombre al módulo
+4. Guarda el módulo</p>
+<p><strong>Paso 3: Añadir el Learner Lab</strong></p>
+<ol>
+<li>Haz clic en el botón <strong>"+"</strong> (puede estar dentro de un módulo o en la barra superior)</li>
+<li>Se abrirá un menú desplegable o una lista de opciones</li>
+<li><strong>Busca estas opciones en el menú:</strong>
+   - <strong>"Lanzamiento del laboratorio para alumnado"</strong>
+   - <strong>"Learner Lab"</strong>
+   - <strong>"AWS Academy Learner Lab"</strong>
+   - <strong>"External Tool"</strong> o <strong>"Herramienta Externa"</strong> (y luego buscar AWS)
+   - <strong>"LTI Tool"</strong> o <strong>"Herramienta LTI"</strong> (y luego buscar AWS)</li>
+</ol>
+<p><strong>Si no ves ninguna de estas opciones:</strong></p>
+<ol>
+<li>Busca en el menú <strong>"Más herramientas"</strong> o <strong>"More tools"</strong></li>
+<li>O busca <strong>"AWS"</strong> en el buscador de herramientas (si hay uno)</li>
+<li>O busca <strong>"External Tool"</strong> y luego dentro de esa opción busca AWS</li>
+</ol>
+<p><strong>Método 2: Si no ves la opción directamente</strong></p>
+<ol>
+<li>
+<p>En el menú de añadir contenido, busca:
+   - <strong>"External Tool"</strong> o <strong>"Herramienta Externa"</strong>
+   - <strong>"LTI Tool"</strong> o <strong>"Herramienta LTI"</strong>
+   - <strong>"AWS"</strong> en la lista de herramientas externas</p>
+</li>
+<li>
+<p>Si ves una lista de herramientas, busca <strong>"AWS Academy Learner Lab"</strong> o similar</p>
+</li>
+</ol>
+<p><strong>Método 3: Añadir desde un módulo</strong></p>
+<ol>
+<li>Si tienes módulos creados, haz clic en el módulo donde quieres añadir el lab</li>
+<li>Dentro del módulo, busca el botón <strong>"+"</strong> o <strong>"Add Item"</strong></li>
+<li>Busca las mismas opciones mencionadas arriba</li>
+</ol>
+<h3 id="45-configurar-el-learner-lab">4.5. Configurar el Learner Lab<a class="headerlink" href="#45-configurar-el-learner-lab" title="Permanent link">&para;</a></h3>
+<p>Una vez que selecciones la opción de Learner Lab, se abrirá un formulario:</p>
+<p><strong>Configuración básica:</strong></p>
+<ol>
+<li>
+<p><strong>Nombre o URL:</strong>
+   - Puede pedirte un nombre: Ej: "Learner Lab - Prácticas AWS GameDay 2025"
+   - O puede pedirte una URL (normalmente ya viene preconfigurada para Learner Lab)</p>
+</li>
+<li>
+<p><strong>Descripción:</strong> (Opcional)
+   - Puedes añadir una descripción de lo que van a hacer los alumnos</p>
+</li>
+<li>
+<p><strong>Opciones adicionales:</strong>
+   - Puede haber opciones de visibilidad (visible para estudiantes o no)
+   - Puede haber opciones de fechas de disponibilidad
+   - Deja las opciones por defecto si no estás seguro</p>
+</li>
+<li>
+<p><strong>Guardar:</strong>
+   - Haz clic en <strong>"Agregar"</strong>, <strong>"Añadir"</strong>, <strong>"Add"</strong>, <strong>"Guardar"</strong> o <strong>"Save"</strong></p>
+</li>
+</ol>
+<p><strong>Después de guardar:</strong></p>
+<ol>
+<li>Deberías ver un mensaje de confirmación</li>
+<li>El Learner Lab debería aparecer en la lista de contenido del módulo o curso</li>
+<li><strong>Anota exactamente dónde aparece</strong> para encontrarlo después</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">IMPORTANTE: Anotar dónde lo creaste</p>
+<p>Después de crear el Learner Lab:
+1. <strong>Anota:</strong> ¿En qué curso lo creaste? (nombre del curso)
+2. <strong>Anota:</strong> ¿En qué módulo está? (nombre del módulo)
+3. <strong>Anota:</strong> ¿Qué mensaje de confirmación viste?
+4. <strong>Toma una captura de pantalla</strong> de dónde aparece para referencia futura</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Si no encuentras la opción de Learner Lab</p>
+<p><strong>Posibles causas:</strong></p>
+<ol>
+<li>
+<p><strong>El Learner Lab no está habilitado en tu cuenta:</strong>
+   - Necesitas permisos de instructor con acceso a Learner Labs
+   - Contacta con el administrador de AWS Academy</p>
+</li>
+<li>
+<p><strong>Estás buscando en el lugar incorrecto:</strong>
+   - El Learner Lab se añade como contenido dentro de un curso
+   - Debe estar dentro de un módulo o en la lista de contenidos</p>
+</li>
+<li>
+<p><strong>El curso no está configurado correctamente:</strong>
+   - Verifica que el curso esté publicado/activado
+   - Algunos cursos pueden tener restricciones</p>
+</li>
+</ol>
+<p><strong>Qué hacer:</strong>
+- Intenta buscar "External Tool" o "AWS" en las opciones de añadir contenido
+- Si no aparece ninguna opción relacionada con AWS, contacta con el administrador
+- Verifica que tu cuenta de instructor tiene permisos para crear Learner Labs</p>
+</div>
+<h3 id="45-verificar-que-el-learner-lab-se-creo-correctamente">4.5. Verificar que el Learner Lab se creó correctamente<a class="headerlink" href="#45-verificar-que-el-learner-lab-se-creo-correctamente" title="Permanent link">&para;</a></h3>
+<p><strong>Después de crear el Learner Lab:</strong></p>
+<ol>
+<li>Deberías ver un nuevo elemento en la lista de contenidos del curso</li>
+<li>Puede aparecer con un nombre como "Learner Lab" o el nombre que le diste</li>
+<li>Puede tener un icono relacionado con AWS o laboratorios</li>
+</ol>
+<p><strong>Si no lo ves:</strong></p>
+<ol>
+<li><strong>Refresca la página</strong> (F5 o Ctrl+R)</li>
+<li><strong>Verifica que estás en la sección correcta:</strong>
+   - Asegúrate de estar en "Contenidos", "Módulos" o la sección principal del curso
+   - No estés en subsecciones como "Asignaciones" o "Anuncios"</li>
+<li><strong>Busca en diferentes módulos:</strong> Si tienes varios módulos, verifica en cada uno</li>
+</ol>
+<h3 id="46-donde-encontrar-el-learner-lab-despues-de-crearlo">4.6. Dónde encontrar el Learner Lab después de crearlo<a class="headerlink" href="#46-donde-encontrar-el-learner-lab-despues-de-crearlo" title="Permanent link">&para;</a></h3>
+<p><strong>IMPORTANTE:</strong> El Learner Lab NO aparece en el "Panel de control". Está dentro del contenido de un curso.</p>
+<p><strong>Pasos para encontrarlo:</strong></p>
+<ol>
+<li><strong>Ve a "Asignaturas"</strong> en el menú lateral izquierdo</li>
+<li><strong>Haz clic en el curso</strong> donde creaste el Learner Lab</li>
+<li><strong>Busca en el menú del curso:</strong>
+   - Opción <strong>"Contenidos"</strong> o <strong>"Content"</strong>
+   - O pestaña <strong>"Módulos"</strong> o <strong>"Modules"</strong>
+   - O pestaña <strong>"Inicio"</strong> (y luego buscar en el contenido)</li>
+<li><strong>El Learner Lab estará listado ahí</strong> como un elemento del contenido</li>
+</ol>
+<p><strong>Si todavía no lo encuentras:</strong></p>
+<ol>
+<li><strong>Verifica que realmente se creó:</strong>
+   - ¿Viste un mensaje de confirmación al crearlo?
+   - ¿Apareció algo nuevo en la lista?</li>
+<li><strong>Busca en todas las secciones del curso:</strong>
+   - Revisa "Módulos"
+   - Revisa "Contenidos"<br />
+   - Revisa "Páginas"
+   - Revisa "Asignaciones" (a veces puede estar ahí)</li>
+<li><strong>Busca por nombre:</strong>
+   - Si le pusiste un nombre específico, busca ese nombre en la página del curso
+   - Usa Ctrl+F para buscar en la página</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Verificación paso a paso</p>
+<p>Si después de seguir estos pasos no encuentras el Learner Lab, es posible que:
+- No se creó correctamente (intenta crearlo de nuevo)
+- Está en un módulo que no has revisado
+- Necesitas permisos adicionales (contacta con administrador)</p>
+</div>
+<hr />
+<h2 id="paso-5-probar-el-learner-lab-como-estudiante-de-prueba">Paso 5: Probar el Learner Lab (Como Estudiante de Prueba)<a class="headerlink" href="#paso-5-probar-el-learner-lab-como-estudiante-de-prueba" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Verificar que el Learner Lab funciona correctamente antes de que los alumnos lo usen.</p>
+<div class="admonition note">
+<p class="admonition-title">Tanto para Class como para curso tradicional</p>
+<p>Este paso funciona igual independientemente de si creaste una Class con "Academy Learner Lab" o un curso tradicional con Learner Lab añadido.</p>
+</div>
+<h3 id="51-cambiar-a-vista-de-estudiante">5.1. Cambiar a vista de estudiante<a class="headerlink" href="#51-cambiar-a-vista-de-estudiante" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En la esquina superior derecha de AWS Academy, busca el botón <strong>"Ver como estudiante"</strong> o <strong>"View as Student"</strong></li>
+<li>Haz clic en el botón</li>
+<li>Aparecerá una barra rosa en la parte inferior indicando que estás en vista de estudiante</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Vista de estudiante</p>
+<p>Esta opción te permite ver exactamente lo que ven los alumnos y usar el Learner Lab con los mismos permisos.</p>
+</div>
+<h3 id="52-acceder-al-learner-lab-como-estudiante">5.2. Acceder al Learner Lab como estudiante<a class="headerlink" href="#52-acceder-al-learner-lab-como-estudiante" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En vista de estudiante, ve a <strong>"Contenidos"</strong></li>
+<li>Busca el Learner Lab que acabas de crear</li>
+<li>Haz clic en el Learner Lab</li>
+</ol>
+<h3 id="53-iniciar-el-learner-lab">5.3. Iniciar el Learner Lab<a class="headerlink" href="#53-iniciar-el-learner-lab" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Verás una pantalla con información del Learner Lab</li>
+<li>Busca el botón <strong>"Start Lab"</strong> o <strong>"Iniciar Laboratorio"</strong></li>
+<li>Haz clic en <strong>"Start Lab"</strong></li>
+<li>Aparecerá una confirmación → Haz clic en <strong>"Yes"</strong> o <strong>"Sí"</strong></li>
+<li><strong>ESPERA 1-2 minutos</strong> mientras se inicia el lab</li>
+<li>Verás un mensaje indicando que el lab está iniciado</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Tiempo del lab</p>
+<p>El Learner Lab tiene un tiempo limitado (normalmente 4 horas). El tiempo comienza a contar desde que inicias el lab.</p>
+</div>
+<h3 id="54-acceder-a-la-consola-de-aws">5.4. Acceder a la consola de AWS<a class="headerlink" href="#54-acceder-a-la-consola-de-aws" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Una vez iniciado el lab, busca el botón <strong>"AWS"</strong> o <strong>"Workarea"</strong> (área de trabajo)</li>
+<li>Haz clic en <strong>"AWS"</strong> o <strong>"Workarea"</strong></li>
+<li>Se abrirá una nueva pestaña con la <strong>consola de AWS</strong></li>
+<li>Verifica que el LED al lado de "AWS" está en <strong>verde</strong>, indicando que el lab está activo</li>
+</ol>
+<h3 id="55-verificar-acceso-a-servicios-aws">5.5. Verificar acceso a servicios AWS<a class="headerlink" href="#55-verificar-acceso-a-servicios-aws" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En la consola de AWS, busca el servicio <strong>"EC2"</strong> en la barra de búsqueda superior</li>
+<li>Haz clic en EC2</li>
+<li>Verifica que puedes ver la página de EC2 sin errores</li>
+<li>Repite con <strong>"VPC"</strong> para verificar acceso a networking</li>
+<li>Verifica que puedes ver la región (normalmente aparece en la esquina superior derecha, ej: <code>us-east-1</code>)</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Verificación completa</p>
+<p>Si puedes acceder a EC2 y VPC sin problemas, el Learner Lab está funcionando correctamente.</p>
+</div>
+<h3 id="56-finalizar-el-lab-de-prueba">5.6. Finalizar el lab de prueba<a class="headerlink" href="#56-finalizar-el-lab-de-prueba" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Vuelve a la pestaña del Learner Lab</li>
+<li>Haz clic en <strong>"End Lab"</strong> o <strong>"Finalizar Laboratorio"</strong></li>
+<li>Confirma la acción</li>
+<li>Esto eliminará todos los recursos creados (si creaste alguno)</li>
+</ol>
+<h3 id="57-volver-a-vista-de-instructor">5.7. Volver a vista de instructor<a class="headerlink" href="#57-volver-a-vista-de-instructor" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En la barra rosa inferior, haz clic en <strong>"Abandona la vista de estudiante"</strong> o <strong>"Leave Student View"</strong></li>
+<li>Volverás a tu vista de instructor</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Prueba recomendada</p>
+<p>Es buena idea realizar una prueba rápida creando un recurso simple (como una instancia EC2) para verificar que todo funciona correctamente antes de la sesión con alumnos.</p>
+</div>
+<hr />
+<h2 id="paso-6-preparar-material-para-los-alumnos">Paso 6: Preparar material para los alumnos<a class="headerlink" href="#paso-6-preparar-material-para-los-alumnos" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Preparar el material que necesitarán los alumnos para realizar las prácticas.</p>
+<h3 id="61-documentos-necesarios">6.1. Documentos necesarios<a class="headerlink" href="#61-documentos-necesarios" title="Permanent link">&para;</a></h3>
+<p>Prepara los siguientes documentos para compartir con los alumnos:</p>
+<ol>
+<li>
+<p><strong>Guía de acceso al Learner Lab:</strong>
+   - Cómo acceder a AWS Academy
+   - Cómo iniciar el Learner Lab
+   - Qué hacer si tienen problemas</p>
+</li>
+<li>
+<p><strong>Guía de prácticas:</strong>
+   - Pasos detallados de cada práctica
+   - Configuraciones necesarias
+   - Verificaciones a realizar</p>
+</li>
+<li>
+<p><strong>Material de referencia:</strong>
+   - Diagramas de arquitectura
+   - Tabla de nombres de recursos a usar
+   - Configuraciones de ejemplo</p>
+</li>
+</ol>
+<h3 id="62-crear-un-documento-de-configuracion-estandar">6.2. Crear un documento de configuración estándar<a class="headerlink" href="#62-crear-un-documento-de-configuracion-estandar" title="Permanent link">&para;</a></h3>
+<p>Crea un documento con los nombres estándar que deben usar todos los alumnos:</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Nombres estándar para las prácticas:
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>VPC:
+<span class="linenos" data-linenos=" 4 "></span>- Nombre: vpc-gameday-[NOMBRE-ALUMNO]
+<span class="linenos" data-linenos=" 5 "></span>- CIDR: 10.0.0.0/16
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>Subnets:
+<span class="linenos" data-linenos=" 8 "></span>- public-subnet-1
+<span class="linenos" data-linenos=" 9 "></span>- public-subnet-2
+<span class="linenos" data-linenos="10 "></span>- private-subnet-1
+<span class="linenos" data-linenos="11 "></span>- private-subnet-2
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>Security Groups:
+<span class="linenos" data-linenos="14 "></span>- sg-alb-gameday
+<span class="linenos" data-linenos="15 "></span>- sg-ec2-gameday
+<span class="linenos" data-linenos="16 "></span>- sg-rds-gameday
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span>Instancias EC2:
+<span class="linenos" data-linenos="19 "></span>- web-server-1
+<span class="linenos" data-linenos="20 "></span>- web-server-2
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span>Load Balancer:
+<span class="linenos" data-linenos="23 "></span>- alb-gameday
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span>Base de datos:
+<span class="linenos" data-linenos="26 "></span>- gameday-db
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Organización</p>
+<p>Usa un prefijo único por alumno o equipo para evitar conflictos si comparten recursos (aunque normalmente cada Learner Lab es independiente).</p>
+</div>
+<h3 id="63-preparar-capturas-de-pantalla">6.3. Preparar capturas de pantalla<a class="headerlink" href="#63-preparar-capturas-de-pantalla" title="Permanent link">&para;</a></h3>
+<p>Toma capturas de los pasos más importantes para compartirlas con los alumnos:</p>
+<ul>
+<li>Cómo iniciar el Learner Lab</li>
+<li>Dónde encontrar la consola de AWS</li>
+<li>Pasos críticos de configuración</li>
+<li>Cómo verificar que algo funciona</li>
+</ul>
+<hr />
+<h2 id="paso-7-verificar-configuracion-del-learner-lab">Paso 7: Verificar configuración del Learner Lab<a class="headerlink" href="#paso-7-verificar-configuracion-del-learner-lab" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Asegurarse de que el Learner Lab está configurado correctamente para todos los alumnos.</p>
+<h3 id="71-verificar-permisos-y-acceso">7.1. Verificar permisos y acceso<a class="headerlink" href="#71-verificar-permisos-y-acceso" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ve a <strong>"Personas"</strong> en el curso</li>
+<li>Verifica que todos los estudiantes tienen acceso al curso</li>
+<li>Verifica que su estado es <strong>"Activo"</strong></li>
+</ol>
+<h3 id="72-verificar-visibilidad-del-learner-lab">7.2. Verificar visibilidad del Learner Lab<a class="headerlink" href="#72-verificar-visibilidad-del-learner-lab" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ve a <strong>"Contenidos"</strong></li>
+<li>Verifica que el Learner Lab es visible para los estudiantes</li>
+<li>Si hay opciones de visibilidad, asegúrate de que está configurado como visible</li>
+</ol>
+<h3 id="73-verificar-creditos-disponibles">7.3. Verificar créditos disponibles<a class="headerlink" href="#73-verificar-creditos-disponibles" title="Permanent link">&para;</a></h3>
+<p>Cada Learner Lab proporciona $100 USD de crédito. Verifica:</p>
+<ol>
+<li>Accede al Learner Lab como estudiante de prueba</li>
+<li>Inicia el lab</li>
+<li>En la información del lab, deberías ver información sobre el crédito disponible</li>
+<li>Normalmente cada estudiante tiene $100 USD para todo el curso</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Importante sobre créditos</p>
+<ul>
+<li>Los créditos son por estudiante, no compartidos</li>
+<li>Si un estudiante usa todos sus créditos, no puede crear más recursos</li>
+<li>Enfatiza a los alumnos que usen recursos del Free Tier cuando sea posible</li>
+<li>Recuerda que deben eliminar recursos cuando terminen</li>
+</ul>
+</div>
+<hr />
+<h2 id="paso-8-preparar-la-sesion-practica">Paso 8: Preparar la sesión práctica<a class="headerlink" href="#paso-8-preparar-la-sesion-practica" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Planificar cómo vas a explicar y guiar la práctica a los alumnos.</p>
+<h3 id="81-planificar-el-tiempo">8.1. Planificar el tiempo<a class="headerlink" href="#81-planificar-el-tiempo" title="Permanent link">&para;</a></h3>
+<p><strong>Tiempo estimado por práctica:</strong>
+- <strong>Práctica 1 (Arquitectura web):</strong> 90-120 minutos
+- <strong>Práctica 2 (Serverless):</strong> 60-90 minutos</p>
+<p><strong>Planificación recomendada:</strong>
+- <strong>Sesión 1:</strong> Acceso al Learner Lab + Práctica 1 (completa o parte)
+- <strong>Sesión 2:</strong> Finalizar Práctica 1 + Práctica 2</p>
+<h3 id="82-preparar-explicaciones-clave">8.2. Preparar explicaciones clave<a class="headerlink" href="#82-preparar-explicaciones-clave" title="Permanent link">&para;</a></h3>
+<p>Prepara explicaciones claras para estos conceptos:</p>
+<ol>
+<li>
+<p><strong>VPC y subnets:</strong>
+   - Qué es una VPC
+   - Diferencia entre subnets públicas y privadas
+   - Por qué necesitamos ambas</p>
+</li>
+<li>
+<p><strong>Security Groups:</strong>
+   - Qué son y para qué sirven
+   - Cómo funcionan (stateful)
+   - Diferencia con firewalls tradicionales</p>
+</li>
+<li>
+<p><strong>NAT Gateway:</strong>
+   - Por qué está en subnet pública
+   - Para qué sirve
+   - Coste asociado</p>
+</li>
+<li>
+<p><strong>Load Balancer:</strong>
+   - Qué es y para qué sirve
+   - Alta disponibilidad</p>
+</li>
+<li>
+<p><strong>Lambda y serverless:</strong>
+   - Concepto de serverless
+   - Ventajas y desventajas</p>
+</li>
+</ol>
+<h3 id="83-preparar-puntos-de-verificacion">8.3. Preparar puntos de verificación<a class="headerlink" href="#83-preparar-puntos-de-verificacion" title="Permanent link">&para;</a></h3>
+<p>Durante la práctica, verifica estos puntos clave:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Alumnos pueden acceder al Learner Lab</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pueden iniciar el lab correctamente</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pueden acceder a la consola de AWS</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> VPC creada correctamente</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Subnets en diferentes AZs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Security Groups configurados</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Instancias EC2 funcionando</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load Balancer distribuyendo tráfico</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> RDS accesible desde EC2</li>
+</ul>
+<h3 id="84-preparar-solucion-de-problemas-comunes">8.4. Preparar solución de problemas comunes<a class="headerlink" href="#84-preparar-solucion-de-problemas-comunes" title="Permanent link">&para;</a></h3>
+<p>Prepara respuestas para estos problemas frecuentes:</p>
+<p><strong>"No puedo iniciar el Learner Lab":</strong>
+- Verificar que aceptaron la invitación al curso
+- Verificar que están en el curso correcto
+- Intentar cerrar sesión y volver a entrar</p>
+<p><strong>"No puedo acceder a la consola de AWS":</strong>
+- Verificar que el lab está iniciado (LED verde)
+- Verificar que no hay bloqueadores de ventanas emergentes
+- Intentar hacer clic en "AWS" o "Workarea" de nuevo</p>
+<p><strong>"Se me acabó el tiempo del lab":</strong>
+- Pueden finalizar y reiniciar el lab
+- Advertir que se eliminan todos los recursos</p>
+<p><strong>"No puedo crear recursos":</strong>
+- Verificar que el lab está activo
+- Verificar créditos disponibles
+- Verificar que están en la región correcta</p>
+<hr />
+<h2 id="paso-9-realizar-una-prueba-completa-recomendado">Paso 9: Realizar una prueba completa (Recomendado)<a class="headerlink" href="#paso-9-realizar-una-prueba-completa-recomendado" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Realizar una práctica completa tú mismo para identificar posibles problemas.</p>
+<h3 id="91-crear-un-entorno-de-prueba">9.1. Crear un entorno de prueba<a class="headerlink" href="#91-crear-un-entorno-de-prueba" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Accede al Learner Lab como "Estudiante de prueba"</li>
+<li>Inicia el lab</li>
+<li>Sigue los pasos de la <strong>Práctica 1</strong> completa</li>
+<li>Anota:
+   - Tiempos reales de cada paso
+   - Puntos donde tuviste dudas
+   - Errores que encontraste
+   - Pasos que son más complicados</li>
+</ol>
+<h3 id="92-documentar-problemas-encontrados">9.2. Documentar problemas encontrados<a class="headerlink" href="#92-documentar-problemas-encontrados" title="Permanent link">&para;</a></h3>
+<p>Mientras haces la prueba, anota:</p>
+<ul>
+<li><strong>Pasos confusos:</strong> Qué pasos te costaron más entender</li>
+<li><strong>Tiempos reales:</strong> Cuánto tiempo realmente toma cada paso</li>
+<li><strong>Errores:</strong> Qué errores cometiste y cómo los solucionaste</li>
+<li><strong>Verificaciones:</strong> Qué verificaciones son realmente importantes</li>
+</ul>
+<h3 id="93-crear-notas-para-la-explicacion">9.3. Crear notas para la explicación<a class="headerlink" href="#93-crear-notas-para-la-explicacion" title="Permanent link">&para;</a></h3>
+<p>Basándote en tu experiencia, crea notas sobre:</p>
+<ul>
+<li><strong>Qué enfatizar:</strong> Qué conceptos necesitan más explicación</li>
+<li><strong>Qué simplificar:</strong> Qué pasos puedes simplificar en la explicación</li>
+<li><strong>Preguntas frecuentes:</strong> Qué preguntas pueden hacer los alumnos</li>
+</ul>
+<hr />
+<h2 id="paso-10-donde-encontrar-el-learner-lab-despues-de-crearlo">Paso 10: Dónde encontrar el Learner Lab después de crearlo<a class="headerlink" href="#paso-10-donde-encontrar-el-learner-lab-despues-de-crearlo" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Entender dónde está el Learner Lab que acabas de crear.</p>
+<h3 id="101-el-learner-lab-no-esta-en-el-panel-de-control">10.1. El Learner Lab no está en el Panel de control<a class="headerlink" href="#101-el-learner-lab-no-esta-en-el-panel-de-control" title="Permanent link">&para;</a></h3>
+<p><strong>IMPORTANTE:</strong> El Learner Lab <strong>NO aparece</strong> en el "Panel de control" (Dashboard principal).</p>
+<p>El Panel de control solo muestra los <strong>cursos/asignaturas</strong>, no el contenido dentro de ellos.</p>
+<h3 id="102-como-acceder-al-learner-lab-que-creaste">10.2. Cómo acceder al Learner Lab que creaste<a class="headerlink" href="#102-como-acceder-al-learner-lab-que-creaste" title="Permanent link">&para;</a></h3>
+<p><strong>Método 1: Desde el menú de Asignaturas</strong></p>
+<ol>
+<li>En el menú lateral izquierdo, haz clic en <strong>"Asignaturas"</strong> o <strong>"Subjects"</strong> (icono de pila de papeles)</li>
+<li>Verás una lista de todos tus cursos/asignaturas</li>
+<li>Haz clic en el <strong>curso</strong> donde creaste el Learner Lab</li>
+<li>Una vez dentro del curso, verás diferentes secciones:
+   - <strong>"Contenidos"</strong> o <strong>"Content"</strong> o <strong>"Módulos"</strong> o <strong>"Modules"</strong></li>
+<li>Haz clic en <strong>"Contenidos"</strong></li>
+<li><strong>Ahí verás el Learner Lab</strong> que creaste como un elemento del contenido</li>
+</ol>
+<p><strong>Método 2: Desde la URL directa del curso</strong></p>
+<ol>
+<li>Si ya sabes la URL del curso, accede directamente</li>
+<li>Una vez en el curso, ve a <strong>"Contenidos"</strong></li>
+<li>El Learner Lab estará listado ahí</li>
+</ol>
+<h3 id="103-verificar-que-el-learner-lab-es-accesible">10.3. Verificar que el Learner Lab es accesible<a class="headerlink" href="#103-verificar-que-el-learner-lab-es-accesible" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Una vez que encuentres el Learner Lab en el contenido del curso</li>
+<li>Haz clic en él para verificar que se abre</li>
+<li>Deberías ver la interfaz del Learner Lab con opciones como:
+   - Botón para iniciar el lab
+   - Información sobre créditos disponibles
+   - Estado del lab</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Resumen</p>
+<ul>
+<li><strong>Panel de control</strong> = Lista de cursos/asignaturas</li>
+<li><strong>Curso/Asignatura</strong> = Contiene contenido (módulos, lecciones, labs)</li>
+<li><strong>Learner Lab</strong> = Contenido dentro de un curso</li>
+<li><strong>Para ver el Learner Lab</strong> = Entra al curso → Ve a Contenidos</li>
+</ul>
+</div>
+<hr />
+<h2 id="paso-11-configurar-el-dashboard-del-learner-lab-para-seguimiento">Paso 11: Configurar el Dashboard del Learner Lab para seguimiento<a class="headerlink" href="#paso-11-configurar-el-dashboard-del-learner-lab-para-seguimiento" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Aprender a usar el Dashboard del Learner Lab para ver el progreso de los alumnos durante la práctica.</p>
+<h3 id="111-acceder-al-dashboard-del-learner-lab">11.1. Acceder al Dashboard del Learner Lab<a class="headerlink" href="#111-acceder-al-dashboard-del-learner-lab" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>IMPORTANTE:</strong> Primero accede al curso donde está el Learner Lab:
+   - Ve a <strong>"Asignaturas"</strong> → Selecciona el curso</li>
+<li>Dentro del curso, ve a <strong>"Contenidos"</strong></li>
+<li>Busca el elemento <strong>"Lanzamiento del laboratorio para alumnado..."</strong> o <strong>"Learner Lab"</strong></li>
+<li>Haz clic en él para abrirlo</li>
+<li>Una vez dentro del Learner Lab, busca la pestaña <strong>"Dashboard"</strong> o <strong>"Panel"</strong> o <strong>"Controls"</strong></li>
+<li>Haz clic en <strong>"Dashboard"</strong></li>
+<li>Verás una lista de estudiantes y el estado de sus labs</li>
+</ol>
+<h3 id="112-entender-el-dashboard-del-learner-lab">11.2. Entender el Dashboard del Learner Lab<a class="headerlink" href="#112-entender-el-dashboard-del-learner-lab" title="Permanent link">&para;</a></h3>
+<p>El Dashboard muestra:</p>
+<ul>
+<li><strong>Lista de estudiantes:</strong> Todos los alumnos matriculados en el curso</li>
+<li><strong>Estado del lab:</strong> </li>
+<li>LED verde = Lab iniciado y activo</li>
+<li>LED gris = Lab no iniciado</li>
+<li><strong>Controles:</strong> Puedes iniciar/detener labs de estudiantes</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Cuándo verás estudiantes en el Dashboard</p>
+<ul>
+<li>Solo verás los labs de estudiantes que <strong>ya han iniciado</strong> su lab al menos una vez</li>
+<li>Si un estudiante nunca ha iniciado el lab, puede que no aparezca en el Dashboard</li>
+<li>Puedes iniciar el lab por ellos desde aquí</li>
+</ul>
+</div>
+<h3 id="113-usar-el-dashboard-durante-la-practica">11.3. Usar el Dashboard durante la práctica<a class="headerlink" href="#113-usar-el-dashboard-durante-la-practica" title="Permanent link">&para;</a></h3>
+<p><strong>Durante la sesión:</strong></p>
+<ol>
+<li>Accede al Dashboard del Learner Lab (desde el curso → Contenidos → Learner Lab → Dashboard)</li>
+<li>Puedes ver qué alumnos tienen el lab iniciado (LED verde)</li>
+<li>Puedes ayudar a iniciar el lab si algún alumno tiene problemas</li>
+<li>Puedes acceder al lab de un estudiante para ayudarle:
+   - Haz clic en el nombre del estudiante
+   - Haz clic en <strong>"Workarea"</strong> o <strong>"AWS"</strong> para ver su consola de AWS</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Ayuda a estudiantes</p>
+<p>Si un alumno tiene problemas, puedes acceder a su lab desde el Dashboard para ver qué está pasando y ayudarle.</p>
+</div>
+<hr />
+<h2 id="paso-12-preparar-materiales-de-apoyo">Paso 12: Preparar materiales de apoyo<a class="headerlink" href="#paso-12-preparar-materiales-de-apoyo" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Crear material adicional que ayude a los alumnos durante la práctica.</p>
+<h3 id="111-diagrama-de-arquitectura">11.1. Diagrama de arquitectura<a class="headerlink" href="#111-diagrama-de-arquitectura" title="Permanent link">&para;</a></h3>
+<p>Crea o encuentra un diagrama que muestre:</p>
+<ul>
+<li>La arquitectura completa de la Práctica 1 (VPC, subnets, EC2, ALB, RDS)</li>
+<li>La arquitectura de la Práctica 2 (Lambda, DynamoDB, API Gateway)</li>
+<li>Flujo de tráfico entre componentes</li>
+</ul>
+<h3 id="112-tabla-de-verificacion-rapida">11.2. Tabla de verificación rápida<a class="headerlink" href="#112-tabla-de-verificacion-rapida" title="Permanent link">&para;</a></h3>
+<p>Crea una tabla de verificación para que los alumnos sepan qué tienen que tener al final:</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Estado Esperado</th>
+<th>Cómo Verificar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VPC</td>
+<td>Creada</td>
+<td>VPC → Your VPCs</td>
+</tr>
+<tr>
+<td>Subnets</td>
+<td>4 subnets (2 públicas, 2 privadas)</td>
+<td>VPC → Subnets</td>
+</tr>
+<tr>
+<td>Security Groups</td>
+<td>3 Security Groups</td>
+<td>EC2 → Security Groups</td>
+</tr>
+<tr>
+<td>EC2 Instances</td>
+<td>2 instancias Running</td>
+<td>EC2 → Instances</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>Active</td>
+<td>EC2 → Load Balancers</td>
+</tr>
+<tr>
+<td>RDS</td>
+<td>Available</td>
+<td>RDS → Databases</td>
+</tr>
+</tbody>
+</table>
+<h3 id="113-comandos-utiles-para-copiarpegar">11.3. Comandos útiles para copiar/pegar<a class="headerlink" href="#113-comandos-utiles-para-copiarpegar" title="Permanent link">&para;</a></h3>
+<p>Prepara una lista de comandos que los alumnos puedan copiar y pegar:</p>
+<p><strong>Para SSH a EC2:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>gameday-keypair.pem
+<span class="linenos" data-linenos="2 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>gameday-keypair.pem<span class="w"> </span>ec2-user@IP_PUBLICA
+</code></pre></div></p>
+<p><strong>Para instalar MySQL en EC2:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql
+</code></pre></div></p>
+<p><strong>Para conectar a RDS:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>ENDPOINT_RDS<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p
+</code></pre></div></p>
+<hr />
+<h2 id="paso-13-checklist-final-antes-de-la-sesion">Paso 13: Checklist final antes de la sesión<a class="headerlink" href="#paso-13-checklist-final-antes-de-la-sesion" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Verificar que todo está listo antes de que los alumnos comiencen.</p>
+<h3 id="checklist-de-preparacion">Checklist de preparación<a class="headerlink" href="#checklist-de-preparacion" title="Permanent link">&para;</a></h3>
+<p><strong>Configuración del curso:</strong>
+- [ ] Curso creado o seleccionado
+- [ ] Alumnos matriculados en el curso
+- [ ] Alumnos tienen acceso activo
+- [ ] Learner Lab añadido al curso
+- [ ] Learner Lab es visible para estudiantes</p>
+<p><strong>Pruebas realizadas:</strong>
+- [ ] Accedido al Learner Lab como estudiante de prueba
+- [ ] Iniciado el lab exitosamente
+- [ ] Accedido a la consola de AWS
+- [ ] Verificado acceso a servicios (EC2, VPC)
+- [ ] (Opcional) Realizada práctica completa de prueba</p>
+<p><strong>Material preparado:</strong>
+- [ ] Guía de acceso al Learner Lab para alumnos
+- [ ] Guía de prácticas para alumnos
+- [ ] Diagramas de arquitectura
+- [ ] Tabla de nombres estándar
+- [ ] Tabla de verificación
+- [ ] Comandos útiles preparados
+- [ ] Capturas de pantalla importantes</p>
+<p><strong>Preparación personal:</strong>
+- [ ] Conoces cómo acceder al Dashboard
+- [ ] Sabes cómo ayudar a alumnos con problemas
+- [ ] Tienes explicaciones preparadas para conceptos clave
+- [ ] Sabes cómo solucionar problemas comunes
+- [ ] Tienes planificado el tiempo de la sesión</p>
+<p><strong>Antes de empezar la sesión:</strong>
+- [ ] Verificar conexión a Internet
+- [ ] Tener abierto AWS Academy
+- [ ] Tener abierto el Dashboard del Learner Lab
+- [ ] Tener material de referencia a mano
+- [ ] Tener un ejemplo funcionando (opcional pero recomendado)</p>
+<hr />
+<h2 id="paso-14-durante-la-sesion-guia-rapida">Paso 14: Durante la sesión - Guía rápida<a class="headerlink" href="#paso-14-durante-la-sesion-guia-rapida" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Tener una referencia rápida de qué hacer durante la sesión práctica.</p>
+<h3 id="al-inicio-de-la-sesion">Al inicio de la sesión<a class="headerlink" href="#al-inicio-de-la-sesion" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Presentación (5 minutos):</strong>
+   - Explicar qué van a hacer
+   - Mostrar diagrama de arquitectura
+   - Explicar el Learner Lab y créditos disponibles</p>
+</li>
+<li>
+<p><strong>Acceso al Learner Lab (10 minutos):</strong>
+   - Guiar a los alumnos para acceder a AWS Academy
+   - Ayudarles a iniciar el Learner Lab
+   - Verificar que todos pueden acceder a la consola de AWS</p>
+</li>
+<li>
+<p><strong>Verificación inicial (5 minutos):</strong>
+   - Verificar que todos tienen el lab iniciado (usando Dashboard)
+   - Verificar que pueden acceder a EC2 y VPC
+   - Resolver problemas de acceso si los hay</p>
+</li>
+</ol>
+<h3 id="durante-la-practica">Durante la práctica<a class="headerlink" href="#durante-la-practica" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Explicar paso a paso:</strong>
+   - Explica cada paso antes de que lo hagan
+   - Muestra el diagrama/arquitectura mientras explicas
+   - Haz pausas para verificar que todos van al mismo ritmo</p>
+</li>
+<li>
+<p><strong>Verificaciones periódicas:</strong>
+   - Cada 15-20 minutos, verifica el progreso
+   - Usa el Dashboard para ver quién tiene problemas
+   - Responde preguntas individuales</p>
+</li>
+<li>
+<p><strong>Gestión de problemas:</strong>
+   - Si muchos alumnos tienen el mismo problema, para y explica la solución a todos
+   - Si un alumno tiene problemas únicos, ayúdale individualmente (puedes acceder a su lab desde el Dashboard)</p>
+</li>
+<li>
+<p><strong>Puntos de control:</strong>
+   - Después de crear VPC y subnets → Verificar
+   - Después de crear Security Groups → Verificar
+   - Después de crear EC2 → Verificar que funcionan
+   - Después de crear ALB → Verificar distribución de carga</p>
+</li>
+</ol>
+<h3 id="al-final-de-la-sesion">Al final de la sesión<a class="headerlink" href="#al-final-de-la-sesion" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Verificación final:</strong>
+   - Verificar que la arquitectura funciona
+   - Probar que el ALB distribuye tráfico
+   - Verificar que pueden conectarse a RDS</p>
+</li>
+<li>
+<p><strong>Limpieza:</strong>
+   - Recordar a los alumnos que deben eliminar recursos
+   - Explicar cómo eliminar recursos (en orden)
+   - Verificar que eliminan recursos críticos (NAT Gateway, Load Balancer)</p>
+</li>
+<li>
+<p><strong>Cierre:</strong>
+   - Resumir lo aprendido
+   - Aclarar dudas finales
+   - Recordar sobre el tiempo del lab (si no terminaron, pueden continuar en otro momento)</p>
+</li>
+</ol>
+<hr />
+<h2 id="paso-15-acceder-al-lab-de-un-estudiante-para-ayudarle">Paso 15: Acceder al lab de un estudiante para ayudarle<a class="headerlink" href="#paso-15-acceder-al-lab-de-un-estudiante-para-ayudarle" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Saber cómo acceder al lab de un estudiante específico para ayudarle con problemas.</p>
+<h3 id="151-acceder-al-dashboard-del-learner-lab">15.1. Acceder al Dashboard del Learner Lab<a class="headerlink" href="#151-acceder-al-dashboard-del-learner-lab" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Primero accede al curso:</strong> Ve a <strong>"Asignaturas"</strong> → Selecciona el curso donde está el Learner Lab</li>
+<li>Dentro del curso, ve a <strong>"Contenidos"</strong></li>
+<li>Haz clic en el <strong>Learner Lab</strong> que creaste</li>
+<li>Busca y haz clic en la pestaña <strong>"Dashboard"</strong> o <strong>"Panel"</strong></li>
+<li>Verás una lista de estudiantes con el estado de sus labs</li>
+</ol>
+<h3 id="152-encontrar-un-estudiante-especifico">15.2. Encontrar un estudiante específico<a class="headerlink" href="#152-encontrar-un-estudiante-especifico" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el Dashboard, busca el nombre del estudiante en la lista</li>
+<li>Verifica el estado de su lab:
+   - <strong>LED verde:</strong> Lab iniciado y activo
+   - <strong>LED gris:</strong> Lab no iniciado</li>
+</ol>
+<h3 id="153-si-el-lab-esta-iniciado">15.3. Si el lab está iniciado<a class="headerlink" href="#153-si-el-lab-esta-iniciado" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Haz clic en el nombre del estudiante o en <strong>"Workarea"</strong> o <strong>"AWS"</strong></li>
+<li>Se abrirá la consola de AWS del estudiante</li>
+<li>Puedes ver todos sus recursos y configuraciones</li>
+<li>Puedes ayudarle a identificar problemas</li>
+</ol>
+<h3 id="154-si-el-lab-no-esta-iniciado">15.4. Si el lab no está iniciado<a class="headerlink" href="#154-si-el-lab-no-esta-iniciado" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Haz clic en <strong>"Controls"</strong> o en los tres puntos (...) junto al nombre del estudiante</li>
+<li>Selecciona <strong>"Start Lab"</strong> o <strong>"Iniciar Laboratorio"</strong></li>
+<li>Espera a que se inicie (1-2 minutos)</li>
+<li>El LED cambiará a verde cuando esté listo</li>
+<li>Luego haz clic en <strong>"Workarea"</strong> o <strong>"AWS"</strong> para acceder a su consola</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Privacidad</p>
+<p>Al acceder al lab de un estudiante, puedes ver toda su configuración. Úsalo solo para ayudar, no para corregir sin su conocimiento.</p>
+</div>
+<hr />
+<h2 id="paso-16-gestion-de-alumnos-y-acceso">Paso 16: Gestión de alumnos y acceso<a class="headerlink" href="#paso-16-gestion-de-alumnos-y-acceso" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> Saber cómo gestionar el acceso de los alumnos al Learner Lab.</p>
+<h3 id="151-desactivar-acceso-de-un-alumno">15.1. Desactivar acceso de un alumno<a class="headerlink" href="#151-desactivar-acceso-de-un-alumno" title="Permanent link">&para;</a></h3>
+<p><strong>Cuándo hacerlo:</strong>
+- Para "congelar" su trabajo al finalizar el plazo de entrega
+- Si está usando demasiados recursos
+- Si necesitas revisar su trabajo sin que haga cambios</p>
+<p><strong>Cómo hacerlo:</strong>
+1. Ve a <strong>"Personas"</strong> en el curso
+2. Busca el estudiante
+3. Haz clic en los tres puntos (...) junto al nombre
+4. Selecciona <strong>"Desactivar"</strong> o <strong>"Deactivate"</strong>
+5. El estudiante ya no podrá acceder al Learner Lab</p>
+<h3 id="152-reactivar-acceso-de-un-alumno">15.2. Reactivar acceso de un alumno<a class="headerlink" href="#152-reactivar-acceso-de-un-alumno" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ve a <strong>"Personas"</strong></li>
+<li>Busca el estudiante desactivado</li>
+<li>Haz clic en los tres puntos (...)</li>
+<li>Selecciona <strong>"Activar nuevamente al usuario"</strong> o <strong>"Reactivate user"</strong></li>
+</ol>
+<h3 id="163-ver-todos-los-labs-activos">16.3. Ver todos los labs activos<a class="headerlink" href="#163-ver-todos-los-labs-activos" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Accede al <strong>Dashboard</strong> del Learner Lab:
+   - Ve a <strong>"Asignaturas"</strong> → Selecciona el curso
+   - <strong>"Contenidos"</strong> → Haz clic en el Learner Lab
+   - Pestaña <strong>"Dashboard"</strong></li>
+<li>Verás una lista de todos los estudiantes</li>
+<li>Los que tienen el <strong>LED verde</strong> tienen el lab activo</li>
+<li>Puedes ver quién está trabajando en tiempo real</li>
+</ol>
+<hr />
+<h2 id="recursos-de-referencia">Recursos de referencia<a class="headerlink" href="#recursos-de-referencia" title="Permanent link">&para;</a></h2>
+<h3 id="documentacion-oficial">Documentación oficial<a class="headerlink" href="#documentacion-oficial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>AWS Academy Help:</strong> <a href="https://awsacademy.instructure.com/courses">https://awsacademy.instructure.com/courses</a></li>
+<li><strong>Guía detallada de Learner Labs:</strong> <a href="https://martinezpenya.es/AWSAcademyPrimerosPasos/07_Acceder_al_Learner_Lab.html">https://martinezpenya.es/AWSAcademyPrimerosPasos/07_Acceder_al_Learner_Lab.html</a></li>
+</ul>
+<h3 id="informacion-importante-a-recordar">Información importante a recordar<a class="headerlink" href="#informacion-importante-a-recordar" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Cada estudiante tiene $100 USD de crédito</li>
+<li>El Learner Lab tiene tiempo limitado (normalmente 4 horas)</li>
+<li>Los recursos se eliminan automáticamente al finalizar el tiempo del lab</li>
+<li>Los labs de diferentes estudiantes son independientes</li>
+<li>El NAT Gateway tiene coste ($0.045/hora aproximadamente)</li>
+</ul>
+<hr />
+<h2 id="solucion-de-problemas-comunes">Solución de problemas comunes<a class="headerlink" href="#solucion-de-problemas-comunes" title="Permanent link">&para;</a></h2>
+<h3 id="problema-cree-el-learner-lab-pero-no-lo-veo-en-el-panel-de-control-ni-en-asignaturas">Problema: Creé el Learner Lab pero no lo veo en el Panel de control ni en Asignaturas<a class="headerlink" href="#problema-cree-el-learner-lab-pero-no-lo-veo-en-el-panel-de-control-ni-en-asignaturas" title="Permanent link">&para;</a></h3>
+<p><strong>Esto es completamente normal.</strong> El Learner Lab NO aparece en el Panel de control porque no es un curso, sino contenido dentro de un curso.</p>
+<p><strong>Diagnóstico paso a paso:</strong></p>
+<p><strong>Paso 1: Verificar que estás en el lugar correcto</strong>
+1. El Panel de control muestra <strong>cursos/asignaturas</strong>, no contenido
+2. El Learner Lab está <strong>dentro</strong> de un curso, no es un curso en sí</p>
+<p><strong>Paso 2: Acceder al curso</strong>
+1. Haz clic en <strong>"Asignaturas"</strong> en el menú lateral izquierdo
+2. Verás una lista de cursos (igual que en el Panel de control)
+3. <strong>Haz clic en el curso</strong> donde creaste el Learner Lab
+4. Esto te llevará <strong>dentro</strong> del curso</p>
+<p><strong>Paso 3: Buscar dentro del curso</strong></p>
+<p>Una vez dentro del curso, el Learner Lab puede estar en diferentes lugares:</p>
+<p><strong>Lugar 1: En el menú lateral del curso</strong>
+- Busca en el menú lateral izquierdo opciones como:
+  - <strong>"Inicio"</strong> o <strong>"Home"</strong>
+  - <strong>"Módulos"</strong> o <strong>"Modules"</strong>
+  - <strong>"Contenidos"</strong> o <strong>"Content"</strong>
+  - <strong>"Páginas"</strong> o <strong>"Pages"</strong></p>
+<p><strong>Lugar 2: En las pestañas superiores</strong>
+- Puede haber pestañas en la parte superior:
+  - <strong>"Módulos"</strong>
+  - <strong>"Contenidos"</strong>
+  - <strong>"Asignaciones"</strong>
+- Haz clic en <strong>"Módulos"</strong> primero</p>
+<p><strong>Lugar 3: En la página principal del curso</strong>
+- A veces el contenido aparece directamente en la página de inicio del curso
+- Desplázate por la página buscando elementos relacionados con "Lab" o "AWS"</p>
+<p><strong>Paso 4: Si no lo encuentras en ningún lugar</strong></p>
+<ol>
+<li>
+<p><strong>Verificar que realmente se creó:</strong>
+   - ¿Recuerdas haber visto un mensaje de confirmación al crearlo?
+   - ¿Apareció algo nuevo en la pantalla cuando lo creaste?
+   - Intenta crear el Learner Lab de nuevo siguiendo los pasos del Paso 4</p>
+</li>
+<li>
+<p><strong>Buscar con Ctrl+F:</strong>
+   - Una vez dentro del curso, presiona Ctrl+F (o Cmd+F en Mac)
+   - Busca: "Learner", "Lab", "AWS", o el nombre que le pusiste
+   - Esto buscará en toda la página</p>
+</li>
+<li>
+<p><strong>Revisar todas las secciones del curso:</strong>
+   - Haz clic en cada pestaña/sección del curso
+   - Busca en: Módulos, Contenidos, Asignaciones, Páginas, etc.</p>
+</li>
+</ol>
+<p><strong>Si después de todo esto no lo encuentras:</strong></p>
+<ul>
+<li>Es posible que <strong>no se creó correctamente</strong></li>
+<li>Intenta crear el Learner Lab de nuevo (Paso 4)</li>
+<li>O puede que necesites permisos especiales (contacta con administrador)</li>
+</ul>
+<h3 id="problema-no-puedo-crear-el-learner-lab">Problema: No puedo crear el Learner Lab<a class="headerlink" href="#problema-no-puedo-crear-el-learner-lab" title="Permanent link">&para;</a></h3>
+<p><strong>Posibles causas:</strong>
+- El Learner Lab no está disponible en tu cuenta
+- Necesitas permisos adicionales
+- Contacta con el administrador de AWS Academy</p>
+<h3 id="problema-los-alumnos-no-pueden-iniciar-el-lab">Problema: Los alumnos no pueden iniciar el lab<a class="headerlink" href="#problema-los-alumnos-no-pueden-iniciar-el-lab" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Verifica que están matriculados en el curso
+- Verifica que aceptaron la invitación por email
+- Verifica que el Learner Lab es visible para estudiantes
+- Intenta iniciar el lab desde el Dashboard como instructor</p>
+<h3 id="problema-los-alumnos-no-tienen-creditos">Problema: Los alumnos no tienen créditos<a class="headerlink" href="#problema-los-alumnos-no-tienen-creditos" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Verifica que cada estudiante tiene su propio Learner Lab
+- Los créditos son por estudiante, no compartidos
+- Si un estudiante usó todos sus créditos, no puede crear más recursos hasta que se reinicien</p>
+<h3 id="problema-no-puedo-acceder-al-dashboard">Problema: No puedo acceder al Dashboard<a class="headerlink" href="#problema-no-puedo-acceder-al-dashboard" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Verifica que estás como instructor, no como estudiante
+- Intenta refrescar la página
+- Contacta con el administrador si persiste</p>
+<hr />
+<h2 id="notas-finales">Notas finales<a class="headerlink" href="#notas-finales" title="Permanent link">&para;</a></h2>
+<p>Esta guía te proporciona todos los pasos necesarios para preparar las prácticas de AWS GameDay 2025 para tus alumnos. Recuerda:</p>
+<ol>
+<li><strong>Prueba todo antes:</strong> Realiza una prueba completa antes de la sesión con alumnos</li>
+<li><strong>Sé paciente:</strong> Los alumnos necesitarán más tiempo del estimado</li>
+<li><strong>Usa el Dashboard:</strong> Es tu herramienta principal para ver el progreso y ayudar</li>
+<li><strong>Enfatiza la limpieza:</strong> Recuerda a los alumnos eliminar recursos para ahorrar créditos</li>
+<li><strong>Documenta problemas:</strong> Anota los problemas que encuentres para mejorar la próxima vez</li>
+</ol>
+<p>¡Buena suerte con las prácticas! 🚀</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

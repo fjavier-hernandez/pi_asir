@@ -962,6 +962,10 @@
 <h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
 <p>El <strong>Campeonato Nacional AWS GameDay 2025</strong> es una competición práctica donde los equipos aplican conocimientos reales en la nube AWS para resolver retos técnicos en un entorno controlado. Este documento te ayudará a prepararte para la competición, cubriendo los conceptos fundamentales de <strong>AWS Cloud Practitioner</strong> y <strong>AWS Architecting</strong>.</p>
 <p><strong>Sitio web oficial:</strong> <a href="https://gameday2025.com">https://gameday2025.com</a></p>
+<div class="admonition info">
+<p class="admonition-title">Guía de Laboratorio</p>
+<p>Para realizar las prácticas paso a paso en el laboratorio, consulta la <strong><a href="AWS_GameDay2025_Lab.html">Guía de Laboratorio →</a></strong>, que contiene instrucciones directas y concisas para ejecutar las prácticas.</p>
+</div>
 <h3 id="informacion-importante">Información importante<a class="headerlink" href="#informacion-importante" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Fecha de clasificación virtual:</strong> 26 de noviembre de 2025 (09:30 - 12:30)</li>
@@ -1577,10 +1581,14 @@
 <p><strong>Paso 1.1: Crear la VPC</strong></p>
 <ol>
 <li>En la consola de AWS, ve a <strong>VPC</strong> → <strong>Your VPCs</strong> → <strong>Create VPC</strong></li>
-<li>Configuración:
-   - <strong>Name tag:</strong> <code>vpc-gameday</code>
-   - <strong>IPv4 CIDR block:</strong> <code>10.0.0.0/16</code>
-   - <strong>Tenancy:</strong> Default (Shared)</li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Name tag:</strong> <code>vpc-gameday</code></li>
+<li><strong>IPv4 CIDR block:</strong> <code>10.0.0.0/16</code></li>
+<li><strong>Tenancy:</strong> Default (Shared)</li>
+</ul>
+<ol start="3">
 <li>Haz clic en <strong>Create VPC</strong></li>
 <li>Anota el <strong>VPC ID</strong> (ej: <code>vpc-0123456789abcdef0</code>)</li>
 </ol>
@@ -1593,14 +1601,14 @@
 <li><strong>VPC ID:</strong> Selecciona la VPC creada anteriormente</li>
 <li><strong>Subnet name:</strong> <code>public-subnet-1</code></li>
 <li><strong>Availability Zone:</strong> Selecciona la primera AZ (ej: <code>us-east-1a</code>)</li>
-<li>
-<p><strong>IPv4 CIDR block:</strong> <code>10.0.1.0/24</code>
-3. Haz clic en <strong>Create subnet</strong>
-4. Repite para crear la segunda subnet pública:</p>
-</li>
-<li>
-<p><strong>Subnet name:</strong> <code>public-subnet-2</code></p>
-</li>
+<li><strong>IPv4 CIDR block:</strong> <code>10.0.1.0/24</code></li>
+</ul>
+<ol start="3">
+<li>Haz clic en <strong>Create subnet</strong></li>
+<li>Repite para crear la segunda subnet pública:</li>
+</ol>
+<ul>
+<li><strong>Subnet name:</strong> <code>public-subnet-2</code></li>
 <li><strong>Availability Zone:</strong> Selecciona la segunda AZ (ej: <code>us-east-1b</code>)</li>
 <li><strong>IPv4 CIDR block:</strong> <code>10.0.2.0/24</code></li>
 </ul>
@@ -1611,16 +1619,40 @@
 <ul>
 <li><strong>Subnet name:</strong> <code>private-subnet-1</code></li>
 <li><strong>Availability Zone:</strong> <code>us-east-1a</code> (misma que public-subnet-1)</li>
-<li>
-<p><strong>IPv4 CIDR block:</strong> <code>10.0.10.0/24</code>
-2. Crea la segunda subnet privada:</p>
-</li>
-<li>
-<p><strong>Subnet name:</strong> <code>private-subnet-2</code></p>
-</li>
+<li><strong>IPv4 CIDR block:</strong> <code>10.0.10.0/24</code></li>
+</ul>
+<ol start="2">
+<li>Crea la segunda subnet privada:</li>
+</ol>
+<ul>
+<li><strong>Subnet name:</strong> <code>private-subnet-2</code></li>
 <li><strong>Availability Zone:</strong> <code>us-east-1b</code> (misma que public-subnet-2)</li>
 <li><strong>IPv4 CIDR block:</strong> <code>10.0.11.0/24</code></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Diferencia de configuración entre subnets públicas y privadas</p>
+<p><strong>Importante:</strong> Al crear las subnets, ambas se crean de la misma forma (solo cambian el nombre y el CIDR). La diferencia entre pública y privada <strong>no está en la creación de la subnet</strong>, sino en su <strong>configuración posterior</strong> mediante las <strong>tablas de rutas</strong>.</p>
+<p><strong>Configuración de subnets públicas:</strong></p>
+<ol>
+<li>Se crea la subnet normalmente (como en el Paso 1.2)</li>
+<li>Se asocia a una <strong>tabla de rutas</strong> que contiene una ruta hacia el <strong>Internet Gateway (IGW)</strong></li>
+<li>Esta ruta permite tráfico bidireccional con Internet (0.0.0.0/0 → IGW)</li>
+<li>Los recursos dentro pueden tener IPs públicas y ser accesibles desde Internet</li>
+</ol>
+<p><strong>Configuración de subnets privadas:</strong></p>
+<ol>
+<li>Se crea la subnet normalmente (como en el Paso 1.3)</li>
+<li>Se asocia a una <strong>tabla de rutas diferente</strong> que <strong>NO tiene ruta al Internet Gateway</strong></li>
+<li>Esta tabla de rutas solo tiene rutas locales de la VPC (10.0.0.0/16)</li>
+<li>Si necesitan acceso saliente a Internet, se añade una ruta hacia un <strong>NAT Gateway</strong> (0.0.0.0/0 → NAT Gateway), pero NO pueden recibir tráfico entrante desde Internet</li>
+</ol>
+<p><strong>Resumen de la diferencia técnica:</strong></p>
+<ul>
+<li><strong>Subnet pública:</strong> Tabla de rutas con ruta <code>0.0.0.0/0 → Internet Gateway</code> → Acceso bidireccional a Internet</li>
+<li><strong>Subnet privada:</strong> Tabla de rutas sin ruta al Internet Gateway (o con ruta a NAT Gateway solo para tráfico saliente) → Sin acceso entrante desde Internet</li>
+</ul>
+<p>En los pasos siguientes verás cómo configurar estas tablas de rutas (Paso 1.5 para públicas, Paso 1.7 para privadas).</p>
+</div>
 <p><strong>Paso 1.4: Crear Internet Gateway</strong></p>
 <ol>
 <li>Ve a <strong>Internet Gateways</strong> → <strong>Create internet gateway</strong></li>
@@ -1635,9 +1667,13 @@
 <li>Busca la tabla de rutas asociada a tu VPC (debería tener las subnets creadas)</li>
 <li>Selecciona la tabla de rutas y ve a la pestaña <strong>Routes</strong></li>
 <li>Haz clic en <strong>Edit routes</strong> → <strong>Add route</strong></li>
-<li>Configuración:
-   - <strong>Destination:</strong> <code>0.0.0.0/0</code>
-   - <strong>Target:</strong> Selecciona el Internet Gateway creado</li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Destination:</strong> <code>0.0.0.0/0</code></li>
+<li><strong>Target:</strong> Selecciona el Internet Gateway creado</li>
+</ul>
+<ol start="6">
 <li>Haz clic en <strong>Save changes</strong></li>
 <li>Ve a la pestaña <strong>Subnet associations</strong> → <strong>Edit subnet associations</strong></li>
 <li>Marca las dos subnets públicas (<code>public-subnet-1</code> y <code>public-subnet-2</code>)</li>
@@ -1645,18 +1681,55 @@
 </ol>
 <p><strong>Paso 1.6: Crear NAT Gateway</strong></p>
 <ol>
-<li>Primero, necesitas asignar una Elastic IP:
-   - Ve a <strong>Elastic IPs</strong> → <strong>Allocate Elastic IP address</strong>
-   - Haz clic en <strong>Allocate</strong> (deja la configuración por defecto)
-   - Anota la <strong>Elastic IP</strong> asignada</li>
+<li>Primero, necesitas asignar una o más Elastic IPs:</li>
+</ol>
+<ul>
+<li>Ve a <strong>Elastic IPs</strong> → <strong>Allocate Elastic IP address</strong></li>
+<li>Haz clic en <strong>Allocate</strong> (deja la configuración por defecto)</li>
+<li>Anota la <strong>Elastic IP</strong> asignada</li>
+<li>Si vas a usar modo Regional, asigna al menos una Elastic IP por cada zona de disponibilidad que vayas a usar (normalmente 2, una para cada subnet pública)</li>
+</ul>
+<ol start="2">
 <li>Ve a <strong>NAT Gateways</strong> → <strong>Create NAT gateway</strong></li>
-<li>Configuración:
-   - <strong>Name:</strong> <code>nat-gateway-1</code>
-   - <strong>Subnet:</strong> Selecciona <code>public-subnet-1</code>
-   - <strong>Elastic IP allocation ID:</strong> Selecciona la Elastic IP creada</li>
-<li>Haz clic en <strong>Create NAT gateway</strong></li>
+<li>Configuración básica:</li>
+</ol>
+<ul>
+<li><strong>Nombre (opcional):</strong> <code>nat-gateway-1</code></li>
+</ul>
+<ol start="4">
+<li><strong>Modo de disponibilidad:</strong></li>
+</ol>
+<p><strong>Opción A - Modo Regional (Recomendado para alta disponibilidad):</strong></p>
+<ul>
+<li>Selecciona <strong>"Regional - novedad"</strong></li>
+<li><strong>VPC:</strong> Selecciona tu VPC (<code>vpc-gameday</code>)</li>
+<li><strong>Tipo de conectividad:</strong> Selecciona <strong>"Pública"</strong></li>
+<li><strong>Método de asignación de IP elástica:</strong> Selecciona <strong>"Manual"</strong></li>
+<li>En <strong>"Asociación de IP elásticas":</strong> Asocia una Elastic IP a cada zona de disponibilidad que vayas a usar:<ul>
+<li>Para <code>us-east-1a</code>: Selecciona una Elastic IP del dropdown</li>
+<li>Para <code>us-east-1b</code>: Selecciona otra Elastic IP del dropdown</li>
+</ul>
+</li>
+<li>Si necesitas más Elastic IPs, haz clic en <strong>"Asignar IP elástica"</strong></li>
+</ul>
+<p><strong>Opción B - Modo Zonal (Más simple, una sola AZ):</strong></p>
+<ul>
+<li>Selecciona <strong>"Zonal"</strong></li>
+<li><strong>Subnet:</strong> Selecciona <code>public-subnet-1</code></li>
+<li><strong>Tipo de conectividad:</strong> Selecciona <strong>"Pública"</strong></li>
+<li><strong>Elastic IP allocation ID:</strong> Selecciona la Elastic IP creada anteriormente</li>
+</ul>
+<ol start="5">
+<li>Haz clic en <strong>"Crear gateway NAT"</strong></li>
 <li><strong>IMPORTANTE:</strong> Espera 2-3 minutos hasta que el estado cambie a <strong>Available</strong></li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Modo Regional vs Zonal</p>
+<ul>
+<li><strong>Modo Regional:</strong> Escala automáticamente en todas las zonas de disponibilidad. Mejor para producción y alta disponibilidad. Requiere Elastic IP por cada AZ.</li>
+<li><strong>Modo Zonal:</strong> Más simple, se despliega en una sola subnet/AZ. Adecuado para pruebas y entornos de desarrollo.</li>
+</ul>
+</div>
 <p><strong>Paso 1.7: Configurar tabla de rutas para subnets privadas</strong></p>
 <ol>
 <li>Crea una nueva tabla de rutas para las subnets privadas:</li>
@@ -1664,21 +1737,21 @@
 <ul>
 <li>Ve a <strong>Route Tables</strong> → <strong>Create route table</strong></li>
 <li><strong>Name:</strong> <code>private-route-table</code></li>
-<li>
-<p><strong>VPC:</strong> Selecciona tu VPC
-2. Configura la ruta por defecto:</p>
-</li>
-<li>
-<p>Selecciona la tabla creada → <strong>Routes</strong> → <strong>Edit routes</strong> → <strong>Add route</strong></p>
-</li>
+<li><strong>VPC:</strong> Selecciona tu VPC</li>
+</ul>
+<ol start="2">
+<li>Configura la ruta por defecto:</li>
+</ol>
+<ul>
+<li>Selecciona la tabla creada → <strong>Routes</strong> → <strong>Edit routes</strong> → <strong>Add route</strong></li>
 <li><strong>Destination:</strong> <code>0.0.0.0/0</code></li>
-<li>
-<p><strong>Target:</strong> Selecciona el NAT Gateway creado
-3. Asocia las subnets privadas:</p>
-</li>
-<li>
-<p><strong>Subnet associations</strong> → <strong>Edit subnet associations</strong></p>
-</li>
+<li><strong>Target:</strong> Selecciona el NAT Gateway creado</li>
+</ul>
+<ol start="3">
+<li>Asocia las subnets privadas:</li>
+</ol>
+<ul>
+<li><strong>Subnet associations</strong> → <strong>Edit subnet associations</strong></li>
 <li>Marca <code>private-subnet-1</code> y <code>private-subnet-2</code></li>
 <li>Haz clic en <strong>Save associations</strong></li>
 </ul>
@@ -1700,43 +1773,47 @@
 <li>Configuración básica:</li>
 </ol>
 <ul>
-<li><strong>Security group name:</strong> <code>sg-alb-gameday</code></li>
+<li><strong>Security group name:</strong> <code>alb-gameday-sg</code></li>
 <li><strong>Description:</strong> <code>Security group for Application Load Balancer</code></li>
-<li>
-<p><strong>VPC:</strong> Selecciona <code>vpc-gameday</code>
-3. Configuración de reglas de entrada (Inbound rules):</p>
-</li>
-<li>
-<p>Haz clic en <strong>Add rule</strong></p>
-</li>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
+</ul>
+<ol start="3">
+<li>Configuración de reglas de entrada (Inbound rules):</li>
+</ol>
+<ul>
+<li>Haz clic en <strong>Add rule</strong></li>
 <li><strong>Type:</strong> HTTP</li>
 <li><strong>Source:</strong> <code>0.0.0.0/0</code> (permite tráfico desde cualquier IP)</li>
 <li><strong>Description:</strong> <code>Allow HTTP from Internet</code></li>
 <li>(Opcional) Añade otra regla para HTTPS:<ul>
 <li><strong>Type:</strong> HTTPS</li>
 <li><strong>Source:</strong> <code>0.0.0.0/0</code></li>
-<li><strong>Description:</strong> <code>Allow HTTPS from Internet</code>
-4. Las reglas de salida (Outbound rules) pueden quedarse por defecto (todo el tráfico permitido)
-5. Haz clic en <strong>Create security group</strong>
-6. <strong>Anota el Security Group ID</strong> (ej: <code>sg-0123456789abcdef0</code>)</li>
+<li><strong>Description:</strong> <code>Allow HTTPS from Internet</code></li>
 </ul>
 </li>
 </ul>
+<ol start="4">
+<li>Las reglas de salida (Outbound rules) pueden quedarse por defecto (todo el tráfico permitido)</li>
+<li>Haz clic en <strong>Create security group</strong></li>
+<li><strong>Anota el Security Group ID</strong> (ej: <code>sg-0123456789abcdef0</code>)</li>
+</ol>
 <p><strong>Paso 2.2: Security Group para EC2 (servidores web)</strong></p>
 <ol>
 <li>Ve a <strong>Security Groups</strong> → <strong>Create security group</strong></li>
 <li>Configuración básica:</li>
 </ol>
 <ul>
-<li><strong>Security group name:</strong> <code>sg-ec2-gameday</code></li>
+<li><strong>Security group name:</strong> <code>ec2-gameday-sg</code></li>
 <li><strong>Description:</strong> <code>Security group for EC2 web servers</code></li>
-<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code>
-3. Configuración de reglas de entrada:</li>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
 </ul>
-<p><strong>Regla 1 - HTTP desde el ALB:</strong></p>
+<ol start="3">
+<li>Configuración de reglas de entrada:</li>
+</ol>
 <ul>
+<li><strong>Regla 1 - HTTP desde el ALB:</strong></li>
 <li><strong>Type:</strong> HTTP</li>
-<li><strong>Source:</strong> Selecciona "Custom" y luego busca el Security Group del ALB (<code>sg-alb-gameday</code>)</li>
+<li><strong>Source:</strong> Selecciona "Custom" y luego busca el Security Group del ALB (<code>alb-gameday-sg</code>)</li>
 <li><strong>Description:</strong> <code>Allow HTTP from ALB</code></li>
 </ul>
 <p><strong>Regla 2 - SSH para administración:</strong></p>
@@ -1744,30 +1821,34 @@
 <li>Haz clic en <strong>Add rule</strong></li>
 <li><strong>Type:</strong> SSH</li>
 <li><strong>Source:</strong> <code>My IP</code> (o introduce manualmente tu IP pública si no se detecta)</li>
-<li><strong>Description:</strong> <code>Allow SSH from my IP</code>
-4. Haz clic en <strong>Create security group</strong>
-5. <strong>Anota el Security Group ID</strong> del EC2</li>
+<li><strong>Description:</strong> <code>Allow SSH from my IP</code></li>
 </ul>
+<ol start="4">
+<li>Haz clic en <strong>Create security group</strong></li>
+<li><strong>Anota el Security Group ID</strong> del EC2</li>
+</ol>
 <p><strong>Paso 2.3: Security Group para RDS</strong></p>
 <ol>
 <li>Ve a <strong>Security Groups</strong> → <strong>Create security group</strong></li>
 <li>Configuración básica:</li>
 </ol>
 <ul>
-<li><strong>Security group name:</strong> <code>sg-rds-gameday</code></li>
+<li><strong>Security group name:</strong> <code>rds-gameday-sg</code></li>
 <li><strong>Description:</strong> <code>Security group for RDS database</code></li>
-<li>
-<p><strong>VPC:</strong> Selecciona <code>vpc-gameday</code>
-3. Configuración de reglas de entrada:</p>
-</li>
-<li>
-<p><strong>Type:</strong> MySQL/Aurora (puerto 3306)</p>
-</li>
-<li><strong>Source:</strong> Selecciona el Security Group de EC2 (<code>sg-ec2-gameday</code>)</li>
-<li><strong>Description:</strong> <code>Allow MySQL from EC2 instances</code>
-4. Haz clic en <strong>Create security group</strong>
-5. <strong>Anota el Security Group ID</strong> de RDS</li>
+<li><strong>VPC:</strong> Selecciona <code>vpc-gameday</code></li>
 </ul>
+<ol start="3">
+<li>Configuración de reglas de entrada:</li>
+</ol>
+<ul>
+<li><strong>Type:</strong> MySQL/Aurora (puerto 3306)</li>
+<li><strong>Source:</strong> Selecciona el Security Group de EC2 (<code>ec2-gameday-sg</code>)</li>
+<li><strong>Description:</strong> <code>Allow MySQL from EC2 instances</code></li>
+</ul>
+<ol start="4">
+<li>Haz clic en <strong>Create security group</strong></li>
+<li><strong>Anota el Security Group ID</strong> de RDS</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Verificación de Security Groups</p>
 <p>Asegúrate de que has creado los 3 Security Groups con sus reglas específicas:</p>
@@ -1785,12 +1866,14 @@
 <p>Ve a <strong>EC2</strong> → <strong>Instances</strong> → <strong>Launch instances</strong></p>
 </li>
 <li>
-<p><strong>Paso 1 - Name and tags:</strong>
-   - <strong>Name:</strong> <code>web-server-1</code></p>
+<p><strong>Paso 1 - Name and tags:</strong></p>
 </li>
-<li>
-<p><strong>Paso 2 - Application and OS Images (Amazon Machine Image):</strong></p>
-</li>
+</ol>
+<ul>
+<li><strong>Name:</strong> <code>web-server-1</code></li>
+</ul>
+<ol start="3">
+<li><strong>Paso 2 - Application and OS Images (Amazon Machine Image):</strong></li>
 </ol>
 <ul>
 <li>Selecciona <strong>Amazon Linux 2023 AMI</strong> (gratuita, Free Tier eligible)</li>
@@ -1825,19 +1908,17 @@
 <li><strong>Subnet:</strong> Selecciona <code>public-subnet-1</code></li>
 <li><strong>Auto-assign Public IP:</strong> Enable (para que tenga IP pública)</li>
 <li><strong>Firewall (security groups):</strong> Selecciona "Select existing security group"</li>
-<li><strong>Common security groups:</strong> Selecciona <code>sg-ec2-gameday</code></li>
-<li>Haz clic en <strong>Edit</strong> en la sección de Security Groups para asegurarte de que solo está seleccionado <code>sg-ec2-gameday</code></li>
+<li><strong>Common security groups:</strong> Selecciona <code>ec2-gameday-sg</code></li>
+<li>Haz clic en <strong>Edit</strong> en la sección de Security Groups para asegurarte de que solo está seleccionado <code>ec2-gameday-sg</code></li>
 </ul>
 <ol start="7">
 <li><strong>Paso 6 - Configure storage:</strong></li>
-<li>
+</ol>
 <ul>
 <li>Deja los valores por defecto (8 GB gp3) - está dentro del Free Tier</li>
 </ul>
-</li>
-<li>
-<p><strong>Paso 7 - Advanced details:</strong></p>
-</li>
+<ol start="8">
+<li><strong>Paso 7 - Advanced details:</strong></li>
 </ol>
 <ul>
 <li>Desplázate hasta <strong>User data</strong> (al final)</li>
@@ -1851,7 +1932,7 @@
 </code></pre></div>
    Este script instala Apache, lo inicia y crea una página HTML simple.</li>
 </ul>
-<ol start="10">
+<ol start="9">
 <li>Haz clic en <strong>Launch instance</strong></li>
 <li>Espera hasta que el estado sea <strong>Running</strong> (puede tardar 1-2 minutos)</li>
 <li>Anota la <strong>IP Pública</strong> de la instancia</li>
@@ -1864,7 +1945,7 @@
 <li><strong>Name:</strong> <code>web-server-2</code></li>
 <li><strong>Subnet:</strong> Selecciona <code>public-subnet-2</code> (la otra subnet pública, en diferente AZ)</li>
 <li><strong>Key pair:</strong> Usa la misma <code>gameday-keypair</code></li>
-<li><strong>Security Group:</strong> Mismo <code>sg-ec2-gameday</code></li>
+<li><strong>Security Group:</strong> Mismo <code>ec2-gameday-sg</code></li>
 <li><strong>User data:</strong> Mismo script</li>
 </ul>
 <ol start="2">
@@ -1898,12 +1979,14 @@
 <p>Ve a <strong>EC2</strong> → <strong>Target Groups</strong> → <strong>Create target group</strong></p>
 </li>
 <li>
-<p><strong>Paso 1 - Choose a target type:</strong>
-   - Selecciona <strong>Instances</strong></p>
+<p><strong>Paso 1 - Choose a target type:</strong></p>
 </li>
-<li>
-<p><strong>Paso 2 - Basic configuration:</strong></p>
-</li>
+</ol>
+<ul>
+<li>Selecciona <strong>Instances</strong></li>
+</ul>
+<ol start="3">
+<li><strong>Paso 2 - Basic configuration:</strong></li>
 </ol>
 <ul>
 <li><strong>Target group name:</strong> <code>tg-web-servers</code></li>
@@ -1972,7 +2055,7 @@
 </ol>
 <ul>
 <li>Desmarca el grupo por defecto</li>
-<li>Selecciona <code>sg-alb-gameday</code> (el que creamos anteriormente)</li>
+<li>Selecciona <code>alb-gameday-sg</code> (el que creamos anteriormente)</li>
 </ul>
 <ol start="6">
 <li><strong>Paso 4 - Listeners and routing:</strong></li>
@@ -2072,7 +2155,7 @@
 <li><strong>Subnet group:</strong> Selecciona <code>db-subnet-group-gameday</code> (el creado anteriormente)</li>
 <li><strong>Public access:</strong> <strong>No</strong> (la base de datos estará en subnets privadas, solo accesible desde EC2)</li>
 <li><strong>VPC security group:</strong> Selecciona "Choose existing"</li>
-<li><strong>Existing VPC security groups:</strong> Selecciona <code>sg-rds-gameday</code> (el creado anteriormente)</li>
+<li><strong>Existing VPC security groups:</strong> Selecciona <code>rds-gameday-sg</code> (el creado anteriormente)</li>
 <li><strong>Availability Zone:</strong> Deja "No preference" o selecciona una AZ específica</li>
 <li><strong>Database port:</strong> 3306 (puerto por defecto de MySQL)</li>
 </ul>
@@ -2473,9 +2556,9 @@
 <p><strong>Paso 3.2: Configurar el código</strong></p>
 <ol>
 <li>En la sección <strong>Code source</strong>, borra el código por defecto</li>
-<li>
-<p>Pega el siguiente código (Python):
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span> <span class="nn">json</span>
+<li>Pega el siguiente código (Python):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="linenos" data-linenos=" 3 "></span>
 <span class="linenos" data-linenos=" 4 "></span><span class="n">dynamodb</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">)</span>
@@ -2499,11 +2582,9 @@
 <span class="linenos" data-linenos="22 "></span>            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
 <span class="linenos" data-linenos="23 "></span>            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)})</span>
 <span class="linenos" data-linenos="24 "></span>        <span class="p">}</span>
-</code></pre></div></p>
-</li>
-<li>
-<p>Haz clic en <strong>Deploy</strong> para guardar el código</p>
-</li>
+</code></pre></div>
+<ol start="3">
+<li>Haz clic en <strong>Deploy</strong> para guardar el código</li>
 </ol>
 <p><strong>Paso 3.3: Configurar timeout y memoria</strong></p>
 <ol>
@@ -2519,10 +2600,12 @@
 </ol>
 <ul>
 <li><strong>Event name:</strong> <code>test-listar-tareas</code></li>
-<li><strong>Event JSON:</strong> <code>{}</code>
-3. Haz clic en <strong>Test</strong>
-4. Revisa la respuesta - debería listar todas las tareas existentes en DynamoDB</li>
+<li><strong>Event JSON:</strong> <code>{}</code></li>
 </ul>
+<ol start="3">
+<li>Haz clic en <strong>Test</strong></li>
+<li>Revisa la respuesta - debería listar todas las tareas existentes en DynamoDB</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Verificación de la función de listado</p>
 <p>Al probar la función <code>listar-tareas</code>:</p>
@@ -2541,12 +2624,14 @@
 <p>Ve a <strong>API Gateway</strong> → <strong>APIs</strong> → <strong>Create API</strong></p>
 </li>
 <li>
-<p><strong>Choose an API type:</strong>
-   - Selecciona <strong>REST API</strong> → <strong>Build</strong></p>
+<p><strong>Choose an API type:</strong></p>
 </li>
-<li>
-<p><strong>Create new API:</strong></p>
-</li>
+</ol>
+<ul>
+<li>Selecciona <strong>REST API</strong> → <strong>Build</strong></li>
+</ul>
+<ol start="3">
+<li><strong>Create new API:</strong></li>
 </ol>
 <ul>
 <li><strong>API name:</strong> <code>api-tareas-gameday</code></li>
@@ -2566,9 +2651,11 @@
 <ul>
 <li><strong>Resource Name:</strong> <code>tareas</code></li>
 <li><strong>Resource Path:</strong> <code>/tareas</code> (se genera automáticamente)</li>
-<li><strong>Enable API Gateway CORS:</strong> Marca esta casilla (permite llamadas desde navegadores web)
-5. Haz clic en <strong>Create Resource</strong></li>
+<li><strong>Enable API Gateway CORS:</strong> Marca esta casilla (permite llamadas desde navegadores web)</li>
 </ul>
+<ol start="5">
+<li>Haz clic en <strong>Create Resource</strong></li>
+</ol>
 <p><strong>Paso 4.3: Crear el método POST para crear tareas</strong></p>
 <ol>
 <li>Selecciona el recurso <code>/tareas</code> que acabas de crear</li>
@@ -2613,10 +2700,12 @@
 </ol>
 <ul>
 <li><strong>Access-Control-Allow-Origin:</strong> <code>*</code> (permite todas las origenes) o una URL específica</li>
-<li>Deja los demás valores por defecto
-4. Haz clic en <strong>Enable CORS and replace existing CORS headers</strong>
-5. Confirma haciendo clic en <strong>Yes, replace existing values</strong></li>
+<li>Deja los demás valores por defecto</li>
 </ul>
+<ol start="4">
+<li>Haz clic en <strong>Enable CORS and replace existing CORS headers</strong></li>
+<li>Confirma haciendo clic en <strong>Yes, replace existing values</strong></li>
+</ol>
 <p><strong>Paso 4.6: Desplegar la API</strong></p>
 <ol>
 <li>En el panel izquierdo, haz clic en <strong>Actions</strong> → <strong>Deploy API</strong></li>
@@ -2626,15 +2715,15 @@
 <li><strong>Deployment stage:</strong> [New Stage]</li>
 <li><strong>Stage name:</strong> <code>prod</code></li>
 <li><strong>Stage description:</strong> <code>Production stage</code></li>
-<li>
-<p><strong>Deployment description:</strong> <code>Initial deployment</code>
-3. Haz clic en <strong>Deploy</strong>
-4. <strong>IMPORTANTE:</strong> Anota la <strong>Invoke URL</strong> que aparece (ej: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod</code>)
-5. Esta es la URL base de tu API. Los endpoints serán:</p>
-</li>
-<li>
-<p>POST: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/tareas</code></p>
-</li>
+<li><strong>Deployment description:</strong> <code>Initial deployment</code></li>
+</ul>
+<ol start="3">
+<li>Haz clic en <strong>Deploy</strong></li>
+<li><strong>IMPORTANTE:</strong> Anota la <strong>Invoke URL</strong> que aparece (ej: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod</code>)</li>
+<li>Esta es la URL base de tu API. Los endpoints serán:</li>
+</ol>
+<ul>
+<li>POST: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/tareas</code></li>
 <li>GET: <code>https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/prod/tareas</code></li>
 </ul>
 <div class="admonition tip">
@@ -2656,16 +2745,16 @@
 <li>Selecciona el método <strong>POST</strong> bajo <code>/tareas</code></li>
 <li>Haz clic en <strong>TEST</strong></li>
 <li><strong>Method:</strong> POST (ya seleccionado)</li>
-<li><strong>Request Body:</strong>
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
+<li><strong>Request Body:</strong></li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">&quot;titulo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Preparar para AWS GameDay&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nt">&quot;descripcion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Revisar conceptos de Cloud Practitioner&quot;</span>
 <span class="linenos" data-linenos="4 "></span><span class="p">}</span>
-</code></pre></div></li>
-<li>Haz clic en <strong>Test</strong></li>
-<li>Revisa la respuesta - debería tener <code>statusCode: 201</code> y un mensaje de éxito</li>
-<li>Repite con el método <strong>GET</strong> para listar las tareas</li>
-</ol>
+</code></pre></div>
+6. Haz clic en <strong>Test</strong>
+7. Revisa la respuesta - debería tener <code>statusCode: 201</code> y un mensaje de éxito
+8. Repite con el método <strong>GET</strong> para listar las tareas</p>
 <p><strong>Paso 5.2: Probar usando curl (desde terminal)</strong></p>
 <p>Reemplaza <code>TU-API-GATEWAY-URL</code> con tu Invoke URL real:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear una tarea</span>
@@ -2887,11 +2976,7 @@
 <li><strong>Aprende de los errores</strong> - forman parte del proceso de aprendizaje</li>
 </ul>
 </div>
-<p>¡Mucha suerte en el campeonato! 🏆</p>
 <hr />
-<blockquote>
-<p><strong>Nota:</strong> Este documento es una guía de preparación. Durante el GameDay real, sigue las instrucciones específicas proporcionadas por los organizadores y expertos de AWS.</p>
-</blockquote>
 
 
 
