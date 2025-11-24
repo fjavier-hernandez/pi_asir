@@ -2236,6 +2236,59 @@
 <li>Observa que a veces muestra <code>web-server-1</code> y otras veces <code>web-server-2</code></li>
 <li>Esto demuestra que el ALB está distribuyendo el tráfico entre ambas instancias (load balancing)</li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">No se puede acceder a las páginas web - Solución de problemas</p>
+<p>Si no puedes acceder a las páginas web a través del ALB o directamente a las instancias EC2, sigue estos pasos de diagnóstico:</p>
+<p><strong>1. Verificar el estado del ALB:</strong></p>
+<ul>
+<li>Ve a <strong>EC2</strong> → <strong>Load Balancers</strong> y verifica que el ALB esté en estado <strong>Active</strong> (no "Provisioning" o "Failed")</li>
+<li>Si está en "Provisioning", espera 2-3 minutos más</li>
+<li>Verifica que el DNS name del ALB esté disponible</li>
+</ul>
+<p><strong>2. Verificar el estado de las instancias en el Target Group:</strong></p>
+<ul>
+<li>Ve a <strong>EC2</strong> → <strong>Target Groups</strong> → Selecciona <code>tg-web-servers</code></li>
+<li>En la pestaña <strong>Targets</strong>, verifica que ambas instancias estén marcadas como <strong>healthy</strong></li>
+<li>Si están <strong>unhealthy</strong>, verifica:</li>
+<li>Que las instancias EC2 estén en estado <strong>Running</strong></li>
+<li>Que Apache esté funcionando (conecta por SSH y ejecuta <code>systemctl status httpd</code>)</li>
+<li>Que el Security Group de EC2 permita tráfico HTTP desde el Security Group del ALB</li>
+</ul>
+<p><strong>3. Verificar Security Groups:</strong></p>
+<ul>
+<li><strong>Security Group del ALB (<code>alb-gameday-sg</code>):</strong> Debe permitir tráfico HTTP (puerto 80) desde <code>0.0.0.0/0</code> (Internet)</li>
+<li><strong>Security Group de EC2 (<code>ec2-gameday-sg</code>):</strong> Debe permitir tráfico HTTP (puerto 80) desde el Security Group del ALB (<code>alb-gameday-sg</code>)</li>
+<li>Verifica en <strong>Security Groups</strong> → Selecciona cada grupo → Pestaña <strong>Inbound rules</strong></li>
+</ul>
+<p><strong>4. Verificar que Apache esté funcionando:</strong></p>
+<ul>
+<li>Conéctate por SSH a una instancia EC2</li>
+<li>Ejecuta: <code>sudo systemctl status httpd</code> (debe estar "active (running)")</li>
+<li>Si no está funcionando, ejecuta:
+  <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+</code></pre></div></li>
+<li>Verifica que existe el archivo: <code>ls -la /var/www/html/index.html</code></li>
+<li>Si no existe, crea uno manualmente o verifica que el User Data se ejecutó correctamente</li>
+</ul>
+<p><strong>5. Verificar acceso directo a las instancias:</strong></p>
+<ul>
+<li>Intenta acceder directamente a la IP pública de una instancia EC2: <code>http://[IP-PUBLICA]</code></li>
+<li>Si funciona directamente pero no a través del ALB, el problema está en la configuración del ALB o Target Group</li>
+<li>Si no funciona directamente, el problema está en la instancia o Security Group</li>
+</ul>
+<p><strong>6. Verificar que las instancias estén en subnets públicas:</strong></p>
+<ul>
+<li>Las instancias EC2 deben estar en <code>public-subnet-1</code> o <code>public-subnet-2</code></li>
+<li>Deben tener <strong>Auto-assign Public IP</strong> habilitado</li>
+<li>Verifica en <strong>EC2</strong> → <strong>Instances</strong> → Selecciona una instancia → Pestaña <strong>Networking</strong></li>
+</ul>
+<p><strong>7. Verificar tabla de rutas:</strong></p>
+<ul>
+<li>Las subnets públicas deben tener una tabla de rutas que incluya una ruta <code>0.0.0.0/0</code> → Internet Gateway</li>
+<li>Ve a <strong>VPC</strong> → <strong>Route Tables</strong> y verifica la tabla asociada a las subnets públicas</li>
+</ul>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Verificación del Load Balancer</p>
 <p>Para verificar que el ALB funciona correctamente:</p>
