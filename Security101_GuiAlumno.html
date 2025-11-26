@@ -1,0 +1,1340 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guía paso a paso para resolver el quest Security 101 del AWS GameDay">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/Security101_GuiAlumno.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Security 101 - Guía del Alumno - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Security 101 - Guía del Alumno - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Guía paso a paso para resolver el quest Security 101 del AWS GameDay" >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/Security101_GuiAlumno.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/Security101_GuiAlumno.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Security 101 - Guía del Alumno - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Guía paso a paso para resolver el quest Security 101 del AWS GameDay" >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/Security101_GuiAlumno.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#security-101-guia-del-alumno" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Security 101 - Guía del Alumno
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-de-la-infraestructura" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura de la Infraestructura
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-rds-seguro-bloquear-conexiones-no-autorizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parte 1: RDS Seguro - Bloquear Conexiones No Autorizadas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1: RDS Seguro - Bloquear Conexiones No Autorizadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos-a-seguir" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos a seguir
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pasos a seguir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-identificar-la-instancia-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Identificar la instancia RDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-revisar-cloudwatch-logs-para-identificar-la-ip-del-atacante" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Revisar CloudWatch Logs para identificar la IP del atacante
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-revisar-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Revisar Security Groups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-modificar-el-security-group-de-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4. Modificar el Security Group de RDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-verificar-que-el-sitio-web-sigue-funcionando" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5. Verificar que el sitio web sigue funcionando
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-registrar-la-ip-del-atacante" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6. Registrar la IP del atacante
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-seguridad-s3-proteger-archivos-del-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parte 2: Seguridad S3 - Proteger Archivos del Bucket
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2: Seguridad S3 - Proteger Archivos del Bucket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos-a-seguir_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos a seguir
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pasos a seguir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-identificar-el-bucket-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Identificar el bucket S3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-revisar-si-faltan-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Revisar si faltan archivos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-restaurar-archivos-eliminados-si-es-necesario" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Restaurar archivos eliminados (si es necesario)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configurar-politicas-de-bucket-para-prevenir-eliminaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Configurar políticas de bucket para prevenir eliminaciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-configurar-object-lock-opcional-pero-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Configurar Object Lock (Opcional pero recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-revisar-y-restringir-politicas-de-iam" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6. Revisar y restringir políticas de IAM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-verificar-que-el-sitio-web-se-ve-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7. Verificar que el sitio web se ve correctamente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-3-wafv2-proteger-alb-contra-sql-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parte 3: WAFv2 - Proteger ALB contra SQL Injection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 3: WAFv2 - Proteger ALB contra SQL Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasos-a-seguir_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos a seguir
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pasos a seguir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-identificar-el-application-load-balancer-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Identificar el Application Load Balancer (ALB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-crear-un-web-acl-en-aws-wafv2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Crear un Web ACL en AWS WAFv2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-asociar-el-web-acl-al-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Asociar el Web ACL al ALB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-verificar-que-el-waf-esta-bloqueando-ataques" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Verificar que el WAF está bloqueando ataques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-monitorear-el-waf-en-cloudwatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Monitorear el WAF en CloudWatch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-ajustar-reglas-si-es-necesario" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6. Ajustar reglas si es necesario
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificación Final
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-sitio-web-deja-de-funcionar-despues-de-aplicar-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      El sitio web deja de funcionar después de aplicar cambios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-encuentro-la-ip-del-atacante-en-los-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      No encuentro la IP del atacante en los logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-archivos-s3-siguen-siendo-eliminados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Los archivos S3 siguen siendo eliminados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-waf-no-bloquea-los-ataques" class="md-nav__link">
+    <span class="md-ellipsis">
+      El WAF no bloquea los ataques
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos Adicionales
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="security-101-guia-del-alumno">Security 101 - Guía del Alumno<a class="headerlink" href="#security-101-guia-del-alumno" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>En este quest debes proteger la infraestructura de Unicorn.Rentals contra tres tipos de ataques:</p>
+<ol>
+<li><strong>Ataques a la base de datos RDS</strong>: Conexiones no autorizadas desde IPs desconocidas</li>
+<li><strong>Eliminación de archivos en S3</strong>: Alguien está borrando archivos CSS e imágenes</li>
+<li><strong>Ataques SQL Injection</strong>: Intentos de inyección SQL a través del ALB</li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE</strong>: No debes romper el sitio web. El sitio debe seguir funcionando después de aplicar las soluciones.</p>
+</blockquote>
+<h2 id="arquitectura-de-la-infraestructura">Arquitectura de la Infraestructura<a class="headerlink" href="#arquitectura-de-la-infraestructura" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    Internet[("🌐 Internet&lt;br/&gt;Usuarios Legítimos")]
+    Attacker[("⚠️ Atacante&lt;br/&gt;IP Desconocida")]
+
+    subgraph VPC["🔷 VPC: Unicorn.Rentals"]
+        direction TB
+
+        IGW[("🔌 Internet Gateway")]
+
+        WAF["🛡️ AWS WAFv2&lt;br/&gt;(A CONFIGURAR)&lt;br/&gt;⚠️ Problema 3: SQL Injection"]
+
+        subgraph AZ1["📍 Availability Zone 1"]
+            direction LR
+
+            subgraph Pub1["🌐 Subnet Pública 1"]
+                ALB["⚖️ Application Load Balancer&lt;br/&gt;alb-unicorn-rentals"]
+                EC2A["🖥️ EC2 Instance&lt;br/&gt;web-server-1"]
+            end
+
+            subgraph Priv1["🔒 Subnet Privada 1"]
+                RDS["🗄️ Amazon RDS&lt;br/&gt;(MySQL/PostgreSQL)&lt;br/&gt;⚠️ Problema 1: Conexiones no autorizadas"]
+            end
+        end
+
+        subgraph AZ2["📍 Availability Zone 2"]
+            direction LR
+
+            subgraph Pub2["🌐 Subnet Pública 2"]
+                EC2B["🖥️ EC2 Instance&lt;br/&gt;web-server-2"]
+            end
+        end
+    end
+
+    S3["🪣 Amazon S3&lt;br/&gt;Bucket: unicorn-website&lt;br/&gt;⚠️ Problema 2: Archivos eliminados&lt;br/&gt;(CSS e imágenes)"]
+
+    %% Flujo de tráfico legítimo
+    Internet --&gt;|"HTTP/HTTPS&lt;br/&gt;Puerto 80/443"| IGW
+    IGW --&gt;|"Tráfico entrante"| WAF
+    WAF --&gt;|"Tráfico filtrado"| ALB
+    ALB --&gt;|"HTTP&lt;br/&gt;Puerto 80"| EC2A
+    ALB --&gt;|"HTTP&lt;br/&gt;Puerto 80"| EC2B
+
+    %% Flujo de atacante (intentos SQL injection)
+    Attacker -.-&gt;|"SQL Injection&lt;br/&gt;/Users.php?uid=1 or 1=1&lt;br/&gt;❌ BLOQUEAR"| WAF
+    Attacker -.-&gt;|"Intento conexión&lt;br/&gt;directa a RDS&lt;br/&gt;❌ BLOQUEAR"| RDS
+
+    %% Flujo desde EC2 a base de datos
+    EC2A --&gt;|"MySQL/PostgreSQL&lt;br/&gt;Puerto 3306/5432&lt;br/&gt;✅ PERMITIR"| RDS
+    EC2B --&gt;|"MySQL/PostgreSQL&lt;br/&gt;Puerto 3306/5432&lt;br/&gt;✅ PERMITIR"| RDS
+
+    %% Flujo desde EC2 a S3
+    EC2A --&gt;|"Lectura de archivos&lt;br/&gt;CSS e imágenes&lt;br/&gt;✅ PERMITIR"| S3
+    EC2B --&gt;|"Lectura de archivos&lt;br/&gt;CSS e imágenes&lt;br/&gt;✅ PERMITIR"| S3
+
+    %% Atacante intentando eliminar archivos S3
+    Attacker -.-&gt;|"Eliminación de archivos&lt;br/&gt;❌ BLOQUEAR"| S3
+
+    %% Estilos
+    classDef internet fill:#fff4e6,stroke:#f57c00,stroke-width:3px,color:#000
+    classDef attacker fill:#ffebee,stroke:#d32f2f,stroke-width:3px,stroke-dasharray: 5 5,color:#000
+    classDef vpc fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#000
+    classDef public fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    classDef private fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#000
+    classDef ec2 fill:#fff9c4,stroke:#f57f17,stroke-width:2px,color:#000
+    classDef db fill:#e1bee7,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef networking fill:#b2dfdb,stroke:#00796b,stroke-width:2px,color:#000
+    classDef waf fill:#fff3e0,stroke:#e65100,stroke-width:3px,color:#000
+    classDef s3 fill:#e0f2f1,stroke:#00695c,stroke-width:2px,color:#000
+    classDef problem fill:#ffebee,stroke:#c62828,stroke-width:2px,stroke-dasharray: 3 3,color:#000
+
+    class Internet internet
+    class Attacker attacker
+    class VPC vpc
+    class Pub1,Pub2 public
+    class Priv1 private
+    class EC2A,EC2B ec2
+    class RDS,S3 problem
+    class ALB,IGW networking
+    class WAF waf
+    class S3 s3</code></pre>
+<p><strong>Descripción de componentes y problemas de seguridad:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Problema de Seguridad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Internet Gateway</strong></td>
+<td style="text-align: left;">Puerta de enlace para comunicación con Internet</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AWS WAFv2</strong></td>
+<td style="text-align: left;">Firewall de aplicación web (debe configurarse)</td>
+<td style="text-align: left;"><strong>Problema 3</strong>: Bloquear ataques SQL injection como <code>/Users.php?uid=1%20or%201=1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Application Load Balancer</strong></td>
+<td style="text-align: left;">Distribuye el tráfico HTTP/HTTPS entre servidores web</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EC2 Instances</strong></td>
+<td style="text-align: left;">Servidores web que hospedan la aplicación PHP</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Amazon RDS</strong></td>
+<td style="text-align: left;">Base de datos relacional (MySQL/PostgreSQL)</td>
+<td style="text-align: left;"><strong>Problema 1</strong>: Recibe conexiones no autorizadas desde IPs desconocidas. Solo debe aceptar conexiones desde los servidores web</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Amazon S3</strong></td>
+<td style="text-align: left;">Bucket con archivos estáticos (CSS, imágenes)</td>
+<td style="text-align: left;"><strong>Problema 2</strong>: Alguien está eliminando archivos CSS e imágenes del bucket</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Flujos de tráfico y problemas a resolver:</strong></p>
+<ol>
+<li><strong>Tráfico legítimo entrante</strong>: Internet → Internet Gateway → <strong>WAF</strong> (configurar) → ALB → EC2 → RDS</li>
+<li><strong>Ataques SQL Injection</strong>: Atacante → <strong>WAF</strong> (bloquear) → ALB ❌</li>
+<li><strong>Conexiones no autorizadas a RDS</strong>: Atacante → <strong>RDS directamente</strong> (bloquear mediante Security Groups) ❌</li>
+<li><strong>Eliminación de archivos S3</strong>: Atacante → <strong>S3</strong> (bloquear mediante Bucket Policies) ❌</li>
+<li><strong>Acceso legítimo a S3</strong>: EC2 → <strong>S3</strong> (lectura de CSS e imágenes) ✅</li>
+</ol>
+<p><strong>Soluciones a implementar:</strong></p>
+<ol>
+<li><strong>RDS</strong>: Configurar Security Groups para permitir solo conexiones desde el Security Group de las instancias EC2</li>
+<li><strong>S3</strong>: Configurar Bucket Policies para prevenir eliminaciones no autorizadas y restaurar archivos eliminados</li>
+<li><strong>WAF</strong>: Crear Web ACL con reglas para bloquear SQL injection y asociarlo al ALB</li>
+</ol>
+<hr />
+<h2 id="parte-1-rds-seguro-bloquear-conexiones-no-autorizadas">Parte 1: RDS Seguro - Bloquear Conexiones No Autorizadas<a class="headerlink" href="#parte-1-rds-seguro-bloquear-conexiones-no-autorizadas" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h3>
+<p>Identificar la IP del atacante que intenta conectarse a la base de datos RDS y bloquear esas conexiones sin afectar el sitio web.</p>
+<h3 id="pasos-a-seguir">Pasos a seguir<a class="headerlink" href="#pasos-a-seguir" title="Permanent link">&para;</a></h3>
+<h4 id="11-identificar-la-instancia-rds">1.1. Identificar la instancia RDS<a class="headerlink" href="#11-identificar-la-instancia-rds" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a la consola de AWS y navega a <strong>Amazon RDS</strong></li>
+<li>Identifica la instancia de base de datos en ejecución</li>
+<li>Anota el <strong>nombre de la instancia</strong> y el <strong>Security Group</strong> asociado</li>
+</ol>
+<h4 id="12-revisar-cloudwatch-logs-para-identificar-la-ip-del-atacante">1.2. Revisar CloudWatch Logs para identificar la IP del atacante<a class="headerlink" href="#12-revisar-cloudwatch-logs-para-identificar-la-ip-del-atacante" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
+<li>Busca logs relacionados con RDS (pueden llamarse <code>/aws/rds/instance/[nombre-instancia]/error</code> o similar)</li>
+<li>Revisa los logs para encontrar intentos de conexión desde IPs que no pertenecen a tus servidores web</li>
+<li><strong>Anota la dirección IP</strong> del atacante (la que aparece múltiples veces en intentos fallidos)</li>
+</ol>
+<p><strong>Alternativa: Usar CloudWatch Insights</strong></p>
+<ol>
+<li>En CloudWatch, ve a <strong>Logs Insights</strong></li>
+<li>Selecciona el log group de RDS</li>
+<li>Ejecuta una consulta como:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>fields @timestamp, @message
+<span class="linenos" data-linenos="2 "></span>| filter @message like /connection/
+<span class="linenos" data-linenos="3 "></span>| sort @timestamp desc
+<span class="linenos" data-linenos="4 "></span>| limit 50
+</code></pre></div></li>
+<li>Busca IPs que aparezcan repetidamente y que no sean de tus servidores web</li>
+</ol>
+<h4 id="13-revisar-security-groups">1.3. Revisar Security Groups<a class="headerlink" href="#13-revisar-security-groups" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Security Groups</strong></li>
+<li>Encuentra el Security Group asociado a tu instancia RDS</li>
+<li>Revisa las <strong>Inbound Rules</strong> (Reglas de entrada)</li>
+<li>Identifica qué IPs o rangos tienen acceso actualmente</li>
+</ol>
+<h4 id="14-modificar-el-security-group-de-rds">1.4. Modificar el Security Group de RDS<a class="headerlink" href="#14-modificar-el-security-group-de-rds" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>🎯 <strong>Estrategia</strong>: Permitir conexiones SOLO desde los servidores web, bloqueando todas las demás.</p>
+</blockquote>
+<ol>
+<li>Edita el Security Group de RDS</li>
+<li><strong>Modifica o elimina</strong> la regla que permite acceso desde <code>0.0.0.0/0</code> (todo internet)</li>
+<li><strong>Añade una nueva regla</strong> que permita conexiones solo desde:
+   - El Security Group de tus instancias EC2 (servidores web)
+   - O las IPs específicas de tus servidores web</li>
+</ol>
+<p><strong>Configuración sugerida:</strong>
+   - <strong>Type</strong>: MySQL/Aurora (puerto 3306) o PostgreSQL (puerto 5432) según tu base de datos
+   - <strong>Source</strong>: Selecciona el Security Group de tus instancias EC2
+   - <strong>Description</strong>: "Allow access only from web servers"</p>
+<ol start="4">
+<li><strong>Guarda los cambios</strong></li>
+</ol>
+<h4 id="15-verificar-que-el-sitio-web-sigue-funcionando">1.5. Verificar que el sitio web sigue funcionando<a class="headerlink" href="#15-verificar-que-el-sitio-web-sigue-funcionando" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Obtén la URL del ALB (Application Load Balancer)
+   - Ve a <strong>EC2</strong> → <strong>Load Balancers</strong>
+   - Copia el DNS name del ALB</li>
+<li>Abre el DNS en un navegador</li>
+<li>Verifica que el sitio carga correctamente</li>
+<li>Prueba el endpoint <code>/Users.php?uid=1</code> para verificar que la conexión a la base de datos funciona</li>
+</ol>
+<h4 id="16-registrar-la-ip-del-atacante">1.6. Registrar la IP del atacante<a class="headerlink" href="#16-registrar-la-ip-del-atacante" title="Permanent link">&para;</a></h4>
+<ol>
+<li>En el formulario del quest "RDS seguro"</li>
+<li>Ingresa la dirección IP que identificaste del atacante</li>
+<li>Haz clic en <strong>Enviar</strong></li>
+</ol>
+<hr />
+<h2 id="parte-2-seguridad-s3-proteger-archivos-del-bucket">Parte 2: Seguridad S3 - Proteger Archivos del Bucket<a class="headerlink" href="#parte-2-seguridad-s3-proteger-archivos-del-bucket" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo_1">Objetivo<a class="headerlink" href="#objetivo_1" title="Permanent link">&para;</a></h3>
+<p>Evitar que se eliminen los archivos CSS e imágenes del bucket S3 y restaurarlos si ya fueron eliminados.</p>
+<h3 id="pasos-a-seguir_1">Pasos a seguir<a class="headerlink" href="#pasos-a-seguir_1" title="Permanent link">&para;</a></h3>
+<h4 id="21-identificar-el-bucket-s3">2.1. Identificar el bucket S3<a class="headerlink" href="#21-identificar-el-bucket-s3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>Amazon S3</strong> en la consola de AWS</li>
+<li>Busca el bucket que contiene los archivos del sitio web
+   - Puede tener un nombre como <code>unicorn-rentals-website</code> o similar
+   - O verifica el código fuente del sitio web para encontrar referencias al bucket</li>
+</ol>
+<h4 id="22-revisar-si-faltan-archivos">2.2. Revisar si faltan archivos<a class="headerlink" href="#22-revisar-si-faltan-archivos" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Navega dentro del bucket</li>
+<li>Busca archivos con extensión <code>.css</code> y archivos de imágenes (<code>.png</code>, <code>.jpg</code>, etc.)</li>
+<li>Si faltan archivos, continúa con la restauración (2.3)</li>
+<li>Si están presentes, continúa con la protección (2.4)</li>
+</ol>
+<h4 id="23-restaurar-archivos-eliminados-si-es-necesario">2.3. Restaurar archivos eliminados (si es necesario)<a class="headerlink" href="#23-restaurar-archivos-eliminados-si-es-necesario" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Activar Versionado</strong> (si no está activado):
+   - Ve a <strong>Properties</strong> del bucket
+   - Busca <strong>Bucket Versioning</strong>
+   - Actívalo</p>
+</li>
+<li>
+<p><strong>Restaurar versiones anteriores</strong>:
+   - Ve a la pestaña <strong>Versions</strong> o <strong>Show versions</strong>
+   - Busca las versiones anteriores de los archivos eliminados
+   - Selecciona la versión anterior del archivo
+   - Haz clic en <strong>Actions</strong> → <strong>Restore</strong> o <strong>Copy</strong> para restaurar</p>
+</li>
+</ol>
+<p><strong>Alternativa: Usar S3 Recycle Bin (si está configurado)</strong></p>
+<ol>
+<li>Ve a <strong>Properties</strong> → <strong>Recycle Bin</strong></li>
+<li>Revisa si los archivos eliminados están ahí</li>
+<li>Restaura los archivos necesarios</li>
+</ol>
+<h4 id="24-configurar-politicas-de-bucket-para-prevenir-eliminaciones">2.4. Configurar políticas de bucket para prevenir eliminaciones<a class="headerlink" href="#24-configurar-politicas-de-bucket-para-prevenir-eliminaciones" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>Permissions</strong> del bucket</li>
+<li>Configura <strong>Bucket Policy</strong> para restringir eliminaciones:</li>
+</ol>
+<p><strong>Opción A: Bloquear eliminaciones públicas</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">      </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DenyPublicDelete&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deny&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObjectVersion&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p">],</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::NOMBRE-BUCKET/*&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nt">&quot;StringNotEquals&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">          </span><span class="nt">&quot;aws:PrincipalArn&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::CUENTA-ID:user/ADMIN-USER&quot;</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="p">}</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p">}</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="p">]</span>
+<span class="linenos" data-linenos="20 "></span><span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Opción B: Restringir eliminaciones solo a IAM users/roles específicos</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">      </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DenyDeleteExceptWebServers&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deny&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObjectVersion&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p">],</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::NOMBRE-BUCKET/*&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nt">&quot;StringNotLike&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">          </span><span class="nt">&quot;aws:PrincipalArn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">            </span><span class="s2">&quot;arn:aws:iam::*:role/*&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">            </span><span class="s2">&quot;arn:aws:iam::*:user/admin*&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">          </span><span class="p">]</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="p">}</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="p">}</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="p">}</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">  </span><span class="p">]</span>
+<span class="linenos" data-linenos="23 "></span><span class="p">}</span>
+</code></pre></div></p>
+<blockquote>
+<p>💡 <strong>Nota</strong>: Reemplaza <code>NOMBRE-BUCKET</code> con el nombre real de tu bucket. Puedes obtener el Account ID en la parte superior derecha de la consola.</p>
+</blockquote>
+<h4 id="25-configurar-object-lock-opcional-pero-recomendado">2.5. Configurar Object Lock (Opcional pero recomendado)<a class="headerlink" href="#25-configurar-object-lock-opcional-pero-recomendado" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>Properties</strong> → <strong>Object Lock</strong></li>
+<li>Si está disponible, activa <strong>Object Lock</strong> con modo <strong>Compliance</strong> o <strong>Governance</strong></li>
+<li>Esto previene eliminaciones incluso por usuarios con permisos de administrador</li>
+</ol>
+<h4 id="26-revisar-y-restringir-politicas-de-iam">2.6. Revisar y restringir políticas de IAM<a class="headerlink" href="#26-revisar-y-restringir-politicas-de-iam" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>IAM</strong> → <strong>Users</strong> o <strong>Roles</strong></li>
+<li>Revisa qué usuarios/roles tienen acceso al bucket S3</li>
+<li>Elimina permisos <code>s3:DeleteObject</code> innecesarios</li>
+<li>Asegúrate de que solo usuarios/roles autorizados puedan eliminar objetos</li>
+</ol>
+<h4 id="27-verificar-que-el-sitio-web-se-ve-correctamente">2.7. Verificar que el sitio web se ve correctamente<a class="headerlink" href="#27-verificar-que-el-sitio-web-se-ve-correctamente" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Accede al sitio web a través del ALB</li>
+<li>Verifica que los estilos CSS se cargan correctamente</li>
+<li>Verifica que las imágenes de fondo se muestran</li>
+<li>Si algo no funciona, revisa los permisos de lectura del bucket (el sitio web debe poder LEER los archivos)</li>
+</ol>
+<hr />
+<h2 id="parte-3-wafv2-proteger-alb-contra-sql-injection">Parte 3: WAFv2 - Proteger ALB contra SQL Injection<a class="headerlink" href="#parte-3-wafv2-proteger-alb-contra-sql-injection" title="Permanent link">&para;</a></h2>
+<h3 id="objetivo_2">Objetivo<a class="headerlink" href="#objetivo_2" title="Permanent link">&para;</a></h3>
+<p>Implementar AWS WAF para bloquear intentos de SQL injection como <code>/Users.php?uid=1%20or%201=1</code> sin afectar el tráfico legítimo.</p>
+<h3 id="pasos-a-seguir_2">Pasos a seguir<a class="headerlink" href="#pasos-a-seguir_2" title="Permanent link">&para;</a></h3>
+<h4 id="31-identificar-el-application-load-balancer-alb">3.1. Identificar el Application Load Balancer (ALB)<a class="headerlink" href="#31-identificar-el-application-load-balancer-alb" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Load Balancers</strong></li>
+<li>Identifica tu ALB (debería ser tipo "Application Load Balancer")</li>
+<li>Anota el <strong>ARN</strong> del ALB (lo necesitarás para asociar el WAF)</li>
+</ol>
+<h4 id="32-crear-un-web-acl-en-aws-wafv2">3.2. Crear un Web ACL en AWS WAFv2<a class="headerlink" href="#32-crear-un-web-acl-en-aws-wafv2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>AWS WAF</strong> en la consola
+   - Busca "WAF" en la barra de búsqueda o navega desde <strong>Security, Identity &amp; Compliance</strong></li>
+<li>Selecciona <strong>Web ACLs</strong> en el menú lateral</li>
+<li>Haz clic en <strong>Create web ACL</strong></li>
+<li>Configura los siguientes pasos:</li>
+</ol>
+<p><strong>Step 1: Name and resources</strong>
+   - <strong>Name</strong>: <code>UnicornRentals-ALB-Protection</code>
+   - <strong>Resource type</strong>: Selecciona <strong>Regional resources</strong> (para ALB)
+   - <strong>CloudWatch metric name</strong>: Déjalo por defecto o usa <code>UnicornRentalsALBProtection</code>
+   - Haz clic en <strong>Next</strong></p>
+<p><strong>Step 2: Add rules and rule groups</strong>
+   - Haz clic en <strong>Add rules</strong> → <strong>Add managed rule groups</strong>
+   - Selecciona <strong>AWS Managed Rule Groups</strong>
+   - Busca y activa:
+     - ✅ <strong>Core rule set</strong> (incluye protección contra SQL injection)
+     - ✅ <strong>Known bad inputs</strong> (opcional pero recomendado)
+   - Haz clic en <strong>Add rules</strong></p>
+<p><strong>Crear regla personalizada para SQL Injection específico:</strong>
+   - Haz clic en <strong>Add rules</strong> → <strong>Add my own rules and rule groups</strong> → <strong>Rule builder</strong>
+   - <strong>Name</strong>: <code>Block-SQL-Injection</code>
+   - <strong>Type</strong>: <strong>Rule builder</strong>
+   - <strong>Statement</strong>: 
+     - <strong>Inspect</strong>: Request URI (o All query parameters)
+     - <strong>Match type</strong>: <strong>Contains string</strong>
+     - <strong>String to match</strong>: Ingresa patrones comunes de SQL injection como:
+       - <code>' or '1'='1</code>
+       - <code>' or 1=1</code>
+       - <code>UNION SELECT</code>
+       - <code>DROP TABLE</code>
+       - <code>' or 'x'='x</code>
+   - <strong>Action</strong>: <strong>Block</strong>
+   - Haz clic en <strong>Add rule</strong></p>
+<ul>
+<li><strong>Default web ACL action</strong>: Selecciona <strong>Allow</strong> (permitir el resto del tráfico)</li>
+<li>Haz clic en <strong>Next</strong></li>
+</ul>
+<p><strong>Step 3: Configure metrics</strong>
+   - Revisa las métricas (puedes dejarlas por defecto)
+   - Haz clic en <strong>Next</strong></p>
+<p><strong>Step 4: Review and create</strong>
+   - Revisa la configuración
+   - Haz clic en <strong>Create</strong></p>
+<h4 id="33-asociar-el-web-acl-al-alb">3.3. Asociar el Web ACL al ALB<a class="headerlink" href="#33-asociar-el-web-acl-al-alb" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Después de crear el Web ACL, verás la página de detalles</li>
+<li>Ve a la pestaña <strong>Associated resources</strong></li>
+<li>Haz clic en <strong>Add AWS resources</strong></li>
+<li>Selecciona tu <strong>Application Load Balancer</strong></li>
+<li>Haz clic en <strong>Add</strong></li>
+</ol>
+<p><strong>Alternativa: Desde la página del ALB</strong>
+1. Ve a <strong>EC2</strong> → <strong>Load Balancers</strong>
+2. Selecciona tu ALB
+3. En la pestaña <strong>Integrated services</strong>, haz clic en <strong>Associate web ACL</strong>
+4. Selecciona el Web ACL que creaste
+5. Haz clic en <strong>Associate</strong></p>
+<h4 id="34-verificar-que-el-waf-esta-bloqueando-ataques">3.4. Verificar que el WAF está bloqueando ataques<a class="headerlink" href="#34-verificar-que-el-waf-esta-bloqueando-ataques" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Espera 1-2 minutos para que los cambios se propaguen</li>
+<li>Intenta acceder a una URL con SQL injection desde un navegador:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>http://[DNS-ALB]/Users.php?uid=1%20or%201=1
+</code></pre></div></li>
+<li>Deberías recibir un error 403 (Forbidden) o un mensaje de bloqueo</li>
+<li>Verifica que el sitio web normal sigue funcionando:
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>http://[DNS-ALB]/
+</code></pre></div></li>
+</ol>
+<h4 id="35-monitorear-el-waf-en-cloudwatch">3.5. Monitorear el WAF en CloudWatch<a class="headerlink" href="#35-monitorear-el-waf-en-cloudwatch" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Ve a <strong>CloudWatch</strong> → <strong>Metrics</strong></li>
+<li>Busca métricas bajo <strong>AWS/WAFV2</strong></li>
+<li>Revisa:
+   - <strong>AllowedRequests</strong>: Solicitudes permitidas
+   - <strong>BlockedRequests</strong>: Solicitudes bloqueadas
+   - <strong>CountedRequests</strong>: Solicitudes contadas</li>
+</ol>
+<h4 id="36-ajustar-reglas-si-es-necesario">3.6. Ajustar reglas si es necesario<a class="headerlink" href="#36-ajustar-reglas-si-es-necesario" title="Permanent link">&para;</a></h4>
+<p>Si el sitio web legítimo está siendo bloqueado:
+1. Ve al Web ACL en <strong>AWS WAF</strong>
+2. Edita las reglas
+3. Ajusta las condiciones o cambia acciones de "Block" a "Count" temporalmente para depurar</p>
+<hr />
+<h2 id="verificacion-final">Verificación Final<a class="headerlink" href="#verificacion-final" title="Permanent link">&para;</a></h2>
+<p>Después de completar las tres partes, verifica:</p>
+<ol>
+<li>✅ <strong>RDS</strong>: El sitio web funciona y solo acepta conexiones desde servidores web</li>
+<li>✅ <strong>S3</strong>: Los archivos CSS e imágenes están presentes y protegidos contra eliminación</li>
+<li>✅ <strong>WAF</strong>: Los ataques SQL injection son bloqueados pero el sitio web normal funciona</li>
+</ol>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="el-sitio-web-deja-de-funcionar-despues-de-aplicar-cambios">El sitio web deja de funcionar después de aplicar cambios<a class="headerlink" href="#el-sitio-web-deja-de-funcionar-despues-de-aplicar-cambios" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>RDS</strong>: Verifica que el Security Group de RDS permite conexiones desde el Security Group de EC2</li>
+<li><strong>S3</strong>: Verifica que el bucket tiene permisos de lectura públicos o que el sitio web tiene credenciales para leer</li>
+<li><strong>WAF</strong>: Revisa las reglas del WAF, puede que estés bloqueando tráfico legítimo</li>
+</ul>
+<h3 id="no-encuentro-la-ip-del-atacante-en-los-logs">No encuentro la IP del atacante en los logs<a class="headerlink" href="#no-encuentro-la-ip-del-atacante-en-los-logs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Revisa CloudWatch Logs Insights con diferentes consultas</li>
+<li>Revisa VPC Flow Logs si están habilitados</li>
+<li>Revisa los Security Groups para ver qué IPs tienen acceso actualmente</li>
+</ul>
+<h3 id="los-archivos-s3-siguen-siendo-eliminados">Los archivos S3 siguen siendo eliminados<a class="headerlink" href="#los-archivos-s3-siguen-siendo-eliminados" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verifica que la Bucket Policy está correctamente configurada</li>
+<li>Revisa IAM users/roles que puedan tener permisos amplios</li>
+<li>Considera usar MFA Delete para requerir autenticación adicional</li>
+</ul>
+<h3 id="el-waf-no-bloquea-los-ataques">El WAF no bloquea los ataques<a class="headerlink" href="#el-waf-no-bloquea-los-ataques" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verifica que el Web ACL está asociado al ALB correcto</li>
+<li>Espera unos minutos para que los cambios se propaguen</li>
+<li>Revisa que las reglas están en modo "Block" y no "Count"</li>
+<li>Verifica los patrones de SQL injection en las reglas</li>
+</ul>
+<hr />
+<h2 id="recursos-adicionales">Recursos Adicionales<a class="headerlink" href="#recursos-adicionales" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html">Documentación AWS RDS Security Groups</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html">Documentación AWS S3 Bucket Policies</a></li>
+<li><a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">Documentación AWS WAFv2</a></li>
+</ul>
+<hr />
+<p><strong>¡Buena suerte en el GameDay! 🎮🛡️</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
