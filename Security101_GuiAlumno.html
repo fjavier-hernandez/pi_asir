@@ -387,6 +387,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-no-encuentro-la-ip-en-los-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting: No encuentro la IP en los logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting: No encuentro la IP en los logs">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#13-revisar-y-modificar-security-groups" class="md-nav__link">
     <span class="md-ellipsis">
@@ -954,14 +969,41 @@
 <li>Revisa los logs para encontrar intentos de conexión desde IPs que no pertenecen a tus servidores web</li>
 <li><strong>Anota la dirección IP</strong> del atacante (la que aparece múltiples veces en intentos fallidos)</li>
 </ol>
-<h5 id="opcion-b-revisar-security-groups-para-ver-ips-con-acceso">Opción B: Revisar Security Groups para ver IPs con acceso<a class="headerlink" href="#opcion-b-revisar-security-groups-para-ver-ips-con-acceso" title="Permanent link">&para;</a></h5>
+<h5 id="opcion-b-revisar-security-groups-para-ver-ips-con-acceso-metodo-mas-directo">Opción B: Revisar Security Groups para ver IPs con acceso (MÉTODO MÁS DIRECTO)<a class="headerlink" href="#opcion-b-revisar-security-groups-para-ver-ips-con-acceso-metodo-mas-directo" title="Permanent link">&para;</a></h5>
+<p>Si los logs del Lambda no muestran IPs, este es el método más directo y confiable:</p>
 <ol>
 <li>Ve a <strong>EC2</strong> → <strong>Security Groups</strong></li>
-<li>Encuentra el Security Group asociado a tu instancia RDS</li>
-<li>Revisa las <strong>Inbound Rules</strong> (Reglas de entrada)</li>
-<li>Identifica reglas que permitan acceso desde <code>0.0.0.0/0</code> o rangos IP específicos</li>
-<li>Las IPs que NO sean de tus servidores web o del Lambda legítimo son sospechosas</li>
+<li>Encuentra el Security Group asociado a tu instancia RDS:
+   - Puedes identificarlo desde la página de RDS → Seleccionar tu instancia → Pestaña "Connectivity &amp; security" → Security groups</li>
+<li>Haz clic en el Security Group para abrir sus detalles</li>
+<li>Ve a la pestaña <strong>"Inbound rules"</strong> (Reglas de entrada)</li>
+<li>
+<p>Revisa todas las reglas y busca:
+   - ✅ Reglas que permitan acceso desde tus servidores web (estas son legítimas)
+   - ❌ Reglas que permitan acceso desde <code>0.0.0.0/0</code> (permiten desde cualquier IP - <strong>muy sospechoso</strong>)
+   - ❌ Reglas con IPs específicas que NO reconozcas (ej: <code>203.0.113.0/24</code> o similar)
+   - ❌ Reglas con rangos IP que no sean de tu VPC (no empiecen con <code>10.</code>, <code>172.16-31.</code>, <code>192.168.</code>)</p>
+</li>
+<li>
+<p><strong>La IP del atacante</strong> aparecerá como:
+   - Una IP única con <code>/32</code> al final (ej: <code>203.0.113.45/32</code>)
+   - Un rango de IPs con <code>/24</code> o similar (ej: <code>203.0.113.0/24</code>)
+   - La regla sospechosa generalmente permitirá acceso al puerto de la base de datos (3306 para MySQL, 5432 para PostgreSQL)</p>
+</li>
+<li>
+<p><strong>Anota la IP o rango IP</strong> de la regla sospechosa para el formulario del quest</p>
+</li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Ejemplo de lo que buscar</p>
+<p>En las Inbound Rules del Security Group de RDS, podrías ver algo como:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Type: MySQL/Aurora
+<span class="linenos" data-linenos="2 "></span>Protocol: TCP
+<span class="linenos" data-linenos="3 "></span>Port: 3306
+<span class="linenos" data-linenos="4 "></span>Source: 203.0.113.45/32  ← Esta podría ser la IP del atacante
+</code></pre></div>
+Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del atacante.</p>
+</div>
 <h5 id="opcion-c-revisar-vpc-flow-logs-si-estan-habilitados">Opción C: Revisar VPC Flow Logs (si están habilitados)<a class="headerlink" href="#opcion-c-revisar-vpc-flow-logs-si-estan-habilitados" title="Permanent link">&para;</a></h5>
 <ol>
 <li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
@@ -986,28 +1028,53 @@
 <li>Haz clic en <strong>"View in Logs Insights"</strong> (botón azul)</li>
 <li>Ejecuta una consulta para buscar IPs en los logs:</li>
 </ol>
-<p><strong>Consulta para encontrar IPs:</strong>
+<p><strong>Consulta 1: Buscar todas las IPs en los logs (si no funciona, prueba las siguientes):</strong>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
 <span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">ip</span><span class="o">&gt;</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="p">)</span><span class="o">/</span><span class="w"> </span>
 <span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">ip</span>
 <span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">desc</span>
 </code></pre></div></p>
-<p><strong>O busca patrones de conexión:</strong>
+<p><strong>Consulta 2: Ver todos los mensajes primero para entender la estructura:</strong>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
-<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">connect</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">connection</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">IP</span><span class="o">/</span>
-<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">ip</span><span class="o">&gt;</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="p">)</span><span class="o">/</span><span class="w"> </span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<em>Esta consulta te mostrará los mensajes reales para ver qué información contienen.</em></p>
+<p><strong>Consulta 3: Buscar por términos relacionados con conexiones o RDS:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">rds</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">RDS</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">database</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">postgres</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div></p>
+<p><strong>Consulta 4: Buscar por patrones de error o conexión:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">error</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">Error</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">failed</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">Failed</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">timeout</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div></p>
+<p><strong>Consulta 5: Buscar cualquier número que parezca una IP (más amplio):</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="err">\</span><span class="n">d</span><span class="err">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="err">}\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="err">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="err">}\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="err">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="err">}\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="err">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="err">}</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">ip</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span>
 <span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">ip</span>
 <span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">desc</span>
 </code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Si ninguna consulta muestra IPs</p>
+<p>Si ninguna de estas consultas muestra IPs en los logs del Lambda, la IP del atacante probablemente esté en los <strong>Security Groups</strong> de RDS. Ve a la Opción B (Revisar Security Groups) que está más abajo.</p>
+</div>
 <ol start="6">
 <li>
-<p>Revisa los resultados y busca IPs que:
-   - Aparezcan con frecuencia
-   - NO sean de tus servidores web (ej: IPs internas de la VPC como <code>10.0.x.x</code>)
-   - NO sean de AWS (ej: IPs que no empiecen con <code>10.</code>, <code>172.16-31.</code>, <code>192.168.</code>)</p>
+<p><strong>Revisa los resultados cuidadosamente:</strong>
+   - Si las consultas no muestran IPs, primero ejecuta la <strong>Consulta 2</strong> para ver qué información realmente contienen los logs
+   - Los logs pueden tener la IP en diferentes formatos o campos
+   - La IP puede estar en el contexto del evento (no en el mensaje)</p>
 </li>
 <li>
-<p><strong>La IP del atacante</strong> será una IP externa (pública) que aparece intentando conectarse a RDS</p>
+<p><strong>Si no encuentras IPs en los logs del Lambda:</strong>
+   - Ve directamente a revisar los <strong>Security Groups</strong> de RDS (Opción B)
+   - La IP del atacante probablemente esté configurada en las reglas de entrada del Security Group
+   - O puede estar en los <strong>VPC Flow Logs</strong> si están habilitados</p>
 </li>
 </ol>
 <p><strong>Alternativa: Buscar directamente en el log group</strong></p>
@@ -1039,14 +1106,14 @@
    - <strong>SERÁ</strong> una IP pública externa que aparece intentando conectarse
    - Generalmente aparecerá múltiples veces con intentos de conexión</li>
 </ol>
-<p><strong>Si no encuentras IPs con esa consulta, prueba esta más específica:</strong></p>
+<p><strong>Si no encuentras IPs, primero ve qué hay en los logs:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
-<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">connect</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">connection</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">IP</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">rds</span><span class="o">/</span>
-<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">ip</span><span class="o">&gt;</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="err">\</span><span class="p">.</span><span class="err">\</span><span class="n">d</span><span class="o">+</span><span class="p">)</span><span class="o">/</span><span class="w"> </span>
-<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">ip</span>
-<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">20</span>
 </code></pre></div>
-<p>Esta consulta filtrará solo los mensajes que contengan palabras relacionadas con conexiones antes de extraer las IPs.</p>
+<p>Esta consulta te mostrará los mensajes reales para entender qué información contienen. Luego puedes adaptar las consultas según lo que veas.</p>
+<p><strong>Si los logs del Lambda no contienen IPs:</strong></p>
+<p>Los logs del Lambda pueden no registrar las IPs de origen directamente. En ese caso, <strong>ve directamente a revisar los Security Groups</strong> (Opción B más abajo), que es el método más confiable para encontrar la IP del atacante.</p>
 <p><strong>Alternativa: Usar CloudWatch Insights para buscar en todos los logs</strong></p>
 <ol>
 <li>En CloudWatch, ve a <strong>Logs Insights</strong></li>
@@ -1063,18 +1130,23 @@
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Consejo: Dónde encontrar la IP del atacante más rápido</p>
-<p><strong>Método 1 - Logs del Lambda (Recomendado):</strong>
-1. CloudWatch → Log groups
-2. Busca el log group del Lambda (puede contener <code>gdQuests</code> o <code>CreateIdCInstanceFunction</code>)
-3. Haz clic en <strong>"View in Logs Insights"</strong>
-4. Ejecuta una consulta para buscar IPs: <code>fields @message | parse @message /(?&lt;ip&gt;\d+\.\d+\.\d+\.\d+)/ | stats count() by ip</code>
-5. La IP del atacante será una IP externa (pública) que aparece intentando conectarse</p>
-<p><strong>Método 2 - Security Groups:</strong>
+<p><strong>⚠️ Si los logs del Lambda no muestran IPs, usa este método:</strong></p>
+<p><strong>Método 1 - Security Groups (MÁS DIRECTO Y CONFIABLE):</strong>
 1. EC2 → Security Groups
-2. Selecciona el Security Group de tu instancia RDS
-3. Pestaña "Inbound rules"
-4. Busca reglas con IPs sospechosas que NO sean de tus servidores web
-5. La IP puede estar en formato CIDR (ej: <code>203.0.113.5/32</code>) o como rango (ej: <code>203.0.113.0/24</code>)</p>
+2. Selecciona el Security Group de tu instancia RDS (puedes encontrarlo en RDS → Instancia → Pestaña "Connectivity &amp; security")
+3. Pestaña <strong>"Inbound rules"</strong>
+4. Busca reglas sospechosas que permitan acceso desde:
+   - IPs externas que NO sean de tus servidores web
+   - <code>0.0.0.0/0</code> (permite desde cualquier IP)
+   - Rangos IP públicos (no privados como <code>10.x.x.x</code>, <code>172.16-31.x.x</code>, <code>192.168.x.x</code>)
+5. La IP puede estar en formato CIDR (ej: <code>203.0.113.5/32</code>) - usa esa IP para el formulario
+6. <strong>Esa es la IP del atacante</strong></p>
+<p><strong>Método 2 - Logs del Lambda (si contienen IPs):</strong>
+1. CloudWatch → Log groups → Busca el Lambda
+2. Haz clic en <strong>"View in Logs Insights"</strong>
+3. Primero ejecuta: <code>fields @timestamp, @message | sort @timestamp desc | limit 20</code> para ver qué hay
+4. Si ves IPs, usa las consultas de extracción de IPs
+5. Si no ves IPs, vuelve al Método 1 (Security Groups)</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Importante</p>
@@ -1084,6 +1156,32 @@
 <li>Si está como rango (ej: <code>/24</code>), la IP base del rango suele ser la del atacante</li>
 </ul>
 </div>
+<h3 id="troubleshooting-no-encuentro-la-ip-en-los-logs">Troubleshooting: No encuentro la IP en los logs<a class="headerlink" href="#troubleshooting-no-encuentro-la-ip-en-los-logs" title="Permanent link">&para;</a></h3>
+<p>Si las consultas en CloudWatch Logs Insights no muestran resultados o no encuentras IPs:</p>
+<ol>
+<li>
+<p><strong>Primero, verifica qué hay realmente en los logs:</strong>
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">20</span>
+</code></pre></div>
+   Esto te mostrará los mensajes reales para entender qué información contienen.</p>
+</li>
+<li>
+<p><strong>Si los logs no contienen IPs</strong>, es normal. Los logs del Lambda pueden no registrar las IPs de origen directamente.</p>
+</li>
+<li>
+<p><strong>Solución: Ve directamente a Security Groups:</strong>
+   - Los Security Groups son el lugar más confiable para encontrar la IP del atacante
+   - El atacante debe tener una regla en el Security Group de RDS que le permita acceder
+   - Sigue la <strong>Opción B: Revisar Security Groups</strong> que está más abajo</p>
+</li>
+<li>
+<p><strong>Alternativa: Revisa VPC Flow Logs:</strong>
+   - Si están habilitados, pueden contener información detallada sobre conexiones
+   - Ve a la <strong>Opción C: Revisar VPC Flow Logs</strong> más abajo</p>
+</li>
+</ol>
 <h4 id="13-revisar-y-modificar-security-groups">1.3. Revisar y modificar Security Groups<a class="headerlink" href="#13-revisar-y-modificar-security-groups" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>💡 <strong>Nota</strong>: Si ya revisaste los Security Groups en el paso anterior (Opción B), puedes proceder directamente a modificarlos.</p>
