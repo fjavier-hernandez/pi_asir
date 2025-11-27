@@ -36,38 +36,38 @@ Los ^^objetivos generales^^ del Proyecto intermodular son:
 
 | Código | Descripción                                                                 | Peso (%) |
 |:------:|:-----------------------------------------------------------------------------|:--------:|
-| PI1    | **Caracteriza el reto** y el contexto del sector, definiendo alcance y requisitos. | 15 |
-| PI2    | **Planifica** actividades, recursos, riesgos y cronograma del proyecto.     | 25 |
-| PI3    | **Desarrolla y valida** la solución (iteraciones, pruebas y criterios de aceptación). | 25 |
-| PI4    | **Documenta, versiona y despliega** la solución y sus evidencias.           | 20 |
-| PI5    | **Comunica y colabora** eficazmente (reuniones, pitch, defensa y retroalimentación). | 15 |
+| RA1    | **Caracteriza el reto** y el contexto del sector, definiendo alcance y requisitos. | 15 |
+| RA2    | **Planifica** actividades, recursos, riesgos y cronograma del proyecto.     | 25 |
+| RA3    | **Desarrolla y valida** la solución (iteraciones, pruebas y criterios de aceptación). | 25 |
+| RA4    | **Documenta, versiona y despliega** la solución y sus evidencias.           | 20 |
+| RA5    | **Comunica y colabora** eficazmente (reuniones, pitch, defensa y retroalimentación). | 15 |
 
 ## Unidades de Trabajo
 
-| Unidades de Trabajo (UT)                                  | PI1 | PI2 | PI3 | PI4 | PI5 |
+| Unidades de Trabajo (UT)                                  | RA1 | RA2 | RA3 | RA4 | RA5 |
 |:----------------------------------------------------------|:--:|:--:|:--:|:--:|:--:|
-| **0. Herramientas del proyecto**              | X  |    |    | X  | X  |
-| **1. Planteamiento del reto y análisis del contexto**     | X  | X  |    |    | X  |
-| **2. Diseño de la solución y planificación**              |    | X  |    |    | X  |
-| **3. Desarrollo iterativo y pruebas**                     |    |    | X  | X  |    |
-| **4. Integración, seguridad y validación**                |    |    | X  | X  |    |
-| **5. Despliegue y operación**                 |    |    | X  | X  |    |
-| **6. Documentación técnica y memoria**                    |    |    |    | X  | X  |
-| **7. Presentación, defensa y cierre**                     |    |    |    |    | X  |
+| **1. Herramientas del proyecto**              | X  |    |    | X  | X  |
+| **2. Planteamiento del reto y análisis del contexto**     | X  | X  |    |    | X  |
+| **3. Diseño de la solución y planificación**              |    | X  |    |    | X  |
+| **4. Desarrollo iterativo y pruebas**                     |    |    | X  | X  |    |
+| **5. Integración, seguridad y validación**                |    |    | X  | X  |    |
+| **6. Despliegue y operación**                 |    |    | X  | X  |    |
+| **7. Documentación técnica y memoria**                    |    |    |    | X  | X  |
+| **8. Presentación, defensa y cierre**                     |    |    |    |    | X  |
 
 ```mermaid
 timeline
   title Planificación temporal (Proyecto intermodular ASIR)
-  section 1.º curso
-    Herramientas : UT0
-    Planteamiento del reto    : UT1
-    Diseño y planificación     : UT2
-  section 2.º curso
-    Desarrollo iterativo       : UT3
-    Integración y validación   : UT4
-    Despliegue/Operación       : UT5
-    Documentación y Memoria    : UT6
-    Presentación y Cierre      : UT7
+  section 1.º Evaluación
+    Herramientas : UT1
+    Planteamiento del reto    : UT2
+    Diseño y planificación     : UT3
+    Desarrollo iterativo       : UT4
+  section 2.º Evaluación
+    Integración y validación   : UT5
+    Despliegue/Operación       : UT6
+    Documentación y Memoria    : UT7
+    Presentación y Cierre      : UT8
 ```
 
 ## Evaluación
@@ -81,12 +81,12 @@ timeline
 | Actividades de profundización                 | :material-shovel: AP                      | Extensión/innovación                                                        | Puntos extra    |
 | Prácticas / Trabajo de investigación          | :simple-neutralinojs: PR / :material-test-tube: TI | Sprint reviews, prototipos, pruebas                                         | Sobre 10        |
 | Proyectos/Entregables parciales               | :material-calendar: PY                    | Hitos con rúbrica                                                           | Sobre 30        |
-| Pruebas objetivas                            | :material-pen: PO                         | Cuando proceda                                                              | Sobre 30        |
-| Defensa/presentación final                    | :material-presentation: DF                | Pitch, demo y Q&A (rúbrica específica)                                      | -               |
-| Memoria técnica y portfolio                   | :material-file-document: MT               | Documentación, repositorio y issues                                         | -               |
+| Defensa/presentación final                    | :material-presentation: DF                | Pitch, demo y Q&A (rúbrica específica)                                       | sobre 30               |
+| Memoria técnica y portfolio                   | :material-file-document: MT               | Documentación, repositorio y issues                                         |  sobre 60             |
+<!-- | Pruebas objetivas                            | :material-pen: PO                         | Cuando proceda                                                              | Sobre 30        | -->
 
 **Cálculo de calificaciones:**  
-Media ponderada de los IE asignados a cada RA-PI, comprobando que se cubren todos los CE declarados por los módulos participantes. Todas las calificaciones estarán disponibles en **Aules**.
+Media ponderada de los IE asignados a cada RA, comprobando que se cubren todos los CE declarados por los módulos participantes. Todas las calificaciones estarán disponibles en **Aules**.
 
 > **Otros criterios:**
 
@@ -100,14 +100,14 @@ Media ponderada de los IE asignados a cada RA-PI, comprobando que se cubren todo
 - Repositorio: GitHub, GitHub Pages
 - Documentación: Markdown, MkDocs
 - Infraestructura: LliureX/Ubuntu, Docker, AWS
-- Comunicación: presentaciones, oratoria
-- Recursos oficiales:
+<!-- - Comunicación: presentaciones, oratoria -->
+<!-- - Recursos oficiales:
   - [Innovatec – FP (GVA)](https://ceice.gva.es/es/web/formacion-profesional/innovatec)
   - [LO 3/2022](https://www.boe.es/buscar/act.php?id=BOE-A-2022-5139)
   - [RD 659/2023](https://www.boe.es/buscar/doc.php?id=BOE-A-2023-16889)
   - [RD 500/2024](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-10685)
   - [Orden 8/2025 (DOGV)](https://dogv.gva.es/es/resultat-dogv?signatura=2025/13083)
-  - [Resolución 17/07/2025 (DOGV)](https://dogv.gva.es/datos/2025/07/21/pdf/2025_28562_es.pdf)
+  - [Resolución 17/07/2025 (DOGV)](https://dogv.gva.es/datos/2025/07/21/pdf/2025_28562_es.pdf) -->
 
 *[CFGS]: Ciclo Formativo de Grado Superior  
 *[ASIR]: Administración de Sistemas Informáticos en Red  

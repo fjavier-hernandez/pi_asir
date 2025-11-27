@@ -4,17 +4,37 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch: # Permite ejecutar manualmente desde GitHub
+
 permissions:
   contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Necesario para gh-deploy
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
           cache: 'pip'
-      - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Configure Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          
+      - name: Deploy to GitHub Pages
+        run: |
+          mkdocs gh-deploy --force --message "Deploy from GitHub Actions"
 

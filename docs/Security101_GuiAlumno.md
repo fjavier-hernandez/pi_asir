@@ -190,15 +190,81 @@ fields @timestamp, srcaddr, dstaddr, dstport, action
 
 4. Identifica IPs que aparezcan con frecuencia y que no sean de tus servidores web o del Lambda legítimo
 
-##### Opción D: Revisar logs del Lambda (si el Lambda registra IPs origen)
+##### Opción D: Revisar logs del Lambda (MÉTODO RECOMENDADO)
+
+El Lambda que interactúa con RDS puede registrar las IPs origen. Para encontrar la IP del atacante:
 
 1. Ve a **CloudWatch** → **Log groups**
-2. Busca logs relacionados con Lambda (el nombre puede empezar por `/aws/lambda/`)
-3. Busca funciones Lambda que puedan estar haciendo conexiones a RDS
-4. Revisa los logs para encontrar:
-   - Eventos que contengan información de IP origen
-   - Invocaciones sospechosas o fuera de lo normal
-   - Patrones de acceso inusuales
+2. Busca logs relacionados con Lambda (el nombre puede empezar por `/aws/lambda/` o contener `gdQuests` o `CreateIdCInstanceFunction`)
+3. Haz clic en el log group del Lambda (ejemplo: `/aws/lambda/gdQuests-...-CreateIdCInstanceFunction-...`)
+4. Haz clic en **"View in Logs Insights"** (botón azul)
+5. Ejecuta una consulta para buscar IPs en los logs:
+
+**Consulta para encontrar IPs:**
+```sql
+fields @timestamp, @message
+| parse @message /(?<ip>\d+\.\d+\.\d+\.\d+)/ 
+| stats count() by ip
+| sort count desc
+```
+
+**O busca patrones de conexión:**
+```sql
+fields @timestamp, @message
+| filter @message like /connect/ or @message like /connection/ or @message like /IP/
+| parse @message /(?<ip>\d+\.\d+\.\d+\.\d+)/ 
+| stats count() by ip
+| sort count desc
+```
+
+6. Revisa los resultados y busca IPs que:
+   - Aparezcan con frecuencia
+   - NO sean de tus servidores web (ej: IPs internas de la VPC como `10.0.x.x`)
+   - NO sean de AWS (ej: IPs que no empiecen con `10.`, `172.16-31.`, `192.168.`)
+   
+7. **La IP del atacante** será una IP externa (pública) que aparece intentando conectarse a RDS
+
+**Alternativa: Buscar directamente en el log group**
+
+1. Haz clic en **"Search log group"** (botón amarillo)
+2. Busca términos como: `connect`, `connection`, `IP`, o busca directamente una IP si sospechas de alguna
+3. Revisa los eventos de log para encontrar intentos de conexión
+
+**Pasos detallados en CloudWatch Logs Insights:**
+
+1. En la página de detalles del log group del Lambda, haz clic en **"View in Logs Insights"**
+2. Se abrirá la página de Logs Insights con el log group ya seleccionado
+3. En el editor de consultas, escribe o pega una de estas consultas:
+
+**Consulta básica para encontrar IPs:**
+```sql
+fields @timestamp, @message
+| parse @message /(?<ip>\d+\.\d+\.\d+\.\d+)/ 
+| stats count() by ip
+| sort count desc
+```
+
+4. Haz clic en **"Run query"** (o presiona Ctrl+Enter)
+5. Revisa los resultados en la tabla:
+   - La columna `ip` mostrará todas las direcciones IP encontradas en los logs
+   - La columna `count` mostrará cuántas veces aparece cada IP
+   - Las IPs que aparecen con más frecuencia y son IPs públicas (externas) son sospechosas
+6. Identifica la IP del atacante:
+   - **NO será** una IP privada (10.x.x.x, 172.16-31.x.x, 192.168.x.x)
+   - **SERÁ** una IP pública externa que aparece intentando conectarse
+   - Generalmente aparecerá múltiples veces con intentos de conexión
+
+**Si no encuentras IPs con esa consulta, prueba esta más específica:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /connect/ or @message like /connection/ or @message like /IP/ or @message like /rds/
+| parse @message /(?<ip>\d+\.\d+\.\d+\.\d+)/ 
+| stats count() by ip
+| sort count desc
+```
+
+Esta consulta filtrará solo los mensajes que contengan palabras relacionadas con conexiones antes de extraer las IPs.
 
 **Alternativa: Usar CloudWatch Insights para buscar en todos los logs**
 
@@ -215,8 +281,25 @@ fields @timestamp, @message, @logStream
 
 4. Busca IPs que aparezcan repetidamente y que no sean de tus servidores web
 
-!!! tip "Consejo"
-    La IP del atacante generalmente aparecerá en los Security Groups de RDS como una regla que permite acceso desde un rango IP específico o desde `0.0.0.0/0`. Revisa primero los Security Groups antes de profundizar en los logs.
+!!! tip "Consejo: Dónde encontrar la IP del atacante más rápido"
+    **Método 1 - Logs del Lambda (Recomendado):**
+    1. CloudWatch → Log groups
+    2. Busca el log group del Lambda (puede contener `gdQuests` o `CreateIdCInstanceFunction`)
+    3. Haz clic en **"View in Logs Insights"**
+    4. Ejecuta una consulta para buscar IPs: `fields @message | parse @message /(?<ip>\d+\.\d+\.\d+\.\d+)/ | stats count() by ip`
+    5. La IP del atacante será una IP externa (pública) que aparece intentando conectarse
+    
+    **Método 2 - Security Groups:**
+    1. EC2 → Security Groups
+    2. Selecciona el Security Group de tu instancia RDS
+    3. Pestaña "Inbound rules"
+    4. Busca reglas con IPs sospechosas que NO sean de tus servidores web
+    5. La IP puede estar en formato CIDR (ej: `203.0.113.5/32`) o como rango (ej: `203.0.113.0/24`)
+    
+!!! warning "Importante"
+    - La IP del atacante será una IP pública externa (NO una IP privada como `10.x.x.x`, `172.16-31.x.x`, o `192.168.x.x`)
+    - Si la IP está en formato CIDR con `/32`, usa esa IP completa para el formulario
+    - Si está como rango (ej: `/24`), la IP base del rango suele ser la del atacante
 
 #### 1.3. Revisar y modificar Security Groups
 

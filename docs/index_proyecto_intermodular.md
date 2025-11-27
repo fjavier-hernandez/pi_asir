@@ -36,15 +36,15 @@ Los ^^objetivos generales^^ del Proyecto intermodular son:
 
 | Código | Descripción                                                                 | Peso (%) |
 |:------:|:-----------------------------------------------------------------------------|:--------:|
-| PI1    | **Caracteriza el reto** y el contexto del sector, definiendo alcance y requisitos. | 15 |
-| PI2    | **Planifica** actividades, recursos, riesgos y cronograma del proyecto.     | 25 |
-| PI3    | **Desarrolla y valida** la solución (iteraciones, pruebas y criterios de aceptación). | 25 |
-| PI4    | **Documenta, versiona y despliega** la solución y sus evidencias.           | 20 |
-| PI5    | **Comunica y colabora** eficazmente (reuniones, pitch, defensa y retroalimentación). | 15 |
+| RA1    | **Caracteriza el reto** y el contexto del sector, definiendo alcance y requisitos. | 15 |
+| RA2    | **Planifica** actividades, recursos, riesgos y cronograma del proyecto.     | 25 |
+| RA3    | **Desarrolla y valida** la solución (iteraciones, pruebas y criterios de aceptación). | 25 |
+| RA4    | **Documenta, versiona y despliega** la solución y sus evidencias.           | 20 |
+| RA5    | **Comunica y colabora** eficazmente (reuniones, pitch, defensa y retroalimentación). | 15 |
 
 ## Unidades de Trabajo
 
-| Unidades de Trabajo (UT)                                  | PI1 | PI2 | PI3 | PI4 | PI5 |
+| Unidades de Trabajo (UT)                                  | RA1 | RA2 | RA3 | RA4 | RA5 |
 |:----------------------------------------------------------|:--:|:--:|:--:|:--:|:--:|
 | **0. Herramientas del proyecto**              | X  |    |    | X  | X  |
 | **1. Planteamiento del reto y análisis del contexto**     | X  | X  |    |    | X  |

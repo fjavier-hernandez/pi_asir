@@ -28,3 +28,5 @@ Thumbs.db
 *.tmp
 *.log
 
+# No incluir archivos de gh-pages manual
+# El workflow de GitHub Actions maneja el deploy automáticamente
