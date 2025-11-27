@@ -359,8 +359,19 @@ Escriba la dirección IP utilizada por el hacker que intenta conectarse a su bas
 <p>Valor actual: <none></p>
 <p>Enviar
 Seguridad S3</p>
-<p>Alguien sigue eliminando .css y background image de nuestro cubo S3. ¿Puedes volver a poner estos para que nuestro sitio web se vea bien? Si quieres ver el sitio web, ve a revisar el registro DNS en el Balanceador de carga de aplicaciones (Application Load Balancer).
-Uso de WAFv2 para proteger ALB</p>
+<p>Alguien sigue eliminando los archivos <code>w3.css</code> y <code>unicorn.jpg</code> (background image) del bucket S3 <code>ctfbucket</code>. Los objetivos de esta tarea son:</p>
+<ol>
+<li>
+<p><strong>Detener la eliminación de objetos</strong>: Hay 2 formas de realizar esta tarea:
+   - Crear una política de bucket que explícitamente deniegue la opción de borrar elementos
+   - Eliminar el rol IAM "AccountGuardian" responsable de eliminar estos objetos</p>
+</li>
+<li>
+<p><strong>Subir los objetos</strong>: Una vez implementada la solución, subir los archivos <code>unicorn.jpg</code> y <code>w3.css</code> al bucket <code>ctfbucket</code></p>
+</li>
+</ol>
+<p><strong>Puntos por completar este punto de control: 300 puntos</strong></p>
+<p>Uso de WAFv2 para proteger ALB</p>
 
 
 

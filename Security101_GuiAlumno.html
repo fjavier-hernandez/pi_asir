@@ -453,6 +453,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resumen-de-la-tarea" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resumen de la tarea
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacion-del-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Información del bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soluciones-disponibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soluciones disponibles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pasos-a-seguir_1" class="md-nav__link">
     <span class="md-ellipsis">
       Pasos a seguir
@@ -472,54 +499,90 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-revisar-si-faltan-archivos" class="md-nav__link">
+  <a href="#22-verificar-archivos-faltantes" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2. Revisar si faltan archivos
+      2.2. Verificar archivos faltantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucion-1-crear-politica-de-bucket-para-denegar-eliminaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución 1: Crear política de bucket para denegar eliminaciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solución 1: Crear política de bucket para denegar eliminaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-implementar-la-solucion-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos para implementar la Solución 1:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucion-2-eliminar-el-rol-iam-accountguardian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución 2: Eliminar el rol IAM "AccountGuardian"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solución 2: Eliminar el rol IAM "AccountGuardian"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-implementar-la-solucion-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos para implementar la Solución 2:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-subir-los-archivos-al-bucket-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Subir los archivos al bucket S3
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-restaurar-archivos-eliminados-si-es-necesario" class="md-nav__link">
+  <a href="#politica-de-bucket-alternativa-opcional-mas-granular" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3. Restaurar archivos eliminados (si es necesario)
+      Política de bucket alternativa (Opcional - más granular)
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Política de bucket alternativa (Opcional - más granular)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#24-configurar-politicas-de-bucket-para-prevenir-eliminaciones" class="md-nav__link">
+  <a href="#24-verificar-que-el-sitio-web-se-ve-correctamente" class="md-nav__link">
     <span class="md-ellipsis">
-      2.4. Configurar políticas de bucket para prevenir eliminaciones
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-configurar-object-lock-opcional-pero-recomendado" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.5. Configurar Object Lock (Opcional pero recomendado)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#26-revisar-y-restringir-politicas-de-iam" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.6. Revisar y restringir políticas de IAM
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#27-verificar-que-el-sitio-web-se-ve-correctamente" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.7. Verificar que el sitio web se ve correctamente
+      2.4. Verificar que el sitio web se ve correctamente
     </span>
   </a>
   
@@ -943,50 +1006,109 @@
 <hr />
 <h2 id="parte-2-seguridad-s3-proteger-archivos-del-bucket">Parte 2: Seguridad S3 - Proteger Archivos del Bucket<a class="headerlink" href="#parte-2-seguridad-s3-proteger-archivos-del-bucket" title="Permanent link">&para;</a></h2>
 <h3 id="objetivo_1">Objetivo<a class="headerlink" href="#objetivo_1" title="Permanent link">&para;</a></h3>
-<p>Evitar que se eliminen los archivos CSS e imágenes del bucket S3 y restaurarlos si ya fueron eliminados.</p>
+<p>Detener la eliminación de objetos en el bucket S3 y subir los archivos <code>unicorn.jpg</code> y <code>w3.css</code> al bucket <code>ctfbucket</code> sin que sean eliminados.</p>
+<blockquote>
+<p>🎯 <strong>Puntos por completar este punto de control: 300 puntos</strong></p>
+</blockquote>
+<h3 id="resumen-de-la-tarea">Resumen de la tarea<a class="headerlink" href="#resumen-de-la-tarea" title="Permanent link">&para;</a></h3>
+<p>El bucket S3 <code>ctfbucket</code> está perdiendo archivos importantes debido a un proceso automatizado. Debes:</p>
+<ol>
+<li>✅ <strong>Detener las eliminaciones</strong> usando una de las dos soluciones disponibles</li>
+<li>✅ <strong>Subir los archivos</strong> <code>unicorn.jpg</code> y <code>w3.css</code> al bucket</li>
+<li>✅ <strong>Verificar</strong> que el sitio web se ve correctamente</li>
+</ol>
+<h3 id="informacion-del-bucket">Información del bucket<a class="headerlink" href="#informacion-del-bucket" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Nombre del bucket</strong>: <code>ctfbucket</code> (bucket público)</li>
+<li><strong>Archivos a proteger/subir</strong>:</li>
+<li><code>unicorn.jpg</code> (imagen de fondo)</li>
+<li><code>w3.css</code> (archivo de estilos CSS)</li>
+</ul>
+<h3 id="soluciones-disponibles">Soluciones disponibles<a class="headerlink" href="#soluciones-disponibles" title="Permanent link">&para;</a></h3>
+<p>Hay <strong>2 formas</strong> de resolver esta tarea. Puedes usar cualquiera de ellas:</p>
+<ul>
+<li><strong>Solución 1</strong>: Crear una política de bucket que explícitamente deniegue la eliminación de objetos</li>
+<li><strong>Solución 2</strong>: Eliminar el rol IAM "AccountGuardian" responsable de eliminar estos objetos</li>
+</ul>
 <h3 id="pasos-a-seguir_1">Pasos a seguir<a class="headerlink" href="#pasos-a-seguir_1" title="Permanent link">&para;</a></h3>
 <h4 id="21-identificar-el-bucket-s3">2.1. Identificar el bucket S3<a class="headerlink" href="#21-identificar-el-bucket-s3" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Ve a <strong>Amazon S3</strong> en la consola de AWS</li>
-<li>Busca el bucket que contiene los archivos del sitio web
-   - Puede tener un nombre como <code>unicorn-rentals-website</code> o similar
-   - O verifica el código fuente del sitio web para encontrar referencias al bucket</li>
+<li>Busca y selecciona el bucket <strong><code>ctfbucket</code></strong> (bucket público)</li>
 </ol>
-<h4 id="22-revisar-si-faltan-archivos">2.2. Revisar si faltan archivos<a class="headerlink" href="#22-revisar-si-faltan-archivos" title="Permanent link">&para;</a></h4>
+<h4 id="22-verificar-archivos-faltantes">2.2. Verificar archivos faltantes<a class="headerlink" href="#22-verificar-archivos-faltantes" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Navega dentro del bucket</li>
-<li>Busca archivos con extensión <code>.css</code> y archivos de imágenes (<code>.png</code>, <code>.jpg</code>, etc.)</li>
-<li>Si faltan archivos, continúa con la restauración (2.3)</li>
-<li>Si están presentes, continúa con la protección (2.4)</li>
+<li>Navega dentro del bucket <code>ctfbucket</code></li>
+<li>Busca los archivos:
+   - <code>w3.css</code>
+   - <code>unicorn.jpg</code></li>
+<li>Si faltan estos archivos, necesitarás subirlos después de implementar la solución de protección</li>
 </ol>
-<h4 id="23-restaurar-archivos-eliminados-si-es-necesario">2.3. Restaurar archivos eliminados (si es necesario)<a class="headerlink" href="#23-restaurar-archivos-eliminados-si-es-necesario" title="Permanent link">&para;</a></h4>
+<hr />
+<h3 id="solucion-1-crear-politica-de-bucket-para-denegar-eliminaciones">Solución 1: Crear política de bucket para denegar eliminaciones<a class="headerlink" href="#solucion-1-crear-politica-de-bucket-para-denegar-eliminaciones" title="Permanent link">&para;</a></h3>
+<p>Esta solución crea una política en el bucket que explícitamente deniega las acciones de eliminación de objetos.</p>
+<h4 id="pasos-para-implementar-la-solucion-1">Pasos para implementar la Solución 1:<a class="headerlink" href="#pasos-para-implementar-la-solucion-1" title="Permanent link">&para;</a></h4>
 <ol>
-<li>
-<p><strong>Activar Versionado</strong> (si no está activado):
-   - Ve a <strong>Properties</strong> del bucket
-   - Busca <strong>Bucket Versioning</strong>
-   - Actívalo</p>
-</li>
-<li>
-<p><strong>Restaurar versiones anteriores</strong>:
-   - Ve a la pestaña <strong>Versions</strong> o <strong>Show versions</strong>
-   - Busca las versiones anteriores de los archivos eliminados
-   - Selecciona la versión anterior del archivo
-   - Haz clic en <strong>Actions</strong> → <strong>Restore</strong> o <strong>Copy</strong> para restaurar</p>
-</li>
+<li>En el bucket <code>ctfbucket</code>, ve a la pestaña <strong>Permissions</strong> (Permisos)</li>
+<li>Desplázate hasta la sección <strong>Bucket policy</strong></li>
+<li>Haz clic en <strong>Edit</strong> (Editar)</li>
+<li>Agrega la siguiente política JSON y guarda los cambios:</li>
 </ol>
-<p><strong>Alternativa: Usar S3 Recycle Bin (si está configurado)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deny&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObjectVersion&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="p">],</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::ctfbucket/*&quot;</span>
+<span class="linenos" data-linenos="9 "></span><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Importante</strong>: Esta política deniega TODAS las eliminaciones de objetos en el bucket, sin excepciones. Asegúrate de que esto es lo que necesitas.</p>
+</blockquote>
+<ol start="5">
+<li>Haz clic en <strong>Save changes</strong> (Guardar cambios)</li>
+</ol>
+<hr />
+<h3 id="solucion-2-eliminar-el-rol-iam-accountguardian">Solución 2: Eliminar el rol IAM "AccountGuardian"<a class="headerlink" href="#solucion-2-eliminar-el-rol-iam-accountguardian" title="Permanent link">&para;</a></h3>
+<p>Esta solución elimina el rol IAM que tiene permisos para eliminar objetos del bucket S3.</p>
+<h4 id="pasos-para-implementar-la-solucion-2">Pasos para implementar la Solución 2:<a class="headerlink" href="#pasos-para-implementar-la-solucion-2" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Ve a <strong>Properties</strong> → <strong>Recycle Bin</strong></li>
-<li>Revisa si los archivos eliminados están ahí</li>
-<li>Restaura los archivos necesarios</li>
+<li>Navega a la consola de administración de <strong>AWS IAM</strong></li>
+<li>En el menú lateral, haz clic en <strong>Roles</strong> (Roles)
+   - Esto mostrará todos los roles que se han creado en la cuenta</li>
+<li>Busca el rol llamado <strong><code>AccountGuardian</code></strong>
+   - Este rol tiene acceso completo a S3 y es responsable de eliminar los objetos</li>
+<li>Para verificar que es el rol correcto:
+   - Haz clic en el rol para ver sus detalles
+   - Revisa las políticas asociadas (debería tener permisos de S3)</li>
+<li>Para eliminar el rol:
+   - Selecciona el rol <code>AccountGuardian</code>
+   - Haz clic en el botón <strong>Delete</strong> (Eliminar)
+   - Confirma la eliminación</li>
 </ol>
-<h4 id="24-configurar-politicas-de-bucket-para-prevenir-eliminaciones">2.4. Configurar políticas de bucket para prevenir eliminaciones<a class="headerlink" href="#24-configurar-politicas-de-bucket-para-prevenir-eliminaciones" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>⚠️ <strong>Advertencia</strong>: Asegúrate de que este rol no sea necesario para otras funcionalidades antes de eliminarlo.</p>
+</blockquote>
+<hr />
+<h3 id="23-subir-los-archivos-al-bucket-s3">2.3. Subir los archivos al bucket S3<a class="headerlink" href="#23-subir-los-archivos-al-bucket-s3" title="Permanent link">&para;</a></h3>
+<p>Una vez que hayas implementado <strong>cualquiera de las dos soluciones</strong>, debes subir los archivos al bucket:</p>
 <ol>
-<li>Ve a <strong>Permissions</strong> del bucket</li>
-<li>Configura <strong>Bucket Policy</strong> para restringir eliminaciones:</li>
+<li>Ve a la pestaña <strong>Objects</strong> (Objetos) del bucket <code>ctfbucket</code></li>
+<li>Haz clic en <strong>Upload</strong> (Subir)</li>
+<li>Haz clic en <strong>Add files</strong> (Añadir archivos) o <strong>Add folder</strong> (Añadir carpeta)</li>
+<li>Selecciona y sube los siguientes archivos:
+   - <code>unicorn.jpg</code> (imagen de fondo)
+   - <code>w3.css</code> (archivo de estilos CSS)</li>
+<li>Haz clic en <strong>Upload</strong> (Subir) para confirmar</li>
 </ol>
-<p><strong>Opción A: Bloquear eliminaciones públicas</strong>
+<blockquote>
+<p>✅ <strong>Nota</strong>: Después de implementar cualquiera de las soluciones, los objetos del bucket S3 ya no serán eliminados automáticamente.</p>
+</blockquote>
+<hr />
+<h3 id="politica-de-bucket-alternativa-opcional-mas-granular">Política de bucket alternativa (Opcional - más granular)<a class="headerlink" href="#politica-de-bucket-alternativa-opcional-mas-granular" title="Permanent link">&para;</a></h3>
+<p>Si prefieres una política más granular que permita excepciones para ciertos usuarios/roles específicos, puedes usar esta versión alternativa de la política de bucket:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -998,7 +1120,7 @@
 <span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObjectVersion&quot;</span>
 <span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p">],</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::NOMBRE-BUCKET/*&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::ctfbucket/*&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nt">&quot;StringNotEquals&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos" data-linenos="15 "></span><span class="w">          </span><span class="nt">&quot;aws:PrincipalArn&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::CUENTA-ID:user/ADMIN-USER&quot;</span>
@@ -1007,54 +1129,24 @@
 <span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="p">}</span>
 <span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="p">]</span>
 <span class="linenos" data-linenos="20 "></span><span class="p">}</span>
-</code></pre></div></p>
-<p><strong>Opción B: Restringir eliminaciones solo a IAM users/roles específicos</strong>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">      </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DenyDeleteExceptWebServers&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deny&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="s2">&quot;s3:DeleteObjectVersion&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p">],</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::NOMBRE-BUCKET/*&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="nt">&quot;StringNotLike&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">          </span><span class="nt">&quot;aws:PrincipalArn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">            </span><span class="s2">&quot;arn:aws:iam::*:role/*&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">            </span><span class="s2">&quot;arn:aws:iam::*:user/admin*&quot;</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">          </span><span class="p">]</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="p">}</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="p">}</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="p">}</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">  </span><span class="p">]</span>
-<span class="linenos" data-linenos="23 "></span><span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
 <blockquote>
-<p>💡 <strong>Nota</strong>: Reemplaza <code>NOMBRE-BUCKET</code> con el nombre real de tu bucket. Puedes obtener el Account ID en la parte superior derecha de la consola.</p>
+<p>💡 <strong>Nota</strong>: Reemplaza <code>CUENTA-ID</code> con el ID de tu cuenta AWS. Puedes obtenerlo en la parte superior derecha de la consola.</p>
 </blockquote>
-<h4 id="25-configurar-object-lock-opcional-pero-recomendado">2.5. Configurar Object Lock (Opcional pero recomendado)<a class="headerlink" href="#25-configurar-object-lock-opcional-pero-recomendado" title="Permanent link">&para;</a></h4>
+<h4 id="24-verificar-que-el-sitio-web-se-ve-correctamente">2.4. Verificar que el sitio web se ve correctamente<a class="headerlink" href="#24-verificar-que-el-sitio-web-se-ve-correctamente" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Ve a <strong>Properties</strong> → <strong>Object Lock</strong></li>
-<li>Si está disponible, activa <strong>Object Lock</strong> con modo <strong>Compliance</strong> o <strong>Governance</strong></li>
-<li>Esto previene eliminaciones incluso por usuarios con permisos de administrador</li>
-</ol>
-<h4 id="26-revisar-y-restringir-politicas-de-iam">2.6. Revisar y restringir políticas de IAM<a class="headerlink" href="#26-revisar-y-restringir-politicas-de-iam" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Ve a <strong>IAM</strong> → <strong>Users</strong> o <strong>Roles</strong></li>
-<li>Revisa qué usuarios/roles tienen acceso al bucket S3</li>
-<li>Elimina permisos <code>s3:DeleteObject</code> innecesarios</li>
-<li>Asegúrate de que solo usuarios/roles autorizados puedan eliminar objetos</li>
-</ol>
-<h4 id="27-verificar-que-el-sitio-web-se-ve-correctamente">2.7. Verificar que el sitio web se ve correctamente<a class="headerlink" href="#27-verificar-que-el-sitio-web-se-ve-correctamente" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Accede al sitio web a través del ALB</li>
-<li>Verifica que los estilos CSS se cargan correctamente</li>
-<li>Verifica que las imágenes de fondo se muestran</li>
-<li>Si algo no funciona, revisa los permisos de lectura del bucket (el sitio web debe poder LEER los archivos)</li>
+<li>Accede al sitio web a través del ALB
+   - Ve a <strong>EC2</strong> → <strong>Load Balancers</strong>
+   - Copia el DNS name del ALB
+   - Abre la URL en un navegador</li>
+<li>Verifica que:
+   - Los estilos CSS (<code>w3.css</code>) se cargan correctamente
+   - La imagen de fondo (<code>unicorn.jpg</code>) se muestra correctamente
+   - El sitio web tiene el aspecto visual esperado</li>
+<li>Si algo no funciona:
+   - Verifica que los archivos están en el bucket <code>ctfbucket</code>
+   - Revisa los permisos de lectura del bucket (el sitio web debe poder LEER los archivos)
+   - Verifica que no hay errores en la consola del navegador (F12)</li>
 </ol>
 <hr />
 <h2 id="parte-3-wafv2-proteger-alb-contra-sql-injection">Parte 3: WAFv2 - Proteger ALB contra SQL Injection<a class="headerlink" href="#parte-3-wafv2-proteger-alb-contra-sql-injection" title="Permanent link">&para;</a></h2>
