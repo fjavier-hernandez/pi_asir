@@ -388,9 +388,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-revisar-security-groups" class="md-nav__link">
+  <a href="#13-revisar-y-modificar-security-groups" class="md-nav__link">
     <span class="md-ellipsis">
-      1.3. Revisar Security Groups
+      1.3. Revisar y modificar Security Groups
     </span>
   </a>
   
@@ -945,49 +945,108 @@
 <li>Anota el <strong>nombre de la instancia</strong> y el <strong>Security Group</strong> asociado</li>
 </ol>
 <h4 id="12-revisar-cloudwatch-logs-para-identificar-la-ip-del-atacante">1.2. Revisar CloudWatch Logs para identificar la IP del atacante<a class="headerlink" href="#12-revisar-cloudwatch-logs-para-identificar-la-ip-del-atacante" title="Permanent link">&para;</a></h4>
+<p>Cuando el acceso a RDS se realiza a través de un Lambda, debes buscar la IP del atacante en diferentes lugares:</p>
+<h5 id="opcion-a-revisar-logs-de-rds-directamente">Opción A: Revisar logs de RDS directamente<a class="headerlink" href="#opcion-a-revisar-logs-de-rds-directamente" title="Permanent link">&para;</a></h5>
+<p>Si RDS tiene logs habilitados, puedes ver las conexiones entrantes:</p>
 <ol>
 <li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
 <li>Busca logs relacionados con RDS (pueden llamarse <code>/aws/rds/instance/[nombre-instancia]/error</code> o similar)</li>
 <li>Revisa los logs para encontrar intentos de conexión desde IPs que no pertenecen a tus servidores web</li>
 <li><strong>Anota la dirección IP</strong> del atacante (la que aparece múltiples veces en intentos fallidos)</li>
 </ol>
-<p><strong>Alternativa: Usar CloudWatch Insights</strong></p>
-<ol>
-<li>En CloudWatch, ve a <strong>Logs Insights</strong></li>
-<li>Selecciona el log group de RDS</li>
-<li>Ejecuta una consulta como:
-   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>fields @timestamp, @message
-<span class="linenos" data-linenos="2 "></span>| filter @message like /connection/
-<span class="linenos" data-linenos="3 "></span>| sort @timestamp desc
-<span class="linenos" data-linenos="4 "></span>| limit 50
-</code></pre></div></li>
-<li>Busca IPs que aparezcan repetidamente y que no sean de tus servidores web</li>
-</ol>
-<h4 id="13-revisar-security-groups">1.3. Revisar Security Groups<a class="headerlink" href="#13-revisar-security-groups" title="Permanent link">&para;</a></h4>
+<h5 id="opcion-b-revisar-security-groups-para-ver-ips-con-acceso">Opción B: Revisar Security Groups para ver IPs con acceso<a class="headerlink" href="#opcion-b-revisar-security-groups-para-ver-ips-con-acceso" title="Permanent link">&para;</a></h5>
 <ol>
 <li>Ve a <strong>EC2</strong> → <strong>Security Groups</strong></li>
 <li>Encuentra el Security Group asociado a tu instancia RDS</li>
 <li>Revisa las <strong>Inbound Rules</strong> (Reglas de entrada)</li>
-<li>Identifica qué IPs o rangos tienen acceso actualmente</li>
+<li>Identifica reglas que permitan acceso desde <code>0.0.0.0/0</code> o rangos IP específicos</li>
+<li>Las IPs que NO sean de tus servidores web o del Lambda legítimo son sospechosas</li>
+</ol>
+<h5 id="opcion-c-revisar-vpc-flow-logs-si-estan-habilitados">Opción C: Revisar VPC Flow Logs (si están habilitados)<a class="headerlink" href="#opcion-c-revisar-vpc-flow-logs-si-estan-habilitados" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
+<li>Busca logs relacionados con VPC Flow Logs (pueden llamarse <code>/aws/vpc/flowlogs</code> o similar)</li>
+<li>Usa CloudWatch Logs Insights para buscar conexiones a RDS:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="n">srcaddr</span><span class="p">,</span><span class="w"> </span><span class="n">dstaddr</span><span class="p">,</span><span class="w"> </span><span class="n">dstport</span><span class="p">,</span><span class="w"> </span><span class="n">action</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">dstport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3306</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">dstport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5432</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;ACCEPT&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">srcaddr</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">desc</span>
+</code></pre></div>
+<ol start="4">
+<li>Identifica IPs que aparezcan con frecuencia y que no sean de tus servidores web o del Lambda legítimo</li>
+</ol>
+<h5 id="opcion-d-revisar-logs-del-lambda-si-el-lambda-registra-ips-origen">Opción D: Revisar logs del Lambda (si el Lambda registra IPs origen)<a class="headerlink" href="#opcion-d-revisar-logs-del-lambda-si-el-lambda-registra-ips-origen" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
+<li>Busca logs relacionados con Lambda (el nombre puede empezar por <code>/aws/lambda/</code>)</li>
+<li>Busca funciones Lambda que puedan estar haciendo conexiones a RDS</li>
+<li>Revisa los logs para encontrar:
+   - Eventos que contengan información de IP origen
+   - Invocaciones sospechosas o fuera de lo normal
+   - Patrones de acceso inusuales</li>
+</ol>
+<p><strong>Alternativa: Usar CloudWatch Insights para buscar en todos los logs</strong></p>
+<ol>
+<li>En CloudWatch, ve a <strong>Logs Insights</strong></li>
+<li>Selecciona múltiples log groups (RDS, Lambda, VPC Flow Logs si están disponibles)</li>
+<li>Ejecuta una consulta como:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">connection</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">connect</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">IP</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<ol start="4">
+<li>Busca IPs que aparezcan repetidamente y que no sean de tus servidores web</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>La IP del atacante generalmente aparecerá en los Security Groups de RDS como una regla que permite acceso desde un rango IP específico o desde <code>0.0.0.0/0</code>. Revisa primero los Security Groups antes de profundizar en los logs.</p>
+</div>
+<h4 id="13-revisar-y-modificar-security-groups">1.3. Revisar y modificar Security Groups<a class="headerlink" href="#13-revisar-y-modificar-security-groups" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>💡 <strong>Nota</strong>: Si ya revisaste los Security Groups en el paso anterior (Opción B), puedes proceder directamente a modificarlos.</p>
+</blockquote>
+<ol>
+<li>Ve a <strong>EC2</strong> → <strong>Security Groups</strong></li>
+<li>Encuentra el Security Group asociado a tu instancia RDS</li>
+<li>Revisa las <strong>Inbound Rules</strong> (Reglas de entrada)</li>
+<li>Identifica qué IPs o rangos tienen acceso actualmente
+   - Busca reglas que permitan acceso desde <code>0.0.0.0/0</code> (todo internet) ❌
+   - Busca IPs específicas sospechosas que no sean de tus servidores web ❌
+   - Anota la IP del atacante si la encuentras aquí</li>
 </ol>
 <h4 id="14-modificar-el-security-group-de-rds">1.4. Modificar el Security Group de RDS<a class="headerlink" href="#14-modificar-el-security-group-de-rds" title="Permanent link">&para;</a></h4>
 <blockquote>
-<p>🎯 <strong>Estrategia</strong>: Permitir conexiones SOLO desde los servidores web, bloqueando todas las demás.</p>
+<p>🎯 <strong>Estrategia</strong>: Permitir conexiones SOLO desde los servidores web y recursos legítimos (como Lambda si aplica), bloqueando todas las demás.</p>
 </blockquote>
 <ol>
 <li>Edita el Security Group de RDS</li>
-<li><strong>Modifica o elimina</strong> la regla que permite acceso desde <code>0.0.0.0/0</code> (todo internet)</li>
-<li><strong>Añade una nueva regla</strong> que permita conexiones solo desde:
-   - El Security Group de tus instancias EC2 (servidores web)
-   - O las IPs específicas de tus servidores web</li>
+<li><strong>Modifica o elimina</strong> las reglas que permitan acceso desde:
+   - <code>0.0.0.0/0</code> (todo internet) ❌
+   - IPs específicas sospechosas que identificaste ❌</li>
+<li><strong>Añade nuevas reglas</strong> que permitan conexiones solo desde:
+   - El Security Group de tus instancias EC2 (servidores web) ✅
+   - El Security Group del Lambda (si hay un Lambda legítimo que accede a RDS) ✅
+   - O las IPs específicas de tus servidores web ✅</li>
 </ol>
-<p><strong>Configuración sugerida:</strong>
+<p><strong>Configuración sugerida para servidores web:</strong>
    - <strong>Type</strong>: MySQL/Aurora (puerto 3306) o PostgreSQL (puerto 5432) según tu base de datos
    - <strong>Source</strong>: Selecciona el Security Group de tus instancias EC2
    - <strong>Description</strong>: "Allow access only from web servers"</p>
+<p><strong>Si hay un Lambda legítimo:</strong>
+   - <strong>Type</strong>: MySQL/Aurora (puerto 3306) o PostgreSQL (puerto 5432)
+   - <strong>Source</strong>: Selecciona el Security Group del Lambda o usa VPC endpoints si está configurado
+   - <strong>Description</strong>: "Allow access from Lambda function"</p>
 <ol start="4">
 <li><strong>Guarda los cambios</strong></li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Si identificaste la IP del atacante en el paso anterior, asegúrate de eliminarla o bloquearla explícitamente en las reglas del Security Group. NO añadas reglas que permitan acceso desde esa IP.</p>
+</div>
 <h4 id="15-verificar-que-el-sitio-web-sigue-funcionando">1.5. Verificar que el sitio web sigue funcionando<a class="headerlink" href="#15-verificar-que-el-sitio-web-sigue-funcionando" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Obtén la URL del ALB (Application Load Balancer)
