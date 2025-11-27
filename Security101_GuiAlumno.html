@@ -430,9 +430,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#16-registrar-la-ip-del-atacante" class="md-nav__link">
+  <a href="#16-encontrar-el-nombre-del-hacker-asociado-a-la-ip" class="md-nav__link">
     <span class="md-ellipsis">
-      1.6. Registrar la IP del atacante
+      1.6. Encontrar el nombre del hacker asociado a la IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-registrar-la-ip-y-el-nombre-del-hacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7. Registrar la IP y el nombre del hacker
     </span>
   </a>
   
@@ -1233,12 +1242,154 @@ Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del
 <li>Verifica que el sitio carga correctamente</li>
 <li>Prueba el endpoint <code>/Users.php?uid=1</code> para verificar que la conexión a la base de datos funciona</li>
 </ol>
-<h4 id="16-registrar-la-ip-del-atacante">1.6. Registrar la IP del atacante<a class="headerlink" href="#16-registrar-la-ip-del-atacante" title="Permanent link">&para;</a></h4>
+<h4 id="16-encontrar-el-nombre-del-hacker-asociado-a-la-ip">1.6. Encontrar el nombre del hacker asociado a la IP<a class="headerlink" href="#16-encontrar-el-nombre-del-hacker-asociado-a-la-ip" title="Permanent link">&para;</a></h4>
+<p>Una vez que hayas identificado la IP del atacante (ejemplo: <code>52.4.170.163</code>), necesitas encontrar el <strong>nombre del hacker</strong> asociado a esa IP.</p>
+<blockquote>
+<p>💡 <strong>IP encontrada</strong>: Si ya tienes la IP <code>52.4.170.163</code>, sigue estos pasos para encontrar el nombre del hacker.</p>
+<p>⚠️ <strong>Nota</strong>: El nombre del hacker puede aparecer en diferentes lugares. Sigue los pasos en orden y revisa cuidadosamente los resultados.</p>
+</blockquote>
+<p><strong>Método rápido - Consulta directa con tu IP:</strong></p>
+<p>Reemplaza <code>52.4.170.163</code> con la IP que encontraste en esta consulta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">20</span>
+</code></pre></div>
+<p>Revisa el contenido completo del campo <code>@message</code> - el nombre del hacker debería aparecer en el mismo mensaje que contiene la IP.</p>
+<h5 id="opcion-1-buscar-en-los-logs-del-lambda-usando-la-ip-metodo-recomendado">Opción 1: Buscar en los logs del Lambda usando la IP (MÉTODO RECOMENDADO)<a class="headerlink" href="#opcion-1-buscar-en-los-logs-del-lambda-usando-la-ip-metodo-recomendado" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
+<li>Busca el log group del Lambda (puede empezar con <code>/aws/lambda/</code> y contener <code>gdQuests</code> o <code>CreateIdCInstanceFunction</code>)</li>
+<li>Haz clic en <strong>"View in Logs Insights"</strong></li>
+</ol>
+<p><strong>Paso 1: Buscar mensajes que contengan la IP del hacker</strong></p>
+<p>Reemplaza <code>52.4.170.163</code> con la IP que encontraste y ejecuta esta consulta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<p><strong>Paso 2: Revisar los mensajes completos</strong></p>
+<p>Los mensajes que contengan la IP <code>52.4.170.163</code> probablemente también incluyan el nombre del hacker. </p>
+<ol>
+<li>Revisa el contenido completo del campo <code>@message</code> en cada resultado</li>
+<li>El nombre del hacker puede aparecer:
+   - Junto a la IP en el mismo mensaje
+   - En formato JSON como <code>"user": "nombre"</code> o <code>"hacker": "nombre"</code>
+   - Como texto plano cerca de la IP
+   - En el nombre del log stream o en otros campos</li>
+</ol>
+<p><strong>Paso 3: Si no encuentras el nombre directamente, extrae todos los campos</strong></p>
+<p>Si los logs están estructurados, intenta extraer todos los campos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">log</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<p>Esto te mostrará más información que puede contener el nombre del hacker.</p>
+<p><strong>Paso 4: Buscar patrones comunes de nombres</strong></p>
+<p>Si el nombre no aparece directamente, busca patrones comunes en los logs alrededor de los eventos con esa IP:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="n">h</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">hacker</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">user</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">attacker</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">name</span><span class="o">/</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<p>Esto buscará eventos relacionados en un período de tiempo reciente.</p>
+<p><strong>Consulta alternativa - extraer información estructurada:</strong></p>
+<p>Si los logs tienen un formato estructurado, prueba:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">hacker_name</span><span class="o">&gt;</span><span class="p">[</span><span class="err">\</span><span class="n">w</span><span class="err">\</span><span class="o">-</span><span class="p">]</span><span class="o">+</span><span class="p">).</span><span class="o">*</span><span class="mi">52</span><span class="err">\</span><span class="p">.</span><span class="mi">4</span><span class="err">\</span><span class="p">.</span><span class="mi">170</span><span class="err">\</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">hacker_name</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">hacker_name</span>
+</code></pre></div>
+<p><strong>Paso 3: Si no aparece directamente, busca patrones</strong></p>
+<p>Si el nombre del hacker no aparece en los mismos mensajes que la IP, busca patrones comunes:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">10</span>
+</code></pre></div>
+<p>Luego busca en otros logs del mismo período temporal con:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">timestamp</span><span class="p">(</span><span class="ss">&quot;2025-11-27 00:00:00&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">timestamp</span><span class="p">(</span><span class="ss">&quot;2025-11-27 23:59:59&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">hacker</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="n">attacker</span><span class="o">/</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="k">user</span><span class="o">/</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Importante</p>
+<p>El nombre del hacker generalmente aparece en el mismo log event que contiene la IP <code>52.4.170.163</code>. Revisa cuidadosamente el mensaje completo de cada evento que contenga esa IP.</p>
+</div>
+<h5 id="opcion-2-buscar-en-cloudtrail-si-esta-habilitado">Opción 2: Buscar en CloudTrail (si está habilitado)<a class="headerlink" href="#opcion-2-buscar-en-cloudtrail-si-esta-habilitado" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Ve a <strong>CloudTrail</strong> en la consola de AWS</li>
+<li>Ve a <strong>Event history</strong> (Historial de eventos)</li>
+<li>Busca eventos que contengan la IP <code>52.4.170.163</code></li>
+<li>Revisa los detalles de los eventos para encontrar información del usuario/hacker</li>
+</ol>
+<h5 id="opcion-3-buscar-en-los-security-groups-o-recursos-asociados">Opción 3: Buscar en los Security Groups o recursos asociados<a class="headerlink" href="#opcion-3-buscar-en-los-security-groups-o-recursos-asociados" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Revisa los nombres de los Security Groups que tienen reglas permitiendo acceso desde esa IP</li>
+<li>Revisa los nombres de las instancias EC2 o recursos que puedan estar usando esa IP</li>
+<li>A veces el nombre del hacker aparece en los nombres de los recursos o en las descripciones</li>
+</ol>
+<h5 id="opcion-4-buscar-en-todos-los-logs-de-cloudwatch">Opción 4: Buscar en todos los logs de CloudWatch<a class="headerlink" href="#opcion-4-buscar-en-todos-los-logs-de-cloudwatch" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Ve a <strong>CloudWatch</strong> → <strong>Logs Insights</strong></li>
+<li>Selecciona <strong>"Select log group(s)"</strong> → Selecciona <strong>múltiples log groups</strong> (todos los relacionados con el quest)</li>
+<li>Ejecuta esta consulta:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<ol start="4">
+<li>Revisa cuidadosamente los mensajes - el nombre del hacker puede estar en:
+   - El mensaje mismo
+   - El nombre del log stream
+   - Metadata asociada al evento</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Consejo: Dónde encontrar el nombre del hacker</p>
+<p><strong>Método más común:</strong>
+1. El nombre del hacker generalmente aparece en el <strong>mismo mensaje de log</strong> que contiene la IP <code>52.4.170.163</code>
+2. Revisa el contenido completo del campo <code>@message</code> en los resultados de la consulta
+3. El nombre puede aparecer antes o después de la IP, o en el mismo contexto</p>
+<p><strong>Formato común en los logs:</strong>
+- Puede aparecer como: <code>"user": "nombre_hacker"</code> junto con la IP
+- O como: <code>hacker_name: nombre</code> 
+- O simplemente como texto: <code>nombre_hacker</code> cerca de la IP
+- O como identificador en el nombre del log stream
+- Puede aparecer en formato JSON estructurado</p>
+<p><strong>Pasos específicos para IP <code>52.4.170.163</code>:</strong>
+1. Ve a CloudWatch → Log groups → Lambda del quest
+2. View in Logs Insights
+3. Ejecuta: <code>fields @timestamp, @message | filter @message like /52.4.170.163/ | sort @timestamp desc | limit 20</code>
+4. <strong>Revisa cada mensaje completo</strong> - el nombre del hacker estará en el texto
+5. Busca palabras que NO sean números o IPs - esos serán nombres o identificadores</p>
+<p><strong>Si no aparece en los logs del Lambda:</strong>
+- Busca en CloudTrail (si está habilitado) para eventos relacionados con esa IP
+- Revisa los nombres de recursos (instancias EC2, roles IAM) que puedan estar relacionados
+- El nombre podría estar en las descripciones de los Security Groups que permiten acceso desde esa IP
+- El nombre podría estar en el contexto del evento, no solo en el mensaje</p>
+</div>
+<h4 id="17-registrar-la-ip-y-el-nombre-del-hacker">1.7. Registrar la IP y el nombre del hacker<a class="headerlink" href="#17-registrar-la-ip-y-el-nombre-del-hacker" title="Permanent link">&para;</a></h4>
 <ol>
 <li>En el formulario del quest "RDS seguro"</li>
-<li>Ingresa la dirección IP que identificaste del atacante</li>
+<li>Ingresa la dirección IP del atacante (ejemplo: <code>52.4.170.163</code>)</li>
+<li>Si el formulario también pide el nombre del hacker:
+   - Busca el nombre usando los métodos de la sección 1.6
+   - El nombre puede aparecer en los logs junto con la IP
+   - Puede ser un identificador, un nombre de usuario, o un nombre descriptivo</li>
 <li>Haz clic en <strong>Enviar</strong></li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Nota importante</p>
+<p>Si después de buscar en los logs no encuentras el nombre del hacker, es posible que el quest solo pida la IP. En ese caso, simplemente ingresa la IP <code>52.4.170.163</code> en el formulario y envía.</p>
+</div>
 <hr />
 <h2 id="parte-2-seguridad-s3-proteger-archivos-del-bucket">Parte 2: Seguridad S3 - Proteger Archivos del Bucket<a class="headerlink" href="#parte-2-seguridad-s3-proteger-archivos-del-bucket" title="Permanent link">&para;</a></h2>
 <h3 id="objetivo_1">Objetivo<a class="headerlink" href="#objetivo_1" title="Permanent link">&para;</a></h3>
