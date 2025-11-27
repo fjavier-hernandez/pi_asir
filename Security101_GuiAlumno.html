@@ -1390,11 +1390,43 @@ Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del
 <p>Implementar AWS WAF para bloquear intentos de SQL injection como <code>/Users.php?uid=1%20or%201=1</code> sin afectar el tráfico legítimo.</p>
 <h3 id="pasos-a-seguir_2">Pasos a seguir<a class="headerlink" href="#pasos-a-seguir_2" title="Permanent link">&para;</a></h3>
 <h4 id="31-identificar-el-application-load-balancer-alb">3.1. Identificar el Application Load Balancer (ALB)<a class="headerlink" href="#31-identificar-el-application-load-balancer-alb" title="Permanent link">&para;</a></h4>
+<p>En tu cuenta hay <strong>3 Application Load Balancers</strong>. Debes identificar el ALB correcto asociado al sitio web de Unicorn.Rentals:</p>
 <ol>
 <li>Ve a <strong>EC2</strong> → <strong>Load Balancers</strong></li>
-<li>Identifica tu ALB (debería ser tipo "Application Load Balancer")</li>
-<li>Anota el <strong>ARN</strong> del ALB (lo necesitarás para asociar el WAF)</li>
+<li>
+<p>Verás una tabla con 3 Application Load Balancers:
+   - <strong><code>gdQues-Appli-PDYhlzu...</code></strong> (nombre truncado) ← <strong>Este es el ALB del quest Security 101 que debes proteger</strong>
+   - <code>GiteaALB</code> (para el servidor Git - NO es este)
+   - <code>CodeServerALB</code> (para el IDE - NO es este)</p>
+</li>
+<li>
+<p><strong>Identifica el ALB correcto:</strong>
+   - Busca el ALB cuyo nombre empiece con <strong><code>gdQues-Appli-</code></strong> (el nombre puede estar truncado en la tabla)
+   - Este es el Application Load Balancer del sitio web de Unicorn.Rentals que recibe los ataques SQL injection
+   - Estado: <strong>Active</strong> ✓
+   - Type: <strong>application</strong>
+   - Scheme: <strong>Internet-facing</strong></p>
+</li>
+<li>
+<p><strong>Verificación opcional (para confirmar):</strong>
+   - Haz clic en el ALB <code>gdQues-Appli-...</code> para ver sus detalles
+   - En la pestaña <strong>"Description"</strong> (Descripción), copia el <strong>DNS name</strong>
+   - Abre el DNS name en un navegador
+   - Debería mostrar el sitio web de Unicorn.Rentals
+   - Prueba el endpoint: <code>/Users.php?uid=1</code> - debería funcionar</p>
+</li>
+<li>
+<p><strong>Anota el ARN del ALB</strong> (lo necesitarás para asociar el WAF):
+   - En la pestaña <strong>"Description"</strong> (Descripción)
+   - Busca el campo <strong>"ARN"</strong>
+   - Tiene formato: <code>arn:aws:elasticloadbalancing:us-east-1:ACCOUNT-ID:loadbalancer/app/gdQues-Appli-.../ID</code>
+   - Copia el ARN completo</p>
+</li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p><strong>NO uses</strong> <code>GiteaALB</code> ni <code>CodeServerALB</code>. Solo debes proteger el ALB del quest que empieza con <code>gdQues-Appli-</code>.</p>
+</div>
 <h4 id="32-crear-un-web-acl-en-aws-wafv2">3.2. Crear un Web ACL en AWS WAFv2<a class="headerlink" href="#32-crear-un-web-acl-en-aws-wafv2" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Ve a <strong>AWS WAF</strong> en la consola
