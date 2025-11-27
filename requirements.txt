@@ -1,0 +1,7 @@
+mkdocs>=1.5.0
+mkdocs-material>=9.0.0
+mkdocs-social-plugin>=0.0.1
+mkdocs-print-site-plugin>=0.9.0
+mkdocs-tags-plugin>=0.1.0
+pymdown-extensions>=10.0.0
+

@@ -4,15 +4,18 @@ use_directory_urls: false
 
 nav:
   - "Inicio": "index.md"
-  - "1.- Introducción a las Redes": "01ir.md"
-  # - "2.- UD2: PowerShell":
-  # - "3.- UD3: Administración de procesos del sistema":
-  # - "4.- Servicios de Directorio Libres: LDAP":
-  # - "5.- Servicios de Directorio Propietarios: Active Directory":
-  # - "6.- Integración de sistemas operativos en red libres y propietarios":
-  # - "7.- Información del sistema":
-  # - "8.- Servicios de acceso y administración remota":
-  # - "9.- Administración de Servidores de Impresión":
+  - "1. Herramientas del proyecto": "01herramientas.md"
+  # - "2. Planteamiento del reto y análisis del contexto": "02planteamiento_reto.md"
+  # - "Preparación AWS GameDay 2025": "AWS_GameDay2025_Preparacion.md"
+  # - "Prácticas AWS GameDay 2025 - Lab": "AWS_GameDay2025_Lab.md"
+  # - "Security 101 - Guía del Alumno": "Security101_GuiAlumno.md"
+  # - "3. Diseño de la solución y planificación": "02diseno.md"
+  # - "3. Diseño de la solución y planificación": "02diseno.md"
+  # - "4. Desarrollo iterativo y pruebas": "03desarrollo.md"
+  # - "5. Integración, seguridad y validación": "04integracion.md"
+  # - "6. Despliegue y operación": "05despliegue.md"
+  # - "7. Documentación técnica y memoria": "06documentacion.md"
+  # - "8. Presentación, defensa y cierre": "07presentacion.md"
   # - Tags: "tags.md"
 
 theme:
