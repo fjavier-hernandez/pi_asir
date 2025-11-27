@@ -1014,20 +1014,41 @@
 Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del atacante.</p>
 </div>
 <h5 id="opcion-c-revisar-vpc-flow-logs-si-estan-habilitados">Opción C: Revisar VPC Flow Logs (si están habilitados)<a class="headerlink" href="#opcion-c-revisar-vpc-flow-logs-si-estan-habilitados" title="Permanent link">&para;</a></h5>
+<p>Los VPC Flow Logs registran todo el tráfico de red, incluyendo intentos de conexión a RDS.</p>
 <ol>
 <li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
 <li>Busca logs relacionados con VPC Flow Logs (pueden llamarse <code>/aws/vpc/flowlogs</code> o similar)</li>
+<li>Haz clic en el log group de VPC Flow Logs</li>
+<li>Haz clic en <strong>"View in Logs Insights"</strong></li>
 <li>Usa CloudWatch Logs Insights para buscar conexiones a RDS:</li>
 </ol>
+<p><strong>Consulta para encontrar la IP del atacante:</strong>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="n">srcaddr</span><span class="p">,</span><span class="w"> </span><span class="n">dstaddr</span><span class="p">,</span><span class="w"> </span><span class="n">dstport</span><span class="p">,</span><span class="w"> </span><span class="n">action</span>
 <span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">dstport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3306</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">dstport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5432</span>
-<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;ACCEPT&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;ACCEPT&quot;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;REJECT&quot;</span>
 <span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">srcaddr</span>
 <span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">desc</span>
-</code></pre></div>
-<ol start="4">
+</code></pre></div></p>
+<ol start="6">
 <li>Identifica IPs que aparezcan con frecuencia y que no sean de tus servidores web o del Lambda legítimo</li>
 </ol>
+<p><strong>Interpretación de VPC Flow Logs:</strong></p>
+<p>Los VPC Flow Logs tienen un formato estructurado. Un ejemplo de línea de log:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>timestamp account-id interface-id srcaddr dstaddr srcport dstport protocol packets bytes windowstart windowend action flowlogstatus
+</code></pre></div>
+<p><strong>Campos importantes:</strong>
+- <code>srcaddr</code>: Dirección IP de origen (ej: <code>52.4.170.163</code>)
+- <code>dstaddr</code>: Dirección IP de destino (ej: <code>10.0.3.170</code> - probablemente tu RDS)
+- <code>dstport</code>: Puerto de destino (ej: <code>3306</code> para MySQL)
+- <code>action</code>: Acción (<code>ACCEPT</code> o <code>REJECT</code>)</p>
+<p><strong>Ejemplo de log:</strong>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>1764236665 831926611091 eni-0238e6a5827f56560 52.4.170.163 10.0.3.170 46674 3306 6 2 120 1764236665 1764236694 REJECT OK
+</code></pre></div></p>
+<p>Esto muestra un intento rechazado desde <code>52.4.170.163</code> hacia <code>10.0.3.170:3306</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Nota sobre VPC Flow Logs</p>
+<p>Los VPC Flow Logs <strong>NO contienen el nombre del hacker</strong>, solo registran el tráfico de red (IPs, puertos, acciones). Para encontrar el nombre del hacker, debes buscar en los <strong>logs del Lambda</strong> (Opción D) o en <strong>CloudTrail</strong>.</p>
+</div>
 <h5 id="opcion-d-revisar-logs-del-lambda-metodo-recomendado">Opción D: Revisar logs del Lambda (MÉTODO RECOMENDADO)<a class="headerlink" href="#opcion-d-revisar-logs-del-lambda-metodo-recomendado" title="Permanent link">&para;</a></h5>
 <p>El Lambda que interactúa con RDS puede registrar las IPs origen. Para encontrar la IP del atacante:</p>
 <ol>
@@ -1246,8 +1267,12 @@ Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del
 <p>Una vez que hayas identificado la IP del atacante (ejemplo: <code>52.4.170.163</code>), necesitas encontrar el <strong>nombre del hacker</strong> asociado a esa IP.</p>
 <blockquote>
 <p>💡 <strong>IP encontrada</strong>: Si ya tienes la IP <code>52.4.170.163</code>, sigue estos pasos para encontrar el nombre del hacker.</p>
-<p>⚠️ <strong>Nota</strong>: El nombre del hacker puede aparecer en diferentes lugares. Sigue los pasos en orden y revisa cuidadosamente los resultados.</p>
 </blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Pista importante - EMPIEZA AQUÍ</p>
+<p>La pista indica que busques <strong>solicitudes HTTPS rechazadas</strong>. Estas se registran en los <strong>logs de acceso del Application Load Balancer (ALB)</strong>. </p>
+<p><strong>👉 Empieza directamente por la Opción 2 (más abajo) para buscar en los logs del ALB.</strong></p>
+</div>
 <p><strong>Método rápido - Consulta directa con tu IP:</strong></p>
 <p>Reemplaza <code>52.4.170.163</code> con la IP que encontraste en esta consulta:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
@@ -1256,7 +1281,7 @@ Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del
 <span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">20</span>
 </code></pre></div>
 <p>Revisa el contenido completo del campo <code>@message</code> - el nombre del hacker debería aparecer en el mismo mensaje que contiene la IP.</p>
-<h5 id="opcion-1-buscar-en-los-logs-del-lambda-usando-la-ip-metodo-recomendado">Opción 1: Buscar en los logs del Lambda usando la IP (MÉTODO RECOMENDADO)<a class="headerlink" href="#opcion-1-buscar-en-los-logs-del-lambda-usando-la-ip-metodo-recomendado" title="Permanent link">&para;</a></h5>
+<h5 id="opcion-1-buscar-en-los-logs-del-lambda-usando-la-ip-metodo-alternativo">Opción 1: Buscar en los logs del Lambda usando la IP (MÉTODO ALTERNATIVO)<a class="headerlink" href="#opcion-1-buscar-en-los-logs-del-lambda-usando-la-ip-metodo-alternativo" title="Permanent link">&para;</a></h5>
 <ol>
 <li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
 <li>Busca el log group del Lambda (puede empezar con <code>/aws/lambda/</code> y contener <code>gdQuests</code> o <code>CreateIdCInstanceFunction</code>)</li>
@@ -1296,6 +1321,14 @@ Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del
 <span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
 </code></pre></div>
 <p>Esto buscará eventos relacionados en un período de tiempo reciente.</p>
+<p><strong>Paso 5: Buscar en el log stream name o en todos los campos</strong></p>
+<p>El nombre del hacker puede estar en el nombre del log stream o en otros campos del evento:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">log</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">20</span>
+</code></pre></div>
+<p>Revisa también el campo <code>@logStream</code> - a veces el nombre del hacker aparece ahí.</p>
 <p><strong>Consulta alternativa - extraer información estructurada:</strong></p>
 <p>Si los logs tienen un formato estructurado, prueba:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
@@ -1322,20 +1355,86 @@ Si ves una IP pública que no corresponde a tus servidores web, esa es la IP del
 <p class="admonition-title">Importante</p>
 <p>El nombre del hacker generalmente aparece en el mismo log event que contiene la IP <code>52.4.170.163</code>. Revisa cuidadosamente el mensaje completo de cada evento que contenga esa IP.</p>
 </div>
-<h5 id="opcion-2-buscar-en-cloudtrail-si-esta-habilitado">Opción 2: Buscar en CloudTrail (si está habilitado)<a class="headerlink" href="#opcion-2-buscar-en-cloudtrail-si-esta-habilitado" title="Permanent link">&para;</a></h5>
+<h5 id="opcion-2-buscar-en-los-logs-de-acceso-del-alb-solicitudes-https-rechazadas-empezar-aqui-segun-pista">Opción 2: Buscar en los logs de acceso del ALB - Solicitudes HTTPS rechazadas ⭐ (EMPEZAR AQUÍ - SEGÚN PISTA)<a class="headerlink" href="#opcion-2-buscar-en-los-logs-de-acceso-del-alb-solicitudes-https-rechazadas-empezar-aqui-segun-pista" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>🔍 <strong>Pista clave</strong>: Buscar solicitudes HTTPS rechazadas puede revelar el nombre del hacker.</p>
+</blockquote>
+<p>El Application Load Balancer tiene logs de acceso que registran todas las solicitudes HTTP/HTTPS, incluyendo las rechazadas o bloqueadas.</p>
+<p><strong>Paso 1: Encontrar los logs de acceso del ALB</strong></p>
+<ol>
+<li>Ve a <strong>CloudWatch</strong> → <strong>Log groups</strong></li>
+<li>Busca log groups relacionados con el ALB:
+   - Pueden llamarse <code>/aws/elasticloadbalancing/...</code> o <code>/aws/alb/...</code>
+   - O buscar log groups que contengan el nombre del ALB <code>gdQues-Appli-</code>
+   - También pueden estar en formato: <code>/aws/elasticloadbalancing/us-east-1/ACCOUNT-ID/alb/ALB-ID/..._access</code></li>
+</ol>
+<p><strong>Paso 2: Buscar solicitudes HTTPS rechazadas desde la IP del hacker</strong></p>
+<p>Una vez que encuentres el log group del ALB:</p>
+<ol>
+<li>Haz clic en el log group</li>
+<li>Haz clic en <strong>"View in Logs Insights"</strong></li>
+<li>Ejecuta esta consulta para buscar solicitudes rechazadas desde la IP <code>52.4.170.163</code>:</li>
+</ol>
+<p><strong>Consulta 1: Buscar todas las solicitudes desde la IP maliciosa (incluyendo rechazadas):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<p><strong>Consulta 2: Buscar solicitudes HTTPS rechazadas (códigos de error 4xx, 5xx):</strong></p>
+<p>Los logs de ALB tienen un formato específico. Esta consulta parsea el formato estándar de ALB access logs:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?&lt;</span><span class="k">type</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="k">time</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">client_ip</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">target_ip</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">request_processing_time</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">target_processing_time</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">response_processing_time</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">elb_status_code</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">target_status_code</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">received_bytes</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">?&lt;</span><span class="n">sent_bytes</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="w"> </span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="ss">&quot;(?&lt;request&gt;[^&quot;</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="ss">&quot; &quot;</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">user_agent</span><span class="o">&gt;</span><span class="p">[</span><span class="o">^</span><span class="ss">&quot;]+)&quot;</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">client_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;52.4.170.163&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="p">(</span><span class="n">elb_status_code</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">target_status_code</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">400</span><span class="p">)</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="6 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<p><strong>Consulta 3: Versión simplificada - buscar la IP y códigos de error:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="ss">&quot; 4/ or @message like /&quot;</span><span class="w"> </span><span class="mi">5</span><span class="o">/</span><span class="p">)</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<p><strong>Consulta 4: Buscar en el campo user_agent (donde puede estar el nombre del hacker):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">.</span><span class="o">*</span><span class="ss">&quot;(?&lt;user_agent&gt;[^&quot;</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="ss">&quot;\s*$/</span>
+<span class="linenos" data-linenos="3 "></span><span class="ss">| filter @message like /52.4.170.163/</span>
+<span class="linenos" data-linenos="4 "></span><span class="ss">| filter user_agent != &quot;</span><span class="o">-</span><span class="err">&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="linenos" data-linenos="6 "></span><span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span>
+</code></pre></div>
+<p><strong>Consulta 5: Extraer el nombre del hacker del user_agent o request:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
+<span class="linenos" data-linenos="2 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="mi">52</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">170</span><span class="p">.</span><span class="mi">163</span><span class="o">/</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="p">.</span><span class="o">*</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">hacker_name</span><span class="o">&gt;</span><span class="p">[</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z0</span><span class="o">-</span><span class="mi">9</span><span class="n">_</span><span class="o">-</span><span class="p">]</span><span class="o">+</span><span class="p">).</span><span class="o">*</span><span class="mi">52</span><span class="err">\</span><span class="p">.</span><span class="mi">4</span><span class="err">\</span><span class="p">.</span><span class="mi">170</span><span class="err">\</span><span class="p">.</span><span class="mi">163</span><span class="p">.</span><span class="o">*/</span>
+<span class="linenos" data-linenos="4 "></span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">hacker_name</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span>
+<span class="linenos" data-linenos="5 "></span><span class="o">|</span><span class="w"> </span><span class="n">stats</span><span class="w"> </span><span class="k">count</span><span class="p">()</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">hacker_name</span>
+<span class="linenos" data-linenos="6 "></span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="k">desc</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Dónde buscar el nombre del hacker</p>
+<p>El nombre del hacker puede aparecer en:
+- El campo <code>user_agent</code> del log (ejemplo: <code>Mozilla/5.0 (compatible; hacker_name/1.0)</code>)
+- En la URL de la <code>request</code> (ejemplo: <code>/api/user/hacker_name</code>)
+- Como parte del mensaje completo del log
+- Busca palabras clave relacionadas con el hacker en el campo <code>@message</code> completo</p>
+</div>
+<h5 id="opcion-3-buscar-en-cloudtrail-si-esta-habilitado">Opción 3: Buscar en CloudTrail (si está habilitado)<a class="headerlink" href="#opcion-3-buscar-en-cloudtrail-si-esta-habilitado" title="Permanent link">&para;</a></h5>
 <ol>
 <li>Ve a <strong>CloudTrail</strong> en la consola de AWS</li>
 <li>Ve a <strong>Event history</strong> (Historial de eventos)</li>
 <li>Busca eventos que contengan la IP <code>52.4.170.163</code></li>
 <li>Revisa los detalles de los eventos para encontrar información del usuario/hacker</li>
 </ol>
-<h5 id="opcion-3-buscar-en-los-security-groups-o-recursos-asociados">Opción 3: Buscar en los Security Groups o recursos asociados<a class="headerlink" href="#opcion-3-buscar-en-los-security-groups-o-recursos-asociados" title="Permanent link">&para;</a></h5>
+<h5 id="opcion-4-buscar-en-los-security-groups-o-recursos-asociados">Opción 4: Buscar en los Security Groups o recursos asociados<a class="headerlink" href="#opcion-4-buscar-en-los-security-groups-o-recursos-asociados" title="Permanent link">&para;</a></h5>
 <ol>
 <li>Revisa los nombres de los Security Groups que tienen reglas permitiendo acceso desde esa IP</li>
 <li>Revisa los nombres de las instancias EC2 o recursos que puedan estar usando esa IP</li>
 <li>A veces el nombre del hacker aparece en los nombres de los recursos o en las descripciones</li>
 </ol>
-<h5 id="opcion-4-buscar-en-todos-los-logs-de-cloudwatch">Opción 4: Buscar en todos los logs de CloudWatch<a class="headerlink" href="#opcion-4-buscar-en-todos-los-logs-de-cloudwatch" title="Permanent link">&para;</a></h5>
+<h5 id="opcion-5-buscar-en-todos-los-logs-de-cloudwatch">Opción 5: Buscar en todos los logs de CloudWatch<a class="headerlink" href="#opcion-5-buscar-en-todos-los-logs-de-cloudwatch" title="Permanent link">&para;</a></h5>
 <ol>
 <li>Ve a <strong>CloudWatch</strong> → <strong>Logs Insights</strong></li>
 <li>Selecciona <strong>"Select log group(s)"</strong> → Selecciona <strong>múltiples log groups</strong> (todos los relacionados con el quest)</li>
