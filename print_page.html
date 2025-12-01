@@ -274,6 +274,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -311,6 +331,15 @@
   <a href="#01herramientas" class="md-nav__link">
     <span class="md-ellipsis">
       1. Herramientas del proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02planteamiento_reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Planteamiento del reto y análisis del contexto
     </span>
   </a>
   
@@ -642,7 +671,1058 @@ Esta guía incluye:
 - Pasos detallados para proteger Amazon RDS contra conexiones no autorizadas
 - Configuración de políticas de seguridad en Amazon S3 para prevenir eliminaciones
 - Implementación de AWS WAFv2 para proteger el ALB contra SQL injection
-- Troubleshooting y verificación de soluciones --></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+- Troubleshooting y verificación de soluciones --></section><section class="print-page" id="02planteamiento_reto" heading-number="3"><h1 id="02planteamiento_reto-2-planteamiento-del-reto-y-analisis-del-contexto">2. Planteamiento del reto y análisis del contexto<a class="headerlink" href="#02planteamiento_reto-2-planteamiento-del-reto-y-analisis-del-contexto" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>En esta unidad aprenderás a <strong>caracterizar el reto</strong>, <strong>analizar el contexto del sector</strong>, <strong>definir el alcance</strong> y <strong>establecer los requisitos</strong> de un proyecto TIC real. Trabajarás con propuestas basadas en empresas locales de Crevillent, permitiéndote conectar el aprendizaje con el tejido empresarial de tu entorno.</p>
+</blockquote>
+<p>Esta unidad de trabajo corresponde a los <strong>Resultados de Aprendizaje RA1 y RA2</strong> y es fundamental para sentar las bases de un proyecto exitoso.</p>
+<h2 id="02planteamiento_reto-resultados-de-aprendizaje">Resultados de aprendizaje<a class="headerlink" href="#02planteamiento_reto-resultados-de-aprendizaje" title="Permanent link">&para;</a></h2>
+<p>Al finalizar esta unidad, serás capaz de:</p>
+<ul>
+<li><strong>RA1 (15%):</strong> Caracterizar el reto y el contexto del sector, definiendo alcance y requisitos.</li>
+<li><strong>RA2 (25%):</strong> Planificar actividades, recursos, riesgos y cronograma del proyecto.</li>
+<li><strong>RA5 (15%):</strong> Comunicar y colaborar eficazmente (reuniones, pitch, retroalimentación).</li>
+</ul>
+<hr />
+<h2 id="02planteamiento_reto-1-conceptos-basicos-para-el-planteamiento-del-reto">1. Conceptos básicos para el planteamiento del reto<a class="headerlink" href="#02planteamiento_reto-1-conceptos-basicos-para-el-planteamiento-del-reto" title="Permanent link">&para;</a></h2>
+<p>Para caracterizar correctamente un reto, debemos responder a cuatro preguntas clave:</p>
+<ol>
+<li>
+<p><strong>¿Qué problema se intenta resolver?</strong> Descripción clara del problema, análisis de su impacto e identificación de los interesados/afectados.</p>
+</li>
+<li>
+<p><strong>¿Por qué es importante resolverlo?</strong> Beneficios esperados, coste de no resolverlo y oportunidades que se abren.</p>
+</li>
+<li>
+<p><strong>¿Quién necesita la solución?</strong> Identificación de interesados (clientes, usuarios, patrocinadores), sus necesidades y nivel de influencia.</p>
+</li>
+<li>
+<p><strong>¿Qué se quiere lograr?</strong> Objetivos del proyecto, resultados esperados y criterios de éxito.</p>
+</li>
+</ol>
+<p><strong>Estructura de la caracterización del reto:</strong></p>
+<ol>
+<li><strong>Título del reto:</strong> Nombre descriptivo y claro del proyecto</li>
+<li><strong>Contexto:</strong> Situación actual de la organización/empresa</li>
+<li><strong>Problemática:</strong> Descripción del problema o necesidad a resolver</li>
+<li><strong>Objetivos:</strong> Qué se quiere conseguir con el proyecto</li>
+<li><strong>Interesados:</strong> Personas o grupos involucrados o afectados</li>
+<li><strong>Análisis del contexto:</strong> Empresarial, tecnológico, mercado, social y geográfico</li>
+<li><strong>Análisis <abbr title="Debilidades, Amenazas, Fortalezas, Oportunidades">DAFO</abbr>:</strong> Debilidades, Amenazas, Fortalezas, Oportunidades</li>
+<li><strong>Alcance:</strong> Funcional (qué se incluye/excluye), técnico (tecnologías), temporal (fases), recursos</li>
+<li><strong>Requisitos:</strong> Funcionales (qué debe hacer), no funcionales (cómo debe funcionar), del negocio</li>
+</ol>
+<hr />
+<h2 id="02planteamiento_reto-2-propuestas-de-proyectos">2. Propuestas de proyectos<a class="headerlink" href="#02planteamiento_reto-2-propuestas-de-proyectos" title="Permanent link">&para;</a></h2>
+<p>A continuación encontrarás <strong>2 propuestas de proyectos</strong> basadas en empresas reales de Crevillent. Cada equipo deberá elegir una propuesta y desarrollar el planteamiento completo siguiendo la estructura del Proyecto Intermodular (<abbr title="Proyecto intermodular">PI</abbr>) indicada en los requisitos.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Los proyectos deben estar orientados a <strong>ASIR</strong>, especialmente a la <strong>creación de entornos virtualizados</strong>. Se puede elegir entre las plataformas <strong>GNS3</strong> o <strong>AWS</strong> estudiadas en el módulo de Herramientas.  </p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Orientación de requisitos</p>
+<p>Los requisitos deben estar orientados a los módulos especificados en los requisitos del Proyecto Intermodular (<abbr title="Proyecto intermodular">PI</abbr>): <strong>ASGBD</strong>, <strong>ASO</strong>, <strong>IAW</strong>, <strong>Servicios de Red e Internet</strong>, <strong>Seguridad</strong> y <strong>Alta Disponibilidad</strong>.</p>
+</div>
+<h3 id="02planteamiento_reto-propuesta-1-infraestructura-completa-de-ti-para-la-asociacion-unifam">Propuesta 1: Infraestructura completa de TI para la Asociación UNIFAM<a class="headerlink" href="#02planteamiento_reto-propuesta-1-infraestructura-completa-de-ti-para-la-asociacion-unifam" title="Permanent link">&para;</a></h3>
+<h4 id="02planteamiento_reto-contexto">Contexto<a class="headerlink" href="#02planteamiento_reto-contexto" title="Permanent link">&para;</a></h4>
+<p>La <strong>Asociación de Fabricantes de Alfombras de Crevillent (UNIFAM)</strong> agrupa a más de 15 empresas del sector textil especializadas en la fabricación de alfombras, moquetas y productos relacionados. La asociación funciona principalmente como entidad de representación y promoción del sector, pero <strong>no cuenta con infraestructura de TI propia</strong> para gestionar su actividad de forma profesional.</p>
+<p><strong>Situación actual:</strong> UNIFAM actualmente gestiona su información de forma muy básica. Cada empresa asociada gestiona su propio catálogo de productos de forma individual, utilizando diferentes formatos (catálogos PDF, hojas de cálculo, páginas web individuales). La asociación no tiene servidores propios, servicios de red configurados, ni sistemas de gestión centralizados. <strong>Necesitan crear desde cero toda su infraestructura tecnológica</strong> para poder operar de forma profesional y ofrecer servicios digitales a sus empresas asociadas.</p>
+<h4 id="02planteamiento_reto-problema-identificado">Problema identificado<a class="headerlink" href="#02planteamiento_reto-problema-identificado" title="Permanent link">&para;</a></h4>
+<p>Como asociación sin infraestructura de TI, UNIFAM necesita crear completamente su infraestructura desde cero:</p>
+<ul>
+<li><strong>Falta total de infraestructura:</strong> No existe ningún servidor, base de datos, ni servicios de red configurados por parte de la asociación</li>
+<li><strong>No existe una plataforma centralizada:</strong> No hay una plataforma que muestre todos los productos de las empresas asociadas de forma unificada</li>
+<li><strong>Los clientes deben consultar múltiples fuentes:</strong> Para encontrar productos deben consultar múltiples webs o catálogos individuales</li>
+<li><strong>Falta de servicios de red:</strong> La asociación no tiene servicios de red configurados (DHCP, DNS, SSH, FTP)</li>
+<li><strong>Falta de seguridad:</strong> No existe ninguna medida de seguridad implementada a nivel de asociación</li>
+<li><strong>Sin sistema de respaldo:</strong> No hay mecanismos de copia de seguridad para la información de la asociación</li>
+<li><strong>Dificultad para realizar promociones conjuntas:</strong> Sin plataforma centralizada es difícil promocionar el sector de forma unificada</li>
+<li><strong>Falta de visibilidad online:</strong> El sector "Alfombras de Crevillent" no tiene una presencia web profesional centralizada</li>
+<li><strong>Dificultad para identificar tendencias:</strong> Sin sistema de gestión es difícil analizar qué productos son más demandados</li>
+</ul>
+<h4 id="02planteamiento_reto-ejemplo-de-caracterizacion-del-reto">Ejemplo de caracterización del reto<a class="headerlink" href="#02planteamiento_reto-ejemplo-de-caracterizacion-del-reto" title="Permanent link">&para;</a></h4>
+<p><strong>1. Título del reto:</strong> Infraestructura completa de TI y plataforma web centralizada para UNIFAM</p>
+<p><strong>2. Contexto:</strong> La Asociación de Fabricantes de Alfombras de Crevillent (UNIFAM) agrupa a más de 15 empresas del sector textil. Actualmente no cuenta con infraestructura de TI propia y cada empresa gestiona su catálogo de forma individual (PDF, hojas de cálculo, webs individuales).</p>
+<p><strong>3. Problemática:</strong> Falta total de infraestructura tecnológica (servidores, base de datos, servicios de red) y ausencia de plataforma centralizada que muestre todos los productos de las empresas asociadas, dificultando la búsqueda, comparación y promoción conjunta.</p>
+<p><strong>4. Objetivos:</strong></p>
+<ul>
+<li>Crear infraestructura completa de TI desde cero (servidores, servicios de red, base de datos)</li>
+<li>Desplegar plataforma web centralizada con catálogo completo de todas las empresas asociadas</li>
+<li>Implementar servicios de red (DHCP, DNS, SSH, FTP, Apache)</li>
+<li>Configurar medidas de seguridad y sistema de respaldo</li>
+</ul>
+<p><strong>5. Interesados:</strong></p>
+<ul>
+<li><strong>Primarios:</strong> Director y junta directiva de UNIFAM, empresas asociadas, equipo de desarrollo</li>
+<li><strong>Secundarios:</strong> Clientes potenciales, instituciones públicas, diseñadores de interiores</li>
+</ul>
+<p><strong>6. Análisis del contexto:</strong></p>
+<ul>
+<li><strong>Empresarial:</strong> Asociación sin ánimo de lucro, 15+ empresas asociadas, sector textil tradicional</li>
+<li><strong>Tecnológico:</strong> Sin infraestructura previa, necesidad de crear todo desde cero</li>
+<li><strong>Mercado:</strong> Sector de alfombras de Crevillent, competencia internacional, necesidad de digitalización</li>
+<li><strong>Geográfico:</strong> Crevillent (Alicante), sector con tradición local</li>
+</ul>
+<p><strong>7. Análisis <abbr title="Debilidades, Amenazas, Fortalezas, Oportunidades">DAFO</abbr>:</strong></p>
+<ul>
+<li><strong>Fortalezas:</strong> Tradición del sector, múltiples empresas asociadas, apoyo institucional</li>
+<li><strong>Debilidades:</strong> Falta de infraestructura TI, recursos limitados, poca experiencia digital</li>
+<li><strong>Oportunidades:</strong> Digitalización del sector, visibilidad online, promoción conjunta</li>
+<li><strong>Amenazas:</strong> Competencia internacional, cambios tecnológicos, costes de mantenimiento</li>
+</ul>
+<p><strong>8. Alcance:</strong></p>
+<ul>
+<li><strong>Funcional:</strong> Plataforma web con catálogo, búsqueda, filtrado, paneles de administración (incluido). E-commerce, integración ERP (excluido)</li>
+<li><strong>Técnico:</strong> GNS3 o AWS, Linux, Apache, WordPress, MySQL/PostgreSQL, PHP</li>
+<li><strong>Temporal:</strong> Proyecto anual del ciclo formativo</li>
+<li><strong>Recursos:</strong> Equipo de alumnos, tutor, infraestructura del centro educativo</li>
+</ul>
+<p><strong>9. Requisitos principales:</strong></p>
+<ul>
+<li><strong>Funcionales:</strong> Visualización de catálogo, búsqueda y filtrado, gestión de productos por empresas, administración global</li>
+<li><strong>No funcionales:</strong> Tiempo de carga &lt; 2 segundos, diseño responsive, backup diario, seguridad (HTTPS, encriptación)</li>
+<li><strong>Del negocio:</strong> Mejorar visibilidad online del sector, facilitar búsqueda de productos, modernizar imagen de la asociación</li>
+</ul>
+<h4 id="02planteamiento_reto-objetivos-del-proyecto">Objetivos del proyecto<a class="headerlink" href="#02planteamiento_reto-objetivos-del-proyecto" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Crear infraestructura completa desde cero:</strong> Diseñar e implementar toda la infraestructura de TI necesaria para la asociación</li>
+<li><strong>Implementar servicios de red:</strong> Configurar todos los servicios de red necesarios (DHCP, DNS, SSH, FTP, Apache)</li>
+<li><strong>Desplegar base de datos:</strong> Instalar y configurar un sistema gestor de bases de datos para gestionar información de productos, empresas asociadas y usuarios</li>
+<li><strong>Crear plataforma web centralizada:</strong> Desarrollar una plataforma web profesional con el catálogo completo de todas las empresas asociadas</li>
+<li><strong>Facilitar búsqueda y filtrado:</strong> Implementar sistema de búsqueda y filtrado de productos por categoría, empresa, precio, material, etc.</li>
+<li><strong>Mejorar visibilidad online:</strong> Crear presencia web profesional para el sector "Alfombras de Crevillent"</li>
+<li><strong>Proporcionar herramientas de administración:</strong> Desarrollar paneles de administración para que cada empresa gestione sus productos y para administración global</li>
+<li><strong>Implementar seguridad:</strong> Configurar todas las medidas de seguridad necesarias (firewall, encriptación, acceso remoto seguro)</li>
+<li><strong>Establecer sistema de respaldo:</strong> Implementar mecanismos de copia de seguridad y recuperación</li>
+<li><strong>Automatizar tareas:</strong> Crear scripts para automatizar tareas administrativas y de mantenimiento</li>
+</ol>
+<h4 id="02planteamiento_reto-alcance-del-proyecto">Alcance del proyecto<a class="headerlink" href="#02planteamiento_reto-alcance-del-proyecto" title="Permanent link">&para;</a></h4>
+<p><strong>Incluido (Infraestructura completa desde cero):</strong></p>
+<p><strong>Infraestructura base:</strong></p>
+<ul>
+<li>Instalación y configuración de sistema operativo en entorno virtualizado (GNS3 o AWS)</li>
+<li>Configuración de topología de red completa</li>
+<li>Implementación de servicios de red (DHCP, DNS, SSH, FTP)</li>
+<li>Configuración de firewall y medidas de seguridad básicas</li>
+</ul>
+<p><strong>Base de datos:</strong></p>
+<ul>
+<li>Instalación y configuración de sistema gestor de bases de datos (MySQL/PostgreSQL)</li>
+<li>Creación de estructura de base de datos completa (productos, empresas asociadas, usuarios, categorías, materiales)</li>
+<li>Configuración de seguridad y control de acceso a la base de datos</li>
+<li>Implementación de mecanismos de integridad y consistencia</li>
+</ul>
+<p><strong>Aplicación web:</strong></p>
+<ul>
+<li>Instalación y configuración del servidor web Apache</li>
+<li>Instalación, configuración y personalización de WordPress para el catálogo de productos</li>
+<li>Portal web público con visualización de catálogo centralizado</li>
+<li>Sistema de búsqueda y filtrado avanzado (por empresa, categoría, material, precio)</li>
+<li>Panel de administración por empresa (gestión de productos - CRUD completo)</li>
+<li>Panel de administración global (gestión de empresas asociadas y usuarios)</li>
+<li>Sistema de autenticación y autorización (roles: administrador global, administrador empresa, visitante)</li>
+<li>Gestión de imágenes de productos (subida múltiple, redimensionado automático)</li>
+<li>Responsive design (adaptable a móviles y tablets)</li>
+<li>Integración básica con redes sociales (compartir productos)</li>
+<li>Exportación de catálogo a PDF/Excel</li>
+</ul>
+<p><strong>Seguridad y mantenimiento:</strong></p>
+<ul>
+<li>Análisis de amenazas y medidas de protección</li>
+<li>Configuración de acceso remoto seguro (SSH con claves)</li>
+<li>Implementación de cortafuegos</li>
+<li>Configuración de HTTPS/SSL</li>
+<li>Sistema de backup automático y recuperación</li>
+<li>Scripts de automatización para tareas administrativas</li>
+<li>Monitorización del sistema</li>
+</ul>
+<p><strong>Excluido (fase inicial):</strong></p>
+<ul>
+<li>Sistema de pedidos online</li>
+<li>Pasarela de pago</li>
+<li>Gestión de inventario en tiempo real</li>
+<li>Carrito de compra</li>
+<li>Sistema de reseñas y valoraciones</li>
+<li>Integración con sistemas ERP de las empresas</li>
+<li>Múltiples servidores o alta disponibilidad avanzada</li>
+</ul>
+<h4 id="02planteamiento_reto-requisitos-principales-por-modulos">Requisitos principales por módulos<a class="headerlink" href="#02planteamiento_reto-requisitos-principales-por-modulos" title="Permanent link">&para;</a></h4>
+<p><strong>ASGBD (Administración de Sistemas Gestores de Bases de Datos):</strong></p>
+<ul>
+<li>Instalación y configuración de un sistema gestor de base de datos (MySQL/PostgreSQL)</li>
+<li>Creación de la estructura de base de datos (tablas principales: productos, empresas, usuarios)</li>
+<li>Configuración de seguridad básica (usuarios, permisos)</li>
+<li>Script de backup automático de la base de datos</li>
+</ul>
+<p><strong>ASO (Administración de Sistemas Operativos):</strong></p>
+<ul>
+<li>Instalación y configuración de sistema operativo Linux en entorno virtualizado (GNS3 o AWS)</li>
+<li>Gestión de usuarios, permisos y políticas de seguridad básicas</li>
+<li>Configuración de servicios del sistema (Apache, MySQL)</li>
+<li>Script de automatización para backups o tareas administrativas básicas</li>
+</ul>
+<p><strong>IAW (Implantación de Aplicaciones Web):</strong></p>
+<ul>
+<li>Instalación y configuración del servidor Apache</li>
+<li>Instalación y configuración de WordPress</li>
+<li>Administración de usuarios en WordPress</li>
+<li>Acceso a base de datos desde PHP (conexión y consultas básicas)</li>
+<li>Personalización básica de WordPress (tema o plugin simple)</li>
+</ul>
+<p><strong>Servicios de Red e Internet:</strong></p>
+<ul>
+<li>Configuración de SSH para acceso remoto seguro</li>
+<li>Configuración de DNS básico (o uso de DNS externo)</li>
+<li>Configuración de Apache como servidor web</li>
+</ul>
+<p><strong>Seguridad y Alta Disponibilidad:</strong></p>
+<ul>
+<li>Configuración de firewall básico (iptables/ufw o AWS Security Groups)</li>
+<li>Configuración de HTTPS/SSL</li>
+<li>Análisis básico de amenazas y medidas de protección implementadas</li>
+<li>Si se usa AWS: configuración de VPC con subredes públicas y privadas</li>
+</ul>
+<h4 id="02planteamiento_reto-interesados-identificados">Interesados identificados<a class="headerlink" href="#02planteamiento_reto-interesados-identificados" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Primarios:</strong> </li>
+<li>Director y junta directiva de UNIFAM</li>
+<li>Empresas asociadas a UNIFAM</li>
+<li>Equipo de desarrollo del proyecto (alumnos)</li>
+<li><strong>Secundarios:</strong> </li>
+<li>Clientes potenciales (compradores de alfombras)</li>
+<li>Instituciones públicas de promoción (ayuntamiento, consellería)</li>
+<li>Diseñadores de interiores y arquitectos</li>
+<li>Distribuidores y mayoristas</li>
+</ul>
+<h4 id="02planteamiento_reto-entorno-de-virtualizacion">Entorno de virtualización<a class="headerlink" href="#02planteamiento_reto-entorno-de-virtualizacion" title="Permanent link">&para;</a></h4>
+<p><strong>Importante:</strong> Al ser una asociación sin infraestructura previa, el proyecto debe crear completamente la infraestructura desde cero en un entorno virtualizado. El equipo puede elegir entre:</p>
+<ul>
+<li><strong>Opción A - GNS3:</strong> </li>
+<li>Crear topología de red completa desde cero con:<ul>
+<li>Router/Switch para interconexión</li>
+<li>Servidor Linux virtualizado (Ubuntu Server/Debian)</li>
+<li>Cliente de prueba (opcional)</li>
+</ul>
+</li>
+<li>Configuración completa de servicios de red (DHCP, DNS, SSH, FTP)</li>
+<li>Instalación y configuración de Apache y base de datos en el servidor</li>
+<li>Despliegue de la aplicación web WordPress</li>
+<li>Configuración de firewall (iptables/ufw) y servicios de seguridad</li>
+<li>
+<p>Documentación completa de la topología de red</p>
+</li>
+<li>
+<p><strong>Opción B - AWS:</strong></p>
+</li>
+<li>Crear VPC desde cero con diseño de red:<ul>
+<li>Subred pública para servidor web (EC2)</li>
+<li>Subred privada para base de datos (RDS)</li>
+</ul>
+</li>
+<li>Configuración de Internet Gateway y NAT Gateway</li>
+<li>Despliegue de instancia EC2 para servidor web (instalación de Apache, WordPress)</li>
+<li>Configuración de RDS para base de datos</li>
+<li>Configuración de S3 para almacenamiento de imágenes de productos</li>
+<li>Configuración de Security Groups para seguridad de red</li>
+<li>Configuración de Route Tables</li>
+<li>Documentación completa de la arquitectura AWS</li>
+</ul>
+<h4 id="02planteamiento_reto-tecnologias-sugeridas">Tecnologías sugeridas<a class="headerlink" href="#02planteamiento_reto-tecnologias-sugeridas" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Virtualización:</strong> GNS3 o AWS (VPC, EC2, RDS, S3)</li>
+<li><strong>Sistema Operativo:</strong> Linux (Ubuntu Server, Debian) o Windows Server</li>
+<li><strong>Servidor Web:</strong> Apache</li>
+<li><strong>CMS:</strong> WordPress</li>
+<li><strong>Base de datos:</strong> MySQL o PostgreSQL</li>
+<li><strong>Lenguaje:</strong> PHP</li>
+<li><strong>Scripting:</strong> Bash, Python (para automatización)</li>
+<li><strong>Control de versiones:</strong> Git, GitHub</li>
+</ul>
+<h4 id="02planteamiento_reto-recursos-de-referencia">Recursos de referencia<a class="headerlink" href="#02planteamiento_reto-recursos-de-referencia" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Web UNIFAM:</strong> <a href="https://unifam.es/asociados/">https://unifam.es/asociados/</a></li>
+<li><strong>Empresas asociadas:</strong> Consultar el listado en la web de UNIFAM</li>
+<li><strong>Marcas de calidad:</strong> Investigar "Alfombras de Crevillente" y marca "WOOLAN"</li>
+<li><strong>Documentación GNS3:</strong> Consultar guías del módulo de Herramientas</li>
+<li><strong>Documentación AWS:</strong> <a href="https://docs.aws.amazon.com/">https://docs.aws.amazon.com/</a></li>
+</ul>
+<hr />
+<h3 id="02planteamiento_reto-propuesta-2-infraestructura-completa-de-ti-para-estudio-de-videojuegos-creviplay">Propuesta 2: Infraestructura completa de TI para estudio de videojuegos CreviPlay<a class="headerlink" href="#02planteamiento_reto-propuesta-2-infraestructura-completa-de-ti-para-estudio-de-videojuegos-creviplay" title="Permanent link">&para;</a></h3>
+<h4 id="02planteamiento_reto-contexto_1">Contexto<a class="headerlink" href="#02planteamiento_reto-contexto_1" title="Permanent link">&para;</a></h4>
+<p><strong>CreviPlay</strong> es un nuevo estudio de desarrollo de videojuegos independiente que se está estableciendo en Crevillent. El estudio está formado por un pequeño equipo de desarrolladores locales que buscan crear videojuegos casuales e indie para múltiples plataformas. </p>
+<p><strong>Situación actual:</strong> Al ser una empresa de nueva creación, <strong>CreviPlay no cuenta con ninguna infraestructura de TI</strong>. Necesitan crear desde cero toda su infraestructura tecnológica para poder operar profesionalmente. Esto incluye servidores, servicios de red, base de datos, aplicación web, y todos los sistemas de seguridad y respaldo necesarios.</p>
+<h4 id="02planteamiento_reto-problema-identificado_1">Problema identificado<a class="headerlink" href="#02planteamiento_reto-problema-identificado_1" title="Permanent link">&para;</a></h4>
+<p>Como empresa nueva, CreviPlay necesita crear completamente su infraestructura de TI desde cero:</p>
+<ul>
+<li><strong>Falta total de infraestructura:</strong> No existe ningún servidor, base de datos, ni servicios de red configurados</li>
+<li><strong>Necesidad de plataforma web profesional:</strong> Requieren un sitio web para mostrar su portafolio de videojuegos (actualmente en desarrollo)</li>
+<li><strong>Falta de sistema de gestión:</strong> Necesitan gestionar información sobre proyectos, desarrolladores, contactos con publishers y partners</li>
+<li><strong>Ausencia de servicios de red:</strong> No tienen servicios de red configurados (DHCP, DNS, SSH, FTP)</li>
+<li><strong>Falta de seguridad:</strong> No existe ninguna medida de seguridad implementada</li>
+<li><strong>Sin sistema de respaldo:</strong> No hay mecanismos de copia de seguridad</li>
+<li><strong>Falta de visibilidad online:</strong> No tienen presencia web profesional</li>
+</ul>
+<h4 id="02planteamiento_reto-ejemplo-de-caracterizacion-del-reto_1">Ejemplo de caracterización del reto<a class="headerlink" href="#02planteamiento_reto-ejemplo-de-caracterizacion-del-reto_1" title="Permanent link">&para;</a></h4>
+<p><strong>1. Título del reto:</strong> Infraestructura completa de TI y plataforma web para CreviPlay</p>
+<p><strong>2. Contexto:</strong> CreviPlay es un nuevo estudio de desarrollo de videojuegos independiente en Crevillent. Formado por un pequeño equipo de desarrolladores locales que buscan crear videojuegos casuales e indie. Al ser una empresa de nueva creación, no cuenta con ninguna infraestructura de TI.</p>
+<p><strong>3. Problemática:</strong> Falta total de infraestructura tecnológica (servidores, base de datos, servicios de red) y ausencia de plataforma web profesional para mostrar el portafolio de videojuegos y gestionar información del estudio (proyectos, desarrolladores, contactos).</p>
+<p><strong>4. Objetivos:</strong></p>
+<ul>
+<li>Crear infraestructura completa de TI desde cero (servidores, servicios de red, base de datos)</li>
+<li>Desplegar plataforma web profesional para mostrar portafolio de videojuegos</li>
+<li>Implementar servicios de red (DHCP, DNS, SSH, FTP, Apache)</li>
+<li>Configurar medidas de seguridad y sistema de respaldo</li>
+</ul>
+<p><strong>5. Interesados:</strong></p>
+<ul>
+<li><strong>Primarios:</strong> Fundadores y equipo de CreviPlay (desarrolladores, diseñadores, directores), equipo de desarrollo del proyecto</li>
+<li><strong>Secundarios:</strong> Clientes potenciales, publishers, partners, instituciones públicas</li>
+</ul>
+<p><strong>6. Análisis del contexto:</strong></p>
+<ul>
+<li><strong>Empresarial:</strong> Estudio nuevo, pequeño equipo, enfoque en videojuegos indie y casual</li>
+<li><strong>Tecnológico:</strong> Sin infraestructura previa, necesidad de crear todo desde cero</li>
+<li><strong>Mercado:</strong> Industria de videojuegos independientes, competencia global, necesidad de visibilidad online</li>
+<li><strong>Geográfico:</strong> Crevillent (Alicante), estudio local con proyección internacional</li>
+</ul>
+<p><strong>7. Análisis <abbr title="Debilidades, Amenazas, Fortalezas, Oportunidades">DAFO</abbr>:</strong></p>
+<ul>
+<li><strong>Fortalezas:</strong> Equipo joven y motivado, conocimiento técnico, flexibilidad</li>
+<li><strong>Debilidades:</strong> Falta de infraestructura TI, recursos limitados, poca experiencia empresarial</li>
+<li><strong>Oportunidades:</strong> Mercado en crecimiento, tecnologías accesibles, apoyo de instituciones</li>
+<li><strong>Amenazas:</strong> Competencia de estudios grandes, cambios tecnológicos, dependencia de plataformas</li>
+</ul>
+<p><strong>8. Alcance:</strong></p>
+<ul>
+<li><strong>Funcional:</strong> Plataforma web con portafolio, gestión de proyectos, información del estudio (incluido). E-commerce, descargas directas, integración con Steam/Epic (excluido)</li>
+<li><strong>Técnico:</strong> GNS3 o AWS, Linux, Apache, WordPress, MySQL/PostgreSQL, PHP</li>
+<li><strong>Temporal:</strong> Proyecto anual del ciclo formativo</li>
+<li><strong>Recursos:</strong> Equipo de alumnos, tutor, infraestructura del centro educativo</li>
+</ul>
+<p><strong>9. Requisitos principales:</strong></p>
+<ul>
+<li><strong>Funcionales:</strong> Visualización de portafolio, gestión de proyectos, información del estudio, panel de administración</li>
+<li><strong>No funcionales:</strong> Tiempo de carga &lt; 2 segundos, diseño responsive, backup diario, seguridad (HTTPS, encriptación)</li>
+<li><strong>Del negocio:</strong> Crear presencia web profesional, mostrar portafolio de videojuegos, facilitar contacto con publishers y partners</li>
+</ul>
+<h4 id="02planteamiento_reto-objetivos-del-proyecto_1">Objetivos del proyecto<a class="headerlink" href="#02planteamiento_reto-objetivos-del-proyecto_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Crear infraestructura completa desde cero:</strong> Diseñar e implementar toda la infraestructura de TI necesaria para el estudio</li>
+<li><strong>Implementar servicios de red:</strong> Configurar todos los servicios de red necesarios (DHCP, DNS, SSH, FTP, Apache)</li>
+<li><strong>Desplegar base de datos:</strong> Instalar y configurar un sistema gestor de bases de datos para gestionar toda la información del estudio</li>
+<li><strong>Crear plataforma web:</strong> Desarrollar una plataforma web profesional para mostrar el portafolio de videojuegos</li>
+<li><strong>Implementar seguridad:</strong> Configurar todas las medidas de seguridad necesarias (firewall, encriptación, acceso remoto seguro)</li>
+<li><strong>Establecer sistema de respaldo:</strong> Implementar mecanismos de copia de seguridad y recuperación</li>
+<li><strong>Automatizar tareas:</strong> Crear scripts para automatizar tareas administrativas y de mantenimiento</li>
+</ol>
+<h4 id="02planteamiento_reto-alcance-del-proyecto_1">Alcance del proyecto<a class="headerlink" href="#02planteamiento_reto-alcance-del-proyecto_1" title="Permanent link">&para;</a></h4>
+<p><strong>Incluido (Infraestructura completa desde cero):</strong></p>
+<p><strong>Infraestructura base:</strong></p>
+<ul>
+<li>Instalación y configuración de sistema operativo en entorno virtualizado (GNS3 o AWS)</li>
+<li>Configuración de topología de red completa</li>
+<li>Implementación de servicios de red (DHCP, DNS, SSH, FTP)</li>
+<li>Configuración de firewall y medidas de seguridad básicas</li>
+</ul>
+<p><strong>Base de datos:</strong></p>
+<ul>
+<li>Instalación y configuración de sistema gestor de bases de datos (MySQL/PostgreSQL)</li>
+<li>Creación de estructura de base de datos completa (proyectos, desarrolladores, contactos, recursos, usuarios)</li>
+<li>Configuración de seguridad y control de acceso a la base de datos</li>
+<li>Implementación de mecanismos de integridad y consistencia</li>
+</ul>
+<p><strong>Aplicación web:</strong></p>
+<ul>
+<li>Instalación y configuración del servidor web Apache</li>
+<li>Instalación, configuración y personalización de WordPress para el portafolio</li>
+<li>Portal web público con portafolio de videojuegos</li>
+<li>Sistema de gestión de proyectos (información, imágenes, videos)</li>
+<li>Panel de administración para gestionar contenido (CRUD completo)</li>
+<li>Sistema de autenticación y autorización para administradores</li>
+<li>Gestión de imágenes y recursos multimedia</li>
+<li>Responsive design (adaptable a móviles y tablets)</li>
+<li>Secciones: Portafolio, Sobre el estudio, Contacto, Blog/Noticias (opcional)</li>
+</ul>
+<p><strong>Seguridad y mantenimiento:</strong></p>
+<ul>
+<li>Análisis de amenazas y medidas de protección</li>
+<li>Configuración de acceso remoto seguro (SSH con claves)</li>
+<li>Implementación de cortafuegos</li>
+<li>Configuración de HTTPS/SSL</li>
+<li>Sistema de backup automático y recuperación</li>
+<li>Scripts de automatización para tareas administrativas</li>
+<li>Monitorización del sistema</li>
+</ul>
+<p><strong>Excluido (fase inicial):</strong></p>
+<ul>
+<li>Sistema de e-commerce o venta de juegos</li>
+<li>Sistema de descargas directas de juegos</li>
+<li>Integración con plataformas de distribución (Steam, Epic Games, etc.)</li>
+<li>Sistema de comentarios o foros</li>
+<li>Integración con redes sociales avanzada (más allá de enlaces)</li>
+<li>Sistema de newsletter o suscripciones</li>
+<li>Múltiples servidores o alta disponibilidad avanzada</li>
+</ul>
+<h4 id="02planteamiento_reto-requisitos-principales-por-modulos_1">Requisitos principales por módulos<a class="headerlink" href="#02planteamiento_reto-requisitos-principales-por-modulos_1" title="Permanent link">&para;</a></h4>
+<p><strong>ASGBD (Administración de Sistemas Gestores de Bases de Datos):</strong></p>
+<ul>
+<li>Instalación y configuración de un sistema gestor de base de datos (MySQL/PostgreSQL)</li>
+<li>Creación de la estructura de base de datos (tablas principales: proyectos, desarrolladores, contactos, usuarios)</li>
+<li>Configuración de seguridad básica (usuarios, permisos)</li>
+<li>Script de backup automático de la base de datos</li>
+</ul>
+<p><strong>ASO (Administración de Sistemas Operativos):</strong></p>
+<ul>
+<li>Instalación y configuración de sistema operativo Linux en entorno virtualizado (GNS3 o AWS)</li>
+<li>Gestión de usuarios, permisos y políticas de seguridad básicas</li>
+<li>Configuración de servicios del sistema (Apache, MySQL)</li>
+<li>Script de automatización para backups o tareas administrativas básicas</li>
+</ul>
+<p><strong>IAW (Implantación de Aplicaciones Web):</strong></p>
+<ul>
+<li>Instalación y configuración del servidor Apache</li>
+<li>Instalación y configuración de WordPress</li>
+<li>Administración de usuarios en WordPress</li>
+<li>Acceso a base de datos desde PHP (conexión y consultas básicas)</li>
+<li>Personalización básica de WordPress (tema o plugin simple para portafolio)</li>
+</ul>
+<p><strong>Servicios de Red e Internet:</strong></p>
+<ul>
+<li>Configuración de SSH para acceso remoto seguro</li>
+<li>Configuración de DNS básico (o uso de DNS externo)</li>
+<li>Configuración de Apache como servidor web</li>
+</ul>
+<p><strong>Seguridad y Alta Disponibilidad:</strong></p>
+<ul>
+<li>Configuración de firewall básico (iptables/ufw o AWS Security Groups)</li>
+<li>Configuración de HTTPS/SSL</li>
+<li>Análisis básico de amenazas y medidas de protección implementadas</li>
+<li>Si se usa AWS: configuración de VPC con subredes públicas y privadas</li>
+</ul>
+<h4 id="02planteamiento_reto-entorno-de-virtualizacion_1">Entorno de virtualización<a class="headerlink" href="#02planteamiento_reto-entorno-de-virtualizacion_1" title="Permanent link">&para;</a></h4>
+<p><strong>Importante:</strong> Al ser una empresa nueva sin infraestructura previa, el proyecto debe crear completamente la infraestructura desde cero en un entorno virtualizado. El equipo puede elegir entre:</p>
+<ul>
+<li><strong>Opción A - GNS3:</strong> </li>
+<li>Crear topología de red completa desde cero con:<ul>
+<li>Router/Switch para interconexión</li>
+<li>Servidor Linux virtualizado (Ubuntu Server/Debian)</li>
+<li>Cliente de prueba (opcional)</li>
+</ul>
+</li>
+<li>Configuración completa de servicios de red (DHCP, DNS, SSH, FTP)</li>
+<li>Instalación y configuración de Apache y base de datos en el servidor</li>
+<li>Despliegue de la aplicación web WordPress</li>
+<li>Configuración de firewall (iptables/ufw) y servicios de seguridad</li>
+<li>
+<p>Documentación completa de la topología de red</p>
+</li>
+<li>
+<p><strong>Opción B - AWS:</strong></p>
+</li>
+<li>Crear VPC desde cero con diseño de red:<ul>
+<li>Subred pública para servidor web (EC2)</li>
+<li>Subred privada para base de datos (RDS)</li>
+</ul>
+</li>
+<li>Configuración de Internet Gateway y NAT Gateway</li>
+<li>Despliegue de instancia EC2 para servidor web (instalación de Apache, WordPress)</li>
+<li>Configuración de RDS para base de datos</li>
+<li>Configuración de S3 para almacenamiento de recursos multimedia</li>
+<li>Configuración de Security Groups para seguridad de red</li>
+<li>Configuración de Route Tables</li>
+<li>Documentación completa de la arquitectura AWS</li>
+</ul>
+<h4 id="02planteamiento_reto-tecnologias-sugeridas_1">Tecnologías sugeridas<a class="headerlink" href="#02planteamiento_reto-tecnologias-sugeridas_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Virtualización:</strong> GNS3 o AWS (VPC, EC2, RDS, S3)</li>
+<li><strong>Sistema Operativo:</strong> Linux (Ubuntu Server, Debian)</li>
+<li><strong>Servidor Web:</strong> Apache</li>
+<li><strong>CMS:</strong> WordPress</li>
+<li><strong>Base de datos:</strong> MySQL o PostgreSQL</li>
+<li><strong>Lenguaje:</strong> PHP</li>
+<li><strong>Scripting:</strong> Bash, Python (para automatización y backups)</li>
+<li><strong>Control de versiones:</strong> Git, GitHub</li>
+</ul>
+<h4 id="02planteamiento_reto-interesados-identificados_1">Interesados identificados<a class="headerlink" href="#02planteamiento_reto-interesados-identificados_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Primarios:</strong> </li>
+<li>Fundadores y equipo de CreviPlay (desarrolladores, diseñadores, directores)</li>
+<li>Equipo de desarrollo del proyecto (alumnos)</li>
+<li><strong>Secundarios:</strong> </li>
+<li>Clientes potenciales y jugadores</li>
+<li>Publishers y distribuidores de videojuegos</li>
+<li>Partners del sector de videojuegos</li>
+<li>Comunidad de desarrolladores indie</li>
+<li>Inversores potenciales</li>
+</ul>
+<h4 id="02planteamiento_reto-recursos-de-referencia_1">Recursos de referencia<a class="headerlink" href="#02planteamiento_reto-recursos-de-referencia_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Estudios de videojuegos indie:</strong> Investigar sobre estudios independientes similares para entender necesidades</li>
+<li><strong>Documentación GNS3:</strong> Consultar guías del módulo de Herramientas</li>
+<li><strong>Documentación AWS:</strong> <a href="https://docs.aws.amazon.com/">https://docs.aws.amazon.com/</a></li>
+<li><strong>WordPress para portafolios:</strong> Investigar temas y plugins para portafolios creativos</li>
+<li><strong>Baviux (referencia de estilo):</strong> <a href="https://www.devuego.es/bd/festudio/baviux">https://www.devuego.es/bd/festudio/baviux</a> - Estudio de videojuegos de Elche que puede servir como referencia de estilo, aunque CreviPlay es una empresa independiente en Crevillent</li>
+</ul>
+<hr />
+<div class="admonition warning">
+<p class="admonition-title">Nota importante para el desarrollo del proyecto</p>
+<p>Para que el proyecto desarrollado cumpla con las competencias profesionales de <strong>ASIR</strong> y demuestre adecuadamente los conocimientos adquiridos en el ciclo, el alumnado debe asegurarse de que su implementación cumpla con los siguientes requisitos:</p>
+<ol>
+<li>
+<p><strong>Infraestructura desde cero:</strong> El proyecto debe crear completamente la infraestructura de TI desde el principio, sin asumir infraestructura previa. Esto permite demostrar conocimientos completos de todos los módulos del ciclo.</p>
+</li>
+<li>
+<p><strong>Aplicación práctica real:</strong> Aunque el proyecto se adapta para fines educativos, debe simular una situación real donde una organización necesita establecer su infraestructura de TI, demostrando capacidad para resolver problemas reales del sector.</p>
+</li>
+<li>
+<p><strong>Cobertura completa de módulos:</strong> El proyecto debe demostrar competencias de todos los módulos del ciclo (<strong>ASGBD</strong>, <strong>ASO</strong>, <strong>IAW</strong>, <strong>Servicios de Red e Internet</strong>, <strong>Seguridad</strong> y <strong>Alta Disponibilidad</strong>) de forma integrada, no como elementos aislados.</p>
+</li>
+<li>
+<p><strong>Flexibilidad en la implementación:</strong> El proyecto debe permitir elegir entre diferentes plataformas de virtualización (<strong>GNS3</strong> para simulación local o <strong>AWS</strong> para cloud real), adaptándose a diferentes contextos y recursos disponibles, demostrando capacidad de adaptación técnica.</p>
+</li>
+</ol>
+</div>
+<hr />
+<h2 id="02planteamiento_reto-3-guia-de-uso-de-trello-para-planificacion">3. Guía de uso de Trello para planificación<a class="headerlink" href="#02planteamiento_reto-3-guia-de-uso-de-trello-para-planificacion" title="Permanent link">&para;</a></h2>
+<p><a href="https://trello.com/es/guide/trello-101">Trello</a> es una herramienta de gestión de proyectos basada en el método <strong>Kanban</strong>, perfecta para organizar y planificar el trabajo en equipo.</p>
+<h3 id="02planteamiento_reto-31-conceptos-basicos-de-trello">3.1. Conceptos básicos de Trello<a class="headerlink" href="#02planteamiento_reto-31-conceptos-basicos-de-trello" title="Permanent link">&para;</a></h3>
+<h4 id="02planteamiento_reto-estructura-de-trello">Estructura de Trello<a class="headerlink" href="#02planteamiento_reto-estructura-de-trello" title="Permanent link">&para;</a></h4>
+<p>Trello organiza el trabajo en:</p>
+<ol>
+<li><strong>Tableros (Boards):</strong> Representan un proyecto completo</li>
+<li><strong>Listas (Lists):</strong> Columnas que representan estados o fases del trabajo</li>
+<li><strong>Tarjetas (Cards):</strong> Tareas individuales que se mueven entre listas</li>
+<li><strong>Miembros (Members):</strong> Personas del equipo</li>
+</ol>
+<h4 id="02planteamiento_reto-flujo-basico">Flujo básico<a class="headerlink" href="#02planteamiento_reto-flujo-basico" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Tablero &quot;Proyecto UNIFAM&quot; o &quot;Proyecto CreviPlay&quot;
+<span class="linenos" data-linenos="2 "></span>├── Lista &quot;Por hacer&quot; (To Do)
+<span class="linenos" data-linenos="3 "></span>│   ├── Tarjeta &quot;Definir requisitos&quot;
+<span class="linenos" data-linenos="4 "></span>│   └── Tarjeta &quot;Diseñar base de datos&quot;
+<span class="linenos" data-linenos="5 "></span>├── Lista &quot;En progreso&quot; (In Progress)
+<span class="linenos" data-linenos="6 "></span>│   └── Tarjeta &quot;Crear modelo de datos&quot;
+<span class="linenos" data-linenos="7 "></span>└── Lista &quot;Completado&quot; (Done)
+<span class="linenos" data-linenos="8 "></span>    └── Tarjeta &quot;Revisión del contexto&quot;
+</code></pre></div>
+<h3 id="02planteamiento_reto-32-crear-y-configurar-un-tablero">3.2. Crear y configurar un tablero<a class="headerlink" href="#02planteamiento_reto-32-crear-y-configurar-un-tablero" title="Permanent link">&para;</a></h3>
+<h4 id="02planteamiento_reto-paso-1-crear-un-tablero">Paso 1: Crear un tablero<a class="headerlink" href="#02planteamiento_reto-paso-1-crear-un-tablero" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Accede a <a href="https://trello.com">trello.com</a> y crea una cuenta (gratuita)</li>
+<li>Haz clic en <strong>"Crear tablero"</strong> o <strong>"Create board"</strong></li>
+<li>Asigna un nombre descriptivo, ej: "Proyecto UNIFAM - Infraestructura TI" o "Proyecto CreviPlay - Infraestructura TI"</li>
+<li>Elige la visibilidad (Privado para el equipo, o Público)</li>
+</ol>
+<h4 id="02planteamiento_reto-paso-2-crear-listas-iniciales">Paso 2: Crear listas iniciales<a class="headerlink" href="#02planteamiento_reto-paso-2-crear-listas-iniciales" title="Permanent link">&para;</a></h4>
+<p>Crea las siguientes listas para el proyecto:</p>
+<ul>
+<li><strong>Backlog:</strong> Tareas identificadas pero no priorizadas</li>
+<li><strong>Por hacer (To Do):</strong> Tareas listas para empezar</li>
+<li><strong>En progreso (In Progress):</strong> Tareas que se están trabajando actualmente</li>
+<li><strong>En revisión:</strong> Tareas completadas esperando validación</li>
+<li><strong>Completado (Done):</strong> Tareas finalizadas y validadas</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Listas adicionales sugeridas</p>
+<p>Puedes añadir:</p>
+<ul>
+<li><strong>Bloqueado:</strong> Tareas que no pueden avanzar por dependencias</li>
+<li><strong>Ideas:</strong> Ideas para futuras mejoras</li>
+<li><strong>Documentación:</strong> Tareas relacionadas con documentar</li>
+</ul>
+</div>
+<h3 id="02planteamiento_reto-33-crear-y-gestionar-tarjetas">3.3. Crear y gestionar tarjetas<a class="headerlink" href="#02planteamiento_reto-33-crear-y-gestionar-tarjetas" title="Permanent link">&para;</a></h3>
+<h4 id="02planteamiento_reto-crear-una-tarjeta">Crear una tarjeta<a class="headerlink" href="#02planteamiento_reto-crear-una-tarjeta" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Haz clic en <strong>"Añadir una tarjeta"</strong> en la lista correspondiente</li>
+<li>Escribe un título descriptivo y claro</li>
+<li>Presiona Enter para crear la tarjeta</li>
+</ol>
+<h4 id="02planteamiento_reto-detalles-de-una-tarjeta">Detalles de una tarjeta<a class="headerlink" href="#02planteamiento_reto-detalles-de-una-tarjeta" title="Permanent link">&para;</a></h4>
+<p>Haz clic en una tarjeta para abrir sus detalles. Puedes añadir:</p>
+<ul>
+<li><strong>Descripción:</strong> Detalles de la tarea</li>
+<li><strong>Miembros:</strong> Asignar personas del equipo</li>
+<li><strong>Etiquetas (Labels):</strong> Colores para categorizar (Ej: Prioridad, Tipo, Módulo)</li>
+<li><strong>Checklist:</strong> Subtareas dentro de la tarjeta</li>
+<li><strong>Fecha de vencimiento:</strong> Fecha límite</li>
+<li><strong>Adjuntos:</strong> Archivos, imágenes, enlaces</li>
+<li><strong>Comentarios:</strong> Comunicación del equipo</li>
+</ul>
+<h4 id="02planteamiento_reto-ejemplo-de-tarjeta-bien-estructurada">Ejemplo de tarjeta bien estructurada<a class="headerlink" href="#02planteamiento_reto-ejemplo-de-tarjeta-bien-estructurada" title="Permanent link">&para;</a></h4>
+<p><strong>Título:</strong> RA1.1 - Caracterizar el reto (UNIFAM o CreviPlay)</p>
+<p><strong>Descripción:</strong></p>
+<p>Definir y documentar el reto del proyecto:</p>
+<ul>
+<li>Identificar el problema principal</li>
+<li>Definir objetivos del proyecto</li>
+<li>Identificar interesados</li>
+<li>Documentar en markdown</li>
+</ul>
+<p><strong>Checklist:</strong></p>
+<ul>
+<li>Leer documentación de la empresa/organización elegida (UNIFAM o CreviPlay)</li>
+<li>Entrevistar (simulada) a director/representante de la organización</li>
+<li>Redactar caracterización del reto</li>
+<li>Revisar con el equipo</li>
+<li>Obtener feedback del profesor</li>
+</ul>
+<p><strong>Etiquetas:</strong> RA1, Prioridad Alta, Documentación</p>
+<p><strong>Miembros:</strong> @Ana, @Carlos</p>
+<p><strong>Fecha de vencimiento:</strong> 15/02/2025</p>
+<h3 id="02planteamiento_reto-34-organizacion-del-proyecto-en-trello">3.4. Organización del proyecto en Trello<a class="headerlink" href="#02planteamiento_reto-34-organizacion-del-proyecto-en-trello" title="Permanent link">&para;</a></h3>
+<h4 id="02planteamiento_reto-estructura-recomendada-para-el-proyecto">Estructura recomendada para el proyecto<a class="headerlink" href="#02planteamiento_reto-estructura-recomendada-para-el-proyecto" title="Permanent link">&para;</a></h4>
+<p><strong>Opción 1: Por fases del proyecto</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Backlog
+<span class="linenos" data-linenos=" 2 "></span>Fase 1: Planteamiento
+<span class="linenos" data-linenos=" 3 "></span>   ├── RA1.1 - Caracterizar el reto
+<span class="linenos" data-linenos=" 4 "></span>   ├── RA1.2 - Análisis del contexto
+<span class="linenos" data-linenos=" 5 "></span>   ├── RA1.3 - Definir alcance
+<span class="linenos" data-linenos=" 6 "></span>   └── RA1.4 - Establecer requisitos
+<span class="linenos" data-linenos=" 7 "></span>Fase 2: Planificación
+<span class="linenos" data-linenos=" 8 "></span>   ├── RA2.1 - Crear cronograma
+<span class="linenos" data-linenos=" 9 "></span>   ├── RA2.2 - Identificar recursos
+<span class="linenos" data-linenos="10 "></span>   └── RA2.3 - Análisis de riesgos
+<span class="linenos" data-linenos="11 "></span>En revisión
+<span class="linenos" data-linenos="12 "></span>Completado
+</code></pre></div>
+<p><strong>Opción 2: Por resultados de aprendizaje (<abbr title="Proyecto intermodular">PI</abbr>)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>Backlog
+<span class="linenos" data-linenos="2 "></span>RA1 - Caracterización
+<span class="linenos" data-linenos="3 "></span>RA2 - Planificación
+<span class="linenos" data-linenos="4 "></span>RA5 - Comunicación
+<span class="linenos" data-linenos="5 "></span>En progreso
+<span class="linenos" data-linenos="6 "></span>En revisión
+<span class="linenos" data-linenos="7 "></span>Completado
+</code></pre></div>
+<p><strong>Opción 3: Híbrido (Recomendado)</strong></p>
+<p>Usa etiquetas para categorizar por <abbr title="Proyecto intermodular">PI</abbr> y listas para estados:</p>
+<ul>
+<li><strong>Listas:</strong> Por hacer, En progreso, En revisión, Completado</li>
+<li>
+<p><strong>Etiquetas:</strong></p>
+</li>
+<li>
+<p>RA1 (Caracterización)</p>
+</li>
+<li>RA2 (Planificación)</li>
+<li>RA5 (Comunicación)</li>
+<li>Prioridad Alta</li>
+<li>Prioridad Media</li>
+<li>Prioridad Baja</li>
+</ul>
+<h3 id="02planteamiento_reto-35-mejores-practicas-con-trello">3.5. Mejores prácticas con Trello<a class="headerlink" href="#02planteamiento_reto-35-mejores-practicas-con-trello" title="Permanent link">&para;</a></h3>
+<h4 id="02planteamiento_reto-1-titulos-descriptivos">1. Títulos descriptivos<a class="headerlink" href="#02planteamiento_reto-1-titulos-descriptivos" title="Permanent link">&para;</a></h4>
+<p>Mal: "Hacer cosas"
+Bien: "RA1.2 - Analizar contexto tecnológico de UNIFAM"</p>
+<h4 id="02planteamiento_reto-2-usar-checklists-para-subtareas">2. Usar checklists para subtareas<a class="headerlink" href="#02planteamiento_reto-2-usar-checklists-para-subtareas" title="Permanent link">&para;</a></h4>
+<p>En lugar de crear muchas tarjetas pequeñas, agrupa en una tarjeta con checklist:</p>
+<p><strong>Tarjeta:</strong> "RA1.2 - Análisis del contexto"</p>
+<p><strong>Checklist:</strong></p>
+<ul>
+<li>Investigar historia de la empresa/organización elegida</li>
+<li>Analizar infraestructura tecnológica actual</li>
+<li>Identificar competencia</li>
+<li>Realizar análisis <abbr title="Debilidades, Amenazas, Fortalezas, Oportunidades">DAFO</abbr></li>
+<li>Documentar hallazgos</li>
+</ul>
+<h4 id="02planteamiento_reto-3-asignar-responsables">3. Asignar responsables<a class="headerlink" href="#02planteamiento_reto-3-asignar-responsables" title="Permanent link">&para;</a></h4>
+<p>Siempre asigna al menos un miembro a cada tarjeta para saber quién es responsable.</p>
+<h4 id="02planteamiento_reto-4-usar-fechas-de-vencimiento">4. Usar fechas de vencimiento<a class="headerlink" href="#02planteamiento_reto-4-usar-fechas-de-vencimiento" title="Permanent link">&para;</a></h4>
+<p>Establece fechas límite realistas para mantener el ritmo del proyecto.</p>
+<h4 id="02planteamiento_reto-5-comunicar-en-comentarios">5. Comunicar en comentarios<a class="headerlink" href="#02planteamiento_reto-5-comunicar-en-comentarios" title="Permanent link">&para;</a></h4>
+<p>Usa los comentarios de las tarjetas para:</p>
+<ul>
+<li>Hacer preguntas</li>
+<li>Compartir actualizaciones</li>
+<li>Pedir ayuda</li>
+<li>Registrar decisiones importantes</li>
+</ul>
+<h4 id="02planteamiento_reto-6-revisar-regularmente">6. Revisar regularmente<a class="headerlink" href="#02planteamiento_reto-6-revisar-regularmente" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Daily standup (diario):</strong> Revisar qué se completó ayer, qué se hará hoy, qué bloquea</li>
+<li><strong>Sprint review (semanal):</strong> Revisar progreso, ajustar planificación</li>
+</ul>
+<h3 id="02planteamiento_reto-36-plantilla-de-tablero-para-el-proyecto">3.6. Plantilla de tablero para el proyecto<a class="headerlink" href="#02planteamiento_reto-36-plantilla-de-tablero-para-el-proyecto" title="Permanent link">&para;</a></h3>
+<p>Aquí tienes una plantilla lista para usar:</p>
+<h4 id="02planteamiento_reto-listas-iniciales">Listas iniciales<a class="headerlink" href="#02planteamiento_reto-listas-iniciales" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Backlog</strong></li>
+<li><strong>Por hacer (To Do)</strong></li>
+<li><strong>En progreso</strong></li>
+<li><strong>En revisión</strong></li>
+<li><strong>Completado</strong></li>
+</ol>
+<h4 id="02planteamiento_reto-etiquetas-sugeridas">Etiquetas sugeridas<a class="headerlink" href="#02planteamiento_reto-etiquetas-sugeridas" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>RA1</strong> - Caracterización</li>
+<li><strong>RA2</strong> - Planificación</li>
+<li><strong>RA5</strong> - Comunicación</li>
+<li><strong>Alta</strong> - Prioridad alta</li>
+<li><strong>Media</strong> - Prioridad media</li>
+<li><strong>Baja</strong> - Prioridad baja</li>
+<li><strong>Doc</strong> - Documentación</li>
+<li><strong>Bug</strong> - Problema/Error</li>
+<li><strong>Idea</strong> - Mejora futura</li>
+</ul>
+<h4 id="02planteamiento_reto-tarjetas-iniciales-sugeridas">Tarjetas iniciales sugeridas<a class="headerlink" href="#02planteamiento_reto-tarjetas-iniciales-sugeridas" title="Permanent link">&para;</a></h4>
+<p><strong>En "Por hacer":</strong></p>
+<ol>
+<li>
+<p><strong>RA1.1 - Caracterizar el reto</strong> (UNIFAM o CreviPlay)
+   - Descripción: Definir problema, objetivos, interesados
+   - Etiquetas: RA1, Alta, Doc</p>
+</li>
+<li>
+<p><strong>RA1.2 - Análisis del contexto</strong> (UNIFAM o CreviPlay)
+   - Descripción: Analizar contexto empresarial, tecnológico, mercado
+   - Etiquetas: RA1, Alta, Doc</p>
+</li>
+<li>
+<p><strong>RA1.3 - Definir alcance</strong>
+   - Descripción: Establecer qué incluye y excluye el proyecto
+   - Etiquetas: RA1, Alta, Doc</p>
+</li>
+<li>
+<p><strong>RA1.4 - Establecer requisitos</strong>
+   - Descripción: Definir requisitos funcionales, no funcionales y del negocio
+   - Etiquetas: RA1, Alta, Doc</p>
+</li>
+<li>
+<p><strong>RA2.1 - Crear cronograma</strong>
+   - Descripción: Temporalizar actividades y definir hitos
+   - Etiquetas: RA2, Alta</p>
+</li>
+<li>
+<p><strong>RA2.2 - Identificar recursos</strong>
+   - Descripción: Definir equipo, herramientas, infraestructura necesaria
+   - Etiquetas: RA2, Media</p>
+</li>
+<li>
+<p><strong>RA2.3 - Análisis de riesgos</strong>
+   - Descripción: Identificar riesgos, probabilidad, impacto y mitigación
+   - Etiquetas: RA2, Media</p>
+</li>
+</ol>
+<h3 id="02planteamiento_reto-37-integracion-con-otras-herramientas">3.7. Integración con otras herramientas<a class="headerlink" href="#02planteamiento_reto-37-integracion-con-otras-herramientas" title="Permanent link">&para;</a></h3>
+<p>Trello se puede integrar con:</p>
+<ul>
+<li><strong>GitHub:</strong> Enlazar commits y pull requests con tarjetas</li>
+<li><strong>Google Drive:</strong> Adjuntar documentos</li>
+<li><strong>Slack/Teams:</strong> Notificaciones de cambios</li>
+<li><strong>Calendar:</strong> Sincronizar fechas de vencimiento</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Power-Ups de Trello</p>
+<p>Trello ofrece "Power-Ups" (extensiones) gratuitos y de pago:</p>
+<ul>
+<li><strong>Calendar:</strong> Vista de calendario de fechas de vencimiento</li>
+<li><strong>Voting:</strong> Sistema de votación para priorizar</li>
+<li><strong>Custom Fields:</strong> Campos personalizados (presupuesto, horas, etc.)</li>
+</ul>
+</div>
+<hr />
+<h2 id="02planteamiento_reto-4-actividades-y-entregables">4. Actividades y entregables<a class="headerlink" href="#02planteamiento_reto-4-actividades-y-entregables" title="Permanent link">&para;</a></h2>
+<h3 id="02planteamiento_reto-41-actividad-principal-defensa-de-la-caracterizacion-del-reto">4.1. Actividad principal: Defensa de la caracterización del reto<a class="headerlink" href="#02planteamiento_reto-41-actividad-principal-defensa-de-la-caracterizacion-del-reto" title="Permanent link">&para;</a></h3>
+<p><strong>Objetivo:</strong> Desarrollar y defender la caracterización completa del reto elegido, demostrando que cumple con los requisitos de todos los módulos del ciclo y estableciendo la estructura base del proyecto.</p>
+<p><strong>Tareas:</strong></p>
+<ol>
+<li><strong>Análisis y elección de propuesta:</strong></li>
+</ol>
+<ul>
+<li>Leer y analizar las 2 propuestas de proyectos</li>
+<li>Investigar sobre las empresas (webs, información pública)</li>
+<li>Discutir en equipo las ventajas y desventajas de cada propuesta</li>
+<li>Elegir una propuesta y justificar la elección</li>
+</ul>
+<ol start="2">
+<li><strong>RA1.1 - Caracterización del reto:</strong></li>
+</ol>
+<ul>
+<li>Definir título del reto</li>
+<li>Describir contexto de la empresa/organización</li>
+<li>Identificar y describir la problemática</li>
+<li>Establecer objetivos del proyecto</li>
+<li>Identificar y clasificar interesados</li>
+<li>Crear mapa de interesados (tabla o diagrama)</li>
+</ul>
+<ol start="3">
+<li><strong>RA1.2 - Análisis del contexto:</strong></li>
+</ol>
+<ul>
+<li>Contexto empresarial (historia, tamaño, modelo de negocio)</li>
+<li>Contexto tecnológico (infraestructura actual, nivel de digitalización)</li>
+<li>Contexto del mercado (sector, competencia, tendencias)</li>
+<li>Contexto social y geográfico (Crevillent, relación con entorno)</li>
+<li>Realizar análisis <abbr title="Debilidades, Amenazas, Fortalezas, Oportunidades">DAFO</abbr> (Fortalezas, Debilidades, Oportunidades, Amenazas)</li>
+</ul>
+<ol start="4">
+<li><strong>RA1.3 - Definir alcance:</strong></li>
+</ol>
+<ul>
+<li>Alcance funcional (qué se incluye/excluye)</li>
+<li>Alcance técnico (tecnologías, plataformas - GNS3 o AWS)</li>
+<li>Alcance temporal (fases, entregables, hitos)</li>
+<li>Alcance de recursos (equipo, presupuesto)</li>
+<li>Elección y justificación de plataforma de virtualización (GNS3 o AWS)</li>
+</ul>
+<ol start="5">
+<li><strong>RA1.4 - Establecer requisitos:</strong></li>
+</ol>
+<ul>
+<li>Lista de requisitos funcionales (<abbr title="Requisito funcional">RF</abbr>) con formato estándar</li>
+<li>Lista de requisitos no funcionales (<abbr title="Requisito no funcional">RNF</abbr>)</li>
+<li>Requisitos del negocio (<abbr title="Requisito del negocio">RN</abbr>)</li>
+<li>
+<p><strong>Requisitos por módulos:</strong> Demostrar que el proyecto cumple con requisitos de:</p>
+<ul>
+<li>ASGBD (Administración de Sistemas Gestores de Bases de Datos)</li>
+<li>ASO (Administración de Sistemas Operativos)</li>
+<li>IAW (Implantación de Aplicaciones Web)</li>
+<li>Servicios de Red e Internet</li>
+<li>Seguridad y Alta Disponibilidad</li>
+<li>Matriz de trazabilidad de requisitos</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><strong>Estructura del proyecto:</strong></li>
+</ol>
+<ul>
+<li>Definir la estructura del proyecto según los requisitos del Proyecto Intermodular (<abbr title="Proyecto intermodular">PI</abbr>):<ul>
+<li>Portada</li>
+<li>Índice</li>
+<li>Resumen / Abstract</li>
+<li>Introducción</li>
+<li>Marco teórico / tecnológico</li>
+<li>Desarrollo</li>
+<li>Resultados</li>
+<li>Conclusiones y mejoras futuras</li>
+<li>Bibliografía</li>
+<li>Anexos</li>
+</ul>
+</li>
+<li>Crear repositorio Git/GitHub con estructura inicial</li>
+<li>Generar README.md adecuado con descripción del proyecto, estructura, y enlaces</li>
+</ul>
+<ol start="7">
+<li><strong>Generación de página del proyecto:</strong></li>
+</ol>
+<ul>
+<li>Configurar GitHub Pages para el repositorio</li>
+<li>Crear página web del proyecto accesible públicamente</li>
+<li>Incluir información básica del proyecto, estructura y enlaces relevantes</li>
+</ul>
+<ol start="8">
+<li><strong>Planificación con Trello:</strong></li>
+</ol>
+<ul>
+<li>Crear cuenta en Trello (si no se tiene)</li>
+<li>Crear tablero del proyecto</li>
+<li>Configurar listas y etiquetas</li>
+<li>Crear tarjetas iniciales basadas en las fases del proyecto</li>
+<li>Asignar responsables a cada tarea</li>
+<li>Establecer fechas de vencimiento</li>
+<li>Invitar a todos los miembros del equipo al tablero</li>
+</ul>
+<ol start="9">
+<li><strong>Preparación de la defensa:</strong></li>
+</ol>
+<ul>
+<li>Crear presentación PowerPoint que incluya:<ul>
+<li>Definición de la estructura del proyecto (mostrar repositorio GitHub y README)</li>
+<li>Enlace a la página del proyecto en GitHub Pages</li>
+<li>Muestra de la planificación con Trello (capturas o acceso directo)</li>
+<li>Demostración de que la caracterización del reto cumple con los requisitos definidos de todos los módulos:</li>
+<li>ASGBD: Requisitos de base de datos identificados</li>
+<li>ASO: Requisitos de sistema operativo y virtualización identificados</li>
+<li>IAW: Requisitos de aplicación web identificados</li>
+<li>Servicios de Red: Requisitos de servicios de red identificados</li>
+<li>Seguridad: Requisitos de seguridad identificados</li>
+<li>Caracterización del reto (resumen)</li>
+<li>Análisis del contexto (resumen)</li>
+<li>Alcance y requisitos principales</li>
+<li>Planificación inicial</li>
+</ul>
+</li>
+</ul>
+<p><strong>Entregables:</strong></p>
+<ol>
+<li><strong>Repositorio GitHub:</strong></li>
+</ol>
+<ul>
+<li>Estructura del proyecto definida según requisitos del Proyecto Intermodular (<abbr title="Proyecto intermodular">PI</abbr>)</li>
+<li>README.md completo con descripción, estructura, y enlaces</li>
+<li>Documentos markdown de caracterización, análisis, alcance y requisitos</li>
+<li>Enlace al repositorio compartido con el profesor</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>Página del proyecto:</strong>
+   - GitHub Pages configurado y accesible
+   - Enlace público a la página del proyecto</p>
+</li>
+<li>
+<p><strong>Tablero de Trello:</strong></p>
+</li>
+</ol>
+<ul>
+<li>URL del tablero compartido con el profesor</li>
+<li>Estructura completa con tarjetas iniciales</li>
+</ul>
+<ol start="4">
+<li><strong>Presentación PowerPoint:</strong></li>
+</ol>
+<ul>
+<li>Presentación de 10-15 minutos</li>
+<li>Incluye todos los elementos solicitados</li>
+<li>Demuestra cumplimiento de requisitos de todos los módulos</li>
+</ul>
+<p><strong>Evaluación:</strong> Práctica (PR) - Sobre 60 puntos</p>
+<p>La evaluación se realizará mediante:</p>
+<ul>
+<li>Revisión del repositorio GitHub y documentación</li>
+<li>Revisión de la página del proyecto en GitHub Pages</li>
+<li>Revisión del tablero de Trello</li>
+<li>Defensa oral con presentación PowerPoint</li>
+<li>Rúbrica de evaluación</li>
+</ul>
+<hr />
+<h3 id="02planteamiento_reto-42-estructura-del-documento-del-proyecto">4.2. Estructura del documento del proyecto<a class="headerlink" href="#02planteamiento_reto-42-estructura-del-documento-del-proyecto" title="Permanent link">&para;</a></h3>
+<p>El proyecto debe seguir la estructura indicada en los requisitos del Proyecto Intermodular (<abbr title="Proyecto intermodular">PI</abbr>). El repositorio GitHub debe contener:</p>
+<h4 id="02planteamiento_reto-estructura-recomendada-del-repositorio">Estructura recomendada del repositorio<a class="headerlink" href="#02planteamiento_reto-estructura-recomendada-del-repositorio" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>proyecto-pi/
+<span class="linenos" data-linenos=" 2 "></span>├── README.md                    # Descripción del proyecto, estructura, enlaces
+<span class="linenos" data-linenos=" 3 "></span>├── docs/                        # Documentación del proyecto
+<span class="linenos" data-linenos=" 4 "></span>│   ├── 01_caracterizacion_reto.md
+<span class="linenos" data-linenos=" 5 "></span>│   ├── 02_analisis_contexto.md
+<span class="linenos" data-linenos=" 6 "></span>│   ├── 03_alcance_requisitos.md
+<span class="linenos" data-linenos=" 7 "></span>│   └── ...
+<span class="linenos" data-linenos=" 8 "></span>├── src/                         # Código fuente (si aplica)
+<span class="linenos" data-linenos=" 9 "></span>├── scripts/                     # Scripts de automatización
+<span class="linenos" data-linenos="10 "></span>├── backups/                     # Scripts y documentación de backups
+<span class="linenos" data-linenos="11 "></span>└── anexos/                      # Diagramas, capturas, esquemas
+</code></pre></div>
+<h4 id="02planteamiento_reto-estructura-del-documento-principal">Estructura del documento principal<a class="headerlink" href="#02planteamiento_reto-estructura-del-documento-principal" title="Permanent link">&para;</a></h4>
+<p>El documento principal debe seguir esta estructura según los requisitos del Proyecto Intermodular (<abbr title="Proyecto intermodular">PI</abbr>):</p>
+<ol>
+<li><strong>Portada:</strong> Título, nombre del alumno, ciclo, tutor y fecha</li>
+<li><strong>Índice:</strong> Con paginación y enlaces</li>
+<li><strong>Resumen / Abstract:</strong> Breve sinopsis del proyecto (máx. 300 palabras)</li>
+<li><strong>Introducción:</strong> Justificación del proyecto, objetivos y alcance</li>
+<li><strong>Marco teórico / tecnológico:</strong> Tecnologías empleadas, fundamentos y justificación de elección</li>
+<li><strong>Desarrollo:</strong> Explicación del proceso, fases, metodología, dificultades y soluciones</li>
+<li><strong>Resultados:</strong> Lo que se ha conseguido</li>
+<li><strong>Conclusiones y mejoras futuras:</strong> Reflexión crítica</li>
+<li><strong>Bibliografía:</strong> Formato APA o IEEE</li>
+<li><strong>Anexos:</strong> Código relevante, capturas, esquemas, diagramas, etc.</li>
+</ol>
+<p><strong>Formato:</strong> Markdown en repositorio GitHub del proyecto, con GitHub Pages configurado</p>
+<p><strong>Evaluación:</strong> La defensa de la caracterización del reto se evalúa según la rúbrica proporcionada</p>
+<!-- ---
+
+## 5. Criterios de evaluación
+
+### RA1: Caracteriza el reto y el contexto del sector
+
+**Criterios de evaluación:**
+
+- Identifica y describe correctamente el problema o necesidad
+- Define objetivos claros, medibles y realistas
+- Identifica y clasifica interesados adecuadamente
+- Realiza un análisis completo del contexto (empresarial, tecnológico, mercado)
+- Utiliza herramientas de análisis apropiadas (DAFO, mapa de interesados)
+- Define un alcance claro y completo (funcional, técnico, temporal, recursos)
+- Establece requisitos bien estructurados (funcionales, no funcionales, negocio)
+- Crea matriz de trazabilidad de requisitos
+- Documenta todo de forma clara y profesional
+
+**Evidencias:**
+
+- Documentos de caracterización, análisis, alcance y requisitos
+- Tablero de Trello configurado y actualizado
+- Presentación del planteamiento
+
+---
+
+### RA2: Planifica actividades, recursos, riesgos y cronograma
+
+**Criterios de evaluación (fase inicial):**
+
+- Utiliza Trello correctamente para organizar el trabajo
+- Crea estructura de planificación apropiada
+- Identifica actividades principales del proyecto
+- Asigna responsables a las tareas
+- Establece fechas de vencimiento realistas
+- Identifica recursos necesarios (preliminar)
+
+**Evidencias:**
+
+- Tablero de Trello con estructura y tarjetas iniciales
+- Documento de planificación inicial
+
+---
+
+### RA5: Comunica y colabora eficazmente
+
+**Criterios de evaluación:**
+
+- Participa activamente en reuniones de equipo
+- Utiliza Trello para comunicación y coordinación
+- Presenta el planteamiento de forma clara y estructurada
+- Responde adecuadamente a preguntas y feedback
+- Colabora eficazmente con el equipo
+
+**Evidencias:**
+
+- Participación en reuniones (actas o evidencias)
+- Comentarios y comunicación en Trello
+- Calidad de la presentación oral -->
+
+<hr />
+<h2 id="02planteamiento_reto-5-recursos-y-referencias">5. Recursos y referencias<a class="headerlink" href="#02planteamiento_reto-5-recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<h3 id="02planteamiento_reto-documentacion-oficial">Documentación oficial<a class="headerlink" href="#02planteamiento_reto-documentacion-oficial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://trello.com/es/guide/trello-101">Guía oficial de Trello</a></li>
+<li><a href="https://www.scrum.org/">Metodologías ágiles - Scrum</a></li>
+<li><a href="https://www.pmi.org/">Gestión de proyectos - PMI</a></li>
+</ul>
+<h3 id="02planteamiento_reto-empresas-de-referencia">Empresas de referencia<a class="headerlink" href="#02planteamiento_reto-empresas-de-referencia" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>UNIFAM:</strong> <a href="https://unifam.es/asociados/">https://unifam.es/asociados/</a> - Asociación de Fabricantes de Alfombras de Crevillent</li>
+<li><strong>CreviPlay:</strong> Estudio de desarrollo de videojuegos independiente en Crevillent (empresa ficticia para el proyecto)</li>
+<li><strong>Baviux (referencia de estilo):</strong> <a href="https://www.devuego.es/bd/festudio/baviux">https://www.devuego.es/bd/festudio/baviux</a> - Estudio de videojuegos de Elche que sirve como referencia de estilo</li>
+</ul>
+<h3 id="02planteamiento_reto-herramientas">Herramientas<a class="headerlink" href="#02planteamiento_reto-herramientas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Trello:</strong> <a href="https://trello.com">https://trello.com</a></li>
+<li><strong>GitHub:</strong> Para repositorio y documentación</li>
+<li><strong>Markdown:</strong> Para documentación técnica</li>
+<li><strong>MkDocs:</strong> Para generar documentación web</li>
+</ul>
+<h3 id="02planteamiento_reto-lecturas-recomendadas">Lecturas recomendadas<a class="headerlink" href="#02planteamiento_reto-lecturas-recomendadas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>"The Lean Startup" - Eric Ries (metodología de validación)</li>
+<li>"Scrum: The Art of Doing Twice the Work in Half the Time" - Jeff Sutherland</li>
+<li>Documentación sobre gestión de requisitos en proyectos de software</li>
+</ul>
+<!-- ---
+
+## 7. Calendario y fechas importantes
+
+| Actividad | Fecha límite | Evaluación |
+|:----------|:------------:|:----------:|
+| Análisis de propuestas | [Fecha] | AC (3 puntos) |
+| Caracterización del reto | [Fecha] | PR (sobre 10) |
+| Análisis del contexto | [Fecha] | PR (sobre 10) |
+| Alcance y requisitos | [Fecha] | PR (sobre 10) |
+| Planificación con Trello | [Fecha] | AC (3 puntos) |
+| Presentación del planteamiento | [Fecha] | AC (3 puntos) |
+| **Documento completo de planteamiento** | **[Fecha]** | **PY (sobre 30)** |
+
+!!! important "Importante"
+    Todas las fechas se actualizarán en Aules. Consulta el calendario oficial del módulo. -->
+
+<hr /></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
@@ -657,6 +1737,14 @@ Esta guía incluye:
             
                 .print-site-enumerate-headings #01herramientas h3:before { content: '2.' counter(counter-01herramientas-2) '.' counter(counter-01herramientas-3) ' ' }
                 .print-site-enumerate-headings #01herramientas h3 {  counter-increment: counter-01herramientas-3 }
+            
+.print-site-enumerate-headings #02planteamiento_reto > h1:before { content: '3 ' }
+
+                .print-site-enumerate-headings #02planteamiento_reto h2:before { content: '3.' counter(counter-02planteamiento_reto-2) ' ' }
+                .print-site-enumerate-headings #02planteamiento_reto h2 {  counter-reset: counter-02planteamiento_reto-3 ;  counter-increment: counter-02planteamiento_reto-2 }
+            
+                .print-site-enumerate-headings #02planteamiento_reto h3:before { content: '3.' counter(counter-02planteamiento_reto-2) '.' counter(counter-02planteamiento_reto-3) ' ' }
+                .print-site-enumerate-headings #02planteamiento_reto h3 {  counter-increment: counter-02planteamiento_reto-3 }
             </style>
 
 
