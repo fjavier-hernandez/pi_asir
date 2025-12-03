@@ -70,6 +70,24 @@ Esta guía incluye:
 
 **Sitio web oficial del campeonato:** [https://gameday2025.com](https://gameday2025.com)
 
+## MkDocs
+
+> MkDocs es un **generador de sitios web estáticos** que toma como entrada texto escrito en Markdown y utiliza diseños predefinidos (temas) para crear un sitio web estático. Permite modificar el aspecto del sitio, los enlaces, los datos que se muestran en la página y muchas cosas más. En el contexto del **Proyecto Intermodular (PI)**, MkDocs facilita la creación de documentación profesional y sitios web para los proyectos, permitiendo centrarse en el contenido sin preocuparse por el diseño.
+
+Para aprender a instalar, configurar y desplegar sitios web estáticos con MkDocs y el tema Material, consulta la guía completa:
+
+**[MkDocs - Generador de sitios web estáticos: guía completa →](mkdocs.md)**
+
+Esta guía incluye:
+
+- Introducción a MkDocs y conceptos básicos
+- Instalación de MkDocs y Material theme
+- Configuración del proyecto y archivo `mkdocs.yml`
+- Despliegue en GitHub Pages
+- Personalización y buenas prácticas
+- Recursos y referencias
+
+**Documentación de referencia:** Esta guía está basada en los apuntes del curso [Markdown per a la creació de recursos](https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/) del CEFIRE, adaptados y traducidos al castellano.
 
 <!-- Para resolver el quest **Security 101** del AWS GameDay, que se centra en implementar soluciones de seguridad para prevenir ataques comunes (protección de RDS, S3 y WAF), consulta la guía paso a paso:
 

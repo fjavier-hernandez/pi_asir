@@ -5,7 +5,7 @@ use_directory_urls: false
 nav:
   - "Inicio": "index.md"
   - "1. Herramientas del proyecto": "01herramientas.md"
-  # - "2. Planteamiento del reto y análisis del contexto": "02planteamiento_reto.md"
+  - "2. Planteamiento del reto y análisis del contexto": "02planteamiento_reto.md"
   # - "Preparación AWS GameDay 2025": "AWS_GameDay2025_Preparacion.md"
   # - "Prácticas AWS GameDay 2025 - Lab": "AWS_GameDay2025_Lab.md"
   # - "Security 101 - Guía del Alumno": "Security101_GuiAlumno.md"

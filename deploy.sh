@@ -51,6 +51,7 @@ pip install -q -r requirements.txt
 
 echo ""
 echo "🔨 Construyendo y desplegando el sitio..."
+echo "   Usando --force para sobrescribir cambios en gh-pages..."
 mkdocs gh-deploy --force --message "Manual deploy: $(date '+%Y-%m-%d %H:%M:%S')"
 
 echo ""

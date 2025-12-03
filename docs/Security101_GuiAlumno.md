@@ -200,19 +200,48 @@ Si los logs del Lambda no muestran IPs, este es el método más directo y confia
 
 ##### Opción C: Revisar VPC Flow Logs (si están habilitados)
 
+Los VPC Flow Logs registran todo el tráfico de red, incluyendo intentos de conexión a RDS.
+
 1. Ve a **CloudWatch** → **Log groups**
 2. Busca logs relacionados con VPC Flow Logs (pueden llamarse `/aws/vpc/flowlogs` o similar)
-3. Usa CloudWatch Logs Insights para buscar conexiones a RDS:
+3. Haz clic en el log group de VPC Flow Logs
+4. Haz clic en **"View in Logs Insights"**
+5. Usa CloudWatch Logs Insights para buscar conexiones a RDS:
 
+**Consulta para encontrar la IP del atacante:**
 ```sql
 fields @timestamp, srcaddr, dstaddr, dstport, action
 | filter dstport = 3306 or dstport = 5432
-| filter action = "ACCEPT"
+| filter action = "ACCEPT" or action = "REJECT"
 | stats count() by srcaddr
 | sort count desc
 ```
 
-4. Identifica IPs que aparezcan con frecuencia y que no sean de tus servidores web o del Lambda legítimo
+6. Identifica IPs que aparezcan con frecuencia y que no sean de tus servidores web o del Lambda legítimo
+
+**Interpretación de VPC Flow Logs:**
+
+Los VPC Flow Logs tienen un formato estructurado. Un ejemplo de línea de log:
+
+```
+timestamp account-id interface-id srcaddr dstaddr srcport dstport protocol packets bytes windowstart windowend action flowlogstatus
+```
+
+**Campos importantes:**
+- `srcaddr`: Dirección IP de origen (ej: `52.4.170.163`)
+- `dstaddr`: Dirección IP de destino (ej: `10.0.3.170` - probablemente tu RDS)
+- `dstport`: Puerto de destino (ej: `3306` para MySQL)
+- `action`: Acción (`ACCEPT` o `REJECT`)
+
+**Ejemplo de log:**
+```
+1764236665 831926611091 eni-0238e6a5827f56560 52.4.170.163 10.0.3.170 46674 3306 6 2 120 1764236665 1764236694 REJECT OK
+```
+
+Esto muestra un intento rechazado desde `52.4.170.163` hacia `10.0.3.170:3306`.
+
+!!! warning "Nota sobre VPC Flow Logs"
+    Los VPC Flow Logs **NO contienen el nombre del hacker**, solo registran el tráfico de red (IPs, puertos, acciones). Para encontrar el nombre del hacker, debes buscar en los **logs del Lambda** (Opción D) o en **CloudTrail**.
 
 ##### Opción D: Revisar logs del Lambda (MÉTODO RECOMENDADO)
 
@@ -435,11 +464,533 @@ Si las consultas en CloudWatch Logs Insights no muestran resultados o no encuent
 3. Verifica que el sitio carga correctamente
 4. Prueba el endpoint `/Users.php?uid=1` para verificar que la conexión a la base de datos funciona
 
-#### 1.6. Registrar la IP del atacante
+#### 1.6. Encontrar el nombre del hacker asociado a la IP
+
+Una vez que hayas identificado la IP del atacante (ejemplo: `52.4.170.163`), necesitas encontrar el **nombre del hacker** asociado a esa IP.
+
+> 💡 **IP encontrada**: Si ya tienes la IP `52.4.170.163`, sigue estos pasos para encontrar el nombre del hacker.
+
+!!! tip "Pista importante - EMPIEZA AQUÍ"
+    La pista indica que busques **solicitudes HTTPS rechazadas**. Estas se registran en los **logs de acceso del Application Load Balancer (ALB)**. 
+    
+    **👉 Empieza directamente por la Opción 2 (más abajo) para buscar en los logs del ALB.**
+
+**Método rápido - Consulta directa con tu IP:**
+
+Reemplaza `52.4.170.163` con la IP que encontraste en esta consulta:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 20
+```
+
+Revisa el contenido completo del campo `@message` - el nombre del hacker debería aparecer en el mismo mensaje que contiene la IP.
+
+##### Opción 1: Buscar en los logs del Lambda usando la IP (MÉTODO ALTERNATIVO)
+
+1. Ve a **CloudWatch** → **Log groups**
+2. Busca el log group del Lambda (puede empezar con `/aws/lambda/` y contener `gdQuests` o `CreateIdCInstanceFunction`)
+3. Haz clic en **"View in Logs Insights"**
+
+**Paso 1: Buscar mensajes que contengan la IP del hacker**
+
+Reemplaza `52.4.170.163` con la IP que encontraste y ejecuta esta consulta:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 50
+```
+
+**Paso 2: Revisar los mensajes completos**
+
+Los mensajes que contengan la IP `52.4.170.163` probablemente también incluyan el nombre del hacker. 
+
+1. Revisa el contenido completo del campo `@message` en cada resultado
+2. El nombre del hacker puede aparecer:
+   - Junto a la IP en el mismo mensaje
+   - En formato JSON como `"user": "nombre"` o `"hacker": "nombre"`
+   - Como texto plano cerca de la IP
+   - En el nombre del log stream o en otros campos
+
+**Paso 3: Si no encuentras el nombre directamente, extrae todos los campos**
+
+Si los logs están estructurados, intenta extraer todos los campos:
+
+```sql
+fields @timestamp, @message, @logStream, @log
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 50
+```
+
+Esto te mostrará más información que puede contener el nombre del hacker.
+
+**Paso 4: Buscar patrones comunes de nombres**
+
+Si el nombre no aparece directamente, busca patrones comunes en los logs alrededor de los eventos con esa IP:
+
+```sql
+fields @timestamp, @message
+| filter @timestamp >= @timestamp - 1h
+| filter @message like /52.4.170.163/ or @message like /hacker/ or @message like /user/ or @message like /attacker/ or @message like /name/
+| sort @timestamp desc
+| limit 100
+```
+
+Esto buscará eventos relacionados en un período de tiempo reciente.
+
+**Paso 5: Buscar en el log stream name o en todos los campos**
+
+El nombre del hacker puede estar en el nombre del log stream o en otros campos del evento:
+
+```sql
+fields @timestamp, @message, @logStream, @log
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 20
+```
+
+Revisa también el campo `@logStream` - a veces el nombre del hacker aparece ahí.
+
+**Consulta alternativa - extraer información estructurada:**
+
+Si los logs tienen un formato estructurado, prueba:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /(?<hacker_name>[\w\-]+).*52\.4\.170\.163/
+| filter hacker_name != null
+| stats count() by hacker_name
+```
+
+**Paso 3: Si no aparece directamente, busca patrones**
+
+Si el nombre del hacker no aparece en los mismos mensajes que la IP, busca patrones comunes:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 10
+```
+
+Luego busca en otros logs del mismo período temporal con:
+
+```sql
+fields @timestamp, @message
+| filter @timestamp > timestamp("2025-11-27 00:00:00") and @timestamp < timestamp("2025-11-27 23:59:59")
+| filter @message like /hacker/ or @message like /attacker/ or @message like /user/
+| sort @timestamp desc
+| limit 50
+```
+
+!!! tip "Importante"
+    El nombre del hacker generalmente aparece en el mismo log event que contiene la IP `52.4.170.163`. Revisa cuidadosamente el mensaje completo de cada evento que contenga esa IP.
+
+##### Opción 2: Buscar en los logs de acceso del ALB - Solicitudes HTTPS rechazadas ⭐ (EMPEZAR AQUÍ - SEGÚN PISTA)
+
+> 🔍 **Pista clave**: Buscar solicitudes HTTPS rechazadas puede revelar el nombre del hacker.
+
+El Application Load Balancer tiene logs de acceso que registran todas las solicitudes HTTP/HTTPS, incluyendo las rechazadas o bloqueadas.
+
+**Paso 1: Encontrar los logs de acceso del ALB**
+
+1. Ve a **CloudWatch** → **Log groups**
+2. Busca log groups relacionados con el ALB:
+   - Pueden llamarse `/aws/elasticloadbalancing/...` o `/aws/alb/...`
+   - O buscar log groups que contengan el nombre del ALB `gdQues-Appli-`
+   - También pueden estar en formato: `/aws/elasticloadbalancing/us-east-1/ACCOUNT-ID/alb/ALB-ID/..._access`
+
+**Paso 2: Buscar solicitudes HTTPS rechazadas desde la IP del hacker**
+
+Una vez que encuentres el log group del ALB:
+
+1. Haz clic en el log group
+2. Haz clic en **"View in Logs Insights"**
+3. Ejecuta esta consulta para buscar solicitudes rechazadas desde la IP `52.4.170.163`:
+
+**Consulta 1: Buscar todas las solicitudes desde la IP maliciosa (incluyendo rechazadas):**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 50
+```
+
+**Consulta 2: Buscar solicitudes HTTPS rechazadas (códigos de error 4xx, 5xx):**
+
+Los logs de ALB tienen un formato específico. Esta consulta parsea el formato estándar de ALB access logs:
+
+```sql
+fields @timestamp, @message
+| parse @message /(?<type>[^ ]+) (?<time>[^ ]+) (?<client_ip>[^ ]+) (?<target_ip>[^ ]+) (?<request_processing_time>[^ ]+) (?<target_processing_time>[^ ]+) (?<response_processing_time>[^ ]+) (?<elb_status_code>[^ ]+) (?<target_status_code>[^ ]+) (?<received_bytes>[^ ]+) (?<sent_bytes>[^ ]+) "(?<request>[^"]+)" "(?<user_agent>[^"]+)"/
+| filter client_ip = "52.4.170.163"
+| filter (elb_status_code >= 400 or target_status_code >= 400)
+| sort @timestamp desc
+| limit 50
+```
+
+**Consulta 3: Versión simplificada - buscar la IP y códigos de error:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| filter (@message like /" 4/ or @message like /" 5/)
+| sort @timestamp desc
+| limit 50
+```
+
+**Consulta 4: Buscar en el campo user_agent (donde puede estar el nombre del hacker):**
+
+```sql
+fields @timestamp, @message
+| parse @message /.*"(?<user_agent>[^"]+)"\s*$/
+| filter @message like /52.4.170.163/
+| filter user_agent != "-"
+| sort @timestamp desc
+| limit 50
+```
+
+**Consulta 5: Extraer el nombre del hacker del user_agent o request:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*(?<hacker_name>[a-zA-Z0-9_-]+).*52\.4\.170\.163.*/
+| filter hacker_name != null
+| stats count() by hacker_name
+| sort count desc
+```
+
+!!! tip "Dónde buscar el nombre del hacker"
+    El nombre del hacker puede aparecer en:
+    - El campo `user_agent` del log (ejemplo: `Mozilla/5.0 (compatible; hacker_name/1.0)`)
+    - En la URL de la `request` (ejemplo: `/api/user/hacker_name`)
+    - Como parte del mensaje completo del log
+    - Busca palabras clave relacionadas con el hacker en el campo `@message` completo
+
+**Consulta 6: Buscar solicitudes SQL injection con transferencias de dinero (IMPORTANTE - NOMBRE DE USUARIO QUE RECIBE DINERO)**
+
+El hacker está realizando SQL injection para transferir dinero a un usuario. Busca en las solicitudes SQL injection el parámetro que indica el nombre de usuario que recibe el dinero:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /SELECT/ or request like /UPDATE/ or request like /INSERT/ or request like /DELETE/
+| filter request like /money/ or request like /transfer/ or request like /balance/ or request like /account/ or request like /user/ or request like /to/ or request like /FROM/ or request like /SET/
+| sort @timestamp desc
+| limit 50
+```
+
+**Consulta 7: Parsear la URL completa para extraer parámetros SQL injection:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /52.4.170.163/ or request like /uid=/ or request like /user=/ or request like /id=/
+| parse request /.*[?&](?:user|uid|to|account|recipient|beneficiary)=(?<recipient_user>[^&" ]+).*/
+| filter recipient_user != null and recipient_user != "" and recipient_user != "52.4.170.163"
+| stats count() by recipient_user
+| sort count desc
+| limit 20
+```
+
+**Consulta 8: Buscar patrones SQL injection con nombres de usuario en la query:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /'/ or request like /"/ or request like /;/ or request like /--/
+| parse request /.*(?:FROM|TO|INTO|UPDATE|SET|VALUES|WHERE).*['"](?<username>[a-zA-Z0-9_]+)['"]/
+| filter username != null
+| stats count() by username
+| sort count desc
+| limit 20
+```
+
+**Consulta 9: Buscar específicamente transferencias de dinero en la query SQL:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| filter @message like /money/ or @message like /transfer/ or @message like /balance/ or @message like /amount/ or @message like /give/ or @message like /send/
+| parse @message /.*(?:TO|to|user|username|recipient|account)[\s=:]+['"]?(?<recipient>[a-zA-Z0-9_]+)['"]?/
+| filter recipient != null and recipient != "" and recipient != "money" and recipient != "transfer"
+| stats count() by recipient
+| sort count desc
+| limit 20
+```
+
+!!! warning "Pista clave - VPC Flow Logs"
+    Si encuentras VPC Flow Logs con la IP `52.4.170.163` (como el que te mostramos en la guía), confirman el tráfico pero **NO contienen el nombre de usuario**. 
+    
+    Los VPC Flow Logs están en el log group: `/aws/lambda/gdQuests-85bb2535-d851-48-CreateIdCInstanceFunctio-RyxEBkvJxATJ`
+    
+    **Para encontrar el nombre de usuario que recibe el dinero, debes buscar en los logs del ALB** las solicitudes HTTP/HTTPS que contengan las queries SQL injection con los parámetros de transferencia.
+
+#### 1.7. Encontrar el nombre de usuario al que el hacker transfiere dinero
+
+> 🎯 **Objetivo IMPORTANTE**: No busques el nombre del hacker. La pregunta es: **"Escriba el nombre de usuario al que el hacker que inyecta SQL le estaba dando dinero"**.
+> 
+> Necesitas encontrar **el nombre de usuario DESTINATARIO** que está recibiendo el dinero mediante SQL injection.
+
+!!! warning "⚠️ IMPORTANTE - NO confundas:"
+    - ❌ **NO busques el nombre del hacker** (quien está haciendo el ataque)
+    - ✅ **SÍ buscas el nombre del USUARIO** al que el hacker está transfiriendo dinero mediante SQL injection
+    
+    El hacker (IP `52.4.170.163`) está usando SQL injection para transferir dinero a otro usuario. Necesitas encontrar el nombre de ese usuario destinatario.
+
+Los VPC Flow Logs que encontraste confirman el tráfico desde la IP `52.4.170.163`, pero **no contienen el nombre del usuario destinatario**. El nombre del usuario destinatario aparece en las **solicitudes SQL injection** registradas en los **logs de acceso del ALB**.
+
+**Paso 1: Entender qué contienen los VPC Flow Logs**
+
+Si encuentras VPC Flow Logs como estos, confirman el tráfico pero **NO contienen el nombre del usuario destinatario**:
+
+- Log group: `/aws/lambda/gdQuests-85bb2535-d851-48-CreateIdCInstanceFunctio-RyxEBkvJxATJ`
+- Log stream: `eni-01c264626674f7763-all`
+- IP origen: `52.4.170.163` (IP del hacker)
+- IP destino: `10.0.2.150`
+- Puerto: `80` (HTTP)
+
+Estos logs solo muestran tráfico de red (source IP, destination IP, puertos, bytes). **NO contienen el contenido de las solicitudes HTTP**, por lo que **NO tienen el nombre del usuario destinatario**.
+
+El **nombre del usuario destinatario está en las solicitudes HTTP/HTTPS** que pasan por el ALB, específicamente en las queries SQL injection que el hacker está ejecutando.
+
+**Paso 2: Buscar en los logs del ALB las solicitudes SQL injection con el nombre del usuario destinatario**
+
+Los logs de acceso del ALB contienen todas las solicitudes HTTP/HTTPS, incluyendo las queries SQL injection completas. Aquí es donde encontrarás el nombre del usuario destinatario.
+
+1. Ve a **CloudWatch** → **Log groups**
+2. Busca el log group del ALB (formato: `/aws/elasticloadbalancing/...` o contiene `gdQues-Appli-`)
+3. Haz clic en el log group y luego en **"View in Logs Insights"**
+
+**Consulta 1: Buscar todas las solicitudes desde la IP del hacker en el ALB:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 100
+```
+
+**Consulta 2: Parsear la URL de las solicitudes para encontrar parámetros SQL injection:**
+
+Los logs del ALB tienen un formato específico. Necesitas extraer el campo `request` que contiene la URL completa con los parámetros SQL injection:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /(?<type>[^ ]+) (?<time>[^ ]+) (?<client_ip>[^ ]+) (?<target_ip>[^ ]+) (?<request_processing_time>[^ ]+) (?<target_processing_time>[^ ]+) (?<response_processing_time>[^ ]+) (?<elb_status_code>[^ ]+) (?<target_status_code>[^ ]+) (?<received_bytes>[^ ]+) (?<sent_bytes>[^ ]+) "(?<request>[^"]+)" "(?<user_agent>[^"]+)"/
+| filter client_ip = "52.4.170.163"
+| filter request like /uid=/ or request like /user=/ or request like /id=/ or request like /to=/ or request like /account=/
+| sort @timestamp desc
+| limit 50
+```
+
+**Consulta 3: Extraer el nombre de usuario DESTINATARIO de los parámetros de la URL (MÉTODO RECOMENDADO):**
+
+Esta consulta busca específicamente el parámetro `to` o `user` que indica el destinatario del dinero:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /uid=/ or request like /user=/ or request like /id=/ or request like /to=/ or request like /account=/ or request like /recipient=/ or request like /to_user=/
+| parse request /.*[?&](?:to|user|uid|account|recipient|beneficiary|username|to_user|recipient_user)[=:](?<recipient_user>[^&" ]+)/
+| filter recipient_user != null and recipient_user != "" and recipient_user != "52.4.170.163" and recipient_user != "-"
+| stats count() by recipient_user
+| sort count desc
+| limit 20
+```
+
+**Consulta 3b: Buscar en queries SQL injection con UPDATE o INSERT (especialmente importante):**
+
+El hacker está haciendo SQL injection, así que busca en las queries SQL completas:
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /UPDATE/ or request like /INSERT/ or request like /SET/ or request like /VALUES/
+| parse request /.*(?:UPDATE|INSERT|SET|VALUES|WHERE|TO|to).*['"](?<recipient_username>[a-zA-Z0-9_]+)['"]/
+| filter recipient_username != null and recipient_username != "" and recipient_username != "money" and recipient_username != "transfer" and recipient_username != "balance" and recipient_username != "amount" and recipient_username != "SET" and recipient_username != "UPDATE" and recipient_username != "INSERT" and recipient_username != "WHERE"
+| stats count() by recipient_username
+| sort count desc
+| limit 20
+```
+
+**Consulta 4: Buscar en el cuerpo de la request (POST requests) si hay datos de transferencia:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| filter @message like /POST/ or @message like /PUT/ or @message like /PATCH/
+| parse @message /.*(?<request_body>[a-zA-Z0-9_=&\-]+)/
+| filter request_body like /user/ or request_body like /to/ or request_body like /account/ or request_body like /recipient/
+| sort @timestamp desc
+| limit 50
+```
+
+**Consulta 5: Buscar patrones SQL injection en la request (SELECT, UPDATE, INSERT con nombres de usuario):**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /SELECT/ or request like /UPDATE/ or request like /INSERT/ or request like /SET/
+| parse request /.*(?:TO|to|user|username|recipient|account|beneficiary)[\s=:]+['"]?(?<recipient>[a-zA-Z0-9_]+)['"]?/
+| filter recipient != null and recipient != "" and recipient != "money" and recipient != "transfer" and recipient != "balance"
+| stats count() by recipient
+| sort count desc
+| limit 20
+```
+
+**Consulta 6: Buscar específicamente transferencias de dinero con el nombre del usuario destinatario (MUY IMPORTANTE):**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| filter @message like /money/ or @message like /transfer/ or @message like /balance/ or @message like /amount/ or @message like /give/ or @message like /send/ or @message like /UPDATE/ or @message like /INSERT/
+| parse @message /.*(?:TO|to|user|username|recipient|account|beneficiary|to_user)[\s=:]+['"]?(?<recipient>[a-zA-Z0-9_]+)['"]?/
+| filter recipient != null and recipient != "" and recipient != "money" and recipient != "transfer" and recipient != "balance" and recipient != "amount"
+| stats count() by recipient
+| sort count desc
+| limit 20
+```
+
+**Consulta 6b: Extraer nombres de usuario de queries SQL UPDATE/INSERT específicamente (RECOMENDADO para SQL injection):**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /UPDATE/ or request like /INSERT/ or request like /SET balance/ or request like /SET amount/ or request like /WHERE user/ or request like /WHERE username/
+| parse request /.*(?:WHERE|SET|VALUES|TO|to|user|username).*['"](?<username>[a-zA-Z0-9_]+)['"]/
+| filter username != null and username != "" and username != "UPDATE" and username != "INSERT" and username != "SET" and username != "WHERE" and username != "money" and username != "transfer"
+| stats count() by username
+| sort count desc
+| limit 20
+```
+
+**Consulta 7: Versión simplificada - buscar cualquier parámetro con nombre que parezca un usuario:**
+
+```sql
+fields @timestamp, @message
+| filter @message like /52.4.170.163/
+| parse @message /.*"(?<request>[^"]+)"/
+| filter request like /=/ and request like /[a-zA-Z]/
+| parse request /[?&](?:to|user|uid|account|recipient|beneficiary|username|name)[=:](?<username>[a-zA-Z0-9_]+)/
+| filter username != null and username != ""
+| stats count() by username
+| sort count desc
+| limit 20
+```
+
+!!! tip "Dónde buscar el nombre del usuario DESTINATARIO (el que recibe el dinero)"
+    El nombre del **usuario destinatario** (no el hacker) que recibe el dinero puede aparecer en:
+    - **Parámetros de la URL** (ejemplo: `/transfer.php?to=nombre_usuario&amount=1000` o `/Users.php?uid=1 OR 1=1; UPDATE accounts SET balance=1000 WHERE user='nombre_usuario'`)
+    - **En la query SQL injection** (ejemplo: `UPDATE accounts SET balance=1000 WHERE user='nombre_usuario'` o `INSERT INTO transfers (to_user, amount) VALUES ('nombre_usuario', 1000)`)
+    - **En el cuerpo de la request** (POST/PUT) si hay datos de formulario
+    - **En el campo `request` completo** del log del ALB que contiene la query SQL injection completa
+    
+    Busca palabras clave como: `to`, `user`, `uid`, `account`, `recipient`, `beneficiary`, `username`, `to_user`, `recipient_user`
+    
+    **Ejemplo de lo que buscas:**
+    - En una URL: `/transfer?to=johndoe&amount=5000`
+    - En SQL injection: `UPDATE users SET balance=balance+1000 WHERE username='johndoe'`
+    - En SQL injection: `INSERT INTO transfers (to_user, amount) VALUES ('johndoe', 5000)`
+    
+    El nombre `johndoe` sería el **nombre de usuario destinatario** que debes ingresar en el formulario.
+
+!!! warning "Formato de logs del ALB"
+    Si las consultas anteriores no funcionan, prueba primero a ver el formato exacto de los logs:
+    
+    ```sql
+    fields @timestamp, @message
+    | filter @message like /52.4.170.163/
+    | limit 5
+    ```
+    
+    Esto te mostrará el formato exacto de los logs para ajustar las consultas de parseo.
+
+##### Opción 3: Buscar en CloudTrail (si está habilitado)
+
+1. Ve a **CloudTrail** en la consola de AWS
+2. Ve a **Event history** (Historial de eventos)
+3. Busca eventos que contengan la IP `52.4.170.163`
+4. Revisa los detalles de los eventos para encontrar información del usuario/hacker
+
+##### Opción 4: Buscar en los Security Groups o recursos asociados
+
+1. Revisa los nombres de los Security Groups que tienen reglas permitiendo acceso desde esa IP
+2. Revisa los nombres de las instancias EC2 o recursos que puedan estar usando esa IP
+3. A veces el nombre del hacker aparece en los nombres de los recursos o en las descripciones
+
+##### Opción 5: Buscar en todos los logs de CloudWatch
+
+1. Ve a **CloudWatch** → **Logs Insights**
+2. Selecciona **"Select log group(s)"** → Selecciona **múltiples log groups** (todos los relacionados con el quest)
+3. Ejecuta esta consulta:
+
+```sql
+fields @timestamp, @message, @logStream
+| filter @message like /52.4.170.163/
+| sort @timestamp desc
+| limit 100
+```
+
+4. Revisa cuidadosamente los mensajes - el nombre del hacker puede estar en:
+   - El mensaje mismo
+   - El nombre del log stream
+   - Metadata asociada al evento
+
+!!! tip "Consejo: Dónde encontrar el nombre del hacker"
+    **Método más común:**
+    1. El nombre del hacker generalmente aparece en el **mismo mensaje de log** que contiene la IP `52.4.170.163`
+    2. Revisa el contenido completo del campo `@message` en los resultados de la consulta
+    3. El nombre puede aparecer antes o después de la IP, o en el mismo contexto
+    
+    **Formato común en los logs:**
+    - Puede aparecer como: `"user": "nombre_hacker"` junto con la IP
+    - O como: `hacker_name: nombre` 
+    - O simplemente como texto: `nombre_hacker` cerca de la IP
+    - O como identificador en el nombre del log stream
+    - Puede aparecer en formato JSON estructurado
+    
+    **Pasos específicos para IP `52.4.170.163`:**
+    1. Ve a CloudWatch → Log groups → Lambda del quest
+    2. View in Logs Insights
+    3. Ejecuta: `fields @timestamp, @message | filter @message like /52.4.170.163/ | sort @timestamp desc | limit 20`
+    4. **Revisa cada mensaje completo** - el nombre del hacker estará en el texto
+    5. Busca palabras que NO sean números o IPs - esos serán nombres o identificadores
+    
+    **Si no aparece en los logs del Lambda:**
+    - Busca en CloudTrail (si está habilitado) para eventos relacionados con esa IP
+    - Revisa los nombres de recursos (instancias EC2, roles IAM) que puedan estar relacionados
+    - El nombre podría estar en las descripciones de los Security Groups que permiten acceso desde esa IP
+    - El nombre podría estar en el contexto del evento, no solo en el mensaje
+
+#### 1.7. Registrar la IP y el nombre del hacker
 
 1. En el formulario del quest "RDS seguro"
-2. Ingresa la dirección IP que identificaste del atacante
-3. Haz clic en **Enviar**
+2. Ingresa la dirección IP del atacante (ejemplo: `52.4.170.163`)
+3. Si el formulario también pide el nombre del hacker:
+   - Busca el nombre usando los métodos de la sección 1.6
+   - El nombre puede aparecer en los logs junto con la IP
+   - Puede ser un identificador, un nombre de usuario, o un nombre descriptivo
+4. Haz clic en **Enviar**
+
+!!! warning "Nota importante"
+    Si después de buscar en los logs no encuentras el nombre del hacker, es posible que el quest solo pida la IP. En ese caso, simplemente ingresa la IP `52.4.170.163` en el formulario y envía.
 
 ---
 
@@ -612,9 +1163,36 @@ Implementar AWS WAF para bloquear intentos de SQL injection como `/Users.php?uid
 
 #### 3.1. Identificar el Application Load Balancer (ALB)
 
+En tu cuenta hay **3 Application Load Balancers**. Debes identificar el ALB correcto asociado al sitio web de Unicorn.Rentals:
+
 1. Ve a **EC2** → **Load Balancers**
-2. Identifica tu ALB (debería ser tipo "Application Load Balancer")
-3. Anota el **ARN** del ALB (lo necesitarás para asociar el WAF)
+2. Verás una tabla con 3 Application Load Balancers:
+   - **`gdQues-Appli-PDYhlzu...`** (nombre truncado) ← **Este es el ALB del quest Security 101 que debes proteger**
+   - `GiteaALB` (para el servidor Git - NO es este)
+   - `CodeServerALB` (para el IDE - NO es este)
+   
+3. **Identifica el ALB correcto:**
+   - Busca el ALB cuyo nombre empiece con **`gdQues-Appli-`** (el nombre puede estar truncado en la tabla)
+   - Este es el Application Load Balancer del sitio web de Unicorn.Rentals que recibe los ataques SQL injection
+   - Estado: **Active** ✓
+   - Type: **application**
+   - Scheme: **Internet-facing**
+   
+4. **Verificación opcional (para confirmar):**
+   - Haz clic en el ALB `gdQues-Appli-...` para ver sus detalles
+   - En la pestaña **"Description"** (Descripción), copia el **DNS name**
+   - Abre el DNS name en un navegador
+   - Debería mostrar el sitio web de Unicorn.Rentals
+   - Prueba el endpoint: `/Users.php?uid=1` - debería funcionar
+   
+5. **Anota el ARN del ALB** (lo necesitarás para asociar el WAF):
+   - En la pestaña **"Description"** (Descripción)
+   - Busca el campo **"ARN"**
+   - Tiene formato: `arn:aws:elasticloadbalancing:us-east-1:ACCOUNT-ID:loadbalancer/app/gdQues-Appli-.../ID`
+   - Copia el ARN completo
+
+!!! warning "Importante"
+    **NO uses** `GiteaALB` ni `CodeServerALB`. Solo debes proteger el ALB del quest que empieza con `gdQues-Appli-`.
 
 #### 3.2. Crear un Web ACL en AWS WAFv2
 

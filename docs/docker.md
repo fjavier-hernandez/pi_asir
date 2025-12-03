@@ -702,6 +702,256 @@ docker compose up -d
     Se comprueba que se han creado los contenedores y se abre el navegador para comprobar que está disponible la instalación de WordPress.
 
 ---
+## Redes
+
+Cuando se crean diferentes servicios o aplicaciones en contenedores distintos (siguiendo la premisa de microservicios), estos no están conectados entre sí por defecto. Para que los contenedores puedan comunicarse entre ellos se utilizan las redes Docker. Este mecanismo funciona de manera distinta según el tipo de red docker donde estén conectados los contenedores.
+
+<figure>
+    <img src="imagenes/01/NetworkDocker.png" width="450"/>
+    <figcaption>Representación Redes Docker.</figcaption>
+</figure>
+
+### Opciones y tipos
+
+Los comandos básicos para gestionar redes son:
+
+``` bash
+docker network (create | ls | inspect | rm)
+```
+
+A continuación se introducen los distintos tipos de redes que nos ofrece docker:
+
+* **Bridge** → Red por defecto. Todos los contenedores están en la misma red, separada del Host. Es la red más común para aplicaciones multi-contenedor.
+* **Host** → Los contenedores comparten la pila de red del host directamente, sin aislamiento de red.
+* **None** → Contenedores completamente aislados, sin conectividad de red.
+
+<figure>
+    <img src="imagenes/01/GraficoRedDocker.png" width="750"/>
+    <figcaption>Escenario de ejemplo de una Red Docker.</figcaption>
+</figure>
+
+### Red Bridge por defecto
+
+Cuando se crea un contenedor sin especificar una red, Docker lo conecta automáticamente a la red bridge por defecto. Esta red tiene limitaciones importantes:
+
+* Todos los contenedores comparten la misma red, lo que puede causar conflictos.
+* La comunicación entre contenedores se realiza mediante direcciones IP, no por nombres.
+* No se recomienda para entornos de producción.
+
+!!! warning
+    El uso de contenedores conectados a la red por defecto no está recomendado en entornos de producción. Se podrían enlazar contenedores con el bridge por defecto con el flag `--link`, pero esta opción está deprecada y no se recomienda su uso.
+
+### Redes Bridge personalizadas
+
+La opción recomendable es definir una red bridge personalizada y crear los contenedores conectados a dicha red. Las ventajas principales son:
+
+* Aislamiento de servicios: cada red es independiente.
+* Resolución DNS automática: los contenedores pueden comunicarse usando sus nombres.
+* Control de la configuración de red: se puede definir el rango de IP, gateway, etc.
+* Mejor organización: diferentes aplicaciones pueden usar redes diferentes.
+
+Para crear una red bridge personalizada:
+
+``` bash
+docker network create mired
+```
+
+Si necesitamos especificar un rango de IP personalizado:
+
+``` bash
+docker network create --subnet=172.20.0.0/16 --gateway=172.20.0.1 mired
+```
+
+Para verificar que la red se ha creado correctamente:
+
+``` bash
+docker network ls
+docker network inspect mired
+```
+
+### Conectar contenedores a una red
+
+Una vez creada la red, se pueden crear contenedores conectados a dicha red de dos formas:
+
+**Opción 1: Al crear el contenedor**
+
+``` bash
+docker run -d --name servidor_mysql --network mired \
+-e MYSQL_DATABASE=bd_wp -e MYSQL_USER=user_wp -e MYSQL_PASSWORD=asdasd \
+-e MYSQL_ROOT_PASSWORD=asdasd mariadb
+
+docker run -d --name servidor_web --network mired \
+-p 8080:80 javierhernandez/aplicacionweb:v1
+```
+
+**Opción 2: Conectar un contenedor existente**
+
+``` bash
+docker network connect mired nombre_contenedor
+```
+
+### Resolución DNS en redes Docker
+
+Una de las ventajas principales de usar redes personalizadas es la resolución DNS automática. Los contenedores pueden comunicarse entre sí usando el nombre del contenedor en lugar de la dirección IP.
+
+Por ejemplo, si tenemos un contenedor de base de datos llamado `servidor_mysql` y un contenedor web llamado `servidor_web`, desde el contenedor web podemos conectarnos a la base de datos usando:
+
+```
+servidor_mysql:3306
+```
+
+En lugar de tener que usar la IP del contenedor, que puede cambiar cada vez que se recrea.
+
+### Redes en Docker Compose
+
+Docker Compose facilita mucho la gestión de redes. Por defecto, cuando se define un archivo `docker-compose.yml`, Docker Compose crea automáticamente una red para todos los servicios definidos en ese archivo. Todos los servicios pueden comunicarse entre sí usando sus nombres de servicio.
+
+Ejemplo básico:
+
+``` yaml
+version: "3.9"
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db
+
+volumes:
+  db_data: {}
+```
+
+En este ejemplo, el servicio `wordpress` puede conectarse a la base de datos usando `db:3306` como host, ya que `db` es el nombre del servicio de base de datos.
+
+### Redes personalizadas en Docker Compose
+
+Si necesitamos más control sobre la configuración de red, podemos definir redes personalizadas en el archivo `docker-compose.yml`:
+
+``` yaml
+version: "3.9"
+
+services:
+  db:
+    image: mysql:5.7
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:latest
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:alpine
+    networks:
+      - frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - wordpress
+
+volumes:
+  db_data: {}
+
+networks:
+  frontend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.0.0/16
+```
+
+En este ejemplo se crean dos redes:
+
+* **frontend**: Para servicios que necesitan ser accesibles desde el exterior (nginx, wordpress).
+* **backend**: Para servicios internos (base de datos).
+
+El servicio `wordpress` está conectado a ambas redes, permitiéndole comunicarse tanto con nginx (frontend) como con la base de datos (backend). La base de datos solo está en la red backend, lo que proporciona un mayor nivel de seguridad al no estar expuesta directamente.
+
+### Aislamiento de servicios
+
+El uso de redes personalizadas permite aislar servicios según sus necesidades:
+
+* **Servicios públicos**: Conectados a una red frontend, accesibles desde el exterior.
+* **Servicios internos**: Conectados a una red backend, solo accesibles desde otros contenedores de la misma red.
+* **Servicios de administración**: Pueden tener su propia red para tareas de mantenimiento.
+
+Este aislamiento mejora la seguridad al limitar la exposición de servicios sensibles como bases de datos.
+
+### Gestión de redes
+
+Para listar todas las redes:
+
+``` bash
+docker network ls
+```
+
+Para inspeccionar una red específica y ver qué contenedores están conectados:
+
+``` bash
+docker network inspect nombre_red
+```
+
+Para desconectar un contenedor de una red:
+
+``` bash
+docker network disconnect nombre_red nombre_contenedor
+```
+
+Para eliminar una red (solo si no tiene contenedores conectados):
+
+``` bash
+docker network rm nombre_red
+```
+
+Para eliminar todas las redes no utilizadas:
+
+``` bash
+docker network prune
+```
+
+!!! Note
+    Cuando se usan redes personalizadas, cada contenedor mantiene sus propias variables de entorno. No se comparten variables de entorno entre contenedores, lo que es una ventaja para la seguridad y el aislamiento de configuraciones.
+---
 
 # Actividades
 
@@ -795,3 +1045,124 @@ docker compose up -d
     - Prueba cada paso antes de continuar con el siguiente.
     - Asegúrate de que los nombres de imagen sigan el formato `usuario/nombre-imagen`.
     - Verifica que los puertos no estén en conflicto con otros servicios.
+
+<!-- ---
+
+<a name="PR103"></a>
+
+* **PR103** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). [Infraestructura completa con Docker Compose: WordPress, MySQL y redes personalizadas](PR103_Solucion.md)
+
+> **Criterios de evaluación asociados:**
+
+- **CE-RA2a**: Identificación y justificación de la arquitectura Docker con redes personalizadas y aislamiento de servicios.
+- **CE-RA3b**: Configuración correcta de aplicación multi-contenedor con WordPress, MySQL, volúmenes persistentes y redes Docker personalizadas.
+- **CE-RA4c**: Documentación completa de la arquitectura Docker, incluyendo docker-compose.yml, configuración de redes, volúmenes y variables de entorno.
+
+> **Contexto:**
+
+Esta práctica está orientada a implementar una infraestructura completa de TI mediante Docker, simulando un entorno de producción profesional. Se desplegará una aplicación WordPress con base de datos MySQL, utilizando redes Docker personalizadas para aislar servicios y garantizar la seguridad, volúmenes persistentes para la persistencia de datos, y variables de entorno para la configuración.
+
+> **Tareas:**
+
+1. **Preparación del entorno:**
+
+   - Crear directorio del proyecto con estructura organizada.
+   - Crear archivo `.env` para variables de entorno sensibles (contraseñas, nombres de base de datos).
+   - Crear archivo `docker-compose.yml` con la arquitectura completa.
+
+2. **Configuración de redes Docker personalizadas:**
+
+   - Definir red `frontend` con subnet `172.25.0.0/16` para servicios accesibles desde el exterior.
+   - Definir red `backend` con subnet `172.26.0.0/16` para servicios internos (base de datos).
+   - Verificar la creación de las redes con `docker network ls` y `docker network inspect`.
+
+3. **Configuración del servicio de base de datos (MySQL):**
+
+   - Usar imagen `mysql:8.0` o `mariadb:latest`.
+   - Conectar solo a la red `backend` para aislamiento de seguridad.
+   - Configurar volúmenes persistentes para datos (`/var/lib/mysql`).
+   - Configurar variables de entorno desde archivo `.env`:
+     - `MYSQL_ROOT_PASSWORD`
+     - `MYSQL_DATABASE`
+     - `MYSQL_USER`
+     - `MYSQL_PASSWORD`
+   - No exponer puertos al host, solo comunicación interna.
+
+4. **Configuración del servicio WordPress:**
+
+   - Usar imagen `wordpress:latest` o `wordpress:apache`.
+   - Conectar a ambas redes: `frontend` y `backend`.
+   - Exponer puerto `8080:80` para acceso desde el host.
+   - Configurar volúmenes persistentes para:
+     - Contenido de WordPress (`/var/www/html`)
+     - Configuraciones personalizadas (opcional)
+   - Configurar variables de entorno para conexión a base de datos:
+     - `WORDPRESS_DB_HOST: db:3306` (usando resolución DNS)
+     - `WORDPRESS_DB_USER`
+     - `WORDPRESS_DB_PASSWORD`
+     - `WORDPRESS_DB_NAME`
+   - Configurar dependencia con el servicio de base de datos (`depends_on`).
+
+5. **Despliegue y verificación:**
+
+   - Ejecutar `docker compose up -d` para levantar los servicios.
+   - Verificar que todos los contenedores estén en ejecución con `docker compose ps`.
+   - Verificar la conectividad de red:
+     - Comprobar que WordPress puede resolver el nombre `db` mediante DNS.
+     - Verificar que la base de datos solo está accesible desde la red backend.
+   - Acceder a WordPress desde el navegador en `http://localhost:8080`.
+   - Completar la instalación de WordPress.
+
+6. **Pruebas de persistencia:**
+
+   - Crear contenido en WordPress (páginas, entradas, plugins).
+   - Detener los contenedores con `docker compose down`.
+   - Volver a levantar los servicios con `docker compose up -d`.
+   - Verificar que el contenido creado se mantiene (persistencia de volúmenes).
+
+7. **Pruebas de aislamiento de red:**
+
+   - Intentar conectarse a la base de datos desde el host (debe fallar, no está expuesta).
+   - Verificar que WordPress puede comunicarse con la base de datos usando el nombre del servicio.
+   - Comprobar las IPs asignadas a cada contenedor en sus respectivas redes.
+
+8. **Documentación de la arquitectura:**
+
+   - Crear diagrama de la arquitectura de red (frontend/backend).
+   - Documentar la configuración de volúmenes y su propósito.
+   - Documentar las variables de entorno utilizadas (sin mostrar valores sensibles).
+   - Incluir capturas de:
+     - Estructura de directorios del proyecto.
+     - Salida de `docker compose ps`.
+     - Salida de `docker network inspect` para cada red.
+     - Acceso a WordPress funcionando.
+     - Verificación de persistencia de datos.
+
+> **Archivos a entregar:**
+
+- `docker-compose.yml` completo y funcional
+- Archivo `.env.example` (plantilla sin valores sensibles)
+- Documentación completa con:
+  - Explicación de la arquitectura de red
+  - Justificación de las decisiones de diseño
+  - Capturas de pantalla de cada paso
+  - Comandos utilizados
+  - Problemas encontrados y soluciones aplicadas
+  - Diagrama de la arquitectura
+
+> **Requisitos técnicos:**
+
+- Docker y Docker Compose instalados y funcionando.
+- Al menos 2GB de RAM disponible.
+- Puertos 8080 y 3306 libres (o cambiar a otros puertos).
+
+!!! warning "**Importante**"
+    - No incluyas contraseñas reales en la documentación entregada.
+    - Usa el archivo `.env` para valores sensibles y añádelo al `.gitignore` si usas control de versiones.
+    - Verifica que los rangos de subred no entren en conflicto con otras redes Docker existentes.
+
+!!! tip "**Consejos**"
+    - Revisa la documentación oficial de Docker Compose para la sintaxis correcta.
+    - Usa `docker compose logs` para ver los logs de los servicios si hay problemas.
+    - Verifica la conectividad entre contenedores usando `docker compose exec wordpress ping db`.
+    - Para desarrollo, puedes usar `docker compose up` sin `-d` para ver los logs en tiempo real. -->

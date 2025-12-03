@@ -39,6 +39,24 @@ mkdocs gh-deploy --force
 
 ### Solución de problemas comunes
 
+#### Error: "failed to push some refs" o "Updates were rejected"
+
+**Error completo:**
+```
+error: failed to push some refs to 'https://github.com/...'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally.
+```
+
+**Causa:** La rama `gh-pages` tiene cambios del workflow de GitHub Actions que no están en tu repositorio local.
+
+**Solución:**
+```bash
+mkdocs gh-deploy --force
+```
+
+El flag `--force` sobrescribe los cambios remotos. El script `deploy.sh` ya incluye `--force` automáticamente.
+
 #### Error: "fatal: refusing to merge unrelated histories"
 
 Si aparece este error, el workflow automático lo maneja automáticamente con `--force`.
