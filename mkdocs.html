@@ -1,0 +1,1495 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes de MkDocs para el Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Generación de sitios web estáticos con MkDocs y Material theme. Instalación, configuración y despliegue en GitHub Pages.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/mkdocs.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>MkDocs - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="MkDocs - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Apuntes de MkDocs para el Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Generación de sitios web estáticos con MkDocs y Material theme. Instalación, configuración y despliegue en GitHub Pages." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/mkdocs.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/mkdocs.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="MkDocs - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Apuntes de MkDocs para el Proyecto Intermodular de ASIR por Francisco Javier Hernández Illán. Generación de sitios web estáticos con MkDocs y Material theme. Instalación, configuración y despliegue en GitHub Pages." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/mkdocs.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mkdocs" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MkDocs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-relacionados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (relacionados)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introducción
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. ¿Qué es MkDocs?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1. ¿Qué es MkDocs?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas-para-el-proyecto-intermodular" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ventajas para el Proyecto Intermodular
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Instalación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-requisitos-previos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Requisitos previos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-instalacion-de-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Instalación de MkDocs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-instalacion-del-tema-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Instalación del tema Material
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-verificacion-de-la-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Verificación de la instalación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuración
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-crear-un-nuevo-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Crear un nuevo proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-estructura-de-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Estructura de directorios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-archivo-de-configuracion-mkdocsyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Archivo de configuración mkdocs.yml
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Archivo de configuración mkdocs.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elementos-principales-de-la-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementos principales de la configuración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-configuracion-avanzada-del-tema-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Configuración avanzada del tema Material
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Configuración avanzada del tema Material">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-del-tema-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características del tema Material
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-alojamiento-del-sitio-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Alojamiento del sitio web
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Alojamiento del sitio web">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-opciones-de-alojamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Opciones de alojamiento
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-alojamiento-en-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Alojamiento en GitHub Pages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Alojamiento en GitHub Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-preparar-el-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Preparar el repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-configurar-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Configurar GitHub Pages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. Configurar GitHub Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcion-1-usar-la-rama-gh-pages-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción 1: Usar la rama gh-pages (Recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opcion-2-usar-github-actions-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opción 2: Usar GitHub Actions (Avanzado)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-acceder-al-sitio" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Acceder al sitio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-trabajar-con-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Trabajar con MkDocs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Trabajar con MkDocs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-servidor-de-desarrollo-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Servidor de desarrollo local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-construir-el-sitio" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Construir el sitio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-estructura-de-navegacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Estructura de navegación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-escribir-contenido-en-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Escribir contenido en Markdown
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-personalizacion-avanzada" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Personalización avanzada
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Personalización avanzada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-extras-del-tema-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. Extras del tema Material
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1. Extras del tema Material">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advertencias-y-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advertencias y notas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pestanas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pestañas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-con-resaltado-de-sintaxis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código con resaltado de sintaxis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-plugins-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Plugins adicionales
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Buenas prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Buenas prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-organizacion-del-contenido" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. Organización del contenido
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-versionado-con-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. Versionado con Git
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-mantenimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3. Mantenimiento
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-recursos-y-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Recursos y referencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Recursos y referencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación oficial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-relacionadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas relacionadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comandos-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos útiles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="mkdocs">MkDocs<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>MkDocs es un <strong>generador de sitios web estáticos</strong> que toma como entrada texto escrito en Markdown y utiliza diseños predefinidos (temas) para crear un sitio web estático. Permite modificar el aspecto del sitio, los enlaces, los datos que se muestran en la página y muchas cosas más. En el contexto del <strong>Proyecto Intermodular (PI)</strong>, MkDocs facilita la creación de documentación profesional y sitios web para los proyectos, permitiendo centrarse en el contenido sin preocuparse por el diseño.</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Página oficial</p>
+<p>Accede a la página oficial de <strong>Material for MkDocs</strong> en: <a href="https://squidfunk.github.io/mkdocs-material/">https://squidfunk.github.io/mkdocs-material/</a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Esta documentación está basada en los apuntes del curso <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/">Markdown per a la creació de recursos</a> del CEFIRE, adaptados y traducidos al castellano para el contexto del Proyecto Intermodular de ASIR.</p>
+</div>
+<hr />
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>Esta herramienta se enmarca dentro del <strong>módulo de Proyecto Intermodular</strong> del CFGS ASIR, y contribuye a los siguientes <strong>Resultados de Aprendizaje (RA)</strong> definidos en la programación:</p>
+<blockquote>
+<p><strong>RA4.</strong> <em>Documenta, versiona y despliega la solución y sus evidencias.</em></p>
+</blockquote>
+<h3 id="criterios-de-evaluacion-relacionados">Criterios de evaluación (relacionados)<a class="headerlink" href="#criterios-de-evaluacion-relacionados" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CE-RA4a</strong>: Se ha documentado el procedimiento de instalación y despliegue.</li>
+<li><strong>CE-RA4b</strong>: Se ha utilizado un sistema de control de versiones para gestionar la documentación.</li>
+<li><strong>CE-RA4c</strong>: Se ha generado documentación web accesible y profesional.</li>
+</ul>
+<h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
+<p><strong>Bloque 1 — Introducción a MkDocs</strong></p>
+<ul>
+<li>¿Qué es MkDocs? Conceptos básicos.</li>
+<li>Instalación de MkDocs y Material theme.</li>
+<li>Creación del primer sitio web.</li>
+</ul>
+<p><strong>Bloque 2 — Configuración básica</strong></p>
+<ul>
+<li>Estructura de directorios y archivos.</li>
+<li>Archivo <code>mkdocs.yml</code> de configuración.</li>
+<li>Navegación y organización del contenido.</li>
+</ul>
+<p><strong>Bloque 3 — Despliegue</strong></p>
+<ul>
+<li>Despliegue en GitHub Pages.</li>
+<li>Integración con Git y GitHub.</li>
+<li>Personalización básica del tema Material.</li>
+</ul>
+<hr />
+<h2 id="1-introduccion">1. Introducción<a class="headerlink" href="#1-introduccion" title="Permanent link">&para;</a></h2>
+<h3 id="11-que-es-mkdocs">1.1. ¿Qué es MkDocs?<a class="headerlink" href="#11-que-es-mkdocs" title="Permanent link">&para;</a></h3>
+<p><strong>MkDocs</strong> es un generador de sitios web estáticos que permite crear documentación profesional a partir de archivos Markdown. El aspecto de la web viene determinado por plantillas o temas, que describen tanto la estructura de las diferentes páginas como el aspecto visual.</p>
+<p>La filosofía de MkDocs es centrarse en el contenido (escrito en Markdown) y no tanto en el aspecto, que simplemente se configura una vez mediante un tema. El tema más popular y recomendado es <strong>Material for MkDocs</strong>, que ofrece un aspecto visual moderno, atractivo, y aporta una gran cantidad de funcionalidades adicionales.</p>
+<div class="admonition note">
+<p class="admonition-title">Referencia</p>
+<p>Esta documentación está basada en los apuntes del curso <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/">Markdown per a la creació de recursos</a> del CEFIRE. Para ver las imágenes, capturas de pantalla y ejemplos visuales originales, consulta el sitio web del curso.</p>
+<p><strong>Sitio web de referencia:</strong> <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/">https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/</a></p>
+</div>
+<h4 id="caracteristicas-principales">Características principales<a class="headerlink" href="#caracteristicas-principales" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Generación estática:</strong> Crea sitios web estáticos (HTML, CSS, JavaScript) que se pueden alojar en cualquier servidor web</li>
+<li><strong>Basado en Markdown:</strong> El contenido se escribe en Markdown, un formato de texto plano fácil de aprender</li>
+<li><strong>Temas predefinidos:</strong> Utiliza temas que definen el aspecto visual y la estructura</li>
+<li><strong>Navegación automática:</strong> Genera automáticamente la navegación basándose en la estructura de archivos</li>
+<li><strong>Búsqueda integrada:</strong> Muchos temas incluyen funcionalidad de búsqueda</li>
+<li><strong>Fácil despliegue:</strong> Se puede desplegar fácilmente en GitHub Pages, Netlify, o cualquier servidor web</li>
+</ul>
+<h4 id="ventajas-para-el-proyecto-intermodular">Ventajas para el Proyecto Intermodular<a class="headerlink" href="#ventajas-para-el-proyecto-intermodular" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Documentación profesional:</strong> Permite crear documentación web de aspecto profesional sin conocimientos avanzados de HTML/CSS</li>
+<li><strong>Versionado con Git:</strong> Los archivos Markdown se pueden versionar con Git, facilitando el trabajo colaborativo</li>
+<li><strong>Despliegue en GitHub Pages:</strong> Se integra perfectamente con GitHub, permitiendo alojar la documentación del proyecto de forma gratuita</li>
+<li><strong>Enfoque en contenido:</strong> Permite centrarse en escribir el contenido sin preocuparse por el diseño</li>
+<li><strong>Actualización sencilla:</strong> Actualizar la documentación es tan simple como editar un archivo Markdown y hacer commit</li>
+</ul>
+<hr />
+<h2 id="2-instalacion">2. Instalación<a class="headerlink" href="#2-instalacion" title="Permanent link">&para;</a></h2>
+<h3 id="21-requisitos-previos">2.1. Requisitos previos<a class="headerlink" href="#21-requisitos-previos" title="Permanent link">&para;</a></h3>
+<p>Antes de instalar MkDocs, necesitas tener instalado:</p>
+<ul>
+<li><strong>Python 3.6 o superior</strong></li>
+<li><strong>pip</strong> (gestor de paquetes de Python)</li>
+</ul>
+<p>Para verificar si tienes Python instalado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>python3<span class="w"> </span>--version
+</code></pre></div>
+<p>O en algunos sistemas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>python<span class="w"> </span>--version
+</code></pre></div>
+<h3 id="22-instalacion-de-mkdocs">2.2. Instalación de MkDocs<a class="headerlink" href="#22-instalacion-de-mkdocs" title="Permanent link">&para;</a></h3>
+<p>La forma más sencilla de instalar MkDocs es mediante pip:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs
+</code></pre></div>
+<p>O si necesitas usar pip3:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pip3<span class="w"> </span>install<span class="w"> </span>mkdocs
+</code></pre></div>
+<p>Para verificar que la instalación fue correcta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdocs<span class="w"> </span>--version
+</code></pre></div>
+<h3 id="23-instalacion-del-tema-material">2.3. Instalación del tema Material<a class="headerlink" href="#23-instalacion-del-tema-material" title="Permanent link">&para;</a></h3>
+<p>El tema Material for MkDocs es el más popular y recomendado. Se instala como un paquete adicional:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material
+</code></pre></div>
+<p>O con pip3:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pip3<span class="w"> </span>install<span class="w"> </span>mkdocs-material
+</code></pre></div>
+<h3 id="24-verificacion-de-la-instalacion">2.4. Verificación de la instalación<a class="headerlink" href="#24-verificacion-de-la-instalacion" title="Permanent link">&para;</a></h3>
+<p>Una vez instalado, puedes verificar que todo funciona correctamente creando un proyecto de prueba:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdocs<span class="w"> </span>new<span class="w"> </span>mi-proyecto
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>mi-proyecto
+<span class="linenos" data-linenos="3 "></span>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<p>Esto debería iniciar un servidor de desarrollo local en <code>http://127.0.0.1:8000</code> donde puedes ver tu sitio web.</p>
+<hr />
+<h2 id="3-configuracion">3. Configuración<a class="headerlink" href="#3-configuracion" title="Permanent link">&para;</a></h2>
+<h3 id="31-crear-un-nuevo-proyecto">3.1. Crear un nuevo proyecto<a class="headerlink" href="#31-crear-un-nuevo-proyecto" title="Permanent link">&para;</a></h3>
+<p>Para crear un nuevo proyecto MkDocs:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdocs<span class="w"> </span>new<span class="w"> </span>nombre-del-proyecto
+</code></pre></div>
+<p>Esto crea una estructura de directorios básica:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nombre-del-proyecto/
+<span class="linenos" data-linenos="2 "></span>├── docs/
+<span class="linenos" data-linenos="3 "></span>│   └── index.md
+<span class="linenos" data-linenos="4 "></span>└── mkdocs.yml
+</code></pre></div>
+<h3 id="32-estructura-de-directorios">3.2. Estructura de directorios<a class="headerlink" href="#32-estructura-de-directorios" title="Permanent link">&para;</a></h3>
+<p>La estructura típica de un proyecto MkDocs es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>proyecto/
+<span class="linenos" data-linenos="2 "></span>├── docs/              # Directorio con los archivos Markdown
+<span class="linenos" data-linenos="3 "></span>│   ├── index.md       # Página principal
+<span class="linenos" data-linenos="4 "></span>│   ├── guia.md        # Otras páginas
+<span class="linenos" data-linenos="5 "></span>│   └── ...
+<span class="linenos" data-linenos="6 "></span>├── mkdocs.yml         # Archivo de configuración
+<span class="linenos" data-linenos="7 "></span>└── site/              # Directorio generado (no se versiona)
+<span class="linenos" data-linenos="8 "></span>    └── ...            # HTML generado
+</code></pre></div>
+<ul>
+<li><strong><code>docs/</code></strong>: Contiene todos los archivos Markdown que forman el contenido del sitio</li>
+<li><strong><code>mkdocs.yml</code></strong>: Archivo de configuración principal</li>
+<li><strong><code>site/</code></strong>: Directorio donde se genera el sitio web estático (se crea al ejecutar <code>mkdocs build</code>)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Imágenes y recursos</p>
+<p>Para ver ejemplos visuales de la estructura de directorios y capturas de pantalla del proceso de configuración, consulta la <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/3_configuracion/">sección de configuración del curso original</a>.</p>
+</div>
+<h3 id="33-archivo-de-configuracion-mkdocsyml">3.3. Archivo de configuración <code>mkdocs.yml</code><a class="headerlink" href="#33-archivo-de-configuracion-mkdocsyml" title="Permanent link">&para;</a></h3>
+<p>El archivo <code>mkdocs.yml</code> es el corazón de la configuración. Un ejemplo básico:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mi Proyecto Intermodular</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nt">site_description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Documentación del proyecto PI de ASIR</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">site_author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nombre del Alumno</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nt">theme</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/brightness-7</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cambiar a modo oscuro</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/brightness-4</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cambiar a modo claro</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="nt">nav</span><span class="p">:</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inicio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Guía</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guia.md</span>
+</code></pre></div>
+<h4 id="elementos-principales-de-la-configuracion">Elementos principales de la configuración<a class="headerlink" href="#elementos-principales-de-la-configuracion" title="Permanent link">&para;</a></h4>
+<p><strong>Información del sitio:</strong></p>
+<ul>
+<li><code>site_name</code>: Nombre del sitio web</li>
+<li><code>site_description</code>: Descripción del sitio</li>
+<li><code>site_author</code>: Autor del sitio</li>
+</ul>
+<p><strong>Tema:</strong></p>
+<ul>
+<li><code>theme.name</code>: Nombre del tema (material, readthedocs, etc.)</li>
+<li><code>theme.palette</code>: Configuración de colores y modo claro/oscuro</li>
+</ul>
+<p><strong>Navegación:</strong></p>
+<ul>
+<li><code>nav</code>: Define la estructura de navegación del sitio</li>
+<li>Se puede organizar en secciones y subsecciones</li>
+</ul>
+<h3 id="34-configuracion-avanzada-del-tema-material">3.4. Configuración avanzada del tema Material<a class="headerlink" href="#34-configuracion-avanzada-del-tema-material" title="Permanent link">&para;</a></h3>
+<p>El tema Material ofrece muchas opciones de personalización:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">theme</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">es</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">features</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.tabs</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.sections</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.expand</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.top</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.highlight</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="nt">icon</span><span class="p">:</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/github</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/brightness-7</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cambiar a modo oscuro</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/brightness-4</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cambiar a modo claro</span>
+</code></pre></div>
+<h4 id="caracteristicas-del-tema-material">Características del tema Material<a class="headerlink" href="#caracteristicas-del-tema-material" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Navegación por pestañas:</strong> Organiza el contenido en pestañas</li>
+<li><strong>Navegación por secciones:</strong> Navegación lateral con secciones expandibles</li>
+<li><strong>Búsqueda integrada:</strong> Búsqueda en tiempo real del contenido</li>
+<li><strong>Modo oscuro/claro:</strong> Alternancia entre temas claro y oscuro</li>
+<li><strong>Responsive:</strong> Se adapta a diferentes tamaños de pantalla</li>
+<li><strong>Iconos:</strong> Soporte para iconos Material Design y Font Awesome</li>
+</ul>
+<hr />
+<h2 id="4-alojamiento-del-sitio-web">4. Alojamiento del sitio web<a class="headerlink" href="#4-alojamiento-del-sitio-web" title="Permanent link">&para;</a></h2>
+<p>Una vez construido el sitio web, necesitas alojarlo para que sea accesible públicamente. Existen varias opciones, siendo las más comunes GitHub Pages (recomendado para proyectos con Git) y Aules (plataforma educativa de la Conselleria).</p>
+<h3 id="41-opciones-de-alojamiento">4.1. Opciones de alojamiento<a class="headerlink" href="#41-opciones-de-alojamiento" title="Permanent link">&para;</a></h3>
+<p><strong>GitHub Pages (Recomendado):</strong></p>
+<ul>
+<li>Gratuito y fácil de configurar</li>
+<li>Integración perfecta con Git y GitHub</li>
+<li>Actualización automática con cada commit</li>
+<li>URL personalizada: <code>usuario.github.io/nombre-repositorio</code></li>
+</ul>
+<p><strong>Aules (Plataforma educativa):</strong></p>
+<ul>
+<li>Disponible para profesores y alumnos de la Conselleria</li>
+<li>Integración con el entorno educativo</li>
+<li>Requiere acceso a la plataforma Aules</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Referencia visual</p>
+<p>Para ver capturas de pantalla del proceso de despliegue, consulta las secciones del curso original:
+- <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/4_allotgem-la-web-a-aules/">Alojamiento en Aules</a>
+- <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/5_allotgem-la-web-a-github/">Alojamiento en GitHub</a></p>
+</div>
+<hr />
+<h2 id="5-alojamiento-en-github-pages">5. Alojamiento en GitHub Pages<a class="headerlink" href="#5-alojamiento-en-github-pages" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Referencia visual</p>
+<p>Para ver capturas de pantalla detalladas del proceso de despliegue en GitHub Pages, consulta la <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/5_allotgem-la-web-a-github/">sección de alojamiento en GitHub del curso original</a>.</p>
+</div>
+<h3 id="51-preparar-el-repositorio">5.1. Preparar el repositorio<a class="headerlink" href="#51-preparar-el-repositorio" title="Permanent link">&para;</a></h3>
+<p>Para alojar tu sitio MkDocs en GitHub Pages:</p>
+<ol>
+<li>
+<p><strong>Crear un repositorio en GitHub</strong> (público o privado)</p>
+</li>
+<li>
+<p><strong>Inicializar Git en el proyecto:</strong></p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">cd</span><span class="w"> </span>nombre-del-proyecto
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>init
+<span class="linenos" data-linenos="3 "></span>git<span class="w"> </span>add<span class="w"> </span>.
+<span class="linenos" data-linenos="4 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Inicializar proyecto MkDocs&quot;</span>
+</code></pre></div>
+<ol start="3">
+<li><strong>Conectar con el repositorio remoto:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/usuario/nombre-repositorio.git
+<span class="linenos" data-linenos="2 "></span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+<span class="linenos" data-linenos="3 "></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<h3 id="52-configurar-github-pages">5.2. Configurar GitHub Pages<a class="headerlink" href="#52-configurar-github-pages" title="Permanent link">&para;</a></h3>
+<p>Hay dos formas principales de desplegar MkDocs en GitHub Pages:</p>
+<h4 id="opcion-1-usar-la-rama-gh-pages-recomendado">Opción 1: Usar la rama <code>gh-pages</code> (Recomendado)<a class="headerlink" href="#opcion-1-usar-la-rama-gh-pages-recomendado" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Instalar el plugin de GitHub:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-git-revision-date-localized-plugin
+</code></pre></div>
+<ol start="2">
+<li><strong>Configurar <code>mkdocs.yml</code>:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">plugins</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">git-revision-date-localized</span><span class="p">:</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">      </span><span class="nt">enable_creation_date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<ol start="3">
+<li><strong>Construir y desplegar:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div>
+<p>Este comando:</p>
+<ul>
+<li>Construye el sitio web</li>
+<li>Crea una rama <code>gh-pages</code> automáticamente</li>
+<li>Sube el contenido a GitHub</li>
+<li>Configura GitHub Pages para usar esa rama</li>
+</ul>
+<h4 id="opcion-2-usar-github-actions-avanzado">Opción 2: Usar GitHub Actions (Avanzado)<a class="headerlink" href="#opcion-2-usar-github-actions-avanzado" title="Permanent link">&para;</a></h4>
+<p>Para un despliegue automático cada vez que se hace push, se puede configurar GitHub Actions. Esto requiere crear un archivo <code>.github/workflows/ci.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nt">on</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.x</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy --force</span>
+</code></pre></div>
+<h3 id="53-acceder-al-sitio">5.3. Acceder al sitio<a class="headerlink" href="#53-acceder-al-sitio" title="Permanent link">&para;</a></h3>
+<p>Una vez desplegado, el sitio estará disponible en:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>https://usuario.github.io/nombre-repositorio/
+</code></pre></div>
+<p>O si has configurado un dominio personalizado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>https://tudominio.com
+</code></pre></div>
+<hr />
+<h2 id="6-trabajar-con-mkdocs">6. Trabajar con MkDocs<a class="headerlink" href="#6-trabajar-con-mkdocs" title="Permanent link">&para;</a></h2>
+<h3 id="61-servidor-de-desarrollo-local">6.1. Servidor de desarrollo local<a class="headerlink" href="#61-servidor-de-desarrollo-local" title="Permanent link">&para;</a></h3>
+<p>Para ver los cambios en tiempo real mientras trabajas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<p>Esto inicia un servidor local en <code>http://127.0.0.1:8000</code> que se actualiza automáticamente cuando modificas los archivos.</p>
+<p>El servidor de desarrollo es muy útil porque:</p>
+<ul>
+<li><strong>Actualización automática:</strong> Los cambios en los archivos Markdown se reflejan inmediatamente en el navegador</li>
+<li><strong>Sin necesidad de reconstruir:</strong> No necesitas ejecutar <code>mkdocs build</code> cada vez que haces un cambio</li>
+<li><strong>Depuración:</strong> Permite ver errores y advertencias en tiempo real</li>
+</ul>
+<h3 id="62-construir-el-sitio">6.2. Construir el sitio<a class="headerlink" href="#62-construir-el-sitio" title="Permanent link">&para;</a></h3>
+<p>Para generar los archivos HTML estáticos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdocs<span class="w"> </span>build
+</code></pre></div>
+<p>Esto crea el directorio <code>site/</code> con todos los archivos HTML, CSS y JavaScript necesarios.</p>
+<h3 id="63-estructura-de-navegacion">6.3. Estructura de navegación<a class="headerlink" href="#63-estructura-de-navegacion" title="Permanent link">&para;</a></h3>
+<p>La navegación se define en el archivo <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">nav</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inicio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Guía de Usuario</span><span class="p">:</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Introducción</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guia/introduccion.md</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Instalación</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guia/instalacion.md</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Configuración</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">guia/configuracion.md</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">API</span><span class="p">:</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Referencia</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api/referencia.md</span>
+<span class="linenos" data-linenos="9 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Acerca de</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acerca.md</span>
+</code></pre></div>
+<h3 id="64-escribir-contenido-en-markdown">6.4. Escribir contenido en Markdown<a class="headerlink" href="#64-escribir-contenido-en-markdown" title="Permanent link">&para;</a></h3>
+<p>El contenido se escribe en archivos Markdown (<code>.md</code>) dentro del directorio <code>docs/</code>. MkDocs soporta la sintaxis estándar de Markdown y extensiones adicionales:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gh"># Título principal</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="gu">## Subtítulo</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span>Texto normal con <span class="gs">**negrita**</span> e <span class="ge">*cursiva*</span>.
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">-</span><span class="w"> </span>Lista con viñetas
+<span class="linenos" data-linenos=" 8 "></span><span class="k">-</span><span class="w"> </span>Otro elemento
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="k">1.</span> Lista numerada
+<span class="linenos" data-linenos="11 "></span><span class="k">2.</span> Segundo elemento
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span>[<span class="nt">Enlace</span>](<span class="na">https://ejemplo.com</span>)
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span>![<span class="nt">Imagen</span>](<span class="na">ruta/imagen.png</span>)
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span>```` markdown
+<span class="linenos" data-linenos="18 "></span>Bloque de código
+<span class="linenos" data-linenos="19 "></span>````
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Referencia visual</p>
+<p>Para ver ejemplos visuales de cómo se escribe contenido en Markdown y cómo se renderiza en MkDocs, consulta la <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/">sección de contenido del curso original</a>.</p>
+</div>
+<hr />
+<h2 id="7-personalizacion-avanzada">7. Personalización avanzada<a class="headerlink" href="#7-personalizacion-avanzada" title="Permanent link">&para;</a></h2>
+<h3 id="71-extras-del-tema-material">7.1. Extras del tema Material<a class="headerlink" href="#71-extras-del-tema-material" title="Permanent link">&para;</a></h3>
+<p>El tema Material ofrece muchas funcionalidades adicionales:</p>
+<h4 id="advertencias-y-notas">Advertencias y notas<a class="headerlink" href="#advertencias-y-notas" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>!!! note &quot;Nota&quot;
+<span class="linenos" data-linenos=" 2 "></span>    Este es un texto de nota importante.
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span>!!! warning &quot;Advertencia&quot;
+<span class="linenos" data-linenos=" 5 "></span>    Ten cuidado con esto.
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span>!!! tip &quot;Consejo&quot;
+<span class="linenos" data-linenos=" 8 "></span>    Un consejo útil.
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span>!!! danger &quot;Peligro&quot;
+<span class="linenos" data-linenos="11 "></span>    Esto es peligroso.
+</code></pre></div>
+<h4 id="pestanas">Pestañas<a class="headerlink" href="#pestanas" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>=== &quot;Opción 1&quot;
+<span class="linenos" data-linenos="2 "></span>    Contenido de la opción 1
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span>=== &quot;Opción 2&quot;
+<span class="linenos" data-linenos="5 "></span>    Contenido de la opción 2
+</code></pre></div>
+<h4 id="codigo-con-resaltado-de-sintaxis">Código con resaltado de sintaxis<a class="headerlink" href="#codigo-con-resaltado-de-sintaxis" title="Permanent link">&para;</a></h4>
+<p>El tema Material soporta resaltado de sintaxis para muchos lenguajes:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>``` python
+<span class="linenos" data-linenos="2 "></span>def funcion():
+<span class="linenos" data-linenos="3 "></span>    return &quot;Hola mundo&quot;
+<span class="linenos" data-linenos="4 "></span>```
+</code></pre></div>
+<h3 id="72-plugins-adicionales">7.2. Plugins adicionales<a class="headerlink" href="#72-plugins-adicionales" title="Permanent link">&para;</a></h3>
+<p>MkDocs soporta plugins que añaden funcionalidades:</p>
+<ul>
+<li><strong>mkdocs-mermaid2-plugin:</strong> Para diagramas Mermaid</li>
+<li><strong>mkdocs-git-revision-date-localized-plugin:</strong> Muestra fechas de última modificación</li>
+<li><strong>mkdocs-minify-plugin:</strong> Minifica el HTML generado</li>
+<li><strong>mkdocs-redirects:</strong> Permite redirecciones entre páginas</li>
+</ul>
+<p>Para instalar un plugin:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pip<span class="w"> </span>install<span class="w"> </span>nombre-del-plugin
+</code></pre></div>
+<p>Y añadirlo en <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">plugins</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nombre-del-plugin</span>
+</code></pre></div>
+<hr />
+<h2 id="8-buenas-practicas">8. Buenas prácticas<a class="headerlink" href="#8-buenas-practicas" title="Permanent link">&para;</a></h2>
+<h3 id="81-organizacion-del-contenido">8.1. Organización del contenido<a class="headerlink" href="#81-organizacion-del-contenido" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Estructura clara:</strong> Organiza el contenido en secciones lógicas</li>
+<li><strong>Nombres descriptivos:</strong> Usa nombres de archivo descriptivos</li>
+<li><strong>Jerarquía:</strong> Respeta la jerarquía de títulos (H1, H2, H3)</li>
+<li><strong>Índice:</strong> Mantén un índice claro en la navegación</li>
+</ul>
+<h3 id="82-versionado-con-git">8.2. Versionado con Git<a class="headerlink" href="#82-versionado-con-git" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Commits descriptivos:</strong> Haz commits con mensajes claros</li>
+<li><strong>Estructura de ramas:</strong> Usa ramas para diferentes versiones si es necesario</li>
+<li><strong><code>.gitignore</code>:</strong> Añade <code>site/</code> al <code>.gitignore</code> (no se versiona)</li>
+</ul>
+<h3 id="83-mantenimiento">8.3. Mantenimiento<a class="headerlink" href="#83-mantenimiento" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Actualizar dependencias:</strong> Mantén MkDocs y los plugins actualizados</li>
+<li><strong>Revisar enlaces:</strong> Verifica que los enlaces funcionen correctamente</li>
+<li><strong>Probar localmente:</strong> Siempre prueba localmente antes de desplegar</li>
+</ul>
+<hr />
+<h2 id="9-recursos-y-referencias">9. Recursos y referencias<a class="headerlink" href="#9-recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<h3 id="documentacion-oficial">Documentación oficial<a class="headerlink" href="#documentacion-oficial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>MkDocs:</strong> <a href="https://www.mkdocs.org/">https://www.mkdocs.org/</a></li>
+<li><strong>Material for MkDocs:</strong> <a href="https://squidfunk.github.io/mkdocs-material/">https://squidfunk.github.io/mkdocs-material/</a></li>
+<li><strong>Curso CEFIRE (referencia):</strong> <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/">https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/</a></li>
+</ul>
+<h3 id="herramientas-relacionadas">Herramientas relacionadas<a class="headerlink" href="#herramientas-relacionadas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Markdown:</strong> Formato de texto plano para escribir contenido</li>
+<li><strong>Git:</strong> Sistema de control de versiones</li>
+<li><strong>GitHub Pages:</strong> Alojamiento gratuito para sitios estáticos</li>
+<li><strong>Python:</strong> Lenguaje de programación necesario para MkDocs</li>
+</ul>
+<h3 id="comandos-utiles">Comandos útiles<a class="headerlink" href="#comandos-utiles" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Crear nuevo proyecto</span>
+<span class="linenos" data-linenos=" 2 "></span>mkdocs<span class="w"> </span>new<span class="w"> </span>nombre-proyecto
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Servidor de desarrollo</span>
+<span class="linenos" data-linenos=" 5 "></span>mkdocs<span class="w"> </span>serve
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Construir sitio</span>
+<span class="linenos" data-linenos=" 8 "></span>mkdocs<span class="w"> </span>build
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Desplegar en GitHub Pages</span>
+<span class="linenos" data-linenos="11 "></span>mkdocs<span class="w"> </span>gh-deploy
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Ver ayuda</span>
+<span class="linenos" data-linenos="14 "></span>mkdocs<span class="w"> </span>--help
+</code></pre></div>
+<hr />
+<p><em>Documentación basada en los apuntes del curso <a href="https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/">Markdown per a la creació de recursos</a> del CEFIRE, adaptados y traducidos al castellano para el Proyecto Intermodular de ASIR.</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

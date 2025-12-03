@@ -567,6 +567,102 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#redes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-y-tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones y tipos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-bridge-por-defecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red Bridge por defecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redes-bridge-personalizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redes Bridge personalizadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conectar-contenedores-a-una-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conectar contenedores a una red
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolucion-dns-en-redes-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolución DNS en redes Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redes-en-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redes en Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redes-personalizadas-en-docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redes personalizadas en Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aislamiento-de-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aislamiento de servicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-de-redes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión de redes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1375,6 +1471,199 @@ o también</p>
 <p>Se comprueba que se han creado los contenedores y se abre el navegador para comprobar que está disponible la instalación de WordPress.</p>
 </div>
 <hr />
+<h2 id="redes">Redes<a class="headerlink" href="#redes" title="Permanent link">&para;</a></h2>
+<p>Cuando se crean diferentes servicios o aplicaciones en contenedores distintos (siguiendo la premisa de microservicios), estos no están conectados entre sí por defecto. Para que los contenedores puedan comunicarse entre ellos se utilizan las redes Docker. Este mecanismo funciona de manera distinta según el tipo de red docker donde estén conectados los contenedores.</p>
+<figure>
+    <img src="imagenes/01/NetworkDocker.png" width="450"/>
+    <figcaption>Representación Redes Docker.</figcaption>
+</figure>
+
+<h3 id="opciones-y-tipos">Opciones y tipos<a class="headerlink" href="#opciones-y-tipos" title="Permanent link">&para;</a></h3>
+<p>Los comandos básicos para gestionar redes son:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span><span class="o">(</span>create<span class="w"> </span><span class="p">|</span><span class="w"> </span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>inspect<span class="w"> </span><span class="p">|</span><span class="w"> </span>rm<span class="o">)</span>
+</code></pre></div>
+<p>A continuación se introducen los distintos tipos de redes que nos ofrece docker:</p>
+<ul>
+<li><strong>Bridge</strong> → Red por defecto. Todos los contenedores están en la misma red, separada del Host. Es la red más común para aplicaciones multi-contenedor.</li>
+<li><strong>Host</strong> → Los contenedores comparten la pila de red del host directamente, sin aislamiento de red.</li>
+<li><strong>None</strong> → Contenedores completamente aislados, sin conectividad de red.</li>
+</ul>
+<figure>
+    <img src="imagenes/01/GraficoRedDocker.png" width="750"/>
+    <figcaption>Escenario de ejemplo de una Red Docker.</figcaption>
+</figure>
+
+<h3 id="red-bridge-por-defecto">Red Bridge por defecto<a class="headerlink" href="#red-bridge-por-defecto" title="Permanent link">&para;</a></h3>
+<p>Cuando se crea un contenedor sin especificar una red, Docker lo conecta automáticamente a la red bridge por defecto. Esta red tiene limitaciones importantes:</p>
+<ul>
+<li>Todos los contenedores comparten la misma red, lo que puede causar conflictos.</li>
+<li>La comunicación entre contenedores se realiza mediante direcciones IP, no por nombres.</li>
+<li>No se recomienda para entornos de producción.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El uso de contenedores conectados a la red por defecto no está recomendado en entornos de producción. Se podrían enlazar contenedores con el bridge por defecto con el flag <code>--link</code>, pero esta opción está deprecada y no se recomienda su uso.</p>
+</div>
+<h3 id="redes-bridge-personalizadas">Redes Bridge personalizadas<a class="headerlink" href="#redes-bridge-personalizadas" title="Permanent link">&para;</a></h3>
+<p>La opción recomendable es definir una red bridge personalizada y crear los contenedores conectados a dicha red. Las ventajas principales son:</p>
+<ul>
+<li>Aislamiento de servicios: cada red es independiente.</li>
+<li>Resolución DNS automática: los contenedores pueden comunicarse usando sus nombres.</li>
+<li>Control de la configuración de red: se puede definir el rango de IP, gateway, etc.</li>
+<li>Mejor organización: diferentes aplicaciones pueden usar redes diferentes.</li>
+</ul>
+<p>Para crear una red bridge personalizada:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>mired
+</code></pre></div>
+<p>Si necesitamos especificar un rango de IP personalizado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>--subnet<span class="o">=</span><span class="m">172</span>.20.0.0/16<span class="w"> </span>--gateway<span class="o">=</span><span class="m">172</span>.20.0.1<span class="w"> </span>mired
+</code></pre></div>
+<p>Para verificar que la red se ha creado correctamente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>ls
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>mired
+</code></pre></div>
+<h3 id="conectar-contenedores-a-una-red">Conectar contenedores a una red<a class="headerlink" href="#conectar-contenedores-a-una-red" title="Permanent link">&para;</a></h3>
+<p>Una vez creada la red, se pueden crear contenedores conectados a dicha red de dos formas:</p>
+<p><strong>Opción 1: Al crear el contenedor</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>servidor_mysql<span class="w"> </span>--network<span class="w"> </span>mired<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="2 "></span>-e<span class="w"> </span><span class="nv">MYSQL_DATABASE</span><span class="o">=</span>bd_wp<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_USER</span><span class="o">=</span>user_wp<span class="w"> </span>-e<span class="w"> </span><span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>asdasd<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="3 "></span>-e<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>asdasd<span class="w"> </span>mariadb
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>servidor_web<span class="w"> </span>--network<span class="w"> </span>mired<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="6 "></span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>javierhernandez/aplicacionweb:v1
+</code></pre></div>
+<p><strong>Opción 2: Conectar un contenedor existente</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>connect<span class="w"> </span>mired<span class="w"> </span>nombre_contenedor
+</code></pre></div>
+<h3 id="resolucion-dns-en-redes-docker">Resolución DNS en redes Docker<a class="headerlink" href="#resolucion-dns-en-redes-docker" title="Permanent link">&para;</a></h3>
+<p>Una de las ventajas principales de usar redes personalizadas es la resolución DNS automática. Los contenedores pueden comunicarse entre sí usando el nombre del contenedor en lugar de la dirección IP.</p>
+<p>Por ejemplo, si tenemos un contenedor de base de datos llamado <code>servidor_mysql</code> y un contenedor web llamado <code>servidor_web</code>, desde el contenedor web podemos conectarnos a la base de datos usando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>servidor_mysql:3306
+</code></pre></div>
+<p>En lugar de tener que usar la IP del contenedor, que puede cambiar cada vez que se recrea.</p>
+<h3 id="redes-en-docker-compose">Redes en Docker Compose<a class="headerlink" href="#redes-en-docker-compose" title="Permanent link">&para;</a></h3>
+<p>Docker Compose facilita mucho la gestión de redes. Por defecto, cuando se define un archivo <code>docker-compose.yml</code>, Docker Compose crea automáticamente una red para todos los servicios definidos en ese archivo. Todos los servicios pueden comunicarse entre sí usando sus nombres de servicio.</p>
+<p>Ejemplo básico:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rootpass</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="nt">wordpress</span><span class="p">:</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:latest</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:80&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db:3306</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="nt">db_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<p>En este ejemplo, el servicio <code>wordpress</code> puede conectarse a la base de datos usando <code>db:3306</code> como host, ya que <code>db</code> es el nombre del servicio de base de datos.</p>
+<h3 id="redes-personalizadas-en-docker-compose">Redes personalizadas en Docker Compose<a class="headerlink" href="#redes-personalizadas-en-docker-compose" title="Permanent link">&para;</a></h3>
+<p>Si necesitamos más control sobre la configuración de red, podemos definir redes personalizadas en el archivo <code>docker-compose.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rootpass</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="nt">wordpress</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:latest</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:80&quot;</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db:3306</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:alpine</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+<span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80:80&quot;</span>
+<span class="linenos" data-linenos="37 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="38 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="41 "></span><span class="w">  </span><span class="nt">db_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos" data-linenos="42 "></span>
+<span class="linenos" data-linenos="43 "></span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="44 "></span><span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
+<span class="linenos" data-linenos="45 "></span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+<span class="linenos" data-linenos="46 "></span><span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="linenos" data-linenos="47 "></span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="linenos" data-linenos="48 "></span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.25.0.0/16</span>
+<span class="linenos" data-linenos="49 "></span><span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
+<span class="linenos" data-linenos="50 "></span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+<span class="linenos" data-linenos="51 "></span><span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="linenos" data-linenos="52 "></span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="linenos" data-linenos="53 "></span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.26.0.0/16</span>
+</code></pre></div>
+<p>En este ejemplo se crean dos redes:</p>
+<ul>
+<li><strong>frontend</strong>: Para servicios que necesitan ser accesibles desde el exterior (nginx, wordpress).</li>
+<li><strong>backend</strong>: Para servicios internos (base de datos).</li>
+</ul>
+<p>El servicio <code>wordpress</code> está conectado a ambas redes, permitiéndole comunicarse tanto con nginx (frontend) como con la base de datos (backend). La base de datos solo está en la red backend, lo que proporciona un mayor nivel de seguridad al no estar expuesta directamente.</p>
+<h3 id="aislamiento-de-servicios">Aislamiento de servicios<a class="headerlink" href="#aislamiento-de-servicios" title="Permanent link">&para;</a></h3>
+<p>El uso de redes personalizadas permite aislar servicios según sus necesidades:</p>
+<ul>
+<li><strong>Servicios públicos</strong>: Conectados a una red frontend, accesibles desde el exterior.</li>
+<li><strong>Servicios internos</strong>: Conectados a una red backend, solo accesibles desde otros contenedores de la misma red.</li>
+<li><strong>Servicios de administración</strong>: Pueden tener su propia red para tareas de mantenimiento.</li>
+</ul>
+<p>Este aislamiento mejora la seguridad al limitar la exposición de servicios sensibles como bases de datos.</p>
+<h3 id="gestion-de-redes">Gestión de redes<a class="headerlink" href="#gestion-de-redes" title="Permanent link">&para;</a></h3>
+<p>Para listar todas las redes:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>ls
+</code></pre></div>
+<p>Para inspeccionar una red específica y ver qué contenedores están conectados:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>nombre_red
+</code></pre></div>
+<p>Para desconectar un contenedor de una red:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>disconnect<span class="w"> </span>nombre_red<span class="w"> </span>nombre_contenedor
+</code></pre></div>
+<p>Para eliminar una red (solo si no tiene contenedores conectados):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>rm<span class="w"> </span>nombre_red
+</code></pre></div>
+<p>Para eliminar todas las redes no utilizadas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>prune
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cuando se usan redes personalizadas, cada contenedor mantiene sus propias variables de entorno. No se comparten variables de entorno entre contenedores, lo que es una ventaja para la seguridad y el aislamiento de configuraciones.</p>
+</div>
+<hr />
 <h1 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h1>
 <p><a name="PR101"></a></p>
 <ul>
@@ -1493,6 +1782,126 @@ o también</p>
 <li>Verifica que los puertos no estén en conflicto con otros servicios.</li>
 </ul>
 </div>
+<!-- ---
+
+<a name="PR103"></a>
+
+* **PR103** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). [Infraestructura completa con Docker Compose: WordPress, MySQL y redes personalizadas](PR103_Solucion.md)
+
+> **Criterios de evaluación asociados:**
+
+- **CE-RA2a**: Identificación y justificación de la arquitectura Docker con redes personalizadas y aislamiento de servicios.
+- **CE-RA3b**: Configuración correcta de aplicación multi-contenedor con WordPress, MySQL, volúmenes persistentes y redes Docker personalizadas.
+- **CE-RA4c**: Documentación completa de la arquitectura Docker, incluyendo docker-compose.yml, configuración de redes, volúmenes y variables de entorno.
+
+> **Contexto:**
+
+Esta práctica está orientada a implementar una infraestructura completa de TI mediante Docker, simulando un entorno de producción profesional. Se desplegará una aplicación WordPress con base de datos MySQL, utilizando redes Docker personalizadas para aislar servicios y garantizar la seguridad, volúmenes persistentes para la persistencia de datos, y variables de entorno para la configuración.
+
+> **Tareas:**
+
+1. **Preparación del entorno:**
+
+   - Crear directorio del proyecto con estructura organizada.
+   - Crear archivo `.env` para variables de entorno sensibles (contraseñas, nombres de base de datos).
+   - Crear archivo `docker-compose.yml` con la arquitectura completa.
+
+2. **Configuración de redes Docker personalizadas:**
+
+   - Definir red `frontend` con subnet `172.25.0.0/16` para servicios accesibles desde el exterior.
+   - Definir red `backend` con subnet `172.26.0.0/16` para servicios internos (base de datos).
+   - Verificar la creación de las redes con `docker network ls` y `docker network inspect`.
+
+3. **Configuración del servicio de base de datos (MySQL):**
+
+   - Usar imagen `mysql:8.0` o `mariadb:latest`.
+   - Conectar solo a la red `backend` para aislamiento de seguridad.
+   - Configurar volúmenes persistentes para datos (`/var/lib/mysql`).
+   - Configurar variables de entorno desde archivo `.env`:
+     - `MYSQL_ROOT_PASSWORD`
+     - `MYSQL_DATABASE`
+     - `MYSQL_USER`
+     - `MYSQL_PASSWORD`
+   - No exponer puertos al host, solo comunicación interna.
+
+4. **Configuración del servicio WordPress:**
+
+   - Usar imagen `wordpress:latest` o `wordpress:apache`.
+   - Conectar a ambas redes: `frontend` y `backend`.
+   - Exponer puerto `8080:80` para acceso desde el host.
+   - Configurar volúmenes persistentes para:
+     - Contenido de WordPress (`/var/www/html`)
+     - Configuraciones personalizadas (opcional)
+   - Configurar variables de entorno para conexión a base de datos:
+     - `WORDPRESS_DB_HOST: db:3306` (usando resolución DNS)
+     - `WORDPRESS_DB_USER`
+     - `WORDPRESS_DB_PASSWORD`
+     - `WORDPRESS_DB_NAME`
+   - Configurar dependencia con el servicio de base de datos (`depends_on`).
+
+5. **Despliegue y verificación:**
+
+   - Ejecutar `docker compose up -d` para levantar los servicios.
+   - Verificar que todos los contenedores estén en ejecución con `docker compose ps`.
+   - Verificar la conectividad de red:
+     - Comprobar que WordPress puede resolver el nombre `db` mediante DNS.
+     - Verificar que la base de datos solo está accesible desde la red backend.
+   - Acceder a WordPress desde el navegador en `http://localhost:8080`.
+   - Completar la instalación de WordPress.
+
+6. **Pruebas de persistencia:**
+
+   - Crear contenido en WordPress (páginas, entradas, plugins).
+   - Detener los contenedores con `docker compose down`.
+   - Volver a levantar los servicios con `docker compose up -d`.
+   - Verificar que el contenido creado se mantiene (persistencia de volúmenes).
+
+7. **Pruebas de aislamiento de red:**
+
+   - Intentar conectarse a la base de datos desde el host (debe fallar, no está expuesta).
+   - Verificar que WordPress puede comunicarse con la base de datos usando el nombre del servicio.
+   - Comprobar las IPs asignadas a cada contenedor en sus respectivas redes.
+
+8. **Documentación de la arquitectura:**
+
+   - Crear diagrama de la arquitectura de red (frontend/backend).
+   - Documentar la configuración de volúmenes y su propósito.
+   - Documentar las variables de entorno utilizadas (sin mostrar valores sensibles).
+   - Incluir capturas de:
+     - Estructura de directorios del proyecto.
+     - Salida de `docker compose ps`.
+     - Salida de `docker network inspect` para cada red.
+     - Acceso a WordPress funcionando.
+     - Verificación de persistencia de datos.
+
+> **Archivos a entregar:**
+
+- `docker-compose.yml` completo y funcional
+- Archivo `.env.example` (plantilla sin valores sensibles)
+- Documentación completa con:
+  - Explicación de la arquitectura de red
+  - Justificación de las decisiones de diseño
+  - Capturas de pantalla de cada paso
+  - Comandos utilizados
+  - Problemas encontrados y soluciones aplicadas
+  - Diagrama de la arquitectura
+
+> **Requisitos técnicos:**
+
+- Docker y Docker Compose instalados y funcionando.
+- Al menos 2GB de RAM disponible.
+- Puertos 8080 y 3306 libres (o cambiar a otros puertos).
+
+!!! warning "**Importante**"
+    - No incluyas contraseñas reales en la documentación entregada.
+    - Usa el archivo `.env` para valores sensibles y añádelo al `.gitignore` si usas control de versiones.
+    - Verifica que los rangos de subred no entren en conflicto con otras redes Docker existentes.
+
+!!! tip "**Consejos**"
+    - Revisa la documentación oficial de Docker Compose para la sintaxis correcta.
+    - Usa `docker compose logs` para ver los logs de los servicios si hay problemas.
+    - Verifica la conectividad entre contenedores usando `docker compose exec wordpress ping db`.
+    - Para desarrollo, puedes usar `docker compose up` sin `-d` para ver los logs en tiempo real. -->
 
 
 

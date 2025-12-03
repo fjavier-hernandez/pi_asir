@@ -1,0 +1,1430 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Práctica guiada de implementación de infraestructura completa con WordPress, MySQL y redes Docker personalizadas por Francisco Javier Hernández Illán. Despliegue profesional con aislamiento de servicios, volúmenes persistentes y variables de entorno.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/PR103_Solucion.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Guía Solución PR103 - Infraestructura completa con Docker Compose - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Guía Solución PR103 - Infraestructura completa con Docker Compose - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Práctica guiada de implementación de infraestructura completa con WordPress, MySQL y redes Docker personalizadas por Francisco Javier Hernández Illán. Despliegue profesional con aislamiento de servicios, volúmenes persistentes y variables de entorno." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/PR103_Solucion.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/PR103_Solucion.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Guía Solución PR103 - Infraestructura completa con Docker Compose - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Práctica guiada de implementación de infraestructura completa con WordPress, MySQL y redes Docker personalizadas por Francisco Javier Hernández Illán. Despliegue profesional con aislamiento de servicios, volúmenes persistentes y variables de entorno." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/PR103_Solucion.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pr103-infraestructura-completa-con-docker-compose-wordpress-mysql-y-redes-personalizadas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guía Solución PR103 - Infraestructura completa con Docker Compose
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos de la práctica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-de-la-solucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura de la solución
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-preparacion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Preparación del entorno
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Preparación del entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-crear-estructura-de-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Crear estructura de directorios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-crear-archivo-de-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Crear archivo de variables de entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-crear-archivo-envexample" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Crear archivo .env.example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-crear-docker-composeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear docker-compose.yml
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Crear docker-compose.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explicacion-de-la-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicación de la configuración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-desplegar-la-infraestructura" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Desplegar la infraestructura
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Desplegar la infraestructura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-verificar-la-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Verificar la configuración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-levantar-los-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Levantar los servicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-verificar-el-estado-de-los-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Verificar el estado de los contenedores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-verificacion-de-redes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Verificación de redes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Verificación de redes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-listar-redes-creadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Listar redes creadas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-inspeccionar-la-red-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Inspeccionar la red frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-inspeccionar-la-red-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Inspeccionar la red backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-verificar-resolucion-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Verificar resolución DNS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-acceso-a-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Acceso a WordPress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Acceso a WordPress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-acceder-desde-el-navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Acceder desde el navegador
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-completar-la-instalacion-de-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Completar la instalación de WordPress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-verificar-acceso-al-panel-de-administracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Verificar acceso al panel de administración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-pruebas-de-persistencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Pruebas de persistencia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 6: Pruebas de persistencia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-crear-contenido-en-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Crear contenido en WordPress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-detener-los-contenedores" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Detener los contenedores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-verificar-que-los-volumenes-persisten" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Verificar que los volúmenes persisten
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-volver-a-levantar-los-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Volver a levantar los servicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-verificar-persistencia-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5. Verificar persistencia de datos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-7-pruebas-de-aislamiento-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 7: Pruebas de aislamiento de red
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 7: Pruebas de aislamiento de red">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-intentar-conectar-a-mysql-desde-el-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. Intentar conectar a MySQL desde el host
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-verificar-comunicacion-interna" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Verificar comunicación interna
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-verificar-ips-asignadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Verificar IPs asignadas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-8-gestion-y-mantenimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 8: Gestión y mantenimiento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 8: Gestión y mantenimiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-ver-logs-de-los-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. Ver logs de los servicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-reiniciar-un-servicio-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. Reiniciar un servicio específico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-detener-y-eliminar-todo-incluyendo-volumenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3. Detener y eliminar todo (incluyendo volúmenes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-actualizar-imagenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4. Actualizar imágenes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-9-documentacion-de-la-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 9: Documentación de la arquitectura
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 9: Documentación de la arquitectura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. Estructura del proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-capturas-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2. Capturas necesarias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-diagrama-de-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3. Diagrama de arquitectura
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solucion-de-problemas-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución de problemas comunes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solución de problemas comunes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-error-al-conectar-wordpress-a-la-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Error al conectar WordPress a la base de datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-puerto-8080-ya-en-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Puerto 8080 ya en uso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-error-al-crear-las-redes-subnet-en-conflicto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Error al crear las redes (subnet en conflicto)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-contenedores-se-detienen-inmediatamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: Contenedores se detienen inmediatamente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-wordpress-no-puede-conectar-a-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: WordPress no puede conectar a MySQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles-de-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comandos útiles de referencia
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pr103-infraestructura-completa-con-docker-compose-wordpress-mysql-y-redes-personalizadas">PR103: Infraestructura completa con Docker Compose - WordPress, MySQL y redes personalizadas<a class="headerlink" href="#pr103-infraestructura-completa-con-docker-compose-wordpress-mysql-y-redes-personalizadas" title="Permanent link">&para;</a></h1>
+<p>Esta práctica guía la implementación de una infraestructura completa de TI mediante Docker, simulando un entorno de producción profesional. Se desplegará una aplicación WordPress con base de datos MySQL, utilizando redes Docker personalizadas para aislar servicios y garantizar la seguridad.</p>
+<h2 id="objetivos-de-la-practica">Objetivos de la práctica<a class="headerlink" href="#objetivos-de-la-practica" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Configurar redes Docker personalizadas (frontend y backend) para aislar servicios</li>
+<li>Desplegar WordPress con Apache en contenedor Docker</li>
+<li>Desplegar MySQL en contenedor Docker aislado en red backend</li>
+<li>Configurar volúmenes persistentes para datos de WordPress y MySQL</li>
+<li>Utilizar variables de entorno para configuración sensible</li>
+<li>Verificar la comunicación entre contenedores mediante resolución DNS</li>
+<li>Comprobar la persistencia de datos tras recrear contenedores</li>
+<li>Documentar la arquitectura completa</li>
+</ul>
+<h2 id="arquitectura-de-la-solucion">Arquitectura de la solución<a class="headerlink" href="#arquitectura-de-la-solucion" title="Permanent link">&para;</a></h2>
+<p>La arquitectura propuesta separa los servicios en dos redes:</p>
+<ul>
+<li><strong>Red frontend (172.25.0.0/16)</strong>: Para servicios accesibles desde el exterior (WordPress)</li>
+<li><strong>Red backend (172.26.0.0/16)</strong>: Para servicios internos (MySQL)</li>
+</ul>
+<p>WordPress estará conectado a ambas redes, permitiéndole comunicarse con el exterior y con la base de datos. MySQL solo estará en la red backend, proporcionando mayor seguridad al no estar expuesta directamente.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>┌─────────────────────────────────────────────────────────┐
+<span class="linenos" data-linenos=" 2 "></span>│                    Host (Sistema)                        │
+<span class="linenos" data-linenos=" 3 "></span>│                                                           │
+<span class="linenos" data-linenos=" 4 "></span>│  ┌──────────────────────────────────────────────────┐   │
+<span class="linenos" data-linenos=" 5 "></span>│  │         Red Frontend (172.25.0.0/16)             │   │
+<span class="linenos" data-linenos=" 6 "></span>│  │  ┌────────────────────────────────────────────┐   │   │
+<span class="linenos" data-linenos=" 7 "></span>│  │  │  WordPress (puerto 8080:80)               │   │   │
+<span class="linenos" data-linenos=" 8 "></span>│  │  │  - Acceso desde navegador                 │   │   │
+<span class="linenos" data-linenos=" 9 "></span>│  │  └────────────────────────────────────────────┘   │   │
+<span class="linenos" data-linenos="10 "></span>│  └──────────────────────────────────────────────────┘   │
+<span class="linenos" data-linenos="11 "></span>│                                                           │
+<span class="linenos" data-linenos="12 "></span>│  ┌──────────────────────────────────────────────────┐   │
+<span class="linenos" data-linenos="13 "></span>│  │         Red Backend (172.26.0.0/16)              │   │
+<span class="linenos" data-linenos="14 "></span>│  │  ┌──────────────────┐  ┌──────────────────┐     │   │
+<span class="linenos" data-linenos="15 "></span>│  │  │  WordPress       │  │  MySQL           │     │   │
+<span class="linenos" data-linenos="16 "></span>│  │  │  (conectado)     │  │  (solo backend)  │     │   │
+<span class="linenos" data-linenos="17 "></span>│  │  └──────────────────┘  └──────────────────┘     │   │
+<span class="linenos" data-linenos="18 "></span>│  │         │                      │                 │   │
+<span class="linenos" data-linenos="19 "></span>│  │         └────── DNS ───────────┘                 │   │
+<span class="linenos" data-linenos="20 "></span>│  └──────────────────────────────────────────────────┘   │
+<span class="linenos" data-linenos="21 "></span>│                                                           │
+<span class="linenos" data-linenos="22 "></span>│  ┌──────────────────────────────────────────────────┐   │
+<span class="linenos" data-linenos="23 "></span>│  │              Volúmenes Persistentes                │   │
+<span class="linenos" data-linenos="24 "></span>│  │  - wordpress_data (contenido WP)                 │   │
+<span class="linenos" data-linenos="25 "></span>│  │  - mysql_data (datos MySQL)                      │   │
+<span class="linenos" data-linenos="26 "></span>│  └──────────────────────────────────────────────────┘   │
+<span class="linenos" data-linenos="27 "></span>└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="paso-1-preparacion-del-entorno">Paso 1: Preparación del entorno<a class="headerlink" href="#paso-1-preparacion-del-entorno" title="Permanent link">&para;</a></h2>
+<h3 id="11-crear-estructura-de-directorios">1.1. Crear estructura de directorios<a class="headerlink" href="#11-crear-estructura-de-directorios" title="Permanent link">&para;</a></h3>
+<p>Primero, creamos el directorio del proyecto y la estructura necesaria:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>proyecto-wordpress-docker
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>proyecto-wordpress-docker
+</code></pre></div>
+<h3 id="12-crear-archivo-de-variables-de-entorno">1.2. Crear archivo de variables de entorno<a class="headerlink" href="#12-crear-archivo-de-variables-de-entorno" title="Permanent link">&para;</a></h3>
+<p>Creamos el archivo <code>.env</code> para almacenar las variables de entorno sensibles. Este archivo no debe subirse a control de versiones.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano<span class="w"> </span>.env
+</code></pre></div>
+<p>Contenido del archivo <code>.env</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span># Configuración MySQL
+<span class="linenos" data-linenos=" 2 "></span>MYSQL_ROOT_PASSWORD=root_password_segura_123
+<span class="linenos" data-linenos=" 3 "></span>MYSQL_DATABASE=wordpress_db
+<span class="linenos" data-linenos=" 4 "></span>MYSQL_USER=wordpress_user
+<span class="linenos" data-linenos=" 5 "></span>MYSQL_PASSWORD=wordpress_password_segura_456
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span># Configuración WordPress
+<span class="linenos" data-linenos=" 8 "></span>WORDPRESS_DB_HOST=db:3306
+<span class="linenos" data-linenos=" 9 "></span>WORDPRESS_DB_USER=wordpress_user
+<span class="linenos" data-linenos="10 "></span>WORDPRESS_DB_PASSWORD=wordpress_password_segura_456
+<span class="linenos" data-linenos="11 "></span>WORDPRESS_DB_NAME=wordpress_db
+</code></pre></div>
+<p>Guardamos el archivo (Ctrl+O, Enter, Ctrl+X en nano).</p>
+<h3 id="13-crear-archivo-envexample">1.3. Crear archivo .env.example<a class="headerlink" href="#13-crear-archivo-envexample" title="Permanent link">&para;</a></h3>
+<p>Creamos una plantilla sin valores sensibles para documentación:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano<span class="w"> </span>.env.example
+</code></pre></div>
+<p>Contenido del archivo <code>.env.example</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span># Configuración MySQL
+<span class="linenos" data-linenos=" 2 "></span>MYSQL_ROOT_PASSWORD=tu_password_root_aqui
+<span class="linenos" data-linenos=" 3 "></span>MYSQL_DATABASE=nombre_base_datos
+<span class="linenos" data-linenos=" 4 "></span>MYSQL_USER=usuario_mysql
+<span class="linenos" data-linenos=" 5 "></span>MYSQL_PASSWORD=password_mysql
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span># Configuración WordPress
+<span class="linenos" data-linenos=" 8 "></span>WORDPRESS_DB_HOST=db:3306
+<span class="linenos" data-linenos=" 9 "></span>WORDPRESS_DB_USER=usuario_mysql
+<span class="linenos" data-linenos="10 "></span>WORDPRESS_DB_PASSWORD=password_mysql
+<span class="linenos" data-linenos="11 "></span>WORDPRESS_DB_NAME=nombre_base_datos
+</code></pre></div>
+<h2 id="paso-2-crear-docker-composeyml">Paso 2: Crear docker-compose.yml<a class="headerlink" href="#paso-2-crear-docker-composeyml" title="Permanent link">&para;</a></h2>
+<p>Creamos el archivo principal de configuración de Docker Compose:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nano<span class="w"> </span>docker-compose.yml
+</code></pre></div>
+<p>Contenido completo del archivo <code>docker-compose.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="c1"># Servicio de base de datos MySQL</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.0</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress_db</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${MYSQL_ROOT_PASSWORD}</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${MYSQL_DATABASE}</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${MYSQL_USER}</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${MYSQL_PASSWORD}</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_data:/var/lib/mysql</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;mysqladmin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p p-Indicator">]</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="w">  </span><span class="c1"># Servicio WordPress</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="nt">wordpress</span><span class="p">:</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress:latest</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress_app</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">      </span><span class="nt">db</span><span class="p">:</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+<span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8080:80&quot;</span>
+<span class="linenos" data-linenos="37 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="38 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${WORDPRESS_DB_HOST}</span>
+<span class="linenos" data-linenos="39 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${WORDPRESS_DB_USER}</span>
+<span class="linenos" data-linenos="40 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${WORDPRESS_DB_PASSWORD}</span>
+<span class="linenos" data-linenos="41 "></span><span class="w">      </span><span class="nt">WORDPRESS_DB_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${WORDPRESS_DB_NAME}</span>
+<span class="linenos" data-linenos="42 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="43 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress_data:/var/www/html</span>
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span><span class="c1"># Definición de volúmenes persistentes</span>
+<span class="linenos" data-linenos="46 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="47 "></span><span class="w">  </span><span class="nt">mysql_data</span><span class="p">:</span>
+<span class="linenos" data-linenos="48 "></span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="linenos" data-linenos="49 "></span><span class="w">  </span><span class="nt">wordpress_data</span><span class="p">:</span>
+<span class="linenos" data-linenos="50 "></span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="linenos" data-linenos="51 "></span>
+<span class="linenos" data-linenos="52 "></span><span class="c1"># Definición de redes personalizadas</span>
+<span class="linenos" data-linenos="53 "></span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="54 "></span><span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
+<span class="linenos" data-linenos="55 "></span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+<span class="linenos" data-linenos="56 "></span><span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="linenos" data-linenos="57 "></span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="linenos" data-linenos="58 "></span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.25.0.0/16</span>
+<span class="linenos" data-linenos="59 "></span><span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.25.0.1</span>
+<span class="linenos" data-linenos="60 "></span><span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
+<span class="linenos" data-linenos="61 "></span><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+<span class="linenos" data-linenos="62 "></span><span class="w">    </span><span class="nt">ipam</span><span class="p">:</span>
+<span class="linenos" data-linenos="63 "></span><span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="linenos" data-linenos="64 "></span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.26.0.0/16</span>
+<span class="linenos" data-linenos="65 "></span><span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.26.0.1</span>
+</code></pre></div>
+<h3 id="explicacion-de-la-configuracion">Explicación de la configuración<a class="headerlink" href="#explicacion-de-la-configuracion" title="Permanent link">&para;</a></h3>
+<p><strong>Servicio db (MySQL):</strong>
+- <code>networks: backend</code>: Solo conectado a la red backend para aislamiento
+- <code>volumes: mysql_data</code>: Volumen persistente para los datos de MySQL
+- <code>healthcheck</code>: Verifica que MySQL esté listo antes de que WordPress intente conectarse
+- No expone puertos al host, solo comunicación interna</p>
+<p><strong>Servicio wordpress:</strong>
+- <code>networks: frontend, backend</code>: Conectado a ambas redes
+- <code>ports: 8080:80</code>: Expone el puerto 80 del contenedor en el 8080 del host
+- <code>depends_on: db condition: service_healthy</code>: Espera a que MySQL esté listo
+- <code>volumes: wordpress_data</code>: Volumen persistente para el contenido de WordPress</p>
+<p><strong>Redes:</strong>
+- <code>frontend</code>: Subnet 172.25.0.0/16 para servicios públicos
+- <code>backend</code>: Subnet 172.26.0.0/16 para servicios internos</p>
+<h2 id="paso-3-desplegar-la-infraestructura">Paso 3: Desplegar la infraestructura<a class="headerlink" href="#paso-3-desplegar-la-infraestructura" title="Permanent link">&para;</a></h2>
+<h3 id="31-verificar-la-configuracion">3.1. Verificar la configuración<a class="headerlink" href="#31-verificar-la-configuracion" title="Permanent link">&para;</a></h3>
+<p>Antes de desplegar, verificamos que los archivos estén correctos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Verificar sintaxis del docker-compose.yml</span>
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>config
+</code></pre></div>
+<p>Este comando valida la sintaxis sin levantar los contenedores.</p>
+<h3 id="32-levantar-los-servicios">3.2. Levantar los servicios<a class="headerlink" href="#32-levantar-los-servicios" title="Permanent link">&para;</a></h3>
+<p>Ejecutamos Docker Compose en modo detached (segundo plano):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p>Este comando:
+- Crea las redes personalizadas si no existen
+- Crea los volúmenes si no existen
+- Descarga las imágenes necesarias (si no están en local)
+- Crea y arranca los contenedores</p>
+<h3 id="33-verificar-el-estado-de-los-contenedores">3.3. Verificar el estado de los contenedores<a class="headerlink" href="#33-verificar-el-estado-de-los-contenedores" title="Permanent link">&para;</a></h3>
+<p>Comprobamos que todos los servicios estén en ejecución:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>ps
+</code></pre></div>
+<p>Deberíamos ver algo similar a:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>NAME              IMAGE               COMMAND                  SERVICE     CREATED         STATUS                    PORTS
+<span class="linenos" data-linenos="2 "></span>wordpress_app     wordpress:latest     &quot;docker-entrypoint.s…&quot;   wordpress   2 minutes ago   Up 2 minutes             0.0.0.0:8080-&gt;80/tcp
+<span class="linenos" data-linenos="3 "></span>wordpress_db      mysql:8.0           &quot;docker-entrypoint.s…&quot;   db          2 minutes ago   Up 2 minutes (healthy)   
+</code></pre></div>
+<h2 id="paso-4-verificacion-de-redes">Paso 4: Verificación de redes<a class="headerlink" href="#paso-4-verificacion-de-redes" title="Permanent link">&para;</a></h2>
+<h3 id="41-listar-redes-creadas">4.1. Listar redes creadas<a class="headerlink" href="#41-listar-redes-creadas" title="Permanent link">&para;</a></h3>
+<p>Verificamos que las redes se hayan creado correctamente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>ls
+</code></pre></div>
+<p>Deberíamos ver las redes <code>proyecto-wordpress-docker_frontend</code> y <code>proyecto-wordpress-docker_backend</code> (Docker Compose añade el prefijo del directorio).</p>
+<h3 id="42-inspeccionar-la-red-frontend">4.2. Inspeccionar la red frontend<a class="headerlink" href="#42-inspeccionar-la-red-frontend" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>proyecto-wordpress-docker_frontend
+</code></pre></div>
+<p>Verificamos que WordPress esté conectado a esta red y tenga una IP en el rango 172.25.0.0/16.</p>
+<h3 id="43-inspeccionar-la-red-backend">4.3. Inspeccionar la red backend<a class="headerlink" href="#43-inspeccionar-la-red-backend" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>proyecto-wordpress-docker_backend
+</code></pre></div>
+<p>Verificamos que tanto WordPress como MySQL estén conectados a esta red, cada uno con una IP en el rango 172.26.0.0/16.</p>
+<h3 id="44-verificar-resolucion-dns">4.4. Verificar resolución DNS<a class="headerlink" href="#44-verificar-resolucion-dns" title="Permanent link">&para;</a></h3>
+<p>Comprobamos que WordPress puede resolver el nombre <code>db</code> mediante DNS:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>wordpress<span class="w"> </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>db
+</code></pre></div>
+<p>Deberíamos ver respuestas de ping exitosas, confirmando que la resolución DNS funciona correctamente.</p>
+<h2 id="paso-5-acceso-a-wordpress">Paso 5: Acceso a WordPress<a class="headerlink" href="#paso-5-acceso-a-wordpress" title="Permanent link">&para;</a></h2>
+<h3 id="51-acceder-desde-el-navegador">5.1. Acceder desde el navegador<a class="headerlink" href="#51-acceder-desde-el-navegador" title="Permanent link">&para;</a></h3>
+<p>Abrimos un navegador y accedemos a:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>http://localhost:8080
+</code></pre></div>
+<p>O si estamos en una máquina virtual:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>http://IP_MAQUINA_VIRTUAL:8080
+</code></pre></div>
+<h3 id="52-completar-la-instalacion-de-wordpress">5.2. Completar la instalación de WordPress<a class="headerlink" href="#52-completar-la-instalacion-de-wordpress" title="Permanent link">&para;</a></h3>
+<p>Seguimos el asistente de instalación de WordPress:</p>
+<ol>
+<li>Seleccionar idioma (Español)</li>
+<li>Rellenar información del sitio:
+   - Título del sitio
+   - Nombre de usuario administrador
+   - Contraseña (generar una segura)
+   - Correo electrónico</li>
+<li>Hacer clic en "Instalar WordPress"</li>
+</ol>
+<h3 id="53-verificar-acceso-al-panel-de-administracion">5.3. Verificar acceso al panel de administración<a class="headerlink" href="#53-verificar-acceso-al-panel-de-administracion" title="Permanent link">&para;</a></h3>
+<p>Una vez completada la instalación, accedemos al panel de administración y verificamos que todo funciona correctamente.</p>
+<h2 id="paso-6-pruebas-de-persistencia">Paso 6: Pruebas de persistencia<a class="headerlink" href="#paso-6-pruebas-de-persistencia" title="Permanent link">&para;</a></h2>
+<h3 id="61-crear-contenido-en-wordpress">6.1. Crear contenido en WordPress<a class="headerlink" href="#61-crear-contenido-en-wordpress" title="Permanent link">&para;</a></h3>
+<p>Creamos algún contenido para verificar la persistencia:</p>
+<ol>
+<li>Crear una nueva entrada o página</li>
+<li>Subir una imagen o archivo</li>
+<li>Instalar un plugin (opcional)</li>
+</ol>
+<h3 id="62-detener-los-contenedores">6.2. Detener los contenedores<a class="headerlink" href="#62-detener-los-contenedores" title="Permanent link">&para;</a></h3>
+<p>Detenemos y eliminamos los contenedores (sin eliminar volúmenes):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+</code></pre></div>
+<p>Este comando detiene y elimina los contenedores, pero mantiene los volúmenes y las redes.</p>
+<h3 id="63-verificar-que-los-volumenes-persisten">6.3. Verificar que los volúmenes persisten<a class="headerlink" href="#63-verificar-que-los-volumenes-persisten" title="Permanent link">&para;</a></h3>
+<p>Comprobamos que los volúmenes siguen existiendo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>volume<span class="w"> </span>ls
+</code></pre></div>
+<p>Deberíamos ver los volúmenes <code>proyecto-wordpress-docker_mysql_data</code> y <code>proyecto-wordpress-docker_wordpress_data</code>.</p>
+<h3 id="64-volver-a-levantar-los-servicios">6.4. Volver a levantar los servicios<a class="headerlink" href="#64-volver-a-levantar-los-servicios" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<h3 id="65-verificar-persistencia-de-datos">6.5. Verificar persistencia de datos<a class="headerlink" href="#65-verificar-persistencia-de-datos" title="Permanent link">&para;</a></h3>
+<p>Accedemos nuevamente a WordPress en <code>http://localhost:8080</code> y verificamos que:</p>
+<ul>
+<li>El contenido creado anteriormente sigue existiendo</li>
+<li>Las imágenes subidas están disponibles</li>
+<li>Los plugins instalados siguen activos</li>
+<li>La configuración se mantiene</li>
+</ul>
+<h2 id="paso-7-pruebas-de-aislamiento-de-red">Paso 7: Pruebas de aislamiento de red<a class="headerlink" href="#paso-7-pruebas-de-aislamiento-de-red" title="Permanent link">&para;</a></h2>
+<h3 id="71-intentar-conectar-a-mysql-desde-el-host">7.1. Intentar conectar a MySQL desde el host<a class="headerlink" href="#71-intentar-conectar-a-mysql-desde-el-host" title="Permanent link">&para;</a></h3>
+<p>Desde el host, intentamos conectarnos directamente a MySQL (debe fallar):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-P<span class="w"> </span><span class="m">3306</span><span class="w"> </span>-u<span class="w"> </span>wordpress_user<span class="w"> </span>-p
+</code></pre></div>
+<p>O usando la IP del contenedor:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Primero obtenemos la IP del contenedor MySQL</span>
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>inspect<span class="w"> </span>wordpress_db<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>IPAddress
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Intentamos conectar (debe fallar)</span>
+<span class="linenos" data-linenos="5 "></span>mysql<span class="w"> </span>-h<span class="w"> </span><span class="m">172</span>.26.0.X<span class="w"> </span>-u<span class="w"> </span>wordpress_user<span class="w"> </span>-p
+</code></pre></div>
+<p>Esto debe fallar porque MySQL no está expuesto al host, solo está accesible desde la red backend.</p>
+<h3 id="72-verificar-comunicacion-interna">7.2. Verificar comunicación interna<a class="headerlink" href="#72-verificar-comunicacion-interna" title="Permanent link">&para;</a></h3>
+<p>Desde el contenedor de WordPress, verificamos que puede comunicarse con MySQL:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Acceder al contenedor WordPress</span>
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>wordpress<span class="w"> </span>bash
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Desde dentro del contenedor, instalar cliente MySQL (si no está)</span>
+<span class="linenos" data-linenos="5 "></span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>default-mysql-client
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># Intentar conectar a la base de datos usando el nombre del servicio</span>
+<span class="linenos" data-linenos="8 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>db<span class="w"> </span>-u<span class="w"> </span>wordpress_user<span class="w"> </span>-p
+</code></pre></div>
+<p>Esto debe funcionar correctamente, confirmando que la comunicación interna funciona mediante resolución DNS.</p>
+<h3 id="73-verificar-ips-asignadas">7.3. Verificar IPs asignadas<a class="headerlink" href="#73-verificar-ips-asignadas" title="Permanent link">&para;</a></h3>
+<p>Comprobamos las IPs asignadas a cada contenedor:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># IP de WordPress en red frontend</span>
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>inspect<span class="w"> </span>wordpress_app<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="s2">&quot;172.25&quot;</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># IP de WordPress en red backend</span>
+<span class="linenos" data-linenos="5 "></span>docker<span class="w"> </span>inspect<span class="w"> </span>wordpress_app<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="s2">&quot;172.26&quot;</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># IP de MySQL en red backend</span>
+<span class="linenos" data-linenos="8 "></span>docker<span class="w"> </span>inspect<span class="w"> </span>wordpress_db<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="s2">&quot;172.26&quot;</span>
+</code></pre></div>
+<h2 id="paso-8-gestion-y-mantenimiento">Paso 8: Gestión y mantenimiento<a class="headerlink" href="#paso-8-gestion-y-mantenimiento" title="Permanent link">&para;</a></h2>
+<h3 id="81-ver-logs-de-los-servicios">8.1. Ver logs de los servicios<a class="headerlink" href="#81-ver-logs-de-los-servicios" title="Permanent link">&para;</a></h3>
+<p>Para ver los logs de todos los servicios:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs
+</code></pre></div>
+<p>Para ver logs de un servicio específico:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>wordpress
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>db
+</code></pre></div>
+<p>Para seguir los logs en tiempo real:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f
+</code></pre></div>
+<h3 id="82-reiniciar-un-servicio-especifico">8.2. Reiniciar un servicio específico<a class="headerlink" href="#82-reiniciar-un-servicio-especifico" title="Permanent link">&para;</a></h3>
+<p>Si necesitamos reiniciar solo WordPress:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>restart<span class="w"> </span>wordpress
+</code></pre></div>
+<h3 id="83-detener-y-eliminar-todo-incluyendo-volumenes">8.3. Detener y eliminar todo (incluyendo volúmenes)<a class="headerlink" href="#83-detener-y-eliminar-todo-incluyendo-volumenes" title="Permanent link">&para;</a></h3>
+<p>Si queremos eliminar todo, incluyendo los datos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>-v
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>El flag <code>-v</code> elimina los volúmenes, por lo que se perderán todos los datos. Usar con precaución.</p>
+</div>
+<h3 id="84-actualizar-imagenes">8.4. Actualizar imágenes<a class="headerlink" href="#84-actualizar-imagenes" title="Permanent link">&para;</a></h3>
+<p>Para actualizar las imágenes a la última versión:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>pull
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<h2 id="paso-9-documentacion-de-la-arquitectura">Paso 9: Documentación de la arquitectura<a class="headerlink" href="#paso-9-documentacion-de-la-arquitectura" title="Permanent link">&para;</a></h2>
+<h3 id="91-estructura-del-proyecto">9.1. Estructura del proyecto<a class="headerlink" href="#91-estructura-del-proyecto" title="Permanent link">&para;</a></h3>
+<p>La estructura final del proyecto debería ser:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>proyecto-wordpress-docker/
+<span class="linenos" data-linenos="2 "></span>├── docker-compose.yml
+<span class="linenos" data-linenos="3 "></span>├── .env
+<span class="linenos" data-linenos="4 "></span>├── .env.example
+<span class="linenos" data-linenos="5 "></span>└── README.md (opcional)
+</code></pre></div>
+<h3 id="92-capturas-necesarias">9.2. Capturas necesarias<a class="headerlink" href="#92-capturas-necesarias" title="Permanent link">&para;</a></h3>
+<p>Para la documentación, debemos incluir capturas de:</p>
+<ol>
+<li>Estructura de directorios del proyecto</li>
+<li>Salida de <code>docker compose ps</code></li>
+<li>Salida de <code>docker network inspect</code> para cada red</li>
+<li>Acceso a WordPress funcionando (pantalla de instalación y panel de administración)</li>
+<li>Verificación de persistencia (contenido antes y después de recrear contenedores)</li>
+<li>Verificación de aislamiento de red (intento de conexión a MySQL desde host)</li>
+</ol>
+<h3 id="93-diagrama-de-arquitectura">9.3. Diagrama de arquitectura<a class="headerlink" href="#93-diagrama-de-arquitectura" title="Permanent link">&para;</a></h3>
+<p>Incluir un diagrama que muestre:</p>
+<ul>
+<li>Las dos redes (frontend y backend)</li>
+<li>Los contenedores en cada red</li>
+<li>Las conexiones entre servicios</li>
+<li>Los volúmenes persistentes</li>
+<li>El flujo de datos</li>
+</ul>
+<h2 id="solucion-de-problemas-comunes">Solución de problemas comunes<a class="headerlink" href="#solucion-de-problemas-comunes" title="Permanent link">&para;</a></h2>
+<h3 id="problema-error-al-conectar-wordpress-a-la-base-de-datos">Problema: Error al conectar WordPress a la base de datos<a class="headerlink" href="#problema-error-al-conectar-wordpress-a-la-base-de-datos" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Verificar que MySQL esté en estado "healthy" con <code>docker compose ps</code>
+- Comprobar las variables de entorno en el archivo <code>.env</code>
+- Verificar que <code>WORDPRESS_DB_HOST</code> sea <code>db:3306</code> (no <code>localhost</code>)
+- Revisar los logs: <code>docker compose logs db</code></p>
+<h3 id="problema-puerto-8080-ya-en-uso">Problema: Puerto 8080 ya en uso<a class="headerlink" href="#problema-puerto-8080-ya-en-uso" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Cambiar el puerto en <code>docker-compose.yml</code>: <code>"8081:80"</code> en lugar de <code>"8080:80"</code>
+- O detener el servicio que está usando el puerto 8080</p>
+<h3 id="problema-error-al-crear-las-redes-subnet-en-conflicto">Problema: Error al crear las redes (subnet en conflicto)<a class="headerlink" href="#problema-error-al-crear-las-redes-subnet-en-conflicto" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Cambiar los rangos de subred en <code>docker-compose.yml</code>
+- Usar rangos diferentes, por ejemplo: <code>172.27.0.0/16</code> y <code>172.28.0.0/16</code>
+- Verificar redes existentes: <code>docker network ls</code></p>
+<h3 id="problema-contenedores-se-detienen-inmediatamente">Problema: Contenedores se detienen inmediatamente<a class="headerlink" href="#problema-contenedores-se-detienen-inmediatamente" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Revisar los logs: <code>docker compose logs</code>
+- Verificar que las variables de entorno estén correctamente definidas
+- Comprobar que no haya conflictos de nombres de contenedores
+- Verificar recursos del sistema (RAM, disco)</p>
+<h3 id="problema-wordpress-no-puede-conectar-a-mysql">Problema: WordPress no puede conectar a MySQL<a class="headerlink" href="#problema-wordpress-no-puede-conectar-a-mysql" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Verificar que ambos contenedores estén en la red backend
+- Comprobar resolución DNS: <code>docker compose exec wordpress ping db</code>
+- Verificar que <code>depends_on</code> con <code>condition: service_healthy</code> esté configurado
+- Revisar variables de entorno de conexión</p>
+<h2 id="comandos-utiles-de-referencia">Comandos útiles de referencia<a class="headerlink" href="#comandos-utiles-de-referencia" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Gestión de servicios</span>
+<span class="linenos" data-linenos=" 2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w">              </span><span class="c1"># Levantar servicios</span>
+<span class="linenos" data-linenos=" 3 "></span>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w">               </span><span class="c1"># Detener y eliminar contenedores</span>
+<span class="linenos" data-linenos=" 4 "></span>docker<span class="w"> </span>compose<span class="w"> </span>ps<span class="w">                 </span><span class="c1"># Estado de servicios</span>
+<span class="linenos" data-linenos=" 5 "></span>docker<span class="w"> </span>compose<span class="w"> </span>restart<span class="w"> </span>&lt;servicio&gt;<span class="w"> </span><span class="c1"># Reiniciar un servicio</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Logs</span>
+<span class="linenos" data-linenos=" 8 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w">               </span><span class="c1"># Ver todos los logs</span>
+<span class="linenos" data-linenos=" 9 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w">            </span><span class="c1"># Seguir logs en tiempo real</span>
+<span class="linenos" data-linenos="10 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>&lt;servicio&gt;<span class="w">    </span><span class="c1"># Logs de un servicio</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># Redes</span>
+<span class="linenos" data-linenos="13 "></span>docker<span class="w"> </span>network<span class="w"> </span>ls<span class="w">                 </span><span class="c1"># Listar redes</span>
+<span class="linenos" data-linenos="14 "></span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>&lt;red&gt;<span class="w">      </span><span class="c1"># Detalles de una red</span>
+<span class="linenos" data-linenos="15 "></span>docker<span class="w"> </span>network<span class="w"> </span>prune<span class="w">              </span><span class="c1"># Eliminar redes no usadas</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="c1"># Volúmenes</span>
+<span class="linenos" data-linenos="18 "></span>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w">                  </span><span class="c1"># Listar volúmenes</span>
+<span class="linenos" data-linenos="19 "></span>docker<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>&lt;volumen&gt;<span class="w">   </span><span class="c1"># Detalles de un volumen</span>
+<span class="linenos" data-linenos="20 "></span>docker<span class="w"> </span>volume<span class="w"> </span>prune<span class="w">               </span><span class="c1"># Eliminar volúmenes no usados</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="c1"># Ejecutar comandos en contenedores</span>
+<span class="linenos" data-linenos="23 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;servicio&gt;<span class="w"> </span>&lt;comando&gt;<span class="w">  </span><span class="c1"># Ejecutar comando en servicio</span>
+<span class="linenos" data-linenos="24 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>wordpress<span class="w"> </span>bash<span class="w">        </span><span class="c1"># Acceder a shell de WordPress</span>
+<span class="linenos" data-linenos="25 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>db<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w">   </span><span class="c1"># Acceder a MySQL</span>
+</code></pre></div>
+<h2 id="conclusion">Conclusión<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Esta práctica demuestra cómo implementar una infraestructura completa y profesional usando Docker Compose, con:</p>
+<ul>
+<li>Aislamiento de servicios mediante redes personalizadas</li>
+<li>Persistencia de datos mediante volúmenes</li>
+<li>Configuración segura mediante variables de entorno</li>
+<li>Comunicación entre contenedores mediante resolución DNS</li>
+<li>Arquitectura escalable y mantenible</li>
+</ul>
+<p>La solución implementada puede servir como base para proyectos más complejos, añadiendo servicios adicionales como reverse proxy (nginx), servicios de backup, o herramientas de monitorización.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
