@@ -18,43 +18,7 @@ Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos p
 
 ## Criterios de evaluación
 
-### 1. Repositorio GitHub y estructura del proyecto (10 puntos)
-
-| Nivel | Descripción | Puntos |
-|:-----:|:------------|:------:|
-| **Excelente** | Repositorio bien estructurado, README completo y profesional, estructura del proyecto clara según requisitos del Proyecto Intermodular (PI), documentación organizada, documentos markdown de caracterización, análisis, alcance y requisitos presentes | 9-10 |
-| **Bueno** | Repositorio estructurado, README adecuado, estructura del proyecto presente con pequeñas mejoras posibles, documentación básica presente | 6-8 |
-| **Aceptable** | Repositorio básico, README incompleto, estructura del proyecto poco clara o incompleta, documentación parcial | 3-5 |
-| **Mejorable** | Repositorio mal organizado, README ausente o muy básico, falta de estructura del proyecto, documentación ausente o muy incompleta | 0-2 |
-
-**Aspectos a evaluar:**
-
-- Estructura del repositorio según requisitos del Proyecto Intermodular (PI) (portada, índice, resumen, introducción, marco teórico, desarrollo, resultados, conclusiones, bibliografía, anexos)
-- Calidad y completitud del README.md (descripción del proyecto, estructura, enlaces)
-- Documentos markdown de caracterización, análisis, alcance y requisitos
-- Organización de la documentación
-- Uso adecuado de Git (commits descriptivos, ramas si aplica)
-
----
-
-### 2. Página del proyecto en GitHub Pages (6 puntos)
-
-| Nivel | Descripción | Puntos |
-|:-----:|:------------|:------:|
-| **Excelente** | GitHub Pages configurado correctamente, página accesible y bien diseñada, información clara y completa del proyecto, estructura y enlaces relevantes funcionando | 6 |
-| **Bueno** | GitHub Pages configurado, página accesible con información básica del proyecto y estructura | 4-5 |
-| **Aceptable** | GitHub Pages configurado pero con problemas de acceso o información incompleta | 2-3 |
-| **Mejorable** | GitHub Pages no configurado o no accesible | 0-1 |
-
-**Aspectos a evaluar:**
-- Configuración correcta de GitHub Pages
-- Accesibilidad de la página
-- Diseño y presentación de la información
-- Enlaces funcionando correctamente
-
----
-
-### 3. Caracterización del reto (9 puntos)
+### 1. Caracterización del reto (9 puntos)
 
 | Nivel | Descripción | Puntos |
 |:-----:|:------------|:------:|
@@ -75,7 +39,7 @@ Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos p
 
 ---
 
-### 4. Análisis del contexto (8 puntos)
+### 2. Análisis del contexto (8 puntos)
 
 | Nivel | Descripción | Puntos |
 |:-----:|:------------|:------:|
@@ -94,7 +58,7 @@ Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos p
 
 ---
 
-### 5. Alcance y requisitos (9 puntos)
+### 3. Alcance y requisitos (9 puntos)
 
 | Nivel | Descripción | Puntos |
 |:-----:|:------------|:------:|
@@ -109,22 +73,22 @@ Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos p
 - Alcance técnico (tecnologías, plataformas - GNS3, AWS o Docker)
 - Alcance temporal (fases, entregables, hitos)
 - Alcance de recursos (equipo, presupuesto)
-- Requisitos funcionales (RF) bien definidos
+- Requisitos funcionales (RF) bien definidos con formato estándar (RF-001, RF-002, etc.)
 - Requisitos no funcionales (RNF) bien definidos
-- Requisitos del negocio (RN)
-- Matriz de trazabilidad de requisitos
+- Requisitos del negocio (RN) bien definidos
+- Matriz de trazabilidad de requisitos (tabla que relaciona cada requisito con los módulos del ciclo)
 - Elección y justificación de plataforma de virtualización (GNS3, AWS o Docker)
 
 ---
 
-### 6. Cumplimiento de requisitos por módulos (11 puntos)
+### 4. Cumplimiento de requisitos por módulos (11 puntos)
 
 | Nivel | Descripción | Puntos |
 |:-----:|:------------|:------:|
-| **Excelente** | Demuestra claramente cumplimiento de requisitos de todos los módulos (ASGBD, ASO, IAW, Servicios de Red, Seguridad). Requisitos específicos bien identificados y justificados para cada módulo. Presentación clara de cómo el proyecto cumple con cada módulo | 10-11 |
-| **Bueno** | Demuestra cumplimiento de la mayoría de módulos. Algunos requisitos podrían estar mejor identificados o falta detalle en algún módulo | 7-9 |
-| **Aceptable** | Demuestra cumplimiento básico de algunos módulos. Faltan requisitos importantes en varios módulos | 4-6 |
-| **Mejorable** | No demuestra claramente el cumplimiento de los requisitos de los módulos. Faltan requisitos en la mayoría de módulos | 0-3 |
+| **Excelente** | Especificación de requisitos por módulos completa y bien documentada. Demuestra claramente cumplimiento de requisitos de todos los módulos (ASGBD, ASO, IAW, Servicios de Red, Seguridad). Requisitos específicos bien identificados y justificados para cada módulo. Presentación clara de cómo el proyecto cumple con cada módulo | 10-11 |
+| **Bueno** | Especificación de requisitos por módulos presente. Demuestra cumplimiento de la mayoría de módulos. Algunos requisitos podrían estar mejor identificados o falta detalle en algún módulo | 7-9 |
+| **Aceptable** | Especificación de requisitos por módulos básica o incompleta. Demuestra cumplimiento básico de algunos módulos. Faltan requisitos importantes en varios módulos | 4-6 |
+| **Mejorable** | Especificación de requisitos por módulos ausente o muy incompleta. No demuestra claramente el cumplimiento de los requisitos de los módulos. Faltan requisitos en la mayoría de módulos | 0-3 |
 
 **Aspectos a evaluar por módulo:**
 
@@ -168,6 +132,46 @@ Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos p
 
 ---
 
+### 5. Repositorio GitHub y estructura del proyecto (10 puntos)
+
+| Nivel | Descripción | Puntos |
+|:-----:|:------------|:------:|
+| **Excelente** | Repositorio bien estructurado, README.md contiene únicamente el resumen/caracterización del proyecto, estructura del proyecto clara según requisitos del Proyecto Intermodular (PI), página de inicio (index.md) con Portada y Resumen, secciones numeradas correctamente (01 - Introducción, 02 - Marco Tecnológico, etc.), documentación organizada, documentos markdown de caracterización, análisis, alcance y requisitos presentes | 9-10 |
+| **Bueno** | Repositorio estructurado, README adecuado con resumen, estructura del proyecto presente con pequeñas mejoras posibles, página de inicio configurada, secciones principales presentes, documentación básica presente | 6-8 |
+| **Aceptable** | Repositorio básico, README incompleto o con contenido adicional al resumen, estructura del proyecto poco clara o incompleta, falta página de inicio o secciones numeradas, documentación parcial | 3-5 |
+| **Mejorable** | Repositorio mal organizado, README ausente o muy básico, falta de estructura del proyecto, página de inicio ausente, secciones no numeradas o mal organizadas, documentación ausente o muy incompleta | 0-2 |
+
+**Aspectos a evaluar:**
+
+- Estructura del repositorio según requisitos del Proyecto Intermodular (PI):
+  - Página de inicio (index.md) con Portada y Resumen
+  - Secciones numeradas: 01 - Introducción, 02 - Marco Tecnológico, 03 - Desarrollo, 04 - Resultados, 05 - Conclusiones y mejoras futuras, 06 - Bibliografía, 07 - Anexos
+- README.md contiene únicamente el resumen/caracterización del proyecto (mismo contenido que la página de inicio)
+- Calidad y completitud del README.md (solo resumen, sin estructura completa del proyecto)
+- Documentos markdown de caracterización, análisis, alcance y requisitos presentes
+<!-- - Organización de la documentación en estructura de directorios apropiada (docs/, src/, scripts/, anexos/)
+- Uso adecuado de Git (commits descriptivos, ramas si aplica) -->
+
+---
+
+### 6. Página del proyecto en GitHub Pages (6 puntos)
+
+| Nivel | Descripción | Puntos |
+|:-----:|:------------|:------:|
+| **Excelente** | GitHub Pages configurado correctamente, página accesible y bien diseñada, información clara y completa del proyecto, estructura y enlaces relevantes funcionando | 6 |
+| **Bueno** | GitHub Pages configurado, página accesible con información básica del proyecto y estructura | 4-5 |
+| **Aceptable** | GitHub Pages configurado pero con problemas de acceso o información incompleta | 2-3 |
+| **Mejorable** | GitHub Pages no configurado o no accesible | 0-1 |
+
+**Aspectos a evaluar:**
+
+- Configuración correcta de GitHub Pages
+- Accesibilidad de la página
+- Diseño y presentación de la información
+- Enlaces funcionando correctamente
+
+---
+
 ### 7. Presentación y defensa oral (7 puntos)
 
 | Nivel | Descripción | Puntos |
@@ -198,21 +202,20 @@ Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos p
 
 La calificación se obtiene sumando los puntos de cada criterio:
 
-- **Repositorio GitHub y estructura:** 10 puntos
-- **Página del proyecto (GitHub Pages):** 6 puntos
 - **Caracterización del reto:** 9 puntos
 - **Análisis del contexto:** 8 puntos
 - **Alcance y requisitos:** 9 puntos
 - **Cumplimiento de requisitos por módulos:** 11 puntos
+- **Repositorio GitHub y estructura:** 10 puntos
+- **Página del proyecto (GitHub Pages):** 6 puntos
 - **Presentación y defensa oral:** 7 puntos
 
 **Total:** 60 puntos
 
----
 
-## Observaciones para los evaluadores
+<!-- ## Observaciones para los evaluadores
 
-1. **Evaluación por módulos:** Cada profesor de módulo debe evaluar especialmente el criterio 7 (Cumplimiento de requisitos por módulos) desde la perspectiva de su módulo específico.
+1. **Evaluación por módulos:** Cada profesor de módulo debe evaluar especialmente el criterio 4 (Cumplimiento de requisitos por módulos) desde la perspectiva de su módulo específico.
 
 2. **Trabajo en equipo:** Si el proyecto es en equipo, se debe evaluar tanto el trabajo individual como el colectivo. La presentación puede ser individual o en equipo según se acuerde.
 
@@ -232,16 +235,16 @@ Cada profesor evaluador debe marcar la puntuación obtenida en cada criterio. La
 
 | Criterio | Puntos máx. | Evaluador 1 | Evaluador 2 | Evaluador 3 | Evaluador 4 | Evaluador 5 | Media |
 |:---------|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----:|
-| 1. Repositorio GitHub y estructura | 10 | | | | | | |
-| 2. Página del proyecto (GitHub Pages) | 6 | | | | | | |
-| 3. Caracterización del reto | 9 | | | | | | |
-| 4. Análisis del contexto | 8 | | | | | | |
-| 5. Alcance y requisitos | 9 | | | | | | |
-| 6. Cumplimiento de requisitos por módulos | 11 | | | | | | |
+| 1. Caracterización del reto | 9 | | | | | | |
+| 2. Análisis del contexto | 8 | | | | | | |
+| 3. Alcance y requisitos | 9 | | | | | | |
+| 4. Cumplimiento de requisitos por módulos | 11 | | | | | | |
+| 5. Repositorio GitHub y estructura | 10 | | | | | | |
+| 6. Página del proyecto (GitHub Pages) | 6 | | | | | | |
 | 7. Presentación y defensa oral | 7 | | | | | | |
 | **TOTAL** | **60** | | | | | | |
 
 **Calificación final (media de evaluadores):** ________ / 60
 
----
+--- -->
 

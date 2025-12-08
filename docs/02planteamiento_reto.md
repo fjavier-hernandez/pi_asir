@@ -600,7 +600,7 @@ Como empresa nueva, CreviPlay necesita crear completamente su infraestructura de
      - IAW (Implantación de Aplicaciones Web)
      - Servicios de Red e Internet
      - Seguridad y Alta Disponibilidad
-     - Matriz de trazabilidad de requisitos
+   - Matriz de trazabilidad de requisitos
 
    **Ejemplo de matriz de trazabilidad de requisitos:**
 
@@ -665,8 +665,8 @@ Como empresa nueva, CreviPlay necesita crear completamente su infraestructura de
        - Seguridad: Requisitos de seguridad identificados
      - Caracterización del reto (resumen)
      - Análisis del contexto (resumen)
-     - Alcance y requisitos principales
-     - Planificación inicial
+   - Alcance y requisitos principales
+   - Planificación inicial
 
 **Entregables:**
 
@@ -678,6 +678,7 @@ Como empresa nueva, CreviPlay necesita crear completamente su infraestructura de
    - Enlace al repositorio compartido con el profesor
 
 2. **Página del proyecto:**
+
    - GitHub Pages configurado y accesible
    - Enlace público a la página del proyecto
 
@@ -687,55 +688,114 @@ Como empresa nueva, CreviPlay necesita crear completamente su infraestructura de
    - Incluye todos los elementos solicitados
    - Demuestra cumplimiento de requisitos de todos los módulos
 
-**Evaluación:** Práctica (PR) - Sobre 54 puntos
+**Evaluación:** Práctica (PR) - Sobre 60 puntos
 
 La evaluación se realizará mediante:
 
 - Revisión del repositorio GitHub y documentación
 - Revisión de la página del proyecto en GitHub Pages
 - Defensa oral con presentación PowerPoint
-- Rúbrica de evaluación
+- [Rúbrica de evaluación de defensa de la caracterización del reto](rubrica_defensa_caracterizacion.md)
 
 ---
 
 ### 3.2. Estructura del documento del proyecto
 
-El proyecto debe seguir la estructura indicada en los requisitos del Proyecto Intermodular (PI). El repositorio GitHub debe contener:
-
-#### Estructura recomendada del repositorio
-
-```
-proyecto-pi/
-├── README.md                    # Descripción del proyecto, estructura, enlaces
-├── docs/                        # Documentación del proyecto
-│   ├── 01_caracterizacion_reto.md
-│   ├── 02_analisis_contexto.md
-│   ├── 03_alcance_requisitos.md
-│   └── ...
-├── src/                         # Código fuente (si aplica)
-├── scripts/                     # Scripts de automatización
-├── backups/                     # Scripts y documentación de backups
-└── anexos/                      # Diagramas, capturas, esquemas
-```
+El proyecto debe seguir la estructura indicada en los requisitos del Proyecto Intermodular (PI). El repositorio GitHub debe contener aproximadamente:
 
 #### Estructura del documento principal
 
-El documento principal debe seguir esta estructura según los requisitos del Proyecto Intermodular (PI):
+El documento principal debe seguir esta estructura según los requisitos del Proyecto Intermodular (PI), organizada en el repositorio GitHub y visible en GitHub Pages:
 
-1. **Portada:** Título, nombre del alumno, ciclo, tutor y fecha
-2. **Índice:** Con paginación y enlaces
-3. **Resumen / Abstract:** Breve sinopsis del proyecto (máx. 300 palabras)
-4. **Introducción:** Justificación del proyecto, objetivos y alcance
-5. **Marco teórico / tecnológico:** Tecnologías empleadas, fundamentos y justificación de elección
-6. **Desarrollo:** Explicación del proceso, fases, metodología, dificultades y soluciones
-7. **Resultados:** Lo que se ha conseguido
-8. **Conclusiones y mejoras futuras:** Reflexión crítica
-9. **Bibliografía:** Formato APA o IEEE
-10. **Anexos:** Código relevante, capturas, esquemas, diagramas, etc.
+**Página de inicio (index.md):**
 
-**Formato:** Markdown en repositorio GitHub del proyecto, con GitHub Pages configurado
+**Portada:** Título del proyecto, nombre del alumno o alumnos, ciclo formativo, tutor y fecha.
 
-**Evaluación:** La defensa de la caracterización del reto se evalúa según la [rúbrica de evaluación de defensa de la caracterización del reto](rubrica_defensa_caracterizacion.md)
+**Resumen:** Breve sinopsis del proyecto que incluya la caracterización del reto (máx. 300 palabras). Este resumen también debe aparecer en el README.md del repositorio
+
+**Secciones principales del proyecto:**
+
+1. **Introducción:** Esta sección debe incluir:
+
+   - Título del reto
+   - Contexto de la empresa / organización
+   - Problemática identificada
+   - Objetivos del proyecto (objetivo general y objetivos específicos)
+   - Identificación y clasificación de interesados (tabla con rol, interés e influencia)
+   - Mapa de interesados (tabla categorizada por nivel de influencia e interés)
+
+2. **Marco Tecnológico:** Esta sección debe incluir:
+
+   - **Alcance funcional:** Qué se incluye y qué se excluye del proyecto
+   - **Alcance técnico:** Tecnologías y plataformas propuestas, justificación y decisión de la plataforma de virtualización (GNS3, AWS o Docker)
+   - **Alcance temporal:** Fases del proyecto, hitos y entregables
+   - **Alcance de recursos:** Equipo y roles, presupuesto estimado
+   - **Requisitos:** 
+     - Requisitos funcionales (RF)
+     - Requisitos no funcionales (RNF)
+     - Requisitos de negocio (RN)
+   - **Especificación de requisitos por módulos:** El proyecto debe cubrir requisitos específicos de cada módulo del ciclo:
+     - **ASGBD (Administración de Sistemas Gestores de Bases de Datos):**
+       - Instalación y configuración de un sistema gestor de base de datos (MySQL/PostgreSQL)
+       - Creación de la estructura de base de datos (tablas principales según el proyecto)
+       - Configuración de seguridad básica (usuarios, permisos)
+       - Script de backup automático de la base de datos
+     - **ASO (Administración de Sistemas Operativos):**
+       - Instalación y configuración de sistema operativo Linux en entorno virtualizado (GNS3, AWS o Docker)
+       - Gestión de usuarios, permisos y políticas de seguridad básicas
+       - Configuración de servicios del sistema (Apache, MySQL)
+       - Script de automatización para backups o tareas administrativas básicas
+     - **IAW (Implantación de Aplicaciones Web):**
+       - Instalación y configuración del servidor Apache
+       - Instalación y configuración de WordPress
+       - Administración de usuarios en WordPress
+       - Acceso a base de datos desde PHP (conexión y consultas básicas)
+       - Personalización básica de WordPress (tema o plugin simple)
+     - **Servicios de Red e Internet:**
+       - Configuración de SSH para acceso remoto seguro
+       - Configuración de DNS básico (o uso de DNS externo)
+       - Configuración de Apache como servidor web
+     - **Seguridad y Alta Disponibilidad:**
+       - Configuración de firewall básico (iptables/ufw, AWS Security Groups o reglas de red Docker)
+       - Configuración de HTTPS/SSL
+       - Análisis básico de amenazas y medidas de protección implementadas
+       - Si se usa AWS: configuración de VPC con subredes públicas y privadas
+       - Si se usa Docker: configuración de redes Docker personalizadas para aislar servicios
+   - **Matriz de trazabilidad de requisitos:** Tabla que relaciona cada requisito con los módulos del ciclo (ASGBD, ASO, IAW, Servicios de Red, Seguridad) y su estado.
+
+3. **Desarrollo:** Se desarrollará durante el curso. Incluirá explicación del proceso, fases, metodología, dificultades y soluciones.
+4. **Resultados:** Se desarrollará durante el curso. Incluirá lo que se ha conseguido, evidencias y demostraciones
+5. **Conclusiones y mejoras futuras:** Se desarrollará durante el curso. Incluirá reflexión crítica sobre el proyecto
+6. **Bibliografía:** Se desarrollará durante el curso. Referencias bibliográficas en formato APA o IEEE
+7. **Anexos:** Se desarrollará durante el curso. Incluirá código relevante, capturas de pantalla, esquemas, diagramas, configuraciones, etc.
+
+**Estructura del repositorio GitHub:**
+
+El repositorio debe organizarse siguiendo esta estructura, donde cada sección principal corresponde a un archivo o directorio:
+
+```
+proyecto-pi/
+├── README.md                    # Solo contiene el resumen/caracterización del proyecto
+├── docs/                        # Documentación del proyecto (si se usa estructura de docs)
+│   ├── index.md                 # Portada y resumen
+│   ├── 01_introduccion.md
+│   ├── 02_marco_tecnologico.md
+│   ├── 03_desarrollo.md
+│   ├── 04_resultados.md
+│   ├── 05_conclusiones.md
+│   ├── 06_bibliografia.md
+│   └── 07_anexos.md
+├── src/                         # Código fuente (si aplica)
+├── scripts/                     # Scripts de automatización (si aplica)
+└── anexos/                      # Archivos adicionales (diagramas, capturas, etc.)
+```
+
+!!! tip "Nota importante"
+    El `README.md` del repositorio debe contener **únicamente el resumen/caracterización del proyecto** (el mismo que aparece en la página de inicio de GitHub Pages). El resto de la documentación completa estará disponible en GitHub Pages.
+
+- **Formato:** Markdown en repositorio GitHub del proyecto, con GitHub Pages configurado usando MkDocs y Material theme
+
+- **Evaluación:** La defensa de la caracterización del reto se evalúa según la [rúbrica de evaluación de defensa de la caracterización del reto](rubrica_defensa_caracterizacion.md)
 
 <!-- ---
 
@@ -803,9 +863,10 @@ El documento principal debe seguir esta estructura según los requisitos del Pro
 
 ### Documentación oficial
 
-- [Guía oficial de Trello](https://trello.com/es/guide/trello-101)
-- [Metodologías ágiles - Scrum](https://www.scrum.org/)
-- [Gestión de proyectos - PMI](https://www.pmi.org/)
+- [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) - Documentación oficial del tema Material para MkDocs
+- [GitHub Documentation](https://docs.github.com/) - Documentación oficial de GitHub
+- [Git Documentation](https://git-scm.com/doc) - Documentación oficial de Git
+
 
 ### Empresas de referencia
 
@@ -825,8 +886,23 @@ El documento principal debe seguir esta estructura según los requisitos del Pro
 - "Scrum: The Art of Doing Twice the Work in Half the Time" - Jeff Sutherland
 - Documentación sobre gestión de requisitos en proyectos de software
 
-<!-- ---
+## Glosario de términos y acrónimos
 
+- **UT:** Unidad de trabajo
+- **PI:** Proyecto intermodular
+- **RF:** Requisito funcional
+- **RNF:** Requisito no funcional
+- **RN:** Requisito del negocio
+- **DAFO:** Debilidades, Amenazas, Fortalezas, Oportunidades
+- **SLA:** Service Level Agreement
+- **RGPD:** Reglamento General de Protección de Datos
+
+---
+
+
+
+
+<!-- 
 ## 7. Calendario y fechas importantes
 
 | Actividad | Fecha límite | Evaluación |
@@ -840,16 +916,9 @@ El documento principal debe seguir esta estructura según los requisitos del Pro
 | **Documento completo de planteamiento** | **[Fecha]** | **PY (sobre 30)** |
 
 !!! important "Importante"
-    Todas las fechas se actualizarán en Aules. Consulta el calendario oficial del módulo. -->
+    Todas las fechas se actualizarán en Aules. Consulta el calendario oficial del módulo.
 
----
+--- -->
 
-*[UT]: Unidad de trabajo  
-*[PI]: Proyecto intermodular  
-*[RF]: Requisito funcional  
-*[RNF]: Requisito no funcional  
-*[RN]: Requisito del negocio  
-*[DAFO]: Debilidades, Amenazas, Fortalezas, Oportunidades  
-*[SLA]: Service Level Agreement  
-*[RGPD]: Reglamento General de Protección de Datos
+
 
