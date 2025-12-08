@@ -1475,14 +1475,14 @@ Esta guía incluye:
 <li>Enlace al repositorio compartido con el profesor</li>
 </ul>
 <ol start="2">
-<li>
-<p><strong>Página del proyecto:</strong>
-   - GitHub Pages configurado y accesible
-   - Enlace público a la página del proyecto</p>
-</li>
-<li>
-<p><strong>Presentación PowerPoint:</strong></p>
-</li>
+<li><strong>Página del proyecto:</strong></li>
+</ol>
+<ul>
+<li>GitHub Pages configurado y accesible</li>
+<li>Enlace público a la página del proyecto</li>
+</ul>
+<ol start="3">
+<li><strong>Presentación PowerPoint:</strong></li>
 </ol>
 <ul>
 <li>Presentación de 10-15 minutos</li>
@@ -1495,44 +1495,109 @@ Esta guía incluye:
 <li>Revisión del repositorio GitHub y documentación</li>
 <li>Revisión de la página del proyecto en GitHub Pages</li>
 <li>Defensa oral con presentación PowerPoint</li>
-<li>Rúbrica de evaluación</li>
+<li><a href="#rubrica_defensa_caracterizacion">Rúbrica de evaluación de defensa de la caracterización del reto</a></li>
 </ul>
 <hr />
 <h3 id="02planteamiento_reto-32-estructura-del-documento-del-proyecto">3.2. Estructura del documento del proyecto<a class="headerlink" href="#02planteamiento_reto-32-estructura-del-documento-del-proyecto" title="Permanent link">&para;</a></h3>
 <p>El proyecto debe seguir la estructura indicada en los requisitos del Proyecto Intermodular (PI). El repositorio GitHub debe contener aproximadamente:</p>
-<!-- 
-#### Estructura recomendada del repositorio
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>proyecto-pi/
-<span class="linenos" data-linenos=" 2 "></span>├── README.md                    # Descripción del proyecto, estructura, enlaces
-<span class="linenos" data-linenos=" 3 "></span>├── docs/                        # Documentación del proyecto
-<span class="linenos" data-linenos=" 4 "></span>│   ├── 01_caracterizacion_reto.md
-<span class="linenos" data-linenos=" 5 "></span>│   ├── 02_analisis_contexto.md
-<span class="linenos" data-linenos=" 6 "></span>│   ├── 03_alcance_requisitos.md
-<span class="linenos" data-linenos=" 7 "></span>│   └── ...
-<span class="linenos" data-linenos=" 8 "></span>├── src/                         # Código fuente (si aplica)
-<span class="linenos" data-linenos=" 9 "></span>├── scripts/                     # Scripts de automatización
-<span class="linenos" data-linenos="10 "></span>├── backups/                     # Scripts y documentación de backups
-<span class="linenos" data-linenos="11 "></span>└── anexos/                      # Diagramas, capturas, esquemas --&gt;
-</code></pre></div>
--->
-
 <h4 id="02planteamiento_reto-estructura-del-documento-principal">Estructura del documento principal<a class="headerlink" href="#02planteamiento_reto-estructura-del-documento-principal" title="Permanent link">&para;</a></h4>
-<p>El documento principal debe seguir esta estructura según los requisitos del Proyecto Intermodular (PI):</p>
+<p>El documento principal debe seguir esta estructura según los requisitos del Proyecto Intermodular (PI), organizada en el repositorio GitHub y visible en GitHub Pages:</p>
+<p><strong>Página de inicio (index.md):</strong></p>
+<p><strong>Portada:</strong> Título del proyecto, nombre del alumno o alumnos, ciclo formativo, tutor y fecha.</p>
+<p><strong>Resumen:</strong> Breve sinopsis del proyecto que incluya la caracterización del reto (máx. 300 palabras). Este resumen también debe aparecer en el README.md del repositorio</p>
+<p><strong>Secciones principales del proyecto:</strong></p>
 <ol>
-<li><strong>Portada:</strong> Título, nombre del alumno, ciclo, tutor y fecha</li>
-<li><strong>Índice:</strong> Con paginación y enlaces</li>
-<li><strong>Resumen / Abstract:</strong> Breve sinopsis del proyecto (máx. 300 palabras)</li>
-<li><strong>Introducción:</strong> Justificación del proyecto, objetivos y alcance</li>
-<li><strong>Marco teórico / tecnológico:</strong> Tecnologías empleadas, fundamentos y justificación de elección</li>
-<li><strong>Desarrollo:</strong> Explicación del proceso, fases, metodología, dificultades y soluciones</li>
-<li><strong>Resultados:</strong> Lo que se ha conseguido</li>
-<li><strong>Conclusiones y mejoras futuras:</strong> Reflexión crítica</li>
-<li><strong>Bibliografía:</strong> Formato APA o IEEE</li>
-<li><strong>Anexos:</strong> Código relevante, capturas, esquemas, diagramas, etc.</li>
+<li><strong>Introducción:</strong> Esta sección debe incluir:</li>
 </ol>
-<p><strong>Formato:</strong> Markdown en repositorio GitHub del proyecto, con GitHub Pages configurado</p>
+<ul>
+<li>Título del reto</li>
+<li>Contexto de la empresa / organización</li>
+<li>Problemática identificada</li>
+<li>Objetivos del proyecto (objetivo general y objetivos específicos)</li>
+<li>Identificación y clasificación de interesados (tabla con rol, interés e influencia)</li>
+<li>Mapa de interesados (tabla categorizada por nivel de influencia e interés)</li>
+</ul>
+<ol start="2">
+<li><strong>Marco Tecnológico:</strong> Esta sección debe incluir:</li>
+</ol>
+<ul>
+<li><strong>Alcance funcional:</strong> Qué se incluye y qué se excluye del proyecto</li>
+<li><strong>Alcance técnico:</strong> Tecnologías y plataformas propuestas, justificación y decisión de la plataforma de virtualización (GNS3, AWS o Docker)</li>
+<li><strong>Alcance temporal:</strong> Fases del proyecto, hitos y entregables</li>
+<li><strong>Alcance de recursos:</strong> Equipo y roles, presupuesto estimado</li>
+<li><strong>Requisitos:</strong> <ul>
+<li>Requisitos funcionales (RF)</li>
+<li>Requisitos no funcionales (RNF)</li>
+<li>Requisitos de negocio (RN)</li>
+</ul>
+</li>
+<li><strong>Especificación de requisitos por módulos:</strong> El proyecto debe cubrir requisitos específicos de cada módulo del ciclo:<ul>
+<li><strong>ASGBD (Administración de Sistemas Gestores de Bases de Datos):</strong></li>
+<li>Instalación y configuración de un sistema gestor de base de datos (MySQL/PostgreSQL)</li>
+<li>Creación de la estructura de base de datos (tablas principales según el proyecto)</li>
+<li>Configuración de seguridad básica (usuarios, permisos)</li>
+<li>Script de backup automático de la base de datos</li>
+<li><strong>ASO (Administración de Sistemas Operativos):</strong></li>
+<li>Instalación y configuración de sistema operativo Linux en entorno virtualizado (GNS3, AWS o Docker)</li>
+<li>Gestión de usuarios, permisos y políticas de seguridad básicas</li>
+<li>Configuración de servicios del sistema (Apache, MySQL)</li>
+<li>Script de automatización para backups o tareas administrativas básicas</li>
+<li><strong>IAW (Implantación de Aplicaciones Web):</strong></li>
+<li>Instalación y configuración del servidor Apache</li>
+<li>Instalación y configuración de WordPress</li>
+<li>Administración de usuarios en WordPress</li>
+<li>Acceso a base de datos desde PHP (conexión y consultas básicas)</li>
+<li>Personalización básica de WordPress (tema o plugin simple)</li>
+<li><strong>Servicios de Red e Internet:</strong></li>
+<li>Configuración de SSH para acceso remoto seguro</li>
+<li>Configuración de DNS básico (o uso de DNS externo)</li>
+<li>Configuración de Apache como servidor web</li>
+<li><strong>Seguridad y Alta Disponibilidad:</strong></li>
+<li>Configuración de firewall básico (iptables/ufw, AWS Security Groups o reglas de red Docker)</li>
+<li>Configuración de HTTPS/SSL</li>
+<li>Análisis básico de amenazas y medidas de protección implementadas</li>
+<li>Si se usa AWS: configuración de VPC con subredes públicas y privadas</li>
+<li>Si se usa Docker: configuración de redes Docker personalizadas para aislar servicios</li>
+</ul>
+</li>
+<li><strong>Matriz de trazabilidad de requisitos:</strong> Tabla que relaciona cada requisito con los módulos del ciclo (ASGBD, ASO, IAW, Servicios de Red, Seguridad) y su estado.</li>
+</ul>
+<ol start="3">
+<li><strong>Desarrollo:</strong> Se desarrollará durante el curso. Incluirá explicación del proceso, fases, metodología, dificultades y soluciones.</li>
+<li><strong>Resultados:</strong> Se desarrollará durante el curso. Incluirá lo que se ha conseguido, evidencias y demostraciones</li>
+<li><strong>Conclusiones y mejoras futuras:</strong> Se desarrollará durante el curso. Incluirá reflexión crítica sobre el proyecto</li>
+<li><strong>Bibliografía:</strong> Se desarrollará durante el curso. Referencias bibliográficas en formato APA o IEEE</li>
+<li><strong>Anexos:</strong> Se desarrollará durante el curso. Incluirá código relevante, capturas de pantalla, esquemas, diagramas, configuraciones, etc.</li>
+</ol>
+<p><strong>Estructura del repositorio GitHub:</strong></p>
+<p>El repositorio debe organizarse siguiendo esta estructura, donde cada sección principal corresponde a un archivo o directorio:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>proyecto-pi/
+<span class="linenos" data-linenos=" 2 "></span>├── README.md                    # Solo contiene el resumen/caracterización del proyecto
+<span class="linenos" data-linenos=" 3 "></span>├── docs/                        # Documentación del proyecto (si se usa estructura de docs)
+<span class="linenos" data-linenos=" 4 "></span>│   ├── index.md                 # Portada y resumen
+<span class="linenos" data-linenos=" 5 "></span>│   ├── 01_introduccion.md
+<span class="linenos" data-linenos=" 6 "></span>│   ├── 02_marco_tecnologico.md
+<span class="linenos" data-linenos=" 7 "></span>│   ├── 03_desarrollo.md
+<span class="linenos" data-linenos=" 8 "></span>│   ├── 04_resultados.md
+<span class="linenos" data-linenos=" 9 "></span>│   ├── 05_conclusiones.md
+<span class="linenos" data-linenos="10 "></span>│   ├── 06_bibliografia.md
+<span class="linenos" data-linenos="11 "></span>│   └── 07_anexos.md
+<span class="linenos" data-linenos="12 "></span>├── src/                         # Código fuente (si aplica)
+<span class="linenos" data-linenos="13 "></span>├── scripts/                     # Scripts de automatización (si aplica)
+<span class="linenos" data-linenos="14 "></span>└── anexos/                      # Archivos adicionales (diagramas, capturas, etc.)
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Nota importante</p>
+<p>El <code>README.md</code> del repositorio debe contener <strong>únicamente el resumen/caracterización del proyecto</strong> (el mismo que aparece en la página de inicio de GitHub Pages). El resto de la documentación completa estará disponible en GitHub Pages.</p>
+</div>
+<ul>
+<li>
+<p><strong>Formato:</strong> Markdown en repositorio GitHub del proyecto, con GitHub Pages configurado usando MkDocs y Material theme</p>
+</li>
+<li>
 <p><strong>Evaluación:</strong> La defensa de la caracterización del reto se evalúa según la <a href="#rubrica_defensa_caracterizacion">rúbrica de evaluación de defensa de la caracterización del reto</a></p>
+</li>
+</ul>
 <!-- ---
 
 ## 5. Criterios de evaluación
