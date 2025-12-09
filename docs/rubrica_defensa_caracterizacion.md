@@ -7,6 +7,9 @@ description: Rúbrica para evaluar la actividad de defensa de la caracterizació
 
 Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos para evaluar la actividad de "Defensa de la Caracterización del Reto" del Proyecto Intermodular.
 
+!!! tip "Evaluación colaborativa"
+    Para realizar evaluaciones colaborativas con múltiples profesores, consulta la [Guía de Evaluación Colaborativa](guia_evaluacion_colaborativa.md) que incluye instrucciones detalladas para usar Aules, Excel Online, Google Sheets y otras herramientas.
+
 ## Información general
 
 - **Actividad:** Defensa de la Caracterización del Reto
@@ -136,19 +139,21 @@ Esta rúbrica debe ser utilizada por los profesores de los diferentes módulos p
 
 | Nivel | Descripción | Puntos |
 |:-----:|:------------|:------:|
-| **Excelente** | Repositorio bien estructurado, README.md contiene únicamente el resumen/caracterización del proyecto, estructura del proyecto clara según requisitos del Proyecto Intermodular (PI), página de inicio (index.md) con Portada y Resumen, secciones numeradas correctamente (01 - Introducción, 02 - Marco Tecnológico, etc.), documentación organizada, documentos markdown de caracterización, análisis, alcance y requisitos presentes | 9-10 |
-| **Bueno** | Repositorio estructurado, README adecuado con resumen, estructura del proyecto presente con pequeñas mejoras posibles, página de inicio configurada, secciones principales presentes, documentación básica presente | 6-8 |
-| **Aceptable** | Repositorio básico, README incompleto o con contenido adicional al resumen, estructura del proyecto poco clara o incompleta, falta página de inicio o secciones numeradas, documentación parcial | 3-5 |
-| **Mejorable** | Repositorio mal organizado, README ausente o muy básico, falta de estructura del proyecto, página de inicio ausente, secciones no numeradas o mal organizadas, documentación ausente o muy incompleta | 0-2 |
+| **Excelente** | Repositorio bien estructurado para GitHub Pages con MkDocs, README.md contiene únicamente el resumen/caracterización del proyecto, estructura del proyecto clara según requisitos del Proyecto Intermodular (PI), directorio `docs/` con página de inicio (index.md) con Portada y Resumen, secciones numeradas correctamente (01_introduccion.md, 02_marco_tecnologico.md, etc.), archivo `mkdocs.yml` configurado correctamente, documentación organizada, documentos markdown de caracterización, análisis, alcance y requisitos presentes | 9-10 |
+| **Bueno** | Repositorio estructurado para GitHub Pages con MkDocs, README adecuado con resumen, estructura del proyecto presente con pequeñas mejoras posibles, directorio `docs/` con página de inicio configurada, secciones principales presentes, `mkdocs.yml` presente pero con posibles mejoras, documentación básica presente | 6-8 |
+| **Aceptable** | Repositorio básico, README incompleto o con contenido adicional al resumen, estructura del proyecto poco clara o incompleta, falta directorio `docs/` o página de inicio, secciones no numeradas correctamente, `mkdocs.yml` ausente o mal configurado, documentación parcial | 3-5 |
+| **Mejorable** | Repositorio mal organizado, README ausente o muy básico, falta de estructura del proyecto, directorio `docs/` ausente o mal organizado, página de inicio ausente, secciones no numeradas o mal organizadas, `mkdocs.yml` ausente, documentación ausente o muy incompleta | 0-2 |
 
 **Aspectos a evaluar:**
 
-- Estructura del repositorio según requisitos del Proyecto Intermodular (PI):
-  - Página de inicio (index.md) con Portada y Resumen
-  - Secciones numeradas: 01 - Introducción, 02 - Marco Tecnológico, 03 - Desarrollo, 04 - Resultados, 05 - Conclusiones y mejoras futuras, 06 - Bibliografía, 07 - Anexos
+- Estructura del repositorio según requisitos del Proyecto Intermodular (PI) para GitHub Pages con MkDocs:
+  - Directorio `docs/` con documentación del proyecto
+  - Página de inicio (`docs/index.md`) con Portada y Resumen
+  - Secciones numeradas en `docs/`: 01_introduccion.md, 02_marco_tecnologico.md, 03_desarrollo.md, 04_resultados.md, 05_conclusiones.md, 06_bibliografia.md, 07_anexos.md
+  - Archivo `mkdocs.yml` en la raíz del repositorio configurado correctamente para GitHub Pages
 - README.md contiene únicamente el resumen/caracterización del proyecto (mismo contenido que la página de inicio)
 - Calidad y completitud del README.md (solo resumen, sin estructura completa del proyecto)
-- Documentos markdown de caracterización, análisis, alcance y requisitos presentes
+- Documentos markdown de caracterización, análisis, alcance y requisitos presentes en el directorio `docs/`
 <!-- - Organización de la documentación en estructura de directorios apropiada (docs/, src/, scripts/, anexos/)
 - Uso adecuado de Git (commits descriptivos, ramas si aplica) -->
 

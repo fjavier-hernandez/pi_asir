@@ -19,14 +19,10 @@ description: Apuntes de Git para el Proyecto Intermodular de ASIR por Francisco 
 
 Esta herramienta se enmarca dentro del **módulo de Proyecto Intermodular** del CFGS ASIR, y contribuye a los siguientes **Resultados de Aprendizaje (RA)** definidos en la programación:
 
-> **RA2.** *Planifica actividades, recursos, riesgos y cronograma del proyecto.*  
-> **RA3.** *Desarrolla y valida la solución (iteraciones, pruebas y criterios de aceptación).*  
 > **RA4.** *Documenta, versiona y despliega la solución y sus evidencias.*
 
-### Criterios de evaluación (relacionados)
+### Criterio de evaluación (relacionado)
 
-> **CE-RA2a.** *Se han identificado las herramientas necesarias para el control de versiones del proyecto.*  
-> **CE-RA3b.** *Se han configurado repositorios y flujos de trabajo colaborativo.*  
 > **CE-RA4c.** *Se ha documentado el procedimiento de versionado y colaboración.*
 
 ### Relación con otros módulos del ciclo ASIR
@@ -95,7 +91,7 @@ Git como herramienta de control de versiones es fundamental en el desarrollo pro
 
 | Sesión | Contenidos | Actividades | Criterios trabajados |
 |--------|-----------|-------------|-----------------------|
-| 1 | Sistemas de control de versiones, Introducción a Git | AC201. Configurar la identidad de Git (ASIR) | CE-RA2a, CE-RA3b, CE-RA4c |
+| 1 | Sistemas de control de versiones, Introducción a Git | AC201. Configurar la identidad de Git (ASIR) | CE-RA4c |
 <!-- | 2 | **Uso básico de Git** | PR201. Primer repositorio Git | CE-RA3b, CE-RA4c |
 | 3 | **Ramas y colaboración** | PR202. Trabajo colaborativo con GitHub | CE-RA3b, CE-RA4c | -->
 
@@ -735,12 +731,10 @@ Para profundizar en el trabajo con repositorios desde GitHub, revisa el siguient
 
 <a name="AC201"></a>
 
-:simple-readdotcv: **AC201** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-5p). **Configurar la identidad de Git (ASIR)**
+:simple-readdotcv: **AC201** (RA4 // CE4c // 1-5p). **Configurar la identidad de Git (ASIR)**
 
-> **Criterios de evaluación asociados:**
+> **Criterio de evaluación asociado:**
 
-- **CE-RA2a**: Identificación de Git como herramienta de versionado en el entorno ASIR.
-- **CE-RA3b**: Configuración correcta de la identidad de usuario en Git.
 - **CE-RA4c**: Documentación del procedimiento con evidencias (comandos y capturas).
 
 > **Tareas:**
@@ -756,12 +750,10 @@ Para profundizar en el trabajo con repositorios desde GitHub, revisa el siguient
 
 <a name="PR202"></a>
 
-::simple-neutralinojs: **PR202** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). **Gestión de configuraciones de servidor con Git**
+::simple-neutralinojs: **PR202** (RA4 // CE4c // 1-10p). **Gestión de configuraciones de servidor con Git**
 
-> **Criterios de evaluación asociados:**
+> **Criterio de evaluación asociado:**
 >
-> - **CE-RA2a**: Identificación y justificación de Git como herramienta de control de versiones para gestión de configuraciones de servidor.
-> - **CE-RA3b**: Configuración correcta del repositorio local y primeros commits de configuraciones.
 > - **CE-RA4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).
 >
 > **Tareas:**
@@ -800,12 +792,10 @@ Para profundizar en el trabajo con repositorios desde GitHub, revisa el siguient
 
 <a name="PR203"></a>
 
-* **PR203** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). **Colaboración en infraestructura con GitHub**
+* **PR203** (RA4 // CE4c // 1-10p). **Colaboración en infraestructura con GitHub**
 
-> **Criterios de evaluación asociados:**
+> **Criterio de evaluación asociado:**
 
-- **CE-RA2a**: Identificación y justificación de GitHub como plataforma de coordinación del equipo.
-- **CE-RA3b**: Configuración correcta del repositorio remoto, permisos de colaboración y flujos de trabajo compartidos.
 - **CE-RA4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, Pull Requests, comentarios).
 
 > **Tareas (trabajo en equipo):**

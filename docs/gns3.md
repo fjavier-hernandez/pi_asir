@@ -19,15 +19,11 @@ description: Apuntes de GNS3 para el Proyecto Intermodular de ASIR por Francisco
 
 Esta herramienta se enmarca dentro del **módulo de Proyecto Intermodular** del CFGS ASIR, y contribuye a los siguientes **Resultados de Aprendizaje (RA)** definidos en la programación:
 
-> **RA2.** *Planifica actividades, recursos, riesgos y cronograma del proyecto.*  
-> **RA3.** *Desarrolla y valida la solución (iteraciones, pruebas y criterios de aceptación).*  
-> **RA4.** *Documenta, versiona y despliega la solución y sus evidencias.*
+> **RA3.** *Desarrolla y valida la solución (iteraciones, pruebas y criterios de aceptación).*
 
-### Criterios de evaluación (relacionados)
+### Criterio de evaluación (relacionado)
 
-> **CE-RA2a.** *Se han identificado las herramientas necesarias para el diseño y simulación de redes.*  
-> **CE-RA3b.** *Se han configurado topologías de red virtuales y se han realizado pruebas de conectividad.*  
-> **CE-RA4c.** *Se ha documentado el procedimiento de instalación, configuración y uso de GNS3.*
+> **CE-RA3b.** *Se han configurado topologías de red virtuales y se han realizado pruebas de conectividad.*
 
 ### Relación con otros módulos del ciclo ASIR
 
@@ -91,10 +87,10 @@ GNS3 como herramienta de simulación de redes es esencial para el desarrollo pro
 
 ### Programación de Aula
 
-| Sesión | Contenidos | Actividades | Criterios trabajados |
-|--------|-----------|-------------|-----------------------|
-| 1 | Introducción a GNS3, Instalación, Interfaz básica | Cuestionario inicial, instalación | CE-RA2a, CE-RA3b, CE-RA4c |
-| 2 | **Topologías básicas y configuración** | PR301. Primera topología en GNS3 | CE-RA3b, CE-RA4c |
+| Sesión | Contenidos | Actividades | Criterio trabajado |
+|--------|-----------|-------------|---------------------|
+| 1 | Introducción a GNS3, Instalación, Interfaz básica | Cuestionario inicial, instalación | CE-RA3b |
+| 2 | **Topologías básicas y configuración** | PR301. Primera topología en GNS3 | CE-RA3b |
 
 ---
 
@@ -738,7 +734,7 @@ Algunas prácticas recomendadas para trabajar eficientemente con GNS3 son las si
 
 <a name="PR301"></a>
 
-::simple-neutralinojs: **PR301** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). **Primera topología básica en GNS3**
+::simple-neutralinojs: **PR301** (RA3 // CE3b // 1-10p). **Primera topología básica en GNS3**
 
 [→ Ver documentación detallada: PR301_TopologiaBasicaGNS3](PR301_TopologiaBasicaGNS3.md)
 
@@ -774,7 +770,7 @@ Algunas prácticas recomendadas para trabajar eficientemente con GNS3 son las si
 
 <a name="PR302"></a>
 
-::simple-neutralinojs: **PR302** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). **Instalación de plantillas en GNS3**
+::simple-neutralinojs: **PR302** (RA3 // CE3b // 1-10p). **Instalación de plantillas en GNS3**
 
 [→ Ver documentación detallada: PR302_InstalacionPlantillasGNS3](PR302_InstalacionPlantillasGNS3.md)
 
@@ -791,7 +787,7 @@ Algunas prácticas recomendadas para trabajar eficientemente con GNS3 son las si
 
 <a name="PR303"></a>
 
-::simple-neutralinojs: **PR303** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). **Virtualización servidor/cliente, enrutamiento y NAT**
+::simple-neutralinojs: **PR303** (RA3 // CE3b // 1-10p). **Virtualización servidor/cliente, enrutamiento y NAT**
 
 [→ Ver documentación detallada: PR303_VirtualizacionServidorCliente](PR303_VirtualizacionServidorCliente.md)
 

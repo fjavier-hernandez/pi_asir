@@ -13,44 +13,46 @@ description: Apuntes de Docker para el Proyecto Intermodular de ASIR por Francis
 
 Esta herramienta se enmarca dentro del **módulo de Proyecto Intermodular** del CFGS ASIR, y contribuye a los siguientes **Resultados de Aprendizaje (RA)** definidos en la programación:
 
-> **RA2.** *Planifica actividades, recursos, riesgos y cronograma del proyecto.*  
-> **RA3.** *Desarrolla y valida la solución (iteraciones, pruebas y criterios de aceptación).*  
-> **RA4.** *Documenta, versiona y despliega la solución y sus evidencias.*
+> **RA3.** *Desarrolla y valida la solución (iteraciones, pruebas y criterios de aceptación).*
 
-### Criterios de evaluación (relacionados)
+### Criterio de evaluación (relacionado)
 
-- **CE-RA2a**: Se han identificado las herramientas necesarias para el despliegue del proyecto.
 - **CE-RA3b**: Se han configurado entornos de prueba utilizando contenedores.
-- **CE-RA4c**: Se ha documentado el procedimiento de instalación y despliegue.
 
 ### Contenidos
 
-**Bloque 1 — Introducción a Docker (Sesión 1)**  
+**Bloque 1 — Introducción a Docker (Sesión 1)**
+
 - ¿Qué es Docker? Diferencias con máquinas virtuales.
 - Conceptos básicos: imágenes, contenedores, volúmenes.
 - Instalación en GNU/Linux (Ubuntu Server).
 - Primer contenedor: `hello-world`.
 
-**Bloque 2 — Comandos básicos (Sesión 2)**  
+**Bloque 2 — Comandos básicos (Sesión 2)** 
+
 - `docker run`, `docker ps`, `docker stop`, `docker rm`.
 - Gestión de imágenes: `docker image ls`, `docker pull`.
 - Persistencia de datos: volúmenes y bind mounts.
 
-**Bloque 3 — Primer servicio en contenedor**  
+**Bloque 3 — Primer servicio en contenedor** 
+
 - Despliegue de NGINX en contenedor.
 - Exposición de puertos (`-p` vs `-P`).
 - Personalización de contenido con volúmenes.
 
 **Bloque 4 — Nextcloud con docker**
+
 - Práctica con volúmenes persistentes.
 
 **Bloque 5 — Dockerfile y Docker-compose**
+
 - Creación de imágenes personalizadas con Dockerfile.
 - Despliegue de aplicaciones multi-contenedor con Docker-compose.
 - Publicación de imágenes en Docker Hub.
-
+<!-- 
 **Bloque 6 — Docker compose con Samba**
-- Despliegue de Samba con docker compose
+
+- Despliegue de Samba con docker compose -->
 
 !!! question "Actividades iniciales"
     1. Comprueba la versión instalada de Docker en tu sistema.
@@ -61,11 +63,11 @@ Esta herramienta se enmarca dentro del **módulo de Proyecto Intermodular** del 
 
 ### Programación de Aula
 
-| Sesión | Contenidos | Actividades | Criterios trabajados |
-|--------|-----------|-------------|-----------------------|
-| 1 | Introducción a Docker, Comandos básicos, Primer servicio | Cuestionario inicial, instalación | CE-RA2a, CE-RA3b, CE-RA4c |
-| 2 | **Despliegue de NextCloud con Docker** | PR101. NextCloud con Docker | CE-RA3b, CE-RA4c |
-| 3 | **Dockerfile y Docker-compose** | PR102. Dockerfile y Docker-compose | CE-RA3b, CE-RA4c |
+| Sesión | Contenidos | Actividades | Criterio trabajado |
+|--------|-----------|-------------|---------------------|
+| 1 | Introducción a Docker, Comandos básicos, Primer servicio | Cuestionario inicial, instalación | CE-RA3b |
+| 2 | **Despliegue de NextCloud con Docker** | PR101. NextCloud con Docker | CE-RA3b |
+| 3 | **Dockerfile y Docker-compose** | PR102. Dockerfile y Docker-compose | CE-RA3b |
 
 
 ---
@@ -953,17 +955,15 @@ docker network prune
     Cuando se usan redes personalizadas, cada contenedor mantiene sus propias variables de entorno. No se comparten variables de entorno entre contenedores, lo que es una ventaja para la seguridad y el aislamiento de configuraciones.
 ---
 
-# Actividades
+## Actividades
 
 <a name="PR101"></a>
 
-* :simple-neutralinojs: **PR101** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). [Despliegue de NextCloud con Docker y persistencia de datos](01NextCloudDocker.md)
+* :simple-neutralinojs: **PR101** (RA3 // CE3b // 1-10p). [Despliegue de NextCloud con Docker y persistencia de datos](01NextCloudDocker.md)
 
-> **Criterios de evaluación asociados:**
+> **Criterio de evaluación asociado:**
 
-- **CE-RA2a**: Identificación y justificación de la herramienta Docker y sus componentes (redes, volúmenes).
 - **CE-RA3b**: Configuración correcta del contenedor NextCloud y comprobación funcional.
-- **CE-RA4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).
 
 > **Tareas:**
 
@@ -987,13 +987,11 @@ docker network prune
 
 <a name="PR102"></a>
 
-* :simple-neutralinojs: **PR102** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). **Dockerfile y Docker Compose: Aplicación web personalizada**
+* :simple-neutralinojs: **PR102** (RA3 // CE3b // 1-10p). **Dockerfile y Docker Compose: Aplicación web personalizada**
 
-> **Criterios de evaluación asociados:**
+> **Criterio de evaluación asociado:**
 
-- **CE-RA2a**: Identificación y justificación de las herramientas Dockerfile y Docker Compose.
 - **CE-RA3b**: Configuración correcta de imagen personalizada y aplicación multi-contenedor.
-- **CE-RA4c**: Documentación clara del procedimiento, incluyendo evidencias (capturas, comandos).
 
 > **Tareas:**
 
@@ -1050,13 +1048,11 @@ docker network prune
 
 <a name="PR103"></a>
 
-* **PR103** (RA2, RA3, RA4 // CE2a, CE3b, y CE4c // 1-10p). [Infraestructura completa con Docker Compose: WordPress, MySQL y redes personalizadas](PR103_Solucion.md)
+* **PR103** (RA3 // CE3b // 1-10p). [Infraestructura completa con Docker Compose: WordPress, MySQL y redes personalizadas](PR103_Solucion.md)
 
-> **Criterios de evaluación asociados:**
+> **Criterio de evaluación asociado:**
 
-- **CE-RA2a**: Identificación y justificación de la arquitectura Docker con redes personalizadas y aislamiento de servicios.
 - **CE-RA3b**: Configuración correcta de aplicación multi-contenedor con WordPress, MySQL, volúmenes persistentes y redes Docker personalizadas.
-- **CE-RA4c**: Documentación completa de la arquitectura Docker, incluyendo docker-compose.yml, configuración de redes, volúmenes y variables de entorno.
 
 > **Contexto:**
 

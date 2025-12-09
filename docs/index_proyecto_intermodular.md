@@ -45,15 +45,16 @@ Los ^^objetivos generales^^ del Proyecto intermodular son:
 ## Unidades de Trabajo
 
 | Unidades de Trabajo (UT)                                  | RA1 | RA2 | RA3 | RA4 | RA5 |
-|:----------------------------------------------------------|:--:|:--:|:--:|:--:|:--:|
-| **0. Herramientas del proyecto**              | X  |    |    | X  | X  |
-| **1. Planteamiento del reto y análisis del contexto**     | X  | X  |    |    | X  |
-| **2. Diseño de la solución y planificación**              |    | X  |    |    | X  |
-| **3. Desarrollo iterativo y pruebas**                     |    |    | X  | X  |    |
-| **4. Integración, seguridad y validación**                |    |    | X  | X  |    |
-| **5. Despliegue y operación**                 |    |    | X  | X  |    |
-| **6. Documentación técnica y memoria**                    |    |    |    | X  | X  |
-| **7. Presentación, defensa y cierre**                     |    |    |    |    | X  |
+|:----------------------------------------------------------|:---:|:---:|:---:|:---:|:---:|
+| **0. Herramientas del proyecto**                          |     |     | X   | X   |     |
+| **1. Planteamiento del reto y análisis del contexto**    | X   | X   |     |     | X   |
+| **2. Diseño de la solución y planificación**              |     | X   |     |     | X   |
+| **3. Desarrollo iterativo y pruebas**                     |     |     | X   | X   |     |
+| **4. Integración, seguridad y validación**                |     |     | X   | X   |     |
+| **5. Despliegue y operación**                             |     |     | X   | X   |     |
+| **6. Documentación técnica y memoria**                      |     |     |     | X   | X   |
+| **7. Presentación, defensa y cierre**                      |     |     |     |     | X   |
+| **Total** <br> **Porcentaje**                             | X<br>15% | X<br>25% | X<br>25% | X<br>20% | X<br>15% |
 
 ```mermaid
 timeline

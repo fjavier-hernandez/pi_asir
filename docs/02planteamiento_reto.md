@@ -7,15 +7,13 @@ description: Guía para caracterizar el reto, analizar el contexto del sector, d
 
 > En esta unidad aprenderás a **caracterizar el reto**, **analizar el contexto del sector**, **definir el alcance** y **establecer los requisitos** de un proyecto TIC real. Trabajarás con propuestas basadas en empresas locales de Crevillent, permitiéndote conectar el aprendizaje con el tejido empresarial de tu entorno.
 
-Esta unidad de trabajo corresponde a los **Resultados de Aprendizaje RA1 y RA2** y es fundamental para sentar las bases de un proyecto exitoso.
+Esta unidad de trabajo corresponde principalmente al **Resultado de Aprendizaje RA1** y es fundamental para sentar las bases de un proyecto exitoso.
 
-## Resultados de aprendizaje
+## Resultado de aprendizaje
 
 Al finalizar esta unidad, serás capaz de:
 
 - **RA1 (15%):** Caracterizar el reto y el contexto del sector, definiendo alcance y requisitos.
-- **RA2 (25%):** Planificar actividades, recursos, riesgos y cronograma del proyecto.
-- **RA5 (15%):** Comunicar y colaborar eficazmente (reuniones, pitch, retroalimentación).
 
 ---
 
@@ -552,6 +550,8 @@ Como empresa nueva, CreviPlay necesita crear completamente su infraestructura de
 
 ### 3.1. Actividad principal: Defensa de la caracterización del reto
 
+**Resultado de Aprendizaje:** RA1 - Caracteriza el reto y el contexto del sector, definiendo alcance y requisitos.
+
 **Objetivo:** Desarrollar y defender la caracterización completa del reto elegido, demostrando que cumple con los requisitos de todos los módulos del ciclo y estableciendo la estructura base del proyecto.
 
 **Tareas:**
@@ -673,7 +673,7 @@ Como empresa nueva, CreviPlay necesita crear completamente su infraestructura de
 1. **Repositorio GitHub:**
 
    - Estructura del proyecto definida según requisitos del Proyecto Intermodular (PI)
-   - README.md completo con descripción, estructura, y enlaces
+   - README.md que incluya únicamente el resumen/caracterización del proyecto (máx. 300 palabras), siguiendo la estructura indicada en los requisitos del Proyecto Intermodular (PI)
    - Documentos markdown de caracterización, análisis, alcance y requisitos
    - Enlace al repositorio compartido con el profesor
 
@@ -700,10 +700,6 @@ La evaluación se realizará mediante:
 ---
 
 ### 3.2. Estructura del documento del proyecto
-
-El proyecto debe seguir la estructura indicada en los requisitos del Proyecto Intermodular (PI). El repositorio GitHub debe contener aproximadamente:
-
-#### Estructura del documento principal
 
 El documento principal debe seguir esta estructura según los requisitos del Proyecto Intermodular (PI), organizada en el repositorio GitHub y visible en GitHub Pages:
 
@@ -771,12 +767,12 @@ El documento principal debe seguir esta estructura según los requisitos del Pro
 
 **Estructura del repositorio GitHub:**
 
-El repositorio debe organizarse siguiendo esta estructura, donde cada sección principal corresponde a un archivo o directorio:
+El repositorio debe organizarse siguiendo esta estructura para GitHub Pages con MkDocs, donde cada sección principal corresponde a un archivo en el directorio `docs/`:
 
 ```
 proyecto-pi/
 ├── README.md                    # Solo contiene el resumen/caracterización del proyecto
-├── docs/                        # Documentación del proyecto (si se usa estructura de docs)
+├── docs/                        # Documentación del proyecto (MkDocs)
 │   ├── index.md                 # Portada y resumen
 │   ├── 01_introduccion.md
 │   ├── 02_marco_tecnologico.md
@@ -785,6 +781,7 @@ proyecto-pi/
 │   ├── 05_conclusiones.md
 │   ├── 06_bibliografia.md
 │   └── 07_anexos.md
+├── mkdocs.yml                   # Configuración de MkDocs para GitHub Pages
 ├── src/                         # Código fuente (si aplica)
 ├── scripts/                     # Scripts de automatización (si aplica)
 └── anexos/                      # Archivos adicionales (diagramas, capturas, etc.)
@@ -823,39 +820,6 @@ proyecto-pi/
 
 ---
 
-### RA2: Planifica actividades, recursos, riesgos y cronograma
-
-**Criterios de evaluación (fase inicial):**
-
-- Utiliza Trello correctamente para organizar el trabajo
-- Crea estructura de planificación apropiada
-- Identifica actividades principales del proyecto
-- Asigna responsables a las tareas
-- Establece fechas de vencimiento realistas
-- Identifica recursos necesarios (preliminar)
-
-**Evidencias:**
-
-- Tablero de Trello con estructura y tarjetas iniciales
-- Documento de planificación inicial
-
----
-
-### RA5: Comunica y colabora eficazmente
-
-**Criterios de evaluación:**
-
-- Participa activamente en reuniones de equipo
-- Utiliza Trello para comunicación y coordinación
-- Presenta el planteamiento de forma clara y estructurada
-- Responde adecuadamente a preguntas y feedback
-- Colabora eficazmente con el equipo
-
-**Evidencias:**
-
-- Participación en reuniones (actas o evidencias)
-- Comentarios y comunicación en Trello
-- Calidad de la presentación oral -->
 
 ---
 

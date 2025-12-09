@@ -9,8 +9,8 @@ description: Guía completa paso a paso para la práctica PR202 de Git - Colabor
 
 - **Práctica**: PR202
 - **Título**: Colaboración en infraestructura con GitHub
-- **Resultados de Aprendizaje**: RA2, RA3, RA4
-- **Criterios de Evaluación**: CE-RA2a, CE-RA3b, CE-RA4c
+- **Resultado de Aprendizaje**: RA4
+- **Criterio de Evaluación**: CE-RA4c
 - **Puntuación**: 1-10 puntos
 
 ---
@@ -514,8 +514,6 @@ git push origin mejoras-configuracion-servidor
    
    ## Criterios de evaluación cumplidos
    
-   - **CE-RA2a**: GitHub identificado y justificado para colaboración
-   - **CE-RA3b**: Repositorio remoto configurado correctamente
    - **CE-RA4c**: Procedimiento documentado con evidencias
    
    ## Pruebas realizadas
@@ -747,22 +745,7 @@ cat > docs/PROCEDIMIENTO_PR202.md << 'EOF'
 
 Esta práctica demuestra la implementación de un flujo de trabajo colaborativo para la gestión de configuraciones de servidor utilizando Git y GitHub, aplicable al contexto del ciclo ASIR.
 
-## Criterios de evaluación cumplidos
-
-### CE-RA2a: Identificación y justificación de GitHub
-- **GitHub seleccionado** como plataforma de colaboración
-- **Justificación**: 
-  - Integración nativa con Git
-  - Funcionalidades de colaboración (Pull Requests, Issues)
-  - CI/CD con GitHub Actions
-  - Control de acceso granular
-  - Historial completo de cambios
-
-### CE-RA3b: Configuración correcta de repositorio remoto
-- **SSH configurado** para autenticación segura
-- **Repositorio remoto** creado y conectado
-- **Flujo de trabajo** implementado con ramas
-- **Sincronización** exitosa entre local y remoto
+## Criterio de evaluación cumplido
 
 ### CE-RA4c: Documentación clara del procedimiento
 - **Procedimientos documentados** paso a paso
@@ -1029,16 +1012,12 @@ git remote show origin
 9. **✅ Flujo de versionado implementado** con tags y CI/CD
 10. **✅ Proceso documentado** con evidencias completas
 
-### 📊 Criterios de evaluación cumplidos:
+### 📊 Criterio de evaluación cumplido:
 
-- **CE-RA2a**: ✅ GitHub identificado y justificado para colaboración
-- **CE-RA3b**: ✅ Repositorio remoto configurado y sincronizado correctamente
 - **CE-RA4c**: ✅ Procedimiento documentado con evidencias claras
 
-### 🎯 Resultados de aprendizaje alcanzados:
+### 🎯 Resultado de aprendizaje alcanzado:
 
-- **RA2**: ✅ Planificación de actividades y recursos del proyecto
-- **RA3**: ✅ Desarrollo y validación de la solución con iteraciones
 - **RA4**: ✅ Documentación, versionado y despliegue de la solución
 
 ---
