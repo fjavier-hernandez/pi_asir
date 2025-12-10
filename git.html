@@ -1624,12 +1624,16 @@
 <li>Crear un directorio para el proyecto de configuraciones de servidor e inicializar un repositorio Git con <code>git init</code>.</li>
 <li>Crear un archivo <code>README.md</code> con información del proyecto de infraestructura (estructura del repositorio, descripción de servicios).</li>
 <li>Crear la estructura de directorios para configuraciones: <code>nginx/</code>, <code>apache/</code>, <code>mysql/</code>, <code>scripts/</code>, <code>backups/</code>, <code>docs/</code>.</li>
-<li>Crear archivos de configuración de ejemplo apropiados para ASIR:
-   - <code>nginx/default.conf</code>: Configuración básica de NGINX con virtual host
-   - <code>apache/000-default.conf</code>: Configuración de Apache para virtual host
-   - <code>mysql/my.cnf</code>: Configuración básica de MySQL
-   - <code>scripts/backup.sh</code>: Script de respaldo de configuraciones
-   - <code>scripts/deploy.sh</code>: Script de despliegue automatizado</li>
+<li>Crear archivos de configuración de ejemplo apropiados para ASIR:</li>
+</ol>
+<ul>
+<li><code>nginx/default.conf</code>: Configuración básica de NGINX con virtual host</li>
+<li><code>apache/000-default.conf</code>: Configuración de Apache para virtual host</li>
+<li><code>mysql/my.cnf</code>: Configuración básica de MySQL</li>
+<li><code>scripts/backup.sh</code>: Script de respaldo de configuraciones</li>
+<li><code>scripts/deploy.sh</code>: Script de despliegue automatizado</li>
+</ul>
+<ol start="6">
 <li>Utilizar <code>git status</code> para verificar el estado de los archivos antes y después de añadirlos al área de preparación.</li>
 <li>Añadir los archivos al área de preparación usando <code>git add</code> (individualmente y con <code>git add .</code>).</li>
 <li>Visualizar los cambios con <code>git diff</code> y <code>git diff --staged</code> antes de confirmar.</li>
@@ -1641,7 +1645,9 @@
 <li>Crear etiquetas (<code>git tag</code>) para versiones estables (ej: <code>v1.0.0</code>, <code>v1.1.0</code>) y visualizarlas con <code>git show</code>.</li>
 <li>Practicar con <code>git stash</code> para guardar temporalmente cambios sin confirmar y restaurarlos con <code>git stash pop</code>.</li>
 <li>Utilizar <code>git reset</code> para quitar archivos del área de preparación cuando sea necesario.</li>
-<li>Documentar todo el proceso con capturas y comandos utilizados, incluyendo:<ul>
+<li>
+<p>Documentar todo el proceso con capturas y comandos utilizados, incluyendo:</p>
+<ul>
 <li>Estructura final del repositorio (árbol de directorios)</li>
 <li>Historial de commits completo (<code>git log --oneline --graph</code>)</li>
 <li>Estados de archivos en diferentes momentos (<code>git status</code>)</li>
