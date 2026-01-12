@@ -316,6 +316,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1010,19 +1030,25 @@
 <span class="linenos" data-linenos="65 "></span><span class="w">          </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.26.0.1</span>
 </code></pre></div>
 <h3 id="explicacion-de-la-configuracion">Explicación de la configuración<a class="headerlink" href="#explicacion-de-la-configuracion" title="Permanent link">&para;</a></h3>
-<p><strong>Servicio db (MySQL):</strong>
-- <code>networks: backend</code>: Solo conectado a la red backend para aislamiento
-- <code>volumes: mysql_data</code>: Volumen persistente para los datos de MySQL
-- <code>healthcheck</code>: Verifica que MySQL esté listo antes de que WordPress intente conectarse
-- No expone puertos al host, solo comunicación interna</p>
-<p><strong>Servicio wordpress:</strong>
-- <code>networks: frontend, backend</code>: Conectado a ambas redes
-- <code>ports: 8080:80</code>: Expone el puerto 80 del contenedor en el 8080 del host
-- <code>depends_on: db condition: service_healthy</code>: Espera a que MySQL esté listo
-- <code>volumes: wordpress_data</code>: Volumen persistente para el contenido de WordPress</p>
-<p><strong>Redes:</strong>
-- <code>frontend</code>: Subnet 172.25.0.0/16 para servicios públicos
-- <code>backend</code>: Subnet 172.26.0.0/16 para servicios internos</p>
+<p><strong>Servicio db (MySQL):</strong></p>
+<ul>
+<li><code>networks: backend</code>: Solo conectado a la red backend para aislamiento</li>
+<li><code>volumes: mysql_data</code>: Volumen persistente para los datos de MySQL</li>
+<li><code>healthcheck</code>: Verifica que MySQL esté listo antes de que WordPress intente conectarse</li>
+<li>No expone puertos al host, solo comunicación interna</li>
+</ul>
+<p><strong>Servicio wordpress:</strong></p>
+<ul>
+<li><code>networks: frontend, backend</code>: Conectado a ambas redes</li>
+<li><code>ports: 8080:80</code>: Expone el puerto 80 del contenedor en el 8080 del host</li>
+<li><code>depends_on: db condition: service_healthy</code>: Espera a que MySQL esté listo</li>
+<li><code>volumes: wordpress_data</code>: Volumen persistente para el contenido de WordPress</li>
+</ul>
+<p><strong>Redes:</strong></p>
+<ul>
+<li><code>frontend</code>: Subnet 172.25.0.0/16 para servicios públicos</li>
+<li><code>backend</code>: Subnet 172.26.0.0/16 para servicios internos</li>
+</ul>
 <h2 id="paso-3-desplegar-la-infraestructura">Paso 3: Desplegar la infraestructura<a class="headerlink" href="#paso-3-desplegar-la-infraestructura" title="Permanent link">&para;</a></h2>
 <h3 id="31-verificar-la-configuracion">3.1. Verificar la configuración<a class="headerlink" href="#31-verificar-la-configuracion" title="Permanent link">&para;</a></h3>
 <p>Antes de desplegar, verificamos que los archivos estén correctos:</p>
@@ -1034,11 +1060,13 @@
 <p>Ejecutamos Docker Compose en modo detached (segundo plano):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
-<p>Este comando:
-- Crea las redes personalizadas si no existen
-- Crea los volúmenes si no existen
-- Descarga las imágenes necesarias (si no están en local)
-- Crea y arranca los contenedores</p>
+<p>Este comando:</p>
+<ul>
+<li>Crea las redes personalizadas si no existen</li>
+<li>Crea los volúmenes si no existen</li>
+<li>Descarga las imágenes necesarias (si no están en local)</li>
+<li>Crea y arranca los contenedores</li>
+</ul>
 <h3 id="33-verificar-el-estado-de-los-contenedores">3.3. Verificar el estado de los contenedores<a class="headerlink" href="#33-verificar-el-estado-de-los-contenedores" title="Permanent link">&para;</a></h3>
 <p>Comprobamos que todos los servicios estén en ejecución:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>ps
@@ -1212,32 +1240,42 @@
 </ul>
 <h2 id="solucion-de-problemas-comunes">Solución de problemas comunes<a class="headerlink" href="#solucion-de-problemas-comunes" title="Permanent link">&para;</a></h2>
 <h3 id="problema-error-al-conectar-wordpress-a-la-base-de-datos">Problema: Error al conectar WordPress a la base de datos<a class="headerlink" href="#problema-error-al-conectar-wordpress-a-la-base-de-datos" title="Permanent link">&para;</a></h3>
-<p><strong>Solución:</strong>
-- Verificar que MySQL esté en estado "healthy" con <code>docker compose ps</code>
-- Comprobar las variables de entorno en el archivo <code>.env</code>
-- Verificar que <code>WORDPRESS_DB_HOST</code> sea <code>db:3306</code> (no <code>localhost</code>)
-- Revisar los logs: <code>docker compose logs db</code></p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Verificar que MySQL esté en estado "healthy" con <code>docker compose ps</code></li>
+<li>Comprobar las variables de entorno en el archivo <code>.env</code></li>
+<li>Verificar que <code>WORDPRESS_DB_HOST</code> sea <code>db:3306</code> (no <code>localhost</code>)</li>
+<li>Revisar los logs: <code>docker compose logs db</code></li>
+</ul>
 <h3 id="problema-puerto-8080-ya-en-uso">Problema: Puerto 8080 ya en uso<a class="headerlink" href="#problema-puerto-8080-ya-en-uso" title="Permanent link">&para;</a></h3>
-<p><strong>Solución:</strong>
-- Cambiar el puerto en <code>docker-compose.yml</code>: <code>"8081:80"</code> en lugar de <code>"8080:80"</code>
-- O detener el servicio que está usando el puerto 8080</p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Cambiar el puerto en <code>docker-compose.yml</code>: <code>"8081:80"</code> en lugar de <code>"8080:80"</code></li>
+<li>O detener el servicio que está usando el puerto 8080</li>
+</ul>
 <h3 id="problema-error-al-crear-las-redes-subnet-en-conflicto">Problema: Error al crear las redes (subnet en conflicto)<a class="headerlink" href="#problema-error-al-crear-las-redes-subnet-en-conflicto" title="Permanent link">&para;</a></h3>
-<p><strong>Solución:</strong>
-- Cambiar los rangos de subred en <code>docker-compose.yml</code>
-- Usar rangos diferentes, por ejemplo: <code>172.27.0.0/16</code> y <code>172.28.0.0/16</code>
-- Verificar redes existentes: <code>docker network ls</code></p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Cambiar los rangos de subred en <code>docker-compose.yml</code></li>
+<li>Usar rangos diferentes, por ejemplo: <code>172.27.0.0/16</code> y <code>172.28.0.0/16</code></li>
+<li>Verificar redes existentes: <code>docker network ls</code></li>
+</ul>
 <h3 id="problema-contenedores-se-detienen-inmediatamente">Problema: Contenedores se detienen inmediatamente<a class="headerlink" href="#problema-contenedores-se-detienen-inmediatamente" title="Permanent link">&para;</a></h3>
-<p><strong>Solución:</strong>
-- Revisar los logs: <code>docker compose logs</code>
-- Verificar que las variables de entorno estén correctamente definidas
-- Comprobar que no haya conflictos de nombres de contenedores
-- Verificar recursos del sistema (RAM, disco)</p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Revisar los logs: <code>docker compose logs</code></li>
+<li>Verificar que las variables de entorno estén correctamente definidas</li>
+<li>Comprobar que no haya conflictos de nombres de contenedores</li>
+<li>Verificar recursos del sistema (RAM, disco)</li>
+</ul>
 <h3 id="problema-wordpress-no-puede-conectar-a-mysql">Problema: WordPress no puede conectar a MySQL<a class="headerlink" href="#problema-wordpress-no-puede-conectar-a-mysql" title="Permanent link">&para;</a></h3>
-<p><strong>Solución:</strong>
-- Verificar que ambos contenedores estén en la red backend
-- Comprobar resolución DNS: <code>docker compose exec wordpress ping db</code>
-- Verificar que <code>depends_on</code> con <code>condition: service_healthy</code> esté configurado
-- Revisar variables de entorno de conexión</p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Verificar que ambos contenedores estén en la red backend</li>
+<li>Comprobar resolución DNS: <code>docker compose exec wordpress ping db</code></li>
+<li>Verificar que <code>depends_on</code> con <code>condition: service_healthy</code> esté configurado</li>
+<li>Revisar variables de entorno de conexión</li>
+</ul>
 <h2 id="comandos-utiles-de-referencia">Comandos útiles de referencia<a class="headerlink" href="#comandos-utiles-de-referencia" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Gestión de servicios</span>
 <span class="linenos" data-linenos=" 2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w">              </span><span class="c1"># Levantar servicios</span>

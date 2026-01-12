@@ -294,6 +294,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -340,6 +360,15 @@
   <a href="#02planteamiento_reto" class="md-nav__link">
     <span class="md-ellipsis">
       2. Planteamiento del reto y análisis del contexto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03diseno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Diseño de la solución y planificación
     </span>
   </a>
   
@@ -669,6 +698,19 @@ Media ponderada de los <abbr title="Instrumento de evaluación">IE</abbr> asigna
 <li>Recursos de estudio y glosario de términos importantes</li>
 </ul>
 <p><strong>Sitio web oficial del campeonato:</strong> <a href="https://gameday2025.com">https://gameday2025.com</a></p>
+<p>Para implementar una <strong>infraestructura completa de TI en AWS</strong> siguiendo el proyecto de CreviPlay, consulta la práctica guiada paso a paso:</p>
+<p><strong><a href="#aws_creviplay_infraestructura_completa">Infraestructura completa de TI para CreviPlay con AWS →</a></strong></p>
+<p>Esta guía incluye:</p>
+<ul>
+<li>Arquitectura completa con VPC, subredes públicas y privadas</li>
+<li>Despliegue de instancia EC2 con WordPress/Apache</li>
+<li>Configuración de RDS para base de datos MySQL/PostgreSQL</li>
+<li>Configuración de buckets S3 para recursos multimedia</li>
+<li>Implementación de medidas de seguridad (Security Groups, IAM, encriptación)</li>
+<li>Configuración de respaldo automático y alta disponibilidad</li>
+<li>Diagramas Mermaid de arquitecturas posibles</li>
+<li>Troubleshooting y optimización de costos</li>
+</ul>
 <h2 id="01herramientas-mkdocs">MkDocs<a class="headerlink" href="#01herramientas-mkdocs" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>MkDocs es un <strong>generador de sitios web estáticos</strong> que toma como entrada texto escrito en Markdown y utiliza diseños predefinidos (temas) para crear un sitio web estático. Permite modificar el aspecto del sitio, los enlaces, los datos que se muestran en la página y muchas cosas más. En el contexto del <strong>Proyecto Intermodular (PI)</strong>, MkDocs facilita la creación de documentación profesional y sitios web para los proyectos, permitiendo centrarse en el contenido sin preocuparse por el diseño.</p>
@@ -1692,7 +1734,660 @@ Esta guía incluye:
 !!! important "Importante"
     Todas las fechas se actualizarán en Aules. Consulta el calendario oficial del módulo.
 
---- --></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+--- --></section><section class="print-page" id="03diseno" heading-number="4"><h1 id="03diseno-3-diseno-de-la-solucion-y-planificacion">3. Diseño de la solución y planificación<a class="headerlink" href="#03diseno-3-diseno-de-la-solucion-y-planificacion" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>En esta unidad aprenderás a <strong>diseñar la solución técnica</strong> del proyecto, <strong>planificar actividades, recursos y riesgos</strong>, y <strong>crear un cronograma</strong> detallado. Trabajarás con herramientas de planificación como <strong>Trello</strong> y <strong>Microsoft Planner</strong> para organizar el trabajo en equipo y gestionar las tareas del proyecto.</p>
+</blockquote>
+<p>Esta unidad de trabajo corresponde principalmente al <strong>Resultado de Aprendizaje RA2</strong> y es fundamental para establecer la hoja de ruta del proyecto.</p>
+<h2 id="03diseno-resultado-de-aprendizaje">Resultado de aprendizaje<a class="headerlink" href="#03diseno-resultado-de-aprendizaje" title="Permanent link">&para;</a></h2>
+<p>Al finalizar esta unidad, serás capaz de:</p>
+<ul>
+<li><strong>RA2 (25%):</strong> Planificar actividades, recursos, riesgos y cronograma del proyecto.</li>
+</ul>
+<hr />
+<h2 id="03diseno-1-conceptos-basicos-para-el-diseno-y-planificacion">1. Conceptos básicos para el diseño y planificación<a class="headerlink" href="#03diseno-1-conceptos-basicos-para-el-diseno-y-planificacion" title="Permanent link">&para;</a></h2>
+<p>Para diseñar correctamente una solución y planificarla adecuadamente, debemos abordar los siguientes aspectos:</p>
+<ol>
+<li>
+<p><strong>Diseño de la arquitectura:</strong> Definir la estructura técnica de la solución (infraestructura, servicios, componentes). Para documentarlo, puedes utilizar diagramas de infraestructura, arquitectura de red y arquitectura de aplicación.</p>
+<ul>
+<li><em>Herramientas:</em> <a href="https://app.diagrams.net/">draw.io</a> (gratuito), <a href="https://www.lucidchart.com/">Lucidchart</a> (freemium), <a href="https://miro.com/">Miro</a> (freemium), <a href="https://excalidraw.com/">Excalidraw</a> (gratuito), <a href="https://plantuml.com/">PlantUML</a> (gratuito).</li>
+</ul>
+</li>
+<li>
+<p><strong>Planificación de actividades:</strong> Descomponer el proyecto en tareas concretas, identificando dependencias y secuencia. Para ello, puedes utilizar la <strong>Estructura de Desglose del Trabajo (EDT, en español)</strong> o <strong>Work Breakdown Structure (WBS, en inglés)</strong>, consiste en dividir el proyecto en partes más pequeñas y manejables (fases, entregables y tareas), lo que facilita la planificación, la asignación de responsabilidades y el seguimiento del avance.</p>
+<ul>
+<li><em>Herramientas:</em> <a href="https://trello.com/">Trello</a> (gratuito), <a href="https://tasks.office.com/">Microsoft Planner</a> (gratuito con cuenta educativa GVA), <a href="https://asana.com/">Asana</a> (freemium), <a href="https://www.notion.so/">Notion</a> (freemium), <a href="https://www.atlassian.com/es/software/jira">Jira</a> (freemium).</li>
+</ul>
+</li>
+<li>
+<p><strong>Gestión de recursos:</strong> Identificar y asignar recursos necesarios (equipo, herramientas, infraestructura). Esto incluye la asignación de roles, herramientas específicas e infraestructura requerida.</p>
+<ul>
+<li><em>Herramientas:</em> <a href="https://tasks.office.com/">Microsoft Planner</a> (gratuito con cuenta educativa GVA), <a href="https://trello.com/">Trello</a> (gratuito), <a href="https://asana.com/">Asana</a> (freemium), <a href="https://monday.com/">Monday.com</a> (freemium), <a href="https://www.notion.so/">Notion</a> (freemium).</li>
+</ul>
+</li>
+<li>
+<p><strong>Análisis de riesgos:</strong> Identificar posibles problemas, evaluar su probabilidad e impacto, y definir estrategias de mitigación. Debes realizar la identificación, evaluación y plan de mitigación de los riesgos identificados.</p>
+<ul>
+<li><em>Herramientas:</em> <a href="https://www.microsoft.com/es-es/microsoft-365/excel">Microsoft Excel</a> / <a href="https://www.google.com/sheets/about/">Google Sheets</a> (gratuitos), <a href="https://www.notion.so/">Notion</a> (freemium), <a href="https://trello.com/">Trello</a> (gratuito), plantillas de gestión de riesgos en Microsoft Planner.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cronograma:</strong> Temporalizar actividades, definir hitos y entregables, establecer fechas clave. Puedes crear un cronograma con fases, hitos y entregables, y utilizar un <strong>diagrama de Gantt</strong> para visualizar la planificación temporal del proyecto. Puedes ampliar información sobre los diagramas de Gantt consultando el siguiente recurso: <a href="https://es.wikipedia.org/wiki/Diagrama_de_Gantt">Diagrama de Gantt en Wikipedia</a></p>
+<ul>
+<li><em>Herramientas:</em> <a href="https://www.microsoft.com/es-es/microsoft-365/project/project-management-software">Microsoft Project</a> (de pago, disponible con MS365 educativo), <a href="https://www.ganttproject.biz/">GanttProject</a> (gratuito, open source), <a href="https://www.projectlibre.com/">ProjectLibre</a> (gratuito, open source), <a href="https://www.smartsheet.com/">Smartsheet</a> (freemium), <a href="https://www.microsoft.com/es-es/microsoft-365/excel">Microsoft Excel</a> / <a href="https://www.google.com/sheets/about/">Google Sheets</a> con plantillas de Gantt (gratuitos), <a href="https://trello.com/">Trello</a> con power-ups de Gantt (gratuito).</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="03diseno-2-herramientas-de-planificacion">2. Herramientas de planificación<a class="headerlink" href="#03diseno-2-herramientas-de-planificacion" title="Permanent link">&para;</a></h2>
+<h3 id="03diseno-21-trello">2.1. Trello<a class="headerlink" href="#03diseno-21-trello" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Trello</strong> es una herramienta de gestión de proyectos basada en el método <strong>Kanban</strong>, perfecta para organizar y planificar el trabajo en equipo de forma visual.</p>
+</blockquote>
+<p>Para una guía completa sobre cómo utilizar Trello en el proyecto, consulta:</p>
+<p><strong><a href="#03_planificacion_trello">Planificación del proyecto con Trello →</a></strong></p>
+<h3 id="03diseno-22-microsoft-planner">2.2. Microsoft Planner<a class="headerlink" href="#03diseno-22-microsoft-planner" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Microsoft Planner</strong> es una herramienta de planificación de proyectos integrada en <strong>Microsoft 365</strong> (MS365), disponible gratuitamente para el alumnado con cuenta educativa de la Generalitat Valenciana (GVA). Permite gestionar tareas, asignar responsables, establecer fechas y visualizar el progreso del proyecto.</p>
+</blockquote>
+<div class="admonition important">
+<p class="admonition-title">Disponibilidad de Microsoft Planner</p>
+<p>El alumnado tiene acceso gratuito a <strong>Microsoft Planner</strong> a través de su cuenta educativa de Microsoft 365 (MS365) de la Generalitat Valenciana (GVA). Esta herramienta se integra perfectamente con Teams y otras aplicaciones de Microsoft 365.</p>
+</div>
+<p><strong>Características principales de Microsoft Planner:</strong></p>
+<ul>
+<li><strong>Planes:</strong> Organización del proyecto en planes separados</li>
+<li><strong>Tareas:</strong> Creación y asignación de tareas con responsables</li>
+<li><strong>Tableros:</strong> Visualización tipo Kanban de las tareas</li>
+<li><strong>Calendario:</strong> Vista de calendario con fechas de vencimiento</li>
+<li><strong>Gráficos:</strong> Visualización del progreso del proyecto</li>
+<li><strong>Integración:</strong> Integración con Microsoft Teams, Outlook y SharePoint</li>
+</ul>
+<p><strong>Ventajas de Microsoft Planner:</strong></p>
+<ul>
+<li>Acceso gratuito con cuenta educativa GVA</li>
+<li>Integración nativa con Microsoft Teams</li>
+<li>Interfaz intuitiva y moderna</li>
+<li>Sincronización automática con calendario de Outlook</li>
+<li>Notificaciones y recordatorios automáticos</li>
+<li>Colaboración en tiempo real</li>
+</ul>
+<p>Para una guía completa sobre cómo utilizar Microsoft Planner en el proyecto, consulta:</p>
+<p><strong><a href="#03_planificacion_trello">Planificación del proyecto con Trello y Microsoft Planner →</a></strong></p>
+<hr />
+<h2 id="03diseno-3-diseno-de-la-arquitectura">3. Diseño de la arquitectura<a class="headerlink" href="#03diseno-3-diseno-de-la-arquitectura" title="Permanent link">&para;</a></h2>
+<h3 id="03diseno-31-arquitectura-de-infraestructura">3.1. Arquitectura de infraestructura<a class="headerlink" href="#03diseno-31-arquitectura-de-infraestructura" title="Permanent link">&para;</a></h3>
+<p>El diseño de la arquitectura debe definir claramente:</p>
+<ul>
+<li><strong>Topología de red:</strong> Estructura de la red, subredes, dispositivos de interconexión</li>
+<li><strong>Servidores y servicios:</strong> Servidores necesarios, servicios a desplegar en cada uno</li>
+<li><strong>Base de datos:</strong> Sistema gestor de base de datos, estructura de datos</li>
+<li><strong>Aplicación web:</strong> Servidor web, CMS o aplicación personalizada</li>
+<li><strong>Seguridad:</strong> Firewall, medidas de seguridad, acceso remoto</li>
+<li><strong>Respaldo:</strong> Estrategia de backup y recuperación</li>
+</ul>
+<h3 id="03diseno-32-diagramas-de-arquitectura">3.2. Diagramas de arquitectura<a class="headerlink" href="#03diseno-32-diagramas-de-arquitectura" title="Permanent link">&para;</a></h3>
+<p>Es fundamental crear diagramas que visualicen:</p>
+<ol>
+<li><strong>Diagrama de topología de red:</strong> Muestra la estructura física y lógica de la red</li>
+<li><strong>Diagrama de arquitectura de aplicación:</strong> Muestra los componentes de la aplicación y sus interacciones</li>
+<li><strong>Diagrama de flujo de datos:</strong> Muestra cómo fluyen los datos entre componentes</li>
+<li><strong>Diagrama de despliegue:</strong> Muestra dónde se despliegan los componentes (contenedores, instancias, servidores)</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Herramientas para diagramas</p>
+<p>Puedes utilizar:</p>
+<ul>
+<li><strong>Draw.io / diagrams.net:</strong> Herramienta online gratuita</li>
+<li><strong>Lucidchart:</strong> Herramienta profesional (versión gratuita disponible)</li>
+<li><strong>Microsoft Visio:</strong> Disponible en Microsoft 365 (si está incluido)</li>
+<li><strong>PlantUML:</strong> Para diagramas basados en texto</li>
+<li><strong>Mermaid:</strong> Integrado en MkDocs para diagramas en Markdown</li>
+</ul>
+</div>
+<hr />
+<h2 id="03diseno-4-retos-del-proyecto">4. Retos del proyecto<a class="headerlink" href="#03diseno-4-retos-del-proyecto" title="Permanent link">&para;</a></h2>
+<p>A continuación encontrarás los <strong>puntos iniciales a planificar y diseñar</strong> para cada uno de los retos elegidos por los grupos de trabajo.</p>
+<h3 id="03diseno-41-reto-1-sitio-web-corporativo-para-taller-mecanico-docker">4.1. Reto 1: Sitio web corporativo para taller mecánico (Docker)<a class="headerlink" href="#03diseno-41-reto-1-sitio-web-corporativo-para-taller-mecanico-docker" title="Permanent link">&para;</a></h3>
+<h4 id="03diseno-contexto-del-reto">Contexto del reto<a class="headerlink" href="#03diseno-contexto-del-reto" title="Permanent link">&para;</a></h4>
+<p><strong>Proyecto:</strong> Despliegue inicial de un sitio web corporativo para un taller mecánico ubicado en Crevillent.</p>
+<p><strong>Situación actual:</strong> El taller es de reciente apertura y se especializa en reparación y mantenimiento de vehículos, fabricación de piezas personalizadas y mantenimiento general. Actualmente <strong>no cuenta con presencia digital</strong>, lo que dificulta que los clientes potenciales encuentren información sobre servicios, ubicación y trabajos realizados.</p>
+<h4 id="03diseno-principales-puntos-iniciales-a-planificar-y-disenar">Principales puntos iniciales a planificar y diseñar<a class="headerlink" href="#03diseno-principales-puntos-iniciales-a-planificar-y-disenar" title="Permanent link">&para;</a></h4>
+<p><strong>1. Arquitectura de infraestructura con Docker:</strong></p>
+<ul>
+<li><strong>Diseño de arquitectura de contenedores:</strong></li>
+<li>Contenedor para servidor web (Apache/Nginx)</li>
+<li>Contenedor para base de datos (MySQL/PostgreSQL)</li>
+<li>Contenedor para aplicación web (WordPress o aplicación personalizada)</li>
+<li>Red Docker personalizada para aislar servicios</li>
+<li>
+<p>Volúmenes persistentes para datos y configuraciones</p>
+</li>
+<li>
+<p><strong>Servicios de red:</strong></p>
+</li>
+<li>Configuración de red Docker para comunicación entre contenedores</li>
+<li>Configuración de puertos y exposición de servicios</li>
+<li>Configuración de DNS interno (opcional)</li>
+</ul>
+<p><strong>2. Base de datos:</strong></p>
+<ul>
+<li><strong>Diseño del modelo de datos:</strong></li>
+<li>Tabla de proyectos/trabajos realizados (vehículos reparados)</li>
+<li>Tabla de servicios ofrecidos</li>
+<li>Tabla de imágenes/galería de proyectos</li>
+<li>Tabla de información de contacto</li>
+<li>
+<p>Tabla de usuarios/administradores (si aplica)</p>
+</li>
+<li>
+<p><strong>Configuración de base de datos:</strong></p>
+</li>
+<li>Instalación y configuración de MySQL/PostgreSQL en contenedor</li>
+<li>Scripts de inicialización de base de datos</li>
+<li>Configuración de seguridad y usuarios</li>
+<li>Estrategia de backup</li>
+</ul>
+<p><strong>3. Aplicación web:</strong></p>
+<ul>
+<li><strong>Funcionalidades principales:</strong></li>
+<li>Página de inicio con información del taller</li>
+<li>Sección de servicios ofrecidos</li>
+<li>Galería de proyectos realizados (con imágenes de trabajos realizados)</li>
+<li>Información de contacto y ubicación</li>
+<li>
+<p>Formulario de contacto (opcional)</p>
+</li>
+<li>
+<p><strong>Tecnologías:</strong></p>
+</li>
+<li>WordPress (CMS) o aplicación web personalizada</li>
+<li>Integración con base de datos</li>
+<li>Gestión de imágenes y recursos multimedia</li>
+<li>Diseño responsive</li>
+</ul>
+<p><strong>4. Docker Compose:</strong></p>
+<ul>
+<li><strong>Configuración de docker-compose.yml:</strong></li>
+<li>Definición de servicios (web, base de datos)</li>
+<li>Configuración de redes</li>
+<li>Configuración de volúmenes</li>
+<li>Variables de entorno</li>
+<li>
+<p>Dependencias entre servicios</p>
+</li>
+<li>
+<p><strong>Dockerfiles:</strong></p>
+</li>
+<li>Dockerfile para servidor web (si se personaliza)</li>
+<li>Dockerfile para aplicación (si se desarrolla desde cero)</li>
+</ul>
+<p><strong>5. Seguridad:</strong></p>
+<ul>
+<li><strong>Medidas de seguridad:</strong></li>
+<li>Configuración de firewall en contenedores</li>
+<li>Restricción de acceso a base de datos</li>
+<li>Configuración de HTTPS/SSL (opcional, con certificado)</li>
+<li>Gestión segura de credenciales (variables de entorno, secretos)</li>
+</ul>
+<p><strong>6. Respaldo y mantenimiento:</strong></p>
+<ul>
+<li><strong>Estrategia de backup:</strong></li>
+<li>Scripts de backup de base de datos</li>
+<li>Backup de volúmenes Docker</li>
+<li>
+<p>Estrategia de recuperación</p>
+</li>
+<li>
+<p><strong>Automatización:</strong></p>
+</li>
+<li>Scripts para despliegue</li>
+<li>Scripts para backup automático</li>
+<li>Scripts de mantenimiento</li>
+</ul>
+<p><strong>7. Documentación:</strong></p>
+<ul>
+<li><strong>Documentación técnica:</strong></li>
+<li>Diagrama de arquitectura Docker</li>
+<li>Documentación de docker-compose.yml</li>
+<li>Documentación de Dockerfiles</li>
+<li>Guía de despliegue</li>
+<li>Guía de mantenimiento</li>
+</ul>
+<h4 id="03diseno-objetivos-especificos-del-diseno">Objetivos específicos del diseño<a class="headerlink" href="#03diseno-objetivos-especificos-del-diseno" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Diseñar arquitectura de contenedores:</strong> Definir estructura de contenedores, redes y volúmenes</li>
+<li><strong>Diseñar modelo de datos:</strong> Crear esquema de base de datos para gestión de proyectos y servicios</li>
+<li><strong>Planificar despliegue:</strong> Definir proceso de despliegue con Docker Compose</li>
+<li><strong>Diseñar interfaz web:</strong> Definir estructura y funcionalidades del sitio web corporativo</li>
+<li><strong>Planificar seguridad:</strong> Definir medidas de seguridad para contenedores y servicios</li>
+<li><strong>Planificar respaldo:</strong> Definir estrategia de backup y recuperación</li>
+</ol>
+<hr />
+<h3 id="03diseno-42-reto-2-infraestructura-completa-de-ti-para-creviplay-aws">4.2. Reto 2: Infraestructura completa de TI para CreviPlay (AWS)<a class="headerlink" href="#03diseno-42-reto-2-infraestructura-completa-de-ti-para-creviplay-aws" title="Permanent link">&para;</a></h3>
+<h4 id="03diseno-contexto-del-reto_1">Contexto del reto<a class="headerlink" href="#03diseno-contexto-del-reto_1" title="Permanent link">&para;</a></h4>
+<p><strong>Proyecto:</strong> Infraestructura completa de TI y plataforma web para CreviPlay.</p>
+<p><strong>Situación actual:</strong> CreviPlay es un nuevo estudio de desarrollo de videojuegos independiente que se está estableciendo en Crevillent. El estudio está formado por un pequeño equipo de desarrolladores locales que buscan crear videojuegos casuales e indie para múltiples plataformas. </p>
+<p>Al ser una empresa de nueva creación, <strong>CreviPlay no cuenta con ninguna infraestructura de TI</strong>. Necesitan crear desde cero toda su infraestructura tecnológica para poder operar profesionalmente. Esto incluye servidores, servicios de red, base de datos, aplicación web, y todos los sistemas de seguridad y respaldo necesarios.</p>
+<h4 id="03diseno-principales-puntos-iniciales-a-planificar-y-disenar_1">Principales puntos iniciales a planificar y diseñar<a class="headerlink" href="#03diseno-principales-puntos-iniciales-a-planificar-y-disenar_1" title="Permanent link">&para;</a></h4>
+<p><strong>1. Arquitectura de infraestructura en AWS:</strong></p>
+<ul>
+<li><strong>Diseño de VPC (Virtual Private Cloud):</strong></li>
+<li>Diseño de red con subredes públicas y privadas</li>
+<li>Configuración de Internet Gateway</li>
+<li>Configuración de NAT Gateway (para acceso a internet desde subredes privadas)</li>
+<li>Configuración de Route Tables</li>
+<li>
+<p>Configuración de Security Groups</p>
+</li>
+<li>
+<p><strong>Servidores y servicios:</strong></p>
+</li>
+<li>Instancia EC2 para servidor web (Apache/Nginx)</li>
+<li>Instancia RDS para base de datos (MySQL/PostgreSQL)</li>
+<li>Bucket S3 para almacenamiento de recursos multimedia (imágenes, videos de videojuegos)</li>
+<li>Configuración de Elastic IP (opcional, para IP estática)</li>
+</ul>
+<p><strong>2. Base de datos:</strong></p>
+<ul>
+<li><strong>Diseño del modelo de datos:</strong></li>
+<li>Tabla de proyectos/videojuegos (portafolio)</li>
+<li>Tabla de desarrolladores del equipo</li>
+<li>Tabla de contactos (publishers, partners)</li>
+<li>Tabla de recursos multimedia (imágenes, videos)</li>
+<li>
+<p>Tabla de usuarios/administradores</p>
+</li>
+<li>
+<p><strong>Configuración de RDS:</strong></p>
+</li>
+<li>Selección de motor de base de datos (MySQL/PostgreSQL)</li>
+<li>Configuración de instancia (tipo, almacenamiento)</li>
+<li>Configuración de subred privada</li>
+<li>Configuración de seguridad (Security Groups, encriptación)</li>
+<li>Estrategia de backup automático</li>
+</ul>
+<p><strong>3. Aplicación web:</strong></p>
+<ul>
+<li><strong>Funcionalidades principales:</strong></li>
+<li>Portafolio de videojuegos (mostrar proyectos desarrollados o en desarrollo)</li>
+<li>Información sobre el estudio (equipo, historia, misión)</li>
+<li>Sección de contacto</li>
+<li>Blog/Noticias (opcional, para actualizaciones del estudio)</li>
+<li>
+<p>Integración con S3 para recursos multimedia</p>
+</li>
+<li>
+<p><strong>Tecnologías:</strong></p>
+</li>
+<li>WordPress (CMS) o aplicación web personalizada</li>
+<li>Integración con RDS para base de datos</li>
+<li>Integración con S3 para almacenamiento de recursos</li>
+<li>Diseño responsive</li>
+</ul>
+<p><strong>4. Almacenamiento en S3:</strong></p>
+<ul>
+<li><strong>Configuración de buckets:</strong></li>
+<li>Bucket para imágenes de videojuegos</li>
+<li>Bucket para videos/trailers</li>
+<li>Bucket para recursos del sitio web (opcional)</li>
+<li>Configuración de políticas de acceso</li>
+<li>Configuración de versionado (opcional)</li>
+</ul>
+<p><strong>5. Seguridad:</strong></p>
+<ul>
+<li><strong>Medidas de seguridad en AWS:</strong></li>
+<li>Configuración de Security Groups (firewall a nivel de instancia)</li>
+<li>Configuración de Network ACLs (opcional, firewall a nivel de subred)</li>
+<li>Configuración de HTTPS/SSL con certificado (AWS Certificate Manager)</li>
+<li>Configuración de IAM (roles y políticas para acceso a servicios)</li>
+<li>Encriptación de datos en reposo (RDS, S3)</li>
+<li>Encriptación de datos en tránsito (HTTPS)</li>
+</ul>
+<p><strong>6. Respaldo y alta disponibilidad:</strong></p>
+<ul>
+<li><strong>Estrategia de backup:</strong></li>
+<li>Snapshots automáticos de RDS</li>
+<li>Backup de instancias EC2 (AMI)</li>
+<li>Versionado en S3</li>
+<li>
+<p>Estrategia de recuperación ante desastres</p>
+</li>
+<li>
+<p><strong>Alta disponibilidad (opcional, según alcance):</strong></p>
+</li>
+<li>Múltiples Availability Zones</li>
+<li>Load Balancer (opcional)</li>
+</ul>
+<p><strong>7. Monitorización y gestión:</strong></p>
+<ul>
+<li><strong>Servicios de AWS:</strong></li>
+<li>CloudWatch para monitorización</li>
+<li>Configuración de alertas</li>
+<li>Logs de aplicación</li>
+</ul>
+<p><strong>8. Documentación:</strong></p>
+<ul>
+<li><strong>Documentación técnica:</strong></li>
+<li>Diagrama de arquitectura AWS</li>
+<li>Documentación de VPC y subredes</li>
+<li>Documentación de Security Groups</li>
+<li>Guía de despliegue</li>
+<li>Guía de mantenimiento</li>
+<li>Documentación de costos estimados</li>
+</ul>
+<h4 id="03diseno-objetivos-especificos-del-diseno_1">Objetivos específicos del diseño<a class="headerlink" href="#03diseno-objetivos-especificos-del-diseno_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Diseñar arquitectura AWS:</strong> Definir VPC, subredes, instancias EC2, RDS y S3</li>
+<li><strong>Diseñar modelo de datos:</strong> Crear esquema de base de datos para gestión de proyectos, desarrolladores y contactos</li>
+<li><strong>Planificar despliegue:</strong> Definir proceso de despliegue en AWS</li>
+<li><strong>Diseñar interfaz web:</strong> Definir estructura y funcionalidades del sitio web del estudio</li>
+<li><strong>Planificar seguridad:</strong> Definir medidas de seguridad en AWS (Security Groups, IAM, encriptación)</li>
+<li><strong>Planificar respaldo:</strong> Definir estrategia de backup y recuperación en AWS</li>
+<li><strong>Estimar costos:</strong> Realizar estimación de costos mensuales de la infraestructura AWS</li>
+</ol>
+<hr />
+<h2 id="03diseno-5-planificacion-de-actividades">5. Planificación de actividades<a class="headerlink" href="#03diseno-5-planificacion-de-actividades" title="Permanent link">&para;</a></h2>
+<h3 id="03diseno-51-descomposicion-del-trabajo-edtwbs">5.1. Descomposición del trabajo (EDT/WBS)<a class="headerlink" href="#03diseno-51-descomposicion-del-trabajo-edtwbs" title="Permanent link">&para;</a></h3>
+<p>El proyecto debe descomponerse en actividades más pequeñas y manejables. La <strong>Estructura de Desglose del Trabajo (EDT)</strong> o <strong>Work Breakdown Structure (WBS)</strong> organiza el trabajo en niveles jerárquicos:</p>
+<p><strong>Ejemplo de estructura para el proyecto:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Proyecto Intermodular
+<span class="linenos" data-linenos=" 2 "></span>├── 1. Planteamiento y análisis
+<span class="linenos" data-linenos=" 3 "></span>│   ├── 1.1. Caracterización del reto
+<span class="linenos" data-linenos=" 4 "></span>│   ├── 1.2. Análisis del contexto
+<span class="linenos" data-linenos=" 5 "></span>│   ├── 1.3. Definición de alcance
+<span class="linenos" data-linenos=" 6 "></span>│   └── 1.4. Establecimiento de requisitos
+<span class="linenos" data-linenos=" 7 "></span>├── 2. Diseño y planificación
+<span class="linenos" data-linenos=" 8 "></span>│   ├── 2.1. Diseño de arquitectura
+<span class="linenos" data-linenos=" 9 "></span>│   ├── 2.2. Diseño de base de datos
+<span class="linenos" data-linenos="10 "></span>│   ├── 2.3. Diseño de aplicación web
+<span class="linenos" data-linenos="11 "></span>│   ├── 2.4. Planificación de actividades
+<span class="linenos" data-linenos="12 "></span>│   ├── 2.5. Análisis de riesgos
+<span class="linenos" data-linenos="13 "></span>│   └── 2.6. Cronograma
+<span class="linenos" data-linenos="14 "></span>├── 3. Desarrollo
+<span class="linenos" data-linenos="15 "></span>│   ├── 3.1. Configuración de infraestructura
+<span class="linenos" data-linenos="16 "></span>│   ├── 3.2. Configuración de base de datos
+<span class="linenos" data-linenos="17 "></span>│   ├── 3.3. Desarrollo de aplicación web
+<span class="linenos" data-linenos="18 "></span>│   └── 3.4. Configuración de seguridad
+<span class="linenos" data-linenos="19 "></span>├── 4. Pruebas y validación
+<span class="linenos" data-linenos="20 "></span>│   ├── 4.1. Pruebas de funcionalidad
+<span class="linenos" data-linenos="21 "></span>│   ├── 4.2. Pruebas de seguridad
+<span class="linenos" data-linenos="22 "></span>│   └── 4.3. Validación de requisitos
+<span class="linenos" data-linenos="23 "></span>├── 5. Despliegue
+<span class="linenos" data-linenos="24 "></span>│   ├── 5.1. Despliegue de infraestructura
+<span class="linenos" data-linenos="25 "></span>│   ├── 5.2. Despliegue de aplicación
+<span class="linenos" data-linenos="26 "></span>│   └── 5.3. Verificación de despliegue
+<span class="linenos" data-linenos="27 "></span>└── 6. Documentación
+<span class="linenos" data-linenos="28 "></span>    ├── 6.1. Documentación técnica
+<span class="linenos" data-linenos="29 "></span>    ├── 6.2. Documentación de usuario
+<span class="linenos" data-linenos="30 "></span>    └── 6.3. Memoria del proyecto
+</code></pre></div>
+<h3 id="03diseno-52-identificacion-de-dependencias">5.2. Identificación de dependencias<a class="headerlink" href="#03diseno-52-identificacion-de-dependencias" title="Permanent link">&para;</a></h3>
+<p>Es fundamental identificar las <strong>dependencias</strong> entre actividades:</p>
+<ul>
+<li><strong>Dependencia fin-inicio (FS):</strong> La actividad B no puede comenzar hasta que termine la actividad A</li>
+<li><strong>Dependencia inicio-inicio (SS):</strong> La actividad B puede comenzar cuando comience la actividad A</li>
+<li><strong>Dependencia fin-fin (FF):</strong> La actividad B debe terminar cuando termine la actividad A</li>
+</ul>
+<p><strong>Ejemplo de dependencias:</strong></p>
+<ul>
+<li>No se puede desarrollar la aplicación web hasta que esté configurada la base de datos</li>
+<li>No se puede desplegar la aplicación hasta que esté desarrollada y probada</li>
+<li>No se puede documentar hasta que esté implementada la solución</li>
+</ul>
+<hr />
+<h2 id="03diseno-6-gestion-de-recursos">6. Gestión de recursos<a class="headerlink" href="#03diseno-6-gestion-de-recursos" title="Permanent link">&para;</a></h2>
+<h3 id="03diseno-61-recursos-humanos">6.1. Recursos humanos<a class="headerlink" href="#03diseno-61-recursos-humanos" title="Permanent link">&para;</a></h3>
+<p><strong>Roles del equipo:</strong></p>
+<ul>
+<li><strong>Líder de proyecto:</strong> Coordinación general, comunicación con tutor</li>
+<li><strong>Administrador de sistemas:</strong> Configuración de infraestructura (Docker/AWS)</li>
+<li><strong>Desarrollador web:</strong> Desarrollo de aplicación web</li>
+<li><strong>Administrador de base de datos:</strong> Diseño e implementación de base de datos</li>
+<li><strong>Especialista en seguridad:</strong> Configuración de medidas de seguridad</li>
+<li><strong>Documentador:</strong> Elaboración de documentación técnica</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Distribución de roles</p>
+<p>En equipos pequeños, cada miembro puede asumir múltiples roles. Lo importante es que todos los roles estén cubiertos y las responsabilidades estén claras.</p>
+</div>
+<h3 id="03diseno-62-recursos-tecnicos">6.2. Recursos técnicos<a class="headerlink" href="#03diseno-62-recursos-tecnicos" title="Permanent link">&para;</a></h3>
+<p><strong>Herramientas necesarias:</strong></p>
+<ul>
+<li><strong>Control de versiones:</strong> Git, GitHub</li>
+<li><strong>Planificación:</strong> Trello, Microsoft Planner</li>
+<li><strong>Documentación:</strong> MkDocs, Markdown</li>
+<li><strong>Desarrollo:</strong> Editor de código (VS Code, etc.)</li>
+<li><strong>Infraestructura:</strong> Docker, AWS (según reto elegido)</li>
+<li><strong>Diagramas:</strong> Draw.io, Lucidchart, PlantUML</li>
+<li><strong>Comunicación:</strong> Microsoft Teams, correo electrónico</li>
+</ul>
+<p><strong>Infraestructura:</strong></p>
+<ul>
+<li><strong>Acceso a internet:</strong> Para trabajo remoto y acceso a servicios cloud</li>
+<li><strong>Equipos informáticos:</strong> Ordenadores para desarrollo y documentación</li>
+<li><strong>Cuentas de servicios:</strong> GitHub, AWS (cuenta educativa), Microsoft 365</li>
+</ul>
+<hr />
+<h2 id="03diseno-7-analisis-de-riesgos">7. Análisis de riesgos<a class="headerlink" href="#03diseno-7-analisis-de-riesgos" title="Permanent link">&para;</a></h2>
+<h3 id="03diseno-71-identificacion-de-riesgos">7.1. Identificación de riesgos<a class="headerlink" href="#03diseno-71-identificacion-de-riesgos" title="Permanent link">&para;</a></h3>
+<p>Es fundamental identificar los <strong>riesgos</strong> que pueden afectar al proyecto:</p>
+<p><strong>Categorías de riesgos:</strong></p>
+<ol>
+<li><strong>Riesgos técnicos:</strong></li>
+</ol>
+<ul>
+<li>Complejidad técnica mayor de la esperada</li>
+<li>Problemas de compatibilidad entre tecnologías</li>
+<li>Falta de conocimientos técnicos específicos</li>
+<li>Problemas de rendimiento o escalabilidad</li>
+</ul>
+<ol start="2">
+<li><strong>Riesgos de recursos:</strong></li>
+</ol>
+<ul>
+<li>Disponibilidad limitada de tiempo</li>
+<li>Falta de acceso a herramientas o servicios</li>
+<li>Problemas de conectividad o infraestructura</li>
+</ul>
+<ol start="3">
+<li><strong>Riesgos de planificación:</strong></li>
+</ol>
+<ul>
+<li>Estimación incorrecta de tiempos</li>
+<li>Cambios en los requisitos</li>
+<li>Dependencias no identificadas</li>
+</ul>
+<ol start="4">
+<li><strong>Riesgos de equipo:</strong></li>
+</ol>
+<ul>
+<li>Falta de comunicación</li>
+<li>Conflictos en el equipo</li>
+<li>Ausencias o falta de compromiso</li>
+</ul>
+<h3 id="03diseno-72-evaluacion-de-riesgos">7.2. Evaluación de riesgos<a class="headerlink" href="#03diseno-72-evaluacion-de-riesgos" title="Permanent link">&para;</a></h3>
+<p>Para cada riesgo identificado, se debe evaluar:</p>
+<ul>
+<li><strong>Probabilidad:</strong> Alta, Media, Baja</li>
+<li><strong>Impacto:</strong> Alto, Medio, Bajo</li>
+<li><strong>Prioridad:</strong> Calculada según probabilidad e impacto</li>
+</ul>
+<p><strong>Matriz de riesgos:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Riesgo</th>
+<th style="text-align: center;">Probabilidad</th>
+<th style="text-align: center;">Impacto</th>
+<th style="text-align: center;">Prioridad</th>
+<th style="text-align: left;">Estrategia de mitigación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Falta de conocimientos en Docker/AWS</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">Alto</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: left;">Formación previa, documentación, consulta con tutor</td>
+</tr>
+<tr>
+<td style="text-align: left;">Problemas de conectividad</td>
+<td style="text-align: center;">Baja</td>
+<td style="text-align: center;">Medio</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: left;">Trabajo offline cuando sea posible, backup de datos</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cambios en requisitos</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: center;">Medio</td>
+<td style="text-align: center;">Media</td>
+<td style="text-align: left;">Documentación clara de requisitos, comunicación constante</td>
+</tr>
+<tr>
+<td style="text-align: left;">Falta de tiempo</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: center;">Alto</td>
+<td style="text-align: center;">Alta</td>
+<td style="text-align: left;">Planificación realista, priorización de tareas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="03diseno-73-plan-de-mitigacion">7.3. Plan de mitigación<a class="headerlink" href="#03diseno-73-plan-de-mitigacion" title="Permanent link">&para;</a></h3>
+<p>Para cada riesgo de alta prioridad, se debe definir una <strong>estrategia de mitigación</strong>:</p>
+<ul>
+<li><strong>Prevención:</strong> Acciones para evitar que el riesgo ocurra</li>
+<li><strong>Contingencia:</strong> Plan de acción si el riesgo se materializa</li>
+<li><strong>Responsable:</strong> Persona encargada de gestionar el riesgo</li>
+</ul>
+<hr />
+<h2 id="03diseno-8-cronograma">8. Cronograma<a class="headerlink" href="#03diseno-8-cronograma" title="Permanent link">&para;</a></h2>
+<h3 id="03diseno-81-fases-del-proyecto">8.1. Fases del proyecto<a class="headerlink" href="#03diseno-81-fases-del-proyecto" title="Permanent link">&para;</a></h3>
+<p>El proyecto se divide en <strong>fases</strong> principales:</p>
+<ol>
+<li><strong>Fase 1: Planteamiento y análisis</strong> (UT2)</li>
+</ol>
+<ul>
+<li>Caracterización del reto</li>
+<li>Análisis del contexto</li>
+<li>Definición de alcance y requisitos</li>
+</ul>
+<ol start="2">
+<li><strong>Fase 2: Diseño y planificación</strong> (UT3)</li>
+</ol>
+<ul>
+<li>Diseño de arquitectura</li>
+<li>Diseño de base de datos</li>
+<li>Planificación de actividades</li>
+<li>Cronograma detallado</li>
+</ul>
+<ol start="3">
+<li><strong>Fase 3: Desarrollo iterativo</strong> (UT4)</li>
+</ol>
+<ul>
+<li>Configuración de infraestructura</li>
+<li>Desarrollo de aplicación</li>
+<li>Implementación de funcionalidades</li>
+</ul>
+<ol start="4">
+<li><strong>Fase 4: Integración y validación</strong> (UT5)</li>
+</ol>
+<ul>
+<li>Integración de componentes</li>
+<li>Pruebas y validación</li>
+<li>Corrección de errores</li>
+</ul>
+<ol start="5">
+<li><strong>Fase 5: Despliegue</strong> (UT6)</li>
+</ol>
+<ul>
+<li>Despliegue de infraestructura</li>
+<li>Despliegue de aplicación</li>
+<li>Verificación de despliegue</li>
+</ul>
+<ol start="6">
+<li><strong>Fase 6: Documentación</strong> (UT7)</li>
+</ol>
+<ul>
+<li>Documentación técnica</li>
+<li>Memoria del proyecto</li>
+</ul>
+<ol start="7">
+<li><strong>Fase 7: Presentación y defensa</strong> (UT8)</li>
+</ol>
+<ul>
+<li>Preparación de presentación</li>
+<li>Defensa del proyecto</li>
+</ul>
+<h3 id="03diseno-82-hitos-y-entregables">8.2. Hitos y entregables<a class="headerlink" href="#03diseno-82-hitos-y-entregables" title="Permanent link">&para;</a></h3>
+<p><strong>Hitos principales:</strong></p>
+<ul>
+<li><strong>Hito 1:</strong> Caracterización del reto completada</li>
+<li><strong>Hito 2:</strong> Diseño y planificación completados</li>
+<li><strong>Hito 3:</strong> Infraestructura configurada y funcionando</li>
+<li><strong>Hito 4:</strong> Aplicación web desarrollada y probada</li>
+<li><strong>Hito 5:</strong> Proyecto desplegado y operativo</li>
+<li><strong>Hito 6:</strong> Documentación completa</li>
+<li><strong>Hito 7:</strong> Presentación y defensa realizada</li>
+</ul>
+<p><strong>Entregables por fase:</strong></p>
+<ul>
+<li><strong>Fase 1:</strong> Documento de caracterización, análisis y requisitos</li>
+<li><strong>Fase 2:</strong> Documento de diseño, planificación y cronograma</li>
+<li><strong>Fase 3:</strong> Infraestructura configurada, código de aplicación</li>
+<li><strong>Fase 4:</strong> Solución integrada y validada</li>
+<li><strong>Fase 5:</strong> Solución desplegada y accesible</li>
+<li><strong>Fase 6:</strong> Documentación técnica completa</li>
+<li><strong>Fase 7:</strong> Presentación y defensa del proyecto</li>
+</ul>
+<hr />
+<h2 id="03diseno-9-actividades-y-entregables">9. Actividades y entregables<a class="headerlink" href="#03diseno-9-actividades-y-entregables" title="Permanent link">&para;</a></h2>
+<p><a name="RG301"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG301</strong>. (RA2 // RA2.1, RA2.2, RA2.3, RA2.4, RA2.5, RA2.6, RA2.7 y RA2.8 // 30p). Trabajo en grupos de 2-3 personas para diseñar la solución técnica completa del proyecto, planificar todas las actividades, recursos y riesgos, y crear un cronograma detallado que permita ejecutar el proyecto de forma organizada.<ul>
+<li><strong><a href="#rg301_diseno_planificacion">RETO GRUPAL: Diseño de la solución y planificación</a></strong>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="03diseno-10-recursos-y-referencias">10. Recursos y referencias<a class="headerlink" href="#03diseno-10-recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<h3 id="03diseno-documentacion-oficial">Documentación oficial<a class="headerlink" href="#03diseno-documentacion-oficial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://support.microsoft.com/es-es/planner">Microsoft Planner - Documentación oficial</a></li>
+<li><a href="https://trello.com/es/guide/trello-101">Trello - Guía oficial</a></li>
+<li><a href="https://docs.aws.amazon.com/">AWS - Documentación oficial</a></li>
+<li><a href="https://docs.docker.com/">Docker - Documentación oficial</a></li>
+</ul>
+<h3 id="03diseno-herramientas">Herramientas<a class="headerlink" href="#03diseno-herramientas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Trello:</strong> <a href="https://trello.com">https://trello.com</a></li>
+<li><strong>Microsoft Planner:</strong> Disponible en <a href="https://www.microsoft.com/es-es/microsoft-365">Microsoft 365</a></li>
+<li><strong>Draw.io / diagrams.net:</strong> <a href="https://app.diagrams.net/">https://app.diagrams.net/</a></li>
+<li><strong>Lucidchart:</strong> <a href="https://www.lucidchart.com/">https://www.lucidchart.com/</a></li>
+<li><strong>PlantUML:</strong> <a href="https://plantuml.com/">https://plantuml.com/</a></li>
+</ul>
+<h3 id="03diseno-lecturas-recomendadas">Lecturas recomendadas<a class="headerlink" href="#03diseno-lecturas-recomendadas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>"The Art of Project Management" - Scott Berkun</li>
+<li>"Scrum: The Art of Doing Twice the Work in Half the Time" - Jeff Sutherland</li>
+<li>Documentación sobre gestión de proyectos y planificación</li>
+</ul>
+<hr />
+<h2 id="03diseno-glosario-de-terminos-y-acronimos">Glosario de términos y acrónimos<a class="headerlink" href="#03diseno-glosario-de-terminos-y-acronimos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>EDT:</strong> Estructura de Desglose del Trabajo</li>
+<li><strong>WBS:</strong> Work Breakdown Structure</li>
+<li><strong>VPC:</strong> Virtual Private Cloud (AWS)</li>
+<li><strong>EC2:</strong> Elastic Compute Cloud (AWS)</li>
+<li><strong>RDS:</strong> Relational Database Service (AWS)</li>
+<li><strong>S3:</strong> Simple Storage Service (AWS)</li>
+<li><strong>IAM:</strong> Identity and Access Management (AWS)</li>
+<li><strong>CMS:</strong> Content Management System</li>
+<li><strong>RA2:</strong> Resultado de Aprendizaje 2 (Planificación)</li>
+</ul></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
@@ -1715,6 +2410,14 @@ Esta guía incluye:
             
                 .print-site-enumerate-headings #02planteamiento_reto h3:before { content: '3.' counter(counter-02planteamiento_reto-2) '.' counter(counter-02planteamiento_reto-3) ' ' }
                 .print-site-enumerate-headings #02planteamiento_reto h3 {  counter-increment: counter-02planteamiento_reto-3 }
+            
+.print-site-enumerate-headings #03diseno > h1:before { content: '4 ' }
+
+                .print-site-enumerate-headings #03diseno h2:before { content: '4.' counter(counter-03diseno-2) ' ' }
+                .print-site-enumerate-headings #03diseno h2 {  counter-reset: counter-03diseno-3 ;  counter-increment: counter-03diseno-2 }
+            
+                .print-site-enumerate-headings #03diseno h3:before { content: '4.' counter(counter-03diseno-2) '.' counter(counter-03diseno-3) ' ' }
+                .print-site-enumerate-headings #03diseno h3 {  counter-increment: counter-03diseno-3 }
             </style>
 
 

@@ -1,0 +1,1922 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Práctica guiada de implementación de infraestructura completa en AWS para CreviPlay. Despliegue profesional con VPC, EC2, RDS, S3, seguridad y alta disponibilidad.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/AWS_CreviPlay_Infraestructura_Completa.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Guía Práctica - Infraestructura completa de TI para CreviPlay con AWS - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Guía Práctica - Infraestructura completa de TI para CreviPlay con AWS - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Práctica guiada de implementación de infraestructura completa en AWS para CreviPlay. Despliegue profesional con VPC, EC2, RDS, S3, seguridad y alta disponibilidad." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/AWS_CreviPlay_Infraestructura_Completa.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/AWS_CreviPlay_Infraestructura_Completa.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Guía Práctica - Infraestructura completa de TI para CreviPlay con AWS - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Práctica guiada de implementación de infraestructura completa en AWS para CreviPlay. Despliegue profesional con VPC, EC2, RDS, S3, seguridad y alta disponibilidad." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/AWS_CreviPlay_Infraestructura_Completa.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#infraestructura-completa-de-ti-para-creviplay-con-aws" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guía Práctica - Infraestructura completa de TI para CreviPlay con AWS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-la-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos de la práctica
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-de-la-solucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura de la solución
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arquitectura de la solución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-basica-opcion-1-inicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura básica (Opción 1: Inicio)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-avanzada-opcion-2-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura avanzada (Opción 2: Producción)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-preparacion-del-entorno-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 1: Preparación del entorno AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 1: Preparación del entorno AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-acceder-a-aws-mediante-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Acceder a AWS mediante Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-configurar-aws-cli-opcional-pero-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Configurar AWS CLI (opcional pero recomendado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-verificar-permisos-y-servicios-disponibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Verificar permisos y servicios disponibles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-crear-vpc-y-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 2: Crear VPC y red
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 2: Crear VPC y red">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-crear-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Crear VPC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-crear-subredes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Crear subredes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-crear-internet-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Crear Internet Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configurar-route-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Configurar Route Tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-opcional-crear-nat-gateway-para-subred-privada" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. (Opcional) Crear NAT Gateway para subred privada
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-configurar-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 3: Configurar Security Groups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 3: Configurar Security Groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-security-group-para-servidor-web-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Security Group para servidor web (EC2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-security-group-para-base-de-datos-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Security Group para base de datos (RDS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-crear-instancia-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 4: Crear instancia EC2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 4: Crear instancia EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-lanzar-instancia-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Lanzar instancia EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-conectar-a-la-instancia-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Conectar a la instancia EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-instalar-y-configurar-servidor-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Instalar y configurar servidor web
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-instalar-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Instalar WordPress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-configurar-rds-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 5: Configurar RDS (Base de datos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 5: Configurar RDS (Base de datos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-crear-instancia-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Crear instancia RDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-obtener-endpoint-de-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Obtener endpoint de RDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-configurar-wordpress-para-conectar-a-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Configurar WordPress para conectar a RDS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-6-configurar-s3-para-recursos-multimedia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 6: Configurar S3 para recursos multimedia
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 6: Configurar S3 para recursos multimedia">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-crear-buckets-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Crear buckets S3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-configurar-politicas-de-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Configurar políticas de bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-asignar-rol-iam-a-instancia-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Asignar rol IAM a instancia EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-instalar-aws-cli-en-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Instalar AWS CLI en EC2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-7-configurar-https-con-aws-certificate-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 7: Configurar HTTPS con AWS Certificate Manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 7: Configurar HTTPS con AWS Certificate Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-solicitar-certificado-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. Solicitar certificado SSL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-validar-certificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Validar certificado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-configurar-application-load-balancer-opcional-para-produccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Configurar Application Load Balancer (opcional, para producción)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-8-configurar-respaldo-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 8: Configurar respaldo automático
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 8: Configurar respaldo automático">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-snapshots-automaticos-de-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. Snapshots automáticos de RDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-backup-de-instancia-ec2-ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. Backup de instancia EC2 (AMI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-versionado-en-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3. Versionado en S3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-9-verificacion-y-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 9: Verificación y pruebas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 9: Verificación y pruebas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-verificar-conectividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. Verificar conectividad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-acceder-a-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2. Acceder a WordPress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-probar-carga-de-archivos-a-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3. Probar carga de archivos a S3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-10-monitorizacion-con-cloudwatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 10: Monitorización con CloudWatch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 10: Monitorización con CloudWatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-habilitar-monitorizacion-detallada" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1. Habilitar monitorización detallada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-configurar-logs-de-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2. Configurar logs de aplicación
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-11-estimacion-de-costos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 11: Estimación de costos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 11: Estimación de costos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-costos-mensuales-estimados-free-tier-agotado" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1. Costos mensuales estimados (Free Tier agotado)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-optimizacion-de-costos" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2. Optimización de costos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-12-documentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso 12: Documentación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso 12: Documentación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-crear-diagrama-de-arquitectura" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.1. Crear diagrama de arquitectura
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-documentar-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.2. Documentar configuración
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-no-puedo-conectar-por-ssh-a-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: No puedo conectar por SSH a EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-wordpress-no-se-conecta-a-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: WordPress no se conecta a RDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-no-puedo-acceder-a-s3-desde-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: No puedo acceder a S3 desde EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-la-instancia-ec2-no-tiene-acceso-a-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema: La instancia EC2 no tiene acceso a Internet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problemas-especificos-de-learner-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problemas específicos de Learner Lab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Próximos pasos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos adicionales
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="infraestructura-completa-de-ti-para-creviplay-con-aws">Infraestructura completa de TI para CreviPlay con AWS<a class="headerlink" href="#infraestructura-completa-de-ti-para-creviplay-con-aws" title="Permanent link">&para;</a></h1>
+<p>Esta práctica guía la implementación de una infraestructura completa de TI en AWS para <strong>CreviPlay</strong>, un estudio de desarrollo de videojuegos independiente. Se desplegará una arquitectura escalable y segura que incluye servidor web, base de datos, almacenamiento y todos los servicios necesarios para operar profesionalmente.</p>
+<h2 id="objetivos-de-la-practica">Objetivos de la práctica<a class="headerlink" href="#objetivos-de-la-practica" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Diseñar y configurar una VPC con subredes públicas y privadas</li>
+<li>Desplegar instancia EC2 para servidor web con WordPress</li>
+<li>Configurar RDS para base de datos MySQL/PostgreSQL</li>
+<li>Configurar buckets S3 para almacenamiento de recursos multimedia</li>
+<li>Implementar medidas de seguridad (Security Groups, IAM, encriptación)</li>
+<li>Configurar respaldo automático y alta disponibilidad</li>
+<li>Documentar la arquitectura completa</li>
+</ul>
+<h2 id="arquitectura-de-la-solucion">Arquitectura de la solución<a class="headerlink" href="#arquitectura-de-la-solucion" title="Permanent link">&para;</a></h2>
+<p>La arquitectura propuesta separa los servicios en diferentes capas y zonas de disponibilidad para garantizar seguridad, escalabilidad y alta disponibilidad.</p>
+<h3 id="arquitectura-basica-opcion-1-inicio">Arquitectura básica (Opción 1: Inicio)<a class="headerlink" href="#arquitectura-basica-opcion-1-inicio" title="Permanent link">&para;</a></h3>
+<p>Esta arquitectura es ideal para comenzar y entender los conceptos fundamentales:</p>
+<pre class="mermaid"><code>graph TB
+    Internet[Internet] --&gt; IGW[Internet Gateway]
+    IGW --&gt; VPC[VPC 10.0.0.0/16]
+
+    subgraph VPC
+        subgraph PublicSubnet[Subred Pública&lt;br/&gt;10.0.1.0/24&lt;br/&gt;AZ: us-east-1a]
+            EC2[EC2 Instance&lt;br/&gt;WordPress/Apache&lt;br/&gt;t2.micro]
+        end
+
+        subgraph PrivateSubnet[Subred Privada&lt;br/&gt;10.0.2.0/24&lt;br/&gt;AZ: us-east-1b]
+            RDS[RDS MySQL&lt;br/&gt;db.t2.micro]
+        end
+
+        EC2 --&gt;|Puerto 3306| RDS
+    end
+
+    subgraph S3Services[S3 Buckets]
+        S3Images[S3: creviplay-images&lt;br/&gt;Imágenes de videojuegos]
+        S3Videos[S3: creviplay-videos&lt;br/&gt;Videos y trailers]
+    end
+
+    EC2 --&gt;|API Calls| S3Images
+    EC2 --&gt;|API Calls| S3Videos
+
+    style VPC fill:#e1f5ff
+    style PublicSubnet fill:#fff4e6
+    style PrivateSubnet fill:#ffe6e6
+    style S3Services fill:#e6ffe6</code></pre>
+<h3 id="arquitectura-avanzada-opcion-2-produccion">Arquitectura avanzada (Opción 2: Producción)<a class="headerlink" href="#arquitectura-avanzada-opcion-2-produccion" title="Permanent link">&para;</a></h3>
+<p>Arquitectura más robusta con múltiples zonas de disponibilidad y balanceador de carga:</p>
+<pre class="mermaid"><code>graph TB
+    Internet[Internet] --&gt; ALB[Application Load Balancer]
+    ALB --&gt; IGW[Internet Gateway]
+    IGW --&gt; VPC[VPC 10.0.0.0/16]
+
+    subgraph VPC
+        subgraph PublicSubnet1[Subred Pública 1&lt;br/&gt;10.0.1.0/24&lt;br/&gt;AZ: us-east-1a]
+            EC2_1[EC2 Instance 1&lt;br/&gt;WordPress&lt;br/&gt;t2.small]
+            NAT1[NAT Gateway]
+        end
+
+        subgraph PublicSubnet2[Subred Pública 2&lt;br/&gt;10.0.3.0/24&lt;br/&gt;AZ: us-east-1b]
+            EC2_2[EC2 Instance 2&lt;br/&gt;WordPress&lt;br/&gt;t2.small]
+            NAT2[NAT Gateway]
+        end
+
+        subgraph PrivateSubnet1[Subred Privada 1&lt;br/&gt;10.0.2.0/24&lt;br/&gt;AZ: us-east-1a]
+            RDS_1[RDS MySQL&lt;br/&gt;Primary&lt;br/&gt;db.t2.small]
+        end
+
+        subgraph PrivateSubnet2[Subred Privada 2&lt;br/&gt;10.0.4.0/24&lt;br/&gt;AZ: us-east-1b]
+            RDS_2[RDS MySQL&lt;br/&gt;Standby&lt;br/&gt;db.t2.small]
+        end
+
+        ALB --&gt; EC2_1
+        ALB --&gt; EC2_2
+        EC2_1 --&gt;|Puerto 3306| RDS_1
+        EC2_2 --&gt;|Puerto 3306| RDS_1
+        RDS_1 -.-&gt;|Replicación| RDS_2
+        EC2_1 --&gt;|Internet| NAT1
+        EC2_2 --&gt;|Internet| NAT2
+    end
+
+    subgraph S3Services[S3 Buckets]
+        S3Images[S3: creviplay-images&lt;br/&gt;Imágenes de videojuegos]
+        S3Videos[S3: creviplay-videos&lt;br/&gt;Videos y trailers]
+        S3Backups[S3: creviplay-backups&lt;br/&gt;Backups automáticos]
+    end
+
+    EC2_1 --&gt;|API Calls| S3Images
+    EC2_2 --&gt;|API Calls| S3Images
+    EC2_1 --&gt;|API Calls| S3Videos
+    EC2_2 --&gt;|API Calls| S3Videos
+    RDS_1 --&gt;|Snapshots| S3Backups
+
+    subgraph Security[Seguridad]
+        SG_Web[Security Group Web&lt;br/&gt;HTTP: 80, HTTPS: 443]
+        SG_DB[Security Group DB&lt;br/&gt;MySQL: 3306 desde SG_Web]
+        SG_ALB[Security Group ALB&lt;br/&gt;HTTP: 80, HTTPS: 443]
+        IAM_Role[IAM Role&lt;br/&gt;EC2 → S3 Access]
+    end
+
+    style VPC fill:#e1f5ff
+    style PublicSubnet1 fill:#fff4e6
+    style PublicSubnet2 fill:#fff4e6
+    style PrivateSubnet1 fill:#ffe6e6
+    style PrivateSubnet2 fill:#ffe6e6
+    style S3Services fill:#e6ffe6
+    style Security fill:#f0e6ff</code></pre>
+<h2 id="paso-1-preparacion-del-entorno-aws">Paso 1: Preparación del entorno AWS<a class="headerlink" href="#paso-1-preparacion-del-entorno-aws" title="Permanent link">&para;</a></h2>
+<h3 id="11-acceder-a-aws-mediante-learner-lab">1.1. Acceder a AWS mediante Learner Lab<a class="headerlink" href="#11-acceder-a-aws-mediante-learner-lab" title="Permanent link">&para;</a></h3>
+<p>El alumnado tiene acceso a AWS a través de <strong>AWS Educate Learner Lab</strong>, que proporciona un entorno de práctica con créditos limitados para realizar las prácticas.</p>
+<p><strong>Acceso a Learner Lab:</strong></p>
+<ol>
+<li>Accede a tu cuenta de <strong>AWS Educate</strong> (proporcionada por el centro educativo)</li>
+<li>Navega a <strong>Learner Lab</strong> desde el dashboard</li>
+<li>Inicia el laboratorio haciendo clic en <strong>Start Lab</strong></li>
+<li>Espera a que el entorno se inicialice (puede tardar 1-2 minutos)</li>
+<li>Una vez iniciado, tendrás acceso a:
+   - Consola de AWS con permisos limitados pero suficientes para esta práctica
+   - Créditos AWS para usar servicios (con límites)
+   - Acceso temporal (típicamente 4 horas, renovable)</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Importante sobre Learner Lab</p>
+<ul>
+<li>El entorno se reinicia periódicamente, por lo que los recursos creados pueden eliminarse</li>
+<li>Los créditos son limitados, revisa el uso en el dashboard</li>
+<li>Algunos servicios pueden tener restricciones (consulta la documentación de Learner Lab)</li>
+<li>Guarda tus configuraciones y documentación fuera de AWS para no perderlas</li>
+</ul>
+</div>
+<p><strong>Si necesitas acceso permanente o más recursos:</strong></p>
+<p>Para proyectos de larga duración o producción, puedes crear una cuenta AWS personal:
+1. Accede a <a href="https://aws.amazon.com">https://aws.amazon.com</a>
+2. Crea una cuenta nueva (requiere tarjeta de crédito, pero puedes usar el tier gratuito)
+3. Activa MFA (Multi-Factor Authentication) para mayor seguridad</p>
+<h3 id="12-configurar-aws-cli-opcional-pero-recomendado">1.2. Configurar AWS CLI (opcional pero recomendado)<a class="headerlink" href="#12-configurar-aws-cli-opcional-pero-recomendado" title="Permanent link">&para;</a></h3>
+<p>Instala AWS CLI para gestionar recursos desde la línea de comandos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En Linux/Mac</span>
+<span class="linenos" data-linenos="2 "></span>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;awscliv2.zip&quot;</span>
+<span class="linenos" data-linenos="3 "></span>unzip<span class="w"> </span>awscliv2.zip
+<span class="linenos" data-linenos="4 "></span>sudo<span class="w"> </span>./aws/install
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># Verificar instalación</span>
+<span class="linenos" data-linenos="7 "></span>aws<span class="w"> </span>--version
+</code></pre></div>
+<p>Configura tus credenciales:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>aws<span class="w"> </span>configure
+</code></pre></div>
+<p><strong>Para Learner Lab:</strong>
+1. En el dashboard de Learner Lab, haz clic en <strong>AWS Details</strong>
+2. Copia las credenciales temporales (Access Key ID y Secret Access Key)
+3. Introduce:</p>
+<ul>
+<li>AWS Access Key ID: (del Learner Lab)</li>
+<li>AWS Secret Access Key: (del Learner Lab)</li>
+<li>Default region: <code>us-east-1</code> (o la región asignada en Learner Lab)</li>
+<li>Default output format: <code>json</code></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Credenciales temporales</p>
+<p>Las credenciales de Learner Lab son temporales y expiran cuando finaliza la sesión. Deberás actualizarlas cada vez que inicies un nuevo laboratorio.</p>
+</div>
+<p><strong>Para cuenta AWS personal:</strong>
+- Accede a <strong>IAM</strong> → <strong>Users</strong> → Tu usuario → <strong>Security credentials</strong>
+- Crea Access Keys si no las tienes
+- Configura AWS CLI con estas credenciales</p>
+<h3 id="13-verificar-permisos-y-servicios-disponibles">1.3. Verificar permisos y servicios disponibles<a class="headerlink" href="#13-verificar-permisos-y-servicios-disponibles" title="Permanent link">&para;</a></h3>
+<p>En Learner Lab, algunos servicios pueden tener restricciones. Verifica que puedes acceder a:</p>
+<ol>
+<li><strong>EC2</strong>: Para crear instancias</li>
+<li><strong>VPC</strong>: Para crear redes y subredes</li>
+<li><strong>RDS</strong>: Para crear bases de datos (puede tener restricciones)</li>
+<li><strong>S3</strong>: Para crear buckets</li>
+<li><strong>IAM</strong>: Para crear roles (puede tener restricciones)</li>
+</ol>
+<p>Si algún servicio no está disponible en Learner Lab, consulta con el profesorado sobre alternativas o uso de servicios equivalentes.</p>
+<h2 id="paso-2-crear-vpc-y-red">Paso 2: Crear VPC y red<a class="headerlink" href="#paso-2-crear-vpc-y-red" title="Permanent link">&para;</a></h2>
+<h3 id="21-crear-vpc">2.1. Crear VPC<a class="headerlink" href="#21-crear-vpc" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Accede a <strong>VPC</strong> → <strong>Your VPCs</strong> → <strong>Create VPC</strong></li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Name tag</strong>: <code>creviplay-vpc</code></li>
+<li><strong>IPv4 CIDR block</strong>: <code>10.0.0.0/16</code></li>
+<li><strong>Tenancy</strong>: Default
+3. Clic en <strong>Create VPC</strong></li>
+</ul>
+<h3 id="22-crear-subredes">2.2. Crear subredes<a class="headerlink" href="#22-crear-subredes" title="Permanent link">&para;</a></h3>
+<p><strong>Subred pública 1:</strong>
+1. <strong>VPC</strong> → <strong>Subnets</strong> → <strong>Create subnet</strong>
+2. Configuración:</p>
+<ul>
+<li><strong>VPC</strong>: Selecciona <code>creviplay-vpc</code></li>
+<li><strong>Subnet name</strong>: <code>creviplay-public-subnet-1</code></li>
+<li><strong>Availability Zone</strong>: <code>us-east-1a</code></li>
+<li><strong>IPv4 CIDR block</strong>: <code>10.0.1.0/24</code>
+3. Clic en <strong>Create subnet</strong></li>
+</ul>
+<p><strong>Subred privada 1:</strong>
+1. <strong>Create subnet</strong>
+2. Configuración:</p>
+<ul>
+<li><strong>VPC</strong>: <code>creviplay-vpc</code></li>
+<li><strong>Subnet name</strong>: <code>creviplay-private-subnet-1</code></li>
+<li><strong>Availability Zone</strong>: <code>us-east-1b</code></li>
+<li><strong>IPv4 CIDR block</strong>: <code>10.0.2.0/24</code>
+3. Clic en <strong>Create subnet</strong></li>
+</ul>
+<h3 id="23-crear-internet-gateway">2.3. Crear Internet Gateway<a class="headerlink" href="#23-crear-internet-gateway" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>VPC</strong> → <strong>Internet Gateways</strong> → <strong>Create internet gateway</strong></li>
+<li><strong>Name tag</strong>: <code>creviplay-igw</code></li>
+<li>Clic en <strong>Create internet gateway</strong></li>
+<li>Selecciona el IGW creado → <strong>Actions</strong> → <strong>Attach to VPC</strong></li>
+<li>Selecciona <code>creviplay-vpc</code> → <strong>Attach internet gateway</strong></li>
+</ol>
+<h3 id="24-configurar-route-tables">2.4. Configurar Route Tables<a class="headerlink" href="#24-configurar-route-tables" title="Permanent link">&para;</a></h3>
+<p><strong>Route Table pública:</strong>
+1. <strong>VPC</strong> → <strong>Route Tables</strong> → <strong>Create route table</strong>
+2. Configuración:</p>
+<ul>
+<li><strong>Name</strong>: <code>creviplay-public-rt</code></li>
+<li>
+<p><strong>VPC</strong>: <code>creviplay-vpc</code>
+3. Clic en <strong>Create route table</strong>
+4. Selecciona la tabla → <strong>Routes</strong> → <strong>Edit routes</strong> → <strong>Add route</strong></p>
+</li>
+<li>
+<p><strong>Destination</strong>: <code>0.0.0.0/0</code></p>
+</li>
+<li>
+<p><strong>Target</strong>: Selecciona el Internet Gateway <code>creviplay-igw</code>
+5. <strong>Subnet associations</strong> → <strong>Edit subnet associations</strong></p>
+</li>
+<li>
+<p>Selecciona <code>creviplay-public-subnet-1</code> → <strong>Save associations</strong></p>
+</li>
+</ul>
+<p><strong>Route Table privada:</strong>
+1. <strong>Create route table</strong>
+2. Configuración:</p>
+<ul>
+<li><strong>Name</strong>: <code>creviplay-private-rt</code></li>
+<li><strong>VPC</strong>: <code>creviplay-vpc</code>
+3. Clic en <strong>Create route table</strong>
+4. No añadas ruta a Internet (permanece privada)</li>
+</ul>
+<h3 id="25-opcional-crear-nat-gateway-para-subred-privada">2.5. (Opcional) Crear NAT Gateway para subred privada<a class="headerlink" href="#25-opcional-crear-nat-gateway-para-subred-privada" title="Permanent link">&para;</a></h3>
+<p>Si necesitas que las instancias en la subred privada accedan a Internet (para actualizaciones):</p>
+<ol>
+<li><strong>VPC</strong> → <strong>NAT Gateways</strong> → <strong>Create NAT gateway</strong></li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Subnet</strong>: <code>creviplay-public-subnet-1</code></li>
+<li>
+<p><strong>Elastic IP</strong>: Crea una nueva Elastic IP
+3. Clic en <strong>Create NAT gateway</strong>
+4. Actualiza la route table privada:</p>
+</li>
+<li>
+<p><strong>Route Tables</strong> → <code>creviplay-private-rt</code> → <strong>Routes</strong> → <strong>Edit routes</strong></p>
+</li>
+<li><strong>Add route</strong>: <code>0.0.0.0/0</code> → Target: NAT Gateway creado</li>
+</ul>
+<h2 id="paso-3-configurar-security-groups">Paso 3: Configurar Security Groups<a class="headerlink" href="#paso-3-configurar-security-groups" title="Permanent link">&para;</a></h2>
+<h3 id="31-security-group-para-servidor-web-ec2">3.1. Security Group para servidor web (EC2)<a class="headerlink" href="#31-security-group-para-servidor-web-ec2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>VPC</strong> → <strong>Security Groups</strong> → <strong>Create security group</strong></li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Name</strong>: <code>creviplay-web-sg</code></li>
+<li><strong>Description</strong>: <code>Security group for CreviPlay web server</code></li>
+<li>
+<p><strong>VPC</strong>: <code>creviplay-vpc</code>
+3. <strong>Inbound rules</strong>:</p>
+</li>
+<li>
+<p><strong>Type</strong>: SSH, <strong>Source</strong>: <code>0.0.0.0/0</code> (o tu IP específica)</p>
+</li>
+<li><strong>Type</strong>: HTTP, <strong>Source</strong>: <code>0.0.0.0/0</code></li>
+<li><strong>Type</strong>: HTTPS, <strong>Source</strong>: <code>0.0.0.0/0</code>
+4. <strong>Outbound rules</strong>: Mantener por defecto (todo el tráfico)
+5. Clic en <strong>Create security group</strong></li>
+</ul>
+<h3 id="32-security-group-para-base-de-datos-rds">3.2. Security Group para base de datos (RDS)<a class="headerlink" href="#32-security-group-para-base-de-datos-rds" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Create security group</strong></li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Name</strong>: <code>creviplay-db-sg</code></li>
+<li><strong>Description</strong>: <code>Security group for CreviPlay database</code></li>
+<li>
+<p><strong>VPC</strong>: <code>creviplay-vpc</code>
+3. <strong>Inbound rules</strong>:</p>
+</li>
+<li>
+<p><strong>Type</strong>: MySQL/Aurora (3306), <strong>Source</strong>: Selecciona <code>creviplay-web-sg</code>
+4. <strong>Outbound rules</strong>: Mantener por defecto
+5. Clic en <strong>Create security group</strong></p>
+</li>
+</ul>
+<h2 id="paso-4-crear-instancia-ec2">Paso 4: Crear instancia EC2<a class="headerlink" href="#paso-4-crear-instancia-ec2" title="Permanent link">&para;</a></h2>
+<h3 id="41-lanzar-instancia-ec2">4.1. Lanzar instancia EC2<a class="headerlink" href="#41-lanzar-instancia-ec2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>EC2</strong> → <strong>Instances</strong> → <strong>Launch instances</strong></li>
+<li><strong>Name</strong>: <code>creviplay-web-server</code></li>
+<li><strong>AMI</strong>: Selecciona <strong>Amazon Linux 2023</strong> (gratis)</li>
+<li><strong>Instance type</strong>: <code>t2.micro</code> (elegible para tier gratuito)</li>
+<li><strong>Key pair</strong>: Crea un nuevo key pair o selecciona uno existente</li>
+</ol>
+<ul>
+<li><strong>Name</strong>: <code>creviplay-keypair</code></li>
+<li><strong>Key pair type</strong>: RSA</li>
+<li><strong>Private key file format</strong>: <code>.pem</code></li>
+<li>
+<p><strong>Download</strong> el archivo <code>.pem</code> y guárdalo de forma segura
+6. <strong>Network settings</strong>:</p>
+</li>
+<li>
+<p><strong>VPC</strong>: <code>creviplay-vpc</code></p>
+</li>
+<li><strong>Subnet</strong>: <code>creviplay-public-subnet-1</code></li>
+<li><strong>Auto-assign Public IP</strong>: Enable</li>
+<li><strong>Security group</strong>: Selecciona <code>creviplay-web-sg</code>
+7. <strong>Configure storage</strong>: 8 GB gp3 (suficiente para inicio)
+8. <strong>Launch instance</strong></li>
+</ul>
+<h3 id="42-conectar-a-la-instancia-ec2">4.2. Conectar a la instancia EC2<a class="headerlink" href="#42-conectar-a-la-instancia-ec2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Cambiar permisos del archivo .pem</span>
+<span class="linenos" data-linenos="2 "></span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>creviplay-keypair.pem
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Conectar por SSH</span>
+<span class="linenos" data-linenos="5 "></span>ssh<span class="w"> </span>-i<span class="w"> </span>creviplay-keypair.pem<span class="w"> </span>ec2-user@&lt;IP_PUBLICA_EC2&gt;
+</code></pre></div>
+<h3 id="43-instalar-y-configurar-servidor-web">4.3. Instalar y configurar servidor web<a class="headerlink" href="#43-instalar-y-configurar-servidor-web" title="Permanent link">&para;</a></h3>
+<p>Una vez conectado a la instancia:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Actualizar sistema</span>
+<span class="linenos" data-linenos=" 2 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>update<span class="w"> </span>-y
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Instalar Apache</span>
+<span class="linenos" data-linenos=" 5 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>httpd<span class="w"> </span>-y
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Instalar PHP y extensiones necesarias</span>
+<span class="linenos" data-linenos=" 8 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>php<span class="w"> </span>php-mysqlnd<span class="w"> </span>php-gd<span class="w"> </span>php-xml<span class="w"> </span>php-mbstring<span class="w"> </span>-y
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Instalar MySQL client (para pruebas)</span>
+<span class="linenos" data-linenos="11 "></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>mysql<span class="w"> </span>-y
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1"># Iniciar y habilitar Apache</span>
+<span class="linenos" data-linenos="14 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
+<span class="linenos" data-linenos="15 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="c1"># Verificar estado</span>
+<span class="linenos" data-linenos="18 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>httpd
+</code></pre></div>
+<h3 id="44-instalar-wordpress">4.4. Instalar WordPress<a class="headerlink" href="#44-instalar-wordpress" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Cambiar al directorio web</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">cd</span><span class="w"> </span>/var/www/html
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1"># Descargar WordPress</span>
+<span class="linenos" data-linenos=" 5 "></span>sudo<span class="w"> </span>wget<span class="w"> </span>https://wordpress.org/latest.tar.gz
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># Extraer archivo</span>
+<span class="linenos" data-linenos=" 8 "></span>sudo<span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span>latest.tar.gz
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># Mover archivos a raíz</span>
+<span class="linenos" data-linenos="11 "></span>sudo<span class="w"> </span>mv<span class="w"> </span>wordpress/*<span class="w"> </span>.
+<span class="linenos" data-linenos="12 "></span>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>wordpress<span class="w"> </span>latest.tar.gz
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># Configurar permisos</span>
+<span class="linenos" data-linenos="15 "></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>apache:apache<span class="w"> </span>/var/www/html
+<span class="linenos" data-linenos="16 "></span>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/var/www/html
+</code></pre></div>
+<h2 id="paso-5-configurar-rds-base-de-datos">Paso 5: Configurar RDS (Base de datos)<a class="headerlink" href="#paso-5-configurar-rds-base-de-datos" title="Permanent link">&para;</a></h2>
+<h3 id="51-crear-instancia-rds">5.1. Crear instancia RDS<a class="headerlink" href="#51-crear-instancia-rds" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>RDS</strong> → <strong>Databases</strong> → <strong>Create database</strong></li>
+<li><strong>Database creation method</strong>: Standard create</li>
+<li><strong>Engine options</strong>:</li>
+</ol>
+<ul>
+<li><strong>Engine type</strong>: MySQL</li>
+<li>
+<p><strong>Version</strong>: MySQL 8.0.35 (o la más reciente)
+4. <strong>Templates</strong>: Free tier (si está disponible) o Dev/Test
+5. <strong>Settings</strong>:</p>
+</li>
+<li>
+<p><strong>DB instance identifier</strong>: <code>creviplay-db</code></p>
+</li>
+<li><strong>Master username</strong>: <code>admin</code></li>
+<li>
+<p><strong>Master password</strong>: Crea una contraseña segura y guárdala
+6. <strong>Instance configuration</strong>:</p>
+</li>
+<li>
+<p><strong>DB instance class</strong>: <code>db.t2.micro</code> (free tier) o <code>db.t3.micro</code>
+7. <strong>Storage</strong>:</p>
+</li>
+<li>
+<p><strong>Storage type</strong>: General Purpose SSD (gp3)</p>
+</li>
+<li><strong>Allocated storage</strong>: 20 GB</li>
+<li>
+<p><strong>Enable storage autoscaling</strong>: Opcional
+8. <strong>Connectivity</strong>:</p>
+</li>
+<li>
+<p><strong>VPC</strong>: <code>creviplay-vpc</code></p>
+</li>
+<li><strong>Subnet group</strong>: Crea nuevo DB subnet group<ul>
+<li><strong>Name</strong>: <code>creviplay-db-subnet-group</code></li>
+<li><strong>Subnets</strong>: Selecciona <code>creviplay-private-subnet-1</code></li>
+</ul>
+</li>
+<li><strong>Public access</strong>: No (mantener privada)</li>
+<li><strong>VPC security group</strong>: Selecciona <code>creviplay-db-sg</code></li>
+<li>
+<p><strong>Availability Zone</strong>: <code>us-east-1b</code>
+9.  <strong>Database authentication</strong>: Password authentication
+10. <strong>Additional configuration</strong>:</p>
+<ul>
+<li><strong>Initial database name</strong>: <code>creviplay_db</code></li>
+<li><strong>Backup retention period</strong>: 7 days</li>
+<li><strong>Enable automated backups</strong>: Yes
+11. <strong>Create database</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="52-obtener-endpoint-de-rds">5.2. Obtener endpoint de RDS<a class="headerlink" href="#52-obtener-endpoint-de-rds" title="Permanent link">&para;</a></h3>
+<p>Una vez creada la base de datos:</p>
+<ol>
+<li><strong>RDS</strong> → <strong>Databases</strong> → Selecciona <code>creviplay-db</code></li>
+<li>Copia el <strong>Endpoint</strong> (ejemplo: <code>creviplay-db.xxxxx.us-east-1.rds.amazonaws.com</code>)</li>
+<li>Anota el <strong>Port</strong> (3306 por defecto)</li>
+</ol>
+<h3 id="53-configurar-wordpress-para-conectar-a-rds">5.3. Configurar WordPress para conectar a RDS<a class="headerlink" href="#53-configurar-wordpress-para-conectar-a-rds" title="Permanent link">&para;</a></h3>
+<p>En la instancia EC2:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Editar archivo de configuración de WordPress</span>
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>nano<span class="w"> </span>/var/www/html/wp-config.php
+</code></pre></div>
+<p>Actualiza las siguientes líneas con los datos de RDS:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="x">define( &#39;DB_NAME&#39;, &#39;creviplay_db&#39; );</span>
+<span class="linenos" data-linenos="2 "></span><span class="x">define( &#39;DB_USER&#39;, &#39;admin&#39; );</span>
+<span class="linenos" data-linenos="3 "></span><span class="x">define( &#39;DB_PASSWORD&#39;, &#39;tu_password_rds&#39; );</span>
+<span class="linenos" data-linenos="4 "></span><span class="x">define( &#39;DB_HOST&#39;, &#39;creviplay-db.xxxxx.us-east-1.rds.amazonaws.com&#39; );</span>
+</code></pre></div>
+<h2 id="paso-6-configurar-s3-para-recursos-multimedia">Paso 6: Configurar S3 para recursos multimedia<a class="headerlink" href="#paso-6-configurar-s3-para-recursos-multimedia" title="Permanent link">&para;</a></h2>
+<h3 id="61-crear-buckets-s3">6.1. Crear buckets S3<a class="headerlink" href="#61-crear-buckets-s3" title="Permanent link">&para;</a></h3>
+<p><strong>Bucket para imágenes:</strong>
+1. <strong>S3</strong> → <strong>Buckets</strong> → <strong>Create bucket</strong>
+2. Configuración:</p>
+<ul>
+<li><strong>Bucket name</strong>: <code>creviplay-images-YYYYMMDD</code> (añade fecha para unicidad)</li>
+<li><strong>AWS Region</strong>: <code>us-east-1</code></li>
+<li><strong>Object Ownership</strong>: ACLs disabled (recomendado)</li>
+<li><strong>Block Public Access</strong>: Desmarca "Block all public access" (si necesitas acceso público)</li>
+<li><strong>Bucket Versioning</strong>: Enable (opcional, para versionado)
+3. Clic en <strong>Create bucket</strong></li>
+</ul>
+<p><strong>Bucket para videos:</strong>
+1. <strong>Create bucket</strong>
+2. Configuración:</p>
+<ul>
+<li><strong>Bucket name</strong>: <code>creviplay-videos-YYYYMMDD</code></li>
+<li>Misma configuración que el bucket de imágenes
+3. Clic en <strong>Create bucket</strong></li>
+</ul>
+<h3 id="62-configurar-politicas-de-bucket">6.2. Configurar políticas de bucket<a class="headerlink" href="#62-configurar-politicas-de-bucket" title="Permanent link">&para;</a></h3>
+<p>Para permitir que EC2 acceda a S3:</p>
+<ol>
+<li><strong>IAM</strong> → <strong>Roles</strong> → <strong>Create role</strong></li>
+<li><strong>Trusted entity type</strong>: AWS service</li>
+<li><strong>Use case</strong>: EC2</li>
+<li><strong>Permissions</strong>: Añade política <code>AmazonS3FullAccess</code> (o crea política personalizada con permisos mínimos)</li>
+<li><strong>Role name</strong>: <code>creviplay-ec2-s3-role</code></li>
+<li>Clic en <strong>Create role</strong></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota sobre Learner Lab</p>
+<p>Si estás usando Learner Lab y no puedes crear roles IAM, puedes usar una alternativa:
+- Configurar credenciales AWS directamente en la instancia EC2 (menos seguro pero funcional)
+- O usar políticas de bucket S3 que permitan acceso desde la IP de la instancia EC2
+- Consulta con el profesorado sobre las opciones disponibles en tu entorno</p>
+</div>
+<h3 id="63-asignar-rol-iam-a-instancia-ec2">6.3. Asignar rol IAM a instancia EC2<a class="headerlink" href="#63-asignar-rol-iam-a-instancia-ec2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>EC2</strong> → <strong>Instances</strong> → Selecciona <code>creviplay-web-server</code></li>
+<li><strong>Actions</strong> → <strong>Security</strong> → <strong>Modify IAM role</strong></li>
+<li>Selecciona <code>creviplay-ec2-s3-role</code></li>
+<li><strong>Update IAM role</strong></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Alternativa si no puedes usar roles IAM</p>
+<p>Si no puedes asignar un rol IAM, puedes configurar credenciales AWS en la instancia EC2:
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En la instancia EC2</span>
+<span class="linenos" data-linenos="2 "></span>aws<span class="w"> </span>configure
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Introduce las credenciales temporales de Learner Lab</span>
+</code></pre></div></p>
+</div>
+<h3 id="64-instalar-aws-cli-en-ec2">6.4. Instalar AWS CLI en EC2<a class="headerlink" href="#64-instalar-aws-cli-en-ec2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En la instancia EC2</span>
+<span class="linenos" data-linenos="2 "></span>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;awscliv2.zip&quot;</span>
+<span class="linenos" data-linenos="3 "></span>unzip<span class="w"> </span>awscliv2.zip
+<span class="linenos" data-linenos="4 "></span>sudo<span class="w"> </span>./aws/install
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># Verificar instalación</span>
+<span class="linenos" data-linenos="7 "></span>aws<span class="w"> </span>--version
+</code></pre></div>
+<p>El rol IAM permite acceso automático sin necesidad de configurar credenciales. Si usas credenciales directamente, asegúrate de no exponerlas en código o repositorios públicos.</p>
+<h2 id="paso-7-configurar-https-con-aws-certificate-manager">Paso 7: Configurar HTTPS con AWS Certificate Manager<a class="headerlink" href="#paso-7-configurar-https-con-aws-certificate-manager" title="Permanent link">&para;</a></h2>
+<h3 id="71-solicitar-certificado-ssl">7.1. Solicitar certificado SSL<a class="headerlink" href="#71-solicitar-certificado-ssl" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Certificate Manager</strong> → <strong>Request certificate</strong></li>
+<li><strong>Domain name</strong>: Tu dominio (ejemplo: <code>creviplay.example.com</code>)</li>
+</ol>
+<ul>
+<li>Si no tienes dominio, puedes usar un subdominio de Route 53
+3. <strong>Validation method</strong>: DNS validation (recomendado)
+4. <strong>Request certificate</strong></li>
+</ul>
+<h3 id="72-validar-certificado">7.2. Validar certificado<a class="headerlink" href="#72-validar-certificado" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Certificate Manager</strong> → Selecciona tu certificado</li>
+<li>Expande el dominio → Copia los registros CNAME</li>
+<li>Añade estos registros en tu proveedor DNS (o Route 53)</li>
+<li>Espera a que el estado cambie a <strong>Issued</strong></li>
+</ol>
+<h3 id="73-configurar-application-load-balancer-opcional-para-produccion">7.3. Configurar Application Load Balancer (opcional, para producción)<a class="headerlink" href="#73-configurar-application-load-balancer-opcional-para-produccion" title="Permanent link">&para;</a></h3>
+<p>Para usar HTTPS, es recomendable usar un ALB:</p>
+<ol>
+<li><strong>EC2</strong> → <strong>Load Balancers</strong> → <strong>Create Load Balancer</strong></li>
+<li><strong>Load balancer type</strong>: Application Load Balancer</li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Name</strong>: <code>creviplay-alb</code></li>
+<li><strong>Scheme</strong>: Internet-facing</li>
+<li><strong>IP address type</strong>: IPv4</li>
+<li><strong>VPC</strong>: <code>creviplay-vpc</code></li>
+<li><strong>Mappings</strong>: Selecciona ambas zonas de disponibilidad</li>
+<li>
+<p><strong>Security groups</strong>: Crea nuevo o selecciona existente (puertos 80 y 443)
+4. <strong>Listeners and routing</strong>:</p>
+</li>
+<li>
+<p><strong>Listener 1</strong>: HTTP (80) → Redirect to HTTPS</p>
+</li>
+<li><strong>Listener 2</strong>: HTTPS (443) → Target group
+5. <strong>Default SSL certificate</strong>: Selecciona tu certificado de ACM
+6. <strong>Create load balancer</strong></li>
+</ul>
+<h2 id="paso-8-configurar-respaldo-automatico">Paso 8: Configurar respaldo automático<a class="headerlink" href="#paso-8-configurar-respaldo-automatico" title="Permanent link">&para;</a></h2>
+<h3 id="81-snapshots-automaticos-de-rds">8.1. Snapshots automáticos de RDS<a class="headerlink" href="#81-snapshots-automaticos-de-rds" title="Permanent link">&para;</a></h3>
+<p>RDS ya está configurado con backups automáticos (configurado en el paso 5.1). Para crear snapshot manual:</p>
+<ol>
+<li><strong>RDS</strong> → <strong>Databases</strong> → Selecciona <code>creviplay-db</code></li>
+<li><strong>Actions</strong> → <strong>Take snapshot</strong></li>
+<li><strong>Snapshot name</strong>: <code>creviplay-db-manual-YYYYMMDD</code></li>
+<li><strong>Take snapshot</strong></li>
+</ol>
+<h3 id="82-backup-de-instancia-ec2-ami">8.2. Backup de instancia EC2 (AMI)<a class="headerlink" href="#82-backup-de-instancia-ec2-ami" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>EC2</strong> → <strong>Instances</strong> → Selecciona <code>creviplay-web-server</code></li>
+<li><strong>Actions</strong> → <strong>Image and templates</strong> → <strong>Create image</strong></li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Image name</strong>: <code>creviplay-web-server-backup-YYYYMMDD</code></li>
+<li><strong>Description</strong>: <code>Backup of CreviPlay web server</code>
+4. <strong>Create image</strong></li>
+</ul>
+<h3 id="83-versionado-en-s3">8.3. Versionado en S3<a class="headerlink" href="#83-versionado-en-s3" title="Permanent link">&para;</a></h3>
+<p>Ya configurado en el paso 6.1. Para habilitar lifecycle policies:</p>
+<ol>
+<li><strong>S3</strong> → Selecciona bucket → <strong>Management</strong> → <strong>Lifecycle rules</strong></li>
+<li><strong>Create lifecycle rule</strong></li>
+<li>Configuración:</li>
+</ol>
+<ul>
+<li><strong>Rule name</strong>: <code>move-to-glacier</code></li>
+<li><strong>Rule scope</strong>: Apply to all objects</li>
+<li><strong>Transitions</strong>: After 30 days → Move to Glacier</li>
+<li><strong>Expiration</strong>: After 365 days → Delete</li>
+</ul>
+<h2 id="paso-9-verificacion-y-pruebas">Paso 9: Verificación y pruebas<a class="headerlink" href="#paso-9-verificacion-y-pruebas" title="Permanent link">&para;</a></h2>
+<h3 id="91-verificar-conectividad">9.1. Verificar conectividad<a class="headerlink" href="#91-verificar-conectividad" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde la instancia EC2, probar conexión a RDS</span>
+<span class="linenos" data-linenos="2 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>creviplay-db.xxxxx.us-east-1.rds.amazonaws.com<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Probar acceso a S3</span>
+<span class="linenos" data-linenos="5 "></span>aws<span class="w"> </span>s3<span class="w"> </span>ls
+<span class="linenos" data-linenos="6 "></span>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://creviplay-images-YYYYMMDD/
+</code></pre></div>
+<h3 id="92-acceder-a-wordpress">9.2. Acceder a WordPress<a class="headerlink" href="#92-acceder-a-wordpress" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Obtén la IP pública de tu instancia EC2</li>
+<li>Abre navegador: <code>http://&lt;IP_PUBLICA&gt;</code></li>
+<li>Completa la instalación de WordPress</li>
+<li>Verifica que la conexión a la base de datos funciona</li>
+</ol>
+<h3 id="93-probar-carga-de-archivos-a-s3">9.3. Probar carga de archivos a S3<a class="headerlink" href="#93-probar-carga-de-archivos-a-s3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Desde EC2, subir archivo de prueba</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Test file&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>test.txt
+<span class="linenos" data-linenos="3 "></span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>test.txt<span class="w"> </span>s3://creviplay-images-YYYYMMDD/
+<span class="linenos" data-linenos="4 "></span>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://creviplay-images-YYYYMMDD/
+</code></pre></div>
+<h2 id="paso-10-monitorizacion-con-cloudwatch">Paso 10: Monitorización con CloudWatch<a class="headerlink" href="#paso-10-monitorizacion-con-cloudwatch" title="Permanent link">&para;</a></h2>
+<h3 id="101-habilitar-monitorizacion-detallada">10.1. Habilitar monitorización detallada<a class="headerlink" href="#101-habilitar-monitorizacion-detallada" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>EC2</strong> → <strong>Instances</strong> → Selecciona <code>creviplay-web-server</code></li>
+<li><strong>Actions</strong> → <strong>Monitor and troubleshoot</strong> → <strong>Manage CloudWatch alarms</strong></li>
+<li>Crea alarmas para:</li>
+</ol>
+<ul>
+<li>CPU utilization &gt; 80%</li>
+<li>Network in/out</li>
+<li>Status check failed</li>
+</ul>
+<h3 id="102-configurar-logs-de-aplicacion">10.2. Configurar logs de aplicación<a class="headerlink" href="#102-configurar-logs-de-aplicacion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># En EC2, instalar CloudWatch agent</span>
+<span class="linenos" data-linenos="2 "></span>wget<span class="w"> </span>https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>rpm<span class="w"> </span>-U<span class="w"> </span>./amazon-cloudwatch-agent.rpm
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Configurar agente (requiere configuración JSON)</span>
+<span class="linenos" data-linenos="6 "></span>sudo<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl<span class="w"> </span>-a<span class="w"> </span>fetch-config<span class="w"> </span>-m<span class="w"> </span>ec2<span class="w"> </span>-c<span class="w"> </span>ssm:AmazonCloudWatch-linux
+</code></pre></div>
+<h2 id="paso-11-estimacion-de-costos">Paso 11: Estimación de costos<a class="headerlink" href="#paso-11-estimacion-de-costos" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Nota sobre Learner Lab</p>
+<p>Si estás usando <strong>AWS Educate Learner Lab</strong>, no incurrirás en costos directos ya que se utilizan créditos proporcionados por el programa educativo. Sin embargo, es importante gestionar bien los créditos disponibles y eliminar recursos cuando no los uses.</p>
+</div>
+<h3 id="111-costos-mensuales-estimados-free-tier-agotado">11.1. Costos mensuales estimados (Free Tier agotado)<a class="headerlink" href="#111-costos-mensuales-estimados-free-tier-agotado" title="Permanent link">&para;</a></h3>
+<p>Para referencia, estos son los costos aproximados si usas una cuenta AWS personal (Free Tier agotado):</p>
+<ul>
+<li><strong>EC2 t2.micro</strong>: ~$8-10/mes</li>
+<li><strong>RDS db.t2.micro</strong>: ~$15-20/mes</li>
+<li><strong>S3 Storage (10 GB)</strong>: ~$0.23/mes</li>
+<li><strong>Data Transfer</strong>: ~$0.09/GB (primeros 100 GB gratuitos)</li>
+<li><strong>NAT Gateway</strong> (si se usa): ~$32/mes + datos</li>
+<li><strong>Elastic IP</strong>: Gratis si está asociada</li>
+<li><strong>Total estimado</strong>: ~$25-35/mes (sin NAT Gateway)</li>
+</ul>
+<p><strong>En Learner Lab:</strong>
+- Los créditos cubren estos servicios durante el período del laboratorio
+- Revisa el dashboard de Learner Lab para ver el consumo de créditos
+- Elimina recursos innecesarios para optimizar el uso de créditos</p>
+<h3 id="112-optimizacion-de-costos">11.2. Optimización de costos<a class="headerlink" href="#112-optimizacion-de-costos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Usar instancias reservadas para ahorrar hasta 75%</li>
+<li>Configurar auto-scaling para reducir costos en horas de bajo tráfico</li>
+<li>Usar S3 Intelligent-Tiering para almacenamiento</li>
+<li>Habilitar compresión en CloudFront (si se usa CDN)</li>
+</ul>
+<h2 id="paso-12-documentacion">Paso 12: Documentación<a class="headerlink" href="#paso-12-documentacion" title="Permanent link">&para;</a></h2>
+<h3 id="121-crear-diagrama-de-arquitectura">12.1. Crear diagrama de arquitectura<a class="headerlink" href="#121-crear-diagrama-de-arquitectura" title="Permanent link">&para;</a></h3>
+<p>Documenta tu arquitectura usando diagramas Mermaid o draw.io con:</p>
+<ul>
+<li>VPC y subredes</li>
+<li>Instancias EC2 y RDS</li>
+<li>Security Groups y reglas</li>
+<li>Flujo de tráfico</li>
+<li>Integración con S3</li>
+</ul>
+<h3 id="122-documentar-configuracion">12.2. Documentar configuración<a class="headerlink" href="#122-documentar-configuracion" title="Permanent link">&para;</a></h3>
+<p>Crea un documento con:</p>
+<ul>
+<li>Endpoints de servicios (RDS, S3)</li>
+<li>Credenciales (guardadas de forma segura)</li>
+<li>Security Groups y reglas aplicadas</li>
+<li>Políticas IAM configuradas</li>
+<li>Procedimientos de backup y recuperación</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="problema-no-puedo-conectar-por-ssh-a-ec2">Problema: No puedo conectar por SSH a EC2<a class="headerlink" href="#problema-no-puedo-conectar-por-ssh-a-ec2" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong>
+- Verifica que el Security Group permite SSH desde tu IP
+- Verifica que la instancia tiene IP pública asignada
+- Comprueba que el key pair es correcto: <code>chmod 400 creviplay-keypair.pem</code></p>
+<h3 id="problema-wordpress-no-se-conecta-a-rds">Problema: WordPress no se conecta a RDS<a class="headerlink" href="#problema-wordpress-no-se-conecta-a-rds" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Verifica que el Security Group de RDS permite conexiones desde el Security Group de EC2</li>
+<li>Comprueba que el endpoint de RDS es correcto</li>
+<li>Verifica credenciales en <code>wp-config.php</code></li>
+<li>Prueba conexión manual: <code>mysql -h &lt;endpoint&gt; -u admin -p</code></li>
+</ul>
+<h3 id="problema-no-puedo-acceder-a-s3-desde-ec2">Problema: No puedo acceder a S3 desde EC2<a class="headerlink" href="#problema-no-puedo-acceder-a-s3-desde-ec2" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Verifica que el rol IAM está asignado a la instancia EC2</li>
+<li>Comprueba las políticas IAM del rol</li>
+<li>Verifica que AWS CLI está instalado: <code>aws --version</code></li>
+<li>Prueba: <code>aws s3 ls</code></li>
+</ul>
+<h3 id="problema-la-instancia-ec2-no-tiene-acceso-a-internet">Problema: La instancia EC2 no tiene acceso a Internet<a class="headerlink" href="#problema-la-instancia-ec2-no-tiene-acceso-a-internet" title="Permanent link">&para;</a></h3>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Verifica que la subred es pública (route table tiene ruta a Internet Gateway)</li>
+<li>Comprueba que el Security Group permite tráfico saliente</li>
+<li>Si está en subred privada, verifica NAT Gateway</li>
+</ul>
+<h3 id="problemas-especificos-de-learner-lab">Problemas específicos de Learner Lab<a class="headerlink" href="#problemas-especificos-de-learner-lab" title="Permanent link">&para;</a></h3>
+<p><strong>Problema: No puedo crear ciertos recursos (RDS, IAM roles, etc.)</strong></p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Learner Lab tiene restricciones en algunos servicios. Verifica en el dashboard qué servicios están disponibles</li>
+<li>Algunos servicios pueden requerir solicitud de acceso adicional</li>
+<li>Consulta con el profesorado sobre alternativas o servicios equivalentes</li>
+<li>Considera usar servicios alternativos (por ejemplo, instalar MySQL en EC2 en lugar de RDS si RDS no está disponible)</li>
+</ul>
+<p><strong>Problema: Se agotaron los créditos de Learner Lab</strong></p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Los créditos se renuevan periódicamente (consulta el dashboard)</li>
+<li>Optimiza el uso: elimina recursos que no estés usando</li>
+<li>Usa instancias más pequeñas (t2.micro en lugar de t2.small)</li>
+<li>Detén instancias cuando no las uses</li>
+<li>Considera usar una cuenta AWS personal con Free Tier para continuar</li>
+</ul>
+<p><strong>Problema: El laboratorio se reinició y perdí mis recursos</strong></p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Learner Lab se reinicia periódicamente. Esto es normal</li>
+<li>Documenta toda tu configuración fuera de AWS</li>
+<li>Guarda scripts de configuración, endpoints y configuraciones en tu repositorio Git</li>
+<li>Usa Infrastructure as Code (Terraform, CloudFormation) para recrear recursos rápidamente</li>
+<li>Considera exportar snapshots o AMIs si es posible antes de que se reinicie</li>
+</ul>
+<p><strong>Problema: Las credenciales de AWS CLI expiraron</strong></p>
+<p><strong>Solución:</strong></p>
+<ul>
+<li>Las credenciales de Learner Lab son temporales</li>
+<li>Obtén nuevas credenciales desde el dashboard de Learner Lab → <strong>AWS Details</strong></li>
+<li>Reconfigura AWS CLI: <code>aws configure</code></li>
+<li>Actualiza las credenciales en instancias EC2 si las estás usando</li>
+</ul>
+<h2 id="proximos-pasos">Próximos pasos<a class="headerlink" href="#proximos-pasos" title="Permanent link">&para;</a></h2>
+<p>Una vez completada esta práctica básica, puedes avanzar con:</p>
+<ol>
+<li><strong>Alta disponibilidad</strong>: Configurar múltiples instancias EC2 en diferentes AZs</li>
+<li><strong>Load Balancer</strong>: Implementar ALB para distribuir carga</li>
+<li><strong>CDN</strong>: Configurar CloudFront para acelerar contenido estático</li>
+<li><strong>Auto Scaling</strong>: Configurar Auto Scaling Groups</li>
+<li><strong>CI/CD</strong>: Integrar con CodePipeline para despliegues automáticos</li>
+<li><strong>Containerización</strong>: Migrar a ECS/EKS con Docker</li>
+<li><strong>Serverless</strong>: Implementar funciones Lambda para tareas específicas</li>
+</ol>
+<h2 id="recursos-adicionales">Recursos adicionales<a class="headerlink" href="#recursos-adicionales" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/">Documentación oficial de AWS</a></li>
+<li><a href="https://aws.amazon.com/architecture/well-architected/">AWS Well-Architected Framework</a></li>
+<li><a href="https://aws.amazon.com/free/">AWS Free Tier</a></li>
+<li><a href="https://aws.amazon.com/security/">Guía de seguridad de AWS</a></li>
+<li><a href="https://calculator.aws/">Calculadora de costos AWS</a></li>
+</ul>
+<hr />
+<p><strong>Nota importante:</strong> Esta práctica utiliza recursos que pueden generar costos. Asegúrate de:</p>
+<ul>
+<li>Usar el Free Tier cuando sea posible</li>
+<li>Eliminar recursos cuando no los uses</li>
+<li>Configurar alertas de facturación en AWS</li>
+<li>Revisar regularmente los costos en AWS Cost Explorer</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
