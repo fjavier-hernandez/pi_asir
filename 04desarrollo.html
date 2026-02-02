@@ -1,0 +1,1241 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guía para implementar la infraestructura y la aplicación web del proyecto. Primeros pasos con Docker Compose y AWS. Resumen de prácticas para sitio web corporativo e infraestructura cloud.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/04desarrollo.html">
+      
+      
+        <link rel="prev" href="03diseno.html">
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Desarrollo iterativo y pruebas - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Desarrollo iterativo y pruebas - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Guía para implementar la infraestructura y la aplicación web del proyecto. Primeros pasos con Docker Compose y AWS. Resumen de prácticas para sitio web corporativo e infraestructura cloud." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/04desarrollo.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/04desarrollo.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Desarrollo iterativo y pruebas - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Guía para implementar la infraestructura y la aplicación web del proyecto. Primeros pasos con Docker Compose y AWS. Resumen de prácticas para sitio web corporativo e infraestructura cloud." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/04desarrollo.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-desarrollo-iterativo-y-pruebas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Desarrollo iterativo y pruebas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4. Desarrollo iterativo y pruebas
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04desarrollo.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    4. Desarrollo iterativo y pruebas
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultado de aprendizaje
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-conceptos-basicos-para-el-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Conceptos básicos para el desarrollo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-retos-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Retos de desarrollo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Retos de desarrollo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-reto-1-sitio-web-corporativo-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Reto 1: Sitio web corporativo (Docker)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-reto-2-infraestructura-completa-de-ti-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Reto 2: Infraestructura completa de TI (AWS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-primeros-pasos-para-iniciar-el-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Primeros pasos para iniciar el desarrollo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Primeros pasos para iniciar el desarrollo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-primeros-pasos-con-docker-compose-reto-1-pr103" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Primeros pasos con Docker Compose (Reto 1 / PR103)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-primeros-pasos-con-aws-reto-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Primeros pasos con AWS (Reto 2)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-actividades-de-desarrollo-resumen-de-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Actividades de desarrollo (resumen de prácticas)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Actividades de desarrollo (resumen de prácticas)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-actividades-comunes-docker-y-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Actividades comunes (Docker y AWS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-actividades-especificas-docker-pr103" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Actividades específicas Docker (PR103)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-actividades-especificas-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Actividades específicas AWS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-estructura-de-la-seccion-desarrollo-en-tu-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Estructura de la sección Desarrollo en tu proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-actividades-y-entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Actividades y entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-recursos-y-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Recursos y referencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Recursos y referencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guias-practicas-completas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guías prácticas completas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación oficial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glosario-de-terminos-y-acronimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glosario de términos y acrónimos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultado de aprendizaje
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-conceptos-basicos-para-el-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Conceptos básicos para el desarrollo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-retos-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Retos de desarrollo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Retos de desarrollo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-reto-1-sitio-web-corporativo-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Reto 1: Sitio web corporativo (Docker)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-reto-2-infraestructura-completa-de-ti-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Reto 2: Infraestructura completa de TI (AWS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-primeros-pasos-para-iniciar-el-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Primeros pasos para iniciar el desarrollo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Primeros pasos para iniciar el desarrollo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-primeros-pasos-con-docker-compose-reto-1-pr103" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Primeros pasos con Docker Compose (Reto 1 / PR103)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-primeros-pasos-con-aws-reto-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Primeros pasos con AWS (Reto 2)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-actividades-de-desarrollo-resumen-de-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Actividades de desarrollo (resumen de prácticas)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Actividades de desarrollo (resumen de prácticas)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-actividades-comunes-docker-y-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Actividades comunes (Docker y AWS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-actividades-especificas-docker-pr103" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Actividades específicas Docker (PR103)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-actividades-especificas-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Actividades específicas AWS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-estructura-de-la-seccion-desarrollo-en-tu-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Estructura de la sección Desarrollo en tu proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-actividades-y-entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Actividades y entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-recursos-y-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Recursos y referencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Recursos y referencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guias-practicas-completas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guías prácticas completas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación oficial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glosario-de-terminos-y-acronimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glosario de términos y acrónimos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="4-desarrollo-iterativo-y-pruebas">4. Desarrollo iterativo y pruebas<a class="headerlink" href="#4-desarrollo-iterativo-y-pruebas" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>En esta unidad aprenderás a <strong>implementar la infraestructura</strong> diseñada, <strong>desplegar la aplicación web</strong> y <strong>realizar pruebas</strong> de funcionalidad y persistencia. Trabajarás con <strong>Docker Compose</strong> (sitio web corporativo) o <strong>AWS</strong> (infraestructura cloud), siguiendo los primeros pasos de las prácticas guiadas de los dos retos del proyecto.</p>
+</blockquote>
+<p>Esta unidad de trabajo corresponde principalmente al <strong>Resultado de Aprendizaje RA3</strong> y es fundamental para materializar el diseño en una solución funcional.</p>
+<h2 id="resultado-de-aprendizaje">Resultado de aprendizaje<a class="headerlink" href="#resultado-de-aprendizaje" title="Permanent link">&para;</a></h2>
+<p>Al finalizar esta unidad, serás capaz de:</p>
+<ul>
+<li><strong>RA3 (25%):</strong> Implementar la infraestructura y la aplicación web según el diseño planificado, realizando pruebas de funcionalidad y documentando el proceso.</li>
+</ul>
+<hr />
+<h2 id="1-conceptos-basicos-para-el-desarrollo">1. Conceptos básicos para el desarrollo<a class="headerlink" href="#1-conceptos-basicos-para-el-desarrollo" title="Permanent link">&para;</a></h2>
+<p>Para desarrollar correctamente la solución, debes abordar los siguientes aspectos:</p>
+<ol>
+<li>
+<p><strong>Configuración de infraestructura:</strong> Crear y configurar los recursos necesarios (contenedores Docker, instancias EC2, VPC, bases de datos) según el diseño de arquitectura definido en la fase anterior.</p>
+</li>
+<li>
+<p><strong>Despliegue de servicios:</strong> Instalar y configurar el servidor web (Apache), el CMS (WordPress) y el sistema gestor de base de datos (MySQL/PostgreSQL), asegurando la comunicación entre componentes.</p>
+</li>
+<li>
+<p><strong>Persistencia de datos:</strong> Configurar volúmenes (Docker) o almacenamiento (S3, RDS) para que los datos no se pierdan al reiniciar o recrear recursos.</p>
+</li>
+<li>
+<p><strong>Variables de entorno y secretos:</strong> Utilizar variables de entorno para credenciales y configuración sensible, evitando hardcodear contraseñas en el código.</p>
+</li>
+<li>
+<p><strong>Verificación y pruebas:</strong> Comprobar que la aplicación funciona correctamente, que la persistencia se mantiene y que los servicios se comunican entre sí.</p>
+</li>
+<li>
+<p><strong>Documentación del proceso:</strong> Registrar los pasos realizados, problemas encontrados y soluciones aplicadas en la sección de Desarrollo del proyecto.</p>
+</li>
+</ol>
+<hr />
+<h2 id="2-retos-de-desarrollo">2. Retos de desarrollo<a class="headerlink" href="#2-retos-de-desarrollo" title="Permanent link">&para;</a></h2>
+<p>Los dos grupos del proyecto trabajan con retos diferentes. Cada reto tiene una guía práctica completa que puedes consultar para el desarrollo detallado.</p>
+<h3 id="21-reto-1-sitio-web-corporativo-docker">2.1. Reto 1: Sitio web corporativo (Docker)<a class="headerlink" href="#21-reto-1-sitio-web-corporativo-docker" title="Permanent link">&para;</a></h3>
+<p><strong>Tecnología:</strong> Docker Compose con WordPress y MySQL.</p>
+<p><strong>Guía práctica completa:</strong> <a href="PR103_Solucion.html">PR103 - Infraestructura completa con Docker Compose</a></p>
+<h3 id="22-reto-2-infraestructura-completa-de-ti-aws">2.2. Reto 2: Infraestructura completa de TI (AWS)<a class="headerlink" href="#22-reto-2-infraestructura-completa-de-ti-aws" title="Permanent link">&para;</a></h3>
+<p><strong>Tecnología:</strong> AWS (VPC, EC2, RDS, S3).</p>
+<p><strong>Guía práctica completa:</strong> <a href="AWS_CreviPlay_Infraestructura_Completa.html">Infraestructura completa de TI con AWS</a></p>
+<hr />
+<h2 id="3-primeros-pasos-para-iniciar-el-desarrollo">3. Primeros pasos para iniciar el desarrollo<a class="headerlink" href="#3-primeros-pasos-para-iniciar-el-desarrollo" title="Permanent link">&para;</a></h2>
+<p>A continuación se resumen los <strong>primeros pasos</strong> de cada práctica para que puedas iniciar el desarrollo de forma sencilla. Para los pasos detallados, consulta la guía completa de tu reto.</p>
+<h3 id="31-primeros-pasos-con-docker-compose-reto-1-pr103">3.1. Primeros pasos con Docker Compose (Reto 1 / PR103)<a class="headerlink" href="#31-primeros-pasos-con-docker-compose-reto-1-pr103" title="Permanent link">&para;</a></h3>
+<p>Si tu proyecto utiliza <strong>Docker</strong> (sitio web corporativo):</p>
+<p><strong>Paso 1: Crear estructura del proyecto</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>proyecto-wordpress-docker
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>proyecto-wordpress-docker
+</code></pre></div>
+<p><strong>Paso 2: Crear archivo de variables de entorno (<code>.env</code>)</strong></p>
+<p>Crea un archivo <code>.env</code> con las credenciales (no subir a Git):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>MYSQL_ROOT_PASSWORD=root_password_segura_123
+<span class="linenos" data-linenos="2 "></span>MYSQL_DATABASE=wordpress_db
+<span class="linenos" data-linenos="3 "></span>MYSQL_USER=wordpress_user
+<span class="linenos" data-linenos="4 "></span>MYSQL_PASSWORD=wordpress_password_segura_456
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span>WORDPRESS_DB_HOST=db:3306
+<span class="linenos" data-linenos="7 "></span>WORDPRESS_DB_USER=wordpress_user
+<span class="linenos" data-linenos="8 "></span>WORDPRESS_DB_PASSWORD=wordpress_password_segura_456
+<span class="linenos" data-linenos="9 "></span>WORDPRESS_DB_NAME=wordpress_db
+</code></pre></div>
+<p><strong>Paso 3: Crear <code>docker-compose.yml</code></strong></p>
+<p>Define los servicios WordPress y MySQL con redes personalizadas (frontend y backend) y volúmenes persistentes. Consulta el archivo completo en <a href="PR103_Solucion.html#paso-2-crear-docker-composeyml">PR103_Solucion.md</a>.</p>
+<p><strong>Paso 4: Desplegar</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p><strong>Paso 5: Acceder a WordPress</strong></p>
+<p>Abre el navegador en <code>http://localhost:8080</code> y completa la instalación.</p>
+<p><strong>Paso 6: Verificar persistencia</strong></p>
+<p>Crea contenido en WordPress, ejecuta <code>docker compose down</code> y luego <code>docker compose up -d</code>. Comprueba que el contenido se mantiene.</p>
+<hr />
+<h3 id="32-primeros-pasos-con-aws-reto-2">3.2. Primeros pasos con AWS (Reto 2)<a class="headerlink" href="#32-primeros-pasos-con-aws-reto-2" title="Permanent link">&para;</a></h3>
+<p>Si tu proyecto utiliza <strong>AWS</strong> (infraestructura cloud):</p>
+<p><strong>Paso 1: Acceder a AWS</strong></p>
+<ul>
+<li>Usa <strong>AWS Educate Learner Lab</strong> (cuenta proporcionada por el centro) o cuenta AWS personal.</li>
+<li>Inicia el laboratorio y espera a que el entorno esté listo.</li>
+</ul>
+<p><strong>Paso 2: Crear VPC y red</strong></p>
+<ol>
+<li><strong>VPC</strong> → <strong>Create VPC</strong> → Nombre: <code>proyecto-vpc</code>, CIDR: <code>10.0.0.0/16</code></li>
+<li>Crear subred pública: <code>10.0.1.0/24</code> (AZ: us-east-1a)</li>
+<li>Crear subred privada: <code>10.0.2.0/24</code> (AZ: us-east-1b)</li>
+<li>Crear Internet Gateway y asociarlo a la VPC</li>
+<li>Configurar Route Tables (pública con ruta a IGW)</li>
+</ol>
+<p><strong>Paso 3: Configurar Security Groups</strong></p>
+<ul>
+<li><strong>proyecto-web-sg:</strong> SSH (22), HTTP (80), HTTPS (443)</li>
+<li><strong>proyecto-db-sg:</strong> MySQL (3306) solo desde proyecto-web-sg</li>
+</ul>
+<p><strong>Paso 4: Crear instancia EC2</strong></p>
+<ul>
+<li>AMI: Ubuntu Server 22.04 LTS</li>
+<li>Tipo: t2.micro (free tier)</li>
+<li>Subred: pública</li>
+<li>Security Group: proyecto-web-sg</li>
+<li>Crear o seleccionar key pair</li>
+<li>Usuario SSH: <code>ubuntu</code> (para conectar: <code>ssh -i clave.pem ubuntu@&lt;IP_PUBLICA&gt;</code>)</li>
+</ul>
+<p><strong>Paso 5: Instalar Apache y WordPress en EC2</strong></p>
+<p>Conectar por SSH (<code>ssh -i clave.pem ubuntu@&lt;IP_PUBLICA&gt;</code>) e instalar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2<span class="w"> </span>php<span class="w"> </span>php-mysql<span class="w"> </span>php-gd<span class="w"> </span>php-xml<span class="w"> </span>php-mbstring<span class="w"> </span>libapache2-mod-php<span class="w"> </span>-y
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>apache2
+<span class="linenos" data-linenos="4 "></span><span class="nb">cd</span><span class="w"> </span>/var/www/html<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>wget<span class="w"> </span>https://wordpress.org/latest.tar.gz
+<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span>latest.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>mv<span class="w"> </span>wordpress/*<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>wordpress<span class="w"> </span>latest.tar.gz
+<span class="linenos" data-linenos="6 "></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/html
+</code></pre></div>
+<p><strong>Paso 6: Configurar RDS (base de datos)</strong></p>
+<ul>
+<li>Crear instancia RDS MySQL en subred privada</li>
+<li>Configurar Security Group para permitir conexión desde EC2</li>
+<li>Obtener endpoint y configurar <code>wp-config.php</code> en WordPress</li>
+</ul>
+<p>Para los pasos detallados, consulta <a href="AWS_CreviPlay_Infraestructura_Completa.html">Infraestructura completa de TI con AWS</a>.</p>
+<hr />
+<h2 id="4-actividades-de-desarrollo-resumen-de-practicas">4. Actividades de desarrollo (resumen de prácticas)<a class="headerlink" href="#4-actividades-de-desarrollo-resumen-de-practicas" title="Permanent link">&para;</a></h2>
+<p>Las siguientes actividades son un resumen de las prácticas guiadas de ambos retos. Realiza las que correspondan a tu proyecto.</p>
+<h3 id="41-actividades-comunes-docker-y-aws">4.1. Actividades comunes (Docker y AWS)<a class="headerlink" href="#41-actividades-comunes-docker-y-aws" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Actividad</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: center;">Reto Docker</th>
+<th style="text-align: center;">Reto AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Preparar entorno</td>
+<td style="text-align: left;">Crear estructura de directorios / acceder a consola</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Configurar red</td>
+<td style="text-align: left;">Redes Docker o VPC y subredes</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Configurar seguridad</td>
+<td style="text-align: left;">Reglas de red, Security Groups</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desplegar base de datos</td>
+<td style="text-align: left;">MySQL en contenedor o RDS</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desplegar servidor web</td>
+<td style="text-align: left;">Apache + WordPress</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Verificar conectividad</td>
+<td style="text-align: left;">Comprobar comunicación entre servicios</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Probar persistencia</td>
+<td style="text-align: left;">Crear contenido y recrear recursos</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Documentar arquitectura</td>
+<td style="text-align: left;">Diagramas y guía de despliegue</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-actividades-especificas-docker-pr103">4.2. Actividades específicas Docker (PR103)<a class="headerlink" href="#42-actividades-especificas-docker-pr103" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crear archivo <code>.env</code> y <code>.env.example</code></li>
+<li>Definir redes frontend (172.25.0.0/16) y backend (172.26.0.0/16)</li>
+<li>Configurar volúmenes persistentes para WordPress y MySQL</li>
+<li>Verificar resolución DNS entre contenedores (<code>ping db</code>)</li>
+<li>Probar aislamiento de red (MySQL no accesible desde host)</li>
+<li>Gestionar servicios: <code>docker compose logs</code>, <code>docker compose restart</code></li>
+</ul>
+<h3 id="43-actividades-especificas-aws">4.3. Actividades específicas AWS<a class="headerlink" href="#43-actividades-especificas-aws" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crear VPC con subredes públicas y privadas</li>
+<li>Configurar Internet Gateway y Route Tables</li>
+<li>Crear Security Groups para EC2 y RDS</li>
+<li>Configurar RDS en subred privada</li>
+<li>Crear buckets S3 para imágenes y videos</li>
+<li>Configurar rol IAM para acceso EC2 → S3</li>
+<li>(Opcional) Configurar HTTPS con Certificate Manager</li>
+<li>Configurar respaldo: snapshots RDS, AMI de EC2, versionado S3</li>
+<li>Monitorización con CloudWatch</li>
+</ul>
+<hr />
+<h2 id="5-estructura-de-la-seccion-desarrollo-en-tu-proyecto">5. Estructura de la sección Desarrollo en tu proyecto<a class="headerlink" href="#5-estructura-de-la-seccion-desarrollo-en-tu-proyecto" title="Permanent link">&para;</a></h2>
+<p>La sección <strong>Desarrollo</strong> de tu documento del proyecto debe incluir:</p>
+<ol>
+<li><strong>Proceso de implementación:</strong> Descripción de las fases realizadas y el orden seguido.</li>
+<li><strong>Configuración de infraestructura:</strong> Pasos para crear VPC/contenedores, redes, Security Groups.</li>
+<li><strong>Despliegue de servicios:</strong> Instalación y configuración de Apache, WordPress, base de datos.</li>
+<li><strong>Dificultades encontradas:</strong> Problemas que surgieron y cómo se resolvieron.</li>
+<li><strong>Evidencias:</strong> Capturas de pantalla de la configuración, comandos utilizados, diagramas actualizados.</li>
+<li><strong>Verificación:</strong> Pruebas realizadas (acceso web, persistencia, conectividad).</li>
+</ol>
+<hr />
+<h2 id="6-actividades-y-entregables">6. Actividades y entregables<a class="headerlink" href="#6-actividades-y-entregables" title="Permanent link">&para;</a></h2>
+<p><a name="RG401"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG401</strong>. (RA3 // 30p). Trabajo en grupos de 2-3 personas para implementar la infraestructura y la aplicación web según el diseño planificado, realizando pruebas de funcionalidad y documentando el proceso en la sección de Desarrollo del proyecto.</li>
+</ul>
+<p><strong>Entregables:</strong></p>
+<ol>
+<li><strong>Infraestructura funcionando:</strong> Servidor web, base de datos y aplicación desplegados y operativos.</li>
+<li><strong>Pruebas realizadas:</strong> Evidencia de verificación de conectividad, persistencia y acceso web.</li>
+<li><strong>Documentación actualizada:</strong> Sección Desarrollo del proyecto con proceso, dificultades y soluciones.</li>
+<li><strong>Repositorio actualizado:</strong> Código de configuración (docker-compose.yml, scripts) en el repositorio.</li>
+</ol>
+<hr />
+<h2 id="7-recursos-y-referencias">7. Recursos y referencias<a class="headerlink" href="#7-recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<h3 id="guias-practicas-completas">Guías prácticas completas<a class="headerlink" href="#guias-practicas-completas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><a href="PR103_Solucion.html">PR103 - Infraestructura completa con Docker Compose</a></strong> – WordPress, MySQL, redes personalizadas, volúmenes.</li>
+<li><strong><a href="AWS_CreviPlay_Infraestructura_Completa.html">Infraestructura completa de TI con AWS</a></strong> – VPC, EC2, RDS, S3, seguridad, respaldo.</li>
+</ul>
+<h3 id="documentacion-oficial">Documentación oficial<a class="headerlink" href="#documentacion-oficial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.docker.com/compose/">Docker Compose - Documentación oficial</a></li>
+<li><a href="https://docs.docker.com/">Docker - Documentación oficial</a></li>
+<li><a href="https://docs.aws.amazon.com/">AWS - Documentación oficial</a></li>
+<li><a href="https://wordpress.org/support/">WordPress - Documentación</a></li>
+</ul>
+<hr />
+<h2 id="glosario-de-terminos-y-acronimos">Glosario de términos y acrónimos<a class="headerlink" href="#glosario-de-terminos-y-acronimos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>VPC:</strong> Virtual Private Cloud (red privada en AWS)</li>
+<li><strong>EC2:</strong> Elastic Compute Cloud (servidor virtual en AWS)</li>
+<li><strong>RDS:</strong> Relational Database Service (base de datos gestionada en AWS)</li>
+<li><strong>S3:</strong> Simple Storage Service (almacenamiento de objetos en AWS)</li>
+<li><strong>Security Group:</strong> Reglas de firewall a nivel de instancia en AWS</li>
+<li><strong>Docker Compose:</strong> Herramienta para definir y ejecutar aplicaciones multi-contenedor</li>
+<li><strong>Volumen:</strong> Almacenamiento persistente para contenedores Docker</li>
+<li><strong>RA3:</strong> Resultado de Aprendizaje 3 (Desarrollo)</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="03diseno.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 3. Diseño de la solución y planificación">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                3. Diseño de la solución y planificación
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

@@ -314,6 +314,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04desarrollo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Desarrollo iterativo y pruebas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -369,6 +389,15 @@
   <a href="#03diseno" class="md-nav__link">
     <span class="md-ellipsis">
       3. Diseño de la solución y planificación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Desarrollo iterativo y pruebas
     </span>
   </a>
   
@@ -2387,6 +2416,258 @@ Esta guía incluye:
 <li><strong>IAM:</strong> Identity and Access Management (AWS)</li>
 <li><strong>CMS:</strong> Content Management System</li>
 <li><strong>RA2:</strong> Resultado de Aprendizaje 2 (Planificación)</li>
+</ul></section><section class="print-page" id="04desarrollo" heading-number="5"><h1 id="04desarrollo-4-desarrollo-iterativo-y-pruebas">4. Desarrollo iterativo y pruebas<a class="headerlink" href="#04desarrollo-4-desarrollo-iterativo-y-pruebas" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>En esta unidad aprenderás a <strong>implementar la infraestructura</strong> diseñada, <strong>desplegar la aplicación web</strong> y <strong>realizar pruebas</strong> de funcionalidad y persistencia. Trabajarás con <strong>Docker Compose</strong> (sitio web corporativo) o <strong>AWS</strong> (infraestructura cloud), siguiendo los primeros pasos de las prácticas guiadas de los dos retos del proyecto.</p>
+</blockquote>
+<p>Esta unidad de trabajo corresponde principalmente al <strong>Resultado de Aprendizaje RA3</strong> y es fundamental para materializar el diseño en una solución funcional.</p>
+<h2 id="04desarrollo-resultado-de-aprendizaje">Resultado de aprendizaje<a class="headerlink" href="#04desarrollo-resultado-de-aprendizaje" title="Permanent link">&para;</a></h2>
+<p>Al finalizar esta unidad, serás capaz de:</p>
+<ul>
+<li><strong>RA3 (25%):</strong> Implementar la infraestructura y la aplicación web según el diseño planificado, realizando pruebas de funcionalidad y documentando el proceso.</li>
+</ul>
+<hr />
+<h2 id="04desarrollo-1-conceptos-basicos-para-el-desarrollo">1. Conceptos básicos para el desarrollo<a class="headerlink" href="#04desarrollo-1-conceptos-basicos-para-el-desarrollo" title="Permanent link">&para;</a></h2>
+<p>Para desarrollar correctamente la solución, debes abordar los siguientes aspectos:</p>
+<ol>
+<li>
+<p><strong>Configuración de infraestructura:</strong> Crear y configurar los recursos necesarios (contenedores Docker, instancias EC2, VPC, bases de datos) según el diseño de arquitectura definido en la fase anterior.</p>
+</li>
+<li>
+<p><strong>Despliegue de servicios:</strong> Instalar y configurar el servidor web (Apache), el CMS (WordPress) y el sistema gestor de base de datos (MySQL/PostgreSQL), asegurando la comunicación entre componentes.</p>
+</li>
+<li>
+<p><strong>Persistencia de datos:</strong> Configurar volúmenes (Docker) o almacenamiento (S3, RDS) para que los datos no se pierdan al reiniciar o recrear recursos.</p>
+</li>
+<li>
+<p><strong>Variables de entorno y secretos:</strong> Utilizar variables de entorno para credenciales y configuración sensible, evitando hardcodear contraseñas en el código.</p>
+</li>
+<li>
+<p><strong>Verificación y pruebas:</strong> Comprobar que la aplicación funciona correctamente, que la persistencia se mantiene y que los servicios se comunican entre sí.</p>
+</li>
+<li>
+<p><strong>Documentación del proceso:</strong> Registrar los pasos realizados, problemas encontrados y soluciones aplicadas en la sección de Desarrollo del proyecto.</p>
+</li>
+</ol>
+<hr />
+<h2 id="04desarrollo-2-retos-de-desarrollo">2. Retos de desarrollo<a class="headerlink" href="#04desarrollo-2-retos-de-desarrollo" title="Permanent link">&para;</a></h2>
+<p>Los dos grupos del proyecto trabajan con retos diferentes. Cada reto tiene una guía práctica completa que puedes consultar para el desarrollo detallado.</p>
+<h3 id="04desarrollo-21-reto-1-sitio-web-corporativo-docker">2.1. Reto 1: Sitio web corporativo (Docker)<a class="headerlink" href="#04desarrollo-21-reto-1-sitio-web-corporativo-docker" title="Permanent link">&para;</a></h3>
+<p><strong>Tecnología:</strong> Docker Compose con WordPress y MySQL.</p>
+<p><strong>Guía práctica completa:</strong> <a href="#pr103_solucion">PR103 - Infraestructura completa con Docker Compose</a></p>
+<h3 id="04desarrollo-22-reto-2-infraestructura-completa-de-ti-aws">2.2. Reto 2: Infraestructura completa de TI (AWS)<a class="headerlink" href="#04desarrollo-22-reto-2-infraestructura-completa-de-ti-aws" title="Permanent link">&para;</a></h3>
+<p><strong>Tecnología:</strong> AWS (VPC, EC2, RDS, S3).</p>
+<p><strong>Guía práctica completa:</strong> <a href="#aws_creviplay_infraestructura_completa">Infraestructura completa de TI con AWS</a></p>
+<hr />
+<h2 id="04desarrollo-3-primeros-pasos-para-iniciar-el-desarrollo">3. Primeros pasos para iniciar el desarrollo<a class="headerlink" href="#04desarrollo-3-primeros-pasos-para-iniciar-el-desarrollo" title="Permanent link">&para;</a></h2>
+<p>A continuación se resumen los <strong>primeros pasos</strong> de cada práctica para que puedas iniciar el desarrollo de forma sencilla. Para los pasos detallados, consulta la guía completa de tu reto.</p>
+<h3 id="04desarrollo-31-primeros-pasos-con-docker-compose-reto-1-pr103">3.1. Primeros pasos con Docker Compose (Reto 1 / PR103)<a class="headerlink" href="#04desarrollo-31-primeros-pasos-con-docker-compose-reto-1-pr103" title="Permanent link">&para;</a></h3>
+<p>Si tu proyecto utiliza <strong>Docker</strong> (sitio web corporativo):</p>
+<p><strong>Paso 1: Crear estructura del proyecto</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>proyecto-wordpress-docker
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>proyecto-wordpress-docker
+</code></pre></div>
+<p><strong>Paso 2: Crear archivo de variables de entorno (<code>.env</code>)</strong></p>
+<p>Crea un archivo <code>.env</code> con las credenciales (no subir a Git):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>MYSQL_ROOT_PASSWORD=root_password_segura_123
+<span class="linenos" data-linenos="2 "></span>MYSQL_DATABASE=wordpress_db
+<span class="linenos" data-linenos="3 "></span>MYSQL_USER=wordpress_user
+<span class="linenos" data-linenos="4 "></span>MYSQL_PASSWORD=wordpress_password_segura_456
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span>WORDPRESS_DB_HOST=db:3306
+<span class="linenos" data-linenos="7 "></span>WORDPRESS_DB_USER=wordpress_user
+<span class="linenos" data-linenos="8 "></span>WORDPRESS_DB_PASSWORD=wordpress_password_segura_456
+<span class="linenos" data-linenos="9 "></span>WORDPRESS_DB_NAME=wordpress_db
+</code></pre></div>
+<p><strong>Paso 3: Crear <code>docker-compose.yml</code></strong></p>
+<p>Define los servicios WordPress y MySQL con redes personalizadas (frontend y backend) y volúmenes persistentes. Consulta el archivo completo en <a href="#pr103_solucion-paso-2-crear-docker-composeyml">PR103_Solucion.md</a>.</p>
+<p><strong>Paso 4: Desplegar</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p><strong>Paso 5: Acceder a WordPress</strong></p>
+<p>Abre el navegador en <code>http://localhost:8080</code> y completa la instalación.</p>
+<p><strong>Paso 6: Verificar persistencia</strong></p>
+<p>Crea contenido en WordPress, ejecuta <code>docker compose down</code> y luego <code>docker compose up -d</code>. Comprueba que el contenido se mantiene.</p>
+<hr />
+<h3 id="04desarrollo-32-primeros-pasos-con-aws-reto-2">3.2. Primeros pasos con AWS (Reto 2)<a class="headerlink" href="#04desarrollo-32-primeros-pasos-con-aws-reto-2" title="Permanent link">&para;</a></h3>
+<p>Si tu proyecto utiliza <strong>AWS</strong> (infraestructura cloud):</p>
+<p><strong>Paso 1: Acceder a AWS</strong></p>
+<ul>
+<li>Usa <strong>AWS Educate Learner Lab</strong> (cuenta proporcionada por el centro) o cuenta AWS personal.</li>
+<li>Inicia el laboratorio y espera a que el entorno esté listo.</li>
+</ul>
+<p><strong>Paso 2: Crear VPC y red</strong></p>
+<ol>
+<li><strong>VPC</strong> → <strong>Create VPC</strong> → Nombre: <code>proyecto-vpc</code>, CIDR: <code>10.0.0.0/16</code></li>
+<li>Crear subred pública: <code>10.0.1.0/24</code> (AZ: us-east-1a)</li>
+<li>Crear subred privada: <code>10.0.2.0/24</code> (AZ: us-east-1b)</li>
+<li>Crear Internet Gateway y asociarlo a la VPC</li>
+<li>Configurar Route Tables (pública con ruta a IGW)</li>
+</ol>
+<p><strong>Paso 3: Configurar Security Groups</strong></p>
+<ul>
+<li><strong>proyecto-web-sg:</strong> SSH (22), HTTP (80), HTTPS (443)</li>
+<li><strong>proyecto-db-sg:</strong> MySQL (3306) solo desde proyecto-web-sg</li>
+</ul>
+<p><strong>Paso 4: Crear instancia EC2</strong></p>
+<ul>
+<li>AMI: Ubuntu Server 22.04 LTS</li>
+<li>Tipo: t2.micro (free tier)</li>
+<li>Subred: pública</li>
+<li>Security Group: proyecto-web-sg</li>
+<li>Crear o seleccionar key pair</li>
+<li>Usuario SSH: <code>ubuntu</code> (para conectar: <code>ssh -i clave.pem ubuntu@&lt;IP_PUBLICA&gt;</code>)</li>
+</ul>
+<p><strong>Paso 5: Instalar Apache y WordPress en EC2</strong></p>
+<p>Conectar por SSH (<code>ssh -i clave.pem ubuntu@&lt;IP_PUBLICA&gt;</code>) e instalar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2<span class="w"> </span>php<span class="w"> </span>php-mysql<span class="w"> </span>php-gd<span class="w"> </span>php-xml<span class="w"> </span>php-mbstring<span class="w"> </span>libapache2-mod-php<span class="w"> </span>-y
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>apache2
+<span class="linenos" data-linenos="4 "></span><span class="nb">cd</span><span class="w"> </span>/var/www/html<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>wget<span class="w"> </span>https://wordpress.org/latest.tar.gz
+<span class="linenos" data-linenos="5 "></span>sudo<span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span>latest.tar.gz<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>mv<span class="w"> </span>wordpress/*<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>wordpress<span class="w"> </span>latest.tar.gz
+<span class="linenos" data-linenos="6 "></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/html
+</code></pre></div>
+<p><strong>Paso 6: Configurar RDS (base de datos)</strong></p>
+<ul>
+<li>Crear instancia RDS MySQL en subred privada</li>
+<li>Configurar Security Group para permitir conexión desde EC2</li>
+<li>Obtener endpoint y configurar <code>wp-config.php</code> en WordPress</li>
+</ul>
+<p>Para los pasos detallados, consulta <a href="#aws_creviplay_infraestructura_completa">Infraestructura completa de TI con AWS</a>.</p>
+<hr />
+<h2 id="04desarrollo-4-actividades-de-desarrollo-resumen-de-practicas">4. Actividades de desarrollo (resumen de prácticas)<a class="headerlink" href="#04desarrollo-4-actividades-de-desarrollo-resumen-de-practicas" title="Permanent link">&para;</a></h2>
+<p>Las siguientes actividades son un resumen de las prácticas guiadas de ambos retos. Realiza las que correspondan a tu proyecto.</p>
+<h3 id="04desarrollo-41-actividades-comunes-docker-y-aws">4.1. Actividades comunes (Docker y AWS)<a class="headerlink" href="#04desarrollo-41-actividades-comunes-docker-y-aws" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Actividad</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: center;">Reto Docker</th>
+<th style="text-align: center;">Reto AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Preparar entorno</td>
+<td style="text-align: left;">Crear estructura de directorios / acceder a consola</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Configurar red</td>
+<td style="text-align: left;">Redes Docker o VPC y subredes</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Configurar seguridad</td>
+<td style="text-align: left;">Reglas de red, Security Groups</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desplegar base de datos</td>
+<td style="text-align: left;">MySQL en contenedor o RDS</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Desplegar servidor web</td>
+<td style="text-align: left;">Apache + WordPress</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Verificar conectividad</td>
+<td style="text-align: left;">Comprobar comunicación entre servicios</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Probar persistencia</td>
+<td style="text-align: left;">Crear contenido y recrear recursos</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr>
+<td style="text-align: left;">Documentar arquitectura</td>
+<td style="text-align: left;">Diagramas y guía de despliegue</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+</tbody>
+</table>
+<h3 id="04desarrollo-42-actividades-especificas-docker-pr103">4.2. Actividades específicas Docker (PR103)<a class="headerlink" href="#04desarrollo-42-actividades-especificas-docker-pr103" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crear archivo <code>.env</code> y <code>.env.example</code></li>
+<li>Definir redes frontend (172.25.0.0/16) y backend (172.26.0.0/16)</li>
+<li>Configurar volúmenes persistentes para WordPress y MySQL</li>
+<li>Verificar resolución DNS entre contenedores (<code>ping db</code>)</li>
+<li>Probar aislamiento de red (MySQL no accesible desde host)</li>
+<li>Gestionar servicios: <code>docker compose logs</code>, <code>docker compose restart</code></li>
+</ul>
+<h3 id="04desarrollo-43-actividades-especificas-aws">4.3. Actividades específicas AWS<a class="headerlink" href="#04desarrollo-43-actividades-especificas-aws" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crear VPC con subredes públicas y privadas</li>
+<li>Configurar Internet Gateway y Route Tables</li>
+<li>Crear Security Groups para EC2 y RDS</li>
+<li>Configurar RDS en subred privada</li>
+<li>Crear buckets S3 para imágenes y videos</li>
+<li>Configurar rol IAM para acceso EC2 → S3</li>
+<li>(Opcional) Configurar HTTPS con Certificate Manager</li>
+<li>Configurar respaldo: snapshots RDS, AMI de EC2, versionado S3</li>
+<li>Monitorización con CloudWatch</li>
+</ul>
+<hr />
+<h2 id="04desarrollo-5-estructura-de-la-seccion-desarrollo-en-tu-proyecto">5. Estructura de la sección Desarrollo en tu proyecto<a class="headerlink" href="#04desarrollo-5-estructura-de-la-seccion-desarrollo-en-tu-proyecto" title="Permanent link">&para;</a></h2>
+<p>La sección <strong>Desarrollo</strong> de tu documento del proyecto debe incluir:</p>
+<ol>
+<li><strong>Proceso de implementación:</strong> Descripción de las fases realizadas y el orden seguido.</li>
+<li><strong>Configuración de infraestructura:</strong> Pasos para crear VPC/contenedores, redes, Security Groups.</li>
+<li><strong>Despliegue de servicios:</strong> Instalación y configuración de Apache, WordPress, base de datos.</li>
+<li><strong>Dificultades encontradas:</strong> Problemas que surgieron y cómo se resolvieron.</li>
+<li><strong>Evidencias:</strong> Capturas de pantalla de la configuración, comandos utilizados, diagramas actualizados.</li>
+<li><strong>Verificación:</strong> Pruebas realizadas (acceso web, persistencia, conectividad).</li>
+</ol>
+<hr />
+<h2 id="04desarrollo-6-actividades-y-entregables">6. Actividades y entregables<a class="headerlink" href="#04desarrollo-6-actividades-y-entregables" title="Permanent link">&para;</a></h2>
+<p><a name="RG401"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG401</strong>. (RA3 // 30p). Trabajo en grupos de 2-3 personas para implementar la infraestructura y la aplicación web según el diseño planificado, realizando pruebas de funcionalidad y documentando el proceso en la sección de Desarrollo del proyecto.</li>
+</ul>
+<p><strong>Entregables:</strong></p>
+<ol>
+<li><strong>Infraestructura funcionando:</strong> Servidor web, base de datos y aplicación desplegados y operativos.</li>
+<li><strong>Pruebas realizadas:</strong> Evidencia de verificación de conectividad, persistencia y acceso web.</li>
+<li><strong>Documentación actualizada:</strong> Sección Desarrollo del proyecto con proceso, dificultades y soluciones.</li>
+<li><strong>Repositorio actualizado:</strong> Código de configuración (docker-compose.yml, scripts) en el repositorio.</li>
+</ol>
+<hr />
+<h2 id="04desarrollo-7-recursos-y-referencias">7. Recursos y referencias<a class="headerlink" href="#04desarrollo-7-recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<h3 id="04desarrollo-guias-practicas-completas">Guías prácticas completas<a class="headerlink" href="#04desarrollo-guias-practicas-completas" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><a href="#pr103_solucion">PR103 - Infraestructura completa con Docker Compose</a></strong> – WordPress, MySQL, redes personalizadas, volúmenes.</li>
+<li><strong><a href="#aws_creviplay_infraestructura_completa">Infraestructura completa de TI con AWS</a></strong> – VPC, EC2, RDS, S3, seguridad, respaldo.</li>
+</ul>
+<h3 id="04desarrollo-documentacion-oficial">Documentación oficial<a class="headerlink" href="#04desarrollo-documentacion-oficial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://docs.docker.com/compose/">Docker Compose - Documentación oficial</a></li>
+<li><a href="https://docs.docker.com/">Docker - Documentación oficial</a></li>
+<li><a href="https://docs.aws.amazon.com/">AWS - Documentación oficial</a></li>
+<li><a href="https://wordpress.org/support/">WordPress - Documentación</a></li>
+</ul>
+<hr />
+<h2 id="04desarrollo-glosario-de-terminos-y-acronimos">Glosario de términos y acrónimos<a class="headerlink" href="#04desarrollo-glosario-de-terminos-y-acronimos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>VPC:</strong> Virtual Private Cloud (red privada en AWS)</li>
+<li><strong>EC2:</strong> Elastic Compute Cloud (servidor virtual en AWS)</li>
+<li><strong>RDS:</strong> Relational Database Service (base de datos gestionada en AWS)</li>
+<li><strong>S3:</strong> Simple Storage Service (almacenamiento de objetos en AWS)</li>
+<li><strong>Security Group:</strong> Reglas de firewall a nivel de instancia en AWS</li>
+<li><strong>Docker Compose:</strong> Herramienta para definir y ejecutar aplicaciones multi-contenedor</li>
+<li><strong>Volumen:</strong> Almacenamiento persistente para contenedores Docker</li>
+<li><strong>RA3:</strong> Resultado de Aprendizaje 3 (Desarrollo)</li>
 </ul></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
@@ -2418,6 +2699,14 @@ Esta guía incluye:
             
                 .print-site-enumerate-headings #03diseno h3:before { content: '4.' counter(counter-03diseno-2) '.' counter(counter-03diseno-3) ' ' }
                 .print-site-enumerate-headings #03diseno h3 {  counter-increment: counter-03diseno-3 }
+            
+.print-site-enumerate-headings #04desarrollo > h1:before { content: '5 ' }
+
+                .print-site-enumerate-headings #04desarrollo h2:before { content: '5.' counter(counter-04desarrollo-2) ' ' }
+                .print-site-enumerate-headings #04desarrollo h2 {  counter-reset: counter-04desarrollo-3 ;  counter-increment: counter-04desarrollo-2 }
+            
+                .print-site-enumerate-headings #04desarrollo h3:before { content: '5.' counter(counter-04desarrollo-2) '.' counter(counter-04desarrollo-3) ' ' }
+                .print-site-enumerate-headings #04desarrollo h3 {  counter-increment: counter-04desarrollo-3 }
             </style>
 
 
