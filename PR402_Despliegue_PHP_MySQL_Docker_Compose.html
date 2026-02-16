@@ -691,12 +691,14 @@
 <h3 id="01-lanzar-una-instancia-ec2-ubuntu-server">0.1 Lanzar una instancia EC2 (Ubuntu Server)<a class="headerlink" href="#01-lanzar-una-instancia-ec2-ubuntu-server" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Ir a <strong>AWS → EC2 → Launch Instance</strong>.</li>
-<li>Configuración:
-   - <strong>Nombre:</strong> <code>docker-php-mysql</code> (o el de tu proyecto).
-   - <strong>AMI:</strong> <strong>Ubuntu Server 22.04 LTS</strong> (seleccionar imagen Ubuntu Server, no Amazon Linux).
-   - <strong>Tipo:</strong> t3.micro (free tier).
-   - Crear un nuevo par de claves y descargarlo.</li>
+<li>Configuración:</li>
 </ol>
+<ul>
+<li><strong>Nombre:</strong> <code>docker-php-mysql</code> (o el de tu proyecto).</li>
+<li><strong>AMI:</strong> <strong>Ubuntu Server 22.04 LTS</strong> (seleccionar imagen Ubuntu Server, no Amazon Linux).</li>
+<li><strong>Tipo:</strong> t3.micro (free tier).</li>
+<li>Crear un nuevo par de claves y descargarlo.</li>
+</ul>
 <h3 id="02-configurar-el-security-group">0.2 Configurar el Security Group<a class="headerlink" href="#02-configurar-el-security-group" title="Permanent link">&para;</a></h3>
 <p>Abrir los siguientes puertos:</p>
 <table>
