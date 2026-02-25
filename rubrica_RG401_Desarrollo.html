@@ -1,0 +1,799 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resumen de puntos clave y rúbrica de corrección del reto RG401 (implementación de infraestructura y aplicación web).">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/rubrica_RG401_Desarrollo.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Rúbrica RG401 - Desarrollo iterativo y pruebas - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Rúbrica RG401 - Desarrollo iterativo y pruebas - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Resumen de puntos clave y rúbrica de corrección del reto RG401 (implementación de infraestructura y aplicación web)." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/rubrica_RG401_Desarrollo.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/rubrica_RG401_Desarrollo.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Rúbrica RG401 - Desarrollo iterativo y pruebas - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Resumen de puntos clave y rúbrica de corrección del reto RG401 (implementación de infraestructura y aplicación web)." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/rubrica_RG401_Desarrollo.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rg401-desarrollo-iterativo-y-pruebas-rubrica-de-correccion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rúbrica RG401 - Desarrollo iterativo y pruebas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04desarrollo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Desarrollo iterativo y pruebas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-se-evalua-en-el-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Qué se evalúa en el reto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-entregables-que-se-revisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Entregables que se revisan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rubrica-de-evaluacion-30-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Rúbrica de evaluación (30 puntos)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Rúbrica de evaluación (30 puntos)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-resumen-por-criterio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Resumen por criterio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-niveles-de-desempeno-por-criterio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Niveles de desempeño por criterio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Niveles de desempeño por criterio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c1-infraestructura-y-despliegue-10-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      C1. Infraestructura y despliegue (10 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c2-pruebas-y-verificacion-6-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      C2. Pruebas y verificación (6 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c3-documentacion-de-desarrollo-8-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      C3. Documentación de desarrollo (8 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c4-repositorio-y-codigo-6-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      C4. Repositorio y código (6 puntos)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-uso-rapido-en-correccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Uso rápido en corrección
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="rg401-desarrollo-iterativo-y-pruebas-rubrica-de-correccion">RG401 – Desarrollo iterativo y pruebas (Rúbrica de corrección)<a class="headerlink" href="#rg401-desarrollo-iterativo-y-pruebas-rubrica-de-correccion" title="Permanent link">&para;</a></h1>
+<p><strong>Resultado de Aprendizaje:</strong> RA3<br />
+<strong>Puntuación total:</strong> 30 puntos<br />
+<strong>Trabajo en grupo:</strong> 2–3 personas</p>
+<hr />
+<h2 id="1-que-se-evalua-en-el-reto">1. Qué se evalúa en el reto<a class="headerlink" href="#1-que-se-evalua-en-el-reto" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Infraestructura y despliegue (RA3)</strong>  </li>
+<li>Servidor web, base de datos y aplicación desplegados y operativos.  </li>
+<li>Configuración correcta de red (Docker o VPC/subredes según reto).  </li>
+<li>
+<p>Servicios accesibles y comunicados entre sí.</p>
+</li>
+<li>
+<p><strong>Pruebas y verificación</strong>  </p>
+</li>
+<li>Evidencia de verificación de conectividad entre servicios.  </li>
+<li>Comprobación de persistencia de datos (si aplica).  </li>
+<li>
+<p>Acceso web funcionando y comprobado.</p>
+</li>
+<li>
+<p><strong>Documentación de desarrollo</strong>  </p>
+</li>
+<li>Sección Desarrollo del proyecto con proceso de implementación.  </li>
+<li>Dificultades encontradas y soluciones aplicadas.  </li>
+<li>
+<p>Evidencias (capturas, comandos, diagramas actualizados).</p>
+</li>
+<li>
+<p><strong>Repositorio y código</strong>  </p>
+</li>
+<li>Código de configuración en el repositorio (docker-compose.yml, scripts, etc.).  </li>
+<li>Estructura del proyecto actualizada y coherente con lo documentado.</li>
+</ul>
+<hr />
+<h2 id="2-entregables-que-se-revisan">2. Entregables que se revisan<a class="headerlink" href="#2-entregables-que-se-revisan" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Infraestructura funcionando</strong><br />
+   - Servidor web, base de datos y aplicación desplegados y operativos.<br />
+   - Formato: evidencia mediante capturas o enlace a recurso accesible.</p>
+</li>
+<li>
+<p><strong>Pruebas realizadas</strong><br />
+   - Evidencia de verificación de conectividad, persistencia y acceso web.<br />
+   - Formato: capturas o descripción en la documentación del proyecto.</p>
+</li>
+<li>
+<p><strong>Documentación actualizada</strong><br />
+   - Sección Desarrollo del proyecto con proceso, dificultades y soluciones.<br />
+   - Formato: Markdown o PDF en el repositorio (GitHub Pages o docs).</p>
+</li>
+<li>
+<p><strong>Repositorio actualizado</strong><br />
+   - Código de configuración (docker-compose.yml, scripts) en el repositorio.<br />
+   - Formato: repositorio Git accesible con estructura coherente.</p>
+</li>
+</ol>
+<hr />
+<h2 id="3-rubrica-de-evaluacion-30-puntos">3. Rúbrica de evaluación (30 puntos)<a class="headerlink" href="#3-rubrica-de-evaluacion-30-puntos" title="Permanent link">&para;</a></h2>
+<h3 id="31-resumen-por-criterio">3.1 Resumen por criterio<a class="headerlink" href="#31-resumen-por-criterio" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Máx. puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Infraestructura y despliegue</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Pruebas y verificación</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Documentación de desarrollo</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Repositorio y código</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>30</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-niveles-de-desempeno-por-criterio">3.2 Niveles de desempeño por criterio<a class="headerlink" href="#32-niveles-de-desempeno-por-criterio" title="Permanent link">&para;</a></h3>
+<h4 id="c1-infraestructura-y-despliegue-10-puntos">C1. Infraestructura y despliegue (10 puntos)<a class="headerlink" href="#c1-infraestructura-y-despliegue-10-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Excelente (10 puntos)</strong><br />
+  Servidor web, base de datos y aplicación desplegados y operativos; configuración de red (Docker o AWS) correcta y coherente con el diseño; servicios comunicados entre sí; evidencia clara de que todo funciona.</li>
+<li><strong>Notable (7.5 puntos)</strong><br />
+  Infraestructura desplegada y operativa con pequeños fallos o mejoras pendientes; configuración de red adecuada; la mayoría de servicios funcionan correctamente.</li>
+<li><strong>Aprobado (5 puntos)</strong><br />
+  Infraestructura desplegada pero con carencias (servicios incompletos, configuración incompleta o con errores menores); requiere ajustes para estar plenamente operativa.</li>
+<li><strong>Insuficiente (0 puntos)</strong><br />
+  Infraestructura no desplegada, no operativa o con errores graves que impiden el funcionamiento de la aplicación; falta alguno de los componentes clave (servidor web, base de datos o aplicación).</li>
+</ul>
+<h4 id="c2-pruebas-y-verificacion-6-puntos">C2. Pruebas y verificación (6 puntos)<a class="headerlink" href="#c2-pruebas-y-verificacion-6-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Excelente (6 puntos)</strong><br />
+  Evidencia completa de verificación de conectividad entre servicios; persistencia comprobada (si aplica); acceso web verificado; capturas o descripción clara de las pruebas realizadas.</li>
+<li><strong>Notable (4.5 puntos)</strong><br />
+  Mayoría de pruebas realizadas y documentadas; pequeñas carencias en evidencia (por ejemplo falta comprobación de persistencia o de algún servicio).</li>
+<li><strong>Aprobado (2 puntos)</strong><br />
+  Pruebas básicas realizadas (por ejemplo solo acceso web); falta evidencia de conectividad o persistencia; documentación de pruebas superficial.</li>
+<li><strong>Insuficiente (0 puntos)</strong><br />
+  No hay evidencia de pruebas realizadas o las pruebas no demuestran que la solución funciona correctamente.</li>
+</ul>
+<h4 id="c3-documentacion-de-desarrollo-8-puntos">C3. Documentación de desarrollo (8 puntos)<a class="headerlink" href="#c3-documentacion-de-desarrollo-8-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Excelente (8 puntos)</strong><br />
+  Sección Desarrollo completa con proceso de implementación bien descrito; dificultades encontradas y soluciones aplicadas claramente explicadas; evidencias (capturas, comandos, diagramas) que apoyan el relato; estructura clara y ordenada.</li>
+<li><strong>Notable (6 puntos)</strong><br />
+  Documentación de desarrollo adecuada con proceso y dificultades/soluciones; algunas evidencias; pequeños aspectos mejorables en claridad o completitud.</li>
+<li><strong>Aprobado (4 puntos)</strong><br />
+  Sección Desarrollo presente pero poco detallada; proceso descrito de forma genérica; pocas dificultades o soluciones documentadas; evidencias escasas.</li>
+<li><strong>Insuficiente (0 puntos)</strong><br />
+  Documentación de desarrollo ausente, muy incompleta o que no permite seguir el proceso realizado; sin evidencias relevantes.</li>
+</ul>
+<h4 id="c4-repositorio-y-codigo-6-puntos">C4. Repositorio y código (6 puntos)<a class="headerlink" href="#c4-repositorio-y-codigo-6-puntos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Excelente (6 puntos)</strong><br />
+  Repositorio actualizado con código de configuración (docker-compose.yml, scripts, etc.); estructura coherente con la documentación; archivos necesarios presentes y organizados.</li>
+<li><strong>Notable (4.5 puntos)</strong><br />
+  Repositorio con la mayor parte del código de configuración; estructura aceptable; pueden faltar algunos scripts o archivos secundarios.</li>
+<li><strong>Aprobado (2 puntos)</strong><br />
+  Repositorio con código básico pero incompleto; estructura mejorable; faltan archivos relevantes (por ejemplo docker-compose.yml o equivalentes).</li>
+<li><strong>Insuficiente (0 puntos)</strong><br />
+  Repositorio sin código de configuración relevante, desactualizado o con estructura que no se corresponde con lo documentado.</li>
+</ul>
+<hr />
+<h2 id="4-uso-rapido-en-correccion">4. Uso rápido en corrección<a class="headerlink" href="#4-uso-rapido-en-correccion" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Comprobar que los entregables están disponibles (infraestructura accesible o evidenciada, documentación en repo, código en repo).  </li>
+<li>Corregir cada criterio usando los niveles anteriores.  </li>
+<li>Asignar la puntuación correspondiente en cada criterio (máx. 10, 6, 8 y 6).  </li>
+<li>Sumar la puntuación total sobre 30.</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,17 @@
+criterion,level,level_description,score
+Infraestructura y despliegue,Excelente,Servidor web base de datos y aplicación desplegados y operativos. Configuración de red (Docker o AWS) correcta y coherente con el diseño. Servicios comunicados entre sí. Evidencia clara de que todo funciona.,10
+Infraestructura y despliegue,Notable,Infraestructura desplegada y operativa con pequeños fallos o mejoras pendientes. Configuración de red adecuada. La mayoría de servicios funcionan correctamente.,7.5
+Infraestructura y despliegue,Aprobado,Infraestructura desplegada pero con carencias (servicios incompletos configuración incompleta o con errores menores). Requiere ajustes para estar plenamente operativa.,5
+Infraestructura y despliegue,Insuficiente,Infraestructura no desplegada no operativa o con errores graves que impiden el funcionamiento. Falta alguno de los componentes clave (servidor web base de datos o aplicación).,0
+Pruebas y verificación,Excelente,Evidencia completa de verificación de conectividad entre servicios. Persistencia comprobada si aplica. Acceso web verificado. Capturas o descripción clara de las pruebas realizadas.,6
+Pruebas y verificación,Notable,Mayoría de pruebas realizadas y documentadas. Pequeñas carencias en evidencia (falta comprobación de persistencia o de algún servicio).,4.5
+Pruebas y verificación,Aprobado,Pruebas básicas realizadas (solo acceso web). Falta evidencia de conectividad o persistencia. Documentación de pruebas superficial.,2
+Pruebas y verificación,Insuficiente,No hay evidencia de pruebas realizadas o las pruebas no demuestran que la solución funciona correctamente.,0
+Documentación de desarrollo,Excelente,Sección Desarrollo completa con proceso de implementación bien descrito. Dificultades encontradas y soluciones aplicadas claramente explicadas. Evidencias (capturas comandos diagramas) que apoyan el relato. Estructura clara y ordenada.,8
+Documentación de desarrollo,Notable,Documentación de desarrollo adecuada con proceso y dificultades o soluciones. Algunas evidencias. Pequeños aspectos mejorables en claridad o completitud.,6
+Documentación de desarrollo,Aprobado,Sección Desarrollo presente pero poco detallada. Proceso descrito de forma genérica. Pocas dificultades o soluciones documentadas. Evidencias escasas.,4
+Documentación de desarrollo,Insuficiente,Documentación de desarrollo ausente muy incompleta o que no permite seguir el proceso realizado. Sin evidencias relevantes.,0
+Repositorio y código,Excelente,Repositorio actualizado con código de configuración (docker-compose.yml scripts). Estructura coherente con la documentación. Archivos necesarios presentes y organizados.,6
+Repositorio y código,Notable,Repositorio con la mayor parte del código de configuración. Estructura aceptable. Pueden faltar algunos scripts o archivos secundarios.,4.5
+Repositorio y código,Aprobado,Repositorio con código básico pero incompleto. Estructura mejorable. Faltan archivos relevantes (docker-compose.yml o equivalentes).,2
+Repositorio y código,Insuficiente,Repositorio sin código de configuración relevante desactualizado o con estructura que no se corresponde con lo documentado.,0
