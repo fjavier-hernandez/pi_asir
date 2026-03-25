@@ -1,0 +1,1455 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Reto RG501 para integrar todos los contenedores del proyecto basado en Docker, añadir seguridad con evidencias y monitorización con Prometheus y Pandora FMS.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/RG501_Integracion_Seguridad_Docker.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>RG501 - Integración y seguridad con Docker - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="RG501 - Integración y seguridad con Docker - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Reto RG501 para integrar todos los contenedores del proyecto basado en Docker, añadir seguridad con evidencias y monitorización con Prometheus y Pandora FMS." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/RG501_Integracion_Seguridad_Docker.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/RG501_Integracion_Seguridad_Docker.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="RG501 - Integración y seguridad con Docker - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Reto RG501 para integrar todos los contenedores del proyecto basado en Docker, añadir seguridad con evidencias y monitorización con Prometheus y Pandora FMS." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/RG501_Integracion_Seguridad_Docker.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rg501-integracion-y-seguridad-con-docker" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RG501 - Integración y seguridad con Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04desarrollo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Desarrollo iterativo y pruebas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05integracion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Integración, seguridad y validación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-y-continuidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contexto y continuidad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-de-partida-segun-vuestro-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Punto de partida (según vuestro desarrollo)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas (resumen)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-1-hardening-del-reverse-proxy-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 1: Hardening del reverse proxy (Nginx)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guía 1: Hardening del reverse proxy (Nginx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-localizar-la-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Localizar la configuración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-cabeceras-de-seguridad-minimo-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Cabeceras de seguridad (mínimo 3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-rate-limiting-zonas-y-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Rate limiting (zonas y límites)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-2-control-de-acceso-adicional-al-panel-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 2: Control de acceso adicional al panel /admin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guía 2: Control de acceso adicional al panel /admin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-opcion-a-basic-auth-recomendada" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Opción A: Basic Auth (recomendada)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-opcion-b-restriccion-por-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Opción B: Restricción por IP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-3-backups-y-restauracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 3: Backups y restauración
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guía 3: Backups y restauración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-backup-de-mysql-con-mysqldump" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Backup de MySQL con mysqldump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-backup-de-ficheros-persistentes-wordpress-volumenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Backup de ficheros persistentes (WordPress / volúmenes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-prueba-de-restauracion-obligatoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Prueba de restauración (obligatoria)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-4-validacion-de-regresion-tras-los-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 4: Validación de regresión tras los cambios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guía 4: Validación de regresión tras los cambios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-checklist-previo-a-reinicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Checklist previo a reinicio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-reinicio-completo-del-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Reinicio completo del stack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-checklist-tras-reinicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Checklist tras reinicio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-5-https-o-preparacion-documentada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 5: HTTPS o preparación documentada
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guía 5: HTTPS o preparación documentada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-si-teneis-dominio-apuntando-a-la-elastic-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Si tenéis dominio apuntando a la Elastic IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-si-no-teneis-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Si no tenéis dominio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-6-monitorizacion-y-logs-prometheus-y-pandora-fms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 6: Monitorización y logs (Prometheus y Pandora FMS)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guía 6: Monitorización y logs (Prometheus y Pandora FMS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-principios" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Principios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-prometheus-metricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Prometheus (métricas)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-pandora-fms-monitorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Pandora FMS (monitorización)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-logs-operacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Logs (operación)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-evidencias-minimas-guia-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5. Evidencias mínimas (Guía 6)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidencias-y-validacion-que-debes-demostrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evidencias y validación (qué debes demostrar)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-30p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (30p)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="rg501-integracion-y-seguridad-con-docker">RG501: Integración y seguridad con Docker<a class="headerlink" href="#rg501-integracion-y-seguridad-con-docker" title="Permanent link">&para;</a></h1>
+<p><strong>Resultado de Aprendizaje:</strong> RA3<br />
+<strong>Puntuación total:</strong> 30 puntos<br />
+<strong>Trabajo en grupo:</strong> 2-3 personas</p>
+<hr />
+<h2 id="contexto-y-continuidad">Contexto y continuidad<a class="headerlink" href="#contexto-y-continuidad" title="Permanent link">&para;</a></h2>
+<p>Este reto es la continuación del despliegue realizado en el tema 4. En el proyecto basado en Docker debéis partir de una arquitectura con:</p>
+<ul>
+<li>Un punto de entrada web (reverse proxy tipo Nginx).</li>
+<li>Un CMS / web pública (WordPress).</li>
+<li>Un back end o panel de administración (aplicación PHP).</li>
+<li>Una base de datos MySQL.</li>
+</ul>
+<p>Diseño de referencia (proyecto Docker):</p>
+<p><a href="https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/02_Marco_tecnologico/">Proyecto Intermodular (Docker) - Diseño y Planificación</a></p>
+<p>Además, este reto sigue la filosofía de despliegue y validación de <code>PR402</code> (Docker Compose + verificación de conectividad), adaptándolo a vuestro stack real.</p>
+<p>Práctica base de referencia: <code>PR402</code></p>
+<p><a href="PR402_Despliegue_PHP_MySQL_Docker_Compose.html">PR402 - Despliegue de aplicación PHP + MySQL con Docker Compose</a></p>
+<hr />
+<h2 id="punto-de-partida-segun-vuestro-desarrollo">Punto de partida (según vuestro desarrollo)<a class="headerlink" href="#punto-de-partida-segun-vuestro-desarrollo" title="Permanent link">&para;</a></h2>
+<p>Según el desarrollo publicado, el grupo ya tiene desplegado y verificado:</p>
+<ul>
+<li><code>docker-compose.yml</code> con <code>nginx</code> (reverse proxy), <code>wordpress</code>, <code>laravel</code> y <code>db</code> (MySQL).</li>
+<li>Red interna Docker para la comunicación entre servicios.</li>
+<li>Volúmenes persistentes para datos.</li>
+<li><code>.env</code> para credenciales (no versionado).</li>
+<li>MySQL <strong>sin exposición externa</strong> (puerto 3306 no publicado).</li>
+<li>Healthcheck y arranque ordenado (<code>condition: service_healthy</code>).</li>
+<li>Verificación de endpoints web y panel.</li>
+</ul>
+<hr />
+<h2 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<p>Convertir el stack en un entorno “casi producción” añadiendo <strong>seguridad</strong> y <strong>validación avanzada</strong> (sin repetir el despliegue básico):</p>
+<ul>
+<li>Hardening del reverse proxy y accesos a paneles.</li>
+<li>Backups + restauración (prueba real de continuidad).</li>
+<li>HTTPS (si hay dominio) o plan de activación documentado.</li>
+<li><strong>Monitorización y logs</strong> con contenedores <strong>Prometheus</strong> y <strong>Pandora FMS</strong> (misma red Docker que el stack).</li>
+<li>Validación extremo a extremo tras los cambios (regresión).</li>
+</ul>
+<hr />
+<h2 id="tareas-resumen">Tareas (resumen)<a class="headerlink" href="#tareas-resumen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tarea</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hardening Nginx (cabeceras + rate limiting)</td>
+<td><a href="#guia-1-hardening-del-reverse-proxy-nginx">Guía 1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Control de acceso a <code>/admin</code></td>
+<td><a href="#guia-2-control-de-acceso-adicional-al-panel-admin">Guía 2</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Backups y restauración</td>
+<td><a href="#guia-3-backups-y-restauracion">Guía 3</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Validación de regresión</td>
+<td><a href="#guia-4-validacion-de-regresion-tras-los-cambios">Guía 4</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>HTTPS o plan documentado</td>
+<td><a href="#guia-5-https-o-preparacion-documentada">Guía 5</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Monitorización y logs (Prometheus + Pandora FMS)</td>
+<td><a href="#guia-6-monitorizacion-y-logs-prometheus-y-pandora-fms">Guía 6</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="guia-1-hardening-del-reverse-proxy-nginx">Guía 1: Hardening del reverse proxy (Nginx)<a class="headerlink" href="#guia-1-hardening-del-reverse-proxy-nginx" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> añadir cabeceras HTTP de seguridad y limitar peticiones repetidas a rutas sensibles, sin romper WordPress ni el panel Laravel.</p>
+<h3 id="11-localizar-la-configuracion">1.1. Localizar la configuración<a class="headerlink" href="#11-localizar-la-configuracion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En el servidor, el proyecto suele estar bajo <code>/opt/taller/</code> (o la ruta que uséis).</li>
+<li>La configuración del proxy está en <code>nginx/conf.d/default.conf</code> (montada en el contenedor <code>nginx</code> como volumen).</li>
+<li>Tras cada cambio: <code>docker compose exec nginx nginx -t</code> y luego <code>docker compose exec nginx nginx -s reload</code> (o reiniciar el servicio <code>nginx</code>).</li>
+</ul>
+<h3 id="12-cabeceras-de-seguridad-minimo-3">1.2. Cabeceras de seguridad (mínimo 3)<a class="headerlink" href="#12-cabeceras-de-seguridad-minimo-3" title="Permanent link">&para;</a></h3>
+<p>Añade en el bloque <code>server { ... }</code> (o en cada <code>location</code> si preferís granularidad) directivas <code>add_header</code>. Ejemplo que podéis adaptar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Dentro de server { ... }, antes de los location</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w"> </span><span class="s">&quot;nosniff&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w"> </span><span class="s">&quot;strict-origin-when-cross-origin&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">add_header</span><span class="w"> </span><span class="s">Permissions-Policy</span><span class="w"> </span><span class="s">&quot;geolocation=(),</span><span class="w"> </span><span class="s">microphone=(),</span><span class="w"> </span><span class="s">camera=()&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Opcional: restringir quién puede embeber la web en iframes</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">add_header</span><span class="w"> </span><span class="s">Content-Security-Policy</span><span class="w"> </span><span class="s">&quot;frame-ancestors</span><span class="w"> </span><span class="s">&#39;self&#39;&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">CSP estricta</p>
+<p>Una CSP muy restrictiva puede romper WordPress (plugins, estilos inline). Si algo deja de cargar, relajad la política o aplicad CSP solo a rutas concretas.</p>
+</div>
+<p><strong>Comprobar:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>curl<span class="w"> </span>-sI<span class="w"> </span>http://&lt;IP_PUBLICA&gt;/<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s1">&#39;x-content|referrer|permissions|content-security&#39;</span>
+</code></pre></div>
+<p>O en el navegador: F12 → pestaña <strong>Red</strong> → clic en la primera petición → <strong>Cabeceras de respuesta</strong>.</p>
+<h3 id="13-rate-limiting-zonas-y-limites">1.3. Rate limiting (zonas y límites)<a class="headerlink" href="#13-rate-limiting-zonas-y-limites" title="Permanent link">&para;</a></h3>
+<p>Definí las zonas en el contexto <strong><code>http</code></strong> de Nginx. Si solo montáis <code>conf.d/*.conf</code>, podéis crear un fichero <code>nginx/conf.d/00-limits.conf</code> incluido primero, o añadir al inicio de <code>default.conf</code> un bloque que Nginx acepte (según cómo esté montada la imagen <code>nginx:alpine</code>, a veces hace falta un <code>nginx.conf</code> principal personalizado con <code>include</code>).</p>
+<p><strong>Opción A – <code>default.conf</code> con <code>limit_req_zone</code> al principio del archivo</strong> (si la imagen incluye ese archivo dentro de <code>http {}</code>; en Alpine suele ser <code>include /etc/nginx/conf.d/*.conf</code> dentro de <code>http</code>, así que <strong><code>limit_req_zone</code> no puede ir dentro de un <code>server</code> de conf.d</strong>). En ese caso:</p>
+<ol>
+<li>Montad un <code>nginx/nginx.conf</code> personalizado que copie el de la imagen y añada dentro de <code>http { }</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=wp_login:10m</span><span class="w"> </span><span class="s">rate=5r/m</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=wp_admin:10m</span><span class="w"> </span><span class="s">rate=30r/m</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=panel_admin:10m</span><span class="w"> </span><span class="s">rate=10r/m</span><span class="p">;</span>
+</code></pre></div>
+<ol start="2">
+<li>En <code>docker-compose.yml</code>, montad <code>./nginx/nginx.conf:/etc/nginx/nginx.conf:ro</code> (y mantened <code>include /etc/nginx/conf.d/*.conf</code>).</li>
+</ol>
+<p><strong>Opción B – Sin tocar <code>nginx.conf</code>:</strong> usad <code>limit_conn</code> solo en <code>location</code> (limita conexiones concurrentes) o documentad la limitación con <code>limit_req</code> si conseguís inyectar zonas vía snippet soportado por vuestra plantilla.</p>
+<p><strong>En los <code>location</code> sensibles</strong> (ajustad rutas a vuestro <code>default.conf</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">^/wp-login\.php</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kn">limit_req</span><span class="w"> </span><span class="s">zone=wp_login</span><span class="w"> </span><span class="s">burst=5</span><span class="w"> </span><span class="s">nodelay</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="c1"># ... proxy_pass al upstream WordPress</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="p">}</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">location</span><span class="w"> </span><span class="s">^~</span><span class="w"> </span><span class="s">/wp-admin/</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="kn">limit_req</span><span class="w"> </span><span class="s">zone=wp_admin</span><span class="w"> </span><span class="s">burst=20</span><span class="w"> </span><span class="s">nodelay</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="c1"># ... proxy_pass</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="p">}</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># Panel en puerto 8081: en el server que escucha 8081</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">location</span><span class="w"> </span><span class="s">^~</span><span class="w"> </span><span class="s">/admin</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="kn">limit_req</span><span class="w"> </span><span class="s">zone=panel_admin</span><span class="w"> </span><span class="s">burst=10</span><span class="w"> </span><span class="s">nodelay</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="c1"># ... proxy_pass a Laravel/php-fpm</span>
+<span class="linenos" data-linenos="15 "></span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Validar rate limiting:</strong> desde otra máquina o con un bucle:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">30</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span><span class="w"> </span>http://&lt;IP&gt;/wp-login.php<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p>Deberíais ver códigos <code>429</code> (Too Many Requests) o el comportamiento que hayáis configurado tras superar el umbral.</p>
+<p><strong>Evidencia obligatoria:</strong> captura de cabeceras (<code>curl -I</code> o DevTools) y captura o log de respuestas <code>429</code> (o equivalente).</p>
+<hr />
+<h2 id="guia-2-control-de-acceso-adicional-al-panel-admin">Guía 2: Control de acceso adicional al panel <code>/admin</code><a class="headerlink" href="#guia-2-control-de-acceso-adicional-al-panel-admin" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> que no cualquiera llegue a la pantalla de login de Filament; Nginx pide primero otra capa (usuario/contraseña o IP permitida).</p>
+<h3 id="21-opcion-a-basic-auth-recomendada">2.1. Opción A: Basic Auth (recomendada)<a class="headerlink" href="#21-opcion-a-basic-auth-recomendada" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Generar fichero de contraseñas</strong> en el host (no subir a Git):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2-utils<span class="w"> </span>-y<span class="w">   </span><span class="c1"># proporciona htpasswd</span>
+<span class="linenos" data-linenos="2 "></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/taller/nginx/secrets
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/opt/taller/nginx/secrets/.htpasswd_admin<span class="w"> </span>admin_panel
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Introducid una contraseña fuerte; repetir con -c solo la primera vez</span>
+</code></pre></div>
+<ol start="2">
+<li><strong>Montar el secreto en el contenedor</strong> en <code>docker-compose.yml</code> del servicio <code>nginx</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./nginx/secrets/.htpasswd_admin:/etc/nginx/.htpasswd_admin:ro</span>
+</code></pre></div>
+<ol start="3">
+<li><strong>En el <code>server</code> que escucha el puerto 8081</strong> (panel), dentro de <code>location ^~ /admin</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">location</span><span class="w"> </span><span class="s">^~</span><span class="w"> </span><span class="s">/admin</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="kn">auth_basic</span><span class="w"> </span><span class="s">&quot;Panel</span><span class="w"> </span><span class="s">restringido&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kn">auth_basic_user_file</span><span class="w"> </span><span class="s">/etc/nginx/.htpasswd_admin</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="kn">limit_req</span><span class="w"> </span><span class="s">zone=panel_admin</span><span class="w"> </span><span class="s">burst=10</span><span class="w"> </span><span class="s">nodelay</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="c1"># proxy_pass, headers, etc. que ya tengáis</span>
+<span class="linenos" data-linenos="6 "></span><span class="p">}</span>
+</code></pre></div>
+<ol start="4">
+<li>
+<p><strong>Probar:</strong> abrir <code>http://&lt;IP&gt;:8081/admin</code> → debe aparecer el cuadro de usuario/contraseña del navegador <strong>antes</strong> del login de Filament.</p>
+</li>
+<li>
+<p><strong>Evidencia:</strong> captura del diálogo Basic Auth y, tras credenciales correctas, acceso al login de Filament.</p>
+</li>
+</ol>
+<h3 id="22-opcion-b-restriccion-por-ip">2.2. Opción B: Restricción por IP<a class="headerlink" href="#22-opcion-b-restriccion-por-ip" title="Permanent link">&para;</a></h3>
+<p>Solo viable si accedéis al panel desde IPs fijas (aula, casa con IP estática, VPN).</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">location</span><span class="w"> </span><span class="s">^~</span><span class="w"> </span><span class="s">/admin</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="kn">allow</span><span class="w"> </span><span class="mi">203</span><span class="s">.0.113.10</span><span class="p">;</span><span class="w">   </span><span class="c1"># ejemplo: IP del centro</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kn">allow</span><span class="w"> </span><span class="mi">198</span><span class="s">.51.100.0/24</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="kn">deny</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="c1"># proxy_pass ...</span>
+<span class="linenos" data-linenos="6 "></span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Validación:</strong> desde una IP no listada debe responder <code>403 Forbidden</code>. Capturad la evidencia.</p>
+<hr />
+<h2 id="guia-3-backups-y-restauracion">Guía 3: Backups y restauración<a class="headerlink" href="#guia-3-backups-y-restauracion" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> poder recuperar datos tras un error o borrado; la restauración debe estar <strong>probada</strong>, no solo documentada.</p>
+<h3 id="31-backup-de-mysql-con-mysqldump">3.1. Backup de MySQL con <code>mysqldump</code><a class="headerlink" href="#31-backup-de-mysql-con-mysqldump" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Variables:</strong> usad las del <code>.env</code> (<code>MYSQL_ROOT_PASSWORD</code>, nombres de bases <code>wordpress</code>, <code>taller_motos</code>, etc.).</p>
+</li>
+<li>
+<p><strong>Directorio de backups</strong> en el host:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/taller/backups/mysql
+<span class="linenos" data-linenos="2 "></span><span class="nb">cd</span><span class="w"> </span>/opt/taller
+</code></pre></div>
+<ol start="3">
+<li><strong>Volcar bases</strong> (nombre del servicio en Compose suele ser <code>db</code>):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Todas las bases en un solo fichero (ajustad fecha)</span>
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-T<span class="w"> </span>db<span class="w"> </span>mysqldump<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span>--single-transaction<span class="w"> </span>--routines<span class="w"> </span>--triggers<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span>wordpress<span class="w"> </span>taller_motos<span class="w"> </span>&gt;<span class="w"> </span>backups/mysql/all_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M<span class="k">)</span>.sql
+</code></pre></div>
+<p>Si el servicio se llama distinto, sustituid <code>db</code>. Si no tenéis las variables en shell, ejecutad <code>docker compose exec db sh -c 'mysqldump ...'</code> introduciendo la contraseña de forma segura (o usad un script que lea <code>.env</code>).</p>
+<ol start="4">
+<li>
+<p><strong>Comprobar el fichero:</strong> <code>head -n 20 backups/mysql/all_*.sql</code> debe mostrar cabeceras SQL.</p>
+</li>
+<li>
+<p><strong>Evidencia:</strong> captura del comando y del tamaño del <code>.sql</code> (<code>ls -lh backups/mysql/</code>).</p>
+</li>
+</ol>
+<h3 id="32-backup-de-ficheros-persistentes-wordpress-volumenes">3.2. Backup de ficheros persistentes (WordPress / volúmenes)<a class="headerlink" href="#32-backup-de-ficheros-persistentes-wordpress-volumenes" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Listar volúmenes:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;taller|wordpress|mysql&#39;</span>
+</code></pre></div>
+<ol start="2">
+<li><strong>Copia con contenedor temporal</strong> (ejemplo para un volumen llamado <code>taller_mysql_data</code>):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span>-v<span class="w"> </span>taller_mysql_data:/data:ro<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span>-v<span class="w"> </span>/opt/taller/backups/volumes:/backup<span class="w"> </span><span class="se">\</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span>alpine<span class="w"> </span>tar<span class="w"> </span>czf<span class="w"> </span>/backup/mysql_data_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.tar.gz<span class="w"> </span>-C<span class="w"> </span>/data<span class="w"> </span>.
+</code></pre></div>
+<p>Ajustad el nombre del volumen al que muestre <code>docker compose config</code> o <code>docker volume ls</code>.</p>
+<ol start="3">
+<li><strong>Documentad</strong> en un <code>README</code> o <code>scripts/backup.sh</code> qué volúmenes incluís y cada cuánto ejecutáis el backup.</li>
+</ol>
+<h3 id="33-prueba-de-restauracion-obligatoria">3.3. Prueba de restauración (obligatoria)<a class="headerlink" href="#33-prueba-de-restauracion-obligatoria" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Crear un dato de prueba</strong> en el panel (por ejemplo un cliente “BACKUP_TEST”) o una entrada en WordPress con título único.</p>
+</li>
+<li>
+<p><strong>Anotar</strong> el estado (captura o ID).</p>
+</li>
+<li>
+<p><strong>Simular pérdida:</strong> borrar ese registro desde la app o con SQL:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>db<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;USE taller_motos; DELETE FROM clientes WHERE nombre=&#39;BACKUP_TEST&#39;;&quot;</span>
+</code></pre></div>
+<p>(adaptad tabla y condición a vuestro esquema).</p>
+<ol start="4">
+<li><strong>Restaurar</strong> desde el <code>.sql</code> más reciente:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-T<span class="w"> </span>db<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="s2">&quot;</span><span class="si">${</span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&lt;<span class="w"> </span>backups/mysql/all_YYYYMMDD_HHMM.sql
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Sobrescritura</p>
+<p>Restaurar un volcado completo puede sobrescribir <strong>todas</strong> las bases del volcado. En producción se usan restauraciones parciales o por tabla; para el reto, documentad qué hacéis y por qué.</p>
+</div>
+<ol start="5">
+<li>
+<p><strong>Verificar</strong> que el dato “BACKUP_TEST” (o el marcador que uséis) ha vuelto.</p>
+</li>
+<li>
+<p><strong>Evidencia:</strong> antes (pantalla sin dato), comando de restore, después (dato recuperado).</p>
+</li>
+</ol>
+<hr />
+<h2 id="guia-4-validacion-de-regresion-tras-los-cambios">Guía 4: Validación de regresión tras los cambios<a class="headerlink" href="#guia-4-validacion-de-regresion-tras-los-cambios" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> demostrar que nada esencial se ha roto tras las guías 1–3 (y 5 y 6 si aplica).</p>
+<h3 id="41-checklist-previo-a-reinicio">4.1. Checklist previo a reinicio<a class="headerlink" href="#41-checklist-previo-a-reinicio" title="Permanent link">&para;</a></h3>
+<p>Ejecutad desde el host (IP y puertos según vuestro despliegue):</p>
+<table>
+<thead>
+<tr>
+<th>Comprobación</th>
+<th>Comando o acción</th>
+<th>Resultado esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nginx sintaxis</td>
+<td><code>docker compose exec nginx nginx -t</code></td>
+<td><code>syntax is ok</code></td>
+</tr>
+<tr>
+<td>Cabeceras</td>
+<td><code>curl -sI http://&lt;IP&gt;/</code></td>
+<td>Al menos 3 cabeceras de seguridad</td>
+</tr>
+<tr>
+<td>Web pública</td>
+<td>Navegador <code>http://&lt;IP&gt;/</code></td>
+<td>Carga WordPress</td>
+</tr>
+<tr>
+<td>Login WP</td>
+<td><code>http://&lt;IP&gt;/wp-admin</code></td>
+<td>Formulario login</td>
+</tr>
+<tr>
+<td>Panel</td>
+<td><code>http://&lt;IP&gt;:8081/admin</code></td>
+<td>Basic Auth (si aplica) + Filament</td>
+</tr>
+<tr>
+<td>Listado datos</td>
+<td>Navegador en una sección del panel</td>
+<td>Listados sin error 500</td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td><code>curl -sI http://127.0.0.1:9090/</code> o UI en el puerto configurado</td>
+<td>Respuesta HTTP y <em>targets</em> coherentes</td>
+</tr>
+<tr>
+<td>Pandora FMS</td>
+<td>Consola web en el puerto que documentéis</td>
+<td>Login y vista con el chequeo/módulo activo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-reinicio-completo-del-stack">4.2. Reinicio completo del stack<a class="headerlink" href="#42-reinicio-completo-del-stack" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">cd</span><span class="w"> </span>/opt/taller<span class="w">   </span><span class="c1"># o vuestra ruta</span>
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+<span class="linenos" data-linenos="3 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+<span class="linenos" data-linenos="4 "></span>docker<span class="w"> </span>compose<span class="w"> </span>ps
+</code></pre></div>
+<p>Esperad a que <code>db</code> pase a healthy antes de probar el panel (como en vuestro <code>depends_on</code>).</p>
+<h3 id="43-checklist-tras-reinicio">4.3. Checklist tras reinicio<a class="headerlink" href="#43-checklist-tras-reinicio" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Misma tabla de comprobaciones que en 4.1.</li>
+<li>Confirmar que un dato creado <strong>antes</strong> del <code>down</code> sigue existiendo <strong>después</strong> del <code>up</code> (persistencia de volúmenes).</li>
+</ul>
+<p><strong>Evidencia:</strong> capturas de <code>docker compose ps</code> (healthy) y de una página clave antes/después del reinicio.</p>
+<hr />
+<h2 id="guia-5-https-o-preparacion-documentada">Guía 5: HTTPS o preparación documentada<a class="headerlink" href="#guia-5-https-o-preparacion-documentada" title="Permanent link">&para;</a></h2>
+<h3 id="51-si-teneis-dominio-apuntando-a-la-elastic-ip">5.1. Si tenéis dominio apuntando a la Elastic IP<a class="headerlink" href="#51-si-teneis-dominio-apuntando-a-la-elastic-ip" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>DNS:</strong> registro <code>A</code> (o <code>AAAA</code>) del dominio hacia la IP pública de la instancia EC2.</p>
+</li>
+<li>
+<p><strong>Puerto 80</strong> debe ser accesible para la validación de Let's Encrypt (HTTP-01).</p>
+</li>
+<li>
+<p><strong>Opciones típicas:</strong></p>
+</li>
+</ol>
+<ul>
+<li><strong>Certbot en el host</strong> con modo standalone o webroot (parar Nginx un momento si usáis standalone, o usar webroot montado en el volumen de Nginx).</li>
+<li><strong>Contenedor</strong> <code>certbot</code> + volúmenes compartidos con Nginx para <code>certbot certonly --webroot</code>.</li>
+</ul>
+<ol start="4">
+<li>
+<p><strong>En Nginx:</strong> dos <code>server</code>: uno en <code>:80</code> que redirija a <code>https://$host$request_uri</code>, y otro en <code>:443</code> con <code>ssl_certificate</code> y <code>ssl_certificate_key</code> apuntando a <code>/etc/letsencrypt/live/&lt;dominio&gt;/</code>.</p>
+</li>
+<li>
+<p><strong>En <code>docker-compose.yml</code>:</strong> exponer <code>443:443</code> en <code>nginx</code> y montar los certificados.</p>
+</li>
+<li>
+<p><strong>Probar:</strong> <code>https://&lt;dominio&gt;/</code> con candado válido; <code>http://</code> debe redirigir a <code>https://</code>.</p>
+</li>
+</ol>
+<p><strong>Evidencia:</strong> captura del navegador con HTTPS y salida de <code>curl -I</code> mostrando <code>301</code> o <code>302</code> a HTTPS.</p>
+<h3 id="52-si-no-teneis-dominio">5.2. Si no tenéis dominio<a class="headerlink" href="#52-si-no-teneis-dominio" title="Permanent link">&para;</a></h3>
+<p>Documentad en la memoria del proyecto (sección Integración):</p>
+<ul>
+<li>Dominio o subdominio que usaréis en el futuro.</li>
+<li>Pasos exactos que seguiréis (DNS → certbot → cambios en <code>nginx.conf</code> y <code>docker-compose.yml</code>).</li>
+<li>Fragmento de configuración <strong>comentado</strong> o en anexo (<code>nginx/snippets/ssl.example.conf</code>) listo para descomentar.</li>
+</ul>
+<p>No es obligatorio certificar en local sin dominio; sí lo es el <strong>plan</strong> y la <strong>plantilla</strong> de configuración.</p>
+<hr />
+<h2 id="guia-6-monitorizacion-y-logs-prometheus-y-pandora-fms">Guía 6: Monitorización y logs (Prometheus y Pandora FMS)<a class="headerlink" href="#guia-6-monitorizacion-y-logs-prometheus-y-pandora-fms" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> incorporar <strong>métricas</strong> (Prometheus) y <strong>monitorización gestionada</strong> (Pandora FMS) en contenedores, y documentar cómo consultáis <strong>logs</strong> del stack, sin exponer paneles a Internet sin protección.</p>
+<h3 id="61-principios">6.1. Principios<a class="headerlink" href="#61-principios" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Los servicios de monitorización deben estar en la <strong>misma red Docker</strong> que <code>nginx</code>, <code>wordpress</code>, <code>laravel</code> y <code>db</code> (o en una red adjunta con rutas explícitas), para poder scrapear o sondear por nombre de servicio.</li>
+<li><strong>No</strong> publiquéis Prometheus ni la consola de Pandora en <code>0.0.0.0</code> sin medidas extra: preferid <strong>solo red interna</strong> o <strong>Basic Auth / restricción por IP</strong> en Nginx (como en la Guía 2).</li>
+</ul>
+<h3 id="62-prometheus-metricas">6.2. Prometheus (métricas)<a class="headerlink" href="#62-prometheus-metricas" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Añadir servicio en <code>docker-compose.yml</code></strong> (ejemplo mínimo; ajustad nombres de red y rutas):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">prometheus</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom/prometheus:latest</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;127.0.0.1:9090:9090&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="nt">networks</span><span class="p">:</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w">   </span><span class="c1"># o el nombre de vuestra red del proyecto</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Crear <code>monitoring/prometheus.yml</code></strong> con al menos un <em>job</em> que funcione en vuestro entorno. Opciones típicas en prácticas:</p>
+<ul>
+<li><strong>cAdvisor</strong> (métricas de contenedores): servicio extra <code>gcr.io/cadvisor/cadvisor</code> y scrape a <code>cadvisor:8080</code>.</li>
+<li><strong>Métricas de Nginx</strong>: activar <code>stub_status</code> en un <code>location</code> interno y scrapear con <a href="https://github.com/nginxinc/nginx-prometheus-exporter">nginx-prometheus-exporter</a> (avanzado).</li>
+</ul>
+<p>Ejemplo mínimo que solo comprueba que Prometheus está vivo (útil para la primera subida):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">global</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;localhost:9090&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Cuando añadáis cAdvisor u otro exporter, ampliad <code>scrape_configs</code> con el host <strong>nombre del servicio</strong> en Compose (ej. <code>cadvisor:8080</code>).</p>
+</li>
+<li>
+<p><strong>Comprobar</strong></p>
+<ul>
+<li><code>docker compose up -d prometheus</code></li>
+<li>Navegador (en el servidor): <code>http://127.0.0.1:9090</code> → <strong>Status → Targets</strong> sin errores en los jobs que hayáis configurado.</li>
+</ul>
+</li>
+</ol>
+<h3 id="63-pandora-fms-monitorizacion">6.3. Pandora FMS (monitorización)<a class="headerlink" href="#63-pandora-fms-monitorizacion" title="Permanent link">&para;</a></h3>
+<p>Pandora FMS es una plataforma de monitorización con consola web y agentes. En Docker suele desplegarse como <strong>varios servicios</strong> (consola, servidor, base de datos). Para no improvisar una imagen inexistente:</p>
+<ol>
+<li>
+<p>Partid de la <strong>documentación oficial</strong> de despliegue en contenedores o del repositorio/compose recomendado por el proyecto (versiones cambian). Punto de entrada: <a href="https://pandorafms.com/manual/">Manual de Pandora FMS</a>.</p>
+</li>
+<li>
+<p><strong>Integración con vuestro stack</strong></p>
+<ul>
+<li>Añadid los servicios de Pandora al mismo <code>docker-compose.yml</code> o usad un <code>docker-compose.monitoring.yml</code> con <code>docker compose -f docker-compose.yml -f docker-compose.monitoring.yml up -d</code>.</li>
+<li>Documentad <strong>puertos</strong>, <strong>usuarios por defecto</strong> cambiados en el primer acceso y <strong>volúmenes</strong> para no perder datos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mínimo exigible en el reto</strong></p>
+<ul>
+<li>Consola accesible (idealmente solo desde localhost o IP de administración, o detrás de Nginx con auth).</li>
+<li>Al menos <strong>un objetivo monitorizado</strong> relacionado con vuestro proyecto: por ejemplo <strong>comprobación TCP</strong> al puerto de <code>nginx</code> o <strong>ICMP</strong> al contenedor/host, o agente sobre una instancia si lo usáis en la asignatura.</li>
+</ul>
+</li>
+</ol>
+<h3 id="64-logs-operacion">6.4. Logs (operación)<a class="headerlink" href="#64-logs-operacion" title="Permanent link">&para;</a></h3>
+<p>Documentad en la memoria de integración al menos:</p>
+<ul>
+<li>
+<p>Cómo consultáis logs en tiempo casi real:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>--tail<span class="o">=</span><span class="m">100</span><span class="w"> </span>nginx
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>--tail<span class="o">=</span><span class="m">100</span><span class="w"> </span>laravel
+</code></pre></div>
+</li>
+<li>
+<p>(Opcional) Límites de tamaño de log en Compose para evitar llenar disco, por ejemplo en un servicio:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nt">logging</span><span class="p">:</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">json-file</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nt">options</span><span class="p">:</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="nt">max-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10m&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="nt">max-file</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span>
+</code></pre></div>
+</li>
+</ul>
+<h3 id="65-evidencias-minimas-guia-6">6.5. Evidencias mínimas (Guía 6)<a class="headerlink" href="#65-evidencias-minimas-guia-6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Captura de <strong>Prometheus</strong> (página de <em>Targets</em> o consulta PromQL de ejemplo).</li>
+<li>Captura de la <strong>consola de Pandora FMS</strong> mostrando el módulo o agente configurado.</li>
+<li>Captura o copia de <strong>salida de <code>docker compose logs</code></strong> filtrando un error o un arranque correcto tras reinicio.</li>
+</ul>
+<hr />
+<h2 id="evidencias-y-validacion-que-debes-demostrar">Evidencias y validación (qué debes demostrar)<a class="headerlink" href="#evidencias-y-validacion-que-debes-demostrar" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><code>docker compose ps</code> con todos los servicios en estado correcto.</p>
+</li>
+<li>
+<p>Evidencia de <strong>hardening</strong>:</p>
+</li>
+<li>
+<p>cabeceras visibles (DevTools o <code>curl -I</code>),</p>
+</li>
+<li>rate limiting funcionando,</li>
+<li>
+<p>y control de acceso adicional a <code>/admin</code>.</p>
+</li>
+<li>
+<p>Evidencia de <strong>backups y restauración</strong>:</p>
+</li>
+<li>
+<p>comandos/resultado del backup,</p>
+</li>
+<li>pérdida simulada,</li>
+<li>
+<p>restauración exitosa.</p>
+</li>
+<li>
+<p>Evidencia de <strong>regresión</strong>:</p>
+</li>
+<li>
+<p>web y panel operativos tras cambios,</p>
+</li>
+<li>
+<p>persistencia tras reinicio.</p>
+</li>
+<li>
+<p>Evidencia de <strong>monitorización y logs</strong>:</p>
+</li>
+<li>
+<p>Prometheus en ejecución y <em>targets</em> coherentes con vuestra config,</p>
+</li>
+<li>Pandora FMS accesible y con al menos un chequeo/módulo del proyecto,</li>
+<li>ejemplo de consulta de logs con <code>docker compose logs</code>.</li>
+</ul>
+<hr />
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Repositorio actualizado</strong> con:</li>
+</ol>
+<ul>
+<li>configuración de Nginx (hardening + control de acceso),</li>
+<li>procedimiento de backup y restauración (script o checklist),</li>
+<li><code>docker-compose</code> con servicios <strong>Prometheus</strong> y <strong>Pandora FMS</strong> (y ficheros bajo <code>monitoring/</code> si aplica),</li>
+<li>cambios necesarios (si hay) en <code>docker-compose.yml</code>.</li>
+</ul>
+<ol start="2">
+<li><strong>Documentación de integración</strong> en la sección “Integración” del documento del proyecto, con:</li>
+</ol>
+<ul>
+<li>medidas de seguridad aplicadas y justificación,</li>
+<li>procedimiento de backup/restore,</li>
+<li>pruebas de validación (incluyendo regresión),</li>
+<li>descripción de <strong>monitorización</strong> (qué scrapeáis o qué módulo usáis en Pandora) y <strong>cómo revisáis logs</strong>.</li>
+</ul>
+<ol start="3">
+<li><strong>Evidencias</strong> (capturas y comandos):</li>
+</ol>
+<ul>
+<li><code>docker compose ps</code>,</li>
+<li>cabeceras (<code>curl -I</code>) y rate limiting,</li>
+<li>backup y restauración,</li>
+<li>validación de endpoints,</li>
+<li>Prometheus (targets o consulta), consola Pandora y ejemplo de <code>docker compose logs</code>.</li>
+</ul>
+<hr />
+<h2 id="criterios-de-evaluacion-30p">Criterios de evaluación (30p)<a class="headerlink" href="#criterios-de-evaluacion-30p" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Hardening (cabeceras + rate limiting + control de acceso) con evidencias (10p)</p>
+</li>
+<li>
+<p>Backups + restauración probada (8p)</p>
+</li>
+<li>
+<p>Validación extremo a extremo y regresión tras cambios (5p)</p>
+</li>
+<li>
+<p>Monitorización y logs (Prometheus + Pandora FMS + ejemplo de logs) con evidencias (3p)</p>
+</li>
+<li>
+<p>Calidad de documentación y evidencias (4p)</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

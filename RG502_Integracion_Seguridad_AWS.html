@@ -1,0 +1,1178 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Reto RG502 para integrar en AWS con DNS (Bind9) y sustituir la BBDD gestionada por RDS mediante MySQL en una instancia EC2 nueva.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/RG502_Integracion_Seguridad_AWS.html">
+      
+      
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>RG502 - Integración y seguridad en AWS - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="RG502 - Integración y seguridad en AWS - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Reto RG502 para integrar en AWS con DNS (Bind9) y sustituir la BBDD gestionada por RDS mediante MySQL en una instancia EC2 nueva." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/RG502_Integracion_Seguridad_AWS.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/RG502_Integracion_Seguridad_AWS.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="RG502 - Integración y seguridad en AWS - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Reto RG502 para integrar en AWS con DNS (Bind9) y sustituir la BBDD gestionada por RDS mediante MySQL en una instancia EC2 nueva." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/RG502_Integracion_Seguridad_AWS.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rg502-integracion-y-seguridad-en-aws" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RG502 - Integración y seguridad en AWS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04desarrollo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Desarrollo iterativo y pruebas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05integracion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Integración, seguridad y validación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contexto-y-continuidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contexto y continuidad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-de-partida-comprobacion-del-estado-real-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Punto de partida (comprobación del estado real del proyecto)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tareas-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tareas (resumen)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-1-integracion-dns-con-bind9-continuacion-de-pr403" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 1: Integración DNS con Bind9 (continuación de PR403)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-2-instancia-nueva-de-bbdd-en-ec2-con-mysql-sin-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 2: Instancia nueva de BBDD en EC2 con MySQL (sin RDS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-3-conectar-web-y-back-end-hacia-el-nuevo-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 3: Conectar web y back end hacia el nuevo MySQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-4-validacion-de-integracion-y-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 4: Validación de integración y seguridad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-5-seguridad-aws-red-y-exposicion-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 5: Seguridad AWS (red y exposición mínima)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-6-seguridad-aws-acceso-e-iam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 6: Seguridad AWS (acceso e IAM)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-7-seguridad-aws-logs-alertas-y-visibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 7: Seguridad AWS (logs, alertas y visibilidad)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guia-8-seguridad-aws-backups-recuperacion-y-cifrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guía 8: Seguridad AWS (backups, recuperación y cifrado)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion-30p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación (30p)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="rg502-integracion-y-seguridad-en-aws">RG502: Integración y seguridad en AWS<a class="headerlink" href="#rg502-integracion-y-seguridad-en-aws" title="Permanent link">&para;</a></h1>
+<p><strong>Resultado de Aprendizaje:</strong> RA3<br />
+<strong>Puntuación total:</strong> 30 puntos<br />
+<strong>Trabajo en grupo:</strong> 2-3 personas</p>
+<hr />
+<h2 id="contexto-y-continuidad">Contexto y continuidad<a class="headerlink" href="#contexto-y-continuidad" title="Permanent link">&para;</a></h2>
+<p>Este reto es la continuación del despliegue realizado en el tema 4. En el proyecto basado en instancias AWS debéis:</p>
+<ul>
+<li>integrar extremo a extremo web/back end,</li>
+<li>reforzar seguridad con reglas de red y validaciones,</li>
+<li>y además <strong>separar la base de datos</strong> en una <strong>instancia EC2 nueva</strong> que ejecute <strong>MySQL</strong> (en vez de depender de RDS por coste).</li>
+</ul>
+<p>Diseño de referencia (proyecto AWS):  </p>
+<p><a href="https://alejandromarinyo.github.io/Proyecto-Intermodular/Dise%C3%B1o_y_Planificacion/">Proyecto Intermodular (AWS) - Diseño y Planificación</a></p>
+<p>Este reto incorpora como base conceptual los pasos de:</p>
+<ul>
+<li><code>PR403</code> (DNS con Bind9, zonas directa/inversa y comprobaciones con <code>nslookup</code>).</li>
+</ul>
+<p><a href="PR403_Configuracion_Servidor_DNS.html">PR403 - Configuración de un servidor DNS (Bind9) en AWS</a></p>
+<p>Además, adapta la idea de “crear la BBDD y asegurar el acceso” desde un enfoque de seguridad de grupos e integración desde la aplicación, pero <strong>sin</strong> mencionar tecnologías de desarrollo concretas (ni Spring Boot): aquí el objetivo es el flujo de conexión del proyecto hacia MySQL.</p>
+<hr />
+<h2 id="punto-de-partida-comprobacion-del-estado-real-del-proyecto">Punto de partida (comprobación del estado real del proyecto)<a class="headerlink" href="#punto-de-partida-comprobacion-del-estado-real-del-proyecto" title="Permanent link">&para;</a></h2>
+<p>Según el desarrollo publicado del proyecto (fase “Desarrollo”), el despliegue base ya contempla:</p>
+<ul>
+<li><strong>2 instancias EC2</strong> separadas:</li>
+<li>Instancia 1: <strong>WordPress</strong>.</li>
+<li>Instancia 2: <strong>aplicación web personalizada</strong>.</li>
+<li><strong>Security Groups</strong> por instancia con puertos web abiertos (80 y 443 “preparado”) y SSH para administración.</li>
+<li><strong>Elastic IP</strong> asociada a cada instancia.</li>
+<li><strong>Docker Compose</strong> en cada servidor:</li>
+<li>En el servidor WordPress: WordPress + MySQL (y opcionalmente phpMyAdmin).</li>
+<li>En el servidor de la app: servicio web + MySQL 8.0.</li>
+</ul>
+<p>Referencia de estado (para comprobar el punto de partida):  </p>
+<p><a href="https://alejandromarinyo.github.io/Proyecto-Intermodular/Desarrollo/">Desarrollo - Proyecto Intermodular</a></p>
+<p>Este reto no debe repetir el despliegue básico anterior: el foco está en <strong>integración</strong>, <strong>separación de BBDD</strong> (si aún no existe) y <strong>seguridad en AWS con evidencias</strong>.</p>
+<hr />
+<h2 id="objetivo">Objetivo<a class="headerlink" href="#objetivo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Implementar un DNS (Bind9) que permita validar nombres hacia el servidor web (opcional si el proyecto ya usa dominio/DNS público: en ese caso, se hace como práctica técnica interna).</li>
+<li>
+<p>Crear una nueva instancia EC2 para BBDD con <strong>MySQL</strong> y configurar:</p>
+<ul>
+<li>Security Groups para permitir <code>3306</code> <strong>solo</strong> desde las instancias que deben acceder,</li>
+<li>base de datos/usuarios,</li>
+<li>y la conexión desde el resto de instancias del proyecto.
+3. Añadir <strong>tareas de seguridad en AWS</strong> (red, acceso, logging, backups y cifrado) y validarlas con evidencias.
+4. Validar integración y persistencia con evidencias.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="tareas-resumen">Tareas (resumen)<a class="headerlink" href="#tareas-resumen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tarea</th>
+<th>Guía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DNS con Bind9 (tipo <code>PR403</code>)</td>
+<td><a href="#guia-1-integracion-dns-con-bind9-continuacion-de-pr403">Guía 1</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nueva EC2 “DB” con MySQL (sin RDS)</td>
+<td><a href="#guia-2-instancia-nueva-de-bbdd-en-ec2-con-mysql-sin-rds">Guía 2</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Conexión desde web/app hacia MySQL</td>
+<td><a href="#guia-3-conectar-web-y-back-end-hacia-el-nuevo-mysql">Guía 3</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Validación integración + pruebas negativas</td>
+<td><a href="#guia-4-validacion-de-integracion-y-seguridad">Guía 4</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Seguridad AWS (red y exposición mínima)</td>
+<td><a href="#guia-5-seguridad-aws-red-y-exposicion-minima">Guía 5</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Seguridad AWS (acceso e IAM)</td>
+<td><a href="#guia-6-seguridad-aws-acceso-e-iam">Guía 6</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Seguridad AWS (logs, alertas y visibilidad)</td>
+<td><a href="#guia-7-seguridad-aws-logs-alertas-y-visibilidad">Guía 7</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Seguridad AWS (backups, recuperación y cifrado)</td>
+<td><a href="#guia-8-seguridad-aws-backups-recuperacion-y-cifrado">Guía 8</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="guia-1-integracion-dns-con-bind9-continuacion-de-pr403">Guía 1: Integración DNS con Bind9 (continuación de <code>PR403</code>)<a class="headerlink" href="#guia-1-integracion-dns-con-bind9-continuacion-de-pr403" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> que un nombre del proyecto resuelva hacia la IP del servidor web y que se valide con <code>nslookup</code> y navegación (sin depender de <code>/etc/hosts</code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Si ya tenéis dominio público</p>
+<p>Si el proyecto ya usa Route 53 u otro DNS público, esta guía se puede aplicar como <strong>DNS interno de laboratorio</strong> (Bind9) para demostrar competencia técnica y control de resolución en una VPC.</p>
+</div>
+<ol>
+<li>
+<p><strong>Crear instancia EC2 para DNS</strong></p>
+<ul>
+<li>Imagen: <strong>Debian</strong> (como en <code>PR403</code>).</li>
+<li>Security Group: permitir SSH (<code>22</code>) a vuestra IP y DNS (<code>UDP/53</code>) desde la red que vayáis a consultar (recomendado: VPC).</li>
+</ul>
+</li>
+<li>
+<p><strong>Instalar Bind9</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>bind9<span class="w"> </span>bind9utils<span class="w"> </span>bind9-doc<span class="w"> </span>-y
+</code></pre></div>
+</li>
+<li>
+<p><strong>Configurar IPv4 únicamente en <code>/etc/default/named</code></strong></p>
+<ul>
+<li>Abrir y editar el fichero (por ejemplo): <code>sudo nano /etc/default/named</code>.</li>
+<li>Asegurar la línea: <code>OPTIONS="-u bind -4"</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Backup de <code>named.conf.options</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/bind/named.conf.options<span class="w"> </span>/etc/bind/named.conf.options.backup
+</code></pre></div>
+</li>
+<li>
+<p><strong>Editar <code>named.conf.options</code></strong> (<code>/etc/bind/named.conf.options</code>)</p>
+<ul>
+<li>Configurar ACL de recursión (ejemplo): permite recursión desde vuestra VPC (<code>&lt;VPC_CIDR&gt;</code>).</li>
+<li>En el bloque <code>options</code> incluir (ajusta rangos): <code>allow-recursion { &lt;VPC_CIDR&gt;; };</code>, <code>listen-on port 53 { any; };</code>, y el directorio de caché.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configurar <code>named.conf.local</code></strong> (<code>/etc/bind/named.conf.local</code>)</p>
+<ul>
+<li>Declarar <strong>zona directa</strong> (ej. <code>creviplay.local</code>) apuntando a la IP del servidor web.</li>
+<li>Declarar <strong>zona inversa</strong> según vuestro rango (ej. si la red es <code>172.31.0.0/16</code>, la inversa sería <code>31.172.in-addr.arpa</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Crear archivos de zona</strong></p>
+<ul>
+<li>Zona directa: por ejemplo <code>/etc/bind/db.creviplay.local</code> (SOA, NS y un registro A hacia la IP del servidor web).</li>
+<li>Zona inversa: por ejemplo <code>/etc/bind/db.31.172</code> (PTR para la IP que validéis).</li>
+</ul>
+</li>
+<li>
+<p><strong>Comprobar configuración</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>named-checkconf
+<span class="linenos" data-linenos="2 "></span>named-checkzone<span class="w"> </span>&lt;NOMBRE_ZONA_DIRECTA&gt;<span class="w"> </span>/etc/bind/db.creviplay.local
+<span class="linenos" data-linenos="3 "></span>named-checkzone<span class="w"> </span>&lt;NOMBRE_ZONA_INVERSA&gt;<span class="w"> </span>/etc/bind/db.31.172
+</code></pre></div>
+</li>
+<li>
+<p><strong>Reiniciar Bind9</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>bind9
+</code></pre></div>
+</li>
+<li>
+<p><strong>Validar con cliente</strong></p>
+<ul>
+<li>Desde un cliente (otra EC2 o vuestro PC), evitad <code>/etc/hosts</code> y configurad como DNS la IP del servidor Bind9 (<code>IP_DNS</code>).</li>
+<li>Comprobar con <code>nslookup creviplay.local &lt;IP_DNS&gt;</code> (o el nombre que hayáis definido).</li>
+<li>Abrir en navegador <code>http://creviplay.local</code> (o el nombre y puerto que corresponda).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Mermaid (flujo DNS + integración):</strong></p>
+<pre class="mermaid"><code>flowchart LR
+  PC["Cliente / navegador"] --&gt; DNS["Servidor DNS Bind9"]
+  DNS --&gt; WEB["Instancia web"]
+  WEB --&gt; API["Back end / panel"]
+  API --&gt; DB["Instancia BBDD MySQL en EC2"]</code></pre>
+<p><strong>Evidencias mínimas (Guía 1):</strong></p>
+<ul>
+<li><code>named-checkconf</code> y <code>named-checkzone</code> OK.</li>
+<li><code>nslookup &lt;nombre&gt; &lt;IP_DNS&gt;</code> resolviendo correctamente.</li>
+<li>Captura de navegación usando el nombre (no IP).</li>
+</ul>
+<hr />
+<h2 id="guia-2-instancia-nueva-de-bbdd-en-ec2-con-mysql-sin-rds">Guía 2: Instancia nueva de BBDD en EC2 con MySQL (sin RDS)<a class="headerlink" href="#guia-2-instancia-nueva-de-bbdd-en-ec2-con-mysql-sin-rds" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> disponer de una BBDD gestionada por el equipo en una EC2 dedicada, con acceso restringido por Security Group (sin RDS).</p>
+<ol>
+<li>
+<p><strong>Crear instancia EC2 “DB”</strong></p>
+<ul>
+<li>OS: Debian/Ubuntu (similar a <code>PR403</code> para mantener continuidad).</li>
+<li>Instancia en subred que permita comunicación con web/back end (ideal: privada).</li>
+</ul>
+</li>
+<li>
+<p><strong>Security Groups (seguridad primero)</strong></p>
+<ul>
+<li>Inbound: permitir <code>TCP/3306</code> <strong>solo</strong> desde los Security Groups de la instancia web y del back end.</li>
+<li>No abrir <code>3306</code> a <code>0.0.0.0/0</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Instalar MySQL</strong></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mysql-server<span class="w"> </span>-y
+<span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>mysql
+</code></pre></div>
+</li>
+<li>
+<p><strong>Crear base de datos y usuario</strong></p>
+<p>Conectar como root:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>mysql
+</code></pre></div>
+<p>Crear schema y usuario (ajusta nombres):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">creviplay</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;creviplay_app&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;&lt;PASSWORD_SEGURA&gt;&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">creviplay</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;creviplay_app&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Configurar escucha de MySQL</strong></p>
+<ul>
+<li>Asegurar que MySQL escucha en la interfaz privada para que web/back end puedan conectar.</li>
+<li>En <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code> (o equivalente): <code>bind-address = &lt;IP_PRIVADA_DB&gt;</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Backup y persistencia</strong></p>
+<ul>
+<li>Reiniciar MySQL o la instancia y comprobar que los datos siguen.</li>
+<li>Documentar snapshots EBS (si tenéis acceso) o backup con <code>mysqldump</code>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Evidencias mínimas (Guía 2):</strong></p>
+<ul>
+<li>Captura/config del SG de la instancia DB mostrando <code>3306</code> solo desde SGs concretos.</li>
+<li><code>systemctl status mysql</code> en verde.</li>
+<li><code>ss -lntp | grep 3306</code> mostrando escucha en IP privada o <code>0.0.0.0</code> según decisión (justificar).</li>
+</ul>
+<hr />
+<h2 id="guia-3-conectar-web-y-back-end-hacia-el-nuevo-mysql">Guía 3: Conectar web y back end hacia el nuevo MySQL<a class="headerlink" href="#guia-3-conectar-web-y-back-end-hacia-el-nuevo-mysql" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> que las instancias/servicios de la solución conecten a la nueva DB por <strong>IP privada</strong> y con credenciales de aplicación.</p>
+<ol>
+<li>
+<p><strong>Actualizar configuración del proyecto</strong></p>
+<ul>
+<li>Sustituir el antiguo <code>DB_HOST</code> (por ejemplo RDS) por <code>DB_HOST = &lt;IP_PRIVADA_DB&gt;</code> (o hostname interno).</li>
+<li>Actualizar <code>DB_USER</code>, <code>DB_PASSWORD</code> y <code>DB_NAME</code> para el usuario creado en MySQL.</li>
+</ul>
+</li>
+<li>
+<p><strong>Si usáis contenedores</strong></p>
+<ul>
+<li>Actualizar <code>wp-config.php</code> / variables de entorno dentro de los contenedores.</li>
+<li>Comprobar que el host/IP se resuelve y es accesible desde esa capa.</li>
+</ul>
+</li>
+<li>
+<p><strong>Prueba de conectividad (obligatorio)</strong></p>
+<p>Desde web o back end:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mysql<span class="w"> </span>-h<span class="w"> </span>&lt;IP_PRIVADA_DB&gt;<span class="w"> </span>-u<span class="w"> </span>creviplay_app<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SELECT 1;&quot;</span>
+</code></pre></div>
+<p>Si no tenéis cliente MySQL, ejecutadlo desde el contenedor o instalad <code>mysql-client</code> (según corresponda).</p>
+</li>
+</ol>
+<p><strong>Evidencias mínimas (Guía 3):</strong></p>
+<ul>
+<li><code>SELECT 1</code> correcto desde la(s) instancia(s) autorizada(s).</li>
+<li>Captura del fichero/variables donde se ve <code>DB_HOST=&lt;IP_PRIVADA_DB&gt;</code> (ocultando contraseñas).</li>
+</ul>
+<hr />
+<h2 id="guia-4-validacion-de-integracion-y-seguridad">Guía 4: Validación de integración y seguridad<a class="headerlink" href="#guia-4-validacion-de-integracion-y-seguridad" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> demostrar integración extremo a extremo, y que la seguridad de red funciona con una prueba negativa.</p>
+<ul>
+<li>
+<p><strong>Integración:</strong> web accesible; el back end realiza una operación real sobre datos.</p>
+</li>
+<li>
+<p><strong>Sustitución “sin RDS”:</strong> demostrar que el flujo apunta a MySQL de la instancia nueva (con <code>SELECT</code> o evidencias de configuración).</p>
+</li>
+<li>
+<p><strong>Seguridad (validación):</strong> evidencia de reglas del SG de MySQL (origen restringido) y prueba negativa desde una instancia/SG no autorizado (debe fallar la conexión a <code>3306</code>).</p>
+</li>
+</ul>
+<hr />
+<h2 id="guia-5-seguridad-aws-red-y-exposicion-minima">Guía 5: Seguridad AWS (red y exposición mínima)<a class="headerlink" href="#guia-5-seguridad-aws-red-y-exposicion-minima" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> reducir superficie de ataque y demostrar que solo están abiertos los puertos imprescindibles.</p>
+<ol>
+<li>
+<p><strong>Auditar puertos en Security Groups</strong></p>
+<ul>
+<li>SSH (<code>22</code>) solo desde vuestra IP (o red del centro).</li>
+<li>HTTP (<code>80</code>) y/o HTTPS (<code>443</code>) solo donde corresponda (servidores web).</li>
+<li>MySQL (<code>3306</code>) solo entre SGs (nunca <code>0.0.0.0/0</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Separación por roles</strong></p>
+<ul>
+<li>SG “WEB” (80/443) para instancias web.</li>
+<li>SG “DB” (3306 solo desde SG WEB/APP).</li>
+</ul>
+</li>
+<li>
+<p><strong>Prueba negativa</strong></p>
+<p>Desde una EC2 “no autorizada” (otro SG), ejecutar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>nc<span class="w"> </span>-vz<span class="w"> </span>&lt;IP_PRIVADA_DB&gt;<span class="w"> </span><span class="m">3306</span>
+</code></pre></div>
+<p>Debe fallar (timeout/denied).</p>
+</li>
+</ol>
+<p><strong>Evidencias mínimas (Guía 5):</strong></p>
+<ul>
+<li>Capturas de reglas SG antes/después (o tabla en documentación).</li>
+<li><code>nc</code>/<code>telnet</code> fallando desde origen no autorizado y <code>mysql</code> funcionando desde origen autorizado.</li>
+</ul>
+<hr />
+<h2 id="guia-6-seguridad-aws-acceso-e-iam">Guía 6: Seguridad AWS (acceso e IAM)<a class="headerlink" href="#guia-6-seguridad-aws-acceso-e-iam" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> controlar cómo se administra AWS y cómo se accede por SSH, reduciendo riesgos.</p>
+<ol>
+<li>
+<p><strong>IAM (mínimo)</strong></p>
+<ul>
+<li>Usar usuarios IAM (no root) y MFA activado.</li>
+<li>Documentar qué usuario/rol usáis y por qué permisos mínimos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Acceso SSH</strong></p>
+<ul>
+<li>Claves SSH (sin contraseñas).</li>
+<li>En <code>/etc/ssh/sshd_config</code>: <code>PasswordAuthentication no</code> y <code>PermitRootLogin no</code>.</li>
+<li>Recargar SSH: <code>sudo systemctl reload ssh</code> (o <code>sshd</code> según distro).</li>
+</ul>
+</li>
+<li>
+<p><strong>Rotación básica</strong></p>
+<ul>
+<li>Cambiar el par de claves si se comparte entre equipo, o documentar el procedimiento.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Evidencias mínimas (Guía 6):</strong></p>
+<ul>
+<li>Captura de SG con <code>22</code> restringido.</li>
+<li>Extracto de <code>sshd_config</code> con las 2 directivas (sin mostrar datos sensibles).</li>
+<li>Captura IAM/MFA o checklist firmado por el equipo.</li>
+</ul>
+<hr />
+<h2 id="guia-7-seguridad-aws-logs-alertas-y-visibilidad">Guía 7: Seguridad AWS (logs, alertas y visibilidad)<a class="headerlink" href="#guia-7-seguridad-aws-logs-alertas-y-visibilidad" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> tener trazabilidad y avisos básicos ante problemas o accesos.</p>
+<ol>
+<li>
+<p><strong>CloudWatch (mínimo)</strong></p>
+<ul>
+<li>Activar métricas/alarma para CPU alta sostenida, disco (si aplica) y estado de instancia.</li>
+</ul>
+</li>
+<li>
+<p><strong>Logs del sistema</strong></p>
+<ul>
+<li>Documentar dónde se ven logs de Nginx/Apache, aplicación y MySQL.</li>
+<li>(Opcional) instalar/activar CloudWatch Agent para enviar logs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Evidencia de evento</strong></p>
+<ul>
+<li>Forzar un evento “controlado” (ej. pico CPU con <code>stress</code>, o reinicio de servicio) y mostrar métrica, alarma o log.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Evidencias mínimas (Guía 7):</strong></p>
+<ul>
+<li>Captura de una alarma en CloudWatch (configuración) y de la métrica.</li>
+<li>Captura de logs de acceso web y de error (un ejemplo).</li>
+</ul>
+<hr />
+<h2 id="guia-8-seguridad-aws-backups-recuperacion-y-cifrado">Guía 8: Seguridad AWS (backups, recuperación y cifrado)<a class="headerlink" href="#guia-8-seguridad-aws-backups-recuperacion-y-cifrado" title="Permanent link">&para;</a></h2>
+<p><strong>Objetivo:</strong> demostrar recuperación ante fallo y uso de cifrado donde aplique.</p>
+<ol>
+<li>
+<p><strong>Backups</strong></p>
+<ul>
+<li>MySQL: <code>mysqldump</code> (o backup lógico equivalente) guardado fuera del contenedor/servicio.</li>
+<li>EC2: snapshots EBS (si está permitido) o plan documentado.</li>
+</ul>
+</li>
+<li>
+<p><strong>Prueba de restauración</strong></p>
+<ul>
+<li>Crear un registro “TEST_BACKUP”, borrarlo, restaurar desde backup y evidenciar que vuelve.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cifrado</strong></p>
+<ul>
+<li>Verificar y documentar si el volumen EBS está cifrado (por defecto o KMS).</li>
+<li>Documentar cifrado en tránsito (HTTPS en 443) si aplica.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Evidencias mínimas (Guía 8):</strong></p>
+<ul>
+<li>Evidencia del backup y restore (comandos + resultado).</li>
+<li>Captura del snapshot (si aplica) o del plan.</li>
+<li>Captura/validación de cifrado (EBS y/o HTTPS).</li>
+</ul>
+<hr />
+<h2 id="entregables">Entregables<a class="headerlink" href="#entregables" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Evidencia DNS:</p>
+<ul>
+<li>Archivos de configuración de Bind9.</li>
+<li>Resultados de <code>named-checkconf</code> / <code>named-checkzone</code>.</li>
+<li>Capturas de <code>nslookup</code> y acceso por navegador.</li>
+</ul>
+</li>
+<li>
+<p>Evidencia BBDD en EC2 (MySQL):</p>
+<ul>
+<li>Configuración/instalación (resumen).</li>
+<li>Reglas del Security Group de MySQL (origen restringido).</li>
+<li>Pruebas de conexión desde web/back end.</li>
+</ul>
+</li>
+<li>
+<p>Evidencia de integración:</p>
+<ul>
+<li>Capturas del sitio web.</li>
+<li>Capturas o logs del back end realizando operaciones con datos reales.</li>
+</ul>
+</li>
+<li>
+<p>Documentación:</p>
+<ul>
+<li>Cambios aplicados.</li>
+<li>Problemas/dificultades encontradas y cómo se resolvieron.</li>
+</ul>
+</li>
+<li>
+<p>Evidencia de seguridad en AWS:</p>
+<ul>
+<li>Auditoría de puertos/SG.</li>
+<li>Prueba negativa de acceso a <code>3306</code>.</li>
+<li>IAM/MFA y hardening SSH.</li>
+<li>Al menos una alarma o log relevante en CloudWatch.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="criterios-de-evaluacion-30p">Criterios de evaluación (30p)<a class="headerlink" href="#criterios-de-evaluacion-30p" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>DNS configurado y validado correctamente (8p)</p>
+</li>
+<li>
+<p>BBDD MySQL en EC2 nueva: instalación, seguridad y conexión (10p)</p>
+</li>
+<li>
+<p>Seguridad AWS (SG/IAM/logs/backups) con evidencias (8p)</p>
+</li>
+<li>
+<p>Integración extremo a extremo (web/back end -&gt; BBDD) con evidencias (3p)</p>
+</li>
+<li>
+<p>Documentación y calidad de evidencias (1p)</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>

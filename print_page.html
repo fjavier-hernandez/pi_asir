@@ -334,6 +334,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05integracion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Integración, seguridad y validación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -398,6 +418,15 @@
   <a href="#04desarrollo" class="md-nav__link">
     <span class="md-ellipsis">
       4. Desarrollo iterativo y pruebas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05integracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Integración, seguridad y validación
     </span>
   </a>
   
@@ -2672,6 +2701,161 @@ Esta guía incluye:
 <li><strong>Docker Compose:</strong> Herramienta para definir y ejecutar aplicaciones multi-contenedor</li>
 <li><strong>Volumen:</strong> Almacenamiento persistente para contenedores Docker</li>
 <li><strong>RA3:</strong> Resultado de Aprendizaje 3 (Desarrollo)</li>
+</ul></section><section class="print-page" id="05integracion" heading-number="6"><h1 id="05integracion-5-integracion-seguridad-y-validacion">5. Integración, seguridad y validación<a class="headerlink" href="#05integracion-5-integracion-seguridad-y-validacion" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>En esta unidad aprenderás a <strong>integrar la solución</strong> (todos los servicios) y a <strong>validar</strong> que funciona de extremo a extremo, con <strong>seguridad</strong> y <strong>evidencias</strong> según el tipo de proyecto del grupo.</p>
+<p>Hay <strong>dos retos de igual alcance</strong> (30p cada uno); cada grupo sigue <strong>solo el que corresponda</strong> a su despliegue:</p>
+<ul>
+<li><strong>RG501 (Docker):</strong> stack con Nginx/WordPress/Laravel/MySQL en Compose; hardening del proxy, control de <code>/admin</code>, backups probados, HTTPS o plan, regresión, y <strong>monitorización con Prometheus y Pandora FMS</strong> más logs del stack.</li>
+<li><strong>RG502 (AWS):</strong> varias EC2 (web WordPress, app propia, DNS y BBDD nueva); <strong>Bind9</strong>, <strong>MySQL en EC2 sin RDS</strong>, conexión desde instancias, integración con datos reales y <strong>seguridad AWS</strong> (SG, pruebas negativas, IAM/MFA, SSH, CloudWatch, backups y cifrado).</li>
+</ul>
+</blockquote>
+<p>Esta unidad de trabajo corresponde principalmente al <strong>Resultado de Aprendizaje RA3</strong>.</p>
+<hr />
+<h2 id="05integracion-resultado-de-aprendizaje">Resultado de aprendizaje<a class="headerlink" href="#05integracion-resultado-de-aprendizaje" title="Permanent link">&para;</a></h2>
+<p>Al finalizar esta unidad, serás capaz de:</p>
+<ul>
+<li><strong>RA3:</strong> Desarrollar y validar la solución (iteraciones, pruebas y criterios de aceptación), demostrando integración extremo a extremo, seguridad adicional y —según el reto— monitorización en contenedores <strong>o</strong> operación segura y observable en <strong>AWS</strong>.</li>
+</ul>
+<hr />
+<h2 id="05integracion-1-conceptos-basicos-para-la-integracion-seguridad-y-validacion">1. Conceptos básicos para la integración, seguridad y validación<a class="headerlink" href="#05integracion-1-conceptos-basicos-para-la-integracion-seguridad-y-validacion" title="Permanent link">&para;</a></h2>
+<p>Para integrar correctamente una solución, debes abordar:</p>
+<ol>
+<li><strong>Integración extremo a extremo:</strong> comprobar que web, back end y base de datos se conectan con los parámetros y rutas previstas.</li>
+<li><strong>Persistencia y reinicio:</strong> confirmar que el dato no se pierde al recrear servicios (volúmenes, almacenamiento persistente o backups).</li>
+<li><strong>Aislamiento y mínimo privilegio:</strong> restringir puertos/redes para que solo los componentes autorizados puedan hablar entre sí.</li>
+<li><strong>Hardening (mínimo una mejora):</strong> en <strong>Docker</strong>, cabeceras y rate limiting en Nginx, control de paneles; en <strong>AWS</strong>, reglas de <strong>Security Groups</strong>, SSH endurecido, IAM/MFA y puertos solo donde hagan falta.</li>
+<li><strong>Monitorización, logs y trazas:</strong> en <strong>RG501</strong>, <strong>Prometheus</strong>, <strong>Pandora FMS</strong> y <code>docker compose logs</code> (paneles no públicos sin protección); en <strong>RG502</strong>, <strong>CloudWatch</strong> (métricas/alarmas), logs en instancias o contenedores y evidencia de un evento o alarma.</li>
+<li><strong>Evidencia de validación:</strong> capturas y comandos que demuestren lo anterior; en <strong>AWS</strong>, incluir <strong>pruebas negativas</strong> (por ejemplo acceso denegado a <code>3306</code> desde origen no autorizado) cuando pida la guía.</li>
+</ol>
+<hr />
+<h2 id="05integracion-2-retos-de-integracion">2. Retos de integración<a class="headerlink" href="#05integracion-2-retos-de-integracion" title="Permanent link">&para;</a></h2>
+<p>Cada grupo sigue <strong>un</strong> reto (el de su línea de proyecto). Ambos tienen guía detallada y <strong>30 puntos</strong>; el profesorado valora el reto que os corresponda.</p>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>RG501 — Docker</th>
+<th>RG502 — AWS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Guía</strong></td>
+<td><a href="#rg501_integracion_seguridad_docker">RG501 - Integración y seguridad con Docker</a></td>
+<td><a href="#rg502_integracion_seguridad_aws">RG502 - Integración y seguridad en AWS</a></td>
+</tr>
+<tr>
+<td><strong>Punto de partida</strong></td>
+<td>Compose con Nginx, WordPress, Laravel y MySQL ya desplegado</td>
+<td>Dos EC2 (WordPress + app), Docker en cada una, SG, Elastic IP (<a href="https://alejandromarinyo.github.io/Proyecto-Intermodular/Desarrollo/">estado publicado</a>)</td>
+</tr>
+<tr>
+<td><strong>Integración extra</strong></td>
+<td>Regresión tras hardening y backups</td>
+<td>DNS <strong>Bind9</strong>, nueva <strong>EC2 MySQL</strong> (sin RDS), apps apuntando a esa BBDD</td>
+</tr>
+<tr>
+<td><strong>Seguridad</strong></td>
+<td>Nginx (cabeceras, rate limit), <code>/admin</code>, HTTPS o plan</td>
+<td>SG, prueba negativa a <code>3306</code>, IAM/MFA, SSH, backups EBS/<code>mysqldump</code>, cifrado</td>
+</tr>
+<tr>
+<td><strong>Observabilidad</strong></td>
+<td><strong>Prometheus</strong> + <strong>Pandora FMS</strong> + logs Compose</td>
+<td><strong>CloudWatch</strong> (alarmas/métricas) + logs en instancia/contenedores</td>
+</tr>
+<tr>
+<td><strong>Práctica base</strong></td>
+<td><code>PR402</code></td>
+<td><code>PR403</code> (DNS) + continuidad del despliegue AWS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="05integracion-21-contenido-resumido-de-rg501">2.1. Contenido resumido de RG501<a class="headerlink" href="#05integracion-21-contenido-resumido-de-rg501" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Guías 1–5: hardening Nginx, <code>/admin</code>, backups, regresión, HTTPS o plan.</li>
+<li>Guía 6: Prometheus, Pandora FMS y logs del stack.</li>
+</ul>
+<h3 id="05integracion-22-contenido-resumido-de-rg502">2.2. Contenido resumido de RG502<a class="headerlink" href="#05integracion-22-contenido-resumido-de-rg502" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Guías 1–4: Bind9, EC2 MySQL, conexión desde web/app, validación y pruebas negativas.</li>
+<li>Guías 5–8: seguridad AWS (red, IAM/SSH, CloudWatch, backups y cifrado).</li>
+</ul>
+<hr />
+<h2 id="05integracion-3-continuacion-desde-el-punto-en-el-que-esta-el-proyecto">3. Continuación desde el punto en el que está el proyecto<a class="headerlink" href="#05integracion-3-continuacion-desde-el-punto-en-el-que-esta-el-proyecto" title="Permanent link">&para;</a></h2>
+<p>Como continuación del tema 4 (RG401), en ambos casos se parte de un despliegue ya funcional (web y back end/panel). A partir de ahí:</p>
+<p><strong>Si seguís RG501 (Docker)</strong></p>
+<ul>
+<li>Demostrar integración con <strong>datos reales</strong> tras los cambios de seguridad y backups.</li>
+<li><strong>Regresión</strong> del stack Compose (reinicio y persistencia).</li>
+<li><strong>Monitorización</strong> (Prometheus, Pandora) y revisión de <strong>logs</strong> sin exponer paneles.</li>
+</ul>
+<p><strong>Si seguís RG502 (AWS)</strong></p>
+<ul>
+<li>Completar <strong>DNS</strong> (Bind9) y <strong>BBDD en EC2 nueva</strong> con acceso restringido por <strong>Security Group</strong>.</li>
+<li>Demostrar conexión <strong>web/app → MySQL</strong> y operaciones reales sobre datos.</li>
+<li>Aplicar y documentar <strong>seguridad AWS</strong> (red, IAM/MFA, SSH, alarmas o logs en CloudWatch, backup/restore y cifrado según la guía).</li>
+</ul>
+<hr />
+<h2 id="05integracion-4-estructura-de-la-seccion-integracion-en-tu-proyecto">4. Estructura de la sección “Integración” en tu proyecto<a class="headerlink" href="#05integracion-4-estructura-de-la-seccion-integracion-en-tu-proyecto" title="Permanent link">&para;</a></h2>
+<p>La memoria debe tener una sección <strong>Integración</strong> coherente con <strong>vuestro</strong> reto. Lo común a ambos:</p>
+<ol>
+<li><strong>Proceso de integración:</strong> qué cambiasteis para que web, back end y base de datos funcionen juntos con datos reales (en <strong>RG502</strong>, incluid DNS y nuevo MySQL en EC2).</li>
+<li><strong>Seguridad aplicada:</strong> medidas concretas y por qué (Nginx/<code>/admin</code> en Docker; <strong>SG</strong>, IAM/MFA, SSH y pruebas negativas en AWS).</li>
+<li><strong>Pruebas y validación:</strong> lista de pruebas (conectividad, regresión, <code>nslookup</code>/DNS, <code>SELECT</code>/app, etc.) y resultado.</li>
+<li><strong>Evidencias:</strong> capturas y comandos que respalden cada bloque anterior.</li>
+<li><strong>Estado final:</strong> URLs/IPs/puertos y cómo verificarlo un tercero.</li>
+</ol>
+<p><strong>Apartados adicionales según el reto</strong></p>
+<ul>
+<li><strong>RG501:</strong> monitorización (<strong>Prometheus</strong> <em>targets</em>, <strong>Pandora FMS</strong>, ejemplo de <code>docker compose logs</code>) y, si aplica, HTTPS o plan.</li>
+<li><strong>RG502:</strong> observabilidad en <strong>AWS</strong> (CloudWatch: alarma o métrica; logs en instancia o contenedores); evidencias de <strong>DNS</strong> (Bind9), <strong>SG de MySQL</strong>, backup/restore y cifrado/HTTPS si documentasteis.</li>
+</ul>
+<hr />
+<h2 id="05integracion-5-actividades-y-entregables">5. Actividades y entregables<a class="headerlink" href="#05integracion-5-actividades-y-entregables" title="Permanent link">&para;</a></h2>
+<p><a name="RG501"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG501</strong>. (RA3 // 30p). Integración de contenedores, seguridad (Nginx, <code>/admin</code>, backups, HTTPS o plan) y <strong>monitorización con Prometheus y Pandora FMS</strong> en Docker.<ul>
+<li><strong><a href="#rg501_integracion_seguridad_docker">Guía: RG501 - Integración y seguridad con Docker</a></strong>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><a name="RG502"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG502</strong>. (RA3 // 30p). Integración en AWS: DNS (Bind9), MySQL en <strong>EC2 nueva</strong> (sin RDS), conexión desde web/app y <strong>seguridad AWS</strong> (red, IAM/SSH, CloudWatch, backups y cifrado).<ul>
+<li><strong><a href="#rg502_integracion_seguridad_aws">Guía: RG502 - Integración y seguridad en AWS</a></strong>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="05integracion-6-recursos-y-referencias">6. Recursos y referencias<a class="headerlink" href="#05integracion-6-recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<h3 id="05integracion-practicas-base">Prácticas base<a class="headerlink" href="#05integracion-practicas-base" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#pr402_despliegue_php_mysql_docker_compose">PR402 - Despliegue de aplicación PHP + MySQL con Docker Compose</a></li>
+<li><a href="#pr403_configuracion_servidor_dns">PR403 - Configuración de un servidor DNS (Bind9) en AWS</a></li>
+</ul>
+<h3 id="05integracion-diseno-de-referencia-de-los-proyectos">Diseño de referencia de los proyectos<a class="headerlink" href="#05integracion-diseno-de-referencia-de-los-proyectos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Proyecto Docker: <a href="https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/02_Marco_tecnologico/">Proyecto Intermodular (Docker) - Diseño y Planificación</a></li>
+<li>Proyecto AWS: <a href="https://alejandromarinyo.github.io/Proyecto-Intermodular/Dise%C3%B1o_y_Planificacion/">Proyecto Intermodular (AWS) - Diseño y Planificación</a></li>
+<li>Proyecto AWS (estado desplegado descrito en RG502): <a href="https://alejandromarinyo.github.io/Proyecto-Intermodular/Desarrollo/">Desarrollo - Proyecto Intermodular</a></li>
+</ul>
+<hr />
+<h2 id="05integracion-glosario-de-terminos-y-acronimos">Glosario de términos y acrónimos<a class="headerlink" href="#05integracion-glosario-de-terminos-y-acronimos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>RA3:</strong> Resultado de Aprendizaje 3 (Desarrollo)</li>
+<li><strong>SG / Security Group:</strong> Reglas de firewall a nivel de instancia en AWS</li>
+<li><strong>DNS:</strong> Domain Name System</li>
+<li><strong>Bind9:</strong> Servidor DNS basado en BIND</li>
+<li><strong>Healthcheck:</strong> prueba de “estado listo” de un servicio</li>
+<li><strong>Prometheus:</strong> almacenamiento y consulta de métricas (time series)</li>
+<li><strong>Pandora FMS:</strong> plataforma de monitorización con consola y agentes/módulos</li>
+<li><strong>IAM / MFA:</strong> identidad y acceso en AWS; autenticación en dos factores</li>
+<li><strong>CloudWatch:</strong> métricas y alarmas en AWS</li>
+<li><strong>EC2 / Elastic IP:</strong> instancia virtual en AWS y dirección IPv4 pública fija asociada</li>
+<li><strong>RDS:</strong> base de datos gestionada en AWS (en RG502 se <strong>sustituye</strong> por MySQL en EC2)</li>
 </ul></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
@@ -2711,6 +2895,14 @@ Esta guía incluye:
             
                 .print-site-enumerate-headings #04desarrollo h3:before { content: '5.' counter(counter-04desarrollo-2) '.' counter(counter-04desarrollo-3) ' ' }
                 .print-site-enumerate-headings #04desarrollo h3 {  counter-increment: counter-04desarrollo-3 }
+            
+.print-site-enumerate-headings #05integracion > h1:before { content: '6 ' }
+
+                .print-site-enumerate-headings #05integracion h2:before { content: '6.' counter(counter-05integracion-2) ' ' }
+                .print-site-enumerate-headings #05integracion h2 {  counter-reset: counter-05integracion-3 ;  counter-increment: counter-05integracion-2 }
+            
+                .print-site-enumerate-headings #05integracion h3:before { content: '6.' counter(counter-05integracion-2) '.' counter(counter-05integracion-3) ' ' }
+                .print-site-enumerate-headings #05integracion h3 {  counter-increment: counter-05integracion-3 }
             </style>
 
 
