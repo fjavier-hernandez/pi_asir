@@ -1,0 +1,3025 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guía del tema 7 con la elaboración de la memoria técnica del proyecto intermodular ASIR usando Markdown, MkDocs Material, Git y GitHub, con plantillas, ejemplos y publicación automática en GitHub Pages.">
+      
+      
+      
+        <link rel="canonical" href="https://fjavier-hernandez.github.io/pi_asir/07documentacion_memoria.html">
+      
+      
+        <link rel="prev" href="06despliegue_operacion.html">
+      
+      
+        <link rel="next" href="08presentacion_defensa.html">
+      
+      
+      <link rel="icon" href="imagenes/ral.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Documentación técnica y memoria - Proyecto Intermodular ASIR</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-0CPJP88MBF"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-0CPJP88MBF",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-0CPJP88MBF",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Documentación técnica y memoria - Proyecto Intermodular ASIR" >
+      
+        <meta  property="og:description"  content="Guía del tema 7 con la elaboración de la memoria técnica del proyecto intermodular ASIR usando Markdown, MkDocs Material, Git y GitHub, con plantillas, ejemplos y publicación automática en GitHub Pages." >
+      
+        <meta  property="og:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/07documentacion_memoria.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://fjavier-hernandez.github.io/pi_asir/07documentacion_memoria.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Documentación técnica y memoria - Proyecto Intermodular ASIR" >
+      
+        <meta  name="twitter:description"  content="Guía del tema 7 con la elaboración de la memoria técnica del proyecto intermodular ASIR usando Markdown, MkDocs Material, Git y GitHub, con plantillas, ejemplos y publicación automática en GitHub Pages." >
+      
+        <meta  name="twitter:image"  content="https://fjavier-hernandez.github.io/pi_asir/assets/images/social/07documentacion_memoria.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-documentacion-tecnica-y-memoria" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-header__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto Intermodular ASIR
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Documentación técnica y memoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="javi" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Proyecto Intermodular ASIR" class="md-nav__button md-logo" aria-label="Proyecto Intermodular ASIR" data-md-component="logo">
+      
+  <img src="imagenes/ral.svg" alt="logo">
+
+    </a>
+    Proyecto Intermodular ASIR
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01herramientas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Herramientas del proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02planteamiento_reto.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Planteamiento del reto y análisis del contexto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03diseno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diseño de la solución y planificación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04desarrollo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Desarrollo iterativo y pruebas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05integracion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Integración, seguridad y validación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06despliegue_operacion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Despliegue y operación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    7. Documentación técnica y memoria
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="07documentacion_memoria.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    7. Documentación técnica y memoria
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultado de aprendizaje
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-documentacion-tecnica-por-que-y-para-quien" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Documentación técnica: por qué y para quién
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-estructura-recomendada-de-la-memoria-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Estructura recomendada de la memoria técnica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Estructura recomendada de la memoria técnica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-arbol-de-carpetas-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Árbol de carpetas del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-capitulos-obligatorios-de-la-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Capítulos obligatorios de la memoria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mkdocs-material-como-soporte-de-la-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. MkDocs Material como soporte de la memoria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MkDocs Material como soporte de la memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-instalacion-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Instalación rápida
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-mkdocsyml-de-referencia-para-tu-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. mkdocs.yml de referencia para tu memoria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-elementos-visuales-de-material-que-debes-dominar" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Elementos visuales de Material que debes dominar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Elementos visuales de Material que debes dominar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplos-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplos prácticos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-markdown-profesional-para-memorias-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Markdown profesional para memorias técnicas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Markdown profesional para memorias técnicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-encabezados-y-jerarquia" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Encabezados y jerarquía
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-codigo-tipado-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Código tipado correctamente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-imagenes-y-capturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Imágenes y capturas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-diagramas-con-mermaid" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Diagramas con Mermaid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-tablas-comparativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5. Tablas comparativas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-git-y-github-como-soporte-documental" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Git y GitHub como soporte documental
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Git y GitHub como soporte documental">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-repositorio-bien-organizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Repositorio bien organizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-convenciones-de-commits-conventional-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Convenciones de commits (Conventional Commits)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-ramas-y-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Ramas y Pull Requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-issues-y-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Issues y proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-publicacion-automatica-en-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Publicación automática en GitHub Pages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Publicación automática en GitHub Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-opcion-1-comando-mkdocs-gh-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Opción 1: Comando mkdocs gh-deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-opcion-2-recomendada-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Opción 2 (recomendada): GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-verificacion-del-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Verificación del despliegue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-plantillas-reutilizables" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Plantillas reutilizables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Plantillas reutilizables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-readmemd-profesional-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. README.md profesional del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-plantilla-de-capitulo-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Plantilla de capítulo de memoria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-plantilla-de-manual-de-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Plantilla de manual de usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-plantilla-de-manual-de-administrador" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4. Plantilla de manual de administrador
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-plantilla-de-registro-de-incidencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.5. Plantilla de registro de incidencias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-documentacion-viva-mantenerla-durante-todo-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Documentación viva: mantenerla durante todo el proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Documentación viva: mantenerla durante todo el proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-rituales-del-equipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. Rituales del equipo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-diario-de-aprendizaje-ra5" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. Diario de aprendizaje (RA5)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-buenas-practicas-de-documentacion-profesional" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Buenas prácticas de documentación profesional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Buenas prácticas de documentación profesional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-anti-patrones-a-evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. Anti-patrones a evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-trazabilidad-del-requisito-a-la-evidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Trazabilidad: del requisito a la evidencia
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-retos-guiados" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Retos guiados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Retos guiados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-rg701-memoria-tecnica-publicada" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1. RG701 — Memoria técnica publicada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-rg702-manuales-y-trazabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2. RG702 — Manuales y trazabilidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-retos-abiertos-profundizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Retos abiertos (profundización)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-actividades-y-entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Actividades y entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-checklist-final-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Checklist final de memoria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Checklist final de memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-estructura" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.1. Estructura
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-contenido" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.2. Contenido
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-calidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.3. Calidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-profesionalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.4. Profesionalidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-estructura-de-la-seccion-documentacion-en-tu-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Estructura de la sección "Documentación" en tu memoria
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-recursos-y-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Recursos y referencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Recursos y referencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación oficial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memorias-reales-del-alumnado-asir-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memorias reales del alumnado ASIR (referencias)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-del-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material del módulo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glosario-de-terminos-y-acronimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glosario de términos y acrónimos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-y-siguientes-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión y siguientes pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08presentacion_defensa.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Presentación, defensa y cierre
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resultado-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultado de aprendizaje
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-documentacion-tecnica-por-que-y-para-quien" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Documentación técnica: por qué y para quién
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-estructura-recomendada-de-la-memoria-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Estructura recomendada de la memoria técnica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Estructura recomendada de la memoria técnica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-arbol-de-carpetas-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Árbol de carpetas del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-capitulos-obligatorios-de-la-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Capítulos obligatorios de la memoria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mkdocs-material-como-soporte-de-la-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. MkDocs Material como soporte de la memoria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MkDocs Material como soporte de la memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-instalacion-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Instalación rápida
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-mkdocsyml-de-referencia-para-tu-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. mkdocs.yml de referencia para tu memoria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-elementos-visuales-de-material-que-debes-dominar" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Elementos visuales de Material que debes dominar
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Elementos visuales de Material que debes dominar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplos-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplos prácticos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-markdown-profesional-para-memorias-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Markdown profesional para memorias técnicas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Markdown profesional para memorias técnicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-encabezados-y-jerarquia" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Encabezados y jerarquía
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-codigo-tipado-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Código tipado correctamente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-imagenes-y-capturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Imágenes y capturas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-diagramas-con-mermaid" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Diagramas con Mermaid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-tablas-comparativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5. Tablas comparativas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-git-y-github-como-soporte-documental" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Git y GitHub como soporte documental
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Git y GitHub como soporte documental">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-repositorio-bien-organizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Repositorio bien organizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-convenciones-de-commits-conventional-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Convenciones de commits (Conventional Commits)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-ramas-y-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Ramas y Pull Requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-issues-y-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Issues y proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-publicacion-automatica-en-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Publicación automática en GitHub Pages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Publicación automática en GitHub Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-opcion-1-comando-mkdocs-gh-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Opción 1: Comando mkdocs gh-deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-opcion-2-recomendada-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Opción 2 (recomendada): GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-verificacion-del-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Verificación del despliegue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-plantillas-reutilizables" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Plantillas reutilizables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Plantillas reutilizables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-readmemd-profesional-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1. README.md profesional del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-plantilla-de-capitulo-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2. Plantilla de capítulo de memoria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-plantilla-de-manual-de-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Plantilla de manual de usuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-plantilla-de-manual-de-administrador" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4. Plantilla de manual de administrador
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-plantilla-de-registro-de-incidencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.5. Plantilla de registro de incidencias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-documentacion-viva-mantenerla-durante-todo-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Documentación viva: mantenerla durante todo el proyecto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Documentación viva: mantenerla durante todo el proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-rituales-del-equipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1. Rituales del equipo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-diario-de-aprendizaje-ra5" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2. Diario de aprendizaje (RA5)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-buenas-practicas-de-documentacion-profesional" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Buenas prácticas de documentación profesional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Buenas prácticas de documentación profesional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-anti-patrones-a-evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1. Anti-patrones a evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-trazabilidad-del-requisito-a-la-evidencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Trazabilidad: del requisito a la evidencia
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-retos-guiados" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Retos guiados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Retos guiados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-rg701-memoria-tecnica-publicada" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1. RG701 — Memoria técnica publicada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-rg702-manuales-y-trazabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2. RG702 — Manuales y trazabilidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-retos-abiertos-profundizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Retos abiertos (profundización)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-actividades-y-entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Actividades y entregables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-checklist-final-de-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Checklist final de memoria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Checklist final de memoria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-estructura" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.1. Estructura
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-contenido" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.2. Contenido
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-calidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.3. Calidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-profesionalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.4. Profesionalidad
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-estructura-de-la-seccion-documentacion-en-tu-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Estructura de la sección "Documentación" en tu memoria
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-recursos-y-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Recursos y referencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Recursos y referencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-oficial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentación oficial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memorias-reales-del-alumnado-asir-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memorias reales del alumnado ASIR (referencias)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-del-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material del módulo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glosario-de-terminos-y-acronimos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glosario de términos y acrónimos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-y-siguientes-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión y siguientes pasos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="7-documentacion-tecnica-y-memoria">7. Documentación técnica y memoria<a class="headerlink" href="#7-documentacion-tecnica-y-memoria" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>En esta unidad transformarás tu proyecto en un <strong>producto documentado, trazable y publicable</strong>. La memoria técnica no es un apéndice opcional: es el <strong>entregable principal de evaluación</strong> y la <strong>carta de presentación profesional</strong> de tu trabajo.</p>
+<p>Aprenderás a estructurar una <strong>memoria técnica</strong> completa, mantenerla <strong>viva</strong> durante todo el proyecto y publicarla automáticamente como <strong>sitio web</strong> mediante <strong>MkDocs Material</strong>, <strong>Git</strong> y <strong>GitHub Pages</strong>.</p>
+<p>El enfoque es idéntico al de tus referentes reales:</p>
+<ul>
+<li><a href="https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/">Proyecto Intermodular Docker (Ismael, Javier, Jorge)</a></li>
+<li><a href="https://alejandromarinyo.github.io/Proyecto-Intermodular/">Proyecto Intermodular AWS (Alejandro Mariño)</a></li>
+</ul>
+</blockquote>
+<p>Esta unidad de trabajo corresponde principalmente al <strong>Resultado de Aprendizaje RA4</strong> y, de forma transversal, a <strong>RA5</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Idea clave del tema</p>
+<p>Una memoria profesional <strong>se construye desde el día 1</strong> del proyecto, no en la última semana. Si has documentado bien los temas 1 a 6, el Tema 7 consiste en <strong>integrar, pulir y publicar</strong>, no en escribir desde cero.</p>
+</div>
+<hr />
+<h2 id="resultado-de-aprendizaje">Resultado de aprendizaje<a class="headerlink" href="#resultado-de-aprendizaje" title="Permanent link">&para;</a></h2>
+<p>Al finalizar esta unidad, serás capaz de:</p>
+<ul>
+<li><strong>RA4:</strong> <strong>Documentar, versionar y desplegar</strong> la memoria técnica del proyecto en un repositorio Git público con publicación automática en GitHub Pages mediante MkDocs Material.</li>
+<li><strong>RA5 (transversal):</strong> <strong>Comunicar</strong> con claridad técnica el proyecto, integrando evidencias, diagramas y trazabilidad de decisiones.</li>
+</ul>
+<hr />
+<h2 id="1-documentacion-tecnica-por-que-y-para-quien">1. Documentación técnica: por qué y para quién<a class="headerlink" href="#1-documentacion-tecnica-por-que-y-para-quien" title="Permanent link">&para;</a></h2>
+<p>La documentación profesional de un proyecto TIC tiene <strong>tres audiencias</strong> que debes tener en cuenta a la vez:</p>
+<pre class="mermaid"><code>flowchart TB
+  Doc[Memoria técnica&lt;br/&gt;del proyecto] --&gt; Tu[Tú dentro de 1 año]
+  Doc --&gt; Comp[Compañeros de equipo&lt;br/&gt;y futuros mantenedores]
+  Doc --&gt; Ev[Tribunal evaluador&lt;br/&gt;y reclutadores]
+  Tu --&gt; Trazabilidad
+  Comp --&gt; Reproducibilidad
+  Ev --&gt; Profesionalidad</code></pre>
+<table>
+<thead>
+<tr>
+<th>Audiencia</th>
+<th>Qué espera</th>
+<th>Riesgo si falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tú mismo en 1 año</strong></td>
+<td>Poder reconstruir el porqué de cada decisión</td>
+<td>Olvidar cómo se hizo y perder reusabilidad</td>
+</tr>
+<tr>
+<td><strong>Otro alumno / técnico</strong></td>
+<td>Reproducir el despliegue sin preguntarte</td>
+<td>Bloqueo total ante cualquier problema</td>
+</tr>
+<tr>
+<td><strong>Profesorado / empresa</strong></td>
+<td>Evaluar calidad técnica y comunicativa</td>
+<td>Trabajo correcto que <strong>parece</strong> incompleto</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition quote">
+<p class="admonition-title">Principio de la documentación profesional</p>
+<p>"El código documenta el <strong>qué</strong>. La memoria documenta el <strong>por qué</strong>, el <strong>cómo</strong> y el <strong>para quién</strong>."</p>
+</div>
+<hr />
+<h2 id="2-estructura-recomendada-de-la-memoria-tecnica">2. Estructura recomendada de la memoria técnica<a class="headerlink" href="#2-estructura-recomendada-de-la-memoria-tecnica" title="Permanent link">&para;</a></h2>
+<p>A continuación se propone una estructura <strong>completa y reutilizable</strong>, inspirada en las memorias reales de los proyectos del alumnado de referencia. Está pensada para encajar 1 a 1 con los temas del módulo y con los RA evaluados.</p>
+<h3 id="21-arbol-de-carpetas-del-repositorio">2.1. Árbol de carpetas del repositorio<a class="headerlink" href="#21-arbol-de-carpetas-del-repositorio" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>mi-proyecto-intermodular/
+<span class="linenos" data-linenos=" 2 "></span>├── README.md                       # portada del repositorio
+<span class="linenos" data-linenos=" 3 "></span>├── LICENSE
+<span class="linenos" data-linenos=" 4 "></span>├── .gitignore
+<span class="linenos" data-linenos=" 5 "></span>├── mkdocs.yml                      # configuración del sitio
+<span class="linenos" data-linenos=" 6 "></span>├── docs/
+<span class="linenos" data-linenos=" 7 "></span>│   ├── index.md                    # portada de la memoria
+<span class="linenos" data-linenos=" 8 "></span>│   ├── 01_caracterizacion.md       # Tema 2
+<span class="linenos" data-linenos=" 9 "></span>│   ├── 02_diseno_planificacion.md  # Tema 3
+<span class="linenos" data-linenos="10 "></span>│   ├── 03_desarrollo.md            # Tema 4
+<span class="linenos" data-linenos="11 "></span>│   ├── 04_integracion_seguridad.md # Tema 5
+<span class="linenos" data-linenos="12 "></span>│   ├── 05_despliegue_operacion.md  # Tema 6
+<span class="linenos" data-linenos="13 "></span>│   ├── 06_documentacion.md         # este propio Tema 7
+<span class="linenos" data-linenos="14 "></span>│   ├── 07_pruebas_evidencias.md
+<span class="linenos" data-linenos="15 "></span>│   ├── 08_conclusiones.md
+<span class="linenos" data-linenos="16 "></span>│   ├── anexos/
+<span class="linenos" data-linenos="17 "></span>│   │   ├── manual_usuario.md
+<span class="linenos" data-linenos="18 "></span>│   │   ├── manual_administrador.md
+<span class="linenos" data-linenos="19 "></span>│   │   ├── incidencias.md
+<span class="linenos" data-linenos="20 "></span>│   │   └── glosario.md
+<span class="linenos" data-linenos="21 "></span>│   ├── diagramas/
+<span class="linenos" data-linenos="22 "></span>│   │   ├── arquitectura.drawio
+<span class="linenos" data-linenos="23 "></span>│   │   └── red.drawio
+<span class="linenos" data-linenos="24 "></span>│   ├── capturas/
+<span class="linenos" data-linenos="25 "></span>│   │   ├── 04_desarrollo/
+<span class="linenos" data-linenos="26 "></span>│   │   ├── 05_integracion/
+<span class="linenos" data-linenos="27 "></span>│   │   └── 06_despliegue/
+<span class="linenos" data-linenos="28 "></span>│   └── stylesheets/
+<span class="linenos" data-linenos="29 "></span>│       └── extra.css
+<span class="linenos" data-linenos="30 "></span>├── code/                           # código del proyecto
+<span class="linenos" data-linenos="31 "></span>│   ├── docker/
+<span class="linenos" data-linenos="32 "></span>│   ├── terraform/
+<span class="linenos" data-linenos="33 "></span>│   └── ansible/
+<span class="linenos" data-linenos="34 "></span>└── .github/
+<span class="linenos" data-linenos="35 "></span>    └── workflows/
+<span class="linenos" data-linenos="36 "></span>        └── deploy.yml              # publicación automática
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Una buena memoria refleja una buena estructura de repositorio</p>
+<p>Si tu repositorio está organizado, tu memoria saldrá organizada. Si tu repositorio es un caos, ningún sitio bonito lo salvará.</p>
+</div>
+<h3 id="22-capitulos-obligatorios-de-la-memoria">2.2. Capítulos obligatorios de la memoria<a class="headerlink" href="#22-capitulos-obligatorios-de-la-memoria" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Cap.</th>
+<th>Título</th>
+<th>Contenido mínimo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td><strong>Portada e índice</strong></td>
+<td>Título, autores, módulo, curso, IES, fecha, URL del sitio, URL del repositorio</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><strong>Resumen ejecutivo</strong></td>
+<td>1 página: contexto, problema, solución, resultados, tecnologías</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><strong>Caracterización del reto</strong></td>
+<td>Empresa simulada, contexto, problemática, objetivos, interesados, alcance</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><strong>Análisis y requisitos</strong></td>
+<td>RF, RNF, RN, DAFO, matriz de trazabilidad por módulos</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><strong>Diseño y planificación</strong></td>
+<td>Arquitectura, modelo de datos, EDT/WBS, cronograma, riesgos</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td><strong>Desarrollo iterativo</strong></td>
+<td>Sprints, decisiones técnicas, pruebas, dificultades y soluciones</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td><strong>Integración y seguridad</strong></td>
+<td>Endpoints, hardening, copias, validación E2E</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td><strong>Despliegue y operación</strong></td>
+<td>IaC (Terraform), CM (Ansible), monitorización, manual de operación</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td><strong>Pruebas y evidencias</strong></td>
+<td>Casos de prueba, capturas, comandos, logs significativos</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td><strong>Conclusiones</strong></td>
+<td>Objetivos alcanzados, mejoras futuras, lecciones aprendidas</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td><strong>Anexos</strong></td>
+<td>Manual de usuario, de administrador, incidencias, glosario, bibliografía</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-mkdocs-material-como-soporte-de-la-memoria">3. MkDocs Material como soporte de la memoria<a class="headerlink" href="#3-mkdocs-material-como-soporte-de-la-memoria" title="Permanent link">&para;</a></h2>
+<p>MkDocs Material convierte una carpeta de archivos Markdown en un sitio web profesional con búsqueda, navegación, <em>dark mode</em> y soporte de diagramas. Es <strong>el estándar de facto</strong> en proyectos técnicos abiertos.</p>
+<h3 id="31-instalacion-rapida">3.1. Instalación rápida<a class="headerlink" href="#31-instalacion-rapida" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<span class="linenos" data-linenos="2 "></span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material
+<span class="linenos" data-linenos="3 "></span>mkdocs<span class="w"> </span>new<span class="w"> </span>.
+<span class="linenos" data-linenos="4 "></span>mkdocs<span class="w"> </span>serve<span class="w">              </span><span class="c1"># http://127.0.0.1:8000</span>
+</code></pre></div>
+<h3 id="32-mkdocsyml-de-referencia-para-tu-memoria">3.2. <code>mkdocs.yml</code> de referencia para tu memoria<a class="headerlink" href="#32-mkdocsyml-de-referencia-para-tu-memoria" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Proyecto Intermodular ASIR - Mi Empresa</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nt">site_description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Memoria técnica del proyecto intermodular del CFGS ASIR</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">site_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://mi-usuario.github.io/mi-proyecto/</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nt">site_author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipo ASIR 2025-2026</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="nt">repo_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/mi-usuario/mi-proyecto</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nt">repo_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mi-usuario/mi-proyecto</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="nt">edit_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edit/main/docs/</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nt">nav</span><span class="p">:</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inicio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">1. Caracterización</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">01_caracterizacion.md</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">2. Diseño y planificación</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">02_diseno_planificacion.md</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">3. Desarrollo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">03_desarrollo.md</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">4. Integración y seguridad</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">04_integracion_seguridad.md</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">5. Despliegue y operación</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">05_despliegue_operacion.md</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">6. Pruebas y evidencias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">07_pruebas_evidencias.md</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">7. Conclusiones</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">08_conclusiones.md</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Anexos</span><span class="p">:</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Manual de usuario</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anexos/manual_usuario.md</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Manual de administrador</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anexos/manual_administrador.md</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Incidencias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anexos/incidencias.md</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Glosario</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anexos/glosario.md</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="nt">theme</span><span class="p">:</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">es</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="nt">features</span><span class="p">:</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.tabs</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.sections</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.expand</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.top</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">toc.follow</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.code.copy</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content.code.annotate</span>
+<span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.suggest</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">search.highlight</span>
+<span class="linenos" data-linenos="37 "></span><span class="w">  </span><span class="nt">palette</span><span class="p">:</span>
+<span class="linenos" data-linenos="38 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">media</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(prefers-color-scheme:</span><span class="nv"> </span><span class="s">light)&quot;</span>
+<span class="linenos" data-linenos="39 "></span><span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="linenos" data-linenos="40 "></span><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="linenos" data-linenos="41 "></span><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="linenos" data-linenos="42 "></span><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="linenos" data-linenos="43 "></span><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/weather-night</span>
+<span class="linenos" data-linenos="44 "></span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cambiar a modo oscuro</span>
+<span class="linenos" data-linenos="45 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">media</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(prefers-color-scheme:</span><span class="nv"> </span><span class="s">dark)&quot;</span>
+<span class="linenos" data-linenos="46 "></span><span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slate</span>
+<span class="linenos" data-linenos="47 "></span><span class="w">      </span><span class="nt">primary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="linenos" data-linenos="48 "></span><span class="w">      </span><span class="nt">accent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indigo</span>
+<span class="linenos" data-linenos="49 "></span><span class="w">      </span><span class="nt">toggle</span><span class="p">:</span>
+<span class="linenos" data-linenos="50 "></span><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/weather-sunny</span>
+<span class="linenos" data-linenos="51 "></span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cambiar a modo claro</span>
+<span class="linenos" data-linenos="52 "></span>
+<span class="linenos" data-linenos="53 "></span><span class="nt">markdown_extensions</span><span class="p">:</span>
+<span class="linenos" data-linenos="54 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admonition</span>
+<span class="linenos" data-linenos="55 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+<span class="linenos" data-linenos="56 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">footnotes</span>
+<span class="linenos" data-linenos="57 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">md_in_html</span>
+<span class="linenos" data-linenos="58 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tables</span>
+<span class="linenos" data-linenos="59 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">toc</span><span class="p">:</span>
+<span class="linenos" data-linenos="60 "></span><span class="w">      </span><span class="nt">permalink</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos" data-linenos="61 "></span><span class="w">      </span><span class="nt">toc_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="linenos" data-linenos="62 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.details</span>
+<span class="linenos" data-linenos="63 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.highlight</span><span class="p">:</span>
+<span class="linenos" data-linenos="64 "></span><span class="w">      </span><span class="nt">linenums</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos" data-linenos="65 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.inlinehilite</span>
+<span class="linenos" data-linenos="66 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.superfences</span><span class="p">:</span>
+<span class="linenos" data-linenos="67 "></span><span class="w">      </span><span class="nt">custom_fences</span><span class="p">:</span>
+<span class="linenos" data-linenos="68 "></span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mermaid</span>
+<span class="linenos" data-linenos="69 "></span><span class="w">          </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mermaid</span>
+<span class="linenos" data-linenos="70 "></span><span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="kt">!!python/name:pymdownx.superfences.fence_code_format</span>
+<span class="linenos" data-linenos="71 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.tabbed</span><span class="p">:</span>
+<span class="linenos" data-linenos="72 "></span><span class="w">      </span><span class="nt">alternate_style</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos" data-linenos="73 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.tasklist</span><span class="p">:</span>
+<span class="linenos" data-linenos="74 "></span><span class="w">      </span><span class="nt">custom_checkbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos" data-linenos="75 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.emoji</span><span class="p">:</span>
+<span class="linenos" data-linenos="76 "></span><span class="w">      </span><span class="nt">emoji_index</span><span class="p">:</span><span class="w"> </span><span class="kt">!!python/name:material.extensions.emoji.twemoji</span>
+<span class="linenos" data-linenos="77 "></span><span class="w">      </span><span class="nt">emoji_generator</span><span class="p">:</span><span class="w"> </span><span class="kt">!!python/name:material.extensions.emoji.to_svg</span>
+<span class="linenos" data-linenos="78 "></span>
+<span class="linenos" data-linenos="79 "></span><span class="nt">plugins</span><span class="p">:</span>
+<span class="linenos" data-linenos="80 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">search</span><span class="p">:</span>
+<span class="linenos" data-linenos="81 "></span><span class="w">      </span><span class="nt">lang</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">es</span>
+<span class="linenos" data-linenos="82 "></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tags</span>
+<span class="linenos" data-linenos="83 "></span>
+<span class="linenos" data-linenos="84 "></span><span class="nt">extra</span><span class="p">:</span>
+<span class="linenos" data-linenos="85 "></span><span class="w">  </span><span class="nt">social</span><span class="p">:</span>
+<span class="linenos" data-linenos="86 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/github</span>
+<span class="linenos" data-linenos="87 "></span><span class="w">      </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/mi-usuario/mi-proyecto</span>
+<span class="linenos" data-linenos="88 "></span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fontawesome/solid/envelope</span>
+<span class="linenos" data-linenos="89 "></span><span class="w">      </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mailto:equipo@asir.example</span>
+</code></pre></div>
+<h3 id="33-elementos-visuales-de-material-que-debes-dominar">3.3. Elementos visuales de Material que <strong>debes</strong> dominar<a class="headerlink" href="#33-elementos-visuales-de-material-que-debes-dominar" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Sintaxis breve</th>
+<th>Uso en memoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Admonitions</td>
+<td><code>!!! tip "Título"</code></td>
+<td>Destacar consejos, avisos, advertencias</td>
+</tr>
+<tr>
+<td>Detalles plegables</td>
+<td><code>??? note "Click para abrir"</code></td>
+<td>Comandos largos, logs, salidas extensas</td>
+</tr>
+<tr>
+<td>Bloques tabulados</td>
+<td><code>=== "Docker"</code></td>
+<td>Mostrar dos rutas alternativas (Docker / AWS)</td>
+</tr>
+<tr>
+<td>Listas de tareas</td>
+<td><code>- [x]</code></td>
+<td>Checklists de aceptación</td>
+</tr>
+<tr>
+<td>Tablas</td>
+<td>Markdown estándar</td>
+<td>Comparativas, matrices, índices</td>
+</tr>
+<tr>
+<td>Mermaid</td>
+<td><code>```mermaid</code></td>
+<td>Diagramas de flujo, secuencia, Gantt</td>
+</tr>
+<tr>
+<td>Anotaciones de código</td>
+<td><code># (1)</code> + nota</td>
+<td>Explicar líneas concretas de un bloque</td>
+</tr>
+<tr>
+<td>Iconos</td>
+<td><code>:material-rocket:</code></td>
+<td>Reforzar visualmente</td>
+</tr>
+<tr>
+<td>Resaltado de líneas</td>
+<td><code>linenums="1" hl_lines="3 5"</code></td>
+<td>Marcar líneas clave de un código</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-practicos">Ejemplos prácticos<a class="headerlink" href="#ejemplos-practicos" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Bloque admonition <code>info</code></p>
+<p>Sirve para aportar <strong>contexto adicional</strong> sin interrumpir el flujo principal del texto.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Bloque admonition <code>warning</code></p>
+<p>Avisa de <strong>errores comunes</strong> o <strong>acciones destructivas</strong> (<code>terraform destroy</code>, <code>rm -rf</code>).</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Bloque admonition <code>success</code></p>
+<p>Documenta el <strong>resultado correcto esperado</strong>, útil tras un comando.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Bloque admonition <code>danger</code></p>
+<p>Acciones que pueden <strong>comprometer la seguridad</strong> o <strong>borrar datos en producción</strong>.</p>
+</div>
+<details class="example">
+<summary>Salida de <code>terraform plan</code> (click para ver)</summary>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Terraform will perform the following actions:
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>  # aws_instance.web will be created
+<span class="linenos" data-linenos=" 4 "></span>  + resource &quot;aws_instance&quot; &quot;web&quot; {
+<span class="linenos" data-linenos=" 5 "></span>      + ami           = &quot;ami-0a0e...&quot;
+<span class="linenos" data-linenos=" 6 "></span>      + instance_type = &quot;t3.micro&quot;
+<span class="linenos" data-linenos=" 7 "></span>      ...
+<span class="linenos" data-linenos=" 8 "></span>    }
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span>Plan: 5 to add, 0 to change, 0 to destroy.
+</code></pre></div>
+</details>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Despliegue Docker</label><label for="__tabbed_1_2">Despliegue AWS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">cd</span><span class="w"> </span>code/docker
+<span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">cd</span><span class="w"> </span>code/terraform
+<span class="linenos" data-linenos="2 "></span>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
+<span class="linenos" data-linenos="3 "></span>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>inventory_aws_ec2.yml<span class="w"> </span>site.yml<span class="w"> </span>--ask-vault-pass
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="4-markdown-profesional-para-memorias-tecnicas">4. Markdown profesional para memorias técnicas<a class="headerlink" href="#4-markdown-profesional-para-memorias-tecnicas" title="Permanent link">&para;</a></h2>
+<h3 id="41-encabezados-y-jerarquia">4.1. Encabezados y jerarquía<a class="headerlink" href="#41-encabezados-y-jerarquia" title="Permanent link">&para;</a></h3>
+<p>Mantén una jerarquía estricta de encabezados (no salta niveles):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="gh"># 1. Título de capítulo</span>
+<span class="linenos" data-linenos="2 "></span><span class="gu">## 1.1. Sección</span>
+<span class="linenos" data-linenos="3 "></span><span class="gu">### 1.1.1. Subsección</span>
+<span class="linenos" data-linenos="4 "></span><span class="gu">#### 1.1.1.1. Apartado (raro, evítalo)</span>
+</code></pre></div>
+<h3 id="42-codigo-tipado-correctamente">4.2. Código tipado correctamente<a class="headerlink" href="#42-codigo-tipado-correctamente" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="sb">```bash</span>
+<span class="linenos" data-linenos=" 2 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<span class="linenos" data-linenos=" 3 "></span><span class="sb">```</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="sb">```yaml</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="nt">web</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:alpine</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="sb">```</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="sb">```hcl</span>
+<span class="linenos" data-linenos="12 "></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;web&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos" data-linenos="13 "></span><span class="sb">```</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="sb">```sql</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">activo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="sb">```</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Errores frecuentes</p>
+<ul>
+<li>Bloques de código <strong>sin lenguaje</strong> (<code>```</code>) → pierde resaltado.</li>
+<li>Indentar el bloque dentro de una lista <strong>sin línea en blanco</strong> previa → se rompe.</li>
+<li>Pegar consolas con <strong>prompt <code>$</code></strong> delante (ejemplo: <code>$ apt update</code>) → quien copie-pegue copiará también el <code>$</code>.</li>
+</ul>
+</div>
+<h3 id="43-imagenes-y-capturas">4.3. Imágenes y capturas<a class="headerlink" href="#43-imagenes-y-capturas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>![<span class="nt">Diagrama de arquitectura</span>](<span class="na">capturas/05_integracion/arquitectura.png</span>){ width=&quot;80%&quot; }
+</code></pre></div>
+<p>Buenas prácticas:</p>
+<ul>
+<li>Carpeta dedicada por capítulo: <code>docs/capturas/04_desarrollo/</code>.</li>
+<li>Nombres descriptivos en <code>snake_case</code>: <code>terraform_plan_inicial.png</code>, <strong>no</strong> <code>Captura1.png</code>.</li>
+<li>Tamaño razonable: &lt; 500 KB; usar PNG para diagramas, JPG para fotos.</li>
+<li>Texto alternativo descriptivo: ayuda a accesibilidad y SEO.</li>
+</ul>
+<h3 id="44-diagramas-con-mermaid">4.4. Diagramas con Mermaid<a class="headerlink" href="#44-diagramas-con-mermaid" title="Permanent link">&para;</a></h3>
+<p>Mermaid permite escribir diagramas como texto, versionables en Git.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="sb">```mermaid</span>
+<span class="linenos" data-linenos="2 "></span><span class="s">flowchart LR</span>
+<span class="linenos" data-linenos="3 "></span><span class="s">  U[Usuario] --&gt;|HTTPS| LB[Balanceador]</span>
+<span class="linenos" data-linenos="4 "></span><span class="s">  LB --&gt; W1[Web 1]</span>
+<span class="linenos" data-linenos="5 "></span><span class="s">  LB --&gt; W2[Web 2]</span>
+<span class="linenos" data-linenos="6 "></span><span class="s">  W1 &amp; W2 --&gt; DB[(MySQL)]</span>
+<span class="linenos" data-linenos="7 "></span><span class="sb">```</span>
+</code></pre></div>
+<p>Renderizado:</p>
+<pre class="mermaid"><code>flowchart LR
+  U[Usuario] --&gt;|HTTPS| LB[Balanceador]
+  LB --&gt; W1[Web 1]
+  LB --&gt; W2[Web 2]
+  W1 &amp; W2 --&gt; DB[(MySQL)]</code></pre>
+<p><strong>Tipos de diagrama útiles para tu memoria:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo Mermaid</th>
+<th>Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flowchart</code></td>
+<td>Arquitectura, flujos de proceso</td>
+</tr>
+<tr>
+<td><code>sequenceDiagram</code></td>
+<td>Interacción usuario / sistemas (login, despliegue)</td>
+</tr>
+<tr>
+<td><code>erDiagram</code></td>
+<td>Modelo de datos</td>
+</tr>
+<tr>
+<td><code>gantt</code></td>
+<td>Cronograma del proyecto</td>
+</tr>
+<tr>
+<td><code>classDiagram</code></td>
+<td>Modelos de dominio</td>
+</tr>
+<tr>
+<td><code>stateDiagram-v2</code></td>
+<td>Estados de un recurso (instancia EC2, pedido...)</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo de <strong>Gantt</strong> para la planificación del proyecto:</p>
+<pre class="mermaid"><code>gantt
+    title Cronograma Proyecto Intermodular ASIR
+    dateFormat  YYYY-MM-DD
+    section 1ª Evaluación
+    Caracterización         :a1, 2025-09-15, 14d
+    Diseño y planificación  :a2, after a1, 21d
+    Desarrollo iterativo    :a3, after a2, 35d
+    section 2ª Evaluación
+    Integración y seguridad :b1, 2026-01-15, 21d
+    Despliegue y operación  :b2, after b1, 21d
+    Memoria técnica         :b3, 2025-09-15, 175d
+    Defensa final           :b4, after b2, 7d</code></pre>
+<h3 id="45-tablas-comparativas">4.5. Tablas comparativas<a class="headerlink" href="#45-tablas-comparativas" title="Permanent link">&para;</a></h3>
+<p>Las tablas son uno de los recursos más infrautilizados. Úsalas para <strong>decisiones de diseño</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>| Opción | Pros | Contras | Decisión |
+<span class="linenos" data-linenos="2 "></span>|--------|------|---------|----------|
+<span class="linenos" data-linenos="3 "></span>| MySQL gestionado (RDS) | Backups y HA gestionados | Coste mayor | ❌ Fuera de presupuesto |
+<span class="linenos" data-linenos="4 "></span>| MySQL en EC2 | Control total | Mantenimiento manual | ✅ Elegida |
+<span class="linenos" data-linenos="5 "></span>| MariaDB en contenedor | Reproducible y portable | Sin HA nativo | ⏭️ Mejora futura |
+</code></pre></div>
+<hr />
+<h2 id="5-git-y-github-como-soporte-documental">5. Git y GitHub como soporte documental<a class="headerlink" href="#5-git-y-github-como-soporte-documental" title="Permanent link">&para;</a></h2>
+<h3 id="51-repositorio-bien-organizado">5.1. Repositorio bien organizado<a class="headerlink" href="#51-repositorio-bien-organizado" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TB
+  Inicio[git init] --&gt; Estructura[Definir estructura&lt;br/&gt;de carpetas]
+  Estructura --&gt; README[README.md mínimo]
+  README --&gt; Push[git push origin main]
+  Push --&gt; Issues[Activar Issues]
+  Push --&gt; Pages[Activar GitHub Pages]
+  Issues --&gt; PR[Trabajar siempre&lt;br/&gt;con Pull Requests]
+  PR --&gt; Reviews[Revisión cruzada]
+  Reviews --&gt; Merge[Merge a main]
+  Merge --&gt; Deploy[Despliegue&lt;br/&gt;automático]</code></pre>
+<h3 id="52-convenciones-de-commits-conventional-commits">5.2. Convenciones de <em>commits</em> (Conventional Commits)<a class="headerlink" href="#52-convenciones-de-commits-conventional-commits" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Prefijo</th>
+<th>Cuándo</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feat:</code></td>
+<td>Nueva funcionalidad / sección</td>
+<td><code>feat(docs): añadir capítulo despliegue</code></td>
+</tr>
+<tr>
+<td><code>fix:</code></td>
+<td>Corrección de error</td>
+<td><code>fix(ansible): corregir handler reinicio nginx</code></td>
+</tr>
+<tr>
+<td><code>docs:</code></td>
+<td>Solo documentación</td>
+<td><code>docs(memoria): completar conclusiones</code></td>
+</tr>
+<tr>
+<td><code>chore:</code></td>
+<td>Tareas de mantenimiento</td>
+<td><code>chore: actualizar mkdocs-material</code></td>
+</tr>
+<tr>
+<td><code>refactor:</code></td>
+<td>Reorganización sin cambio funcional</td>
+<td><code>refactor(terraform): extraer módulo de red</code></td>
+</tr>
+<tr>
+<td><code>style:</code></td>
+<td>Formato / estilo</td>
+<td><code>style(md): aplicar prettier</code></td>
+</tr>
+<tr>
+<td><code>test:</code></td>
+<td>Pruebas</td>
+<td><code>test(ansible): añadir validación idempotencia</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs(memoria): añadir sección de despliegue con Ansible&quot;</span>
+</code></pre></div>
+<h3 id="53-ramas-y-pull-requests">5.3. Ramas y Pull Requests<a class="headerlink" href="#53-ramas-y-pull-requests" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>gitGraph
+  commit id: "init"
+  branch docs/caracterizacion
+  checkout docs/caracterizacion
+  commit id: "redacta cap 2"
+  commit id: "añade DAFO"
+  checkout main
+  merge docs/caracterizacion tag: "PR #5"
+  branch feat/terraform
+  checkout feat/terraform
+  commit id: "VPC + SG"
+  commit id: "EC2 + EIP"
+  checkout main
+  merge feat/terraform tag: "PR #6"</code></pre>
+<p>Flujo recomendado para el equipo:</p>
+<ol>
+<li>Cada miembro abre una rama por capítulo o por funcionalidad (<code>docs/desarrollo</code>, <code>feat/ansible-backups</code>).</li>
+<li>Realiza commits pequeños y descriptivos.</li>
+<li>Abre un Pull Request describiendo qué incluye y a qué RA contribuye.</li>
+<li>Otro integrante revisa, comenta y aprueba.</li>
+<li>Se hace <em>merge</em> (o <em>squash</em>) a <code>main</code>. GitHub Pages se redespliega solo.</li>
+</ol>
+<h3 id="54-issues-y-proyecto">5.4. Issues y proyecto<a class="headerlink" href="#54-issues-y-proyecto" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Issues:</strong> un <em>issue</em> por tarea (<code>Documentar arquitectura</code>, <code>Probar restore MySQL</code>).</li>
+<li><strong>Labels:</strong> <code>docs</code>, <code>infra</code>, <code>security</code>, <code>bug</code>, <code>enhancement</code>.</li>
+<li><strong>Milestones:</strong> vinculados a hitos del cronograma.</li>
+<li><strong>Project board:</strong> vista Kanban (Backlog / En curso / Revisión / Hecho).</li>
+<li><strong>Cerrar issues desde commit:</strong> <code>git commit -m "feat: backup mysql (closes #14)"</code>.</li>
+</ul>
+<hr />
+<h2 id="6-publicacion-automatica-en-github-pages">6. Publicación automática en GitHub Pages<a class="headerlink" href="#6-publicacion-automatica-en-github-pages" title="Permanent link">&para;</a></h2>
+<h3 id="61-opcion-1-comando-mkdocs-gh-deploy">6.1. Opción 1: Comando <code>mkdocs gh-deploy</code><a class="headerlink" href="#61-opcion-1-comando-mkdocs-gh-deploy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
+</code></pre></div>
+<p>Publica el sitio en la rama <code>gh-pages</code>. Sencillo pero <strong>manual</strong>.</p>
+<h3 id="62-opcion-2-recomendada-github-actions">6.2. Opción 2 (recomendada): GitHub Actions<a class="headerlink" href="#62-opcion-2-recomendada-github-actions" title="Permanent link">&para;</a></h3>
+<p>Crea <code>.github/workflows/deploy.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Publicar memoria en GitHub Pages</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="nt">on</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="nt">permissions</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install mkdocs-material</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdocs build --strict --site-dir _site</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-pages-artifact@v3</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_site</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-pages</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.deployment.outputs.page_url }}</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment</span>
+<span class="linenos" data-linenos="35 "></span><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/deploy-pages@v4</span>
+</code></pre></div>
+<p><strong>Configuración en GitHub:</strong></p>
+<ol>
+<li><code>Settings</code> → <code>Pages</code> → <em>Source</em>: <strong>GitHub Actions</strong>.</li>
+<li>Cada <code>git push</code> a <code>main</code> ejecuta el workflow.</li>
+<li>Tu memoria queda publicada en <code>https://&lt;usuario&gt;.github.io/&lt;repo&gt;/</code>.</li>
+</ol>
+<h3 id="63-verificacion-del-despliegue">6.3. Verificación del despliegue<a class="headerlink" href="#63-verificacion-del-despliegue" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pestaña <strong>Actions</strong> del repositorio: revisa que la build sea verde.</li>
+<li>URL publicada en <code>Settings → Pages</code>.</li>
+<li>Comprobar <strong>enlaces internos</strong> con <code>mkdocs build --strict</code> (falla si hay enlaces rotos).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Despliega antes de redactar mucho</p>
+<p>Activa GitHub Pages <strong>el primer día</strong> del proyecto. Así corriges problemas de configuración cuando aún no tienes 80 páginas escritas.</p>
+</div>
+<hr />
+<h2 id="7-plantillas-reutilizables">7. Plantillas reutilizables<a class="headerlink" href="#7-plantillas-reutilizables" title="Permanent link">&para;</a></h2>
+<h3 id="71-readmemd-profesional-del-repositorio">7.1. <code>README.md</code> profesional del repositorio<a class="headerlink" href="#71-readmemd-profesional-del-repositorio" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gh"># Proyecto Intermodular ASIR — [Nombre del reto]</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>[<span class="nt">![Pages</span>](<span class="na">https://img.shields.io/badge/docs-online-blue</span>)](https://USUARIO.github.io/REPO/)
+<span class="linenos" data-linenos=" 4 "></span>[<span class="nt">![Status</span>](<span class="na">https://img.shields.io/badge/status-en%20desarrollo-yellow</span>)]()
+<span class="linenos" data-linenos=" 5 "></span>[<span class="nt">![License</span>](<span class="na">https://img.shields.io/badge/license-CC%20BY--NC--SA-lightgrey</span>)]()
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">&gt; </span><span class="ge">Memoria técnica y código del Proyecto Intermodular del CFGS ASIR, curso 2025-26, IES Macià Abela (Crevillent).</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="gu">## Equipo</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="k">-</span><span class="w"> </span>Alumno/a 1 — [<span class="nt">@usuario1</span>](<span class="na">https://github.com/usuario1</span>)
+<span class="linenos" data-linenos="12 "></span><span class="k">-</span><span class="w"> </span>Alumno/a 2 — [<span class="nt">@usuario2</span>](<span class="na">https://github.com/usuario2</span>)
+<span class="linenos" data-linenos="13 "></span><span class="k">-</span><span class="w"> </span>Alumno/a 3 — [<span class="nt">@usuario3</span>](<span class="na">https://github.com/usuario3</span>)
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="gu">## Descripción rápida</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span>Despliegue automatizado de [tipo de solución] para la empresa simulada [nombre], que aporta [valor]. La solución incluye [tecnologías principales: WordPress, Laravel, MySQL, AWS, Docker, Terraform, Ansible…].
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="gu">## Arquitectura</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span>![<span class="nt">Arquitectura</span>](<span class="na">docs/diagramas/arquitectura.png</span>)
+<span class="linenos" data-linenos="22 "></span>
+<span class="linenos" data-linenos="23 "></span><span class="gu">## Tecnologías</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**Infraestructura:**</span> AWS / Docker
+<span class="linenos" data-linenos="26 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**IaC:**</span> Terraform
+<span class="linenos" data-linenos="27 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**Configuración:**</span> Ansible
+<span class="linenos" data-linenos="28 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**Aplicación:**</span> WordPress, Laravel, MySQL
+<span class="linenos" data-linenos="29 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**Documentación:**</span> MkDocs Material + GitHub Pages
+<span class="linenos" data-linenos="30 "></span><span class="k">-</span><span class="w"> </span><span class="gs">**CI/CD:**</span> GitHub Actions
+<span class="linenos" data-linenos="31 "></span>
+<span class="linenos" data-linenos="32 "></span><span class="gu">## Cómo levantar el entorno</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="sb">```bash</span>
+<span class="linenos" data-linenos="35 "></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/USUARIO/REPO.git
+<span class="linenos" data-linenos="36 "></span><span class="nb">cd</span><span class="w"> </span>REPO/code/terraform
+<span class="linenos" data-linenos="37 "></span>terraform<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
+<span class="linenos" data-linenos="38 "></span>
+<span class="linenos" data-linenos="39 "></span><span class="nb">cd</span><span class="w"> </span>../ansible
+<span class="linenos" data-linenos="40 "></span>ansible-playbook<span class="w"> </span>-i<span class="w"> </span>inventory_aws_ec2.yml<span class="w"> </span>site.yml<span class="w"> </span>--ask-vault-pass
+<span class="linenos" data-linenos="41 "></span><span class="sb">```</span>
+<span class="linenos" data-linenos="42 "></span>
+<span class="linenos" data-linenos="43 "></span><span class="gu">## Memoria completa</span>
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span>📘 <span class="gs">**[Leer la memoria online](https://USUARIO.github.io/REPO/)**</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span><span class="gu">## Estructura del repositorio</span>
+<span class="linenos" data-linenos="48 "></span>
+<span class="linenos" data-linenos="49 "></span>| Carpeta | Contenido |
+<span class="linenos" data-linenos="50 "></span>|---------|-----------|
+<span class="linenos" data-linenos="51 "></span>| <span class="sb">`docs/`</span> | Memoria técnica (Markdown + MkDocs) |
+<span class="linenos" data-linenos="52 "></span>| <span class="sb">`code/terraform/`</span> | Infraestructura como código |
+<span class="linenos" data-linenos="53 "></span>| <span class="sb">`code/ansible/`</span> | Playbooks y roles de configuración |
+<span class="linenos" data-linenos="54 "></span>| <span class="sb">`code/docker/`</span> | Stack Docker Compose |
+<span class="linenos" data-linenos="55 "></span>| <span class="sb">`.github/workflows/`</span> | Pipelines de despliegue |
+<span class="linenos" data-linenos="56 "></span>
+<span class="linenos" data-linenos="57 "></span><span class="gu">## Licencia</span>
+<span class="linenos" data-linenos="58 "></span>
+<span class="linenos" data-linenos="59 "></span>CC BY-NC-SA 4.0
+</code></pre></div>
+<h3 id="72-plantilla-de-capitulo-de-memoria">7.2. Plantilla de capítulo de memoria<a class="headerlink" href="#72-plantilla-de-capitulo-de-memoria" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>---
+<span class="linenos" data-linenos=" 2 "></span>title: Capítulo X — Título
+<span class="linenos" data-linenos=" 3 "></span><span class="gu">description: Resumen del capítulo en 1-2 frases para SEO y previsualización.</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="gu">---</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="gh"># X. Título del capítulo</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">&gt; </span><span class="ge">Resumen ejecutivo del capítulo (3-5 líneas) explicando objetivo, alcance y resultado esperado.</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="gu">## X.1. Contexto y objetivos</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span>(Por qué este capítulo, qué resuelve, a qué RA contribuye).
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="gu">## X.2. Decisiones de diseño</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span>| Decisión | Alternativas | Elección | Justificación |
+<span class="linenos" data-linenos="17 "></span>|----------|-------------|----------|---------------|
+<span class="linenos" data-linenos="18 "></span>| ...      | ...         | ...      | ...           |
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="gu">## X.3. Procedimiento</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="k">1.</span> Paso 1
+<span class="linenos" data-linenos="23 "></span><span class="k">2.</span> Paso 2
+<span class="linenos" data-linenos="24 "></span><span class="k">3.</span> Paso 3
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span><span class="sb">```bash</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1"># Comando relevante</span>
+<span class="linenos" data-linenos="28 "></span><span class="sb">```</span>
+<span class="linenos" data-linenos="29 "></span>
+<span class="linenos" data-linenos="30 "></span><span class="gu">## X.4. Evidencias</span>
+<span class="linenos" data-linenos="31 "></span>
+<span class="linenos" data-linenos="32 "></span>![<span class="nt">Captura X.1</span>](<span class="na">capturas/cap_x/evidencia_1.png</span>)
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="gu">## X.5. Verificación</span>
+<span class="linenos" data-linenos="35 "></span>
+<span class="linenos" data-linenos="36 "></span><span class="k">- [ ]</span> Comprobación 1
+<span class="linenos" data-linenos="37 "></span><span class="k">- [ ]</span> Comprobación 2
+<span class="linenos" data-linenos="38 "></span>
+<span class="linenos" data-linenos="39 "></span><span class="gu">## X.6. Problemas encontrados y soluciones</span>
+<span class="linenos" data-linenos="40 "></span>
+<span class="linenos" data-linenos="41 "></span>| Problema | Causa | Solución |
+<span class="linenos" data-linenos="42 "></span>|----------|-------|----------|
+<span class="linenos" data-linenos="43 "></span>| ...      | ...   | ...      |
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span><span class="gu">## X.7. Conclusiones del capítulo</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span>(Cierre breve y enlace al siguiente capítulo).
+</code></pre></div>
+<h3 id="73-plantilla-de-manual-de-usuario">7.3. Plantilla de manual de usuario<a class="headerlink" href="#73-plantilla-de-manual-de-usuario" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gh"># Manual de usuario — [Nombre del sistema]</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="gu">## 1. Acceso al sistema</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">-</span><span class="w"> </span>URL: https://miapp.example
+<span class="linenos" data-linenos=" 6 "></span><span class="k">-</span><span class="w"> </span>Usuario de prueba: <span class="sb">`demo@asir.local`</span> / <span class="sb">`Demo1234!`</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="gu">## 2. Funcionalidades principales</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="gu">### 2.1. [Funcionalidad A]</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="gs">**Cómo se usa:**</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="k">1.</span> Pulsar en el menú &quot;...&quot;
+<span class="linenos" data-linenos="15 "></span><span class="k">2.</span> Rellenar los campos...
+<span class="linenos" data-linenos="16 "></span><span class="k">3.</span> Confirmar.
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span>![<span class="nt">Captura funcionalidad A</span>](<span class="na">capturas/usuario/func_a.png</span>)
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="gu">## 3. Preguntas frecuentes</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="gs">**¿No puedo iniciar sesión?**</span> Revisa caps lock y, si persiste, contacta al administrador.
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="gu">## 4. Contacto</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span>soporte@miempresa.example
+</code></pre></div>
+<h3 id="74-plantilla-de-manual-de-administrador">7.4. Plantilla de manual de administrador<a class="headerlink" href="#74-plantilla-de-manual-de-administrador" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gh"># Manual de administrador</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="gu">## 1. Despliegue desde cero</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span>(Pasos completos: clonar repo, requisitos, comandos de terraform/ansible).
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="gu">## 2. Operación diaria</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">-</span><span class="w"> </span>Comprobar estado: <span class="sb">`ansible all -m ping -i inventario`</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">-</span><span class="w"> </span>Revisar backups: <span class="sb">`ls -lh /var/backups/proyecto`</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">-</span><span class="w"> </span>Logs: <span class="sb">`journalctl -u nginx -f`</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="gu">## 3. Procedimiento de restore</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="sb">```bash</span>
+<span class="linenos" data-linenos="16 "></span>gunzip<span class="w"> </span>-c<span class="w"> </span>/var/backups/proyecto/20260101_wp.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>wordpress
+<span class="linenos" data-linenos="17 "></span><span class="sb">```</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="gu">## 4. Escalado y mantenimiento</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="k">-</span><span class="w"> </span>Ampliar disco EBS: ...
+<span class="linenos" data-linenos="22 "></span><span class="k">-</span><span class="w"> </span>Añadir un nuevo nodo: ...
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="gu">## 5. Plan de continuidad</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span>(Qué hacer si cae la web, si se pierde el host, si se compromete una cuenta…)
+</code></pre></div>
+<h3 id="75-plantilla-de-registro-de-incidencias">7.5. Plantilla de registro de incidencias<a class="headerlink" href="#75-plantilla-de-registro-de-incidencias" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="gh"># Registro de incidencias del proyecto</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span>| Fecha | Tipo | Descripción | Causa | Solución | Tiempo (min) | Quién |
+<span class="linenos" data-linenos="4 "></span>|-------|------|-------------|-------|----------|--------------|-------|
+<span class="linenos" data-linenos="5 "></span>| 2026-02-12 | Bug | <span class="sb">`terraform apply`</span> falla por límite EIP | Cuenta Educate tiene 5 EIP max | Liberar EIPs antiguas | 25 | Equipo |
+<span class="linenos" data-linenos="6 "></span>| 2026-02-15 | Seguridad | SG 3306 abierto al mundo | Error en <span class="sb">`cidr_blocks`</span> | Restringir a <span class="sb">`sg-web`</span> | 10 | Alumno 2 |
+</code></pre></div>
+<hr />
+<h2 id="8-documentacion-viva-mantenerla-durante-todo-el-proyecto">8. Documentación viva: mantenerla durante todo el proyecto<a class="headerlink" href="#8-documentacion-viva-mantenerla-durante-todo-el-proyecto" title="Permanent link">&para;</a></h2>
+<p>Una memoria que se redacta la última semana tiene <strong>dos problemas</strong>:</p>
+<ol>
+<li><strong>Pérdida de contexto:</strong> ya no recuerdas por qué tomaste aquella decisión.</li>
+<li><strong>Calidad baja:</strong> poco tiempo para revisar, pulir, añadir capturas.</li>
+</ol>
+<p><strong>Solución:</strong> integrar la documentación en el flujo diario.</p>
+<pre class="mermaid"><code>flowchart LR
+  Tarea[Hacer la tarea&lt;br/&gt;técnica] --&gt; Captura[Capturar&lt;br/&gt;evidencia inmediata]
+  Captura --&gt; Doc[Anotar 1 párrafo&lt;br/&gt;en el capítulo]
+  Doc --&gt; Commit[Commit con&lt;br/&gt;el cambio + la doc]
+  Commit --&gt; Push[Push a la rama]
+  Push --&gt; PR[PR al cierre del sprint]</code></pre>
+<h3 id="81-rituales-del-equipo">8.1. Rituales del equipo<a class="headerlink" href="#81-rituales-del-equipo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ritual</th>
+<th>Cuándo</th>
+<th>Qué se documenta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Diario</strong></td>
+<td>Cada sesión</td>
+<td>3 líneas: qué hicimos, qué bloquea, próximo paso</td>
+</tr>
+<tr>
+<td><strong>Pre-commit</strong></td>
+<td>Antes de <code>git commit</code></td>
+<td>¿He actualizado la sección correspondiente de la memoria?</td>
+</tr>
+<tr>
+<td><strong>Cierre de sprint</strong></td>
+<td>Semanal o quincenal</td>
+<td>Demo + actualizar capítulo principal + archivar capturas</td>
+</tr>
+<tr>
+<td><strong>Retro</strong></td>
+<td>Al cerrar tema</td>
+<td>Lecciones aprendidas → capítulo <code>Incidencias</code> y <code>Conclusiones</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-diario-de-aprendizaje-ra5">8.2. Diario de aprendizaje (RA5)<a class="headerlink" href="#82-diario-de-aprendizaje-ra5" title="Permanent link">&para;</a></h3>
+<p>Archivo <code>docs/anexos/diario.md</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gh"># Diario de aprendizaje</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="gu">## 2026-02-10 (Sprint 5)</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="gs">**Objetivo de hoy:**</span> Levantar EC2 con Terraform.
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="gs">**Hecho:**</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">-</span><span class="w"> </span>Creada VPC + subred pública.
+<span class="linenos" data-linenos=" 9 "></span><span class="k">-</span><span class="w"> </span>Falla <span class="sb">`aws_instance`</span> por AMI inexistente en la región.
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="gs">**Aprendido:**</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">-</span><span class="w"> </span>Las AMIs son por región. Hay que usar <span class="sb">`data &quot;aws_ami&quot;`</span> con filtros para no hardcodear IDs.
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="gs">**Próximo paso:**</span> sustituir AMI fija por <span class="ge">*data source*</span>.
+</code></pre></div>
+<hr />
+<h2 id="9-buenas-practicas-de-documentacion-profesional">9. Buenas prácticas de documentación profesional<a class="headerlink" href="#9-buenas-practicas-de-documentacion-profesional" title="Permanent link">&para;</a></h2>
+<div class="admonition success">
+<p class="admonition-title">Decálogo del buen documentador</p>
+<ol>
+<li><strong>Escribe para alguien que no estuvo contigo.</strong> No des por hecho contexto.</li>
+<li><strong>Un párrafo, una idea.</strong> Si un párrafo dura 8 líneas, divídelo.</li>
+<li><strong>Comandos completos y copiables.</strong> Sin <code>&lt;TU_USUARIO&gt;</code> sin explicación.</li>
+<li><strong>Capturas con foco.</strong> Recorta lo que no aporta, marca con flechas o cajas.</li>
+<li><strong>Tablas para decisiones.</strong> El texto plano es peor para comparar.</li>
+<li><strong>Diagramas en código.</strong> Mermaid &gt; PNG cuando sea posible (versionable).</li>
+<li><strong>Enlaces internos vivos.</strong> Usa el nombre del fichero, no URLs absolutas.</li>
+<li><strong>Ortografía y consistencia.</strong> Mismo término siempre (no mezcles "BBDD", "DB", "base de datos").</li>
+<li><strong>Cite fuentes.</strong> Documentación oficial, blogs, manuales del aula.</li>
+<li><strong>Revisión cruzada.</strong> Otro miembro lee tu capítulo antes del PR.</li>
+</ol>
+</div>
+<h3 id="91-anti-patrones-a-evitar">9.1. Anti-patrones a evitar<a class="headerlink" href="#91-anti-patrones-a-evitar" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Anti-patrón</th>
+<th>Por qué es malo</th>
+<th>Mejor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Aquí van capturas" sin capturas</td>
+<td>Marcador olvidado</td>
+<td>Inserta una vacía o <code>TODO</code> con fecha límite</td>
+</tr>
+<tr>
+<td>Bloques de código sin contexto</td>
+<td>El lector no sabe qué archivo es</td>
+<td>Indica nombre de fichero y carpeta</td>
+</tr>
+<tr>
+<td>Decisiones sin justificar</td>
+<td>Parece arbitrario</td>
+<td>Plantilla de tabla "Opción / Pros / Contras / Decisión"</td>
+</tr>
+<tr>
+<td>Capturas con datos sensibles</td>
+<td>Riesgo de fuga</td>
+<td>Censura tokens, contraseñas e IPs públicas</td>
+</tr>
+<tr>
+<td>Memoria como "tutorial" del aula</td>
+<td>Aporta poco valor profesional</td>
+<td>Foco en <strong>vuestras</strong> decisiones, no en repetir guías</td>
+</tr>
+<tr>
+<td><code>print screen</code> borroso</td>
+<td>Resta credibilidad</td>
+<td>Recortes nítidos, PNG, contraste correcto</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-trazabilidad-del-requisito-a-la-evidencia">10. Trazabilidad: del requisito a la evidencia<a class="headerlink" href="#10-trazabilidad-del-requisito-a-la-evidencia" title="Permanent link">&para;</a></h2>
+<p>Una memoria profesional permite trazar <strong>un requisito</strong> hasta su <strong>evidencia</strong> pasando por <strong>diseño, desarrollo y prueba</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>ID req.</th>
+<th>Texto</th>
+<th>Cap. diseño</th>
+<th>Cap. desarrollo</th>
+<th>Cap. integración</th>
+<th>Evidencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF-001</td>
+<td>El usuario puede registrarse</td>
+<td>§5.2</td>
+<td>§6.3</td>
+<td>§7.1</td>
+<td><code>capturas/07/registro.png</code></td>
+</tr>
+<tr>
+<td>RF-014</td>
+<td>Los datos persisten tras reinicio</td>
+<td>§5.3</td>
+<td>§6.5</td>
+<td>§7.4</td>
+<td><code>capturas/07/persistencia.png</code></td>
+</tr>
+<tr>
+<td>RNF-002</td>
+<td>Backup diario automático</td>
+<td>§5.4</td>
+<td>§6.8</td>
+<td>§8.2</td>
+<td><code>capturas/08/backup_cron.png</code></td>
+</tr>
+<tr>
+<td>RS-003</td>
+<td>MySQL no expuesto al exterior</td>
+<td>§5.5</td>
+<td>§6.7</td>
+<td>§7.5</td>
+<td><code>capturas/07/nmap_3306.png</code></td>
+</tr>
+</tbody>
+</table>
+<p>Esta matriz <strong>demuestra</strong> ante el tribunal que cada requisito tiene cierre completo.</p>
+<hr />
+<h2 id="11-retos-guiados">11. Retos guiados<a class="headerlink" href="#11-retos-guiados" title="Permanent link">&para;</a></h2>
+<h3 id="111-rg701-memoria-tecnica-publicada">11.1. RG701 — Memoria técnica publicada<a class="headerlink" href="#111-rg701-memoria-tecnica-publicada" title="Permanent link">&para;</a></h3>
+<p><strong>Objetivo:</strong> publicar la <strong>memoria completa</strong> del proyecto como sitio web en GitHub Pages, con la estructura del apartado 2 y todos los capítulos al menos en borrador funcional.</p>
+<p><strong>Pasos:</strong></p>
+<ol>
+<li>Crear el repositorio en GitHub (público, con <code>README.md</code>, <code>LICENSE</code>, <code>.gitignore</code> para Python).</li>
+<li>Inicializar MkDocs Material con el <code>mkdocs.yml</code> propuesto en §3.2.</li>
+<li>Configurar GitHub Pages con GitHub Actions (<code>.github/workflows/deploy.yml</code>).</li>
+<li>Estructurar las carpetas <code>docs/</code>, <code>docs/anexos/</code>, <code>docs/capturas/</code>, <code>docs/diagramas/</code>.</li>
+<li>Rellenar el contenido de <strong>al menos los capítulos 1, 2 y 3</strong> con material real del proyecto.</li>
+<li>Incluir <strong>un diagrama Mermaid</strong> y <strong>una tabla comparativa</strong> en cada capítulo donde aporte.</li>
+<li>Subir al menos <strong>5 capturas reales</strong> del proyecto.</li>
+<li>Verificar que <code>mkdocs build --strict</code> no produce errores.</li>
+<li>Verificar que el sitio se publica automáticamente en cada push a <code>main</code>.</li>
+</ol>
+<p><strong>Criterios de aceptación:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> URL pública accesible y navegable.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Búsqueda funcional.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Al menos 3 capítulos completos.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <em>Dark mode</em> operativo.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Repositorio con al menos 10 commits significativos repartidos entre el equipo.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>README.md</code> profesional siguiendo la plantilla.</li>
+</ul>
+<h3 id="112-rg702-manuales-y-trazabilidad">11.2. RG702 — Manuales y trazabilidad<a class="headerlink" href="#112-rg702-manuales-y-trazabilidad" title="Permanent link">&para;</a></h3>
+<p><strong>Objetivo:</strong> generar los <strong>manuales de usuario y administrador</strong> y la <strong>matriz de trazabilidad</strong> completa del proyecto.</p>
+<p><strong>Pasos:</strong></p>
+<ol>
+<li>Redactar <code>docs/anexos/manual_usuario.md</code> siguiendo la plantilla §7.3.</li>
+<li>Redactar <code>docs/anexos/manual_administrador.md</code> siguiendo la plantilla §7.4.</li>
+<li>Crear la matriz de trazabilidad (§10) con <strong>todos</strong> los requisitos del proyecto.</li>
+<li>Capturar evidencias específicas para cada requisito crítico.</li>
+<li>Documentar <strong>incidencias reales</strong> (§7.5) ocurridas durante el desarrollo.</li>
+<li>Añadir enlaces cruzados entre capítulos para facilitar la navegación.</li>
+</ol>
+<p><strong>Criterios de aceptación:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Manual de usuario probado por una persona ajena al equipo.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Manual de administrador suficiente para reproducir el despliegue.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Matriz de trazabilidad cubre el 100% de los RF y RNF.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Mínimo 5 incidencias documentadas con causa y solución.</li>
+</ul>
+<hr />
+<h2 id="12-retos-abiertos-profundizacion">12. Retos abiertos (profundización)<a class="headerlink" href="#12-retos-abiertos-profundizacion" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Reto</th>
+<th>Pista</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AP701</strong></td>
+<td>Personalizar el tema con CSS propio (<code>stylesheets/extra.css</code>) y favicon corporativo.</td>
+<td>Configurar <code>extra_css</code> y <code>theme.favicon</code>.</td>
+</tr>
+<tr>
+<td><strong>AP702</strong></td>
+<td>Plugin <code>mkdocs-print-site-plugin</code> para generar un PDF de la memoria.</td>
+<td>Útil para el tribunal.</td>
+</tr>
+<tr>
+<td><strong>AP703</strong></td>
+<td>Internacionalizar la memoria (ES + EN) con <code>i18n</code>.</td>
+<td>Solo si os sobra tiempo.</td>
+</tr>
+<tr>
+<td><strong>AP704</strong></td>
+<td>Añadir versión multilenguaje en <em>navigation tabs</em>.</td>
+<td><code>plugins: - i18n</code>.</td>
+</tr>
+<tr>
+<td><strong>AP705</strong></td>
+<td>Generar diagramas automáticos con <code>terraform graph | dot -Tsvg</code>.</td>
+<td>Incrustar SVG en la memoria.</td>
+</tr>
+<tr>
+<td><strong>AP706</strong></td>
+<td>Crear plantillas de issues y PR (<code>.github/ISSUE_TEMPLATE/</code>).</td>
+<td>Mejora la calidad del repositorio.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-actividades-y-entregables">13. Actividades y entregables<a class="headerlink" href="#13-actividades-y-entregables" title="Permanent link">&para;</a></h2>
+<p><a name="RG701"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG701</strong>. (RA4 // 20p). <strong>Memoria técnica publicada</strong> en GitHub Pages mediante MkDocs Material, con estructura completa, despliegue automatizado mediante GitHub Actions y mínimo 3 capítulos finalizados.</li>
+</ul>
+<p><a name="RG702"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2c-.9 0-2 1-2 2H8c0-1-1.1-2-2-2H2v9c0 1 1 2 2 2h2.2c.4 2 1.7 3.7 4.8 4v2.08C8 19.54 8 22 8 22h8s0-2.46-3-2.92V17c3.1-.3 4.4-2 4.8-4H20c1 0 2-1 2-2V2zM6 11H4V4h2zm14 0h-2V4h2z"/></svg></span> <strong>RG702</strong>. (RA4+RA5 // 10p). <strong>Manuales y trazabilidad</strong>: manual de usuario, manual de administrador, matriz de trazabilidad y registro de incidencias.</li>
+</ul>
+<p><strong>Entregables del Tema 7:</strong></p>
+<ol>
+<li>URL pública del sitio MkDocs (GitHub Pages).</li>
+<li>URL del repositorio GitHub con <code>code/</code> y <code>docs/</code>.</li>
+<li>Capturas del workflow Actions en verde.</li>
+<li>Matriz de trazabilidad completa.</li>
+<li>Registro de incidencias actualizado.</li>
+</ol>
+<hr />
+<h2 id="14-checklist-final-de-memoria">14. Checklist final de memoria<a class="headerlink" href="#14-checklist-final-de-memoria" title="Permanent link">&para;</a></h2>
+<h3 id="141-estructura">14.1. Estructura<a class="headerlink" href="#141-estructura" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Repositorio público con <code>README.md</code>, <code>LICENSE</code>, <code>.gitignore</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>mkdocs.yml</code> con <code>site_name</code>, <code>repo_url</code>, <code>nav</code>, <code>theme.material</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Despliegue automático configurado.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Carpetas <code>docs/</code>, <code>docs/anexos/</code>, <code>docs/capturas/</code>, <code>docs/diagramas/</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Plantillas de capítulo usadas consistentemente.</li>
+</ul>
+<h3 id="142-contenido">14.2. Contenido<a class="headerlink" href="#142-contenido" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Capítulos 1-10 con contenido real.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Resumen ejecutivo (página 1) escrito.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Al menos 1 diagrama Mermaid por capítulo técnico.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Al menos 1 tabla comparativa por capítulo donde aplique.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Capturas pertinentes en cada paso.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Manuales de usuario y administrador completos.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Matriz de trazabilidad rellena.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Registro de incidencias con al menos 5 entradas.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Glosario y bibliografía.</li>
+</ul>
+<h3 id="143-calidad">14.3. Calidad<a class="headerlink" href="#143-calidad" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>mkdocs build --strict</code> sin errores.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sin enlaces rotos (validado con <code>mkdocs-htmlproofer-plugin</code> o manual).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sin imágenes rotas.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Sin contraseñas / tokens en capturas o código.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ortografía revisada (corrector + revisión cruzada).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Mismo tono y terminología en todo el documento.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Licencia indicada en pie de página.</li>
+</ul>
+<h3 id="144-profesionalidad">14.4. Profesionalidad<a class="headerlink" href="#144-profesionalidad" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <em>Dark mode</em> y búsqueda funcionando.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pie de página con autoría y fecha.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Botón "Edit this page" funcional.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Iconos sociales del equipo configurados.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tiempo de carga razonable (&lt; 3s).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Funciona en móvil (responsive).</li>
+</ul>
+<hr />
+<h2 id="15-estructura-de-la-seccion-documentacion-en-tu-memoria">15. Estructura de la sección "Documentación" en tu memoria<a class="headerlink" href="#15-estructura-de-la-seccion-documentacion-en-tu-memoria" title="Permanent link">&para;</a></h2>
+<p>La propia memoria debe <strong>autodescribirse</strong>, dedicando un capítulo a explicar cómo está hecha:</p>
+<ol>
+<li><strong>Stack documental:</strong> MkDocs Material, GitHub, GitHub Pages, plugins usados.</li>
+<li><strong>Estructura del repositorio:</strong> árbol comentado.</li>
+<li><strong>Flujo de trabajo del equipo:</strong> ramas, PR, revisiones, commits.</li>
+<li><strong>Publicación automática:</strong> workflow Actions explicado.</li>
+<li><strong>Plantillas usadas:</strong> referencia a §7.</li>
+<li><strong>Métricas:</strong> nº de capítulos, capturas, diagramas, commits, PR.</li>
+</ol>
+<hr />
+<h2 id="16-recursos-y-referencias">16. Recursos y referencias<a class="headerlink" href="#16-recursos-y-referencias" title="Permanent link">&para;</a></h2>
+<h3 id="documentacion-oficial">Documentación oficial<a class="headerlink" href="#documentacion-oficial" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://www.mkdocs.org/">MkDocs</a></li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></li>
+<li><a href="https://www.markdownguide.org/">Markdown Guide</a></li>
+<li><a href="https://mermaid.js.org/">Mermaid — Diagramas en texto</a></li>
+<li><a href="https://pages.github.com/">GitHub Pages</a></li>
+<li><a href="https://docs.github.com/actions">GitHub Actions</a></li>
+<li><a href="https://www.conventionalcommits.org/">Conventional Commits</a></li>
+</ul>
+<h3 id="memorias-reales-del-alumnado-asir-referencias">Memorias reales del alumnado ASIR (referencias)<a class="headerlink" href="#memorias-reales-del-alumnado-asir-referencias" title="Permanent link">&para;</a></h3>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg></span> <a href="https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/">Proyecto Intermodular Docker (IJJ)</a> — <a href="https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ">Repositorio</a>.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg></span> <a href="https://alejandromarinyo.github.io/Proyecto-Intermodular/">Proyecto Intermodular AWS (Alejandro Mariño)</a> — <a href="https://github.com/AlejandroMarinyo/Proyecto-Intermodular">Repositorio</a>.</li>
+</ul>
+<h3 id="material-del-modulo">Material del módulo<a class="headerlink" href="#material-del-modulo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="mkdocs.html">MkDocs — Apuntes del módulo</a></li>
+<li><a href="git.html">Git — Sistemas de control de versiones</a></li>
+<li><a href="06despliegue_operacion.html">Tema 6 — Despliegue y operación</a></li>
+</ul>
+<hr />
+<h2 id="glosario-de-terminos-y-acronimos">Glosario de términos y acrónimos<a class="headerlink" href="#glosario-de-terminos-y-acronimos" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>MkDocs:</strong> generador de sitios estáticos basado en Markdown</li>
+<li><strong>Material for MkDocs:</strong> tema visual + funcionalidades para MkDocs</li>
+<li><strong>GitHub Pages:</strong> servicio gratuito de hosting estático sobre repositorios GitHub</li>
+<li><strong>Markdown:</strong> lenguaje de marcado ligero</li>
+<li><strong>Mermaid:</strong> sintaxis textual para generar diagramas</li>
+<li><strong>Admonition:</strong> bloque destacado tipo nota/aviso/tip</li>
+<li><strong>Conventional Commits:</strong> convención para nombrar commits</li>
+<li><strong>Pull Request (PR):</strong> solicitud de fusión entre ramas con revisión</li>
+<li><strong>Issue:</strong> ticket de seguimiento dentro de un repositorio</li>
+<li><strong>Workflow (Actions):</strong> automatización de pipelines en GitHub</li>
+<li><strong>Trazabilidad:</strong> capacidad de seguir un requisito a través de diseño, desarrollo, prueba y evidencia</li>
+<li><strong>RA4 / RA5:</strong> Resultados de Aprendizaje 4 (Documentación) y 5 (Comunicación)</li>
+</ul>
+<hr />
+<h2 id="conclusion-y-siguientes-pasos">Conclusión y siguientes pasos<a class="headerlink" href="#conclusion-y-siguientes-pasos" title="Permanent link">&para;</a></h2>
+<p>Al cerrar este tema deberías tener <strong>un sitio web profesional</strong> que contiene tu proyecto en su totalidad: planificación, código, decisiones, evidencias y manuales. Esa URL será <strong>el producto principal que defenderás</strong> en el Tema 8.</p>
+<p>En el <a href="08presentacion_defensa.html">Tema 8</a> prepararás la <strong>defensa técnica</strong>, las <strong>rúbricas</strong> y los <strong>instrumentos de evaluación</strong> que cerrarán el módulo.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="06despliegue_operacion.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 6. Despliegue y operación">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                6. Despliegue y operación
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="08presentacion_defensa.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 8. Presentación, defensa y cierre">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                8. Presentación, defensa y cierre
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025-2026 Francisco Javier Hernández Illán - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:<fj.hernandez@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/fjavier-hernandez-illan" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="js/print-site.js"></script>
+      
+    
+  </body>
+</html>
