@@ -1,0 +1,37 @@
+criterion,level,level_description,score
+C1 Caracterización y comprensión del reto (RA1),Excelente,Contexto de la empresa simulada bien presentado · problemática justificada con datos · objetivos · alcance claro · interesados identificados,9
+C1 Caracterización y comprensión del reto (RA1),Notable,Caracterización completa con algún aspecto mejorable · objetivos algo genéricos,6
+C1 Caracterización y comprensión del reto (RA1),Aprobado,Caracterización presente pero superficial · problemática difusa,4
+C1 Caracterización y comprensión del reto (RA1),Insuficiente,Sin contexto claro o no demuestra entender por qué hace el proyecto,0
+C2 Diseño y planificación (RA2),Excelente,Diagrama de arquitectura coherente con lo desplegado · modelo de datos correcto · EDT/WBS · cronograma con hitos y desviaciones reconocidas · riesgos,9
+C2 Diseño y planificación (RA2),Notable,Diseño claro con pequeñas incoherencias respecto al despliegue real,6
+C2 Diseño y planificación (RA2),Aprobado,Diagrama y planificación básicos · faltan partes (riesgos · ruta crítica...),4
+C2 Diseño y planificación (RA2),Insuficiente,Sin arquitectura o no se corresponde con la solución mostrada,0
+C3 Desarrollo integración y seguridad (RA3),Excelente,Stack completo desplegado y comunicado · persistencia probada · hardening (Nginx/SG/SSH/IAM) aplicado · pruebas negativas evidenciadas · backups operativos,13
+C3 Desarrollo integración y seguridad (RA3),Notable,Stack operativo con seguridad básica aplicada y verificada,9
+C3 Desarrollo integración y seguridad (RA3),Aprobado,Funciona pero seguridad mínima · faltan pruebas o evidencias,5.5
+C3 Desarrollo integración y seguridad (RA3),Insuficiente,No funciona end-to-end o sin medidas de seguridad,0
+C4 Despliegue manual y operación (RA3+RA4),Excelente,Infraestructura y servicios desplegados manualmente de forma documentada y reproducible · procedimiento paso a paso en la memoria · servicios operativos · backups probados · monitorización básica · manual de operación claro,11
+C4 Despliegue manual y operación (RA3+RA4),Notable,Despliegue manual funcional con documentación adecuada · algún paso poco detallado,8
+C4 Despliegue manual y operación (RA3+RA4),Aprobado,Despliegue manual básico pero incompleto o poco documentado,4.5
+C4 Despliegue manual y operación (RA3+RA4),Insuficiente,Sin evidencias de despliegue coherente o servicios no operativos,0
+C5 Memoria técnica y repositorio (RA4),Excelente,Sitio MkDocs publicado y accesible · estructura completa · manuales de usuario y administrador · matriz de trazabilidad · repositorio con PR/Issues activos · README.md profesional · despliegue automático de la memoria funcionando,13
+C5 Memoria técnica y repositorio (RA4),Notable,Memoria publicada con casi todos los capítulos · repositorio bien organizado,9
+C5 Memoria técnica y repositorio (RA4),Aprobado,Memoria parcial · repositorio con commits genéricos y poca colaboración visible,5.5
+C5 Memoria técnica y repositorio (RA4),Insuficiente,Sin sitio publicado o sin repositorio organizado,0
+C6 Presentación oral y soporte visual (RA5),Excelente,Estructura clara (intro / problema / solución / resultados / cierre) · todos los integrantes hablan · soporte visual limpio y legible · tiempos ajustados · lenguaje técnico preciso · contacto visual y soltura,11
+C6 Presentación oral y soporte visual (RA5),Notable,Presentación correcta y dentro del tiempo · soporte visual adecuado,8
+C6 Presentación oral y soporte visual (RA5),Aprobado,Comprensible pero desorganizada · alguien copa el tiempo · otros casi no hablan,4.5
+C6 Presentación oral y soporte visual (RA5),Insuficiente,Por debajo del tiempo · lectura literal del soporte visual · sin estructura,0
+C7 Demostración funcional en vivo (RA3+RA5),Excelente,Demo en vivo cubre los flujos principales · incluye una prueba negativa (intento bloqueado · recuperación) y un caso de éxito completo · navegación fluida,13
+C7 Demostración funcional en vivo (RA3+RA5),Notable,Demo funcional · alguna incidencia menor resuelta en directo,9
+C7 Demostración funcional en vivo (RA3+RA5),Aprobado,Demo limitada o con vídeo pre-grabado completo (sin parte en vivo),5.5
+C7 Demostración funcional en vivo (RA3+RA5),Insuficiente,Sin demo o no funciona,0
+C8 Defensa técnica y Q&A (RA1-RA5),Excelente,Cualquier integrante responde sobre cualquier área · justifican decisiones · reconocen limitaciones · proponen mejoras realistas,9
+C8 Defensa técnica y Q&A (RA1-RA5),Notable,Mayoría responde con solvencia · algún área la conoce sólo un miembro,6
+C8 Defensa técnica y Q&A (RA1-RA5),Aprobado,Respuestas correctas pero superficiales · depende mucho de un integrante,4
+C8 Defensa técnica y Q&A (RA1-RA5),Insuficiente,No saben justificar decisiones técnicas o el equipo no conoce el trabajo de los demás,0
+C9 Trabajo colaborativo y autoría (RA5),Excelente,Reparto equilibrado y documentado · todos los integrantes con autoría trazable · tareas cumplidas y capacidad de explicar y defender su aportación · al menos uno con responsabilidad destacada en áreas clave del proyecto · apoyo mutuo habitual en revisiones e incidencias,12
+C9 Trabajo colaborativo y autoría (RA5),Notable,Colaboración constante del equipo · cada integrante con contribución adecuada y verificable en repositorio y memoria · cumplimiento habitual de las tareas asignadas · algún desequilibrio menor en protagonismo o en la defensa de su trabajo,8
+C9 Trabajo colaborativo y autoría (RA5),Aprobado,Participación desigual: uno o más integrantes con colaboración parcial · autoría limitada o defensa superficial de su aportación · tareas cumplidas solo en parte · el equipo compensa parcialmente las carencias de los miembros menos implicados,4
+C9 Trabajo colaborativo y autoría (RA5),Insuficiente,Implicación mínima de parte del equipo o trabajo concentrado en uno o dos integrantes · ausencia de autoría trazable · uno o más miembros no pueden explicar ni defender su aportación al proyecto,0
