@@ -89,17 +89,3 @@ Esta guía incluye:
 
 **Documentación de referencia:** Esta guía está basada en los apuntes del curso [Markdown per a la creació de recursos](https://cursos-cefire.github.io/markdown-per-a-la-creacio-de-recursos/) del CEFIRE, adaptados y traducidos al castellano.
 
-<!-- Para resolver el quest **Security 101** del AWS GameDay, que se centra en implementar soluciones de seguridad para prevenir ataques comunes (protección de RDS, S3 y WAF), consulta la guía paso a paso:
-
-**[Security 101 - Guía del Alumno →](Security101_GuiAlumno.md)**
-
-Esta guía incluye:
-
-- Diagrama de arquitectura de la infraestructura a proteger
-- Pasos detallados para proteger Amazon RDS contra conexiones no autorizadas
-- Configuración de políticas de seguridad en Amazon S3 para prevenir eliminaciones
-- Implementación de AWS WAFv2 para proteger el ALB contra SQL injection
-- Troubleshooting y verificación de soluciones -->
-
-
-
