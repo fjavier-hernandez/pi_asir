@@ -9,10 +9,10 @@ description: Guía del tema 7 con la elaboración de la memoria técnica del pro
 >
 > Aprenderás a estructurar una **memoria técnica** completa, mantenerla **viva** durante todo el proyecto y publicarla automáticamente como **sitio web** mediante **MkDocs Material**, **Git** y **GitHub Pages**.
 >
-> El enfoque es idéntico al de tus referentes reales:
+> El enfoque es idéntico al de proyectos de cursos anteriores:
 >
-> - [Proyecto Intermodular Docker (Ismael, Javier, Jorge)](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/)
-> - [Proyecto Intermodular AWS (Alejandro Mariño)](https://alejandromarinyo.github.io/Proyecto-Intermodular/)
+> - [Un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/)
+> - [Un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/)
 
 Esta unidad de trabajo corresponde principalmente al **Resultado de Aprendizaje RA4** y, de forma transversal, a **RA5**.
 
@@ -981,10 +981,10 @@ La propia memoria debe **autodescribirse**, dedicando un capítulo a explicar c�
 - [GitHub Actions](https://docs.github.com/actions)
 - [Conventional Commits](https://www.conventionalcommits.org/)
 
-### Memorias reales del alumnado ASIR (referencias)
+### Proyectos de cursos anteriores
 
-- :material-book-open-page-variant: [Proyecto Intermodular Docker (IJJ)](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) — [Repositorio](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ).
-- :material-book-open-page-variant: [Proyecto Intermodular AWS (Alejandro Mariño)](https://alejandromarinyo.github.io/Proyecto-Intermodular/) — [Repositorio](https://github.com/AlejandroMarinyo/Proyecto-Intermodular).
+- :material-book-open-page-variant: [Un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) — [repositorio](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ).
+- :material-book-open-page-variant: [Un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/) — [repositorio](https://github.com/AlejandroMarinyo/Proyecto-Intermodular).
 
 ### Material del módulo
 

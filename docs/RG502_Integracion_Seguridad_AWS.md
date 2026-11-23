@@ -21,7 +21,7 @@ Este reto es la continuación del despliegue realizado en el tema 4. En el proye
 
 Diseño de referencia (proyecto AWS):  
 
-[Proyecto Intermodular (AWS) - Diseño y Planificación](https://alejandromarinyo.github.io/Proyecto-Intermodular/Dise%C3%B1o_y_Planificacion/)
+[Un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/Dise%C3%B1o_y_Planificacion/)
 
 Este reto incorpora como base conceptual los pasos de:
 
@@ -48,7 +48,7 @@ Según el desarrollo publicado del proyecto (fase “Desarrollo”), el desplieg
 
 Referencia de estado (para comprobar el punto de partida):  
 
-[Desarrollo - Proyecto Intermodular](https://alejandromarinyo.github.io/Proyecto-Intermodular/Desarrollo/)
+[Un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/Desarrollo/)
 
 Este reto no debe repetir el despliegue básico anterior: el foco está en **integración**, **separación de BBDD** (si aún no existe) y **seguridad en AWS con evidencias**.
 

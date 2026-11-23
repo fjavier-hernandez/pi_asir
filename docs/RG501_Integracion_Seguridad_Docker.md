@@ -22,7 +22,7 @@ Este reto es la continuación del despliegue realizado en el tema 4. En el proye
 
 Diseño de referencia (proyecto Docker):
 
-[Proyecto Intermodular (Docker) - Diseño y Planificación](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/02_Marco_tecnologico/)
+[Un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/02_Marco_tecnologico/)
 
 Además, este reto sigue la filosofía de despliegue y validación de `PR402` (Docker Compose + verificación de conectividad), adaptándolo a vuestro stack real.
 

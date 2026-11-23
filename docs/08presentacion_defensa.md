@@ -659,10 +659,10 @@ A modo de cierre y retrospectiva:
 - [Rúbrica RG401 — Desarrollo iterativo y pruebas](rubrica_RG401_Desarrollo.md)
 - [Rúbrica defensa de la caracterización](rubrica_defensa_caracterizacion.md)
 
-### Proyectos reales del alumnado ASIR (referencia para preparar la defensa)
+### Proyectos de cursos anteriores
 
-- :material-book-open-page-variant: [Proyecto Intermodular Docker (IJJ)](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) — [Repositorio](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ).
-- :material-book-open-page-variant: [Proyecto Intermodular AWS (Alejandro Mariño)](https://alejandromarinyo.github.io/Proyecto-Intermodular/) — [Repositorio](https://github.com/AlejandroMarinyo/Proyecto-Intermodular).
+- :material-book-open-page-variant: [Un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) — [repositorio](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ).
+- :material-book-open-page-variant: [Un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/) — [repositorio](https://github.com/AlejandroMarinyo/Proyecto-Intermodular).
 
 ### Lecturas recomendadas
 

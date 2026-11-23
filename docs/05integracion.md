@@ -122,9 +122,9 @@ La memoria debe tener una sección **Integración** coherente con **vuestro** re
 
 ### Diseño de referencia de los proyectos
 
-- Proyecto Docker: [Proyecto Intermodular (Docker) - Diseño y Planificación](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/02_Marco_tecnologico/)
-- Proyecto AWS: [Proyecto Intermodular (AWS) - Diseño y Planificación](https://alejandromarinyo.github.io/Proyecto-Intermodular/Dise%C3%B1o_y_Planificacion/)
-- Proyecto AWS (estado desplegado descrito en RG502): [Desarrollo - Proyecto Intermodular](https://alejandromarinyo.github.io/Proyecto-Intermodular/Desarrollo/)
+- Línea Docker: [un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/02_Marco_tecnologico/)
+- Línea AWS: [un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/Dise%C3%B1o_y_Planificacion/)
+- Línea AWS (estado desplegado descrito en RG502): [un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/Desarrollo/)
 
 ---
 

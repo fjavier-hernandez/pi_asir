@@ -165,7 +165,7 @@ Cada grupo sigue **un** reto (el de su línea de proyecto). Ambos tienen guía d
 | **Operación** | `ansible-playbook site.yml` reproduce el host completo desde cero | `terraform apply` + `ansible-playbook site.yml` reproducen infraestructura y configuración |
 | **Seguridad** | SSH con claves, `ansible-vault` para secretos, UFW/firewalld, hardening básico | IAM mínimo, *state* protegido, `ansible-vault`, SG restrictivos, SSH endurecido |
 | **Monitorización** | Node Exporter / Prometheus desplegado vía rol Ansible | CloudWatch Agent instalado por Ansible; alarmas básicas opcionalmente con Terraform |
-| **Proyecto de referencia** | [Proyecto Intermodular (Docker)](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) | [Proyecto Intermodular (AWS)](https://alejandromarinyo.github.io/Proyecto-Intermodular/) |
+| **Proyecto de referencia** | [Un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) | [Un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/) |
 
 ---
 
@@ -1313,14 +1313,14 @@ La memoria del proyecto debe incluir un capítulo **Despliegue y operación** co
 <a name="RG601"></a>
 
 * :material-trophy: **RG601**. (RA3+RA4 // 30p). Aprovisionamiento, configuración y operación con **Ansible** del stack del proyecto **Docker** (línea PR402): roles `common`, `docker_host`, `stack_compose`, `backups` y `monitoring`, secretos con `ansible-vault`, idempotencia verificada y manual de operación.
-    * Proyecto de referencia: [Proyecto Intermodular Docker (IJJ)](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) — [Repositorio](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ).
+    * Proyecto de referencia: [un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) — [repositorio](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ).
 
 ---
 
 <a name="RG602"></a>
 
 * :material-trophy: **RG602**. (RA3+RA4 // 30p). Despliegue automatizado con **Terraform + Ansible** del entorno AWS (línea PR403 + continuidad AWS): VPC, subredes, SG, EC2 (`web`, `app`, `db`, `dns`), Bind9, MySQL en EC2, hardening, monitorización CloudWatch básica y operación.
-    * Proyecto de referencia: [Proyecto Intermodular AWS (Alejandro Mariño)](https://alejandromarinyo.github.io/Proyecto-Intermodular/) — [Repositorio](https://github.com/AlejandroMarinyo/Proyecto-Intermodular).
+    * Proyecto de referencia: [un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/) — [repositorio](https://github.com/AlejandroMarinyo/Proyecto-Intermodular).
 
 ---
 
@@ -1347,10 +1347,10 @@ La memoria del proyecto debe incluir un capítulo **Despliegue y operación** co
 - [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 - [Amazon EC2 dynamic inventory plugin](https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws_ec2_inventory.html)
 
-### Proyectos reales del alumnado ASIR
+### Proyectos de cursos anteriores
 
-- **Docker:** [Proyecto Intermodular 2 ASIR IJJ](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) ([GitHub](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ)).
-- **AWS:** [Proyecto Intermodular — Alejandro Mariño](https://alejandromarinyo.github.io/Proyecto-Intermodular/) ([GitHub](https://github.com/AlejandroMarinyo/Proyecto-Intermodular)).
+- **Docker:** [un proyecto de un curso anterior](https://elimpermeable.github.io/Proyecto_Intermodular2ASIR_IJJ/) ([repositorio](https://github.com/elimpermeable/Proyecto_Intermodular2ASIR_IJJ)).
+- **AWS:** [un proyecto de un curso anterior](https://alejandromarinyo.github.io/Proyecto-Intermodular/) ([repositorio](https://github.com/AlejandroMarinyo/Proyecto-Intermodular)).
 
 ### Repositorios y guías de apoyo
 
