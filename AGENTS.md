@@ -14,7 +14,7 @@ El repositorio es **público**. Cada push a `main` despliega la web automáticam
 | --- | --- | --- |
 | `mkdocs.yml` | Configuración del sitio y navegación (`nav`). | Define la web |
 | `docs/index.md` | Portada. | Sí |
-| `docs/01herramientas.md`, `docs/02planteamiento_reto.md` | Unidades activas en la `nav`. | Sí |
+| `docs/01herramientas.md` … `docs/08presentacion_defensa.md` | Unidades activas en la `nav` (temas 1 a 8). | Sí |
 | `docs/PR*.md` y otros materiales | Prácticas y documentación de herramientas. | Se construyen todas |
 | `README.md`, `README_DEPLOY.md`, `requirements.txt`, `deploy.sh` | Presentación y despliegue. | No |
 
